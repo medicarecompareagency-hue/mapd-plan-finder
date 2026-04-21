@@ -1,0 +1,212 @@
+// MAPD Plan Finder - Prisma Database Schema
+// Copy this file into your project at: prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+// ------------------------------------------------------------
+// PLAN TYPE TAXONOMY
+// Added 2026-04-21 for backlog item #1 (Plan Type dropdown expansion).
+// See docs/plan-type-catalog.md for raw CMS code -> enum mappings.
+// ------------------------------------------------------------
+enum PlanCategory {
+  MA_ONLY   // Medicare Advantage without drug coverage
+  MAPD      // Medicare Advantage + Part D
+  PDP       // Standalone Prescription Drug Plan
+  DSNP      // Dual-Eligible Special Needs Plan
+  CSNP      // Chronic Condition Special Needs Plan
+  ISNP      // Institutional Special Needs Plan
+  MSA       // Medical Savings Account
+  PACE      // Program of All-Inclusive Care for the Elderly
+  COST      // 1876 Cost plan / HCPP
+  MMP       // Medicare-Medicaid Plan (sunset after 2025)
+  OTHER
+}
+
+enum SnpSubtype {
+  // ISNP subtypes (from pbp_a_snp_institutional_type)
+  ISNP_FACILITY       // FI-SNP
+  ISNP_EQUIVALENT     // IE-SNP
+  ISNP_HYBRID         // HI-SNP
+  // DSNP Medicaid-tier subtypes (populated in backlog item #3).
+  // Listed here now so the enum is stable and we don't migrate twice.
+  DSNP_FBDE
+  DSNP_QMB_PLUS
+  DSNP_QMB
+  DSNP_SLMB_PLUS
+  DSNP_SLMB
+  DSNP_QI
+  DSNP_MEDICAID_ONLY
+}
+
+enum ChronicCondition {
+  ALCOHOL_SUD
+  AUTOIMMUNE
+  CANCER
+  CARDIOVASCULAR
+  CHRONIC_HEART_FAILURE
+  DEMENTIA
+  DIABETES
+  GASTROINTESTINAL
+  CHRONIC_KIDNEY_DISEASE
+  HEMATOLOGIC
+  HIV_AIDS
+  LUNG_DISORDERS
+  MENTAL_HEALTH
+  NEUROLOGIC
+  STROKE
+  CHF_AND_CVD
+  DIABETES_AND_CVD
+  CHF_AND_DIABETES
+  DIABETES_CHF_CVD
+  STROKE_AND_CVD
+  METABOLIC_SYNDROME
+  POST_TRANSPLANT
+  IMMUNODEFICIENCY
+  COGNITIVE_IMPAIRMENT
+  FUNCTIONAL_CHALLENGES
+  SENSORY_IMPAIRMENT
+  THERAPY_MAINTENANCE
+  ANXIETY_WITH_COPD
+  CKD_AND_TRANSPLANT
+  SUD_AND_MH
+  OTHER_1
+  OTHER_2
+  OTHER_3
+}
+
+// ------------------------------------------------------------
+// PLAN - Core Medicare Advantage plan record
+// ------------------------------------------------------------
+model Plan {
+  id                        Int      @id @default(autoincrement())
+  planYear                  Int
+  planId                    String   // CMS Plan ID (H-number)
+  planName                  String
+  organizationName          String
+  planType                  String   // Legacy contract-type string from landscape CSV
+                                     // (HMO, Local PPO, PFFS, etc.). Kept for existing
+                                     // queries and the results-table "Type" column.
+
+  // Plan Type taxonomy (added 2026-04-21 — see docs/schema-additions-plan-type.md)
+  planCategory              PlanCategory?
+  snpSubtype                SnpSubtype?
+  chronicConditions         ChronicCondition[] @default([])
+  hasPartD                  Boolean?
+  isZeroDollarDsnp          Boolean?
+  cmsContractType           String?  // Decoded pbp_a_plan_type (HMO, HMOPOS, Local PPO, ...)
+
+  // Location
+  state                     String
+  county                    String
+  zipCode                   String?
+
+  // Premiums & Subsidies
+  monthlyPremium            Float
+  partBGivebackAmount       Float?   @default(0)
+  lowIncomeSubsidyLevel     String?  // Full, Partial, None
+  medicaidLevel             String?
+
+  // Medical Cost Sharing
+  medicalDeductible         Float?   @default(0)
+  maxOutOfPocket            Float?
+  pcpCopay                  Float?
+  specialistCopay           Float?
+  emergencyRoomCopay        Float?
+  ambulanceCopay            Float?
+  outpatientHospitalCopay   Float?
+  hospitalStayCopay         String?  // Can be per-day structure e.g. "$300/day days 1-5"
+  skilledNursingCopay       String?  // Can be per-day structure
+
+  // Imaging
+  mriCopay                  Float?
+  catScanCopay              Float?
+
+  // Prescription Drugs
+  drugDeductible            Float?   @default(0)
+  drugTier1Copay            Float?
+  drugTier2Copay            Float?
+  drugTier3Copay            Float?
+  drugTier4Copay            Float?
+  drugTier5Copay            Float?
+  drugTier6Copay            Float?
+
+  // Extra Benefits
+  otcAllowance              Float?   @default(0)   // Over-the-counter allowance
+  foodCardAllowance         Float?   @default(0)
+  dentalBenefits            String?  // Description of dental coverage
+  hearingBenefits           String?  // Description of hearing coverage
+  visionBenefits            String?  // Description of vision coverage
+  transportationBenefit     String?  // Description of transportation benefit
+
+  // Metadata
+  createdAt                 DateTime @default(now())
+  updatedAt                 DateTime @updatedAt
+
+  @@index([state, county])
+  @@index([planYear])
+  @@index([monthlyPremium])
+  @@index([planId])
+  @@index([planCategory])
+  @@index([state, county, planCategory])
+}
+
+// ------------------------------------------------------------
+// GEOLOCATION - Reference table for US state/county/zip
+// ------------------------------------------------------------
+model GeoLocation {
+  id      Int    @id @default(autoincrement())
+  state   String // 2-letter state code
+  county  String
+  zipCode String
+
+  @@index([state])
+  @@index([state, county])
+  @@unique([state, county, zipCode])
+}
+
+// ------------------------------------------------------------
+// USER - Sales agent accounts
+// ------------------------------------------------------------
+model User {
+  id            Int       @id @default(autoincrement())
+  email         String    @unique
+  name          String?
+  passwordHash  String
+  role          String    @default("agent")  // agent, admin
+  createdAt       DateTime        @default(now())
+  searches        Search[]
+  passwordResets  PasswordReset[]
+}
+
+// ------------------------------------------------------------
+// PASSWORD RESET - Time-limited reset tokens
+// ------------------------------------------------------------
+model PasswordReset {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+  token     String   @unique
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime @default(now())
+}
+
+// ------------------------------------------------------------
+// SEARCH - Saved agent searches
+// ------------------------------------------------------------
+model Search {
+  id          Int      @id @default(autoincrement())
+  userId      Int
+  user        User     @relation(fields: [userId], references: [id])
+  searchName  String?
+  filters     Json     // Stores all selected filter criteria as JSON
+  createdAt   DateTime @default(now())
+}
