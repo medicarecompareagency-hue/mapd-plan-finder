@@ -130,17 +130,17 @@ export async function GET(request: Request) {
   // ranking when no Medicaid Level is chosen AND the plan category is not a
   // SNP variant.
   //
-  // Full 6-key spec (per Dale, revised):
+  // Full 6-key spec (per Dale, revised 2026-04-22 rev 3):
   //   1. Lowest Monthly Premium
   //   2. Lowest Medical Deductible
-  //   3. Lowest Hospital Co-payment
+  //   3. Lowest Hospital Co-payment (day-1 per-day rate parsed from string)
   //   4. Lowest Specialist Co-payment
   //   5. Lowest MOOP
   //   6. Highest Star Rating
   //
-  // STUBBED to 4 active keys today: hospitalStayCopay is stored as a non-
-  // numeric string ("$300/day days 1-5") and no starRating column exists yet.
-  // Schema migration + CMS Star Ratings import = prerequisite for the full chain.
+  // STUBBED: only Star Rating is still skipped (column does not exist yet).
+  // Hospital Co-payment is parsed inline via parseHospitalCopayDay1() until
+  // a proper numeric migration lands.
   //
   // When a Medicaid level is chosen or the user picked a SNP plan category,
   // fall back to the existing score-based ranking (SNP spec is a separate
@@ -158,6 +158,25 @@ export async function GET(request: Request) {
     return ascending ? (a as number) - (b as number) : (b as number) - (a as number);
   }
 
+  // Parse CMS hospital-stay copay strings to extract the day-1 per-day rate.
+  // Examples:
+  //   "$335/day days 1-6, $0/day days 7-90"  -> 335
+  //   "$300/day"                              -> 300
+  //   "$290/day days 1-7, $0/day days 8-90"   -> 290
+  //   "None" / null / ""                      -> null
+  // Used as a tiebreaker in the default ranking chain per 2026-04-22 rev 3.
+  function parseHospitalCopayDay1(val: unknown): number | null {
+    if (val == null) return null;
+    const s = String(val).trim();
+    if (!s || /^none$/i.test(s)) return null;
+    // Prefer a number followed by "/day" or "per day"
+    let m = s.match(/\$?\s*(\d+(?:\.\d+)?)\s*(?:\/|per\s*)day/i);
+    if (m) return parseFloat(m[1]);
+    // Fallback: first dollar-ish number in the string
+    m = s.match(/\$?\s*(\d+(?:\.\d+)?)/);
+    return m ? parseFloat(m[1]) : null;
+  }
+
   let ranked: Array<Record<string, unknown>>;
 
   if (useDefaultTop10) {
@@ -170,7 +189,11 @@ export async function GET(request: Request) {
         // 2. Lowest Medical Deductible (asc)
         c = cmp(a.medicalDeductible as number | null, b.medicalDeductible as number | null, true);
         if (c !== 0) return c;
-        // 3. [stub: Hospital Co-payment skipped - string field, awaiting numeric migration]
+        // 3. Lowest Hospital Co-payment (day-1 per-day rate, asc) - parsed from string
+        const ah = parseHospitalCopayDay1(a.hospitalStayCopay);
+        const bh = parseHospitalCopayDay1(b.hospitalStayCopay);
+        c = cmp(ah, bh, true);
+        if (c !== 0) return c;
         // 4. Lowest Specialist Co-payment (asc)
         c = cmp(a.specialistCopay as number | null, b.specialistCopay as number | null, true);
         if (c !== 0) return c;
