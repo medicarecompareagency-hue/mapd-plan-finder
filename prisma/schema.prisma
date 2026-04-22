@@ -138,6 +138,7 @@ model Plan {
   drugTier5Copay            Float?
   drugTier6Copay            Float?
 
+  drugTierCoinsuranceMask String?
   // Extra Benefits
   otcAllowance              Float?   @default(0)   // Over-the-counter allowance
   foodCardAllowance         Float?   @default(0)

@@ -47,7 +47,6 @@ interface Plan {
   drugTier4Copay: number | null;
   drugTier5Copay: number | null;
   drugTier6Copay: number | null;
-  drugTierCoinsuranceMask: string | null;
   otcAllowance: number | null;
   foodCardAllowance: number | null;
   dentalBenefits: string | null;
@@ -56,16 +55,11 @@ interface Plan {
   transportationBenefit: string | null;
 }
 
-import { LICENSED_STATES } from "@/lib/licensed-states";
-import DrugTierCell from "@/components/DrugTierCell";
-
 interface FilterOptions {
   states: string[];
   counties: string[];
   zipCodes: string[];
   planTypes: string[];
-    planYears: number[];
-    organizationNames: string[];
   planCategories: string[];
   snpSubtypes: string[];
   chronicConditions: string[];
@@ -174,7 +168,7 @@ const CHRONIC_CONDITION_LABELS: Record<string, string> = {
 // Helpers
 // ---------------------------------------------------------------------------
 function dollars(v: number | null | undefined): string {
-  if (v == null) return "N/A";
+  if (v == null) return "—";
   return `$${v.toFixed(v % 1 === 0 ? 0 : 2)}`;
 }
 
@@ -185,7 +179,6 @@ function FilterSelect({
   onChange,
   options,
   formatOption,
-    disabledOptions,
 }: {
   label: string;
   name: string;
@@ -193,7 +186,6 @@ function FilterSelect({
   onChange: (name: string, value: string) => void;
   options: (string | number)[];
   formatOption?: (v: string | number) => string;
- disabledOptions?: (string | number)[];
 }) {
   return (
     <div className="flex flex-col gap-1">
@@ -208,14 +200,11 @@ function FilterSelect({
         className="h-9 rounded-md border border-gray-300 bg-white px-2 text-sm text-gray-800 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none"
       >
         <option value="">Any</option>
-        {options.map((opt) => {
-             const disabled = disabledOptions?.some((d) => String(d) === String(opt)) ?? false;
-             return (
-               <option key={String(opt)} value={String(opt)} disabled={disabled}>
-                 {formatOption ? formatOption(opt) : String(opt)}
-               </option>
-             );
-           })}
+        {options.map((opt) => (
+          <option key={String(opt)} value={String(opt)}>
+            {formatOption ? formatOption(opt) : String(opt)}
+          </option>
+        ))}
       </select>
     </div>
   );
@@ -307,9 +296,7 @@ export default function PlanSearch() {
       .then((r) => r.json())
       .then((data: { states: { code: string; name: string }[] }) => {
         setGeoStates(
-          data.states
-            .filter((s) => (LICENSED_STATES as readonly string[]).includes(s.code))
-            .map((s) => ({ value: s.code, label: `${s.name} (${s.code})` })),
+          data.states.map((s) => ({ value: s.code, label: `${s.name} (${s.code})` })),
         );
       });
   }, []);
@@ -620,24 +607,6 @@ export default function PlanSearch() {
           <Combobox label="County" name="county" value={filters.county ?? ""} onChange={handleFilterChange} options={geoCounties} placeholder="Search counties..." disabled={!filters.state} />
           <Combobox label="Zip Code" name="zipCode" value={filters.zipCode ?? ""} onChange={handleFilterChange} options={geoZipCodes} placeholder="Enter zip code..." onInputChange={reverseZipLookup} />
           <FilterSelect label="Contract Type" name="planType" value={filters.planType ?? ""} onChange={handleFilterChange} options={options?.planTypes ?? []} />
-
-   <FilterSelect
-     label="Carrier"
-     name="organizationName"
-     value={filters.organizationName ?? ""}
-     onChange={handleFilterChange}
-     options={options?.organizationNames ?? []}
-   />
-
-   <FilterSelect
-     label="Plan Year"
-     name="planYear"
-     value={filters.planYear ?? ""}
-     onChange={handleFilterChange}
-     options={[...(options?.planYears ?? []), 2027]}
-     disabledOptions={[2027]}
-     formatOption={(v) => (Number(v) === 2027 ? "2027 (coming soon)" : String(v))}
-   />
         </div>
 
         <h2 className="text-sm font-bold text-gray-700 uppercase tracking-wide mb-3">Plan Category</h2>
@@ -909,17 +878,17 @@ export default function PlanSearch() {
                       <td className="px-3 py-3 text-right text-gray-900">{dollars(plan.emergencyRoomCopay)}</td>
                       <td className="px-3 py-3 text-right text-gray-900">{dollars(plan.ambulanceCopay)}</td>
                       <td className="px-3 py-3 text-right text-gray-900">{dollars(plan.outpatientHospitalCopay)}</td>
-                      <td className="px-3 py-3 text-xs text-gray-900">{plan.hospitalStayCopay || "N/A"}</td>
-                      <td className="px-3 py-3 text-xs text-gray-900">{plan.skilledNursingCopay || "N/A"}</td>
+                      <td className="px-3 py-3 text-xs text-gray-900">{plan.hospitalStayCopay ?? "—"}</td>
+                      <td className="px-3 py-3 text-xs text-gray-900">{plan.skilledNursingCopay ?? "—"}</td>
                       <td className="px-3 py-3 text-right text-gray-900">{dollars(plan.mriCopay)}</td>
                       <td className="px-3 py-3 text-right text-gray-900">{dollars(plan.catScanCopay)}</td>
                       <td className="px-3 py-3 text-right text-gray-900">{dollars(plan.drugDeductible)}</td>
-                      <td className="px-3 py-3 text-right text-gray-900"><DrugTierCell tier={1} value={plan.drugTier1Copay} mask={plan.drugTierCoinsuranceMask} /></td>
-                      <td className="px-3 py-3 text-right text-gray-900"><DrugTierCell tier={2} value={plan.drugTier2Copay} mask={plan.drugTierCoinsuranceMask} /></td>
-                      <td className="px-3 py-3 text-right text-gray-900"><DrugTierCell tier={3} value={plan.drugTier3Copay} mask={plan.drugTierCoinsuranceMask} /></td>
-                      <td className="px-3 py-3 text-right text-gray-900"><DrugTierCell tier={4} value={plan.drugTier4Copay} mask={plan.drugTierCoinsuranceMask} /></td>
-                      <td className="px-3 py-3 text-right text-gray-900"><DrugTierCell tier={5} value={plan.drugTier5Copay} mask={plan.drugTierCoinsuranceMask} /></td>
-                      <td className="px-3 py-3 text-right text-gray-900"><DrugTierCell tier={6} value={plan.drugTier6Copay} mask={plan.drugTierCoinsuranceMask} /></td>
+                      <td className="px-3 py-3 text-right text-gray-900">{dollars(plan.drugTier1Copay)}</td>
+                      <td className="px-3 py-3 text-right text-gray-900">{dollars(plan.drugTier2Copay)}</td>
+                      <td className="px-3 py-3 text-right text-gray-900">{dollars(plan.drugTier3Copay)}</td>
+                      <td className="px-3 py-3 text-right text-gray-900">{dollars(plan.drugTier4Copay)}</td>
+                      <td className="px-3 py-3 text-right text-gray-900">{dollars(plan.drugTier5Copay)}</td>
+                      <td className="px-3 py-3 text-right text-gray-900">{dollars(plan.drugTier6Copay)}</td>
                       <td className="px-3 py-3 text-right text-gray-900">{dollars(plan.otcAllowance)}</td>
                       <td className="px-3 py-3 text-right text-gray-900">{dollars(plan.foodCardAllowance)}</td>
                       <td className="px-3 py-3 text-sm text-gray-900 min-w-[180px]">{plan.dentalBenefits ?? "—"}</td>
