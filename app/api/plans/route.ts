@@ -126,18 +126,20 @@ export async function GET(request: Request) {
   const plans = await prisma.plan.findMany({ where, take: MAX_RESULTS * 2 });
 
   // --- Ranking ---
-  // Backlog #6 (2026-04-22): default lexicographic top-10 ranking when no
-  // Medicaid Level is chosen AND the plan category is not a SNP variant.
+  // Backlog #6 (updated 2026-04-22 revision 2): default lexicographic top-10
+  // ranking when no Medicaid Level is chosen AND the plan category is not a
+  // SNP variant.
   //
-  // Full 5-key spec (per Dale):
-  //   1. Lowest Medical Deductible
-  //   2. Lowest Hospital Co-payment
-  //   3. Lowest Specialist Co-payment
-  //   4. Lowest MOOP
-  //   5. Highest Star Rating
+  // Full 6-key spec (per Dale, revised):
+  //   1. Lowest Monthly Premium
+  //   2. Lowest Medical Deductible
+  //   3. Lowest Hospital Co-payment
+  //   4. Lowest Specialist Co-payment
+  //   5. Lowest MOOP
+  //   6. Highest Star Rating
   //
-  // STUBBED to 3 keys today: hospitalStayCopay is stored as a non-numeric
-  // string ("$300/day days 1-5") and no starRating column exists yet.
+  // STUBBED to 4 active keys today: hospitalStayCopay is stored as a non-
+  // numeric string ("$300/day days 1-5") and no starRating column exists yet.
   // Schema migration + CMS Star Ratings import = prerequisite for the full chain.
   //
   // When a Medicaid level is chosen or the user picked a SNP plan category,
@@ -162,17 +164,20 @@ export async function GET(request: Request) {
     ranked = (plans as Array<Record<string, unknown>>)
       .slice()
       .sort((a, b) => {
-        // 1. Lowest Medical Deductible (asc)
-        let c = cmp(a.medicalDeductible as number | null, b.medicalDeductible as number | null, true);
+        // 1. Lowest Monthly Premium (asc)
+        let c = cmp(a.monthlyPremium as number | null, b.monthlyPremium as number | null, true);
         if (c !== 0) return c;
-        // 2. [stub: Hospital Co-payment skipped — string field, awaiting numeric migration]
-        // 3. Lowest Specialist Co-payment (asc)
+        // 2. Lowest Medical Deductible (asc)
+        c = cmp(a.medicalDeductible as number | null, b.medicalDeductible as number | null, true);
+        if (c !== 0) return c;
+        // 3. [stub: Hospital Co-payment skipped - string field, awaiting numeric migration]
+        // 4. Lowest Specialist Co-payment (asc)
         c = cmp(a.specialistCopay as number | null, b.specialistCopay as number | null, true);
         if (c !== 0) return c;
-        // 4. Lowest MOOP (asc)
+        // 5. Lowest MOOP (asc)
         c = cmp(a.maxOutOfPocket as number | null, b.maxOutOfPocket as number | null, true);
         if (c !== 0) return c;
-        // 5. [stub: Star Rating skipped — column does not exist yet]
+        // 6. [stub: Star Rating skipped - column does not exist yet]
         return 0;
       })
       .slice(0, 10)
