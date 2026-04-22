@@ -60,6 +60,8 @@ interface FilterOptions {
   counties: string[];
   zipCodes: string[];
   planTypes: string[];
+    planYears: number[];
+    organizationNames: string[];
   planCategories: string[];
   snpSubtypes: string[];
   chronicConditions: string[];
@@ -179,6 +181,7 @@ function FilterSelect({
   onChange,
   options,
   formatOption,
+    disabledOptions,
 }: {
   label: string;
   name: string;
@@ -186,6 +189,7 @@ function FilterSelect({
   onChange: (name: string, value: string) => void;
   options: (string | number)[];
   formatOption?: (v: string | number) => string;
+ disabledOptions?: (string | number)[];
 }) {
   return (
     <div className="flex flex-col gap-1">
@@ -200,11 +204,14 @@ function FilterSelect({
         className="h-9 rounded-md border border-gray-300 bg-white px-2 text-sm text-gray-800 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none"
       >
         <option value="">Any</option>
-        {options.map((opt) => (
-          <option key={String(opt)} value={String(opt)}>
-            {formatOption ? formatOption(opt) : String(opt)}
-          </option>
-        ))}
+        {options.map((opt) => {
+             const disabled = disabledOptions?.some((d) => String(d) === String(opt)) ?? false;
+             return (
+               <option key={String(opt)} value={String(opt)} disabled={disabled}>
+                 {formatOption ? formatOption(opt) : String(opt)}
+               </option>
+             );
+           })}
       </select>
     </div>
   );
@@ -607,6 +614,24 @@ export default function PlanSearch() {
           <Combobox label="County" name="county" value={filters.county ?? ""} onChange={handleFilterChange} options={geoCounties} placeholder="Search counties..." disabled={!filters.state} />
           <Combobox label="Zip Code" name="zipCode" value={filters.zipCode ?? ""} onChange={handleFilterChange} options={geoZipCodes} placeholder="Enter zip code..." onInputChange={reverseZipLookup} />
           <FilterSelect label="Contract Type" name="planType" value={filters.planType ?? ""} onChange={handleFilterChange} options={options?.planTypes ?? []} />
+
+   <FilterSelect
+     label="Carrier"
+     name="organizationName"
+     value={filters.organizationName ?? ""}
+     onChange={handleFilterChange}
+     options={options?.organizationNames ?? []}
+   />
+
+   <FilterSelect
+     label="Plan Year"
+     name="planYear"
+     value={filters.planYear ?? ""}
+     onChange={handleFilterChange}
+     options={[...(options?.planYears ?? []), 2027]}
+     disabledOptions={[2027]}
+     formatOption={(v) => (Number(v) === 2027 ? "2027 (coming soon)" : String(v))}
+   />
         </div>
 
         <h2 className="text-sm font-bold text-gray-700 uppercase tracking-wide mb-3">Plan Category</h2>

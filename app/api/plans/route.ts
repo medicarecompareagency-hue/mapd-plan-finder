@@ -1,5 +1,9 @@
 import { Prisma } from "@prisma/client";
 
+// SNP categories — when any of these is selected, defer to existing score-based
+// ranking. Dale will provide SNP/CSNP ranking spec in a follow-up.
+const SNP_CATEGORIES = new Set(["DSNP", "CSNP", "ISNP"]);
+
 export async function GET(request: Request) {
   const { prisma } = await import("@/lib/prisma");
   const { searchParams } = new URL(request.url);
@@ -17,7 +21,17 @@ export async function GET(request: Request) {
     where.county = bare !== county ? { in: [county, bare] } : county;
   }
   // Note: zipCode is used for location selection only (to resolve state+county).
-  // CMS-imported plans don't have per-zip data, so we filter by state+county instead.
+
+  // Plan Year filter (backlog #5, added 2026-04-22)
+  const planYear = searchParams.get("planYear");
+  if (planYear) {
+    const yearNum = parseInt(planYear, 10);
+    if (!Number.isNaN(yearNum)) where.planYear = yearNum;
+  }
+
+  // Carrier (organizationName) filter (backlog #4, added 2026-04-22)
+  const organizationName = searchParams.get("organizationName");
+  if (organizationName) where.organizationName = organizationName;
 
   // Plan type filter (legacy contract-type string field — kept for back-compat)
   const planType = searchParams.get("planType");
@@ -104,7 +118,6 @@ export async function GET(request: Request) {
     if (val === "yes") {
       (where as Record<string, unknown>)[field] = { not: null, notIn: ["None", ""] };
     } else if (val) {
-      // Exact match for specific copay structure (e.g. "$290/day days 1-7, $0/day days 8-90")
       (where as Record<string, unknown>)[field] = val;
     }
   }
@@ -113,74 +126,114 @@ export async function GET(request: Request) {
   const plans = await prisma.plan.findMany({ where, take: MAX_RESULTS * 2 });
 
   // --- Ranking ---
-  // Build a scoring function based on which filters the user selected.
-  // Lower costs = better rank. Higher benefits = better rank.
-  const activeFilters = Array.from(searchParams.keys());
+  // Backlog #6 (2026-04-22): default lexicographic top-10 ranking when no
+  // Medicaid Level is chosen AND the plan category is not a SNP variant.
+  //
+  // Full 5-key spec (per Dale):
+  //   1. Lowest Medical Deductible
+  //   2. Lowest Hospital Co-payment
+  //   3. Lowest Specialist Co-payment
+  //   4. Lowest MOOP
+  //   5. Highest Star Rating
+  //
+  // STUBBED to 3 keys today: hospitalStayCopay is stored as a non-numeric
+  // string ("$300/day days 1-5") and no starRating column exists yet.
+  // Schema migration + CMS Star Ratings import = prerequisite for the full chain.
+  //
+  // When a Medicaid level is chosen or the user picked a SNP plan category,
+  // fall back to the existing score-based ranking (SNP spec is a separate
+  // follow-up from Dale).
+  const useDefaultTop10 =
+    !medicaidLevel && !(planCategory && SNP_CATEGORIES.has(planCategory));
 
-  function scorePlan(plan: Record<string, unknown>): number {
-    let score = 0;
-
-    // Cost fields: lower is better (add to score — lower total = better rank)
-    const costFields = [
-      "monthlyPremium", "maxOutOfPocket", "medicalDeductible",
-      "pcpCopay", "specialistCopay", "emergencyRoomCopay", "ambulanceCopay",
-      "outpatientHospitalCopay", "mriCopay", "catScanCopay",
-      "drugDeductible", "drugTier1Copay", "drugTier2Copay", "drugTier3Copay",
-      "drugTier4Copay", "drugTier5Copay", "drugTier6Copay",
-    ];
-
-    // Benefit fields: higher is better (subtract from score)
-    const benefitFields = [
-      "partBGivebackAmount", "otcAllowance", "foodCardAllowance",
-    ];
-
-    for (const f of costFields) {
-      if (activeFilters.includes(f)) {
-        const v = plan[f];
-        score += typeof v === "number" ? v : 0;
-      }
-    }
-
-    for (const f of benefitFields) {
-      if (activeFilters.includes(f)) {
-        const v = plan[f];
-        score -= typeof v === "number" ? v : 0;
-      }
-    }
-
-    // String benefits: plans with actual benefits get a bonus
-    const stringBenefits = [
-      "dentalBenefits", "hearingBenefits", "visionBenefits", "transportationBenefit",
-    ];
-    for (const f of stringBenefits) {
-      if (activeFilters.includes(f)) {
-        const v = plan[f] as string | null;
-        if (v && v !== "None" && !v.toLowerCase().includes("only")) {
-          score -= 500; // comprehensive benefit bonus
-        } else if (v && v !== "None") {
-          score -= 100; // some benefit bonus
-        }
-      }
-    }
-
-    // If no cost/benefit filters selected, rank by premium + MOOP, but deprioritize
-    // plans that lack standard copay data (MSA, PFFS, etc.)
-    if (activeFilters.filter((f) => !["state", "county", "zipCode"].includes(f)).length === 0) {
-      score = (plan.monthlyPremium as number) + ((plan.maxOutOfPocket as number) || 0) - ((plan.partBGivebackAmount as number) || 0);
-      // Plans missing core copay fields get a penalty so data-rich plans rank higher
-      const coreFields = ["pcpCopay", "specialistCopay", "emergencyRoomCopay", "maxOutOfPocket"];
-      const nullCount = coreFields.filter((f) => plan[f] == null).length;
-      score += nullCount * 5000;
-    }
-
-    return score;
+  // Sort a single numeric comparator, treating null as "worst" (goes to the end).
+  function cmp(a: number | null | undefined, b: number | null | undefined, ascending: boolean): number {
+    const aNull = a == null;
+    const bNull = b == null;
+    if (aNull && bNull) return 0;
+    if (aNull) return 1; // nulls always last
+    if (bNull) return -1;
+    return ascending ? (a as number) - (b as number) : (b as number) - (a as number);
   }
 
-  const ranked = plans
-    .map((plan) => ({ ...plan, _score: scorePlan(plan as unknown as Record<string, unknown>) }))
-    .sort((a, b) => a._score - b._score)
-    .slice(0, MAX_RESULTS)
-    .map(({ _score, ...plan }, i) => ({ ...plan, rank: i + 1 }));
+  let ranked: Array<Record<string, unknown>>;
+
+  if (useDefaultTop10) {
+    ranked = (plans as Array<Record<string, unknown>>)
+      .slice()
+      .sort((a, b) => {
+        // 1. Lowest Medical Deductible (asc)
+        let c = cmp(a.medicalDeductible as number | null, b.medicalDeductible as number | null, true);
+        if (c !== 0) return c;
+        // 2. [stub: Hospital Co-payment skipped — string field, awaiting numeric migration]
+        // 3. Lowest Specialist Co-payment (asc)
+        c = cmp(a.specialistCopay as number | null, b.specialistCopay as number | null, true);
+        if (c !== 0) return c;
+        // 4. Lowest MOOP (asc)
+        c = cmp(a.maxOutOfPocket as number | null, b.maxOutOfPocket as number | null, true);
+        if (c !== 0) return c;
+        // 5. [stub: Star Rating skipped — column does not exist yet]
+        return 0;
+      })
+      .slice(0, 10)
+      .map((plan, i) => ({ ...plan, rank: i + 1 }));
+  } else {
+    // Fallback: existing score-based ranking (SNP / Medicaid-tier searches)
+    const activeFilters = Array.from(searchParams.keys());
+
+    function scorePlan(plan: Record<string, unknown>): number {
+      let score = 0;
+
+      const costFields = [
+        "monthlyPremium", "maxOutOfPocket", "medicalDeductible",
+        "pcpCopay", "specialistCopay", "emergencyRoomCopay", "ambulanceCopay",
+        "outpatientHospitalCopay", "mriCopay", "catScanCopay",
+        "drugDeductible", "drugTier1Copay", "drugTier2Copay", "drugTier3Copay",
+        "drugTier4Copay", "drugTier5Copay", "drugTier6Copay",
+      ];
+      const benefitFields = ["partBGivebackAmount", "otcAllowance", "foodCardAllowance"];
+
+      for (const f of costFields) {
+        if (activeFilters.includes(f)) {
+          const v = plan[f];
+          score += typeof v === "number" ? v : 0;
+        }
+      }
+      for (const f of benefitFields) {
+        if (activeFilters.includes(f)) {
+          const v = plan[f];
+          score -= typeof v === "number" ? v : 0;
+        }
+      }
+
+      const stringBenefits = ["dentalBenefits", "hearingBenefits", "visionBenefits", "transportationBenefit"];
+      for (const f of stringBenefits) {
+        if (activeFilters.includes(f)) {
+          const v = plan[f] as string | null;
+          if (v && v !== "None" && !v.toLowerCase().includes("only")) {
+            score -= 500;
+          } else if (v && v !== "None") {
+            score -= 100;
+          }
+        }
+      }
+
+      if (activeFilters.filter((f) => !["state", "county", "zipCode"].includes(f)).length === 0) {
+        score = (plan.monthlyPremium as number) + ((plan.maxOutOfPocket as number) || 0) - ((plan.partBGivebackAmount as number) || 0);
+        const coreFields = ["pcpCopay", "specialistCopay", "emergencyRoomCopay", "maxOutOfPocket"];
+        const nullCount = coreFields.filter((f) => plan[f] == null).length;
+        score += nullCount * 5000;
+      }
+
+      return score;
+    }
+
+    ranked = (plans as Array<Record<string, unknown>>)
+      .map((plan) => ({ ...plan, _score: scorePlan(plan) }))
+      .sort((a, b) => (a._score as number) - (b._score as number))
+      .slice(0, MAX_RESULTS)
+      .map(({ _score, ...plan }, i) => ({ ...plan, rank: i + 1 }));
+  }
 
   return Response.json(ranked);
 }
@@ -190,8 +243,6 @@ export async function POST(request: Request) {
   const body = await request.json();
 
   // Return distinct values for filter dropdowns, scoped by state (and optionally county).
-  // Without a state the query would scan the entire plans table (~186k rows) and hit
-  // Vercel's function timeout, so require a state up-front.
   const state: string | undefined = body.state;
   const county: string | undefined = body.county;
 
@@ -200,6 +251,7 @@ export async function POST(request: Request) {
       states: [], counties: [], zipCodes: [], planTypes: [],
       planCategories: [], snpSubtypes: [], chronicConditions: [],
       hasZeroDollarDsnp: false,
+      planYears: [], organizationNames: [],
       monthlyPremiums: [], lowIncomeSubsidyLevels: [], medicaidLevels: [],
       pcpCopays: [], specialistCopays: [], hospitalStayCopays: [],
       skilledNursingCopays: [], maxOutOfPockets: [], medicalDeductibles: [],
@@ -228,8 +280,6 @@ export async function POST(request: Request) {
     return [...new Set(arr.filter((v): v is number => v != null))].sort((a, b) => a - b);
   }
 
-  // Flatten chronic-condition arrays across all plans in scope to find which
-  // CSNP conditions are actually offered in this state/county.
   const chronicConditionsInScope = unique(
     plans.flatMap((p: any) => (p.chronicConditions ?? []) as string[]),
   );
@@ -243,6 +293,9 @@ export async function POST(request: Request) {
     snpSubtypes: unique(plans.map((p: any) => p.snpSubtype)),
     chronicConditions: chronicConditionsInScope,
     hasZeroDollarDsnp: plans.some((p: any) => p.isZeroDollarDsnp === true),
+    // Backlog #4 & #5 (2026-04-22):
+    planYears: uniqueNumbers(plans.map((p: any) => p.planYear)),
+    organizationNames: unique(plans.map((p: any) => p.organizationName)),
     monthlyPremiums: uniqueNumbers(plans.map((p: any) => p.monthlyPremium)),
     lowIncomeSubsidyLevels: unique(plans.map((p: any) => p.lowIncomeSubsidyLevel)),
     medicaidLevels: unique(plans.map((p: any) => p.medicaidLevel)),
