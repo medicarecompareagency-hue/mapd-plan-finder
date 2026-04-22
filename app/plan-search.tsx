@@ -55,6 +55,8 @@ interface Plan {
   transportationBenefit: string | null;
 }
 
+import { LICENSED_STATES } from "@/lib/licensed-states";
+
 interface FilterOptions {
   states: string[];
   counties: string[];
@@ -170,7 +172,7 @@ const CHRONIC_CONDITION_LABELS: Record<string, string> = {
 // Helpers
 // ---------------------------------------------------------------------------
 function dollars(v: number | null | undefined): string {
-  if (v == null) return "—";
+  if (v == null) return "N/A";
   return `$${v.toFixed(v % 1 === 0 ? 0 : 2)}`;
 }
 
@@ -303,7 +305,9 @@ export default function PlanSearch() {
       .then((r) => r.json())
       .then((data: { states: { code: string; name: string }[] }) => {
         setGeoStates(
-          data.states.map((s) => ({ value: s.code, label: `${s.name} (${s.code})` })),
+          data.states
+            .filter((s) => (LICENSED_STATES as readonly string[]).includes(s.code))
+            .map((s) => ({ value: s.code, label: `${s.name} (${s.code})` })),
         );
       });
   }, []);
@@ -903,8 +907,8 @@ export default function PlanSearch() {
                       <td className="px-3 py-3 text-right text-gray-900">{dollars(plan.emergencyRoomCopay)}</td>
                       <td className="px-3 py-3 text-right text-gray-900">{dollars(plan.ambulanceCopay)}</td>
                       <td className="px-3 py-3 text-right text-gray-900">{dollars(plan.outpatientHospitalCopay)}</td>
-                      <td className="px-3 py-3 text-xs text-gray-900">{plan.hospitalStayCopay ?? "—"}</td>
-                      <td className="px-3 py-3 text-xs text-gray-900">{plan.skilledNursingCopay ?? "—"}</td>
+                      <td className="px-3 py-3 text-xs text-gray-900">{plan.hospitalStayCopay || "N/A"}</td>
+                      <td className="px-3 py-3 text-xs text-gray-900">{plan.skilledNursingCopay || "N/A"}</td>
                       <td className="px-3 py-3 text-right text-gray-900">{dollars(plan.mriCopay)}</td>
                       <td className="px-3 py-3 text-right text-gray-900">{dollars(plan.catScanCopay)}</td>
                       <td className="px-3 py-3 text-right text-gray-900">{dollars(plan.drugDeductible)}</td>
