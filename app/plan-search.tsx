@@ -922,10 +922,10 @@ export default function PlanSearch() {
                       <td className="px-3 py-3 text-right text-gray-900"><DrugTierCell tier={6} value={plan.drugTier6Copay} mask={plan.drugTierCoinsuranceMask} /></td>
                       <td className="px-3 py-3 text-right text-gray-900">{dollars(plan.otcAllowance)}</td>
                       <td className="px-3 py-3 text-right text-gray-900">{dollars(plan.foodCardAllowance)}</td>
-                      <td className="px-3 py-3 text-sm text-gray-900 min-w-[180px]">{plan.dentalBenefits ?? "—"}</td>
-                      <td className="px-3 py-3 text-sm text-gray-900 min-w-[180px]">{plan.hearingBenefits ?? "—"}</td>
-                      <td className="px-3 py-3 text-sm text-gray-900 min-w-[180px]">{plan.visionBenefits ?? "—"}</td>
-                      <td className="px-3 py-3 text-sm text-gray-900 min-w-[180px]">{plan.transportationBenefit ?? "—"}</td>
+                      <td className="px-3 py-3 text-sm text-gray-900 min-w-[180px]">{plan.dentalBenefits || "No Dental"}</td>
+                      <td className="px-3 py-3 text-sm text-gray-900 min-w-[180px]">{plan.hearingBenefits || "No Hearing"}</td>
+                      <td className="px-3 py-3 text-sm text-gray-900 min-w-[180px]">{plan.visionBenefits || "No Vision"}</td>
+                      <td className="px-3 py-3 text-sm text-gray-900 min-w-[180px]">{plan.transportationBenefit || "No Transportation"}</td>
                     </tr>
                   ))}
                 </tbody>

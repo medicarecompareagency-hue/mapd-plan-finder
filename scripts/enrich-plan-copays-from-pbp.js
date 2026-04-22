@@ -158,16 +158,34 @@ function buildBenefitMap() {
   log(line(), "c");
 
   // b7: PCP (b7a) and Specialist (b7b)
+  //
+  // CMS _copay_yn convention:
+  //   "1" = plan DOES charge a copay (amount is in _copay_amt_*)
+  //   "2" = plan does NOT charge a copay → member cost is $0 for that
+  //         service (unless _coins_yn='1' separately, which means the
+  //         plan uses coinsurance % instead of a flat copay).
+  //
+  // Previously we only handled "1" and left "2" as null → UI showed N/A
+  // even though the plan actually charges $0. Now we also honor "2" as 0,
+  // but ONLY when the plan isn't using coinsurance for that service.
+  // Coinsurance-only plans still need service-level coinsurance handling
+  // (tracked separately — not in scope for this pass).
   log("  pbp_b7_health_prof.txt ...");
   for (const row of parseTSV(path.join(EXTRACT_DIR, "pbp_b7_health_prof.txt"))) {
     const k = dbPlanKey(row);
     if (!k) continue;
     const b = getOrCreate(k);
+    // PCP
     if (row.pbp_b7a_copay_yn === "1") {
       mergeIfNull(b, "pcpCopay", num(row.pbp_b7a_copay_amt_mc_min));
+    } else if (row.pbp_b7a_copay_yn === "2" && row.pbp_b7a_coins_yn !== "1") {
+      mergeIfNull(b, "pcpCopay", 0);
     }
+    // Specialist
     if (row.pbp_b7b_copay_yn === "1") {
       mergeIfNull(b, "specialistCopay", num(row.pbp_b7b_copay_mc_amt_min));
+    } else if (row.pbp_b7b_copay_yn === "2" && row.pbp_b7b_coins_yn !== "1") {
+      mergeIfNull(b, "specialistCopay", 0);
     }
   }
 
@@ -179,6 +197,8 @@ function buildBenefitMap() {
     const b = getOrCreate(k);
     if (row.pbp_b4a_copay_yn === "1") {
       mergeIfNull(b, "emergencyRoomCopay", num(row.pbp_b4a_copay_amt_mc_min));
+    } else if (row.pbp_b4a_copay_yn === "2" && row.pbp_b4a_coins_yn !== "1") {
+      mergeIfNull(b, "emergencyRoomCopay", 0);
     }
   }
 
@@ -190,6 +210,8 @@ function buildBenefitMap() {
     const b = getOrCreate(k);
     if (row.pbp_b10a_copay_yn === "1") {
       mergeIfNull(b, "ambulanceCopay", num(row.pbp_b10a_copay_gas_amt_min));
+    } else if (row.pbp_b10a_copay_yn === "2" && row.pbp_b10a_coins_yn !== "1") {
+      mergeIfNull(b, "ambulanceCopay", 0);
     }
   }
 
@@ -202,6 +224,8 @@ function buildBenefitMap() {
     if (row.pbp_b9a_copay_yn === "1") {
       const v = num(row.pbp_b9a_copay_ohs_amt_max) ?? num(row.pbp_b9a_copay_ohs_amt_min);
       mergeIfNull(b, "outpatientHospitalCopay", v);
+    } else if (row.pbp_b9a_copay_yn === "2" && row.pbp_b9a_coins_yn !== "1") {
+      mergeIfNull(b, "outpatientHospitalCopay", 0);
     }
   }
 
@@ -227,7 +251,9 @@ function buildBenefitMap() {
     }
   }
 
-  // b8: MRI / CAT (diagnostic radiology)
+  // b8: MRI / CAT (diagnostic radiology — b8a is the "right" bucket; b8b
+  // is diagnostic radiology services at physician's office, used as
+  // fallback when b8a is empty).
   log("  pbp_b8_clin_diag_ther.txt ...");
   for (const row of parseTSV(path.join(EXTRACT_DIR, "pbp_b8_clin_diag_ther.txt"))) {
     const k = dbPlanKey(row);
@@ -237,6 +263,9 @@ function buildBenefitMap() {
       const v = num(row.pbp_b8a_copay_max_dmc_amt) ?? num(row.pbp_b8a_copay_min_dmc_amt);
       mergeIfNull(b, "mriCopay", v);
       mergeIfNull(b, "catScanCopay", v);
+    } else if (row.pbp_b8a_copay_yn === "2" && row.pbp_b8a_coins_yn !== "1") {
+      mergeIfNull(b, "mriCopay", 0);
+      mergeIfNull(b, "catScanCopay", 0);
     }
     if (row.pbp_b8b_copay_yn === "1") {
       const drs = num(row.pbp_b8b_copay_amt_drs);
@@ -244,6 +273,9 @@ function buildBenefitMap() {
         mergeIfNull(b, "mriCopay", drs);
         mergeIfNull(b, "catScanCopay", drs);
       }
+    } else if (row.pbp_b8b_copay_yn === "2" && row.pbp_b8b_coins_yn !== "1") {
+      mergeIfNull(b, "mriCopay", 0);
+      mergeIfNull(b, "catScanCopay", 0);
     }
   }
 
