@@ -150,6 +150,7 @@ model Plan {
   createdAt                 DateTime @default(now())
   updatedAt                 DateTime @updatedAt
 
+  starRating            Float?
   @@index([state, county])
   @@index([planYear])
   @@index([monthlyPremium])

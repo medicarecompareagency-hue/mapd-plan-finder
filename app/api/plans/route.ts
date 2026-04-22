@@ -138,9 +138,9 @@ export async function GET(request: Request) {
   //   5. Lowest MOOP
   //   6. Highest Star Rating
   //
-  // STUBBED: only Star Rating is still skipped (column does not exist yet).
   // Hospital Co-payment is parsed inline via parseHospitalCopayDay1() until
-  // a proper numeric migration lands.
+  // a proper numeric migration lands. Star Rating is populated from the CMS
+  // 2026 Star Ratings CSV via scripts/import-star-ratings.js.
   //
   // When a Medicaid level is chosen or the user picked a SNP plan category,
   // fall back to the existing score-based ranking (SNP spec is a separate
@@ -200,8 +200,9 @@ export async function GET(request: Request) {
         // 5. Lowest MOOP (asc)
         c = cmp(a.maxOutOfPocket as number | null, b.maxOutOfPocket as number | null, true);
         if (c !== 0) return c;
-        // 6. [stub: Star Rating skipped - column does not exist yet]
-        return 0;
+        // 6. Highest Star Rating (desc)
+        c = cmp(a.starRating as number | null, b.starRating as number | null, false);
+        return c;
       })
       .slice(0, 10)
       .map((plan, i) => ({ ...plan, rank: i + 1 }));
@@ -279,7 +280,7 @@ export async function POST(request: Request) {
       states: [], counties: [], zipCodes: [], planTypes: [],
       planCategories: [], snpSubtypes: [], chronicConditions: [],
       hasZeroDollarDsnp: false,
-      planYears: [], organizationNames: [],
+      planYears: [], organizationNames: [], starRatings: [],
       monthlyPremiums: [], lowIncomeSubsidyLevels: [], medicaidLevels: [],
       pcpCopays: [], specialistCopays: [], hospitalStayCopays: [],
       skilledNursingCopays: [], maxOutOfPockets: [], medicalDeductibles: [],
@@ -324,6 +325,7 @@ export async function POST(request: Request) {
     // Backlog #4 & #5 (2026-04-22):
     planYears: uniqueNumbers(plans.map((p: any) => p.planYear)),
     organizationNames: unique(plans.map((p: any) => p.organizationName)),
+    starRatings: uniqueNumbers(plans.map((p: any) => p.starRating)),
     monthlyPremiums: uniqueNumbers(plans.map((p: any) => p.monthlyPremium)),
     lowIncomeSubsidyLevels: unique(plans.map((p: any) => p.lowIncomeSubsidyLevel)),
     medicaidLevels: unique(plans.map((p: any) => p.medicaidLevel)),
