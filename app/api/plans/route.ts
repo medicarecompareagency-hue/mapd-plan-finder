@@ -1,4 +1,5 @@
 import { Prisma } from "@prisma/client";
+import { LICENSED_CARRIERS } from "@/lib/licensed-carriers";
 
 // SNP categories — when any of these is selected, defer to existing score-based
 // ranking. Dale will provide SNP/CSNP ranking spec in a follow-up.
@@ -8,7 +9,10 @@ export async function GET(request: Request) {
   const { prisma } = await import("@/lib/prisma");
   const { searchParams } = new URL(request.url);
 
-  const where: Prisma.PlanWhereInput = {};
+  const where: Prisma.PlanWhereInput = {
+    // Always gate results on Dale's 6-carrier allowlist (2026-04-23).
+    organizationName: { in: [...LICENSED_CARRIERS] },
+  };
 
   // Location filters
   const state = searchParams.get("state");
@@ -30,6 +34,9 @@ export async function GET(request: Request) {
   }
 
   // Carrier (organizationName) filter (backlog #4, added 2026-04-22)
+  // When a user picks a specific carrier, narrow to it — dropdown options are
+  // already restricted to LICENSED_CARRIERS by the POST endpoint, so any value
+  // here is guaranteed to be in the allowlist.
   const organizationName = searchParams.get("organizationName");
   if (organizationName) where.organizationName = organizationName;
 
@@ -126,9 +133,9 @@ export async function GET(request: Request) {
   const plans = await prisma.plan.findMany({ where, take: MAX_RESULTS * 2 });
 
   // --- Ranking ---
-  // Backlog #6 (updated 2026-04-22 revision 2): default lexicographic top-10
-  // ranking when no Medicaid Level is chosen AND the plan category is not a
-  // SNP variant.
+  // Backlog #6 (updated 2026-04-23): default lexicographic top-5 ranking when
+  // no Medicaid Level is chosen AND the plan category is not a SNP variant.
+  // (Was top-10; Dale reduced to top-5 on 2026-04-23.)
   //
   // Full 6-key spec (per Dale, revised 2026-04-22 rev 3):
   //   1. Lowest Monthly Premium
@@ -145,7 +152,7 @@ export async function GET(request: Request) {
   // When a Medicaid level is chosen or the user picked a SNP plan category,
   // fall back to the existing score-based ranking (SNP spec is a separate
   // follow-up from Dale).
-  const useDefaultTop10 =
+  const useDefaultTop5 =
     !medicaidLevel && !(planCategory && SNP_CATEGORIES.has(planCategory));
 
   // Sort a single numeric comparator, treating null as "worst" (goes to the end).
@@ -179,7 +186,7 @@ export async function GET(request: Request) {
 
   let ranked: Array<Record<string, unknown>>;
 
-  if (useDefaultTop10) {
+  if (useDefaultTop5) {
     ranked = (plans as Array<Record<string, unknown>>)
       .slice()
       .sort((a, b) => {
@@ -204,7 +211,7 @@ export async function GET(request: Request) {
         c = cmp(a.starRating as number | null, b.starRating as number | null, false);
         return c;
       })
-      .slice(0, 10)
+      .slice(0, 5)
       .map((plan, i) => ({ ...plan, rank: i + 1 }));
   } else {
     // Fallback: existing score-based ranking (SNP / Medicaid-tier searches)
@@ -294,7 +301,11 @@ export async function POST(request: Request) {
     });
   }
 
-  const where: Prisma.PlanWhereInput = { state };
+  const where: Prisma.PlanWhereInput = {
+    state,
+    // Always gate dropdown options on Dale's 6-carrier allowlist (2026-04-23).
+    organizationName: { in: [...LICENSED_CARRIERS] },
+  };
   if (county) {
     const bare = county.replace(/\s+(County|Parish|Borough|Census Area|Municipality|city)$/i, "").trim();
     where.county = bare !== county ? { in: [county, bare] } : county;
