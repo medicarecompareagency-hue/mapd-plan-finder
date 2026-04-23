@@ -1,0 +1,851 @@
+planId,planYear,organizationName,state,planType,planCategory
+H0628-11,2026,"Aetna Medicare",KY,Local HMO,MAPD
+H0628-6,2026,"Aetna Medicare",KY,Local HMO,MAPD
+H0628-9,2026,"Aetna Medicare",KY,Local HMO,MAPD
+H1109-6,2026,"Aetna Medicare",GA,Local HMO,MAPD
+H1608-26,2026,"Aetna Medicare",WV,Local PPO,MAPD
+H1608-35,2026,"Aetna Medicare",MO,Local PPO,MAPD
+H1608-39,2026,"Aetna Medicare",KS,Local PPO,MAPD
+H1608-41,2026,"Aetna Medicare",WV,Local PPO,MAPD
+H1608-47,2026,"Aetna Medicare",MO,Local PPO,MAPD
+H1608-53,2026,"Aetna Medicare",KS,Local PPO,MAPD
+H1608-56,2026,"Aetna Medicare",IL,Local PPO,MAPD
+H1608-59,2026,"Aetna Medicare",KS,Local PPO,MAPD
+H1609-16,2026,"Aetna Medicare",FL,Local HMO,MAPD
+H1609-26,2026,"Aetna Medicare",FL,Local HMO,MAPD
+H1609-34,2026,"Aetna Medicare",FL,Local HMO,MAPD
+H1609-35,2026,"Aetna Medicare",FL,Local HMO,MAPD
+H1609-38,2026,"Aetna Medicare",FL,Local HMO,MAPD
+H1609-42,2026,"Aetna Medicare",FL,Local HMO,MAPD
+H1609-53,2026,"Aetna Medicare",FL,Local HMO,MAPD
+H1609-60,2026,"Aetna Medicare",FL,Local HMO,MAPD
+H2293-11,2026,"Aetna Medicare",GA,Local PPO,MAPD
+H2293-13,2026,"Aetna Medicare",TX,Local PPO,MAPD
+H2293-18,2026,"Aetna Medicare",TX,Local PPO,MAPD
+H2293-6,2026,"Aetna Medicare",GA,Local PPO,MAPD
+H2293-7,2026,"Aetna Medicare",GA,Local PPO,MAPD
+H2293-8,2026,"Aetna Medicare",GA,Local PPO,MAPD
+H2663-2,2026,"Aetna Medicare",MO,Local HMO,MAPD
+H2663-32,2026,"Aetna Medicare",IL,Local HMO,MAPD
+H3146-13,2026,"Aetna Medicare",TN,Local HMO,MAPD
+H3192-12,2026,"Aetna Medicare",IN,Local HMO,MAPD
+H3192-14,2026,"Aetna Medicare",IN,Local HMO,MAPD
+H3192-15,2026,"Aetna Medicare",IN,Local HMO,MAPD
+H3192-4,2026,"Aetna Medicare",IN,Local HMO,MAPD
+H3192-6,2026,"Aetna Medicare",IN,Local HMO,MAPD
+H3288-23,2026,"Aetna Medicare",GA,Local PPO,MAPD
+H3288-24,2026,"Aetna Medicare",GA,Local PPO,MAPD
+H3288-25,2026,"Aetna Medicare",GA,Local PPO,MAPD
+H3288-26,2026,"Aetna Medicare",GA,Local PPO,MAPD
+H3288-28,2026,"Aetna Medicare",GA,Local PPO,MAPD
+H3288-29,2026,"Aetna Medicare",GA,Local PPO,MAPD
+H3288-30,2026,"Aetna Medicare",GA,Local PPO,MAPD
+H3288-31,2026,"Aetna Medicare",GA,Local PPO,MAPD
+H3288-32,2026,"Aetna Medicare",GA,Local PPO,MAPD
+H3288-33,2026,"Aetna Medicare",GA,Local PPO,MAPD
+H3288-45,2026,"Aetna Medicare",GA,Local PPO,MAPD
+H3928-2,2026,"Aetna Medicare",LA,Local HMO,MAPD
+H3931-124,2026,"Aetna Medicare",VA,Local HMO,MAPD
+H3931-96,2026,"Aetna Medicare",VA,Local HMO,MAPD
+H3931-98,2026,"Aetna Medicare",VA,Local HMO,MAPD
+H5302-18,2026,"Aetna Medicare",GA,Local HMO,MAPD
+H5302-19,2026,"Aetna Medicare",GA,Local HMO,MAPD
+H5521-102,2026,"Aetna Medicare",VA,Local PPO,MAPD
+H5521-134,2026,"Aetna Medicare",OH,Local PPO,MAPD
+H5521-154,2026,"Aetna Medicare",TN,Local PPO,MAPD
+H5521-177,2026,"Aetna Medicare",GA,Local PPO,MAPD
+H5521-178,2026,"Aetna Medicare",LA,Local PPO,MAPD
+H5521-190,2026,"Aetna Medicare",IN,Local PPO,MAPD
+H5521-216,2026,"Aetna Medicare",AL,Local PPO,MAPD
+H5521-220,2026,"Aetna Medicare",MS,Local PPO,MAPD
+H5521-222,2026,"Aetna Medicare",AL,Local PPO,MAPD
+H5521-226,2026,"Aetna Medicare",IN,Local PPO,MAPD
+H5521-230,2026,"Aetna Medicare",LA,Local PPO,MAPD
+H5521-232,2026,"Aetna Medicare",LA,Local PPO,MAPD
+H5521-234,2026,"Aetna Medicare",LA,Local PPO,MAPD
+H5521-247,2026,"Aetna Medicare",SC,Local PPO,MAPD
+H5521-259,2026,"Aetna Medicare",KY,Local PPO,MAPD
+H5521-266,2026,"Aetna Medicare",KY,Local PPO,MAPD
+H5521-267,2026,"Aetna Medicare",KY,Local PPO,MAPD
+H5521-268,2026,"Aetna Medicare",FL,Local PPO,MAPD
+H5521-27,2026,"Aetna Medicare",VA,Local PPO,MAPD
+H5521-280,2026,"Aetna Medicare",TN,Local PPO,MAPD
+H5521-281,2026,"Aetna Medicare",TN,Local PPO,MAPD
+H5521-321,2026,"Aetna Medicare",TN,Local PPO,MAPD
+H5521-328,2026,"Aetna Medicare",GA,Local PPO,MAPD
+H5521-344,2026,"Aetna Medicare",VA,Local PPO,MAPD
+H5521-345,2026,"Aetna Medicare",VA,Local PPO,MAPD
+H5521-360,2026,"Aetna Medicare",GA,Local PPO,MAPD
+H5521-366,2026,"Aetna Medicare",LA,Local PPO,MAPD
+H5521-373,2026,"Aetna Medicare",SC,Local PPO,MAPD
+H5521-377,2026,"Aetna Medicare",FL,Local PPO,MAPD
+H5521-82,2026,"Aetna Medicare",VA,Local PPO,MAPD
+H5521-83,2026,"Aetna Medicare",VA,Local PPO,MAPD
+H5521-90,2026,"Aetna Medicare",OH,Local PPO,MAPD
+H7301-11,2026,"Aetna Medicare",IL,Local PPO,MAPD
+H7301-12,2026,"Aetna Medicare",IL,Local PPO,MAPD
+H8332-1,2026,"Aetna Medicare",TX,Local HMO,MAPD
+H8332-2,2026,"Aetna Medicare",TX,Local HMO,MAPD
+H8332-3,2026,"Aetna Medicare",TX,Local HMO,MAPD
+H8332-5,2026,"Aetna Medicare",TX,Local HMO,MAPD
+R6694-3,2026,"Aetna Medicare",OH,Regional PPO,MAPD
+R6694-5,2026,"Aetna Medicare",OH,Regional PPO,MAPD
+H1277-5,2026,"Align Senior Care",VA,Local HMO,MAPD
+H5472-4,2026,"Alignment Health Plan",TX,HMOPOS,CSNP
+H9614-1,2026,"Alignment Health Plan",TX,Local PPO,MAPD
+H9943-1,2026,"Alignment Health Plan",FL,Local HMO,MAPD
+H9943-2,2026,"Alignment Health Plan",FL,Local HMO,MAPD
+H2593-22,2026,"Amerigroup",TN,Local HMO,MAPD
+H8849-8,2026,"Amerigroup",TX,Local HMO,MAPD
+H5828-5,2026,"AMERIGROUP Community Care",TN,Local HMO,MAPD
+H8343-1,2026,"Amerigroup Insurance Company",TX,Local PPO,MAPD
+H8343-10,2026,"Amerigroup Insurance Company",TN,Local PPO,MAPD
+H8343-2,2026,"Amerigroup Insurance Company",TX,Local PPO,MAPD
+H8343-3,2026,"Amerigroup Insurance Company",TX,Local PPO,MAPD
+H3655-34,2026,"Anthem Blue Cross and Blue Shield",OH,Local HMO,MAPD
+H3655-38,2026,"Anthem Blue Cross and Blue Shield",OH,Local HMO,MAPD
+H3655-42,2026,"Anthem Blue Cross and Blue Shield",OH,Local HMO,MAPD
+H4036-23,2026,"Anthem Blue Cross and Blue Shield",OH,Local PPO,MAPD
+H4909-15,2026,"Anthem Blue Cross and Blue Shield",MO,Local PPO,MAPD
+H4909-16,2026,"Anthem Blue Cross and Blue Shield",MO,Local PPO,MAPD
+H4909-24,2026,"Anthem Blue Cross and Blue Shield",KY,Local PPO,MAPD
+H4909-25,2026,"Anthem Blue Cross and Blue Shield",KY,Local PPO,MAPD
+H5422-17,2026,"Anthem Blue Cross and Blue Shield",GA,Local HMO,MAPD
+H5422-8,2026,"Anthem Blue Cross and Blue Shield",GA,Local HMO,MAPD
+H7728-12,2026,"Anthem Blue Cross and Blue Shield",GA,Local PPO,MAPD
+H7728-13,2026,"Anthem Blue Cross and Blue Shield",KY,Local PPO,MAPD
+H7728-5,2026,"Anthem Blue Cross and Blue Shield",GA,Local PPO,MAPD
+H7728-6,2026,"Anthem Blue Cross and Blue Shield",GA,Local PPO,MAPD
+H7728-9,2026,"Anthem Blue Cross and Blue Shield",KY,Local PPO,MAPD
+R4487-1,2026,"Anthem Blue Cross and Blue Shield",IN,Regional PPO,MAPD
+H3447-1,2026,"Anthem HealthKeepers",VA,Local HMO,MAPD
+H3447-14,2026,"Anthem HealthKeepers",VA,Local HMO,MAPD
+H3447-27,2026,"Anthem HealthKeepers",VA,Local HMO,MAPD
+H3447-28,2026,"Anthem HealthKeepers",VA,Local HMO,MAPD
+H3447-5,2026,"Anthem HealthKeepers",VA,Local HMO,MAPD
+H9828-3,2026,"ApexHealth",SC,Local HMO,MAPD
+H3554-2,2026,"Arkansas Blue Medicare",AR,Local PPO,MAPD
+H3554-4,2026,"Arkansas Blue Medicare",AR,Local PPO,MAPD
+H3554-7,2026,"Arkansas Blue Medicare",AR,Local PPO,MAPD
+H1774-1,2026,"Ascension Complete",IN,Local PPO,MAPD
+H1774-2,2026,"Ascension Complete",IN,Local PPO,MAPD
+H2853-1,2026,"Ascension Complete",TN,Local HMO,MAPD
+H2853-2,2026,"Ascension Complete",TN,Local HMO,MAPD
+H4343-1,2026,"Ascension Complete",AL,Local HMO,MAPD
+H4343-2,2026,"Ascension Complete",AL,Local HMO,MAPD
+H4343-3,2026,"Ascension Complete",AL,Local HMO,MAPD
+H4343-4,2026,"Ascension Complete",AL,Local HMO,MAPD
+H5398-2,2026,"Ascension Complete",KS,Local HMO,MAPD
+H5398-4,2026,"Ascension Complete",KS,Local HMO,MAPD
+H6678-1,2026,"Ascension Complete",TX,Local HMO,MAPD
+H6678-2,2026,"Ascension Complete",TX,Local HMO,MAPD
+H6678-3,2026,"Ascension Complete",TX,Local HMO,MAPD
+H6678-4,2026,"Ascension Complete",TX,Local HMO,MAPD
+H6830-1,2026,"Ascension Complete",KS,Local PPO,MAPD
+H6830-2,2026,"Ascension Complete",KS,Local PPO,MAPD
+H7399-1,2026,"Ascension Complete",IL,Local HMO,MAPD
+H7399-2,2026,"Ascension Complete",IL,Local HMO,MAPD
+H7556-1,2026,"Ascension Complete",AL,Local PPO,MAPD
+H7556-2,2026,"Ascension Complete",AL,Local PPO,MAPD
+H7556-3,2026,"Ascension Complete",AL,Local PPO,MAPD
+H7556-4,2026,"Ascension Complete",AL,Local PPO,MAPD
+H7925-1,2026,"Ascension Complete",IN,Local HMO,MAPD
+H7925-2,2026,"Ascension Complete",IN,Local HMO,MAPD
+H8121-1,2026,"Ascension Complete",TN,Local PPO,MAPD
+H8121-2,2026,"Ascension Complete",TN,Local PPO,MAPD
+H8225-1,2026,"Ascension Complete",FL,Local HMO,MAPD
+H8225-3,2026,"Ascension Complete",FL,Local HMO,MAPD
+H8225-4,2026,"Ascension Complete",FL,Local HMO,MAPD
+H8225-7,2026,"Ascension Complete",FL,Local HMO,MAPD
+H8225-8,2026,"Ascension Complete",FL,Local HMO,MAPD
+H8225-9,2026,"Ascension Complete",FL,Local HMO,MAPD
+H9357-1,2026,"Ascension Complete",TX,Local PPO,MAPD
+H9357-2,2026,"Ascension Complete",TX,Local PPO,MAPD
+H9357-3,2026,"Ascension Complete",TX,Local PPO,MAPD
+H9357-4,2026,"Ascension Complete",TX,Local PPO,MAPD
+H1016-1,2026,"AvMed Medicare",FL,Local HMO,MAPD
+H1016-21,2026,"AvMed Medicare",FL,Local HMO,MAPD
+H1016-23,2026,"AvMed Medicare",FL,Local HMO,MAPD
+H1016-24,2026,"AvMed Medicare",FL,Local HMO,MAPD
+H1016-25,2026,"AvMed Medicare",FL,Local HMO,MAPD
+H1016-26,2026,"AvMed Medicare",FL,Local HMO,MAPD
+H1016-28,2026,"AvMed Medicare",FL,Local HMO,MAPD
+H1016-29,2026,"AvMed Medicare",FL,Local HMO,MAPD
+H1016-30,2026,"AvMed Medicare",FL,Local HMO,MAPD
+H4943-1,2026,"Baylor Scott & White Health Plan",TX,Local HMO,MAPD
+H3822-13,2026,"Blue Cross and Blue Shield of IL, NM",IL,Local HMO,MAPD
+H3822-15,2026,"Blue Cross and Blue Shield of IL, NM",IL,Local HMO,MAPD
+H8634-11,2026,"Blue Cross and Blue Shield of IL, NM",IL,Local PPO,MAPD
+H8634-13,2026,"Blue Cross and Blue Shield of IL, NM",IL,Local PPO,MAPD
+H8634-14,2026,"Blue Cross and Blue Shield of IL, NM",IL,Local PPO,MAPD
+H8634-16,2026,"Blue Cross and Blue Shield of IL, NM",IL,Local PPO,MAPD
+H8634-17,2026,"Blue Cross and Blue Shield of IL, NM",IL,Local PPO,MAPD
+H8634-20,2026,"Blue Cross and Blue Shield of IL, NM",IL,Local PPO,MAPD
+H8634-7,2026,"Blue Cross and Blue Shield of IL, NM",IL,Local PPO,MAPD
+H7063-2,2026,"Blue Cross and Blue Shield of Kansas",KS,Local PPO,MAPD
+H6453-19,2026,"Blue Cross and Blue Shield of Louisiana",LA,HMOPOS,DSNP
+H6453-10,2026,"Blue Cross and Blue Shield of Louisiana HMO",LA,Local HMO,MAPD
+H6453-11,2026,"Blue Cross and Blue Shield of Louisiana HMO",LA,Local HMO,MAPD
+H6453-5,2026,"Blue Cross and Blue Shield of Louisiana HMO",LA,Local HMO,MAPD
+H6453-6,2026,"Blue Cross and Blue Shield of Louisiana HMO",LA,Local HMO,MAPD
+H6453-7,2026,"Blue Cross and Blue Shield of Louisiana HMO",LA,Local HMO,MAPD
+H6453-8,2026,"Blue Cross and Blue Shield of Louisiana HMO",LA,Local HMO,MAPD
+H6453-9,2026,"Blue Cross and Blue Shield of Louisiana HMO",LA,Local HMO,MAPD
+H1666-1,2026,"Blue Cross and Blue Shield of NM, TX",TX,Local PPO,MAPD
+H1666-10,2026,"Blue Cross and Blue Shield of NM, TX",TX,Local PPO,MAPD
+H1666-18,2026,"Blue Cross and Blue Shield of NM, TX",TX,Local PPO,MAPD
+H1666-2,2026,"Blue Cross and Blue Shield of NM, TX",TX,Local PPO,MAPD
+H1666-4,2026,"Blue Cross and Blue Shield of NM, TX",TX,Local PPO,MAPD
+H1666-5,2026,"Blue Cross and Blue Shield of NM, TX",TX,Local PPO,MAPD
+H4801-1,2026,"Blue Cross and Blue Shield of OK, TX",TX,Local PPO,MAPD
+H4801-10,2026,"Blue Cross and Blue Shield of OK, TX",TX,Local PPO,MAPD
+H4801-11,2026,"Blue Cross and Blue Shield of OK, TX",TX,Local PPO,MAPD
+H4801-12,2026,"Blue Cross and Blue Shield of OK, TX",TX,Local PPO,MAPD
+H4801-13,2026,"Blue Cross and Blue Shield of OK, TX",OK,Local PPO,MAPD
+H4801-14,2026,"Blue Cross and Blue Shield of OK, TX",TX,Local PPO,MAPD
+H4801-15,2026,"Blue Cross and Blue Shield of OK, TX",TX,Local PPO,MAPD
+H4801-16,2026,"Blue Cross and Blue Shield of OK, TX",TX,Local PPO,MAPD
+H4801-17,2026,"Blue Cross and Blue Shield of OK, TX",TX,Local PPO,MAPD
+H4801-18,2026,"Blue Cross and Blue Shield of OK, TX",TX,Local PPO,MAPD
+H4801-2,2026,"Blue Cross and Blue Shield of OK, TX",TX,Local PPO,MAPD
+H4801-21,2026,"Blue Cross and Blue Shield of OK, TX",OK,Local PPO,MAPD
+H4801-3,2026,"Blue Cross and Blue Shield of OK, TX",TX,Local PPO,MAPD
+H4801-4,2026,"Blue Cross and Blue Shield of OK, TX",TX,Local PPO,MAPD
+H4801-5,2026,"Blue Cross and Blue Shield of OK, TX",TX,Local PPO,MAPD
+H4801-6,2026,"Blue Cross and Blue Shield of OK, TX",TX,Local PPO,MAPD
+H4801-7,2026,"Blue Cross and Blue Shield of OK, TX",OK,Local PPO,MAPD
+H4801-8,2026,"Blue Cross and Blue Shield of OK, TX",OK,Local PPO,MAPD
+H4801-9,2026,"Blue Cross and Blue Shield of OK, TX",TX,Local PPO,MAPD
+H8554-3,2026,"Blue Cross and Blue Shield of OK, TX",OK,HMO,DSNP
+H8554-4,2026,"Blue Cross and Blue Shield of OK, TX",TX,Local HMO,MAPD
+H3979-5,2026,"Blue Cross and Blue Shield of Oklahoma",OK,Local HMO,MAPD
+H8133-3,2026,"Blue Cross and Blue Shield of Texas",TX,Local HMO,MAPD
+H9706-2,2026,"Blue Cross and Blue Shield of Texas",TX,HMO,DSNP
+H9706-3,2026,"Blue Cross and Blue Shield of Texas",TX,Local HMO,MAPD
+H9706-6,2026,"Blue Cross and Blue Shield of Texas",TX,Local HMO,MAPD
+H7165-1,2026,"Blue Cross Blue Shield of South Carolina",SC,Local HMO,MAPD
+H7165-2,2026,"Blue Cross Blue Shield of South Carolina",SC,Local HMO,MAPD
+H1352-3,2026,"Blue Medicare Advantage",MO,Local HMO,MAPD
+H1352-4,2026,"Blue Medicare Advantage",MO,Local HMO,MAPD
+H6502-2,2026,"Blue Medicare Advantage",MO,Local PPO,MAPD
+H6502-4,2026,"Blue Medicare Advantage",MO,Local PPO,MAPD
+H6502-5,2026,"Blue Medicare Advantage",MO,Local PPO,MAPD
+H7917-34,2026,"BlueCross BlueShield of Tennessee",TN,Local PPO,MAPD
+H7917-35,2026,"BlueCross BlueShield of Tennessee",TN,Local PPO,MAPD
+H7917-36,2026,"BlueCross BlueShield of Tennessee",TN,Local PPO,MAPD
+H7917-37,2026,"BlueCross BlueShield of Tennessee",TN,Local PPO,MAPD
+H3281-10,2026,"Bright Health",FL,Local PPO,MAPD
+H4709-11,2026,"Bright Health",FL,Local HMO,MAPD
+H4709-29,2026,"Bright Health",FL,Local HMO,MAPD
+H4709-32,2026,"Bright Health",FL,Local HMO,MAPD
+H4709-35,2026,"Bright Health",FL,Local HMO,MAPD
+H4709-36,2026,"Bright Health",FL,Local HMO,MAPD
+H4709-40,2026,"Bright Health",FL,Local HMO,MAPD
+H2171-1,2026,"Care N' Care Insurance Company",TX,Local HMO,MAPD
+H2171-3,2026,"Care N' Care Insurance Company",TX,Local HMO,MAPD
+H6328-1,2026,"Care N' Care Insurance Company",TX,Local PPO,MAPD
+H6328-2,2026,"Care N' Care Insurance Company",TX,Local PPO,MAPD
+H6328-3,2026,"Care N' Care Insurance Company",TX,Local PPO,MAPD
+H1019-102,2026,"CarePlus Health Plans, Inc.",FL,Local HMO,MAPD
+H1019-110,2026,"CarePlus Health Plans, Inc.",FL,Local HMO,MAPD
+H1019-111,2026,"CarePlus Health Plans, Inc.",FL,Local HMO,MAPD
+H1019-112,2026,"CarePlus Health Plans, Inc.",FL,Local HMO,MAPD
+H1019-120,2026,"CarePlus Health Plans, Inc.",FL,Local HMO,MAPD
+H1019-137,2026,"CarePlus Health Plans, Inc.",FL,Local HMO,MAPD
+H1019-140,2026,"CarePlus Health Plans, Inc.",FL,Local HMO,MAPD
+H1019-69,2026,"CarePlus Health Plans, Inc.",FL,Local HMO,MAPD
+H1019-76,2026,"CarePlus Health Plans, Inc.",FL,Local HMO,MAPD
+H1019-98,2026,"CarePlus Health Plans, Inc.",FL,Local HMO,MAPD
+H1019-99,2026,"CarePlus Health Plans, Inc.",FL,Local HMO,MAPD
+H8390-15,2026,"CareSource",GA,HMO,DSNP
+H8390-17,2026,"CareSource",GA,HMO,DSNP
+H6396-17,2026,"CareSource MyCare Ohio (HMO D-SNP)",OH,HMO,DSNP
+H0439-7,2026,"Cigna",GA,Local HMO,MAPD
+H0672-11,2026,"Cigna",OH,Local HMO,MAPD
+H0672-14,2026,"Cigna",OH,Local HMO,MAPD
+H1415-21,2026,"Cigna",IL,Local HMO,MAPD
+H1415-24,2026,"Cigna",IL,Local HMO,MAPD
+H4407-26,2026,"Cigna",MS,Local HMO,MAPD
+H4407-28,2026,"Cigna",MS,Local HMO,MAPD
+H4513-47,2026,"Cigna",AL,Local HMO,MAPD
+H4513-48,2026,"Cigna",AL,Local HMO,MAPD
+H4513-51,2026,"Cigna",AR,Local HMO,MAPD
+H4513-54,2026,"Cigna",AL,Local HMO,MAPD
+H4513-57,2026,"Cigna",AL,Local HMO,MAPD
+H4513-59,2026,"Cigna",TN,Local HMO,MAPD
+H4513-66,2026,"Cigna",TX,Local HMO,MAPD
+H4513-70,2026,"Cigna",TN,Local HMO,MAPD
+H5410-27,2026,"Cigna",FL,Local HMO,MAPD
+H5410-28,2026,"Cigna",FL,Local HMO,MAPD
+H5410-29,2026,"Cigna",FL,Local HMO,MAPD
+H5410-30,2026,"Cigna",FL,Local HMO,MAPD
+H5410-33,2026,"Cigna",FL,Local HMO,MAPD
+H5410-34,2026,"Cigna",FL,Local HMO,MAPD
+H5410-35,2026,"Cigna",FL,Local HMO,MAPD
+H5410-37,2026,"Cigna",FL,Local HMO,MAPD
+H5410-39,2026,"Cigna",FL,Local HMO,MAPD
+H5410-40,2026,"Cigna",FL,Local HMO,MAPD
+H5410-41,2026,"Cigna",FL,Local HMO,MAPD
+H5410-43,2026,"Cigna",FL,Local HMO,MAPD
+H5410-44,2026,"Cigna",FL,Local HMO,MAPD
+H5410-48,2026,"Cigna",FL,Local HMO,MAPD
+H5410-50,2026,"Cigna",FL,Local HMO,MAPD
+H5410-51,2026,"Cigna",FL,Local HMO,MAPD
+H5410-52,2026,"Cigna",FL,Local HMO,MAPD
+H5410-53,2026,"Cigna",FL,Local HMO,MAPD
+H5410-54,2026,"Cigna",FL,Local HMO,MAPD
+H7020-4,2026,"Cigna",SC,Local HMO,MAPD
+H7020-6,2026,"Cigna",SC,Local HMO,MAPD
+H7020-8,2026,"Cigna",SC,Local HMO,MAPD
+H7389-3,2026,"Cigna",MO,Local HMO,MAPD
+H7389-4,2026,"Cigna",IL,Local HMO,MAPD
+H7389-5,2026,"Cigna",IL,Local HMO,MAPD
+H7849-10,2026,"Cigna",TN,Local PPO,MAPD
+H7849-101,2026,"Cigna",FL,Local PPO,MAPD
+H7849-103,2026,"Cigna",TX,Local PPO,MAPD
+H7849-12,2026,"Cigna",AL,Local PPO,MAPD
+H7849-13,2026,"Cigna",AL,Local PPO,MAPD
+H7849-14,2026,"Cigna",FL,Local PPO,MAPD
+H7849-16,2026,"Cigna",MS,Local PPO,MAPD
+H7849-17,2026,"Cigna",FL,Local PPO,MAPD
+H7849-18,2026,"Cigna",SC,Local PPO,MAPD
+H7849-20,2026,"Cigna",GA,Local PPO,MAPD
+H7849-21,2026,"Cigna",GA,Local PPO,MAPD
+H7849-22,2026,"Cigna",GA,Local PPO,MAPD
+H7849-23,2026,"Cigna",GA,Local PPO,MAPD
+H7849-3,2026,"Cigna",GA,Local PPO,MAPD
+H7849-34,2026,"Cigna",VA,Local PPO,MAPD
+H7849-35,2026,"Cigna",GA,Local PPO,MAPD
+H7849-36,2026,"Cigna",TN,Local PPO,MAPD
+H7849-37,2026,"Cigna",TN,Local PPO,MAPD
+H7849-38,2026,"Cigna",TX,Local PPO,MAPD
+H7849-39,2026,"Cigna",TX,Local PPO,MAPD
+H7849-40,2026,"Cigna",TX,Local PPO,MAPD
+H7849-41,2026,"Cigna",TX,Local PPO,MAPD
+H7849-42,2026,"Cigna",OK,Local PPO,MAPD
+H7849-43,2026,"Cigna",TN,Local PPO,MAPD
+H7849-44,2026,"Cigna",FL,Local PPO,MAPD
+H7849-45,2026,"Cigna",SC,Local PPO,MAPD
+H7849-47,2026,"Cigna",FL,Local PPO,MAPD
+H7849-48,2026,"Cigna",FL,Local PPO,MAPD
+H7849-56,2026,"Cigna",FL,Local PPO,MAPD
+H7849-57,2026,"Cigna",MO,Local PPO,MAPD
+H7849-58,2026,"Cigna",IL,Local PPO,MAPD
+H7849-60,2026,"Cigna",MS,Local PPO,MAPD
+H7849-62,2026,"Cigna",TX,Local PPO,MAPD
+H7849-64,2026,"Cigna",AL,Local PPO,MAPD
+H7849-67,2026,"Cigna",GA,Local PPO,MAPD
+H7849-68,2026,"Cigna",GA,Local PPO,MAPD
+H7849-69,2026,"Cigna",GA,Local PPO,MAPD
+H7849-71,2026,"Cigna",VA,Local PPO,MAPD
+H7849-76,2026,"Cigna",IL,Local PPO,MAPD
+H7849-79,2026,"Cigna",IL,Local PPO,MAPD
+H9725-10,2026,"Cigna",VA,Local HMO,MAPD
+H9725-11,2026,"Cigna",VA,Local HMO,MAPD
+H9725-8,2026,"Cigna",VA,Local HMO,MAPD
+H2334-5,2026,"Clear Spring Health",SC,Local PPO,MAPD
+H8014-2,2026,"Clear Spring Health",VA,Local PPO,MAPD
+H8293-1,2026,"Clear Spring Health",VA,Local HMO,MAPD
+H9403-4,2026,"Clear Spring Health",SC,Local HMO,MAPD
+H5141-33,2026,"Clover Health",TN,Local PPO,MAPD
+H5141-37,2026,"Clover Health",SC,Local PPO,MAPD
+H5141-50,2026,"Clover Health",MS,Local PPO,MAPD
+H5141-51,2026,"Clover Health",MS,Local PPO,MAPD
+H5141-52,2026,"Clover Health",AL,Local PPO,MAPD
+H5141-53,2026,"Clover Health",AL,Local PPO,MAPD
+H5447-2,2026,"Community First",TX,HMO,DSNP
+H9826-3,2026,"Community Health Choice",TX,HMO,DSNP
+H9826-4,2026,"Community Health Choice",TX,HMO,DSNP
+H4277-1,2026,"CommunityCare Options (PPO)",OK,Local PPO,MAPD
+H3755-6,2026,"CommunityCare Senior Health Plan (HMO)",OK,HMO,DSNP
+H2697-5,2026,"Devoted Health",OH,Local HMO,MAPD
+H2697-8,2026,"Devoted Health",OH,Local HMO,MAPD
+H3080-5,2026,"Devoted Health",AL,Local HMO,MAPD
+H6813-2,2026,"Devoted Health",TX,Local PPO,MAPD
+H7605-3,2026,"Devoted Health",TN,Local HMO,MAPD
+H9231-1,2026,"Devoted Health",TN,Local PPO,MAPD
+H9884-1,2026,"Devoted Health",FL,Local PPO,MAPD
+H9884-11,2026,"Devoted Health",FL,Local PPO,MAPD
+H9884-12,2026,"Devoted Health",FL,Local PPO,MAPD
+H9884-3,2026,"Devoted Health",FL,Local PPO,MAPD
+H9884-4,2026,"Devoted Health",FL,Local PPO,MAPD
+H9884-5,2026,"Devoted Health",FL,Local PPO,MAPD
+H9884-6,2026,"Devoted Health",FL,Local PPO,MAPD
+H9884-7,2026,"Devoted Health",FL,Local PPO,MAPD
+H4140-11,2026,"Doctors HealthCare Plans, Inc.",FL,Local HMO,MAPD
+H4140-5,2026,"Doctors HealthCare Plans, Inc.",FL,Local HMO,MAPD
+H4140-9,2026,"Doctors HealthCare Plans, Inc.",FL,Local HMO,MAPD
+H3407-1,2026,"El Paso Health Medicare Advantage",TX,HMO,DSNP
+H2610-11,2026,"Essence Healthcare",MO,Local HMO,MAPD
+H2610-19,2026,"Essence Healthcare",AR,Local HMO,MAPD
+H2610-20,2026,"Essence Healthcare",AR,Local HMO,MAPD
+H2610-22,2026,"Essence Healthcare",KY,Local HMO,MAPD
+H2610-23,2026,"Essence Healthcare",KY,Local HMO,MAPD
+H2610-24,2026,"Essence Healthcare",KY,Local HMO,MAPD
+H3189-1,2026,"Essence Healthcare",OH,Local HMO,MAPD
+H3189-2,2026,"Essence Healthcare",OH,Local HMO,MAPD
+H4620-1,2026,"Essence Healthcare",OH,Local PPO,MAPD
+H5372-1,2026,"Essence Healthcare",GA,Local HMO,MAPD
+H6200-2,2026,"Essence Healthcare",IL,Local PPO,MAPD
+H8229-1,2026,"Essence Healthcare",GA,Local PPO,MAPD
+H4863-1,2026,"Farm Bureau Health Plans",TN,Local HMO,MAPD
+H4863-3,2026,"Farm Bureau Health Plans",TN,Local HMO,MAPD
+H4863-5,2026,"Farm Bureau Health Plans",TN,Local HMO,MAPD
+H5434-32,2026,"Florida Blue",FL,Local PPO,MAPD
+H5434-33,2026,"Florida Blue",FL,Local PPO,MAPD
+H5434-39,2026,"Florida Blue",FL,Local PPO,MAPD
+R3332-1,2026,"Florida Blue",FL,Regional PPO,MAPD
+H1035-11,2026,"Florida Blue HMO",FL,Local HMO,MAPD
+H1035-14,2026,"Florida Blue HMO",FL,Local HMO,MAPD
+H1035-16,2026,"Florida Blue HMO",FL,Local HMO,MAPD
+H1035-18,2026,"Florida Blue HMO",FL,Local HMO,MAPD
+H1035-23,2026,"Florida Blue HMO",FL,Local HMO,MAPD
+H1035-24,2026,"Florida Blue HMO",FL,Local HMO,MAPD
+H1035-35,2026,"Florida Blue HMO",FL,Local HMO,MAPD
+H1035-37,2026,"Florida Blue HMO",FL,Local HMO,MAPD
+H1035-38,2026,"Florida Blue HMO",FL,Local HMO,MAPD
+H1035-39,2026,"Florida Blue HMO",FL,Local HMO,MAPD
+H1035-46,2026,"Florida Blue HMO",FL,Local HMO,MAPD
+H1035-47,2026,"Florida Blue HMO",FL,Local HMO,MAPD
+H1035-6,2026,"Florida Blue HMO",FL,Local HMO,MAPD
+H9986-1,2026,"Florida Complete Care",FL,HMO,ISNP
+H9986-2,2026,"Florida Complete Care",FL,HMOPOS,ISNP
+H9986-4,2026,"Florida Complete Care",FL,HMOPOS,DSNP
+H5427-104,2026,"Freedom Health, Inc.",FL,Local HMO,MAPD
+H5427-109,2026,"Freedom Health, Inc.",FL,Local HMO,MAPD
+H5427-110,2026,"Freedom Health, Inc.",FL,Local HMO,MAPD
+H5427-111,2026,"Freedom Health, Inc.",FL,Local HMO,MAPD
+H5427-92,2026,"Freedom Health, Inc.",FL,Local HMO,MAPD
+H5427-98,2026,"Freedom Health, Inc.",FL,Local HMO,MAPD
+H6062-1,2026,"GlobalHealth",TX,Local HMO,MAPD
+H6062-11,2026,"GlobalHealth",TX,Local HMO,MAPD
+H6062-3,2026,"GlobalHealth",TX,Local HMO,MAPD
+H1526-2,2026,"Gold Kidney Health Plan",FL,HMOPOS,CSNP
+H1526-4,2026,"Gold Kidney Health Plan",FL,HMOPOS,CSNP
+H9699-4,2026,"Health Advantage",AR,Local HMO,MAPD
+H9699-6,2026,"Health Advantage",AR,Local HMO,MAPD
+H1463-10,2026,"Health Alliance Medicare",IL,Local HMO,MAPD
+H1463-15,2026,"Health Alliance Medicare",IL,Local HMO,MAPD
+H1463-17,2026,"Health Alliance Medicare",IL,Local HMO,MAPD
+H1463-19,2026,"Health Alliance Medicare",IL,Local HMO,MAPD
+H1463-21,2026,"Health Alliance Medicare",IL,Local HMO,MAPD
+H1463-22,2026,"Health Alliance Medicare",IN,Local HMO,MAPD
+H1463-23,2026,"Health Alliance Medicare",IL,Local HMO,MAPD
+H1463-24,2026,"Health Alliance Medicare",IL,Local HMO,MAPD
+H1463-25,2026,"Health Alliance Medicare",IN,Local HMO,MAPD
+H1463-3,2026,"Health Alliance Medicare",IL,Local HMO,MAPD
+H1463-35,2026,"Health Alliance Medicare",IL,Local HMO,MAPD
+H1463-36,2026,"Health Alliance Medicare",IL,Local HMO,MAPD
+H1463-39,2026,"Health Alliance Medicare",IN,Local HMO,MAPD
+H1463-40,2026,"Health Alliance Medicare",IN,Local HMO,MAPD
+H1463-41,2026,"Health Alliance Medicare",IN,Local HMO,MAPD
+H1463-42,2026,"Health Alliance Medicare",IL,Local HMO,MAPD
+H1463-43,2026,"Health Alliance Medicare",IN,Local HMO,MAPD
+H1463-9,2026,"Health Alliance Medicare",IL,Local HMO,MAPD
+H3416-1,2026,"HealthPartners UnityPoint Health",IL,Local PPO,MAPD
+H3416-2,2026,"HealthPartners UnityPoint Health",IL,Local PPO,MAPD
+H5106-13,2026,"Highmark Inc.",WV,Local PPO,MAPD
+H5106-31,2026,"Highmark Inc.",WV,Local PPO,MAPD
+H5106-32,2026,"Highmark Inc.",WV,Local PPO,MAPD
+H0473-1,2026,"Humana",TX,Local PPO,MAPD
+H0783-2,2026,"Humana",TX,Local HMO,MAPD
+H0783-3,2026,"Humana",TX,Local HMO,MAPD
+H1036-140,2026,"Humana",FL,Local HMO,MAPD
+H1036-171,2026,"Humana",MS,Local HMO,MAPD
+H1036-223,2026,"Humana",MS,Local HMO,MAPD
+H1036-268,2026,"Humana",FL,Local HMO,MAPD
+H1036-295,2026,"Humana",FL,Local HMO,MAPD
+H1468-14,2026,"Humana",IL,Local HMO,MAPD
+H1468-18,2026,"Humana",IL,Local HMO,MAPD
+H1951-54,2026,"Humana",LA,Local HMO,MAPD
+H1951-55,2026,"Humana",LA,Local HMO,MAPD
+H2944-13,2026,"Humana",KS,PFFS,MAPD
+H4461-29,2026,"Humana",TN,Local HMO,MAPD
+H4461-30,2026,"Humana",TN,Local HMO,MAPD
+H4461-31,2026,"Humana",TN,Local HMO,MAPD
+H4461-34,2026,"Humana",TN,Local HMO,MAPD
+H4461-36,2026,"Humana",TN,Local HMO,MAPD
+H4461-37,2026,"Humana",TN,Local HMO,MAPD
+H5178-1,2026,"Humana",SC,Local HMO,MAPD
+H5216-107,2026,"Humana",KY,Local PPO,MAPD
+H5216-112,2026,"Humana",IN,Local PPO,MAPD
+H5216-142,2026,"Humana",SC,Local PPO,MAPD
+H5216-149,2026,"Humana",VA,Local PPO,MAPD
+H5216-182,2026,"Humana",WV,Local PPO,MAPD
+H5216-193,2026,"Humana",IN,Local PPO,MAPD
+H5216-21,2026,"Humana",WV,Local PPO,MAPD
+H5216-212,2026,"Humana",AL,Local PPO,MAPD
+H5216-214,2026,"Humana",AL,Local PPO,MAPD
+H5216-215,2026,"Humana",IL,Local PPO,MAPD
+H5216-239,2026,"Humana",GA,Local PPO,MAPD
+H5216-24,2026,"Humana",OH,Local PPO,MAPD
+H5216-272,2026,"Humana",AL,Local PPO,MAPD
+H5216-274,2026,"Humana",TN,Local PPO,MAPD
+H5216-279,2026,"Humana",GA,Local PPO,MAPD
+H5216-312,2026,"Humana",VA,Local PPO,MAPD
+H5216-321,2026,"Humana",AL,Local PPO,MAPD
+H5216-323,2026,"Humana",OK,Local PPO,MAPD
+H5216-324,2026,"Humana",KY,Local PPO,MAPD
+H5216-346,2026,"Humana",SC,Local PPO,MAPD
+H5216-349,2026,"Humana",GA,Local PPO,MAPD
+H5216-357,2026,"Humana",IL,Local PPO,MAPD
+H5216-50,2026,"Humana",OH,Local PPO,MAPD
+H5216-51,2026,"Humana",OH,Local PPO,MAPD
+H5216-52,2026,"Humana",WV,Local PPO,MAPD
+H5216-55,2026,"Humana",IN,Local PPO,MAPD
+H5216-93,2026,"Humana",AR,Local PPO,MAPD
+H5216-96,2026,"Humana",AL,Local PPO,MAPD
+H5216-98,2026,"Humana",TN,Local PPO,MAPD
+H5216-99,2026,"Humana",TN,Local PPO,MAPD
+H5377-1,2026,"Humana",VA,Local HMO,MAPD
+H5525-15,2026,"Humana",LA,Local PPO,MAPD
+H5525-20,2026,"Humana",AL,Local PPO,MAPD
+H5525-22,2026,"Humana",KY,Local PPO,MAPD
+H5525-24,2026,"Humana",SC,Local PPO,MAPD
+H5525-37,2026,"Humana",LA,Local PPO,MAPD
+H5525-44,2026,"Humana",KY,Local PPO,MAPD
+H5525-68,2026,"Humana",IL,Local PPO,MAPD
+H5525-69,2026,"Humana",IL,Local PPO,MAPD
+H5619-112,2026,"Humana",AL,Local HMO,MAPD
+H5619-128,2026,"Humana",KY,Local HMO,MAPD
+H5619-139,2026,"Humana",VA,Local HMO,MAPD
+H5619-140,2026,"Humana",VA,Local HMO,MAPD
+H5619-41,2026,"Humana",VA,Local HMO,MAPD
+H5619-50,2026,"Humana",IN,Local HMO,MAPD
+H5619-52,2026,"Humana",IN,Local HMO,MAPD
+H5619-88,2026,"Humana",AL,Local HMO,MAPD
+H5619-94,2026,"Humana",AL,Local HMO,MAPD
+H6622-19,2026,"Humana",OH,Local HMO,MAPD
+H6622-49,2026,"Humana",OK,Local HMO,MAPD
+H6622-5,2026,"Humana",VA,Local HMO,MAPD
+H6622-59,2026,"Humana",MS,Local HMO,MAPD
+H6622-74,2026,"Humana",VA,Local HMO,MAPD
+H7284-6,2026,"Humana",FL,Local PPO,MAPD
+H7284-7,2026,"Humana",FL,Local PPO,MAPD
+H7621-1,2026,"Humana",MO,Local HMO,MAPD
+H8145-122,2026,"Humana",AR,PFFS,MAPD
+H8145-125,2026,"Humana",MO,PFFS,MAPD
+H8145-8,2026,"Humana",IL,PFFS,MAPD
+H9070-3,2026,"Humana",KS,Local PPO,MAPD
+H9070-4,2026,"Humana",KS,Local PPO,MAPD
+H9070-5,2026,"Humana",AR,Local PPO,MAPD
+H9070-6,2026,"Humana",OK,Local PPO,MAPD
+R0865-3,2026,"Humana",IN,Regional PPO,MAPD
+R0923-2,2026,"Humana",WV,Regional PPO,MAPD
+R1390-2,2026,"Humana",VA,Regional PPO,MAPD
+R3392-2,2026,"Humana",GA,Regional PPO,MAPD
+R3392-4,2026,"Humana",GA,Regional PPO,MAPD
+R4845-2,2026,"Humana",KS,Regional PPO,MAPD
+R5495-2,2026,"Humana",OH,Regional PPO,MAPD
+R7315-2,2026,"Humana",TN,Regional PPO,MAPD
+H2793-3,2026,"Imperial Insurance Companies, Inc",TX,Local HMO,MAPD
+H2793-7,2026,"Imperial Insurance Companies, Inc",TX,Local HMO,MAPD
+H7220-11,2026,"Indiana University Health Plans",IN,Local HMO,MAPD
+H7220-12,2026,"Indiana University Health Plans",IN,Local HMO,MAPD
+H4198-8,2026,"Integris Health Partners+ (HMO)",OK,Local HMO,MAPD
+H4198-9,2026,"Integris Health Partners+ (HMO)",OK,Local HMO,MAPD
+H1170-10,2026,"Kaiser Permanente",GA,Local HMO,MAPD
+H0332-2,2026,"KelseyCare Advantage",TX,Local HMO,MAPD
+H0332-8,2026,"KelseyCare Advantage",TX,Local HMO,MAPD
+H2825-1,2026,"Mary Washington Medicare Advantage",VA,Local HMO,MAPD
+H2825-2,2026,"Mary Washington Medicare Advantage",VA,Local HMO,MAPD
+H2825-3,2026,"Mary Washington Medicare Advantage",VA,Local HMO,MAPD
+H7746-1,2026,"MDwise Medicare",IN,Local HMO,MAPD
+H7746-2,2026,"MDwise Medicare",IN,Local HMO,MAPD
+H7746-3,2026,"MDwise Medicare",IN,Local HMO,MAPD
+H6723-5,2026,"Medical Mutual of Ohio",OH,Local HMO,MAPD
+H1846-4,2026,"MediGold",OH,Local PPO,MAPD
+H7115-3,2026,"Memorial Hermann Health Plan",TX,Local HMO,MAPD
+H7115-4,2026,"Memorial Hermann Health Plan",TX,Local HMO,MAPD
+H7115-5,2026,"Memorial Hermann Health Plan",TX,HMO,DSNP
+H8845-4,2026,"Molina Healthcare of Arizona",MS,HMO,DSNP
+H8845-5,2026,"Molina Healthcare of Arizona",MS,HMO,DSNP
+H8130-10,2026,"Molina Healthcare of Florida",FL,Local HMO,MAPD
+H8130-11,2026,"Molina Healthcare of Florida",FL,Local HMO,MAPD
+H2715-1,2026,"Molina Healthcare of Illinois",IL,Local HMO,MAPD
+H3093-1,2026,"Molina Healthcare of Illinois",IL,HMO,DSNP
+H3093-2,2026,"Molina Healthcare of Illinois",IL,HMO,DSNP
+H3093-3,2026,"Molina Healthcare of Illinois",IL,HMO,DSNP
+H3093-4,2026,"Molina Healthcare of Illinois",IL,HMO,DSNP
+H3093-5,2026,"Molina Healthcare of Illinois",IL,HMO,DSNP
+H9955-2,2026,"Molina Healthcare of Ohio",OH,Local HMO,MAPD
+H9955-4,2026,"Molina Healthcare of Ohio",OH,Local HMO,MAPD
+H9955-7,2026,"Molina Healthcare of Ohio",OH,HMO,DSNP
+H9955-8,2026,"Molina Healthcare of Ohio",OH,HMO,DSNP
+H8176-3,2026,"Molina Healthcare of South Carolina",SC,Local HMO,MAPD
+H8176-4,2026,"Molina Healthcare of South Carolina",SC,HMO,DSNP
+H6515-1,2026,"Molina Healthcare of Texas, Inc.",TX,HMO,DSNP
+H6515-2,2026,"Molina Healthcare of Texas, Inc.",TX,HMO,DSNP
+H6515-3,2026,"Molina Healthcare of Texas, Inc.",TX,HMO,DSNP
+H6515-4,2026,"Molina Healthcare of Texas, Inc.",TX,HMO,DSNP
+H6515-5,2026,"Molina Healthcare of Texas, Inc.",TX,HMO,DSNP
+H7678-4,2026,"Molina Healthcare of Texas, Inc.",TX,Local HMO,MAPD
+H7678-5,2026,"Molina Healthcare of Texas, Inc.",TX,Local HMO,MAPD
+H7678-6,2026,"Molina Healthcare of Texas, Inc.",TX,HMO,DSNP
+H7559-3,2026,"Molina Healthcare of Virginia",VA,Local HMO,MAPD
+H6529-1,2026,"MyTruAdvantage",IN,Local HMO,MAPD
+H6529-2,2026,"MyTruAdvantage",IN,Local HMO,MAPD
+H9042-1,2026,"MyTruAdvantage",IN,Local PPO,MAPD
+H9042-2,2026,"MyTruAdvantage",IN,Local PPO,MAPD
+H9763-2,2026,"Ochsner Health Plan",LA,Local HMO,MAPD
+H9763-3,2026,"Ochsner Health Plan",LA,Local HMO,MAPD
+H2563-15,2026,"Optima Medicare",VA,Local HMO,MAPD
+H2563-16,2026,"Optima Medicare",VA,Local HMO,MAPD
+H2563-17,2026,"Optima Medicare",VA,Local HMO,MAPD
+H2563-19,2026,"Optima Medicare",VA,Local HMO,MAPD
+H2563-5,2026,"Optima Medicare",VA,Local HMO,MAPD
+H2563-8,2026,"Optima Medicare",VA,Local HMO,MAPD
+H2563-9,2026,"Optima Medicare",VA,Local HMO,MAPD
+H8961-1,2026,"Oscar",FL,Local HMO,MAPD
+H8961-2,2026,"Oscar",FL,Local HMO,MAPD
+H8961-3,2026,"Oscar",FL,Local HMO,MAPD
+H3653-24,2026,"Paramount Elite Medicare Plans",OH,Local HMO,MAPD
+H3653-25,2026,"Paramount Elite Medicare Plans",OH,Local HMO,MAPD
+H3653-26,2026,"Paramount Elite Medicare Plans",OH,Local HMO,MAPD
+H3653-27,2026,"Paramount Elite Medicare Plans",OH,Local HMO,MAPD
+H3653-28,2026,"Paramount Elite Medicare Plans",OH,Local HMO,MAPD
+H1799-2,2026,"Passport Advantage",KY,Local HMO,MAPD
+H1799-3,2026,"Passport Advantage",KY,HMO,DSNP
+H5373-1,2026,"ProMedica Medicare Plan",IN,Local HMO,MAPD
+H5373-2,2026,"ProMedica Medicare Plan",IN,Local HMO,MAPD
+H5945-8,2026,"Prominence Health Plan",FL,Local HMO,MAPD
+H7239-2,2026,"Prominence Health Plan",FL,HMO,DSNP
+H7680-17,2026,"Prominence Health Plan",TX,HMO,DSNP
+H7680-7,2026,"Prominence Health Plan",TX,HMO,DSNP
+H3800-1,2026,"Provider Partners Health Plans",IL,HMO,ISNP
+H4054-1,2026,"Provider Partners Health Plans",TX,HMO,ISNP
+H4444-1,2026,"Provider Partners Health Plans",IN,HMO,ISNP
+H4444-2,2026,"Provider Partners Health Plans",IN,HMO,ISNP
+H4444-3,2026,"Provider Partners Health Plans",IN,HMO,ISNP
+H7275-1,2026,"Provider Partners Health Plans",KY,HMO,ISNP
+H9191-1,2026,"Provider Partners Health Plans",MO,HMO,ISNP
+H9191-4,2026,"Provider Partners Health Plans",MO,HMO,ISNP
+H9191-5,2026,"Provider Partners Health Plans",MO,HMO,ISNP
+H5262-18,2026,"Quartz Medicare Advantage",IL,Local HMO,MAPD
+H5262-19,2026,"Quartz Medicare Advantage",IL,Local HMO,MAPD
+H5262-26,2026,"Quartz Medicare Advantage",IL,Local HMO,MAPD
+H8902-1,2026,"SCAN Health Plan",TX,Local HMO,MAPD
+H8902-4,2026,"SCAN Health Plan",TX,Local HMO,MAPD
+H8902-5,2026,"SCAN Health Plan",TX,Local HMO,MAPD
+H8902-8,2026,"SCAN Health Plan",TX,Local HMO,MAPD
+H2563-20,2026,"Sentara Medicare",VA,HMO,DSNP
+H4499-1,2026,"Sentara Medicare",VA,HMO,DSNP
+H9469-1,2026,"Simply Healthcare",FL,Local PPO,MAPD
+H9469-2,2026,"Simply Healthcare",FL,Local PPO,MAPD
+H9469-3,2026,"Simply Healthcare",FL,Local PPO,MAPD
+H9469-4,2026,"Simply Healthcare",FL,Local PPO,MAPD
+H9469-5,2026,"Simply Healthcare",FL,Local PPO,MAPD
+H9469-6,2026,"Simply Healthcare",FL,Local PPO,MAPD
+H9469-7,2026,"Simply Healthcare",FL,Local PPO,MAPD
+H9469-8,2026,"Simply Healthcare",FL,Local PPO,MAPD
+H9469-9,2026,"Simply Healthcare",FL,Local PPO,MAPD
+H5471-103,2026,"Simply Healthcare Plans, Inc.",FL,Local HMO,MAPD
+H5471-104,2026,"Simply Healthcare Plans, Inc.",FL,Local HMO,MAPD
+H5471-105,2026,"Simply Healthcare Plans, Inc.",FL,Local HMO,MAPD
+H5471-106,2026,"Simply Healthcare Plans, Inc.",FL,Local HMO,MAPD
+H5471-107,2026,"Simply Healthcare Plans, Inc.",FL,Local HMO,MAPD
+H5471-108,2026,"Simply Healthcare Plans, Inc.",FL,Local HMO,MAPD
+H5471-83,2026,"Simply Healthcare Plans, Inc.",FL,Local HMO,MAPD
+H4091-1,2026,"Simpra Advantage",AL,Local PPO,ISNP
+H4091-2,2026,"Simpra Advantage",AL,Local PPO,DSNP
+H0982-1,2026,"Solis Health Plans",FL,Local HMO,MAPD
+H0982-14,2026,"Solis Health Plans",FL,Local HMO,MAPD
+H1748-1,2026,"Sonder Health Plan, Inc.",GA,Local HMO,MAPD
+H3660-56,2026,"SummaCare Medicare Advantage Plans",OH,Local HMO,MAPD
+H5015-1,2026,"Texas Independence Health Plan",TX,HMO,ISNP
+H5015-2,2026,"Texas Independence Health Plan",TX,HMO,ISNP
+H3672-19,2026,"The Health Plan",OH,HMO,DSNP
+H8604-10,2026,"The Health Plan",OH,Local PPO,MAPD
+H8604-13,2026,"The Health Plan",WV,Local PPO,MAPD
+H1587-1,2026,"Tribute Health Plans",AR,HMO,DSNP
+H2962-13,2026,"Ultimate Health Plans",FL,Local HMO,MAPD
+H2962-31,2026,"Ultimate Health Plans",FL,Local HMO,MAPD
+H2962-32,2026,"Ultimate Health Plans",FL,Local HMO,MAPD
+H0432-10,2026,"UnitedHealthcare",AL,Local HMO,MAPD
+H1111-11,2026,"UnitedHealthcare",GA,Local HMO,MAPD
+H1278-4,2026,"UnitedHealthcare",TX,Local PPO,MAPD
+H1659-3,2026,"UnitedHealthcare",VA,Local PPO,MAPD
+H2196-1,2026,"UnitedHealthcare",MS,Local HMO,MAPD
+H2228-110,2026,"UnitedHealthcare",IN,Local PPO,MAPD
+H2228-111,2026,"UnitedHealthcare",IN,Local PPO,MAPD
+H2228-19,2026,"UnitedHealthcare",IN,Local PPO,MAPD
+H2228-20,2026,"UnitedHealthcare",IN,Local PPO,MAPD
+H2228-21,2026,"UnitedHealthcare",IN,Local PPO,MAPD
+H2228-22,2026,"UnitedHealthcare",IN,Local PPO,MAPD
+H2228-23,2026,"UnitedHealthcare",TX,Local PPO,MAPD
+H2228-30,2026,"UnitedHealthcare",IL,Local PPO,MAPD
+H2228-64,2026,"UnitedHealthcare",IN,Local PPO,MAPD
+H2228-65,2026,"UnitedHealthcare",IN,Local PPO,MAPD
+H2228-71,2026,"UnitedHealthcare",MO,Local PPO,MAPD
+H2228-80,2026,"UnitedHealthcare",IN,Local PPO,MAPD
+H2228-81,2026,"UnitedHealthcare",IN,Local PPO,MAPD
+H2228-82,2026,"UnitedHealthcare",MO,Local PPO,MAPD
+H2228-83,2026,"UnitedHealthcare",MO,Local PPO,MAPD
+H2406-12,2026,"UnitedHealthcare",FL,Local PPO,MAPD
+H2406-14,2026,"UnitedHealthcare",FL,Local PPO,MAPD
+H2577-11,2026,"UnitedHealthcare",VA,Local PPO,MAPD
+H2577-13,2026,"UnitedHealthcare",VA,Local PPO,MAPD
+H2577-14,2026,"UnitedHealthcare",VA,Local PPO,MAPD
+H2577-20,2026,"UnitedHealthcare",TN,Local PPO,MAPD
+H2577-26,2026,"UnitedHealthcare",SC,Local PPO,MAPD
+H2577-27,2026,"UnitedHealthcare",VA,Local PPO,MAPD
+H2577-5,2026,"UnitedHealthcare",SC,Local PPO,MAPD
+H2577-6,2026,"UnitedHealthcare",SC,Local PPO,MAPD
+H2577-7,2026,"UnitedHealthcare",TN,Local PPO,MAPD
+H2577-8,2026,"UnitedHealthcare",TN,Local PPO,MAPD
+H2577-9,2026,"UnitedHealthcare",VA,Local PPO,MAPD
+H2802-16,2026,"UnitedHealthcare",IN,Local HMO,MAPD
+H2802-18,2026,"UnitedHealthcare",IN,Local HMO,MAPD
+H3464-1,2026,"UnitedHealthcare",AR,Local HMO,MAPD
+H3464-2,2026,"UnitedHealthcare",AR,Local HMO,MAPD
+H3464-8,2026,"UnitedHealthcare",AR,Local HMO,MAPD
+H3749-1,2026,"UnitedHealthcare",OK,Local HMO,MAPD
+H3749-17,2026,"UnitedHealthcare",OK,Local HMO,MAPD
+H3749-18,2026,"UnitedHealthcare",OK,Local HMO,MAPD
+H3749-20,2026,"UnitedHealthcare",OK,Local HMO,MAPD
+H4590-10,2026,"UnitedHealthcare",TX,Local HMO,MAPD
+H4590-12,2026,"UnitedHealthcare",TX,Local HMO,MAPD
+H4590-25,2026,"UnitedHealthcare",TX,Local HMO,MAPD
+H4590-41,2026,"UnitedHealthcare",TX,Local HMO,MAPD
+H4590-42,2026,"UnitedHealthcare",TX,Local HMO,MAPD
+H4590-43,2026,"UnitedHealthcare",TX,Local HMO,MAPD
+H4590-45,2026,"UnitedHealthcare",TX,Local HMO,MAPD
+H5253-107,2026,"UnitedHealthcare",IL,Local HMO,MAPD
+H5253-115,2026,"UnitedHealthcare",OH,Local HMO,MAPD
+H5253-118,2026,"UnitedHealthcare",VA,Local HMO,MAPD
+H5253-49,2026,"UnitedHealthcare",OH,Local HMO,MAPD
+H5253-50,2026,"UnitedHealthcare",OH,Local HMO,MAPD
+H5253-52,2026,"UnitedHealthcare",KY,Local HMO,MAPD
+H5253-83,2026,"UnitedHealthcare",TN,Local HMO,MAPD
+H6528-31,2026,"UnitedHealthcare",AR,Local PPO,MAPD
+H6528-33,2026,"UnitedHealthcare",AL,Local PPO,MAPD
+H6528-41,2026,"UnitedHealthcare",GA,Local PPO,MAPD
+H6528-6,2026,"UnitedHealthcare",GA,Local PPO,MAPD
+H8211-2,2026,"UnitedHealthcare",WV,Local PPO,MAPD
+H8748-2,2026,"UnitedHealthcare",SC,Local HMO,MAPD
+H8748-25,2026,"UnitedHealthcare",SC,Local HMO,MAPD
+H8748-26,2026,"UnitedHealthcare",GA,Local HMO,MAPD
+H8748-8,2026,"UnitedHealthcare",GA,Local HMO,MAPD
+H8748-9,2026,"UnitedHealthcare",GA,Local HMO,MAPD
+H8768-14,2026,"UnitedHealthcare",OH,Local PPO,MAPD
+H8768-15,2026,"UnitedHealthcare",OH,Local PPO,MAPD
+H8768-3,2026,"UnitedHealthcare",IL,Local PPO,MAPD
+H8768-32,2026,"UnitedHealthcare",IL,Local PPO,MAPD
+H8768-33,2026,"UnitedHealthcare",OH,Local PPO,MAPD
+R2604-1,2026,"UnitedHealthcare",GA,Regional PPO,MAPD
+R3444-23,2026,"UnitedHealthcare",AR,Regional PPO,MAPD
+H3907-29,2026,"UPMC for Life",OH,Local HMO,MAPD
+H3907-49,2026,"UPMC for Life",OH,Local HMO,MAPD
+H1119-1,2026,"Valor Health Plan",OH,HMO,ISNP
+H2722-2,2026,"Vantage Health Plan",AR,Local HMO,MAPD
+H2722-4,2026,"Vantage Health Plan",AR,Local HMO,MAPD
+H2722-5,2026,"Vantage Health Plan",AR,Local HMO,MAPD
+H5576-17,2026,"Vantage Health Plan",LA,Local HMO,MAPD
+H5576-18,2026,"Vantage Health Plan",LA,Local HMO,MAPD
+H5576-20,2026,"Vantage Health Plan",LA,Local HMO,MAPD
+H5576-22,2026,"Vantage Health Plan",LA,Local HMO,MAPD
+H5576-23,2026,"Vantage Health Plan",LA,Local HMO,MAPD
+H7163-2,2026,"Vantage Health Plan",MS,Local HMO,MAPD
+H7163-4,2026,"Vantage Health Plan",MS,Local HMO,MAPD
+H7163-5,2026,"Vantage Health Plan",MS,Local HMO,MAPD
+H0154-14,2026,"VIVA Medicare",AL,Local HMO,MAPD
+H0154-16,2026,"VIVA Medicare",AL,Local HMO,MAPD
+H0074-2,2026,"Wellcare",MS,Local PPO,MAPD
+H0074-3,2026,"Wellcare",MS,Local PPO,MAPD
+H0111-2,2026,"Wellcare",GA,Local PPO,MAPD
+H0111-3,2026,"Wellcare",GA,Local PPO,MAPD
+H0174-2,2026,"Wellcare",TX,Local HMO,MAPD
+H1032-189,2026,"Wellcare",FL,Local HMO,MAPD
+H1032-190,2026,"Wellcare",FL,Local HMO,MAPD
+H1032-191,2026,"Wellcare",FL,Local HMO,MAPD
+H1032-192,2026,"Wellcare",FL,Local HMO,MAPD
+H1032-209,2026,"Wellcare",FL,Local HMO,MAPD
+H1032-218,2026,"Wellcare",FL,Local HMO,MAPD
+H1032-40,2026,"Wellcare",FL,Local HMO,MAPD
+H1112-40,2026,"Wellcare",GA,Local HMO,MAPD
+H1416-23,2026,"Wellcare",IL,Local HMO,MAPD
+H1416-41,2026,"Wellcare",AR,Local HMO,MAPD
+H1416-56,2026,"Wellcare",SC,Local HMO,MAPD
+H1416-57,2026,"Wellcare",SC,Local HMO,MAPD
+H1416-70,2026,"Wellcare",MS,Local HMO,MAPD
+H1416-75,2026,"Wellcare",TN,Local HMO,MAPD
+H1416-76,2026,"Wellcare",TN,Local HMO,MAPD
+H1416-78,2026,"Wellcare",TN,Local HMO,MAPD
+H1416-80,2026,"Wellcare",TN,Local HMO,MAPD
+H1848-1,2026,"Wellcare",AL,Local PPO,MAPD
+H1848-2,2026,"Wellcare",AL,Local PPO,MAPD
+H1848-4,2026,"Wellcare",AL,Local PPO,MAPD
+H2491-16,2026,"Wellcare",LA,Local HMO,MAPD
+H2491-19,2026,"Wellcare",LA,Local HMO,MAPD
+H2491-20,2026,"Wellcare",LA,Local HMO,MAPD
+H2491-21,2026,"Wellcare",LA,Local HMO,MAPD
+H2491-7,2026,"Wellcare",LA,Local HMO,MAPD
+H3047-1,2026,"Wellcare",LA,Local PPO,MAPD
+H3047-2,2026,"Wellcare",LA,Local PPO,MAPD
+H3047-4,2026,"Wellcare",LA,Local PPO,MAPD
+H4506-29,2026,"Wellcare",TX,Local HMO,MAPD
+H4537-2,2026,"Wellcare",OK,Local PPO,MAPD
+H4537-3,2026,"Wellcare",OK,Local PPO,MAPD
+H5199-10,2026,"Wellcare",FL,Local PPO,MAPD
+H5199-12,2026,"Wellcare",FL,Local PPO,MAPD
+H5199-14,2026,"Wellcare",FL,Local PPO,MAPD
+H5199-15,2026,"Wellcare",FL,Local PPO,MAPD
+H5199-8,2026,"Wellcare",FL,Local PPO,MAPD
+H5475-11,2026,"Wellcare",OH,Local HMO,MAPD
+H5475-22,2026,"Wellcare",OH,Local HMO,MAPD
+H5475-32,2026,"Wellcare",OH,Local HMO,MAPD
+H5779-8,2026,"Wellcare",IL,Local HMO,MAPD
+H6713-1,2026,"Wellcare",IL,Local PPO,MAPD
+H6713-2,2026,"Wellcare",IL,Local PPO,MAPD
+H6975-3,2026,"Wellcare",AL,Local HMO,MAPD
+H6975-5,2026,"Wellcare",AL,Local HMO,MAPD
+H7169-1,2026,"Wellcare",OH,Local PPO,MAPD
+H7323-10,2026,"Wellcare",TX,Local PPO,MAPD
+H7323-2,2026,"Wellcare",TX,Local PPO,MAPD
+H7323-3,2026,"Wellcare",TX,Local PPO,MAPD
+H7323-6,2026,"Wellcare",TX,Local PPO,MAPD
+H7323-9,2026,"Wellcare",TX,Local PPO,MAPD
+H7326-3,2026,"Wellcare",SC,Local PPO,MAPD
+H7518-4,2026,"Wellcare",MO,Local PPO,MAPD
+H7518-5,2026,"Wellcare",MO,Local PPO,MAPD
+H9335-1,2026,"Wellcare",MO,Local HMO,MAPD
+H9335-5,2026,"Wellcare",MO,Local HMO,MAPD
+H9335-6,2026,"Wellcare",MO,Local HMO,MAPD
+H9428-1,2026,"Wellcare",TN,Local PPO,MAPD
+H9428-2,2026,"Wellcare",TN,Local PPO,MAPD
+H9730-5,2026,"Wellcare",KY,Local HMO,MAPD
+H9900-1,2026,"Wellcare",OK,Local HMO,MAPD
+H9900-4,2026,"Wellcare",OK,Local HMO,MAPD
+H9900-5,2026,"Wellcare",OK,Local HMO,MAPD
+H9900-6,2026,"Wellcare",OK,Local HMO,MAPD
+H9900-7,2026,"Wellcare",OK,Local HMO,MAPD
+H0724-1,2026,"Wellcare by Allwell",OH,Local HMO,MAPD
+H0724-6,2026,"Wellcare by Allwell",OH,Local HMO,MAPD
+H0724-7,2026,"Wellcare by Allwell",OH,Local HMO,MAPD
+H0908-5,2026,"Wellcare by Allwell",OH,Local HMO,MAPD
+H1664-4,2026,"Wellcare by Allwell",MO,Local HMO,MAPD
+H1664-7,2026,"Wellcare by Allwell",MO,Local HMO,MAPD
+H3499-7,2026,"Wellcare by Allwell",IN,Local HMO,MAPD
+H5117-3,2026,"Wellcare by Allwell",LA,Local HMO,MAPD
+H5294-12,2026,"Wellcare by Allwell",TX,Local HMO,MAPD
+H5294-20,2026,"Wellcare by Allwell",TX,Local HMO,MAPD
+H6348-7,2026,"Wellcare by Allwell",IN,Local PPO,MAPD
+H6550-6,2026,"Wellcare by Allwell",KS,Local HMO,MAPD
+H6550-7,2026,"Wellcare by Allwell",KS,Local HMO,MAPD
+H9630-13,2026,"Wellcare by Allwell",AR,Local HMO,MAPD
+H9630-3,2026,"Wellcare by Allwell",AR,Local HMO,MAPD
+H9630-5,2026,"Wellcare by Allwell",AR,Local HMO,MAPD
+H9811-1,2026,"Wellcare by Allwell",MS,Local HMO,MAPD
+H9811-8,2026,"Wellcare by Allwell",MS,Local HMO,MAPD
+H9811-9,2026,"Wellcare by Allwell",MS,Local HMO,MAPD
+H8019-2,2026,"WellFirst Health",MO,Local HMO,MAPD
+H8019-5,2026,"WellFirst Health",MO,Local HMO,MAPD
+H4624-15,2026,"Zing Health",IN,Local HMO,MAPD
+H4624-17,2026,"Zing Health",IN,Local HMO,MAPD
+H4624-2,2026,"Zing Health",IL,Local HMO,MAPD
+H4624-20,2026,"Zing Health",IN,Local HMO,MAPD
+H4624-27,2026,"Zing Health",IL,HMO,CSNP
+H7330-1,2026,"Zing Health",IL,Local HMO,MAPD
+H7330-2,2026,"Zing Health",IL,Local HMO,MAPD
+H7330-4,2026,"Zing Health",IL,Local HMO,MAPD
+H7330-5,2026,"Zing Health",IL,Local HMO,MAPD

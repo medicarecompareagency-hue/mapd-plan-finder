@@ -1,11 +1,13 @@
 // scripts/list-no-pbp-plans.js
 //
-// Emits the bucket of plans with no PBP match (all service-level copays NULL).
-// Input list for the SOB/EOC scraper work.
+// Emits the bucket of no-PBP plans for the CURRENT plan year only.
+// Input list for the SOB scraper.
 //
-// Signature: all 5 service-level copay fields that come from PBP are NULL:
+// Signature: all 5 service-level copay fields from PBP are NULL:
 //   emergencyRoomCopay, outpatientHospitalCopay, hospitalStayCopay,
 //   skilledNursingCopay, catScanCopay
+//
+// Defaults to planYear=2026. Override with env var: TARGET_PLAN_YEAR=2025
 //
 // Outputs:
 //   scripts/data/no-pbp-plans.csv           — planId,planYear,organizationName,state,planType
@@ -18,6 +20,7 @@ const fs = require('fs');
 const path = require('path');
 const { makePrisma } = require('./prisma-client');
 
+const TARGET_YEAR = parseInt(process.env.TARGET_PLAN_YEAR || '2026', 10);
 const OUT_DIR = path.join(__dirname, 'data');
 const OUT_TUPLES = path.join(OUT_DIR, 'no-pbp-plans.csv');
 const OUT_CARRIERS = path.join(OUT_DIR, 'no-pbp-plans-by-carrier.csv');
@@ -26,8 +29,29 @@ async function main() {
   const prisma = makePrisma();
   if (!fs.existsSync(OUT_DIR)) fs.mkdirSync(OUT_DIR, { recursive: true });
 
+  // Sanity: what plan years exist in the DB, and how many no-PBP plans per year?
+  console.log('=== Plan year distribution (no-PBP signature L1) ===');
+  const yearDist = await prisma.plan.groupBy({
+    by: ['planYear'],
+    where: {
+      emergencyRoomCopay: null,
+      outpatientHospitalCopay: null,
+      hospitalStayCopay: null,
+      skilledNursingCopay: null,
+      catScanCopay: null,
+    },
+    _count: { _all: true },
+    orderBy: { planYear: 'asc' },
+  });
+  for (const r of yearDist) {
+    console.log(`  planYear=${r.planYear}: ${r._count._all} rows (before dedupe)`);
+  }
+  console.log('');
+
+  console.log(`=== Targeting planYear=${TARGET_YEAR} ===`);
   const rows = await prisma.plan.findMany({
     where: {
+      planYear: TARGET_YEAR,
       emergencyRoomCopay: null,
       outpatientHospitalCopay: null,
       hospitalStayCopay: null,
@@ -40,6 +64,7 @@ async function main() {
       organizationName: true,
       state: true,
       planType: true,
+      planCategory: true,
     },
     orderBy: [
       { organizationName: 'asc' },
@@ -47,7 +72,7 @@ async function main() {
     ],
   });
 
-  // Dedupe by (planId, planYear, organizationName) — a plan can appear in many states/counties.
+  // Dedupe by (planId, planYear, organizationName) — one plan appears in many counties.
   const seen = new Set();
   const unique = [];
   for (const r of rows) {
@@ -57,12 +82,11 @@ async function main() {
     unique.push(r);
   }
 
-  // Tuple CSV (unique plans, not per-geo rows)
-  const header = 'planId,planYear,organizationName,state,planType\n';
+  const header = 'planId,planYear,organizationName,state,planType,planCategory\n';
   const body = unique
     .map(
       (r) =>
-        `${r.planId},${r.planYear},"${(r.organizationName || '').replace(/"/g, '""')}",${r.state || ''},${r.planType || ''}`
+        `${r.planId},${r.planYear},"${(r.organizationName || '').replace(/"/g, '""')}",${r.state || ''},${r.planType || ''},${r.planCategory || ''}`
     )
     .join('\n');
   fs.writeFileSync(OUT_TUPLES, header + body + '\n');
@@ -77,13 +101,26 @@ async function main() {
   const hist = 'organizationName,count\n' + sorted.map(([c, n]) => `"${c.replace(/"/g, '""')}",${n}`).join('\n');
   fs.writeFileSync(OUT_CARRIERS, hist + '\n');
 
-  console.log(`Raw matching rows (per geo):   ${rows.length}`);
-  console.log(`Unique plans (planId+year+org): ${unique.length}`);
+  console.log(`Raw matching rows (per geo): ${rows.length}`);
+  console.log(`Unique plans:                ${unique.length}`);
+  console.log('');
   console.log(`Wrote ${OUT_TUPLES}`);
   console.log(`Wrote ${OUT_CARRIERS}`);
   console.log('');
-  console.log('Top 15 carriers by no-PBP unique plan count:');
+  console.log(`Top 15 carriers (planYear=${TARGET_YEAR}, no-PBP):`);
   for (const [c, n] of sorted.slice(0, 15)) {
+    console.log(`  ${n.toString().padStart(5)}  ${c}`);
+  }
+
+  // Also break down by planCategory — helps us understand if this is MAPD, D-SNP, etc.
+  const catCounts = new Map();
+  for (const r of unique) {
+    const k = r.planCategory || '(none)';
+    catCounts.set(k, (catCounts.get(k) || 0) + 1);
+  }
+  console.log('');
+  console.log('By planCategory:');
+  for (const [c, n] of [...catCounts.entries()].sort((a, b) => b[1] - a[1])) {
     console.log(`  ${n.toString().padStart(5)}  ${c}`);
   }
 
