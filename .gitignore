@@ -50,3 +50,5 @@ next-env.d.ts
 /app/generated/prisma
 
 .vercel
+
+scripts/data/sob-pdfs/
