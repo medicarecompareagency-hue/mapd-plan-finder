@@ -10,6 +10,11 @@ import { LICENSED_CARRIERS } from "@/lib/licensed-carriers";
 // Phase 1.2 (2026-04-27): dedupe by planId after ranking (same plan in
 // multiple counties no longer eats top-5 slots), hasBenefitRank now
 // recognizes "No Dental"/"No Vision"/"No Hearing" as missing benefits.
+// Phase 1.3 (2026-04-27): SNP dental/vision tiebreakers switched from
+// string-based hasBenefitRank to numeric DESC on dentalAnnualMax /
+// visionAnnualMax (populated by scripts/import-pbp.js). Plans with
+// $0/null annual max fall through to the next tiebreaker; the string
+// hasBenefitRank still applies as a final fallback.
 const DSNP_LIKE = new Set(["DSNP", "ISNP"]);
 
 export async function GET(request: Request) {
@@ -171,6 +176,23 @@ export async function GET(request: Request) {
     return out;
   }
 
+
+  // Numeric benefit rank: returns the dollar value if > 0, else 0.
+  // We use cmpBenefitDesc so that two zeros tie cleanly without NaN.
+  function numericBenefit(val: unknown): number {
+    if (val == null) return 0;
+    const n = typeof val === "number" ? val : parseFloat(String(val));
+    if (!Number.isFinite(n) || n <= 0) return 0;
+    return n;
+  }
+  // Descending compare: higher numericBenefit sorts first; equal values tie.
+  function cmpBenefitDesc(a: unknown, b: unknown): number {
+    const av = numericBenefit(a);
+    const bv = numericBenefit(b);
+    if (av === bv) return 0;
+    return bv - av;
+  }
+
   let sorted: Array<Record<string, unknown>>;
 
   if (useDefaultTop5) {
@@ -201,11 +223,15 @@ export async function GET(request: Request) {
         if (c !== 0) return c;
         c = cmp(a.otcAllowance as number | null, b.otcAllowance as number | null, false);
         if (c !== 0) return c;
+        c = cmpBenefitDesc(a.dentalAnnualMax, b.dentalAnnualMax);
+        if (c !== 0) return c;
         c = hasBenefitRank(a.dentalBenefits) - hasBenefitRank(b.dentalBenefits);
         if (c !== 0) return c;
         const ah = parseHospitalCopayDay1(a.hospitalStayCopay);
         const bh = parseHospitalCopayDay1(b.hospitalStayCopay);
         c = cmp(ah, bh, true);
+        if (c !== 0) return c;
+        c = cmpBenefitDesc(a.visionAnnualMax, b.visionAnnualMax);
         if (c !== 0) return c;
         return hasBenefitRank(a.visionBenefits) - hasBenefitRank(b.visionBenefits);
       });
@@ -217,7 +243,11 @@ export async function GET(request: Request) {
         if (c !== 0) return c;
         c = cmp(a.otcAllowance as number | null, b.otcAllowance as number | null, false);
         if (c !== 0) return c;
+        c = cmpBenefitDesc(a.dentalAnnualMax, b.dentalAnnualMax);
+        if (c !== 0) return c;
         c = hasBenefitRank(a.dentalBenefits) - hasBenefitRank(b.dentalBenefits);
+        if (c !== 0) return c;
+        c = cmpBenefitDesc(a.visionAnnualMax, b.visionAnnualMax);
         if (c !== 0) return c;
         c = hasBenefitRank(a.visionBenefits) - hasBenefitRank(b.visionBenefits);
         if (c !== 0) return c;

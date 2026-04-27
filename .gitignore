@@ -55,3 +55,6 @@ scripts/data/sob-pdfs/
 
 top5-output.txt
 scripts/data/sob-urls-v2-recon.json
+
+scripts/data/pbp-2026/
+scripts/data/pbp-benefits-2026.zip

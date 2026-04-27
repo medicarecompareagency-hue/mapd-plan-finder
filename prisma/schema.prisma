@@ -95,7 +95,7 @@ model Plan {
                                      // (HMO, Local PPO, PFFS, etc.). Kept for existing
                                      // queries and the results-table "Type" column.
 
-  // Plan Type taxonomy (added 2026-04-21 — see docs/schema-additions-plan-type.md)
+  // Plan Type taxonomy (added 2026-04-21 â€” see docs/schema-additions-plan-type.md)
   planCategory              PlanCategory?
   snpSubtype                SnpSubtype?
   chronicConditions         ChronicCondition[] @default([])
@@ -142,6 +142,9 @@ model Plan {
   // Extra Benefits
   otcAllowance              Float?   @default(0)   // Over-the-counter allowance
   foodCardAllowance         Float?   @default(0)
+  dentalAnnualMax           Float?   @default(0)
+  visionAnnualMax           Float?   @default(0)
+  hearingAnnualMax          Float?   @default(0)
   dentalBenefits            String?  // Description of dental coverage
   hearingBenefits           String?  // Description of hearing coverage
   visionBenefits            String?  // Description of vision coverage
