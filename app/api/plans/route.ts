@@ -15,6 +15,13 @@ import { LICENSED_CARRIERS } from "@/lib/licensed-carriers";
 // visionAnnualMax (populated by scripts/import-pbp.js). Plans with
 // $0/null annual max fall through to the next tiebreaker; the string
 // hasBenefitRank still applies as a final fallback.
+// Phase 1.4 (2026-04-27): top-5 dedupe key changed from planId to
+// organizationName so the result surfaces 5 distinct carriers rather
+// than 5 plan-segments of the same product line (e.g. all five Cigna
+// HealthSpring TotalCare variants across counties). Also bumped the
+// pre-ranking candidate pool from MAX_RESULTS*4 to MAX_RESULTS*50 so a
+// statewide search (~22k FL D-SNP county-rows) actually sees all
+// carriers, not just the first 2000 rows by insertion order.
 const DSNP_LIKE = new Set(["DSNP", "ISNP"]);
 
 export async function GET(request: Request) {
@@ -124,9 +131,12 @@ export async function GET(request: Request) {
   }
 
   const MAX_RESULTS = 500;
-  // Take more rows than needed so dedupe-by-planId doesn't shrink results
-  // below 5. A plan sold in 50 counties has 50 rows in the candidate set.
-  const plans = await prisma.plan.findMany({ where, take: MAX_RESULTS * 4 });
+  // Pull a wide candidate pool so the ranking sees all carriers in the
+  // result set, not just the first 2000 rows by insertion order. A
+  // statewide D-SNP search has ~22k county-rows; nationwide ~178k. We
+  // cap at 25,000 which is enough for any single-state search and a
+  // reasonable subset for nationwide.
+  const plans = await prisma.plan.findMany({ where, take: MAX_RESULTS * 50 });
 
   const isCsnp = planCategory === "CSNP";
   const isDsnpLike = !!(planCategory && DSNP_LIKE.has(planCategory));
@@ -170,6 +180,21 @@ export async function GET(request: Request) {
       const id = String(plan.planId ?? "");
       if (!id || seen.has(id)) continue;
       seen.add(id);
+      out.push(plan);
+      if (out.length >= n) break;
+    }
+    return out;
+  }
+
+  // Dedupe a sorted list by organizationName (case/whitespace normalized),
+  // keeping the first (highest-ranked) plan per carrier. Phase 1.4 default.
+  function dedupeByCarrier(sorted: Array<Record<string, unknown>>, n: number): Array<Record<string, unknown>> {
+    const seen = new Set<string>();
+    const out: Array<Record<string, unknown>> = [];
+    for (const plan of sorted) {
+      const carrier = String(plan.organizationName ?? "").toLowerCase().trim();
+      if (!carrier || seen.has(carrier)) continue;
+      seen.add(carrier);
       out.push(plan);
       if (out.length >= n) break;
     }
@@ -259,7 +284,7 @@ export async function GET(request: Request) {
       });
   }
 
-  const ranked = dedupeByPlanId(sorted, 5).map((plan, i) => ({ ...plan, rank: i + 1 }));
+  const ranked = dedupeByCarrier(sorted, 5).map((plan, i) => ({ ...plan, rank: i + 1 }));
 
   return Response.json(ranked);
 }
