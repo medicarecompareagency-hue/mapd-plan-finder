@@ -18,6 +18,11 @@
 //   unzip scripts/data/pbp-benefits-2026.zip -d scripts/data/pbp-2026/
 //
 // Idempotent. Safe to re-run after CMS quarterly refreshes.
+//
+// 2026-04-27 fix: dental/vision/hearing MAX BENEFIT caps are NOT
+// frequency-based; the amount is already per year (per code 3 = per
+// benefit period = annual). Do NOT multiply by 4. Only OTC b13b uses
+// the frequency-based PERIOD_MULT_OTC mapping (where per=5 means monthly).
 
 const fs = require('fs');
 const path = require('path');
@@ -153,8 +158,9 @@ async function buildAgg() {
     const pid = planIdFor(row);
     if (!pid) continue;
     n++;
-    const pv  = annualize(row.pbp_b16b_maxplan_pv_amt, row.pbp_b16b_maxplan_pv_per);
-    const cmp = annualize(row.pbp_b16c_maxplan_cmp_amt, row.pbp_b16c_maxplan_cmp_per);
+    // per=3 (dominant) means per benefit period = annual. Do not annualize.
+    const pv  = num(row.pbp_b16b_maxplan_pv_amt);
+    const cmp = num(row.pbp_b16c_maxplan_cmp_amt);
     upsertMax(pid, 'dentalAnnualMax', Math.max(pv, cmp));
   }
   console.log(`  scanned ${n} rows`);
@@ -166,12 +172,11 @@ async function buildAgg() {
     const pid = planIdFor(row);
     if (!pid) continue;
     n++;
-    // Primary: combined eyewear plan max
-    const comb = annualize(row.pbp_b17b_comb_maxplan_amt, row.pbp_b17b_comb_maxplan_per);
+    // per=3 (dominant) means per benefit period = annual. Do not annualize.
+    const comb = num(row.pbp_b17b_comb_maxplan_amt);
     if (comb > 0) {
       upsertMax(pid, 'visionAnnualMax', comb);
     } else {
-      // Fallback: eye exam max + sum of individual eyewear caps
       const exam = num(row.pbp_b17a_maxenr_amt);
       const indv = ['cl', 'egs', 'egl', 'egf', 'upg']
         .reduce((s, sfx) => s + num(row[`pbp_b17b_indv_maxplan_amt_${sfx}`]), 0);
@@ -187,8 +192,9 @@ async function buildAgg() {
     const pid = planIdFor(row);
     if (!pid) continue;
     n++;
-    const exams = annualize(row.pbp_b18a_maxplan_amt, row.pbp_b18a_maxplan_per);
-    const aids  = annualize(row.pbp_b18b_maxplan_amt, row.pbp_b18b_maxplan_per);
+    // per=3 (dominant) means per benefit period = annual. Do not annualize.
+    const exams = num(row.pbp_b18a_maxplan_amt);
+    const aids  = num(row.pbp_b18b_maxplan_amt);
     upsertMax(pid, 'hearingAnnualMax', Math.max(exams, aids));
   }
   console.log(`  scanned ${n} rows`);
