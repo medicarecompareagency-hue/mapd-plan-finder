@@ -15,6 +15,10 @@ import { LICENSED_CARRIERS } from "@/lib/licensed-carriers";
 // visionAnnualMax (populated by scripts/import-pbp.js). Plans with
 // $0/null annual max fall through to the next tiebreaker; the string
 // hasBenefitRank still applies as a final fallback.
+// Phase 1.5 (2026-04-27): D-SNP/I-SNP cmp order moved dental above OTC.
+// Dual-eligible clients tend to need dental more than OTC supplies.
+// New chain: food card > dental > OTC > vision > hospital > premium.
+//
 // Phase 1.4 (2026-04-27): top-5 dedupe key changed from planId to
 // organizationName so the result surfaces 5 distinct carriers rather
 // than 5 plan-segments of the same product line (e.g. all five Cigna
@@ -266,11 +270,11 @@ export async function GET(request: Request) {
       .sort((a, b) => {
         let c = cmp(a.foodCardAllowance as number | null, b.foodCardAllowance as number | null, false);
         if (c !== 0) return c;
-        c = cmp(a.otcAllowance as number | null, b.otcAllowance as number | null, false);
-        if (c !== 0) return c;
         c = cmpBenefitDesc(a.dentalAnnualMax, b.dentalAnnualMax);
         if (c !== 0) return c;
         c = hasBenefitRank(a.dentalBenefits) - hasBenefitRank(b.dentalBenefits);
+        if (c !== 0) return c;
+        c = cmp(a.otcAllowance as number | null, b.otcAllowance as number | null, false);
         if (c !== 0) return c;
         c = cmpBenefitDesc(a.visionAnnualMax, b.visionAnnualMax);
         if (c !== 0) return c;

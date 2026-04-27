@@ -53,6 +53,9 @@ interface Plan {
   dentalBenefits: string | null;
   hearingBenefits: string | null;
   visionBenefits: string | null;
+  dentalAnnualMax: number | null;
+  visionAnnualMax: number | null;
+  hearingAnnualMax: number | null;
   transportationBenefit: string | null;
 }
 
@@ -104,6 +107,15 @@ type Filters = Record<string, string>;
 
 // ---------------------------------------------------------------------------
 // Enum display labels
+// Phase 1.5: prefer numeric annual max from PBP over the legacy string column.
+function formatBenefitCell(annualMax: number | null | undefined, fallbackStr: string | null | undefined, kind: "Dental" | "Vision" | "Hearing"): string {
+  const n = typeof annualMax === "number" ? annualMax : 0;
+  if (n > 0) return `$${n.toLocaleString()} / yr`;
+  const s = (fallbackStr ?? "").trim();
+  if (!s || /^(none|no\b|not\s+covered)/i.test(s)) return `No ${kind}`;
+  return s;
+}
+
 // Keep keys in sync with prisma/schema.prisma enums (PlanCategory, SnpSubtype,
 // ChronicCondition) and the decoder tables in scripts/import-cms-data.ts.
 // ---------------------------------------------------------------------------
@@ -922,9 +934,9 @@ export default function PlanSearch() {
                       <td className="px-3 py-3 text-right text-gray-900"><DrugTierCell tier={6} value={plan.drugTier6Copay} mask={plan.drugTierCoinsuranceMask} /></td>
                       <td className="px-3 py-3 text-right text-gray-900">{dollars(plan.otcAllowance)}</td>
                       <td className="px-3 py-3 text-right text-gray-900">{dollars(plan.foodCardAllowance)}</td>
-                      <td className="px-3 py-3 text-sm text-gray-900 min-w-[180px]">{plan.dentalBenefits || "No Dental"}</td>
-                      <td className="px-3 py-3 text-sm text-gray-900 min-w-[180px]">{plan.hearingBenefits || "No Hearing"}</td>
-                      <td className="px-3 py-3 text-sm text-gray-900 min-w-[180px]">{plan.visionBenefits || "No Vision"}</td>
+                      <td className="px-3 py-3 text-sm text-gray-900 min-w-[180px]">{formatBenefitCell(plan.dentalAnnualMax, plan.dentalBenefits, "Dental")}</td>
+                      <td className="px-3 py-3 text-sm text-gray-900 min-w-[180px]">{formatBenefitCell(plan.hearingAnnualMax, plan.hearingBenefits, "Hearing")}</td>
+                      <td className="px-3 py-3 text-sm text-gray-900 min-w-[180px]">{formatBenefitCell(plan.visionAnnualMax, plan.visionBenefits, "Vision")}</td>
                       <td className="px-3 py-3 text-sm text-gray-900 min-w-[180px]">{plan.transportationBenefit || "No Transportation"}</td>
                     </tr>
                   ))}
