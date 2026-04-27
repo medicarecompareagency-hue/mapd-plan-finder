@@ -5,6 +5,8 @@ import { LICENSED_CARRIERS } from "@/lib/licensed-carriers";
 // Phase 1: ranking against existing plan-level columns.
 // Phase 2: dental/vision numeric columns.
 // Phase 3: per-(plan x Medicaid level) benefits via PlanMedicaidBenefit.
+// Phase 1.1 (2026-04-27): hotfixes — chronicCondition gated to CSNP only,
+// ISNP excluded globally, allowlist updated for Cigna -> HealthSpring rebrand.
 const DSNP_LIKE = new Set(["DSNP", "ISNP"]);
 
 export async function GET(request: Request) {
@@ -12,8 +14,9 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
 
   const where: Prisma.PlanWhereInput = {
-    // Always gate results on Dale's 6-carrier allowlist (2026-04-23).
     organizationName: { in: [...LICENSED_CARRIERS] },
+    // Always exclude ISNP — Dale does not sell those plans (2026-04-27).
+    AND: [{ planCategory: { not: "ISNP" as never } }],
   };
 
   // Location filters
@@ -25,22 +28,18 @@ export async function GET(request: Request) {
     where.county = bare !== county ? { in: [county, bare] } : county;
   }
 
-  // Plan Year filter (backlog #5, added 2026-04-22)
   const planYear = searchParams.get("planYear");
   if (planYear) {
     const yearNum = parseInt(planYear, 10);
     if (!Number.isNaN(yearNum)) where.planYear = yearNum;
   }
 
-  // Carrier filter (backlog #4, 2026-04-22)
   const organizationName = searchParams.get("organizationName");
   if (organizationName) where.organizationName = organizationName;
 
-  // Plan type (legacy contract-type string field)
   const planType = searchParams.get("planType");
   if (planType) where.planType = { contains: planType };
 
-  // Plan category taxonomy
   const planCategory = searchParams.get("planCategory");
   if (planCategory) {
     (where as Record<string, unknown>).planCategory = planCategory;
@@ -49,8 +48,11 @@ export async function GET(request: Request) {
   if (snpSubtype) {
     (where as Record<string, unknown>).snpSubtype = snpSubtype;
   }
+  // chronicCondition only applies to CSNP searches. The front-end can leak
+  // stale chronicCondition values when switching from CSNP to another
+  // category, which would unnecessarily zero out results. (2026-04-27)
   const chronicCondition = searchParams.get("chronicCondition");
-  if (chronicCondition) {
+  if (chronicCondition && planCategory === "CSNP") {
     (where as Record<string, unknown>).chronicConditions = { has: chronicCondition };
   }
   const isZeroDollarDsnp = searchParams.get("isZeroDollarDsnp");
@@ -58,13 +60,11 @@ export async function GET(request: Request) {
     (where as Record<string, unknown>).isZeroDollarDsnp = true;
   }
 
-  // String category filters
   const lowIncomeSubsidyLevel = searchParams.get("lowIncomeSubsidyLevel");
   const medicaidLevel = searchParams.get("medicaidLevel");
   if (lowIncomeSubsidyLevel) where.lowIncomeSubsidyLevel = lowIncomeSubsidyLevel;
   if (medicaidLevel) where.medicaidLevel = medicaidLevel;
 
-  // Numeric "at most" filters
   const numericMaxFilters: [string, keyof Prisma.PlanWhereInput][] = [
     ["monthlyPremium", "monthlyPremium"],
     ["maxOutOfPocket", "maxOutOfPocket"],
@@ -91,7 +91,6 @@ export async function GET(request: Request) {
     }
   }
 
-  // Numeric "at least" filters
   const numericMinFilters: [string, keyof Prisma.PlanWhereInput][] = [
     ["partBGivebackAmount", "partBGivebackAmount"],
     ["otcAllowance", "otcAllowance"],
@@ -104,7 +103,6 @@ export async function GET(request: Request) {
     }
   }
 
-  // String benefit filters
   const stringBenefitFilters: [string, keyof Prisma.PlanWhereInput][] = [
     ["hospitalStayCopay", "hospitalStayCopay"],
     ["skilledNursingCopay", "skilledNursingCopay"],
@@ -125,7 +123,6 @@ export async function GET(request: Request) {
   const MAX_RESULTS = 500;
   const plans = await prisma.plan.findMany({ where, take: MAX_RESULTS * 2 });
 
-  // --- Ranking (Phase 1, Dale 2026-04-27) ---
   const isCsnp = planCategory === "CSNP";
   const isDsnpLike = !!(planCategory && DSNP_LIKE.has(planCategory));
   const useDefaultTop5 = !isCsnp && !isDsnpLike;
@@ -149,8 +146,6 @@ export async function GET(request: Request) {
     return m ? parseFloat(m[1]) : null;
   }
 
-  // Phase 1 placeholder for "best dental/vision". Returns 0 if plan has a
-  // non-trivial benefit, 1 otherwise. Phase 2 replaces with numeric columns.
   function hasBenefitRank(val: unknown): number {
     if (val == null) return 1;
     const s = String(val).trim();
@@ -162,7 +157,6 @@ export async function GET(request: Request) {
   let ranked: Array<Record<string, unknown>>;
 
   if (useDefaultTop5) {
-    // Default 6-key
     ranked = (plans as Array<Record<string, unknown>>)
       .slice()
       .sort((a, b) => {
@@ -183,7 +177,6 @@ export async function GET(request: Request) {
       .slice(0, 5)
       .map((plan, i) => ({ ...plan, rank: i + 1 }));
   } else if (isCsnp) {
-    // C-SNP 6-key: premium -> food card -> OTC -> dental -> hosp copay -> vision
     ranked = (plans as Array<Record<string, unknown>>)
       .slice()
       .sort((a, b) => {
@@ -204,8 +197,6 @@ export async function GET(request: Request) {
       .slice(0, 5)
       .map((plan, i) => ({ ...plan, rank: i + 1 }));
   } else {
-    // D-SNP / I-SNP 6-key: food card -> OTC -> dental -> vision -> hosp copay -> premium
-    // Per-Medicaid-level variance NOT applied (Phase 3).
     ranked = (plans as Array<Record<string, unknown>>)
       .slice()
       .sort((a, b) => {
@@ -259,6 +250,8 @@ export async function POST(request: Request) {
   const where: Prisma.PlanWhereInput = {
     state,
     organizationName: { in: [...LICENSED_CARRIERS] },
+    // Mirror GET: ISNP excluded everywhere.
+    AND: [{ planCategory: { not: "ISNP" as never } }],
   };
   if (county) {
     const bare = county.replace(/\s+(County|Parish|Borough|Census Area|Municipality|city)$/i, "").trim();
@@ -283,7 +276,8 @@ export async function POST(request: Request) {
     counties: unique(plans.map((p: any) => p.county)),
     zipCodes: unique(plans.map((p: any) => p.zipCode)),
     planTypes: unique(plans.map((p: any) => p.planType)),
-    planCategories: unique(plans.map((p: any) => p.planCategory)),
+    // Filter out ISNP from dropdown options so users can't select it.
+    planCategories: unique(plans.map((p: any) => p.planCategory)).filter((c: string) => c !== "ISNP"),
     snpSubtypes: unique(plans.map((p: any) => p.snpSubtype)),
     chronicConditions: chronicConditionsInScope,
     hasZeroDollarDsnp: plans.some((p: any) => p.isZeroDollarDsnp === true),
