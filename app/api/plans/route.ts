@@ -5,8 +5,11 @@ import { LICENSED_CARRIERS } from "@/lib/licensed-carriers";
 // Phase 1: ranking against existing plan-level columns.
 // Phase 2: dental/vision numeric columns.
 // Phase 3: per-(plan x Medicaid level) benefits via PlanMedicaidBenefit.
-// Phase 1.1 (2026-04-27): hotfixes — chronicCondition gated to CSNP only,
-// ISNP excluded globally, allowlist updated for Cigna -> HealthSpring rebrand.
+// Phase 1.1 (2026-04-27): chronicCondition gated to CSNP, ISNP excluded,
+// allowlist updated for Cigna -> HealthSpring rebrand.
+// Phase 1.2 (2026-04-27): dedupe by planId after ranking (same plan in
+// multiple counties no longer eats top-5 slots), hasBenefitRank now
+// recognizes "No Dental"/"No Vision"/"No Hearing" as missing benefits.
 const DSNP_LIKE = new Set(["DSNP", "ISNP"]);
 
 export async function GET(request: Request) {
@@ -15,11 +18,9 @@ export async function GET(request: Request) {
 
   const where: Prisma.PlanWhereInput = {
     organizationName: { in: [...LICENSED_CARRIERS] },
-    // Always exclude ISNP — Dale does not sell those plans (2026-04-27).
     AND: [{ planCategory: { not: "ISNP" as never } }],
   };
 
-  // Location filters
   const state = searchParams.get("state");
   const county = searchParams.get("county");
   if (state) where.state = state;
@@ -48,9 +49,6 @@ export async function GET(request: Request) {
   if (snpSubtype) {
     (where as Record<string, unknown>).snpSubtype = snpSubtype;
   }
-  // chronicCondition only applies to CSNP searches. The front-end can leak
-  // stale chronicCondition values when switching from CSNP to another
-  // category, which would unnecessarily zero out results. (2026-04-27)
   const chronicCondition = searchParams.get("chronicCondition");
   if (chronicCondition && planCategory === "CSNP") {
     (where as Record<string, unknown>).chronicConditions = { has: chronicCondition };
@@ -121,7 +119,9 @@ export async function GET(request: Request) {
   }
 
   const MAX_RESULTS = 500;
-  const plans = await prisma.plan.findMany({ where, take: MAX_RESULTS * 2 });
+  // Take more rows than needed so dedupe-by-planId doesn't shrink results
+  // below 5. A plan sold in 50 counties has 50 rows in the candidate set.
+  const plans = await prisma.plan.findMany({ where, take: MAX_RESULTS * 4 });
 
   const isCsnp = planCategory === "CSNP";
   const isDsnpLike = !!(planCategory && DSNP_LIKE.has(planCategory));
@@ -146,18 +146,35 @@ export async function GET(request: Request) {
     return m ? parseFloat(m[1]) : null;
   }
 
+  // Recognize common "no benefit" markers used in CMS data:
+  // null, empty, "None", "No Dental", "No Vision", "No Hearing", "Not Covered".
+  // Returns 0 if benefit is present (sorts first), 1 if missing.
   function hasBenefitRank(val: unknown): number {
     if (val == null) return 1;
     const s = String(val).trim();
     if (!s) return 1;
-    if (/^none$/i.test(s)) return 1;
+    if (/^(none|no\b|not\s+covered)/i.test(s)) return 1;
     return 0;
   }
 
-  let ranked: Array<Record<string, unknown>>;
+  // Dedupe a sorted list by planId, keeping the first occurrence.
+  function dedupeByPlanId(sorted: Array<Record<string, unknown>>, n: number): Array<Record<string, unknown>> {
+    const seen = new Set<string>();
+    const out: Array<Record<string, unknown>> = [];
+    for (const plan of sorted) {
+      const id = String(plan.planId ?? "");
+      if (!id || seen.has(id)) continue;
+      seen.add(id);
+      out.push(plan);
+      if (out.length >= n) break;
+    }
+    return out;
+  }
+
+  let sorted: Array<Record<string, unknown>>;
 
   if (useDefaultTop5) {
-    ranked = (plans as Array<Record<string, unknown>>)
+    sorted = (plans as Array<Record<string, unknown>>)
       .slice()
       .sort((a, b) => {
         let c = cmp(a.monthlyPremium as number | null, b.monthlyPremium as number | null, true);
@@ -173,11 +190,9 @@ export async function GET(request: Request) {
         c = cmp(a.maxOutOfPocket as number | null, b.maxOutOfPocket as number | null, true);
         if (c !== 0) return c;
         return cmp(a.starRating as number | null, b.starRating as number | null, false);
-      })
-      .slice(0, 5)
-      .map((plan, i) => ({ ...plan, rank: i + 1 }));
+      });
   } else if (isCsnp) {
-    ranked = (plans as Array<Record<string, unknown>>)
+    sorted = (plans as Array<Record<string, unknown>>)
       .slice()
       .sort((a, b) => {
         let c = cmp(a.monthlyPremium as number | null, b.monthlyPremium as number | null, true);
@@ -193,11 +208,9 @@ export async function GET(request: Request) {
         c = cmp(ah, bh, true);
         if (c !== 0) return c;
         return hasBenefitRank(a.visionBenefits) - hasBenefitRank(b.visionBenefits);
-      })
-      .slice(0, 5)
-      .map((plan, i) => ({ ...plan, rank: i + 1 }));
+      });
   } else {
-    ranked = (plans as Array<Record<string, unknown>>)
+    sorted = (plans as Array<Record<string, unknown>>)
       .slice()
       .sort((a, b) => {
         let c = cmp(a.foodCardAllowance as number | null, b.foodCardAllowance as number | null, false);
@@ -213,10 +226,10 @@ export async function GET(request: Request) {
         c = cmp(ah, bh, true);
         if (c !== 0) return c;
         return cmp(a.monthlyPremium as number | null, b.monthlyPremium as number | null, true);
-      })
-      .slice(0, 5)
-      .map((plan, i) => ({ ...plan, rank: i + 1 }));
+      });
   }
+
+  const ranked = dedupeByPlanId(sorted, 5).map((plan, i) => ({ ...plan, rank: i + 1 }));
 
   return Response.json(ranked);
 }
@@ -250,7 +263,6 @@ export async function POST(request: Request) {
   const where: Prisma.PlanWhereInput = {
     state,
     organizationName: { in: [...LICENSED_CARRIERS] },
-    // Mirror GET: ISNP excluded everywhere.
     AND: [{ planCategory: { not: "ISNP" as never } }],
   };
   if (county) {
@@ -276,7 +288,6 @@ export async function POST(request: Request) {
     counties: unique(plans.map((p: any) => p.county)),
     zipCodes: unique(plans.map((p: any) => p.zipCode)),
     planTypes: unique(plans.map((p: any) => p.planType)),
-    // Filter out ISNP from dropdown options so users can't select it.
     planCategories: unique(plans.map((p: any) => p.planCategory)).filter((c: string) => c !== "ISNP"),
     snpSubtypes: unique(plans.map((p: any) => p.snpSubtype)),
     chronicConditions: chronicConditionsInScope,
