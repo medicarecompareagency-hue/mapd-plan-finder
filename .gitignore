@@ -52,3 +52,6 @@ next-env.d.ts
 .vercel
 
 scripts/data/sob-pdfs/
+
+top5-output.txt
+scripts/data/sob-urls-v2-recon.json
