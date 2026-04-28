@@ -437,6 +437,17 @@ export default function PlanSearch() {
       // Set zip immediately, then do reverse lookup to fill state/county
       setFilters(next);
       reverseZipLookup(value);
+    } else if (name === "planCategory") {
+      // Category-specific filters become meaningless when the category
+      // changes — reset them so old values don't leak into the next
+      // search. The back-end gates chronicCondition on planCategory=CSNP,
+      // but snpSubtype and isZeroDollarDsnp aren't back-end gated and
+      // would silently filter out everything if left set after a switch
+      // away from ISNP/DSNP. (Backlog item from 2026-04-27 handoff.)
+      delete next.chronicCondition;
+      delete next.snpSubtype;
+      delete next.isZeroDollarDsnp;
+      setFilters(next);
     } else {
       setFilters(next);
     }
