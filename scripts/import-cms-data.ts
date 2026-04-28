@@ -28,6 +28,16 @@ import * as http from "http";
 import { createWriteStream } from "fs";
 import { pipeline } from "stream/promises";
 import { execSync } from "child_process";
+// Licensed-states gate (added 2026-04-28). Without this, a fresh
+// landscape import re-adds the 35 states Dale isn't licensed in, and the
+// reactive cleanup script (cleanup-nonlicensed-states.js) has to scrub
+// them again. Gating at the source keeps the DB scoped to Dale's 18
+// licensed states from row 1.
+//
+// Source list: scripts/licensed-states.js (CommonJS — required, not imported).
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { LICENSED_STATES }: { LICENSED_STATES: string[] } = require("./licensed-states");
+const LICENSED_STATES_SET = new Set(LICENSED_STATES);
 
 // Long-running scripts must go through the session-mode pooler (:5432),
 // not the transaction pooler (:6543) used by the web app. Transaction-mode
@@ -828,8 +838,21 @@ export async function runImport(year?: number): Promise<{ imported: number; skip
 
   // Parse landscape CSV
   log("Parsing landscape CSV...");
-  const landscapeRows = parseLandscape(landscapePath);
-  log(`Landscape CSV has ${landscapeRows.length} rows (plan × county).`);
+  const allLandscapeRows = parseLandscape(landscapePath);
+  log(`Landscape CSV has ${allLandscapeRows.length} rows (plan × county).`);
+
+  // LICENSED_STATES gate (2026-04-28): drop rows for states Dale isn't
+  // licensed in BEFORE we touch the DB. Comparing on the abbreviated
+  // state code (post STATE_ABBREVS lookup) so we match scripts/licensed-states.js.
+  const landscapeRows = allLandscapeRows.filter((row) => {
+    const abbrev = STATE_ABBREVS[row.state] || row.state;
+    return LICENSED_STATES_SET.has(abbrev);
+  });
+  const droppedNonLicensed = allLandscapeRows.length - landscapeRows.length;
+  log(
+    `Licensed-state gate: kept ${landscapeRows.length} rows in [${LICENSED_STATES.join(", ")}], ` +
+      `dropped ${droppedNonLicensed} rows in non-licensed states.`,
+  );
 
   // Build and upsert plan records
   let imported = 0;

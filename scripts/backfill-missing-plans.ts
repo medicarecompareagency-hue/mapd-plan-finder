@@ -49,6 +49,13 @@ import {
 import * as fs from "fs";
 import * as path from "path";
 
+// Licensed-states gate (added 2026-04-28). PlanArea.txt is a state-blind
+// list of every plan×county combo CMS publishes; without this filter the
+// SNP backfill re-adds non-licensed states the cleanup script just dropped.
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { LICENSED_STATES }: { LICENSED_STATES: string[] } = require("./licensed-states");
+const LICENSED_STATES_SET = new Set(LICENSED_STATES);
+
 // ---------------------------------------------------------------------------
 // Args
 // ---------------------------------------------------------------------------
@@ -319,6 +326,7 @@ function readPlanArea(): PlanLocation[] {
 
   const out: PlanLocation[] = [];
   let skippedEghp = 0;
+  let skippedNonLicensed = 0;
   for (const r of rows) {
     if ((r.eghp_flag || "").trim() === "1") { skippedEghp++; continue; }
     const h = (r.pbp_a_hnumber || "").trim();
@@ -327,9 +335,15 @@ function readPlanArea(): PlanLocation[] {
     const st = (r.stcd || "").trim();
     const co = (r.county || "").trim();
     if (!h || !p || !st || !co) continue;
+    // Licensed-states gate (2026-04-28): stcd is already a 2-letter code,
+    // so we can drop right here without lookup.
+    if (!LICENSED_STATES_SET.has(st)) { skippedNonLicensed++; continue; }
     out.push({ planKey: key(h, p, s), state: st, county: co });
   }
-  console.log(`  ${out.length} non-EGHP plan×county rows (skipped ${skippedEghp} EGHP)`);
+  console.log(
+    `  ${out.length} non-EGHP plan×county rows (skipped ${skippedEghp} EGHP, ` +
+      `${skippedNonLicensed} in non-licensed states)`,
+  );
   return out;
 }
 
