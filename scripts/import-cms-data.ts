@@ -857,8 +857,30 @@ export async function runImport(year?: number): Promise<{ imported: number; skip
   // Build and upsert plan records
   let imported = 0;
   let skipped = 0;
+  let skippedNoPbp = 0;
   const batchSize = 500;
   const total = landscapeRows.length;
+
+  // Non-shoppable filter (added 2026-04-28): if a landscape row has no
+  // PBP match (i.e. benefits is undefined for the plan key), CMS didn't
+  // publish PBP data for that plan, AND medicare.gov's Plan Compare
+  // also doesn't surface it. Verified via the plan-compare JSON API on
+  // 2026-04-28: 421/421 such plans returned 404. They're EGHP / closed
+  // to new enrollment / sanctioned. Agents shouldn't see them.
+  //
+  // We skip them at the source rather than letting them in and cleaning
+  // up later. SNPs are NOT affected: they're added via the separate
+  // backfill-missing-plans.ts pipeline which reads PBP directly.
+  function isNonShoppable(benefits: PlanBenefits | undefined, planType: string): boolean {
+    if (benefits) return false;
+    // landscape's typeofmedicarehealthplan is the contract type label.
+    // PDP/MSA/PACE are filed differently and may not have a PBP match
+    // through this same key, so we don't gate them here.
+    const t = (planType || "").toLowerCase();
+    if (/pdp|msa|pace|cost|mmp/.test(t)) return false;
+    // HMO, PPO, HMO-POS, PFFS, etc. → if no PBP data, treat as non-shoppable.
+    return true;
+  }
 
   // Fast path: if no rows exist for this plan year, we can skip the
   // per-batch deleteMany loop (which is a no-op anyway on a fresh table
@@ -893,6 +915,11 @@ export async function runImport(year?: number): Promise<{ imported: number; skip
       if (!county || !stateAbbrev) { skipped++; continue; }
 
       const planType = row.typeofmedicarehealthplan?.trim() || "Unknown";
+      // Non-shoppable filter: skip MA-type rows with no PBP match.
+      if (isNonShoppable(benefits, planType)) {
+        skippedNoPbp++;
+        continue;
+      }
       const landscapePremium = num(row.monthlyconsolidatedpremiumi);
       const landscapeMOOP = num(row.innetworkmoopamount);
       const landscapeDrugDeductible = num(row.annualdrugdeductible);
@@ -1000,12 +1027,19 @@ export async function runImport(year?: number): Promise<{ imported: number; skip
           const county = row.county?.trim();
           if (!county || !stateAbbrev) return null;
 
+          const planType = row.typeofmedicarehealthplan?.trim() || "Unknown";
+          // Non-shoppable filter: skip MA-type rows with no PBP match.
+          if (isNonShoppable(benefits, planType)) {
+            skippedNoPbp++;
+            return null;
+          }
+
           return {
             planYear,
             planId: `${contractId}-${pid}`,
             planName: row.planname?.trim() || `${contractId}-${pid}`,
             organizationName: row.organizationname?.trim() || "Unknown",
-            planType: row.typeofmedicarehealthplan?.trim() || "Unknown",
+            planType,
             planCategory: benefits?.planCategory ?? null,
             snpSubtype: benefits?.snpSubtype ?? null,
             chronicConditions: benefits?.chronicConditions ?? [],
@@ -1055,7 +1089,10 @@ export async function runImport(year?: number): Promise<{ imported: number; skip
     log(`Progress: ${Math.min(i + batchSize, total)}/${total} rows processed (${imported} imported, ${skipped} skipped)`);
   }
 
-  log(`Import complete: ${imported} plans imported, ${skipped} skipped.`);
+  log(
+    `Import complete: ${imported} plans imported, ${skipped} skipped (bad data), ` +
+      `${skippedNoPbp} skipped (non-shoppable, no PBP match).`,
+  );
   return { imported, skipped };
 }
 
