@@ -1,0 +1,2639 @@
+{
+  "PDP": {
+    "signature": "PDP_DRUG_NULLS",
+    "total_distinct_plans_in_licensed_states": 0,
+    "candidates_count": 0,
+    "candidate_rows_count": 0,
+    "candidates": []
+  },
+  "MA": {
+    "signature": "COST_SHARING_5",
+    "error": "PrismaClientValidationError: \nInvalid `prisma.plan.groupBy()` invocation in\nC:\\Users\\dbuir\\mapd-plan-finder\\scripts\\audit-non-shoppable.js:93:47\n\n  90 \n  91 try {\n  92   // First: total in licensed states for this category\n→ 93   const totalDistinct = await prisma.plan.groupBy({\n         select: {\n           planId: true\n         },\n         by: [\n           \"planId\"\n         ],\n         where: {\n           planYear: 2026,\n           planCategory: \"MA\",\n                         ~~~~\n           state: {\n             in: [\n               \"AL\",\n               \"AR\",\n               \"FL\",\n               \"GA\",\n               \"IL\",\n               \"IN\",\n               \"KS\",\n               \"KY\",\n               \"LA\",\n               \"MO\",\n               \"MS\",\n               \"OH\",\n               \"OK\",\n               \"SC\",\n               \"TN\",\n               \"TX\",\n               \"VA\",\n               \"WV\"\n             ]\n           }\n         }\n       })\n\nInvalid value for argument `planCategory`. Expected PlanCategory."
+  },
+  "MAPD": {
+    "signature": "COST_SHARING_5",
+    "total_distinct_plans_in_licensed_states": 1244,
+    "candidates_count": 372,
+    "candidate_rows_count": 7842,
+    "candidates": [
+      {
+        "planId": "H5576-23",
+        "planName": "Vantage Giveback (HMO-POS)",
+        "organizationName": "Vantage Health Plan",
+        "state_count": 1,
+        "row_count": 64
+      },
+      {
+        "planId": "H1463-3",
+        "planName": "Health Alliance Medicare HMO 20 Rx (HMO)",
+        "organizationName": "Health Alliance Medicare",
+        "state_count": 2,
+        "row_count": 80
+      },
+      {
+        "planId": "H1463-9",
+        "planName": "Health Alliance Medicare HMO Basic Rx (HMO)",
+        "organizationName": "Health Alliance Medicare",
+        "state_count": 2,
+        "row_count": 80
+      },
+      {
+        "planId": "H1664-7",
+        "planName": "Wellcare Assist (HMO)",
+        "organizationName": "Wellcare by Allwell",
+        "state_count": 1,
+        "row_count": 49
+      },
+      {
+        "planId": "H1664-4",
+        "planName": "Wellcare No Premium (HMO)",
+        "organizationName": "Wellcare by Allwell",
+        "state_count": 1,
+        "row_count": 21
+      },
+      {
+        "planId": "H7559-3",
+        "planName": "Molina Medicare Choice Care (HMO)",
+        "organizationName": "Molina Healthcare of Virginia",
+        "state_count": 1,
+        "row_count": 133
+      },
+      {
+        "planId": "H8634-20",
+        "planName": "Blue Cross Medicare Advantage Saver Plus (PPO)",
+        "organizationName": "Blue Cross and Blue Shield of IL, NM",
+        "state_count": 1,
+        "row_count": 31
+      },
+      {
+        "planId": "H8634-14",
+        "planName": "Blue Cross Medicare Advantage Flex (PPO)",
+        "organizationName": "Blue Cross and Blue Shield of IL, NM",
+        "state_count": 1,
+        "row_count": 97
+      },
+      {
+        "planId": "H8634-17",
+        "planName": "Blue Cross Medicare Advantage Classic (PPO)",
+        "organizationName": "Blue Cross and Blue Shield of IL, NM",
+        "state_count": 1,
+        "row_count": 30
+      },
+      {
+        "planId": "H8634-11",
+        "planName": "Blue Cross Medicare Advantage Classic (PPO)",
+        "organizationName": "Blue Cross and Blue Shield of IL, NM",
+        "state_count": 1,
+        "row_count": 12
+      },
+      {
+        "planId": "H8634-7",
+        "planName": "Blue Cross Medicare Advantage Choice Plus (PPO)",
+        "organizationName": "Blue Cross and Blue Shield of IL, NM",
+        "state_count": 1,
+        "row_count": 17
+      },
+      {
+        "planId": "H8634-16",
+        "planName": "Blue Cross Medicare Advantage Elite (PPO)",
+        "organizationName": "Blue Cross and Blue Shield of IL, NM",
+        "state_count": 1,
+        "row_count": 2
+      },
+      {
+        "planId": "H8634-13",
+        "planName": "Blue Cross Medicare Advantage Classic (PPO)",
+        "organizationName": "Blue Cross and Blue Shield of IL, NM",
+        "state_count": 1,
+        "row_count": 10
+      },
+      {
+        "planId": "H6200-2",
+        "planName": "Essence Advantage Choice Plus (PPO)",
+        "organizationName": "Essence Healthcare",
+        "state_count": 2,
+        "row_count": 11
+      },
+      {
+        "planId": "H3822-15",
+        "planName": "Blue Cross Medicare Advantage Basic (HMO)",
+        "organizationName": "Blue Cross and Blue Shield of IL, NM",
+        "state_count": 1,
+        "row_count": 9
+      },
+      {
+        "planId": "H6348-7",
+        "planName": "Wellcare Low Premium Open (PPO)",
+        "organizationName": "Wellcare by Allwell",
+        "state_count": 1,
+        "row_count": 90
+      },
+      {
+        "planId": "H9042-1",
+        "planName": "MyTruAdvantage Choice (PPO)",
+        "organizationName": "MyTruAdvantage",
+        "state_count": 1,
+        "row_count": 18
+      },
+      {
+        "planId": "H9042-2",
+        "planName": "MyTruAdvantage Choice Plus (PPO)",
+        "organizationName": "MyTruAdvantage",
+        "state_count": 1,
+        "row_count": 18
+      },
+      {
+        "planId": "H3499-7",
+        "planName": "Wellcare Giveback (HMO)",
+        "organizationName": "Wellcare by Allwell",
+        "state_count": 1,
+        "row_count": 90
+      },
+      {
+        "planId": "H6550-7",
+        "planName": "Wellcare Giveback (HMO)",
+        "organizationName": "Wellcare by Allwell",
+        "state_count": 1,
+        "row_count": 47
+      },
+      {
+        "planId": "H6550-6",
+        "planName": "Wellcare Assist (HMO)",
+        "organizationName": "Wellcare by Allwell",
+        "state_count": 1,
+        "row_count": 47
+      },
+      {
+        "planId": "H0908-5",
+        "planName": "Wellcare Giveback (HMO)",
+        "organizationName": "Wellcare by Allwell",
+        "state_count": 1,
+        "row_count": 87
+      },
+      {
+        "planId": "H9955-2",
+        "planName": "Molina Medicare Choice Care (HMO)",
+        "organizationName": "Molina Healthcare of Ohio",
+        "state_count": 1,
+        "row_count": 83
+      },
+      {
+        "planId": "H9955-4",
+        "planName": "Molina Medicare Choice Care Select (HMO)",
+        "organizationName": "Molina Healthcare of Ohio",
+        "state_count": 1,
+        "row_count": 83
+      },
+      {
+        "planId": "H1666-18",
+        "planName": "Blue Cross Medicare Advantage Flex Access (PPO)",
+        "organizationName": "Blue Cross and Blue Shield of NM, TX",
+        "state_count": 1,
+        "row_count": 31
+      },
+      {
+        "planId": "H1666-4",
+        "planName": "Blue Cross Medicare Advantage Choice Plus (PPO)",
+        "organizationName": "Blue Cross and Blue Shield of NM, TX",
+        "state_count": 1,
+        "row_count": 11
+      },
+      {
+        "planId": "H1666-1",
+        "planName": "Blue Cross Medicare Advantage Choice Premier (PPO)",
+        "organizationName": "Blue Cross and Blue Shield of NM, TX",
+        "state_count": 1,
+        "row_count": 11
+      },
+      {
+        "planId": "H1666-5",
+        "planName": "Blue Cross Medicare Advantage Choice Plus (PPO)",
+        "organizationName": "Blue Cross and Blue Shield of NM, TX",
+        "state_count": 1,
+        "row_count": 12
+      },
+      {
+        "planId": "H1666-2",
+        "planName": "Blue Cross Medicare Advantage Choice Premier (PPO)",
+        "organizationName": "Blue Cross and Blue Shield of NM, TX",
+        "state_count": 1,
+        "row_count": 12
+      },
+      {
+        "planId": "H9699-4",
+        "planName": "Health Advantage Blue Classic (HMO)",
+        "organizationName": "Health Advantage",
+        "state_count": 1,
+        "row_count": 20
+      },
+      {
+        "planId": "H9699-6",
+        "planName": "Health Advantage Blue Premier (HMO)",
+        "organizationName": "Health Advantage",
+        "state_count": 1,
+        "row_count": 12
+      },
+      {
+        "planId": "H1463-10",
+        "planName": "Health Alliance Medicare HMO 40 Rx (HMO)",
+        "organizationName": "Health Alliance Medicare",
+        "state_count": 2,
+        "row_count": 80
+      },
+      {
+        "planId": "H1463-15",
+        "planName": "Health Alliance Medicare POS Basic Rx (HMO-POS)",
+        "organizationName": "Health Alliance Medicare",
+        "state_count": 2,
+        "row_count": 80
+      },
+      {
+        "planId": "H1463-17",
+        "planName": "Health Alliance Medicare POS 30 Rx (HMO-POS)",
+        "organizationName": "Health Alliance Medicare",
+        "state_count": 2,
+        "row_count": 80
+      },
+      {
+        "planId": "H1463-19",
+        "planName": "Health Alliance Medicare POS 10 Rx (HMO-POS)",
+        "organizationName": "Health Alliance Medicare",
+        "state_count": 2,
+        "row_count": 80
+      },
+      {
+        "planId": "H1463-43",
+        "planName": "Health Alliance Medicare HMO Classic Rx (HMO)",
+        "organizationName": "Health Alliance Medicare",
+        "state_count": 2,
+        "row_count": 80
+      },
+      {
+        "planId": "H7330-1",
+        "planName": "Zing Choice IL (HMO)",
+        "organizationName": "Zing Health",
+        "state_count": 1,
+        "row_count": 5
+      },
+      {
+        "planId": "H7330-2",
+        "planName": "Zing Open Access IL (HMO-POS)",
+        "organizationName": "Zing Health",
+        "state_count": 1,
+        "row_count": 5
+      },
+      {
+        "planId": "H7330-4",
+        "planName": "Zing Signature Care IL (HMO-POS)",
+        "organizationName": "Zing Health",
+        "state_count": 1,
+        "row_count": 1
+      },
+      {
+        "planId": "H7330-5",
+        "planName": "Zing Premium Giveback IL (HMO)",
+        "organizationName": "Zing Health",
+        "state_count": 1,
+        "row_count": 11
+      },
+      {
+        "planId": "H1463-42",
+        "planName": "OSF MedAdvantage Enrich (HMO-POS)",
+        "organizationName": "Health Alliance Medicare",
+        "state_count": 1,
+        "row_count": 17
+      },
+      {
+        "planId": "H1463-24",
+        "planName": "Simplete 2 (HMO)",
+        "organizationName": "Health Alliance Medicare",
+        "state_count": 2,
+        "row_count": 14
+      },
+      {
+        "planId": "H1463-25",
+        "planName": "Simplete 3 (HMO-POS)",
+        "organizationName": "Health Alliance Medicare",
+        "state_count": 2,
+        "row_count": 14
+      },
+      {
+        "planId": "H7399-1",
+        "planName": "Ascension Complete Illinois Reward (HMO)",
+        "organizationName": "Ascension Complete",
+        "state_count": 1,
+        "row_count": 5
+      },
+      {
+        "planId": "H7399-2",
+        "planName": "Ascension Complete Illinois Secure (HMO)",
+        "organizationName": "Ascension Complete",
+        "state_count": 1,
+        "row_count": 5
+      },
+      {
+        "planId": "H5576-17",
+        "planName": "Vantage STANDARD (HMO-POS)",
+        "organizationName": "Vantage Health Plan",
+        "state_count": 1,
+        "row_count": 64
+      },
+      {
+        "planId": "H8019-2",
+        "planName": "SSM Health Plan Integrity (HMO-POS)",
+        "organizationName": "WellFirst Health",
+        "state_count": 2,
+        "row_count": 6
+      },
+      {
+        "planId": "H8019-5",
+        "planName": "SSM Health Plan FlexSpend (HMO-POS)",
+        "organizationName": "WellFirst Health",
+        "state_count": 2,
+        "row_count": 6
+      },
+      {
+        "planId": "H9763-2",
+        "planName": "Ochsner Health Plan Freedom (HMO-POS)",
+        "organizationName": "Ochsner Health Plan",
+        "state_count": 1,
+        "row_count": 12
+      },
+      {
+        "planId": "H1463-35",
+        "planName": "OSF MedAdvantage Core (HMO)",
+        "organizationName": "Health Alliance Medicare",
+        "state_count": 1,
+        "row_count": 17
+      },
+      {
+        "planId": "H1463-36",
+        "planName": "OSF MedAdvantage Open (HMO-POS)",
+        "organizationName": "Health Alliance Medicare",
+        "state_count": 1,
+        "row_count": 17
+      },
+      {
+        "planId": "H1463-23",
+        "planName": "Simplete 1 (HMO)",
+        "organizationName": "Health Alliance Medicare",
+        "state_count": 2,
+        "row_count": 10
+      },
+      {
+        "planId": "H1463-21",
+        "planName": "Health Alliance Medicare Guide HMO Rx 2 (HMO)",
+        "organizationName": "Health Alliance Medicare",
+        "state_count": 1,
+        "row_count": 4
+      },
+      {
+        "planId": "H5576-20",
+        "planName": "Vantage BASIC (HMO-POS)",
+        "organizationName": "Vantage Health Plan",
+        "state_count": 1,
+        "row_count": 64
+      },
+      {
+        "planId": "H5576-22",
+        "planName": "Vantage 100 (HMO-POS)",
+        "organizationName": "Vantage Health Plan",
+        "state_count": 1,
+        "row_count": 64
+      },
+      {
+        "planId": "H5422-8",
+        "planName": "Anthem MediBlue Essential (HMO)",
+        "organizationName": "Anthem Blue Cross and Blue Shield",
+        "state_count": 1,
+        "row_count": 130
+      },
+      {
+        "planId": "H5576-18",
+        "planName": "Vantage PREMIUM (HMO-POS)",
+        "organizationName": "Vantage Health Plan",
+        "state_count": 1,
+        "row_count": 64
+      },
+      {
+        "planId": "H6453-5",
+        "planName": "Blue Advantage (HMO)",
+        "organizationName": "Blue Cross and Blue Shield of Louisiana HMO",
+        "state_count": 1,
+        "row_count": 9
+      },
+      {
+        "planId": "H6453-10",
+        "planName": "Blue Advantage (HMO)",
+        "organizationName": "Blue Cross and Blue Shield of Louisiana HMO",
+        "state_count": 1,
+        "row_count": 17
+      },
+      {
+        "planId": "H4624-2",
+        "planName": "Zing Open Access IL (HMO-POS)",
+        "organizationName": "Zing Health",
+        "state_count": 1,
+        "row_count": 6
+      },
+      {
+        "planId": "H5373-1",
+        "planName": "ProMedica Medicare Essential (HMO)",
+        "organizationName": "ProMedica Medicare Plan",
+        "state_count": 1,
+        "row_count": 5
+      },
+      {
+        "planId": "R4487-1",
+        "planName": "Anthem MediBlue Access Basic (Regional PPO)",
+        "organizationName": "Anthem Blue Cross and Blue Shield",
+        "state_count": 2,
+        "row_count": 212
+      },
+      {
+        "planId": "H6453-11",
+        "planName": "Blue Advantage (HMO)",
+        "organizationName": "Blue Cross and Blue Shield of Louisiana HMO",
+        "state_count": 1,
+        "row_count": 64
+      },
+      {
+        "planId": "H7220-11",
+        "planName": "IU Health Plans Medicare Flex Network (HMO-POS)",
+        "organizationName": "Indiana University Health Plans",
+        "state_count": 1,
+        "row_count": 34
+      },
+      {
+        "planId": "H7746-1",
+        "planName": "MDwise Medicare Inspire (HMO)",
+        "organizationName": "MDwise Medicare",
+        "state_count": 1,
+        "row_count": 27
+      },
+      {
+        "planId": "H5427-109",
+        "planName": "Freedom Platinum Plus Plan Rx (HMO)",
+        "organizationName": "Freedom Health, Inc.",
+        "state_count": 1,
+        "row_count": 4
+      },
+      {
+        "planId": "H7746-2",
+        "planName": "MDwise Medicare Inspire Plus (HMO)",
+        "organizationName": "MDwise Medicare",
+        "state_count": 1,
+        "row_count": 27
+      },
+      {
+        "planId": "H7746-3",
+        "planName": "MDwise Medicare Inspire Flex (HMO-POS)",
+        "organizationName": "MDwise Medicare",
+        "state_count": 1,
+        "row_count": 27
+      },
+      {
+        "planId": "H1019-111",
+        "planName": "CareOne Platinum (HMO)",
+        "organizationName": "CarePlus Health Plans, Inc.",
+        "state_count": 1,
+        "row_count": 3
+      },
+      {
+        "planId": "H5373-2",
+        "planName": "MAP Medicare (HMO-POS)",
+        "organizationName": "ProMedica Medicare Plan",
+        "state_count": 1,
+        "row_count": 1
+      },
+      {
+        "planId": "H6453-9",
+        "planName": "Blue Advantage (HMO)",
+        "organizationName": "Blue Cross and Blue Shield of Louisiana HMO",
+        "state_count": 1,
+        "row_count": 3
+      },
+      {
+        "planId": "H1463-22",
+        "planName": "Reid Health Alliance Medicare POS Rx (HMO-POS)",
+        "organizationName": "Health Alliance Medicare",
+        "state_count": 1,
+        "row_count": 6
+      },
+      {
+        "planId": "H1463-40",
+        "planName": "Reid Health Alliance Medicare POS Basic Rx (HMO-POS)",
+        "organizationName": "Health Alliance Medicare",
+        "state_count": 1,
+        "row_count": 6
+      },
+      {
+        "planId": "H1463-41",
+        "planName": "Reid Health Alliance Medicare HMO Basic Rx 2 (HMO)",
+        "organizationName": "Health Alliance Medicare",
+        "state_count": 2,
+        "row_count": 8
+      },
+      {
+        "planId": "H7925-1",
+        "planName": "Ascension Complete St. Vincent Reward (HMO)",
+        "organizationName": "Ascension Complete",
+        "state_count": 1,
+        "row_count": 19
+      },
+      {
+        "planId": "H7925-2",
+        "planName": "Ascension Complete St. Vincent Secure (HMO)",
+        "organizationName": "Ascension Complete",
+        "state_count": 1,
+        "row_count": 19
+      },
+      {
+        "planId": "H6529-1",
+        "planName": "MyTruAdvantage Select (HMO)",
+        "organizationName": "MyTruAdvantage",
+        "state_count": 1,
+        "row_count": 18
+      },
+      {
+        "planId": "H5427-104",
+        "planName": "Freedom Platinum Plus Plan Rx (HMO)",
+        "organizationName": "Freedom Health, Inc.",
+        "state_count": 1,
+        "row_count": 3
+      },
+      {
+        "planId": "H1019-120",
+        "planName": "CareFree (HMO)",
+        "organizationName": "CarePlus Health Plans, Inc.",
+        "state_count": 1,
+        "row_count": 6
+      },
+      {
+        "planId": "H1019-137",
+        "planName": "CareFree Platinum (HMO)",
+        "organizationName": "CarePlus Health Plans, Inc.",
+        "state_count": 1,
+        "row_count": 3
+      },
+      {
+        "planId": "H1019-99",
+        "planName": "CareFree (HMO)",
+        "organizationName": "CarePlus Health Plans, Inc.",
+        "state_count": 1,
+        "row_count": 2
+      },
+      {
+        "planId": "H1019-140",
+        "planName": "CareFree Platinum (HMO)",
+        "organizationName": "CarePlus Health Plans, Inc.",
+        "state_count": 1,
+        "row_count": 2
+      },
+      {
+        "planId": "H2610-22",
+        "planName": "Essence Advantage Plus (HMO)",
+        "organizationName": "Essence Healthcare",
+        "state_count": 2,
+        "row_count": 16
+      },
+      {
+        "planId": "H2610-24",
+        "planName": "Essence Advantage Plus (HMO)",
+        "organizationName": "Essence Healthcare",
+        "state_count": 1,
+        "row_count": 4
+      },
+      {
+        "planId": "H3822-13",
+        "planName": "Blue Cross Medicare Advantage Basic (HMO)",
+        "organizationName": "Blue Cross and Blue Shield of IL, NM",
+        "state_count": 1,
+        "row_count": 12
+      },
+      {
+        "planId": "H5398-2",
+        "planName": "Ascension Complete Via Christi Secure (HMO)",
+        "organizationName": "Ascension Complete",
+        "state_count": 1,
+        "row_count": 6
+      },
+      {
+        "planId": "H5398-4",
+        "planName": "Ascension Complete Via Christi Reward II (HMO)",
+        "organizationName": "Ascension Complete",
+        "state_count": 1,
+        "row_count": 6
+      },
+      {
+        "planId": "H1352-3",
+        "planName": "Blue KC Spira Care (HMO)",
+        "organizationName": "Blue Medicare Advantage",
+        "state_count": 2,
+        "row_count": 3
+      },
+      {
+        "planId": "H1352-4",
+        "planName": "Blue KC Secure (HMO)",
+        "organizationName": "Blue Medicare Advantage",
+        "state_count": 2,
+        "row_count": 9
+      },
+      {
+        "planId": "H5262-18",
+        "planName": "UW Health IL Quartz Med Advantage Value D(w/Rx) (HMO)",
+        "organizationName": "Quartz Medicare Advantage",
+        "state_count": 1,
+        "row_count": 7
+      },
+      {
+        "planId": "H5262-19",
+        "planName": "UW Health IL Quartz Med Advantage Core D (w/Rx) (HMO)",
+        "organizationName": "Quartz Medicare Advantage",
+        "state_count": 1,
+        "row_count": 7
+      },
+      {
+        "planId": "H5262-26",
+        "planName": "UW Health IL Quartz Med Advantage Elite D(w/Rx) (HMO)",
+        "organizationName": "Quartz Medicare Advantage",
+        "state_count": 1,
+        "row_count": 7
+      },
+      {
+        "planId": "H1799-2",
+        "planName": "Passport Medicare Choice Care (HMO)",
+        "organizationName": "Passport Advantage",
+        "state_count": 1,
+        "row_count": 75
+      },
+      {
+        "planId": "H7728-9",
+        "planName": "Anthem MediBlue Access Plus (PPO)",
+        "organizationName": "Anthem Blue Cross and Blue Shield",
+        "state_count": 1,
+        "row_count": 120
+      },
+      {
+        "planId": "H6723-5",
+        "planName": "MedMutual Advantage Secure (HMO)",
+        "organizationName": "Medical Mutual of Ohio",
+        "state_count": 1,
+        "row_count": 44
+      },
+      {
+        "planId": "H0724-6",
+        "planName": "Wellcare Assist Complement (HMO)",
+        "organizationName": "Wellcare by Allwell",
+        "state_count": 1,
+        "row_count": 87
+      },
+      {
+        "planId": "H0724-7",
+        "planName": "Wellcare Giveback Boost (HMO)",
+        "organizationName": "Wellcare by Allwell",
+        "state_count": 1,
+        "row_count": 87
+      },
+      {
+        "planId": "H3660-56",
+        "planName": "SummaCare Medicare Jade with Bene-FlexTM (HMO)",
+        "organizationName": "SummaCare Medicare Advantage Plans",
+        "state_count": 1,
+        "row_count": 28
+      },
+      {
+        "planId": "H0724-1",
+        "planName": "Wellcare No Premium Medicare (HMO)",
+        "organizationName": "Wellcare by Allwell",
+        "state_count": 1,
+        "row_count": 87
+      },
+      {
+        "planId": "H3653-24",
+        "planName": "Paramount Elite Essential (HMO)",
+        "organizationName": "Paramount Elite Medicare Plans",
+        "state_count": 1,
+        "row_count": 15
+      },
+      {
+        "planId": "H4198-8",
+        "planName": "Integris Health Partners+ Deluxe (HMO)",
+        "organizationName": "Integris Health Partners+ (HMO)",
+        "state_count": 1,
+        "row_count": 7
+      },
+      {
+        "planId": "H4198-9",
+        "planName": "Integris Health Partners+ Premier (HMO)",
+        "organizationName": "Integris Health Partners+ (HMO)",
+        "state_count": 1,
+        "row_count": 7
+      },
+      {
+        "planId": "H4801-13",
+        "planName": "Blue Cross Medicare Advantage Flex (PPO)",
+        "organizationName": "Blue Cross and Blue Shield of OK, TX",
+        "state_count": 1,
+        "row_count": 44
+      },
+      {
+        "planId": "H3979-5",
+        "planName": "Blue Cross Medicare Advantage Basic (HMO)",
+        "organizationName": "Blue Cross and Blue Shield of Oklahoma",
+        "state_count": 1,
+        "row_count": 12
+      },
+      {
+        "planId": "H2563-15",
+        "planName": "Optima Medicare Value (HMO)",
+        "organizationName": "Optima Medicare",
+        "state_count": 1,
+        "row_count": 18
+      },
+      {
+        "planId": "H8176-3",
+        "planName": "Molina Medicare Choice Care (HMO)",
+        "organizationName": "Molina Healthcare of South Carolina",
+        "state_count": 1,
+        "row_count": 45
+      },
+      {
+        "planId": "H9403-4",
+        "planName": "Clear Spring Health Select Plan (HMO)",
+        "organizationName": "Clear Spring Health",
+        "state_count": 1,
+        "row_count": 11
+      },
+      {
+        "planId": "H9828-3",
+        "planName": "ApexBold (HMO)",
+        "organizationName": "ApexHealth",
+        "state_count": 1,
+        "row_count": 3
+      },
+      {
+        "planId": "H7165-1",
+        "planName": "BlueCross Secure (HMO)",
+        "organizationName": "Blue Cross Blue Shield of South Carolina",
+        "state_count": 1,
+        "row_count": 1
+      },
+      {
+        "planId": "H7165-2",
+        "planName": "BlueCross Secure (HMO)",
+        "organizationName": "Blue Cross Blue Shield of South Carolina",
+        "state_count": 1,
+        "row_count": 1
+      },
+      {
+        "planId": "H4863-5",
+        "planName": "Farm Bureau Advantage (HMO)",
+        "organizationName": "Farm Bureau Health Plans",
+        "state_count": 1,
+        "row_count": 8
+      },
+      {
+        "planId": "H2853-1",
+        "planName": "Ascension Complete Saint Thomas Reward (HMO)",
+        "organizationName": "Ascension Complete",
+        "state_count": 1,
+        "row_count": 16
+      },
+      {
+        "planId": "H2853-2",
+        "planName": "Ascension Complete Saint Thomas Secure (HMO)",
+        "organizationName": "Ascension Complete",
+        "state_count": 1,
+        "row_count": 16
+      },
+      {
+        "planId": "H4863-1",
+        "planName": "Farm Bureau Advantage (HMO)",
+        "organizationName": "Farm Bureau Health Plans",
+        "state_count": 1,
+        "row_count": 24
+      },
+      {
+        "planId": "H5828-5",
+        "planName": "Amerivantage Classic Plus (HMO-POS)",
+        "organizationName": "AMERIGROUP Community Care",
+        "state_count": 1,
+        "row_count": 95
+      },
+      {
+        "planId": "H2593-22",
+        "planName": "Amerivantage Classic (HMO)",
+        "organizationName": "Amerigroup",
+        "state_count": 1,
+        "row_count": 93
+      },
+      {
+        "planId": "H4863-3",
+        "planName": "Farm Bureau Advantage (HMO)",
+        "organizationName": "Farm Bureau Health Plans",
+        "state_count": 1,
+        "row_count": 4
+      },
+      {
+        "planId": "H8849-8",
+        "planName": "Amerivantage Classic Plus (HMO)",
+        "organizationName": "Amerigroup",
+        "state_count": 1,
+        "row_count": 101
+      },
+      {
+        "planId": "H6678-1",
+        "planName": "Ascension Complete Seton Reward (HMO)",
+        "organizationName": "Ascension Complete",
+        "state_count": 1,
+        "row_count": 8
+      },
+      {
+        "planId": "H6678-2",
+        "planName": "Ascension Complete Seton Secure (HMO)",
+        "organizationName": "Ascension Complete",
+        "state_count": 1,
+        "row_count": 8
+      },
+      {
+        "planId": "H5294-12",
+        "planName": "Wellcare Giveback (HMO)",
+        "organizationName": "Wellcare by Allwell",
+        "state_count": 1,
+        "row_count": 21
+      },
+      {
+        "planId": "H6678-3",
+        "planName": "Ascension Complete Providence Reward (HMO)",
+        "organizationName": "Ascension Complete",
+        "state_count": 1,
+        "row_count": 5
+      },
+      {
+        "planId": "H6678-4",
+        "planName": "Ascension Complete Providence Secure (HMO)",
+        "organizationName": "Ascension Complete",
+        "state_count": 1,
+        "row_count": 5
+      },
+      {
+        "planId": "H9706-3",
+        "planName": "Blue Cross Medicare Advantage Value (HMO)",
+        "organizationName": "Blue Cross and Blue Shield of Texas",
+        "state_count": 1,
+        "row_count": 7
+      },
+      {
+        "planId": "H7678-4",
+        "planName": "Molina Medicare Choice Care (HMO)",
+        "organizationName": "Molina Healthcare of Texas, Inc.",
+        "state_count": 1,
+        "row_count": 84
+      },
+      {
+        "planId": "H2171-1",
+        "planName": "Care N' Care Classic (HMO)",
+        "organizationName": "Care N' Care Insurance Company",
+        "state_count": 1,
+        "row_count": 13
+      },
+      {
+        "planId": "H2171-3",
+        "planName": "Southwestern Health Select (HMO)",
+        "organizationName": "Care N' Care Insurance Company",
+        "state_count": 1,
+        "row_count": 5
+      },
+      {
+        "planId": "H6062-1",
+        "planName": "Texas LoneStar Gold (HMO)",
+        "organizationName": "GlobalHealth",
+        "state_count": 1,
+        "row_count": 4
+      },
+      {
+        "planId": "H6062-11",
+        "planName": "Texas LoneStar Gold Rewards (HMO)",
+        "organizationName": "GlobalHealth",
+        "state_count": 1,
+        "row_count": 4
+      },
+      {
+        "planId": "H2793-3",
+        "planName": "Imperial Insurance Company Traditional (HMO)",
+        "organizationName": "Imperial Insurance Companies, Inc",
+        "state_count": 1,
+        "row_count": 15
+      },
+      {
+        "planId": "H2793-7",
+        "planName": "Imperial Insurance Traditional Plus (HMO)",
+        "organizationName": "Imperial Insurance Companies, Inc",
+        "state_count": 1,
+        "row_count": 15
+      },
+      {
+        "planId": "H6062-3",
+        "planName": "Texas LoneStar Gold (HMO)",
+        "organizationName": "GlobalHealth",
+        "state_count": 1,
+        "row_count": 2
+      },
+      {
+        "planId": "H6328-2",
+        "planName": "Care N' Care Choice Plus (PPO)",
+        "organizationName": "Care N' Care Insurance Company",
+        "state_count": 1,
+        "row_count": 13
+      },
+      {
+        "planId": "H4943-1",
+        "planName": "Covenant Health Advantage Rx (HMO)",
+        "organizationName": "Baylor Scott & White Health Plan",
+        "state_count": 1,
+        "row_count": 8
+      },
+      {
+        "planId": "H7678-5",
+        "planName": "Molina Medicare Choice Care Select (HMO)",
+        "organizationName": "Molina Healthcare of Texas, Inc.",
+        "state_count": 1,
+        "row_count": 84
+      },
+      {
+        "planId": "H9706-6",
+        "planName": "Blue Cross Medicare Advantage Value (HMO)",
+        "organizationName": "Blue Cross and Blue Shield of Texas",
+        "state_count": 1,
+        "row_count": 3
+      },
+      {
+        "planId": "H5294-20",
+        "planName": "Wellcare No Premium (HMO)",
+        "organizationName": "Wellcare by Allwell",
+        "state_count": 1,
+        "row_count": 2
+      },
+      {
+        "planId": "H8293-1",
+        "planName": "Clear Spring Health Essential (HMO)",
+        "organizationName": "Clear Spring Health",
+        "state_count": 1,
+        "row_count": 65
+      },
+      {
+        "planId": "H2825-1",
+        "planName": "Mary Washington Medicare Advantage Complete (HMO)",
+        "organizationName": "Mary Washington Medicare Advantage",
+        "state_count": 1,
+        "row_count": 6
+      },
+      {
+        "planId": "H2825-2",
+        "planName": "Mary Washington Medicare Advantage Rewards (HMO)",
+        "organizationName": "Mary Washington Medicare Advantage",
+        "state_count": 1,
+        "row_count": 6
+      },
+      {
+        "planId": "H2563-9",
+        "planName": "Optima Medicare Value (HMO)",
+        "organizationName": "Optima Medicare",
+        "state_count": 1,
+        "row_count": 47
+      },
+      {
+        "planId": "H3447-28",
+        "planName": "Anthem MediBlue Extra (HMO)",
+        "organizationName": "Anthem HealthKeepers",
+        "state_count": 1,
+        "row_count": 18
+      },
+      {
+        "planId": "H3447-5",
+        "planName": "Anthem MediBlue Smart Fit (HMO)",
+        "organizationName": "Anthem HealthKeepers",
+        "state_count": 1,
+        "row_count": 9
+      },
+      {
+        "planId": "H3447-27",
+        "planName": "Anthem MediBlue Extra (HMO)",
+        "organizationName": "Anthem HealthKeepers",
+        "state_count": 1,
+        "row_count": 63
+      },
+      {
+        "planId": "H2825-3",
+        "planName": "Riverside Medicare Advantage Complete (HMO)",
+        "organizationName": "Mary Washington Medicare Advantage",
+        "state_count": 1,
+        "row_count": 7
+      },
+      {
+        "planId": "H4624-15",
+        "planName": "Zing Open Access IN (HMO-POS)",
+        "organizationName": "Zing Health",
+        "state_count": 1,
+        "row_count": 3
+      },
+      {
+        "planId": "H7220-12",
+        "planName": "IU Health Plans Medicare Kidney Care (HMO)",
+        "organizationName": "Indiana University Health Plans",
+        "state_count": 1,
+        "row_count": 9
+      },
+      {
+        "planId": "H6529-2",
+        "planName": "MyTruAdvantage Select Plus (HMO)",
+        "organizationName": "MyTruAdvantage",
+        "state_count": 1,
+        "row_count": 3
+      },
+      {
+        "planId": "H0154-16",
+        "planName": "VIVA Medicare Prime (HMO)",
+        "organizationName": "VIVA Medicare",
+        "state_count": 1,
+        "row_count": 28
+      },
+      {
+        "planId": "H4343-1",
+        "planName": "Ascension Complete St. Vincent's Reward (HMO)",
+        "organizationName": "Ascension Complete",
+        "state_count": 1,
+        "row_count": 6
+      },
+      {
+        "planId": "H4343-3",
+        "planName": "Ascension Complete St. Vincent's Secure (HMO)",
+        "organizationName": "Ascension Complete",
+        "state_count": 1,
+        "row_count": 6
+      },
+      {
+        "planId": "H0154-14",
+        "planName": "VIVA Medicare Me (HMO)",
+        "organizationName": "VIVA Medicare",
+        "state_count": 1,
+        "row_count": 12
+      },
+      {
+        "planId": "H2722-2",
+        "planName": "Vantage BASIC (HMO-POS)",
+        "organizationName": "Vantage Health Plan",
+        "state_count": 1,
+        "row_count": 59
+      },
+      {
+        "planId": "H2722-4",
+        "planName": "Vantage STANDARD (HMO-POS)",
+        "organizationName": "Vantage Health Plan",
+        "state_count": 1,
+        "row_count": 59
+      },
+      {
+        "planId": "H2722-5",
+        "planName": "Vantage Giveback (HMO-POS)",
+        "organizationName": "Vantage Health Plan",
+        "state_count": 1,
+        "row_count": 59
+      },
+      {
+        "planId": "H9630-13",
+        "planName": "Wellcare Low Premium (HMO)",
+        "organizationName": "Wellcare by Allwell",
+        "state_count": 1,
+        "row_count": 75
+      },
+      {
+        "planId": "H2610-19",
+        "planName": "Essence Advantage (HMO)",
+        "organizationName": "Essence Healthcare",
+        "state_count": 1,
+        "row_count": 6
+      },
+      {
+        "planId": "H9630-5",
+        "planName": "Wellcare Assist (HMO)",
+        "organizationName": "Wellcare by Allwell",
+        "state_count": 1,
+        "row_count": 75
+      },
+      {
+        "planId": "H2610-23",
+        "planName": "Essence Advantage (HMO)",
+        "organizationName": "Essence Healthcare",
+        "state_count": 1,
+        "row_count": 4
+      },
+      {
+        "planId": "H2610-20",
+        "planName": "Essence Advantage Plus (HMO)",
+        "organizationName": "Essence Healthcare",
+        "state_count": 1,
+        "row_count": 6
+      },
+      {
+        "planId": "R3332-1",
+        "planName": "BlueMedicare Choice (Regional PPO)",
+        "organizationName": "Florida Blue",
+        "state_count": 1,
+        "row_count": 67
+      },
+      {
+        "planId": "H8130-10",
+        "planName": "Molina Medicare Choice Care (HMO)",
+        "organizationName": "Molina Healthcare of Florida",
+        "state_count": 1,
+        "row_count": 24
+      },
+      {
+        "planId": "H8130-11",
+        "planName": "Molina Medicare Choice Care Select (HMO)",
+        "organizationName": "Molina Healthcare of Florida",
+        "state_count": 1,
+        "row_count": 24
+      },
+      {
+        "planId": "H4140-9",
+        "planName": "DrMax-B (HMO-POS)",
+        "organizationName": "Doctors HealthCare Plans, Inc.",
+        "state_count": 1,
+        "row_count": 1
+      },
+      {
+        "planId": "H4140-11",
+        "planName": "DrValue-B (HMO-POS)",
+        "organizationName": "Doctors HealthCare Plans, Inc.",
+        "state_count": 1,
+        "row_count": 1
+      },
+      {
+        "planId": "H4709-11",
+        "planName": "Bright Advantage Health Dollars Plan (HMO)",
+        "organizationName": "Bright Health",
+        "state_count": 1,
+        "row_count": 10
+      },
+      {
+        "planId": "H4709-32",
+        "planName": "Bright Advantage Part B Savings Plan (HMO)",
+        "organizationName": "Bright Health",
+        "state_count": 1,
+        "row_count": 2
+      },
+      {
+        "planId": "H8961-1",
+        "planName": "Oscar + Holy Cross + Memorial (HMO)",
+        "organizationName": "Oscar",
+        "state_count": 1,
+        "row_count": 1
+      },
+      {
+        "planId": "H8961-2",
+        "planName": "Oscar + Holy Cross + Memorial - with $1500 O-Card (HMO)",
+        "organizationName": "Oscar",
+        "state_count": 1,
+        "row_count": 1
+      },
+      {
+        "planId": "H5427-111",
+        "planName": "Freedom Platinum Plus Plan Rx (HMO)",
+        "organizationName": "Freedom Health, Inc.",
+        "state_count": 1,
+        "row_count": 3
+      },
+      {
+        "planId": "H1035-46",
+        "planName": "BlueMedicare Classic Plus (HMO)",
+        "organizationName": "Florida Blue HMO",
+        "state_count": 1,
+        "row_count": 1
+      },
+      {
+        "planId": "H1019-69",
+        "planName": "CareOne Plus (HMO)",
+        "organizationName": "CarePlus Health Plans, Inc.",
+        "state_count": 1,
+        "row_count": 3
+      },
+      {
+        "planId": "H8225-1",
+        "planName": "Ascension Complete Florida Reward (HMO)",
+        "organizationName": "Ascension Complete",
+        "state_count": 1,
+        "row_count": 8
+      },
+      {
+        "planId": "H8225-4",
+        "planName": "Ascension Complete Sacred Heart Secure (HMO)",
+        "organizationName": "Ascension Complete",
+        "state_count": 1,
+        "row_count": 3
+      },
+      {
+        "planId": "H8225-8",
+        "planName": "Ascension Complete Sacred Heart Access POS (HMO-POS)",
+        "organizationName": "Ascension Complete",
+        "state_count": 1,
+        "row_count": 3
+      },
+      {
+        "planId": "H5471-108",
+        "planName": "Simply Extra (HMO)",
+        "organizationName": "Simply Healthcare Plans, Inc.",
+        "state_count": 1,
+        "row_count": 4
+      },
+      {
+        "planId": "H1019-112",
+        "planName": "CareOne Platinum (HMO)",
+        "organizationName": "CarePlus Health Plans, Inc.",
+        "state_count": 1,
+        "row_count": 6
+      },
+      {
+        "planId": "H5427-98",
+        "planName": "Freedom Platinum Plan Rx (HMO)",
+        "organizationName": "Freedom Health, Inc.",
+        "state_count": 1,
+        "row_count": 3
+      },
+      {
+        "planId": "H9943-2",
+        "planName": "Alignment Health Platinum (HMO-POS)",
+        "organizationName": "Alignment Health Plan",
+        "state_count": 1,
+        "row_count": 2
+      },
+      {
+        "planId": "H5471-103",
+        "planName": "Simply Extra (HMO)",
+        "organizationName": "Simply Healthcare Plans, Inc.",
+        "state_count": 1,
+        "row_count": 1
+      },
+      {
+        "planId": "H4709-29",
+        "planName": "Bright Advantage Part B Savings Plan (HMO)",
+        "organizationName": "Bright Health",
+        "state_count": 1,
+        "row_count": 8
+      },
+      {
+        "planId": "H1016-30",
+        "planName": "AvMed Medicare Circle (HMO)",
+        "organizationName": "AvMed Medicare",
+        "state_count": 1,
+        "row_count": 3
+      },
+      {
+        "planId": "H5471-107",
+        "planName": "Simply Extra (HMO)",
+        "organizationName": "Simply Healthcare Plans, Inc.",
+        "state_count": 1,
+        "row_count": 3
+      },
+      {
+        "planId": "H1035-38",
+        "planName": "BlueMedicare Saver (HMO)",
+        "organizationName": "Florida Blue HMO",
+        "state_count": 1,
+        "row_count": 2
+      },
+      {
+        "planId": "H1016-29",
+        "planName": "AvMed Medicare Circle (HMO)",
+        "organizationName": "AvMed Medicare",
+        "state_count": 1,
+        "row_count": 1
+      },
+      {
+        "planId": "H5471-83",
+        "planName": "Simply More (HMO)",
+        "organizationName": "Simply Healthcare Plans, Inc.",
+        "state_count": 1,
+        "row_count": 1
+      },
+      {
+        "planId": "H5471-105",
+        "planName": "Simply Extra (HMO)",
+        "organizationName": "Simply Healthcare Plans, Inc.",
+        "state_count": 1,
+        "row_count": 1
+      },
+      {
+        "planId": "H5945-8",
+        "planName": "Prominence Plus (HMO)",
+        "organizationName": "Prominence Health Plan",
+        "state_count": 1,
+        "row_count": 1
+      },
+      {
+        "planId": "H5427-92",
+        "planName": "Freedom Platinum Plan Rx (HMO)",
+        "organizationName": "Freedom Health, Inc.",
+        "state_count": 1,
+        "row_count": 1
+      },
+      {
+        "planId": "H5471-106",
+        "planName": "Simply Extra (HMO)",
+        "organizationName": "Simply Healthcare Plans, Inc.",
+        "state_count": 1,
+        "row_count": 1
+      },
+      {
+        "planId": "H1035-16",
+        "planName": "FHCP Medicare Flagler Advantage (HMO)",
+        "organizationName": "Florida Blue HMO",
+        "state_count": 1,
+        "row_count": 1
+      },
+      {
+        "planId": "H1019-98",
+        "planName": "CareOne Plus (HMO)",
+        "organizationName": "CarePlus Health Plans, Inc.",
+        "state_count": 1,
+        "row_count": 2
+      },
+      {
+        "planId": "H5372-1",
+        "planName": "Essence Advantage (HMO-POS)",
+        "organizationName": "Essence Healthcare",
+        "state_count": 1,
+        "row_count": 10
+      },
+      {
+        "planId": "H5422-17",
+        "planName": "Anthem MediBlue + Kroger (HMO)",
+        "organizationName": "Anthem Blue Cross and Blue Shield",
+        "state_count": 1,
+        "row_count": 17
+      },
+      {
+        "planId": "H1170-10",
+        "planName": "Kaiser Permanente Senior Advantage Enhanced 2 (HMO)",
+        "organizationName": "Kaiser Permanente",
+        "state_count": 1,
+        "row_count": 6
+      },
+      {
+        "planId": "H1748-1",
+        "planName": "Sonder Complete Health Medicare Advantage (HMO)",
+        "organizationName": "Sonder Health Plan, Inc.",
+        "state_count": 1,
+        "row_count": 12
+      },
+      {
+        "planId": "H3655-34",
+        "planName": "Anthem MediBlue Plus (HMO)",
+        "organizationName": "Anthem Blue Cross and Blue Shield",
+        "state_count": 1,
+        "row_count": 22
+      },
+      {
+        "planId": "H3653-28",
+        "planName": "MAP Medicare (HMO-POS)",
+        "organizationName": "Paramount Elite Medicare Plans",
+        "state_count": 1,
+        "row_count": 20
+      },
+      {
+        "planId": "H7728-6",
+        "planName": "Anthem MediBlue Access Basic (PPO)",
+        "organizationName": "Anthem Blue Cross and Blue Shield",
+        "state_count": 1,
+        "row_count": 131
+      },
+      {
+        "planId": "H5117-3",
+        "planName": "Wellcare No Premium Medicare (HMO)",
+        "organizationName": "Wellcare by Allwell",
+        "state_count": 1,
+        "row_count": 14
+      },
+      {
+        "planId": "H3655-42",
+        "planName": "Anthem MediBlue Preferred Plus (HMO)",
+        "organizationName": "Anthem Blue Cross and Blue Shield",
+        "state_count": 1,
+        "row_count": 37
+      },
+      {
+        "planId": "H3655-38",
+        "planName": "Anthem MediBlue Prime Select (HMO)",
+        "organizationName": "Anthem Blue Cross and Blue Shield",
+        "state_count": 1,
+        "row_count": 7
+      },
+      {
+        "planId": "H7163-2",
+        "planName": "Vantage BASIC (HMO-POS)",
+        "organizationName": "Vantage Health Plan",
+        "state_count": 1,
+        "row_count": 56
+      },
+      {
+        "planId": "H7163-4",
+        "planName": "Vantage STANDARD (HMO-POS)",
+        "organizationName": "Vantage Health Plan",
+        "state_count": 1,
+        "row_count": 56
+      },
+      {
+        "planId": "H9811-1",
+        "planName": "Wellcare No Premium Medicare (HMO)",
+        "organizationName": "Wellcare by Allwell",
+        "state_count": 1,
+        "row_count": 7
+      },
+      {
+        "planId": "H9811-8",
+        "planName": "Wellcare Giveback Boost (HMO)",
+        "organizationName": "Wellcare by Allwell",
+        "state_count": 1,
+        "row_count": 4
+      },
+      {
+        "planId": "H7163-5",
+        "planName": "Vantage Giveback (HMO-POS)",
+        "organizationName": "Vantage Health Plan",
+        "state_count": 1,
+        "row_count": 56
+      },
+      {
+        "planId": "H2563-5",
+        "planName": "Optima Medicare Prime (HMO)",
+        "organizationName": "Optima Medicare",
+        "state_count": 1,
+        "row_count": 20
+      },
+      {
+        "planId": "H2563-19",
+        "planName": "Optima Medicare Savings (HMO)",
+        "organizationName": "Optima Medicare",
+        "state_count": 1,
+        "row_count": 20
+      },
+      {
+        "planId": "H2563-17",
+        "planName": "Optima Medicare Value (HMO)",
+        "organizationName": "Optima Medicare",
+        "state_count": 1,
+        "row_count": 20
+      },
+      {
+        "planId": "H3653-25",
+        "planName": "PARAMOUNT ELITE NE OHIO ENHANCED (HMO)",
+        "organizationName": "Paramount Elite Medicare Plans",
+        "state_count": 1,
+        "row_count": 5
+      },
+      {
+        "planId": "H8229-1",
+        "planName": "Essence Advantage Choice (PPO)",
+        "organizationName": "Essence Healthcare",
+        "state_count": 1,
+        "row_count": 10
+      },
+      {
+        "planId": "H7728-5",
+        "planName": "Anthem MediBlue Access (PPO)",
+        "organizationName": "Anthem Blue Cross and Blue Shield",
+        "state_count": 1,
+        "row_count": 131
+      },
+      {
+        "planId": "H3416-1",
+        "planName": "HealthPartners UnityPoint Health Align (PPO)",
+        "organizationName": "HealthPartners UnityPoint Health",
+        "state_count": 1,
+        "row_count": 8
+      },
+      {
+        "planId": "H3416-2",
+        "planName": "HealthPartners UnityPoint Health Symmetry (PPO)",
+        "organizationName": "HealthPartners UnityPoint Health",
+        "state_count": 1,
+        "row_count": 8
+      },
+      {
+        "planId": "H7728-13",
+        "planName": "Anthem MediBlue Access (PPO)",
+        "organizationName": "Anthem Blue Cross and Blue Shield",
+        "state_count": 1,
+        "row_count": 98
+      },
+      {
+        "planId": "H1774-1",
+        "planName": "Ascension Complete St. Vincent Access Plus (PPO)",
+        "organizationName": "Ascension Complete",
+        "state_count": 1,
+        "row_count": 19
+      },
+      {
+        "planId": "H1774-2",
+        "planName": "Ascension Complete St. Vincent Access (PPO)",
+        "organizationName": "Ascension Complete",
+        "state_count": 1,
+        "row_count": 19
+      },
+      {
+        "planId": "H4909-24",
+        "planName": "Anthem MediBlue Access Preferred (PPO)",
+        "organizationName": "Anthem Blue Cross and Blue Shield",
+        "state_count": 1,
+        "row_count": 114
+      },
+      {
+        "planId": "H6502-4",
+        "planName": "Blue KC Simply Blue (PPO)",
+        "organizationName": "Blue Medicare Advantage",
+        "state_count": 2,
+        "row_count": 16
+      },
+      {
+        "planId": "H6502-5",
+        "planName": "Blue KC Giveback (PPO)",
+        "organizationName": "Blue Medicare Advantage",
+        "state_count": 2,
+        "row_count": 16
+      },
+      {
+        "planId": "H6830-1",
+        "planName": "Ascension Complete Via Christi Access Plus (PPO)",
+        "organizationName": "Ascension Complete",
+        "state_count": 1,
+        "row_count": 6
+      },
+      {
+        "planId": "H6830-2",
+        "planName": "Ascension Complete Via Christi Access (PPO)",
+        "organizationName": "Ascension Complete",
+        "state_count": 1,
+        "row_count": 6
+      },
+      {
+        "planId": "H6502-2",
+        "planName": "Blue KC Essential (PPO)",
+        "organizationName": "Blue Medicare Advantage",
+        "state_count": 2,
+        "row_count": 16
+      },
+      {
+        "planId": "H4620-1",
+        "planName": "Essence Advantage Choice (PPO)",
+        "organizationName": "Essence Healthcare",
+        "state_count": 1,
+        "row_count": 4
+      },
+      {
+        "planId": "H8604-10",
+        "planName": "The Health Plan SecureChoice - Option II (PPO)",
+        "organizationName": "The Health Plan",
+        "state_count": 1,
+        "row_count": 42
+      },
+      {
+        "planId": "H4036-23",
+        "planName": "Anthem MediBlue + Kroger Access (PPO)",
+        "organizationName": "Anthem Blue Cross and Blue Shield",
+        "state_count": 1,
+        "row_count": 6
+      },
+      {
+        "planId": "H4801-7",
+        "planName": "Blue Cross Medicare Advantage Classic (PPO)",
+        "organizationName": "Blue Cross and Blue Shield of OK, TX",
+        "state_count": 1,
+        "row_count": 19
+      },
+      {
+        "planId": "H4801-21",
+        "planName": "Blue Cross Medicare Advantage Dental Premier (PPO)",
+        "organizationName": "Blue Cross and Blue Shield of OK, TX",
+        "state_count": 1,
+        "row_count": 44
+      },
+      {
+        "planId": "H4801-8",
+        "planName": "Blue Cross Medicare Advantage Classic (PPO)",
+        "organizationName": "Blue Cross and Blue Shield of OK, TX",
+        "state_count": 1,
+        "row_count": 25
+      },
+      {
+        "planId": "H4277-1",
+        "planName": "Options Gold (PPO)",
+        "organizationName": "CommunityCare Options (PPO)",
+        "state_count": 1,
+        "row_count": 1
+      },
+      {
+        "planId": "H5141-37",
+        "planName": "Clover Health LiveHealthy Value (PPO)",
+        "organizationName": "Clover Health",
+        "state_count": 1,
+        "row_count": 19
+      },
+      {
+        "planId": "H2334-5",
+        "planName": "Clear Spring Health Gold Plus (PPO)",
+        "organizationName": "Clear Spring Health",
+        "state_count": 1,
+        "row_count": 11
+      },
+      {
+        "planId": "H8343-10",
+        "planName": "Amerivantage Choice (PPO)",
+        "organizationName": "Amerigroup Insurance Company",
+        "state_count": 1,
+        "row_count": 63
+      },
+      {
+        "planId": "H7917-36",
+        "planName": "BlueAdvantage Emerald (PPO)",
+        "organizationName": "BlueCross BlueShield of Tennessee",
+        "state_count": 1,
+        "row_count": 41
+      },
+      {
+        "planId": "H7917-35",
+        "planName": "BlueAdvantage Emerald (PPO)",
+        "organizationName": "BlueCross BlueShield of Tennessee",
+        "state_count": 1,
+        "row_count": 25
+      },
+      {
+        "planId": "H5141-33",
+        "planName": "Clover Health Choice (PPO)",
+        "organizationName": "Clover Health",
+        "state_count": 1,
+        "row_count": 8
+      },
+      {
+        "planId": "H8121-2",
+        "planName": "Ascension Complete Saint Thomas Access (PPO)",
+        "organizationName": "Ascension Complete",
+        "state_count": 1,
+        "row_count": 16
+      },
+      {
+        "planId": "H8121-1",
+        "planName": "Ascension Complete Saint Thomas Access Plus (PPO)",
+        "organizationName": "Ascension Complete",
+        "state_count": 1,
+        "row_count": 16
+      },
+      {
+        "planId": "H7917-34",
+        "planName": "BlueAdvantage Emerald (PPO)",
+        "organizationName": "BlueCross BlueShield of Tennessee",
+        "state_count": 1,
+        "row_count": 21
+      },
+      {
+        "planId": "H7917-37",
+        "planName": "BlueAdvantage Emerald (PPO)",
+        "organizationName": "BlueCross BlueShield of Tennessee",
+        "state_count": 1,
+        "row_count": 8
+      },
+      {
+        "planId": "H8343-2",
+        "planName": "Amerivantage Choice (PPO)",
+        "organizationName": "Amerigroup Insurance Company",
+        "state_count": 1,
+        "row_count": 19
+      },
+      {
+        "planId": "H4801-12",
+        "planName": "Blue Cross Medicare Advantage Classic (PPO)",
+        "organizationName": "Blue Cross and Blue Shield of OK, TX",
+        "state_count": 1,
+        "row_count": 26
+      },
+      {
+        "planId": "H4801-16",
+        "planName": "Blue Cross Medicare Advantage Dental Premier (PPO)",
+        "organizationName": "Blue Cross and Blue Shield of OK, TX",
+        "state_count": 1,
+        "row_count": 114
+      },
+      {
+        "planId": "H4801-14",
+        "planName": "Blue Cross Medicare Advantage Flex (PPO)",
+        "organizationName": "Blue Cross and Blue Shield of OK, TX",
+        "state_count": 1,
+        "row_count": 114
+      },
+      {
+        "planId": "H4801-18",
+        "planName": "Blue Cross Medicare Advantage Health Choice (PPO)",
+        "organizationName": "Blue Cross and Blue Shield of OK, TX",
+        "state_count": 1,
+        "row_count": 114
+      },
+      {
+        "planId": "H8343-1",
+        "planName": "Amerivantage Choice (PPO)",
+        "organizationName": "Amerigroup Insurance Company",
+        "state_count": 1,
+        "row_count": 8
+      },
+      {
+        "planId": "H4801-4",
+        "planName": "Blue Cross Medicare Advantage Classic (PPO)",
+        "organizationName": "Blue Cross and Blue Shield of OK, TX",
+        "state_count": 1,
+        "row_count": 8
+      },
+      {
+        "planId": "H4801-9",
+        "planName": "Blue Cross Medicare Advantage Classic (PPO)",
+        "organizationName": "Blue Cross and Blue Shield of OK, TX",
+        "state_count": 1,
+        "row_count": 11
+      },
+      {
+        "planId": "H4801-10",
+        "planName": "Blue Cross Medicare Advantage Classic (PPO)",
+        "organizationName": "Blue Cross and Blue Shield of OK, TX",
+        "state_count": 1,
+        "row_count": 10
+      },
+      {
+        "planId": "H9357-2",
+        "planName": "Ascension Complete Seton Access (PPO)",
+        "organizationName": "Ascension Complete",
+        "state_count": 1,
+        "row_count": 8
+      },
+      {
+        "planId": "H9357-1",
+        "planName": "Ascension Complete Seton Access Plus (PPO)",
+        "organizationName": "Ascension Complete",
+        "state_count": 1,
+        "row_count": 8
+      },
+      {
+        "planId": "H4801-6",
+        "planName": "Blue Cross Medicare Advantage Classic (PPO)",
+        "organizationName": "Blue Cross and Blue Shield of OK, TX",
+        "state_count": 1,
+        "row_count": 18
+      },
+      {
+        "planId": "H9357-4",
+        "planName": "Ascension Complete Providence Access (PPO)",
+        "organizationName": "Ascension Complete",
+        "state_count": 1,
+        "row_count": 5
+      },
+      {
+        "planId": "H9357-3",
+        "planName": "Ascension Complete Providence Access Plus (PPO)",
+        "organizationName": "Ascension Complete",
+        "state_count": 1,
+        "row_count": 5
+      },
+      {
+        "planId": "H4801-11",
+        "planName": "Blue Cross Medicare Advantage Classic (PPO)",
+        "organizationName": "Blue Cross and Blue Shield of OK, TX",
+        "state_count": 1,
+        "row_count": 20
+      },
+      {
+        "planId": "H8343-3",
+        "planName": "Amerivantage Choice (PPO)",
+        "organizationName": "Amerigroup Insurance Company",
+        "state_count": 1,
+        "row_count": 1
+      },
+      {
+        "planId": "H1666-10",
+        "planName": "Blue Cross Medicare Advantage Choice Plus (PPO)",
+        "organizationName": "Blue Cross and Blue Shield of NM, TX",
+        "state_count": 1,
+        "row_count": 4
+      },
+      {
+        "planId": "H4801-1",
+        "planName": "Blue Cross Medicare Advantage Classic (PPO)",
+        "organizationName": "Blue Cross and Blue Shield of OK, TX",
+        "state_count": 1,
+        "row_count": 8
+      },
+      {
+        "planId": "H4801-15",
+        "planName": "Blue Cross Medicare Advantage Saver Plus (PPO)",
+        "organizationName": "Blue Cross and Blue Shield of OK, TX",
+        "state_count": 1,
+        "row_count": 4
+      },
+      {
+        "planId": "H6328-3",
+        "planName": "Care N' Care Choice (PPO)",
+        "organizationName": "Care N' Care Insurance Company",
+        "state_count": 1,
+        "row_count": 13
+      },
+      {
+        "planId": "H6328-1",
+        "planName": "Care N' Care Choice Premium (PPO)",
+        "organizationName": "Care N' Care Insurance Company",
+        "state_count": 1,
+        "row_count": 13
+      },
+      {
+        "planId": "H9614-1",
+        "planName": "Alignment Health AVA (PPO)",
+        "organizationName": "Alignment Health Plan",
+        "state_count": 1,
+        "row_count": 2
+      },
+      {
+        "planId": "H4801-5",
+        "planName": "Blue Cross Medicare Advantage Classic (PPO)",
+        "organizationName": "Blue Cross and Blue Shield of OK, TX",
+        "state_count": 1,
+        "row_count": 2
+      },
+      {
+        "planId": "H4801-2",
+        "planName": "Blue Cross Medicare Advantage Classic (PPO)",
+        "organizationName": "Blue Cross and Blue Shield of OK, TX",
+        "state_count": 1,
+        "row_count": 6
+      },
+      {
+        "planId": "H4801-17",
+        "planName": "Blue Cross Medicare Advantage Classic (PPO)",
+        "organizationName": "Blue Cross and Blue Shield of OK, TX",
+        "state_count": 1,
+        "row_count": 3
+      },
+      {
+        "planId": "H4801-3",
+        "planName": "Blue Cross Medicare Advantage Classic (PPO)",
+        "organizationName": "Blue Cross and Blue Shield of OK, TX",
+        "state_count": 1,
+        "row_count": 2
+      },
+      {
+        "planId": "H8014-2",
+        "planName": "Clear Spring Health Essential (PPO)",
+        "organizationName": "Clear Spring Health",
+        "state_count": 1,
+        "row_count": 7
+      },
+      {
+        "planId": "H7556-1",
+        "planName": "Ascension Complete St. Vincent's Access Plus (PPO)",
+        "organizationName": "Ascension Complete",
+        "state_count": 1,
+        "row_count": 6
+      },
+      {
+        "planId": "H7556-2",
+        "planName": "Ascension Complete St. Vincent's Access (PPO)",
+        "organizationName": "Ascension Complete",
+        "state_count": 1,
+        "row_count": 6
+      },
+      {
+        "planId": "H3554-2",
+        "planName": "BlueMedicare Saver Choice (PPO)",
+        "organizationName": "Arkansas Blue Medicare",
+        "state_count": 1,
+        "row_count": 67
+      },
+      {
+        "planId": "H3554-4",
+        "planName": "BlueMedicare Value Choice (PPO)",
+        "organizationName": "Arkansas Blue Medicare",
+        "state_count": 1,
+        "row_count": 67
+      },
+      {
+        "planId": "H3554-7",
+        "planName": "BlueMedicare Premier Choice (PPO)",
+        "organizationName": "Arkansas Blue Medicare",
+        "state_count": 1,
+        "row_count": 67
+      },
+      {
+        "planId": "H5434-39",
+        "planName": "BlueMedicare Value (PPO)",
+        "organizationName": "Florida Blue",
+        "state_count": 1,
+        "row_count": 2
+      },
+      {
+        "planId": "H5434-33",
+        "planName": "BlueMedicare Value (PPO)",
+        "organizationName": "Florida Blue",
+        "state_count": 1,
+        "row_count": 4
+      },
+      {
+        "planId": "H9469-2",
+        "planName": "Simply Freedom (PPO)",
+        "organizationName": "Simply Healthcare",
+        "state_count": 1,
+        "row_count": 4
+      },
+      {
+        "planId": "H3281-10",
+        "planName": "Bright Advantage Part B Savings Plan (PPO)",
+        "organizationName": "Bright Health",
+        "state_count": 1,
+        "row_count": 10
+      },
+      {
+        "planId": "H9469-1",
+        "planName": "Simply Freedom (PPO)",
+        "organizationName": "Simply Healthcare",
+        "state_count": 1,
+        "row_count": 3
+      },
+      {
+        "planId": "H9469-4",
+        "planName": "Simply Freedom Extra (PPO)",
+        "organizationName": "Simply Healthcare",
+        "state_count": 1,
+        "row_count": 5
+      },
+      {
+        "planId": "H9469-7",
+        "planName": "Simply Freedom (PPO)",
+        "organizationName": "Simply Healthcare",
+        "state_count": 1,
+        "row_count": 5
+      },
+      {
+        "planId": "H9469-5",
+        "planName": "Simply Freedom Extra (PPO)",
+        "organizationName": "Simply Healthcare",
+        "state_count": 1,
+        "row_count": 6
+      },
+      {
+        "planId": "H9469-8",
+        "planName": "Simply Freedom (PPO)",
+        "organizationName": "Simply Healthcare",
+        "state_count": 1,
+        "row_count": 6
+      },
+      {
+        "planId": "H9469-3",
+        "planName": "Simply Freedom (PPO)",
+        "organizationName": "Simply Healthcare",
+        "state_count": 1,
+        "row_count": 5
+      },
+      {
+        "planId": "H9469-9",
+        "planName": "Simply Freedom (PPO)",
+        "organizationName": "Simply Healthcare",
+        "state_count": 1,
+        "row_count": 3
+      },
+      {
+        "planId": "H9469-6",
+        "planName": "Simply Freedom (PPO)",
+        "organizationName": "Simply Healthcare",
+        "state_count": 1,
+        "row_count": 4
+      },
+      {
+        "planId": "H7728-12",
+        "planName": "Anthem MediBlue + Kroger Access (PPO)",
+        "organizationName": "Anthem Blue Cross and Blue Shield",
+        "state_count": 1,
+        "row_count": 17
+      },
+      {
+        "planId": "H4909-15",
+        "planName": "Anthem MediBlue Access (PPO)",
+        "organizationName": "Anthem Blue Cross and Blue Shield",
+        "state_count": 1,
+        "row_count": 62
+      },
+      {
+        "planId": "H5106-31",
+        "planName": "Freedom Blue PPO Merit (PPO)",
+        "organizationName": "Highmark Inc.",
+        "state_count": 1,
+        "row_count": 45
+      },
+      {
+        "planId": "H5106-32",
+        "planName": "Freedom Blue PPO Prestige (PPO)",
+        "organizationName": "Highmark Inc.",
+        "state_count": 1,
+        "row_count": 45
+      },
+      {
+        "planId": "H5106-13",
+        "planName": "Freedom Blue PPO Standard (PPO)",
+        "organizationName": "Highmark Inc.",
+        "state_count": 1,
+        "row_count": 33
+      },
+      {
+        "planId": "H7556-3",
+        "planName": "Ascension Complete Providence Access Plus (PPO)",
+        "organizationName": "Ascension Complete",
+        "state_count": 1,
+        "row_count": 1
+      },
+      {
+        "planId": "H7556-4",
+        "planName": "Ascension Complete Providence Access (PPO)",
+        "organizationName": "Ascension Complete",
+        "state_count": 1,
+        "row_count": 1
+      },
+      {
+        "planId": "H2715-1",
+        "planName": "Molina Medicare Choice Care (HMO)",
+        "organizationName": "Molina Healthcare of Illinois",
+        "state_count": 1,
+        "row_count": 7
+      },
+      {
+        "planId": "H6453-6",
+        "planName": "Blue Advantage (HMO)",
+        "organizationName": "Blue Cross and Blue Shield of Louisiana HMO",
+        "state_count": 1,
+        "row_count": 16
+      },
+      {
+        "planId": "H1463-39",
+        "planName": "Simplete Richland 1 (HMO)",
+        "organizationName": "Health Alliance Medicare",
+        "state_count": 2,
+        "row_count": 11
+      },
+      {
+        "planId": "H4624-20",
+        "planName": "Zing Premium Giveback IN (HMO)",
+        "organizationName": "Zing Health",
+        "state_count": 1,
+        "row_count": 3
+      },
+      {
+        "planId": "H9763-3",
+        "planName": "Ochsner Health Plan Premier (HMO)",
+        "organizationName": "Ochsner Health Plan",
+        "state_count": 1,
+        "row_count": 12
+      },
+      {
+        "planId": "H4624-17",
+        "planName": "Zing Signature Care IN (HMO-POS)",
+        "organizationName": "Zing Health",
+        "state_count": 1,
+        "row_count": 1
+      },
+      {
+        "planId": "H3189-1",
+        "planName": "Essence Advantage (HMO)",
+        "organizationName": "Essence Healthcare",
+        "state_count": 1,
+        "row_count": 4
+      },
+      {
+        "planId": "H3189-2",
+        "planName": "Essence Advantage Plus (HMO)",
+        "organizationName": "Essence Healthcare",
+        "state_count": 1,
+        "row_count": 4
+      },
+      {
+        "planId": "H3653-27",
+        "planName": "PARAMOUNT ELITE NE OHIO PRIME (HMO)",
+        "organizationName": "Paramount Elite Medicare Plans",
+        "state_count": 1,
+        "row_count": 5
+      },
+      {
+        "planId": "H3653-26",
+        "planName": "PARAMOUNT ELITE NE OHIO STANDARD (HMO)",
+        "organizationName": "Paramount Elite Medicare Plans",
+        "state_count": 1,
+        "row_count": 5
+      },
+      {
+        "planId": "H3907-29",
+        "planName": "UPMC for Life HMO Rx (HMO)",
+        "organizationName": "UPMC for Life",
+        "state_count": 1,
+        "row_count": 2
+      },
+      {
+        "planId": "H3907-49",
+        "planName": "UPMC for Life HMO Rx Choice (HMO)",
+        "organizationName": "UPMC for Life",
+        "state_count": 1,
+        "row_count": 2
+      },
+      {
+        "planId": "H2563-16",
+        "planName": "Optima Medicare Value (HMO)",
+        "organizationName": "Optima Medicare",
+        "state_count": 1,
+        "row_count": 28
+      },
+      {
+        "planId": "H8902-1",
+        "planName": "SCAN Classic (HMO)",
+        "organizationName": "SCAN Health Plan",
+        "state_count": 1,
+        "row_count": 1
+      },
+      {
+        "planId": "H8902-4",
+        "planName": "SCAN Venture (HMO)",
+        "organizationName": "SCAN Health Plan",
+        "state_count": 1,
+        "row_count": 1
+      },
+      {
+        "planId": "H0332-8",
+        "planName": "KelseyCare Advantage Gold Community (HMO-POS)",
+        "organizationName": "KelseyCare Advantage",
+        "state_count": 1,
+        "row_count": 8
+      },
+      {
+        "planId": "H8554-4",
+        "planName": "Blue Cross Medicare Advantage Saver (HMO)",
+        "organizationName": "Blue Cross and Blue Shield of OK, TX",
+        "state_count": 1,
+        "row_count": 8
+      },
+      {
+        "planId": "H0332-2",
+        "planName": "KelseyCare Advantage Gold (HMO)",
+        "organizationName": "KelseyCare Advantage",
+        "state_count": 1,
+        "row_count": 5
+      },
+      {
+        "planId": "H8902-5",
+        "planName": "SCAN Classic (HMO)",
+        "organizationName": "SCAN Health Plan",
+        "state_count": 1,
+        "row_count": 1
+      },
+      {
+        "planId": "H8902-8",
+        "planName": "SCAN Venture (HMO)",
+        "organizationName": "SCAN Health Plan",
+        "state_count": 1,
+        "row_count": 1
+      },
+      {
+        "planId": "H1277-5",
+        "planName": "Align Freedom (HMO-POS)",
+        "organizationName": "Align Senior Care",
+        "state_count": 1,
+        "row_count": 1
+      },
+      {
+        "planId": "H2563-8",
+        "planName": "Optima Medicare Value (HMO)",
+        "organizationName": "Optima Medicare",
+        "state_count": 1,
+        "row_count": 18
+      },
+      {
+        "planId": "H8225-3",
+        "planName": "Ascension Complete St. Vincent's Secure (HMO)",
+        "organizationName": "Ascension Complete",
+        "state_count": 1,
+        "row_count": 5
+      },
+      {
+        "planId": "H8225-7",
+        "planName": "Ascension Complete St. Vincent's Access POS (HMO-POS)",
+        "organizationName": "Ascension Complete",
+        "state_count": 1,
+        "row_count": 5
+      },
+      {
+        "planId": "H8225-9",
+        "planName": "Ascension Complete Florida Reward II (HMO)",
+        "organizationName": "Ascension Complete",
+        "state_count": 1,
+        "row_count": 8
+      },
+      {
+        "planId": "H1035-47",
+        "planName": "BlueMedicare Classic Plus (HMO)",
+        "organizationName": "Florida Blue HMO",
+        "state_count": 1,
+        "row_count": 5
+      },
+      {
+        "planId": "H1019-110",
+        "planName": "CareOne Platinum (HMO-POS)",
+        "organizationName": "CarePlus Health Plans, Inc.",
+        "state_count": 1,
+        "row_count": 2
+      },
+      {
+        "planId": "H1035-11",
+        "planName": "FHCP Medicare Premier Plus (HMO)",
+        "organizationName": "Florida Blue HMO",
+        "state_count": 1,
+        "row_count": 2
+      },
+      {
+        "planId": "H1035-14",
+        "planName": "FHCP Medicare Rx Savings (HMO)",
+        "organizationName": "Florida Blue HMO",
+        "state_count": 1,
+        "row_count": 4
+      },
+      {
+        "planId": "H1016-21",
+        "planName": "AvMed Medicare Choice (HMO)",
+        "organizationName": "AvMed Medicare",
+        "state_count": 1,
+        "row_count": 1
+      },
+      {
+        "planId": "H1016-24",
+        "planName": "AvMed Medicare Circle (HMO)",
+        "organizationName": "AvMed Medicare",
+        "state_count": 1,
+        "row_count": 1
+      },
+      {
+        "planId": "H1016-26",
+        "planName": "AvMed Medicare Access (HMO-POS)",
+        "organizationName": "AvMed Medicare",
+        "state_count": 1,
+        "row_count": 1
+      },
+      {
+        "planId": "H1016-28",
+        "planName": "AvMed Medicare Premium Saver (HMO)",
+        "organizationName": "AvMed Medicare",
+        "state_count": 1,
+        "row_count": 1
+      },
+      {
+        "planId": "H1035-35",
+        "planName": "BlueMedicare Saver (HMO)",
+        "organizationName": "Florida Blue HMO",
+        "state_count": 1,
+        "row_count": 2
+      },
+      {
+        "planId": "H5471-104",
+        "planName": "Simply Extra (HMO)",
+        "organizationName": "Simply Healthcare Plans, Inc.",
+        "state_count": 1,
+        "row_count": 1
+      },
+      {
+        "planId": "H8961-3",
+        "planName": "Oscar + Holy Cross + Memorial - with Refund Bonus (HMO)",
+        "organizationName": "Oscar",
+        "state_count": 1,
+        "row_count": 1
+      },
+      {
+        "planId": "H9943-1",
+        "planName": "Alignment Health Platinum (HMO-POS)",
+        "organizationName": "Alignment Health Plan",
+        "state_count": 1,
+        "row_count": 2
+      },
+      {
+        "planId": "H5427-110",
+        "planName": "Freedom Platinum Plus Plan Rx (HMO)",
+        "organizationName": "Freedom Health, Inc.",
+        "state_count": 1,
+        "row_count": 2
+      },
+      {
+        "planId": "H0982-1",
+        "planName": "SOLIS SPF 001 (HMO)",
+        "organizationName": "Solis Health Plans",
+        "state_count": 1,
+        "row_count": 1
+      },
+      {
+        "planId": "H0982-14",
+        "planName": "Solis SPF 003 (HMO)",
+        "organizationName": "Solis Health Plans",
+        "state_count": 1,
+        "row_count": 1
+      },
+      {
+        "planId": "H1016-1",
+        "planName": "AvMed Medicare Choice (HMO)",
+        "organizationName": "AvMed Medicare",
+        "state_count": 1,
+        "row_count": 1
+      },
+      {
+        "planId": "H1016-23",
+        "planName": "AvMed Medicare Circle (HMO)",
+        "organizationName": "AvMed Medicare",
+        "state_count": 1,
+        "row_count": 1
+      },
+      {
+        "planId": "H1016-25",
+        "planName": "AvMed Medicare Access (HMO-POS)",
+        "organizationName": "AvMed Medicare",
+        "state_count": 1,
+        "row_count": 1
+      },
+      {
+        "planId": "H1019-76",
+        "planName": "CareFree (HMO)",
+        "organizationName": "CarePlus Health Plans, Inc.",
+        "state_count": 1,
+        "row_count": 1
+      },
+      {
+        "planId": "H4709-35",
+        "planName": "Bright Advantage Classic Care Plan (HMO)",
+        "organizationName": "Bright Health",
+        "state_count": 1,
+        "row_count": 1
+      },
+      {
+        "planId": "H4709-36",
+        "planName": "Bright Advantage Part B Savings Plan (HMO)",
+        "organizationName": "Bright Health",
+        "state_count": 1,
+        "row_count": 1
+      },
+      {
+        "planId": "H4709-40",
+        "planName": "Bright New Day (HMO-POS)",
+        "organizationName": "Bright Health",
+        "state_count": 1,
+        "row_count": 1
+      },
+      {
+        "planId": "H1019-102",
+        "planName": "CareOne Plus (HMO)",
+        "organizationName": "CarePlus Health Plans, Inc.",
+        "state_count": 1,
+        "row_count": 1
+      },
+      {
+        "planId": "H6453-7",
+        "planName": "Blue Advantage (HMO)",
+        "organizationName": "Blue Cross and Blue Shield of Louisiana HMO",
+        "state_count": 1,
+        "row_count": 9
+      },
+      {
+        "planId": "H9811-9",
+        "planName": "Wellcare Assist Complement (HMO)",
+        "organizationName": "Wellcare by Allwell",
+        "state_count": 1,
+        "row_count": 4
+      },
+      {
+        "planId": "H2610-11",
+        "planName": "Essence Advantage (HMO)",
+        "organizationName": "Essence Healthcare",
+        "state_count": 1,
+        "row_count": 1
+      },
+      {
+        "planId": "H7115-3",
+        "planName": "Memorial Hermann Advantage Plus (HMO)",
+        "organizationName": "Memorial Hermann Health Plan",
+        "state_count": 1,
+        "row_count": 6
+      },
+      {
+        "planId": "H8133-3",
+        "planName": "Blue Cross Medicare Advantage Basic (HMO)",
+        "organizationName": "Blue Cross and Blue Shield of Texas",
+        "state_count": 1,
+        "row_count": 1
+      },
+      {
+        "planId": "H7115-4",
+        "planName": "Memorial Hermann Advantage Golden Triangle (HMO)",
+        "organizationName": "Memorial Hermann Health Plan",
+        "state_count": 1,
+        "row_count": 2
+      },
+      {
+        "planId": "H3447-14",
+        "planName": "Anthem MediBlue Plus (HMO)",
+        "organizationName": "Anthem HealthKeepers",
+        "state_count": 1,
+        "row_count": 7
+      },
+      {
+        "planId": "H3447-1",
+        "planName": "Anthem MediBlue Local (HMO)",
+        "organizationName": "Anthem HealthKeepers",
+        "state_count": 1,
+        "row_count": 9
+      },
+      {
+        "planId": "H2962-13",
+        "planName": "Premier by Ultimate (HMO)",
+        "organizationName": "Ultimate Health Plans",
+        "state_count": 1,
+        "row_count": 2
+      },
+      {
+        "planId": "H2962-32",
+        "planName": "Premier Plus by Ultimate (HMO)",
+        "organizationName": "Ultimate Health Plans",
+        "state_count": 1,
+        "row_count": 5
+      },
+      {
+        "planId": "H1035-37",
+        "planName": "BlueMedicare Saver (HMO)",
+        "organizationName": "Florida Blue HMO",
+        "state_count": 1,
+        "row_count": 3
+      },
+      {
+        "planId": "H1035-23",
+        "planName": "BlueMedicare Premier (HMO)",
+        "organizationName": "Florida Blue HMO",
+        "state_count": 1,
+        "row_count": 2
+      },
+      {
+        "planId": "H2962-31",
+        "planName": "Premier by Ultimate (HMO)",
+        "organizationName": "Ultimate Health Plans",
+        "state_count": 1,
+        "row_count": 2
+      },
+      {
+        "planId": "H6453-8",
+        "planName": "Blue Advantage (HMO)",
+        "organizationName": "Blue Cross and Blue Shield of Louisiana HMO",
+        "state_count": 1,
+        "row_count": 10
+      },
+      {
+        "planId": "H1846-4",
+        "planName": "MediGold Mount Carmel Choice (PPO)",
+        "organizationName": "MediGold",
+        "state_count": 1,
+        "row_count": 13
+      },
+      {
+        "planId": "H1035-6",
+        "planName": "FHCP Medicare Rx (HMO)",
+        "organizationName": "Florida Blue HMO",
+        "state_count": 1,
+        "row_count": 2
+      },
+      {
+        "planId": "H1035-24",
+        "planName": "BlueMedicare Premier (HMO)",
+        "organizationName": "Florida Blue HMO",
+        "state_count": 1,
+        "row_count": 1
+      },
+      {
+        "planId": "H1035-39",
+        "planName": "BlueMedicare Saver (HMO)",
+        "organizationName": "Florida Blue HMO",
+        "state_count": 1,
+        "row_count": 1
+      },
+      {
+        "planId": "H4140-5",
+        "planName": "DrValue (HMO-POS)",
+        "organizationName": "Doctors HealthCare Plans, Inc.",
+        "state_count": 1,
+        "row_count": 1
+      },
+      {
+        "planId": "H1035-18",
+        "planName": "BlueMedicare Classic (HMO)",
+        "organizationName": "Florida Blue HMO",
+        "state_count": 1,
+        "row_count": 1
+      },
+      {
+        "planId": "H9630-3",
+        "planName": "Wellcare No Premium Select (HMO)",
+        "organizationName": "Wellcare by Allwell",
+        "state_count": 1,
+        "row_count": 2
+      },
+      {
+        "planId": "H7063-2",
+        "planName": "Blue Medicare Advantage Comprehensive (PPO)",
+        "organizationName": "Blue Cross and Blue Shield of Kansas",
+        "state_count": 1,
+        "row_count": 16
+      },
+      {
+        "planId": "H4909-25",
+        "planName": "Anthem MediBlue + Kroger Access (PPO)",
+        "organizationName": "Anthem Blue Cross and Blue Shield",
+        "state_count": 1,
+        "row_count": 6
+      },
+      {
+        "planId": "H5141-52",
+        "planName": "Clover Health LiveHealthy (PPO)",
+        "organizationName": "Clover Health",
+        "state_count": 1,
+        "row_count": 6
+      },
+      {
+        "planId": "H5141-53",
+        "planName": "Clover Health LiveHealthy Value (PPO)",
+        "organizationName": "Clover Health",
+        "state_count": 1,
+        "row_count": 6
+      },
+      {
+        "planId": "H5434-32",
+        "planName": "BlueMedicare Value (PPO)",
+        "organizationName": "Florida Blue",
+        "state_count": 1,
+        "row_count": 1
+      },
+      {
+        "planId": "H5141-50",
+        "planName": "Clover Health LiveHealthy (PPO)",
+        "organizationName": "Clover Health",
+        "state_count": 1,
+        "row_count": 5
+      },
+      {
+        "planId": "H5141-51",
+        "planName": "Clover Health LiveHealthy Value (PPO)",
+        "organizationName": "Clover Health",
+        "state_count": 1,
+        "row_count": 5
+      },
+      {
+        "planId": "H4909-16",
+        "planName": "Anthem MediBlue Access Basic (PPO)",
+        "organizationName": "Anthem Blue Cross and Blue Shield",
+        "state_count": 1,
+        "row_count": 85
+      },
+      {
+        "planId": "H8604-13",
+        "planName": "The Health Plan SecureChoice Capitol Plan (PPO)",
+        "organizationName": "The Health Plan",
+        "state_count": 1,
+        "row_count": 6
+      },
+      {
+        "planId": "H4343-2",
+        "planName": "Ascension Complete Providence Reward (HMO)",
+        "organizationName": "Ascension Complete",
+        "state_count": 1,
+        "row_count": 1
+      },
+      {
+        "planId": "H4343-4",
+        "planName": "Ascension Complete Providence Secure (HMO)",
+        "organizationName": "Ascension Complete",
+        "state_count": 1,
+        "row_count": 1
+      }
+    ]
+  },
+  "MMP": {
+    "signature": "COST_SHARING_5",
+    "total_distinct_plans_in_licensed_states": 0,
+    "candidates_count": 0,
+    "candidate_rows_count": 0,
+    "candidates": []
+  },
+  "COST": {
+    "signature": "COST_SHARING_5",
+    "total_distinct_plans_in_licensed_states": 0,
+    "candidates_count": 0,
+    "candidate_rows_count": 0,
+    "candidates": []
+  }
+}
