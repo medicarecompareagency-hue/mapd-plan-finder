@@ -161,6 +161,10 @@ model Plan {
   @@index([planId])
   @@index([planCategory])
   @@index([state, county, planCategory])
+
+// DSNP target-group classification (from CMS PBP zip Section A)
+
+dsnpTargetGroup           DsnpTargetGroup?
 }
 
 // ------------------------------------------------------------
@@ -214,4 +218,9 @@ model Search {
   searchName  String?
   filters     Json     // Stores all selected filter criteria as JSON
   createdAt   DateTime @default(now())
+}
+
+enum DsnpTargetGroup {
+  FULL_DUAL      // dsnp_zerodollar=1 in PBP. Designed for FBDE, QMB+, SLMB+.
+  PARTIAL_DUAL   // dsnp_zerodollar=2 in PBP. Designed for QMB, SLMB, QI-1.
 }
