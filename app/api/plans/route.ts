@@ -84,6 +84,22 @@ export async function GET(request: Request) {
   if (lowIncomeSubsidyLevel) where.lowIncomeSubsidyLevel = lowIncomeSubsidyLevel;
   if (medicaidLevel) where.medicaidLevel = medicaidLevel;
 
+  // Beneficiary dual-eligibility level → plan dsnpTargetGroup mapping (2026-05-05).
+  // Per CMS PBP zero-dollar flag (FULL_DUAL = $0 cost-sharing plan, designed
+  // for full-benefit duals; PARTIAL_DUAL = has cost-sharing, designed for
+  // partial duals). Hard filter — non-matching plans excluded from results.
+  // Spec: beneficiary_dual_level_spec memory + 04-30 handoff Pickup #3.
+  const beneficiaryDualLevel = searchParams.get("beneficiaryDualLevel");
+  if (beneficiaryDualLevel) {
+    const FULL_DUAL_LEVELS = new Set(["QMB+", "SLMB+", "FBDE"]);
+    const PARTIAL_DUAL_LEVELS = new Set(["QMB", "SLMB", "QI-1"]);
+    if (FULL_DUAL_LEVELS.has(beneficiaryDualLevel)) {
+      (where as Record<string, unknown>).dsnpTargetGroup = "FULL_DUAL";
+    } else if (PARTIAL_DUAL_LEVELS.has(beneficiaryDualLevel)) {
+      (where as Record<string, unknown>).dsnpTargetGroup = "PARTIAL_DUAL";
+    }
+  }
+
   const numericMaxFilters: [string, keyof Prisma.PlanWhereInput][] = [
     ["monthlyPremium", "monthlyPremium"],
     ["maxOutOfPocket", "maxOutOfPocket"],

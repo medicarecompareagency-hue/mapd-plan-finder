@@ -447,6 +447,7 @@ export default function PlanSearch() {
       delete next.chronicCondition;
       delete next.snpSubtype;
       delete next.isZeroDollarDsnp;
+      delete next.beneficiaryDualLevel;
       setFilters(next);
     } else {
       setFilters(next);
@@ -709,6 +710,15 @@ export default function PlanSearch() {
               </div>
             </div>
           )}
+          {filters.planCategory === "DSNP" && (
+            <FilterSelect
+              label="Beneficiary Medicaid Level"
+              name="beneficiaryDualLevel"
+              value={filters.beneficiaryDualLevel ?? ""}
+              onChange={handleFilterChange}
+              options={["QMB+", "QMB", "SLMB+", "SLMB", "QI-1", "FBDE"]}
+            />
+          )}
         </div>
 
         <h2 className="text-sm font-bold text-gray-700 uppercase tracking-wide mb-3">Premiums & Subsidies</h2>
@@ -716,7 +726,7 @@ export default function PlanSearch() {
           <FilterSelect label="Monthly Premium" name="monthlyPremium" value={filters.monthlyPremium ?? ""} onChange={handleFilterChange} options={options?.monthlyPremiums ?? []} formatOption={fmt} />
           <FilterSelect label="Part B Giveback" name="partBGivebackAmount" value={filters.partBGivebackAmount ?? ""} onChange={handleFilterChange} options={options?.partBGivebackAmounts ?? []} formatOption={fmt} />
           <FilterSelect label="LIS Level" name="lowIncomeSubsidyLevel" value={filters.lowIncomeSubsidyLevel ?? ""} onChange={handleFilterChange} options={options?.lowIncomeSubsidyLevels ?? []} />
-          <FilterSelect label="Medicaid Level" name="medicaidLevel" value={filters.medicaidLevel ?? ""} onChange={handleFilterChange} options={options?.medicaidLevels ?? []} />
+          <FilterSelect label="Plan Integration Level" name="medicaidLevel" value={filters.medicaidLevel ?? ""} onChange={handleFilterChange} options={options?.medicaidLevels ?? []} />
         </div>
 
         <h2 className="text-sm font-bold text-gray-700 uppercase tracking-wide mb-3">Medical Cost Sharing</h2>
