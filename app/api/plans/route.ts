@@ -85,14 +85,25 @@ export async function GET(request: Request) {
   if (medicaidLevel) where.medicaidLevel = medicaidLevel;
 
   // Beneficiary dual-eligibility level → plan dsnpTargetGroup mapping (2026-05-05).
-  // Per CMS PBP zero-dollar flag (FULL_DUAL = $0 cost-sharing plan, designed
-  // for full-benefit duals; PARTIAL_DUAL = has cost-sharing, designed for
-  // partial duals). Hard filter — non-matching plans excluded from results.
-  // Spec: beneficiary_dual_level_spec memory + 04-30 handoff Pickup #3.
+  //
+  // Industry rule per Dale (MAPD agent practice, NOT raw CMS classification):
+  // MAPD carriers/agents treat QMB as "full Medicaid" for benefit purposes
+  // even though SMAC lists QMB as partial. Carrier example: HealthSpring
+  // TotalCare Plus (PBP zero_dollar=1, FULL_DUAL) is marketed for both QMB+
+  // and QMB; HealthSpring has no QMB+-specific plan. A QMB user routed to
+  // a PARTIAL_DUAL plan (TotalCare proper) would miss richer-benefit options
+  // they're entitled to.
+  //
+  // Mapping (industry-correct, supersedes PBP-literal interpretation):
+  //   FULL_DUAL plans (PBP zero_dollar=1):  QMB+, QMB, SLMB+, FBDE
+  //   PARTIAL_DUAL plans (zero_dollar=2):   SLMB, QI-1
+  //
+  // Hard filter — non-matching plans excluded from results entirely.
+  // Spec: beneficiary_dual_level_spec memory + 2026-05-05 Dale clarification.
   const beneficiaryDualLevel = searchParams.get("beneficiaryDualLevel");
   if (beneficiaryDualLevel) {
-    const FULL_DUAL_LEVELS = new Set(["QMB+", "SLMB+", "FBDE"]);
-    const PARTIAL_DUAL_LEVELS = new Set(["QMB", "SLMB", "QI-1"]);
+    const FULL_DUAL_LEVELS = new Set(["QMB+", "QMB", "SLMB+", "FBDE"]);
+    const PARTIAL_DUAL_LEVELS = new Set(["SLMB", "QI-1"]);
     if (FULL_DUAL_LEVELS.has(beneficiaryDualLevel)) {
       (where as Record<string, unknown>).dsnpTargetGroup = "FULL_DUAL";
     } else if (PARTIAL_DUAL_LEVELS.has(beneficiaryDualLevel)) {
