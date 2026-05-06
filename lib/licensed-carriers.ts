@@ -3,22 +3,27 @@
 // table (case-sensitive). Applied as a hard filter in /api/plans (both GET
 // for results and POST for dropdown options).
 //
-// Coverage mapping (what Dale said → CMS org name):
-//   HealthSpring            → Cigna / Cigna Healthcare  (HealthSpring rebranded
-//                              to Cigna in 2019; CMS now uses both spellings.
-//                              "Cigna Healthcare" added 2026-05-06 to capture
-//                              ~756 rows that were silently filtered before.)
-//   UnitedHealthCare / AARP → UnitedHealthcare  (AARP Medicare Advantage is a UHC brand)
-//   WellCare                → Wellcare     (Dale opted to drop Allwell + all
-//                              other Wellcare sub-brands on 2026-05-06)
-//   Aetna                   → Aetna Medicare  (Aetna Medicare FIDE excluded
-//                              per Dale 2026-05-06)
-//   Humana                  → Humana
-//   Devoted                 → Devoted Health
+// HealthSpring brand history:
+//   - Pre-2019: HealthSpring (independent carrier)
+//   - 2019: rebranded to Cigna
+//   - 2026: rebranded back to HealthSpring (official per Dale)
+//   CMS PBP data lags rebrand events by ~1 year. As of 2026-05-06 the 2026
+//   PBP zip still publishes the carrier under "Cigna" or "Cigna Healthcare"
+//   in some files. We allow all three spellings here and normalize the DB
+//   to "HealthSpring" via scripts/normalize-healthspring-name.js.
+//
+// Coverage mapping (what Dale said → CMS org name(s)):
+//   HealthSpring (current)   → HealthSpring / Cigna / Cigna Healthcare
+//   UnitedHealthCare / AARP  → UnitedHealthcare
+//   WellCare                 → Wellcare       (Allwell + sub-brands excluded)
+//   Aetna                    → Aetna Medicare (FIDE excluded)
+//   Humana                   → Humana
+//   Devoted                  → Devoted Health
 //
 // Last updated: 2026-05-06.
 
 export const LICENSED_CARRIERS = [
+  "HealthSpring",
   "Cigna",
   "Cigna Healthcare",
   "UnitedHealthcare",
