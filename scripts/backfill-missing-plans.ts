@@ -1,4 +1,4 @@
-/**
+﻿﻿/**
  * backfill-missing-plans.ts
  *
  * Top-up script for backlog item #1.
@@ -8,16 +8,16 @@
  *
  *   1. NBER hadn't published 2026 yet. The downloader silently fell back to
  *      the 2025 landscape, so SNPs and plans new for 2026 never made it in.
- *   2. NBER's landscape never includes SNPs at all — they ship in a separate
+ *   2. NBER's landscape never includes SNPs at all â€” they ship in a separate
  *      CMS file. Even a year-correct landscape would still miss every D-SNP /
  *      C-SNP / I-SNP.
  *
  * This script closes both gaps by treating CMS's own files as the source of
  * truth:
  *
- *   - `PlanArea.txt`       →  authoritative plan × county footprint
- *   - `pbp_Section_A.txt`  →  plan classification, name, contract type
- *   - `pbp_Section_D.txt`  →  premium / deductible / MOOP
+ *   - `PlanArea.txt`       â†’  authoritative plan Ã— county footprint
+ *   - `pbp_Section_A.txt`  â†’  plan classification, name, contract type
+ *   - `pbp_Section_D.txt`  â†’  premium / deductible / MOOP
  *
  * -------------------------------------------------------------------
  * SCOPE: by default we only backfill the categories that NBER never
@@ -50,7 +50,7 @@ import * as fs from "fs";
 import * as path from "path";
 
 // Licensed-states gate (added 2026-04-28). PlanArea.txt is a state-blind
-// list of every plan×county combo CMS publishes; without this filter the
+// list of every planÃ—county combo CMS publishes; without this filter the
 // SNP backfill re-adds non-licensed states the cleanup script just dropped.
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { LICENSED_STATES }: { LICENSED_STATES: string[] } = require("./licensed-states");
@@ -85,7 +85,7 @@ function shouldInsert(cat: PlanCategory): boolean {
 
 // ---------------------------------------------------------------------------
 // Prisma client factory. We recycle the connection every few thousand rows
-// to clear Supabase session-pooler prepared-statement cache — this is what
+// to clear Supabase session-pooler prepared-statement cache â€” this is what
 // was causing the previous run to deadlock at exactly row 251,000.
 // ---------------------------------------------------------------------------
 function makeClient(): PrismaClient {
@@ -98,7 +98,7 @@ function makeClient(): PrismaClient {
 }
 
 // ---------------------------------------------------------------------------
-// Constants (mirrors of the lookups in import-cms-data.ts — kept inline so
+// Constants (mirrors of the lookups in import-cms-data.ts â€” kept inline so
 // this script is self-contained and a refactor of the main importer can't
 // silently change the backfill semantics)
 // ---------------------------------------------------------------------------
@@ -274,6 +274,7 @@ interface PlanFinance {
   monthlyPremium: number;
   medicalDeductible: number;
   maxOutOfPocket: number | null;
+  partBGivebackAmount: number | null;
 }
 
 function num(s: string | undefined): number | null {
@@ -304,6 +305,12 @@ function buildFinanceMap(): Map<string, PlanFinance> {
       maxOutOfPocket: num(r.pbp_d_out_pocket_amt)
         ?? num(r.pbp_d_comb_max_enr_amt)
         ?? num(r.pbp_d_maxenr_oopc_amt),
+      // Part B giveback (Dale's MA-Only ranking key #1). Mirrors the
+      // logic in import-cms-data.ts so MA-Only plans get their headline
+      // ranking input populated when this skeleton-row backfill runs.
+      partBGivebackAmount: r.pbp_d_mco_pay_reduct_yn === "1"
+        ? num(r.pbp_d_mco_pay_reduct_amt)
+        : null,
     };
     map.set(key(h, p, s), fin);
   }
@@ -311,7 +318,7 @@ function buildFinanceMap(): Map<string, PlanFinance> {
 }
 
 // ---------------------------------------------------------------------------
-// Pull the plan × county footprint from PlanArea.txt (excludes EGHP)
+// Pull the plan Ã— county footprint from PlanArea.txt (excludes EGHP)
 // ---------------------------------------------------------------------------
 interface PlanLocation {
   planKey: string;
@@ -341,7 +348,7 @@ function readPlanArea(): PlanLocation[] {
     out.push({ planKey: key(h, p, s), state: st, county: co });
   }
   console.log(
-    `  ${out.length} non-EGHP plan×county rows (skipped ${skippedEghp} EGHP, ` +
+    `  ${out.length} non-EGHP planÃ—county rows (skipped ${skippedEghp} EGHP, ` +
       `${skippedNonLicensed} in non-licensed states)`,
   );
   return out;
@@ -350,7 +357,7 @@ function readPlanArea(): PlanLocation[] {
 // ---------------------------------------------------------------------------
 // Bulk insert with per-batch error recovery. On a batch failure, we fall
 // back to row-by-row inserts so a single bad row can't take down the
-// whole run — we log offenders and keep going.
+// whole run â€” we log offenders and keep going.
 // ---------------------------------------------------------------------------
 async function insertWithRecovery(
   prisma: PrismaClient,
@@ -364,7 +371,7 @@ async function insertWithRecovery(
     return { inserted: res.count, failed: 0 };
   } catch (err) {
     console.warn(
-      `  batch failed (${(err as Error).message.slice(0, 100)}) — falling back to per-row inserts`,
+      `  batch failed (${(err as Error).message.slice(0, 100)}) â€” falling back to per-row inserts`,
     );
     let ok = 0;
     let bad = 0;
@@ -459,7 +466,7 @@ async function main() {
       county: loc.county,
       zipCode: null,
       monthlyPremium: fin?.monthlyPremium ?? 0,
-      partBGivebackAmount: 0,
+      partBGivebackAmount: fin?.partBGivebackAmount ?? 0,
       lowIncomeSubsidyLevel: null,
       medicaidLevel: null,
       medicalDeductible: fin?.medicalDeductible ?? 0,
@@ -501,7 +508,7 @@ async function main() {
   // Insert phase.
   //
   //  * BATCH = 50 keeps each createMany well under the 65,535-parameter
-  //    Postgres limit (22 cols × 50 rows = 1,100 params) AND under 1s on
+  //    Postgres limit (22 cols Ã— 50 rows = 1,100 params) AND under 1s on
   //    the Supabase session pooler even when the table is hot.
   //
   //  * We recycle the Prisma client every 50 batches (~2,500 rows) to
@@ -510,7 +517,7 @@ async function main() {
   //    on the previous (batch=200) run.
   //
   //  * Per-batch error recovery in insertWithRecovery() means a single bad
-  //    row won't kill the run — it gets logged and skipped.
+  //    row won't kill the run â€” it gets logged and skipped.
   // -------------------------------------------------------------------------
   const BATCH = 50;
   const RECYCLE_AFTER_BATCHES = 50;
@@ -539,7 +546,7 @@ async function main() {
       const pct = ((done / toInsert.length) * 100).toFixed(1);
       const elapsedTotal = ((Date.now() - startTime) / 1000).toFixed(0);
       console.log(
-        `  ${done.toLocaleString().padStart(7)} / ${toInsert.length.toLocaleString()} (${pct}%) — batch ${elapsed}ms — elapsed ${elapsedTotal}s${failed ? ` — ${failed} skipped` : ""}`,
+        `  ${done.toLocaleString().padStart(7)} / ${toInsert.length.toLocaleString()} (${pct}%) â€” batch ${elapsed}ms â€” elapsed ${elapsedTotal}s${failed ? ` â€” ${failed} skipped` : ""}`,
       );
     }
 

@@ -31,6 +31,17 @@ import { LICENSED_CARRIERS } from "@/lib/licensed-carriers";
 // pre-ranking candidate pool from MAX_RESULTS*4 to MAX_RESULTS*50 so a
 // statewide search (~22k FL D-SNP county-rows) actually sees all
 // carriers, not just the first 2000 rows by insertion order.
+//
+// MA_ONLY ranking (Dale, 2026-05-06). 5 keys, lexicographic, NULL last:
+//   1. partBGivebackAmount  DESC
+//   2. hospitalStayCopay    ASC  (parsed via parseHospitalCopayDay1)
+//   3. specialistCopay      ASC
+//   4. pcpCopay             ASC
+//   5. dentalAnnualMax      DESC (cmpBenefitDesc)
+// Differs from default 6-key by elevating Part B giveback to the top
+// (the headline pitch for MA-Only plans) and dropping deductible/MOOP/
+// star. MA_ONLY is a PlanCategory enum value, orthogonal to planType
+// (HMO/PPO/PFFS/HMOPOS) — see CLAUDE.md domain terminology section.
 const DSNP_LIKE = new Set(["DSNP", "ISNP"]);
 
 export async function GET(request: Request) {
@@ -176,7 +187,8 @@ export async function GET(request: Request) {
 
   const isCsnp = planCategory === "CSNP";
   const isDsnpLike = !!(planCategory && DSNP_LIKE.has(planCategory));
-  const useDefaultTop5 = !isCsnp && !isDsnpLike;
+  const isMaOnly = planCategory === "MA_ONLY";
+  const useDefaultTop5 = !isCsnp && !isDsnpLike && !isMaOnly;
 
   function cmp(a: number | null | undefined, b: number | null | undefined, ascending: boolean): number {
     const aNull = a == null;
@@ -295,6 +307,25 @@ export async function GET(request: Request) {
         c = cmpBenefitDesc(a.visionAnnualMax, b.visionAnnualMax);
         if (c !== 0) return c;
         return hasBenefitRank(a.visionBenefits) - hasBenefitRank(b.visionBenefits);
+      });
+  } else if (isMaOnly) {
+    // MA_ONLY 5-key ranking per Dale 2026-05-06.
+    // Giveback is the headline pitch for these plans (no drug coverage
+    // means the carrier has more room to push Part B premium back).
+    sorted = (plans as Array<Record<string, unknown>>)
+      .slice()
+      .sort((a, b) => {
+        let c = cmp(a.partBGivebackAmount as number | null, b.partBGivebackAmount as number | null, false);
+        if (c !== 0) return c;
+        const ah = parseHospitalCopayDay1(a.hospitalStayCopay);
+        const bh = parseHospitalCopayDay1(b.hospitalStayCopay);
+        c = cmp(ah, bh, true);
+        if (c !== 0) return c;
+        c = cmp(a.specialistCopay as number | null, b.specialistCopay as number | null, true);
+        if (c !== 0) return c;
+        c = cmp(a.pcpCopay as number | null, b.pcpCopay as number | null, true);
+        if (c !== 0) return c;
+        return cmpBenefitDesc(a.dentalAnnualMax, b.dentalAnnualMax);
       });
   } else {
     sorted = (plans as Array<Record<string, unknown>>)

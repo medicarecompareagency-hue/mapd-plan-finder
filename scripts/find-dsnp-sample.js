@@ -1,0 +1,1 @@
+﻿const{makePrisma}=require("./prisma-client");(async()=>{const p=makePrisma();const r=await p.plan.findFirst({where:{planCategory:"DSNP",planYear:2026,planType:"HMO",dsnpTargetGroup:"FULL_DUAL",pcpCopay:null},select:{planId:true,organizationName:true,state:true}});console.log(JSON.stringify(r));await p.$disconnect();})();

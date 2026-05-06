@@ -6,10 +6,6 @@
     "candidate_rows_count": 0,
     "candidates": []
   },
-  "MA": {
-    "signature": "COST_SHARING_5",
-    "error": "PrismaClientValidationError: \nInvalid `prisma.plan.groupBy()` invocation in\nC:\\Users\\dbuir\\mapd-plan-finder\\scripts\\audit-non-shoppable.js:93:47\n\n  90 \n  91 try {\n  92   // First: total in licensed states for this category\n→ 93   const totalDistinct = await prisma.plan.groupBy({\n         select: {\n           planId: true\n         },\n         by: [\n           \"planId\"\n         ],\n         where: {\n           planYear: 2026,\n           planCategory: \"MA\",\n                         ~~~~\n           state: {\n             in: [\n               \"AL\",\n               \"AR\",\n               \"FL\",\n               \"GA\",\n               \"IL\",\n               \"IN\",\n               \"KS\",\n               \"KY\",\n               \"LA\",\n               \"MO\",\n               \"MS\",\n               \"OH\",\n               \"OK\",\n               \"SC\",\n               \"TN\",\n               \"TX\",\n               \"VA\",\n               \"WV\"\n             ]\n           }\n         }\n       })\n\nInvalid value for argument `planCategory`. Expected PlanCategory."
-  },
   "MAPD": {
     "signature": "COST_SHARING_5",
     "total_distinct_plans_in_licensed_states": 1244,
