@@ -1,4 +1,4 @@
-﻿﻿/**
+﻿/**
  * backfill-missing-plans.ts
  *
  * Top-up script for backlog item #1.
@@ -56,6 +56,21 @@ import * as path from "path";
 const { LICENSED_STATES }: { LICENSED_STATES: string[] } = require("./licensed-states");
 const LICENSED_STATES_SET = new Set(LICENSED_STATES);
 
+// Licensed-carriers gate (added 2026-05-06). Without this, backfill pulls
+// in VIVA, Anthem, Molina, Lasso, etc. — carriers Dale doesn't sell. The
+// route's API filter already hides them, but they bloat the DB and break
+// verification scripts. Inline copy of lib/licensed-carriers.ts (CMS
+// org-name strings, exact match, case-sensitive).
+const LICENSED_CARRIERS_SET = new Set([
+  "Cigna",
+  "Cigna Healthcare",
+  "UnitedHealthcare",
+  "Wellcare",
+  "Aetna Medicare",
+  "Humana",
+  "Devoted Health",
+]);
+
 // ---------------------------------------------------------------------------
 // Args
 // ---------------------------------------------------------------------------
@@ -63,6 +78,48 @@ const args = process.argv.slice(2);
 const PLAN_YEAR = parseInt(args.find((a) => /^\d{4}$/.test(a)) || "2026", 10);
 const INCLUDE_MAPD = args.includes("--include-mapd");
 const PBP_DIR = path.join(process.cwd(), ".cms-import-tmp", `pbp-${PLAN_YEAR}`);
+const LANDSCAPE_PATH = path.join(process.cwd(), ".cms-import-tmp", `ma${PLAN_YEAR}.csv`);
+
+// MA-Only override (added 2026-05-06):
+//
+// derivePlanCategory uses pbp_a_contract_partd_flag which is CONTRACT-level.
+// Multi-plan contracts (e.g. Humana H4461) carry both MA-PD and MA-Only plans;
+// the contract flag is "1" because some plans on it have drug coverage.
+// Result: MA-Only plans like Humana Honor Giveback get mis-classified as MAPD
+// and skipped by shouldInsert(MAPD).
+//
+// Authoritative plan-level signal: ma2026.csv landscape file's
+// `drugbenefittype` column. Empty = MA-Only; "Enhanced"/"Basic"/etc. = MA-PD.
+// We pre-build a Set of MA-Only plan keys at startup and override
+// derivePlanCategory's output before shouldInsert is called.
+function buildMaOnlySetFromLandscape(): Set<string> {
+  if (!fs.existsSync(LANDSCAPE_PATH)) {
+    console.warn(`  Landscape file missing at ${LANDSCAPE_PATH} — MA_ONLY override disabled`);
+    return new Set();
+  }
+  const text = fs.readFileSync(LANDSCAPE_PATH, "utf-8");
+  const lines = text.split(/\r?\n/);
+  const hdr = lines[0].split(",");
+  const ix = (n: string) => hdr.indexOf(n);
+  const dbIdx = ix("drugbenefittype");
+  const cidIdx = ix("contractid");
+  const pidIdx = ix("planid");
+  const sidIdx = ix("segmentid");
+  const out = new Set<string>();
+  for (let i = 1; i < lines.length; i++) {
+    const line = lines[i];
+    if (!line) continue;
+    const c = line.split(",");
+    if (!c[cidIdx] || !c[pidIdx]) continue;
+    const drug = (c[dbIdx] || "").trim();
+    if (drug) continue; // MA-PD — not our target
+    const h = c[cidIdx].trim();
+    const p = c[pidIdx].trim().padStart(3, "0");
+    const s = (c[sidIdx] || "0").trim() || "0";
+    out.add(`${h}-${p}-${s}`);
+  }
+  return out;
+}
 
 // Categories we actively want to add. By default SNPs + specialty plans only.
 const ALWAYS_INCLUDED: Set<PlanCategory> = new Set([
@@ -402,6 +459,24 @@ async function main() {
   const financeMap = buildFinanceMap();
   const locations = readPlanArea();
 
+  // MA-Only override set from landscape file (2026-05-06)
+  console.log("\nLoading MA-Only override set from landscape...");
+  const maOnlySet = buildMaOnlySetFromLandscape();
+  console.log(`  ${maOnlySet.size.toLocaleString()} plan keys flagged MA_ONLY by landscape`);
+
+  // Apply the override to planInfoMap entries that are currently MAPD
+  // (the only category we'd ever override — SNP/PDP/COST etc. classifications
+  // come from explicit PBP plan-type codes, not the contract-level partD flag).
+  let overridden = 0;
+  for (const [key, info] of planInfoMap.entries()) {
+    if (info.planCategory === PlanCategory.MAPD && maOnlySet.has(key)) {
+      info.planCategory = PlanCategory.MA_ONLY;
+      info.hasPartD = false;
+      overridden++;
+    }
+  }
+  console.log(`  ${overridden.toLocaleString()} plan-info entries overridden MAPD -> MA_ONLY`);
+
   // The DB stores planId as `${contractId}-${planId}` (no zero padding on the
   // plan portion in the legacy import). Match that.
   function planIdString(planKey: string): string {
@@ -426,6 +501,7 @@ async function main() {
   let skippedExisting = 0;
   let skippedNoInfo = 0;
   let skippedCategory = 0;
+  let skippedCarrier = 0;
   const skippedByCategory = new Map<PlanCategory, number>();
   const toInsert: any[] = [];
 
@@ -440,6 +516,12 @@ async function main() {
         info.planCategory,
         (skippedByCategory.get(info.planCategory) ?? 0) + 1,
       );
+      continue;
+    }
+
+    // Carrier gate (2026-05-06): drop unlicensed carriers before insert
+    if (!LICENSED_CARRIERS_SET.has(info.organizationName)) {
+      skippedCarrier++;
       continue;
     }
 
@@ -481,6 +563,7 @@ async function main() {
   console.log(`  matched existing DB rows:    ${skippedExisting.toLocaleString()}`);
   console.log(`  no Section A entry:          ${skippedNoInfo.toLocaleString()}`);
   console.log(`  skipped by category:         ${skippedCategory.toLocaleString()}`);
+  console.log(`  skipped by carrier (unlicensed): ${skippedCarrier.toLocaleString()}`);
   if (skippedByCategory.size > 0) {
     for (const [c, n] of [...skippedByCategory.entries()].sort((a, b) => b[1] - a[1])) {
       console.log(`    - ${String(c).padEnd(10)} ${n.toLocaleString().padStart(8)}`);
