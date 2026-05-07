@@ -33,6 +33,13 @@ interface Plan {
   skilledNursingCopay: string | null;
   mriCopay: number | null;
   catScanCopay: number | null;
+  pcpCoinsPct?: number | null;
+  specialistCoinsPct?: number | null;
+  emergencyRoomCoinsPct?: number | null;
+  ambulanceCoinsPct?: number | null;
+  outpatientHospitalCoinsPct?: number | null;
+  mriCoinsPct?: number | null;
+  catScanCoinsPct?: number | null;
   drugDeductible: number | null;
   drugTier1Copay: number | null;
   drugTier2Copay: number | null;
@@ -51,6 +58,14 @@ interface Plan {
 function $(v: number | null | undefined): string {
   if (v == null) return "—";
   return `$${v.toFixed(v % 1 === 0 ? 0 : 2)}`;
+}
+
+// Cost-share renderer that falls back to "X% coins" when the carrier filed
+// coinsurance instead of a flat copay (typical partial-dual DSNP filings).
+function cs(copay: number | null | undefined, coinsPct: number | null | undefined): string {
+  if (copay != null) return `$${copay.toFixed(copay % 1 === 0 ? 0 : 2)}`;
+  if (coinsPct != null) return `${coinsPct % 1 === 0 ? coinsPct : coinsPct.toFixed(1)}% coins`;
+  return "—";
 }
 
 // Keep in sync with prisma/schema.prisma enums and plan-search.tsx label tables.
@@ -234,18 +249,18 @@ export default function PlanDetailModal({
             </Section>
 
             <Section title="Medical Cost Sharing">
-              <Row label="PCP Copay" value={$(plan.pcpCopay)} />
-              <Row label="Specialist Copay" value={$(plan.specialistCopay)} />
-              <Row label="Emergency Room" value={$(plan.emergencyRoomCopay)} />
-              <Row label="Ambulance" value={$(plan.ambulanceCopay)} />
-              <Row label="Outpatient Hospital" value={$(plan.outpatientHospitalCopay)} />
+              <Row label="PCP Copay" value={cs(plan.pcpCopay, plan.pcpCoinsPct)} />
+              <Row label="Specialist Copay" value={cs(plan.specialistCopay, plan.specialistCoinsPct)} />
+              <Row label="Emergency Room" value={cs(plan.emergencyRoomCopay, plan.emergencyRoomCoinsPct)} />
+              <Row label="Ambulance" value={cs(plan.ambulanceCopay, plan.ambulanceCoinsPct)} />
+              <Row label="Outpatient Hospital" value={cs(plan.outpatientHospitalCopay, plan.outpatientHospitalCoinsPct)} />
               <Row label="Hospital Stay" value={plan.hospitalStayCopay ?? "—"} />
               <Row label="Skilled Nursing" value={plan.skilledNursingCopay ?? "—"} />
             </Section>
 
             <Section title="Imaging">
-              <Row label="MRI Copay" value={$(plan.mriCopay)} />
-              <Row label="CAT Scan Copay" value={$(plan.catScanCopay)} />
+              <Row label="MRI Copay" value={cs(plan.mriCopay, plan.mriCoinsPct)} />
+              <Row label="CAT Scan Copay" value={cs(plan.catScanCopay, plan.catScanCoinsPct)} />
             </Section>
           </div>
 

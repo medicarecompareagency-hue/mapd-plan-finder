@@ -40,6 +40,16 @@ interface Plan {
   skilledNursingCopay: string | null;
   mriCopay: number | null;
   catScanCopay: number | null;
+  // Coinsurance percentages (partial-dual DSNP — populated when carrier
+  // filed a coinsurance % instead of a flat copay). Render as "X% coins"
+  // when copay is null but CoinsPct is set.
+  pcpCoinsPct: number | null;
+  specialistCoinsPct: number | null;
+  emergencyRoomCoinsPct: number | null;
+  ambulanceCoinsPct: number | null;
+  outpatientHospitalCoinsPct: number | null;
+  mriCoinsPct: number | null;
+  catScanCoinsPct: number | null;
   drugDeductible: number | null;
   drugTier1Copay: number | null;
   drugTier2Copay: number | null;
@@ -188,6 +198,15 @@ const CHRONIC_CONDITION_LABELS: Record<string, string> = {
 function dollars(v: number | null | undefined): string {
   if (v == null) return "N/A";
   return `$${v.toFixed(v % 1 === 0 ? 0 : 2)}`;
+}
+
+// Cost-share cell: prefer flat copay; fall back to "X% coins" if the carrier
+// filed coinsurance instead (typical partial-dual DSNP filings for SLMB/QI-1
+// beneficiaries). Returns "N/A" when both are missing.
+function costShare(copay: number | null | undefined, coinsPct: number | null | undefined): string {
+  if (copay != null) return `$${copay.toFixed(copay % 1 === 0 ? 0 : 2)}`;
+  if (coinsPct != null) return `${coinsPct % 1 === 0 ? coinsPct : coinsPct.toFixed(1)}% coins`;
+  return "N/A";
 }
 
 function FilterSelect({
@@ -937,15 +956,15 @@ export default function PlanSearch() {
                       <td className="px-3 py-3 text-gray-900">{plan.medicaidLevel ?? "—"}</td>
                       <td className="px-3 py-3 text-right text-gray-900">{dollars(plan.maxOutOfPocket)}</td>
                       <td className="px-3 py-3 text-right text-gray-900">{dollars(plan.medicalDeductible)}</td>
-                      <td className="px-3 py-3 text-right text-gray-900">{dollars(plan.pcpCopay)}</td>
-                      <td className="px-3 py-3 text-right text-gray-900">{dollars(plan.specialistCopay)}</td>
-                      <td className="px-3 py-3 text-right text-gray-900">{dollars(plan.emergencyRoomCopay)}</td>
-                      <td className="px-3 py-3 text-right text-gray-900">{dollars(plan.ambulanceCopay)}</td>
-                      <td className="px-3 py-3 text-right text-gray-900">{dollars(plan.outpatientHospitalCopay)}</td>
+                      <td className="px-3 py-3 text-right text-gray-900">{costShare(plan.pcpCopay, plan.pcpCoinsPct)}</td>
+                      <td className="px-3 py-3 text-right text-gray-900">{costShare(plan.specialistCopay, plan.specialistCoinsPct)}</td>
+                      <td className="px-3 py-3 text-right text-gray-900">{costShare(plan.emergencyRoomCopay, plan.emergencyRoomCoinsPct)}</td>
+                      <td className="px-3 py-3 text-right text-gray-900">{costShare(plan.ambulanceCopay, plan.ambulanceCoinsPct)}</td>
+                      <td className="px-3 py-3 text-right text-gray-900">{costShare(plan.outpatientHospitalCopay, plan.outpatientHospitalCoinsPct)}</td>
                       <td className="px-3 py-3 text-xs text-gray-900">{plan.hospitalStayCopay || "N/A"}</td>
                       <td className="px-3 py-3 text-xs text-gray-900">{plan.skilledNursingCopay || "N/A"}</td>
-                      <td className="px-3 py-3 text-right text-gray-900">{dollars(plan.mriCopay)}</td>
-                      <td className="px-3 py-3 text-right text-gray-900">{dollars(plan.catScanCopay)}</td>
+                      <td className="px-3 py-3 text-right text-gray-900">{costShare(plan.mriCopay, plan.mriCoinsPct)}</td>
+                      <td className="px-3 py-3 text-right text-gray-900">{costShare(plan.catScanCopay, plan.catScanCoinsPct)}</td>
                       <td className="px-3 py-3 text-right text-gray-900">{dollars(plan.drugDeductible)}</td>
                       <td className="px-3 py-3 text-right text-gray-900"><DrugTierCell tier={1} value={plan.drugTier1Copay} mask={plan.drugTierCoinsuranceMask} /></td>
                       <td className="px-3 py-3 text-right text-gray-900"><DrugTierCell tier={2} value={plan.drugTier2Copay} mask={plan.drugTierCoinsuranceMask} /></td>

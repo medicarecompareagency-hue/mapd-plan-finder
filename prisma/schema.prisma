@@ -129,6 +129,18 @@ model Plan {
   mriCopay                  Float?
   catScanCopay              Float?
 
+  // Partial-dual DSNP coinsurance percentages (added 2026-05-07).
+  // Populated when carrier filed coinsurance instead of a flat copay
+  // (typical SLMB / QI-1 case). Co-exist with *Copay fields; renderer
+  // falls back to "X% coins" when copay is NULL but CoinsPct is set.
+  pcpCoinsPct                 Float?
+  specialistCoinsPct          Float?
+  emergencyRoomCoinsPct       Float?
+  ambulanceCoinsPct           Float?
+  outpatientHospitalCoinsPct  Float?
+  mriCoinsPct                 Float?
+  catScanCoinsPct             Float?
+
   // Prescription Drugs
   drugDeductible            Float?   @default(0)
   drugTier1Copay            Float?

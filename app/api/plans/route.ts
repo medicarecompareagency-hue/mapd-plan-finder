@@ -199,6 +199,20 @@ export async function GET(request: Request) {
     return ascending ? (a as number) - (b as number) : (b as number) - (a as number);
   }
 
+  // Cost-share rank value for ASC sort keys (PCP, Specialist, etc.).
+  // Plans that filed coinsurance instead of a flat copay (typical partial-
+  // dual DSNP filings) sort LAST under each cost-share key. Per Dale 2026-
+  // 05-07: high coins = bad for SLMB beneficiaries, so penalize at $999.
+  // True nulls (no copay AND no coinsurance filed) keep the existing
+  // null-last behavior in cmp().
+  function effectiveCopay(plan: Record<string, unknown>, copayField: string, coinsPctField: string): number | null {
+    const c = plan[copayField] as number | null | undefined;
+    if (c != null) return c;
+    const p = plan[coinsPctField] as number | null | undefined;
+    if (p != null) return 999;
+    return null;
+  }
+
   function parseHospitalCopayDay1(val: unknown): number | null {
     if (val == null) return null;
     const s = String(val).trim();
@@ -280,7 +294,7 @@ export async function GET(request: Request) {
         const bh = parseHospitalCopayDay1(b.hospitalStayCopay);
         c = cmp(ah, bh, true);
         if (c !== 0) return c;
-        c = cmp(a.specialistCopay as number | null, b.specialistCopay as number | null, true);
+        c = cmp(effectiveCopay(a, "specialistCopay", "specialistCoinsPct"), effectiveCopay(b, "specialistCopay", "specialistCoinsPct"), true);
         if (c !== 0) return c;
         c = cmp(a.maxOutOfPocket as number | null, b.maxOutOfPocket as number | null, true);
         if (c !== 0) return c;
@@ -321,9 +335,9 @@ export async function GET(request: Request) {
         const bh = parseHospitalCopayDay1(b.hospitalStayCopay);
         c = cmp(ah, bh, true);
         if (c !== 0) return c;
-        c = cmp(a.specialistCopay as number | null, b.specialistCopay as number | null, true);
+        c = cmp(effectiveCopay(a, "specialistCopay", "specialistCoinsPct"), effectiveCopay(b, "specialistCopay", "specialistCoinsPct"), true);
         if (c !== 0) return c;
-        c = cmp(a.pcpCopay as number | null, b.pcpCopay as number | null, true);
+        c = cmp(effectiveCopay(a, "pcpCopay", "pcpCoinsPct"), effectiveCopay(b, "pcpCopay", "pcpCoinsPct"), true);
         if (c !== 0) return c;
         return cmpBenefitDesc(a.dentalAnnualMax, b.dentalAnnualMax);
       });
