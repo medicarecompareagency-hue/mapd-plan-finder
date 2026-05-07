@@ -72,15 +72,14 @@ const SIGNATURES = {
 // planCategory enum value -> signature key
 // SNPs intentionally skipped: per 04-28 handoff, SNPs (DSNP/CSNP/ISNP) often
 // have NULL cost-sharing for legitimate reasons. Different audit needed.
-//
-// MA (MA-Only) intentionally NOT listed: as of 2026-05-06 there are no
-// MA-Only plans in the DB yet (Dale ships only MAPD/SNP/PDP today). Add
-// MA: 'COST_SHARING_5' here once MA-Only plans are imported.
+// Enum values must match prisma/schema.prisma exactly — note MA_ONLY (with
+// underscore), not 'MA' which is what the original 04-30 backlog item flagged.
 const CATEGORY_SIG = {
-  PDP:  'PDP_DRUG_NULLS',
-  MAPD: 'COST_SHARING_5', // already cleaned 04-27, sanity check should return 0
-  MMP:  'COST_SHARING_5',
-  COST: 'COST_SHARING_5',
+  PDP:     'PDP_DRUG_NULLS',
+  MAPD:    'COST_SHARING_5', // already cleaned 04-27, sanity check should return 0
+  MA_ONLY: 'COST_SHARING_5',
+  MMP:     'COST_SHARING_5',
+  COST:    'COST_SHARING_5',
 };
 
 (async () => {
