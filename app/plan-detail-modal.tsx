@@ -70,7 +70,7 @@ function cs(copay: number | null | undefined, coinsPct: number | null | undefine
 
 // Keep in sync with prisma/schema.prisma enums and plan-search.tsx label tables.
 const PLAN_CATEGORY_LABELS: Record<string, string> = {
-  MA_ONLY: "MA-only (no drug coverage)",
+  MA_ONLY: "MA-Only (no drug coverage)",
   MAPD:    "MAPD (Medicare Advantage + Part D)",
   PDP:     "PDP (Prescription Drug Plan)",
   DSNP:    "DSNP (Dual-Eligible SNP)",

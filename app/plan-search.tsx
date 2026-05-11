@@ -130,7 +130,7 @@ function formatBenefitCell(annualMax: number | null | undefined, fallbackStr: st
 // ChronicCondition) and the decoder tables in scripts/import-cms-data.ts.
 // ---------------------------------------------------------------------------
 const PLAN_CATEGORY_LABELS: Record<string, string> = {
-  MA_ONLY: "MA-only (no drug coverage)",
+  MA_ONLY: "MA-Only (no drug coverage)",
   MAPD:    "MAPD (Medicare Advantage + Part D)",
   PDP:     "PDP (Prescription Drug Plan)",
   DSNP:    "DSNP (Dual-Eligible SNP)",
@@ -544,6 +544,7 @@ export default function PlanSearch() {
   }
 
   const fmt = (v: string | number) => (typeof v === "number" ? dollars(v) : v);
+  const isMaOnly = filters.planCategory === "MA_ONLY";
 
   return (
     <div className="flex flex-col gap-6 p-4 md:p-6 max-w-[1600px] mx-auto w-full">
@@ -767,16 +768,20 @@ export default function PlanSearch() {
           <FilterSelect label="CAT Scan Copay" name="catScanCopay" value={filters.catScanCopay ?? ""} onChange={handleFilterChange} options={options?.catScanCopays ?? []} formatOption={fmt} />
         </div>
 
-        <h2 className="text-sm font-bold text-gray-700 uppercase tracking-wide mb-3">Prescription Drug Costs</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 mb-4">
-          <FilterSelect label="Drug Deductible" name="drugDeductible" value={filters.drugDeductible ?? ""} onChange={handleFilterChange} options={options?.drugDeductibles ?? []} formatOption={fmt} />
-          <FilterSelect label="Tier 1 (Preferred Generic)" name="drugTier1Copay" value={filters.drugTier1Copay ?? ""} onChange={handleFilterChange} options={options?.drugTier1Copays ?? []} formatOption={fmt} />
-          <FilterSelect label="Tier 2 (Generic)" name="drugTier2Copay" value={filters.drugTier2Copay ?? ""} onChange={handleFilterChange} options={options?.drugTier2Copays ?? []} formatOption={fmt} />
-          <FilterSelect label="Tier 3 (Preferred Brand)" name="drugTier3Copay" value={filters.drugTier3Copay ?? ""} onChange={handleFilterChange} options={options?.drugTier3Copays ?? []} formatOption={fmt} />
-          <FilterSelect label="Tier 4 (Non-Preferred)" name="drugTier4Copay" value={filters.drugTier4Copay ?? ""} onChange={handleFilterChange} options={options?.drugTier4Copays ?? []} formatOption={fmt} />
-          <FilterSelect label="Tier 5 (Specialty)" name="drugTier5Copay" value={filters.drugTier5Copay ?? ""} onChange={handleFilterChange} options={options?.drugTier5Copays ?? []} formatOption={fmt} />
-          <FilterSelect label="Tier 6" name="drugTier6Copay" value={filters.drugTier6Copay ?? ""} onChange={handleFilterChange} options={options?.drugTier6Copays ?? []} formatOption={fmt} />
-        </div>
+        {!isMaOnly && (
+          <>
+            <h2 className="text-sm font-bold text-gray-700 uppercase tracking-wide mb-3">Prescription Drug Costs</h2>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 mb-4">
+              <FilterSelect label="Drug Deductible" name="drugDeductible" value={filters.drugDeductible ?? ""} onChange={handleFilterChange} options={options?.drugDeductibles ?? []} formatOption={fmt} />
+              <FilterSelect label="Tier 1 (Preferred Generic)" name="drugTier1Copay" value={filters.drugTier1Copay ?? ""} onChange={handleFilterChange} options={options?.drugTier1Copays ?? []} formatOption={fmt} />
+              <FilterSelect label="Tier 2 (Generic)" name="drugTier2Copay" value={filters.drugTier2Copay ?? ""} onChange={handleFilterChange} options={options?.drugTier2Copays ?? []} formatOption={fmt} />
+              <FilterSelect label="Tier 3 (Preferred Brand)" name="drugTier3Copay" value={filters.drugTier3Copay ?? ""} onChange={handleFilterChange} options={options?.drugTier3Copays ?? []} formatOption={fmt} />
+              <FilterSelect label="Tier 4 (Non-Preferred)" name="drugTier4Copay" value={filters.drugTier4Copay ?? ""} onChange={handleFilterChange} options={options?.drugTier4Copays ?? []} formatOption={fmt} />
+              <FilterSelect label="Tier 5 (Specialty)" name="drugTier5Copay" value={filters.drugTier5Copay ?? ""} onChange={handleFilterChange} options={options?.drugTier5Copays ?? []} formatOption={fmt} />
+              <FilterSelect label="Tier 6" name="drugTier6Copay" value={filters.drugTier6Copay ?? ""} onChange={handleFilterChange} options={options?.drugTier6Copays ?? []} formatOption={fmt} />
+            </div>
+          </>
+        )}
 
         <h2 className="text-sm font-bold text-gray-700 uppercase tracking-wide mb-3">Extra Benefits</h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 mb-4">
@@ -856,13 +861,17 @@ export default function PlanSearch() {
                     <th className="px-3 py-3">Skilled Nursing</th>
                     <th className="px-3 py-3 text-right">MRI</th>
                     <th className="px-3 py-3 text-right">CAT Scan</th>
-                    <th className="px-3 py-3 text-right">Drug Deduct.</th>
-                    <th className="px-3 py-3 text-right">Tier 1</th>
-                    <th className="px-3 py-3 text-right">Tier 2</th>
-                    <th className="px-3 py-3 text-right">Tier 3</th>
-                    <th className="px-3 py-3 text-right">Tier 4</th>
-                    <th className="px-3 py-3 text-right">Tier 5</th>
-                    <th className="px-3 py-3 text-right">Tier 6</th>
+                    {!isMaOnly && (
+                      <>
+                        <th className="px-3 py-3 text-right">Drug Deduct.</th>
+                        <th className="px-3 py-3 text-right">Tier 1</th>
+                        <th className="px-3 py-3 text-right">Tier 2</th>
+                        <th className="px-3 py-3 text-right">Tier 3</th>
+                        <th className="px-3 py-3 text-right">Tier 4</th>
+                        <th className="px-3 py-3 text-right">Tier 5</th>
+                        <th className="px-3 py-3 text-right">Tier 6</th>
+                      </>
+                    )}
                     <th className="px-3 py-3 text-right">OTC</th>
                     <th className="px-3 py-3 text-right">Food Card</th>
                     <th className="px-3 py-3">Dental</th>
@@ -906,7 +915,7 @@ export default function PlanSearch() {
                                 }`}
                                 title={PLAN_CATEGORY_LABELS[plan.planCategory] ?? plan.planCategory}
                               >
-                                {plan.planCategory.replace("_", "-")}
+                                {plan.planCategory === "MA_ONLY" ? "MA-Only" : plan.planCategory.replace("_", "-")}
                               </span>
                               {plan.isZeroDollarDsnp === true && (
                                 <span
@@ -965,13 +974,17 @@ export default function PlanSearch() {
                       <td className="px-3 py-3 text-xs text-gray-900">{plan.skilledNursingCopay || "N/A"}</td>
                       <td className="px-3 py-3 text-right text-gray-900">{costShare(plan.mriCopay, plan.mriCoinsPct)}</td>
                       <td className="px-3 py-3 text-right text-gray-900">{costShare(plan.catScanCopay, plan.catScanCoinsPct)}</td>
-                      <td className="px-3 py-3 text-right text-gray-900">{dollars(plan.drugDeductible)}</td>
-                      <td className="px-3 py-3 text-right text-gray-900"><DrugTierCell tier={1} value={plan.drugTier1Copay} mask={plan.drugTierCoinsuranceMask} /></td>
-                      <td className="px-3 py-3 text-right text-gray-900"><DrugTierCell tier={2} value={plan.drugTier2Copay} mask={plan.drugTierCoinsuranceMask} /></td>
-                      <td className="px-3 py-3 text-right text-gray-900"><DrugTierCell tier={3} value={plan.drugTier3Copay} mask={plan.drugTierCoinsuranceMask} /></td>
-                      <td className="px-3 py-3 text-right text-gray-900"><DrugTierCell tier={4} value={plan.drugTier4Copay} mask={plan.drugTierCoinsuranceMask} /></td>
-                      <td className="px-3 py-3 text-right text-gray-900"><DrugTierCell tier={5} value={plan.drugTier5Copay} mask={plan.drugTierCoinsuranceMask} /></td>
-                      <td className="px-3 py-3 text-right text-gray-900"><DrugTierCell tier={6} value={plan.drugTier6Copay} mask={plan.drugTierCoinsuranceMask} /></td>
+                      {!isMaOnly && (
+                        <>
+                          <td className="px-3 py-3 text-right text-gray-900">{dollars(plan.drugDeductible)}</td>
+                          <td className="px-3 py-3 text-right text-gray-900"><DrugTierCell tier={1} value={plan.drugTier1Copay} mask={plan.drugTierCoinsuranceMask} /></td>
+                          <td className="px-3 py-3 text-right text-gray-900"><DrugTierCell tier={2} value={plan.drugTier2Copay} mask={plan.drugTierCoinsuranceMask} /></td>
+                          <td className="px-3 py-3 text-right text-gray-900"><DrugTierCell tier={3} value={plan.drugTier3Copay} mask={plan.drugTierCoinsuranceMask} /></td>
+                          <td className="px-3 py-3 text-right text-gray-900"><DrugTierCell tier={4} value={plan.drugTier4Copay} mask={plan.drugTierCoinsuranceMask} /></td>
+                          <td className="px-3 py-3 text-right text-gray-900"><DrugTierCell tier={5} value={plan.drugTier5Copay} mask={plan.drugTierCoinsuranceMask} /></td>
+                          <td className="px-3 py-3 text-right text-gray-900"><DrugTierCell tier={6} value={plan.drugTier6Copay} mask={plan.drugTierCoinsuranceMask} /></td>
+                        </>
+                      )}
                       <td className="px-3 py-3 text-right text-gray-900">{dollars(plan.otcAllowance)}</td>
                       <td className="px-3 py-3 text-right text-gray-900">{dollars(plan.foodCardAllowance)}</td>
                       <td className="px-3 py-3 text-sm text-gray-900 min-w-[180px]">{formatBenefitCell(plan.dentalAnnualMax, plan.dentalBenefits, "Dental")}</td>

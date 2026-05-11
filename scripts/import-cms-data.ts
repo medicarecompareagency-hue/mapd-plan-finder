@@ -39,6 +39,45 @@ import { execSync } from "child_process";
 const { LICENSED_STATES }: { LICENSED_STATES: string[] } = require("./licensed-states");
 const LICENSED_STATES_SET = new Set(LICENSED_STATES);
 
+// Licensed-carriers gate (added 2026-05-11, Pickup #2 from 2026-05-07 handoff).
+// Mirror of the licensed-states gate above. Without this, a fresh landscape
+// import re-adds carriers Dale doesn't sell (VIVA, Anthem, BCBS, Molina,
+// Aetna FIDE, etc.) and the cleanup script (scripts/cleanup-unlicensed-
+// carriers.js) has to scrub them again. Gating at the source keeps the DB
+// scoped to Dale's contracted carriers from row 1.
+//
+// HealthSpring brand history:
+//   - 2019: HealthSpring rebranded to Cigna
+//   - 2026: rebranded back to HealthSpring
+// CMS PBP/landscape data lags rebrand events by ~1 year; some files still
+// publish the carrier as "Cigna" / "Cigna Healthcare" in 2026. We accept
+// all three spellings here, then normalize organizationName to
+// "HealthSpring" before writing to the DB (folds in the logic of
+// scripts/normalize-healthspring-name.js so it doesn't need a separate
+// post-import run).
+//
+// Canonical source: lib/licensed-carriers.ts. Mirrored inline here so the
+// script doesn't depend on Next.js lib/ path mapping at runtime.
+const LICENSED_CARRIERS = [
+  "HealthSpring",
+  "Cigna",
+  "Cigna Healthcare",
+  "UnitedHealthcare",
+  "Wellcare",
+  "Aetna Medicare",
+  "Humana",
+  "Devoted Health",
+] as const;
+const LICENSED_CARRIERS_SET = new Set<string>(LICENSED_CARRIERS);
+
+function normalizeCarrierName(raw: string): string {
+  // HealthSpring rebranded back from Cigna / Cigna Healthcare in 2026.
+  // Folded in from scripts/normalize-healthspring-name.js (Pickup #3,
+  // 2026-05-07 handoff).
+  if (raw === "Cigna" || raw === "Cigna Healthcare") return "HealthSpring";
+  return raw;
+}
+
 // Long-running scripts must go through the session-mode pooler (:5432),
 // not the transaction pooler (:6543) used by the web app. Transaction-mode
 // PgBouncer recycles connections between statements, which breaks Prisma's
@@ -267,12 +306,17 @@ interface PlanBenefits {
   // b7 - Health professionals
   pcpCopay: number | null;
   specialistCopay: number | null;
+  pcpCoinsPct: number | null;
+  specialistCoinsPct: number | null;
   // b4 - Emergency
   emergencyRoomCopay: number | null;
+  emergencyRoomCoinsPct: number | null;
   // b10 - Ambulance
   ambulanceCopay: number | null;
+  ambulanceCoinsPct: number | null;
   // b9 - Outpatient
   outpatientHospitalCopay: number | null;
+  outpatientHospitalCoinsPct: number | null;
   // b1a - Hospital stay
   hospitalStayCopay: string | null;
   // b2 - SNF
@@ -280,6 +324,8 @@ interface PlanBenefits {
   // b8 - Imaging
   mriCopay: number | null;
   catScanCopay: number | null;
+  mriCoinsPct: number | null;
+  catScanCoinsPct: number | null;
   // mrx - Drug
   drugDeductible: number | null;
   drugTier1Copay: number | null;
@@ -311,9 +357,13 @@ function buildBenefitMap(extractDir: string): Map<string, PlanBenefits> {
         hasPartD: null, isZeroDollarDsnp: null, cmsContractType: null,
         monthlyPremium: null, medicalDeductible: null, maxOutOfPocket: null,
         partBGivebackAmount: null, pcpCopay: null, specialistCopay: null,
-        emergencyRoomCopay: null, ambulanceCopay: null, outpatientHospitalCopay: null,
+        pcpCoinsPct: null, specialistCoinsPct: null,
+        emergencyRoomCopay: null, emergencyRoomCoinsPct: null,
+        ambulanceCopay: null, ambulanceCoinsPct: null,
+        outpatientHospitalCopay: null, outpatientHospitalCoinsPct: null,
         hospitalStayCopay: null, skilledNursingCopay: null,
         mriCopay: null, catScanCopay: null,
+        mriCoinsPct: null, catScanCoinsPct: null,
         drugDeductible: null, drugTier1Copay: null, drugTier2Copay: null,
         drugTier3Copay: null, drugTier4Copay: null, drugTier5Copay: null,
         drugTier6Copay: null, otcAllowance: null, foodCardAllowance: null,
@@ -400,35 +450,61 @@ function buildBenefitMap(extractDir: string): Map<string, PlanBenefits> {
     }
   }
 
-  // b7: PCP (b7a) and Specialist (b7b) copays
+  // Coinsurance percentage extractor (added 2026-05-11, folded in from
+  // scripts/enrich-partial-dual-coinsurance.js). DSNP/partial-dual plans
+  // file coinsurance percentages instead of flat copays; the UI's
+  // costShare() helper falls back to "X% coins" when copay is null but
+  // *CoinsPct is set. Filling them at import time eliminates the need
+  // for a separate post-import enrichment pass.
+  //
+  // Column-name suffixes (_mc_, _gas_, _ohs_, _dmc) were verified against
+  // 2026 PBP file headers on 2026-05-07. See memory entry
+  // partial_dual_dsnp_coinsurance_pickup.md for the full mapping table.
+  function coinsPct(
+    row: PBPRow,
+    coinsYn: string,
+    minCol: string,
+    maxCol: string,
+  ): number | null {
+    if (row[coinsYn] !== "1") return null;
+    const min = num(row[minCol]);
+    if (min != null) return min;
+    return num(row[maxCol]);
+  }
+
+  // b7: PCP (b7a) and Specialist (b7b) copays + coinsurance
   log("Parsing pbp_b7_health_prof.txt...");
   for (const row of parseTSV(path.join(extractDir, "pbp_b7_health_prof.txt"))) {
     const b = getOrCreate(planKey(row));
     if (row.pbp_b7a_copay_yn === "1") {
       b.pcpCopay = num(row.pbp_b7a_copay_amt_mc_min);
     }
+    b.pcpCoinsPct = coinsPct(row, "pbp_b7a_coins_yn", "pbp_b7a_coins_pct_mc_min", "pbp_b7a_coins_pct_mc_max");
     if (row.pbp_b7b_copay_yn === "1") {
       b.specialistCopay = num(row.pbp_b7b_copay_mc_amt_min);
     }
+    b.specialistCoinsPct = coinsPct(row, "pbp_b7b_coins_yn", "pbp_b7b_coins_pct_mc_min", "pbp_b7b_coins_pct_mc_max");
   }
 
-  // b4: Emergency (b4a) copay
+  // b4: Emergency (b4a) copay + coinsurance
   log("Parsing pbp_b4_emerg_urgent.txt...");
   for (const row of parseTSV(path.join(extractDir, "pbp_b4_emerg_urgent.txt"))) {
     const b = getOrCreate(planKey(row));
     if (row.pbp_b4a_copay_yn === "1") {
       b.emergencyRoomCopay = num(row.pbp_b4a_copay_amt_mc_min);
     }
+    b.emergencyRoomCoinsPct = coinsPct(row, "pbp_b4a_coins_yn", "pbp_b4a_coins_pct_mc_min", "pbp_b4a_coins_pct_mc_max");
   }
 
   // b10: Ambulance (b10a) and Transportation (b10b)
   log("Parsing pbp_b10_amb_trans.txt...");
   for (const row of parseTSV(path.join(extractDir, "pbp_b10_amb_trans.txt"))) {
     const b = getOrCreate(planKey(row));
-    // b10a: Ambulance copay (ground ambulance)
+    // b10a: Ambulance copay + coinsurance (ground ambulance)
     if (row.pbp_b10a_copay_yn === "1") {
       b.ambulanceCopay = num(row.pbp_b10a_copay_gas_amt_min);
     }
+    b.ambulanceCoinsPct = coinsPct(row, "pbp_b10a_coins_yn", "pbp_b10a_coins_gas_pct_min", "pbp_b10a_coins_gas_pct_max");
     // b10b: Transportation benefit
     // Sources: trip count (bendesc_amt_pal), dollar max (maxplan_amt), or all-transport trips (amt_al)
     if (row.pbp_b10b_bendesc_yn === "1") {
@@ -451,7 +527,7 @@ function buildBenefitMap(extractDir: string): Map<string, PlanBenefits> {
     }
   }
 
-  // b9: Outpatient hospital copay
+  // b9: Outpatient hospital copay + coinsurance
   log("Parsing pbp_b9_outpat_hosp.txt...");
   for (const row of parseTSV(path.join(extractDir, "pbp_b9_outpat_hosp.txt"))) {
     const b = getOrCreate(planKey(row));
@@ -459,6 +535,7 @@ function buildBenefitMap(extractDir: string): Map<string, PlanBenefits> {
       // Use max amount for "up to" semantics
       b.outpatientHospitalCopay = num(row.pbp_b9a_copay_ohs_amt_max) ?? num(row.pbp_b9a_copay_ohs_amt_min);
     }
+    b.outpatientHospitalCoinsPct = coinsPct(row, "pbp_b9a_coins_yn", "pbp_b9a_coins_ohs_pct_min", "pbp_b9a_coins_ohs_pct_max");
   }
 
   // b1a: Inpatient hospital stay copay (per-day interval structure)
@@ -489,6 +566,12 @@ function buildBenefitMap(extractDir: string): Map<string, PlanBenefits> {
     if (row.pbp_b8a_copay_yn === "1") {
       b.mriCopay = num(row.pbp_b8a_copay_max_dmc_amt) ?? num(row.pbp_b8a_copay_min_dmc_amt);
       b.catScanCopay = b.mriCopay; // same category in CMS data
+    }
+    // b8a coinsurance — MRI and CAT share the same diagnostic-radiology bucket
+    const b8aPct = coinsPct(row, "pbp_b8a_coins_yn", "pbp_b8a_coins_pct_dmc", "pbp_b8a_coins_pct_dmc_max");
+    if (b8aPct != null) {
+      b.mriCoinsPct = b8aPct;
+      b.catScanCoinsPct = b8aPct;
     }
     // If b8b (outpatient therapeutic) has separate copay for diagnostic radiology svc
     if (row.pbp_b8b_copay_yn === "1") {
@@ -716,6 +799,11 @@ interface LandscapeRow {
   segmentid: string;
   innetworkmoopamount: string;
   overallstarrating: string;
+  // drugbenefittype is the authoritative plan-level Part D signal in the
+  // landscape CSV (empty = MA-Only, populated = MA-PD). Used to repair
+  // the contract-level partD-flag mis-classification — see the override
+  // logic in runImport().
+  drugbenefittype: string;
 }
 
 function parseLandscape(csvPath: string): LandscapeRow[] {
@@ -844,15 +932,68 @@ export async function runImport(year?: number): Promise<{ imported: number; skip
   // LICENSED_STATES gate (2026-04-28): drop rows for states Dale isn't
   // licensed in BEFORE we touch the DB. Comparing on the abbreviated
   // state code (post STATE_ABBREVS lookup) so we match scripts/licensed-states.js.
-  const landscapeRows = allLandscapeRows.filter((row) => {
+  const stateGatedRows = allLandscapeRows.filter((row) => {
     const abbrev = STATE_ABBREVS[row.state] || row.state;
     return LICENSED_STATES_SET.has(abbrev);
   });
-  const droppedNonLicensed = allLandscapeRows.length - landscapeRows.length;
+  const droppedNonLicensedState = allLandscapeRows.length - stateGatedRows.length;
   log(
-    `Licensed-state gate: kept ${landscapeRows.length} rows in [${LICENSED_STATES.join(", ")}], ` +
-      `dropped ${droppedNonLicensed} rows in non-licensed states.`,
+    `Licensed-state gate: kept ${stateGatedRows.length} rows in [${LICENSED_STATES.join(", ")}], ` +
+      `dropped ${droppedNonLicensedState} rows in non-licensed states.`,
   );
+
+  // LICENSED_CARRIERS gate (2026-05-11, Pickup #2 from 2026-05-07 handoff):
+  // drop rows for carriers Dale isn't contracted with. Compares on the raw
+  // organizationname from the landscape CSV (which uses CMS canonical names
+  // exactly). Cigna and Cigna Healthcare are kept here because of the
+  // HealthSpring rebrand lag — they're normalized to "HealthSpring" before
+  // writing to the DB (see normalizeCarrierName).
+  const landscapeRows = stateGatedRows.filter((row) => {
+    const carrier = row.organizationname?.trim() || "";
+    return LICENSED_CARRIERS_SET.has(carrier);
+  });
+  const droppedNonLicensedCarrier = stateGatedRows.length - landscapeRows.length;
+  log(
+    `Licensed-carrier gate: kept ${landscapeRows.length} rows for [${LICENSED_CARRIERS.join(", ")}], ` +
+      `dropped ${droppedNonLicensedCarrier} rows from non-licensed carriers.`,
+  );
+
+  // MA-Only override set (2026-05-11, folded in from
+  // scripts/reclassify-ma-only-from-landscape.js, Pickup #2). The PBP
+  // Section A `pbp_a_contract_partd_flag` is CONTRACT-level, so multi-plan
+  // contracts (e.g. Humana H4461) stamp all plans as MAPD even when some
+  // are MA-Only "Honor Giveback" plans. The landscape CSV's drugbenefittype
+  // column is the authoritative plan-level signal — empty for MA-Only,
+  // populated ("Enhanced" / "Basic" / etc.) for MA-PD. We collect the
+  // dbPlanId of every landscape row that looks MA-Only, then override
+  // planCategory + hasPartD in the upsert builder below.
+  const maOnlyOverrideSet = new Set<string>();
+  for (const r of landscapeRows) {
+    const drugBenefit = (r.drugbenefittype || "").trim();
+    const typeofMA = (r.typeofmedicarehealthplan || "").trim();
+    const contractId = (r.contractid || "").trim();
+    const planId = (r.planid || "").trim();
+    if (!contractId || !planId) continue;
+    if (drugBenefit) continue; // populated drugbenefittype = MA-PD
+    if (/SNP|Special Need/i.test(typeofMA)) continue;
+    if (/PDP|prescription/i.test(typeofMA)) continue;
+    maOnlyOverrideSet.add(`${contractId}-${planId}`);
+  }
+  log(
+    `MA-Only override set: ${maOnlyOverrideSet.size} distinct planIds flagged ` +
+      `(landscape drugbenefittype empty); will force planCategory=MA_ONLY when PBP says MAPD.`,
+  );
+
+  // Helper: applied to every plan record in both upsert paths below.
+  function applyMaOnlyOverride(
+    pbpCategory: PlanCategory | null,
+    dbPlanId: string,
+  ): PlanCategory | null {
+    if (pbpCategory === PlanCategory.MAPD && maOnlyOverrideSet.has(dbPlanId)) {
+      return PlanCategory.MA_ONLY;
+    }
+    return pbpCategory;
+  }
 
   // Build and upsert plan records
   let imported = 0;
@@ -924,16 +1065,24 @@ export async function runImport(year?: number): Promise<{ imported: number; skip
       const landscapeMOOP = num(row.innetworkmoopamount);
       const landscapeDrugDeductible = num(row.annualdrugdeductible);
 
+      // Apply MA-Only override + carrier normalization (Pickup #2 + #3,
+      // 2026-05-11).
+      const dbPlanId = `${contractId}-${planId}`;
+      const finalCategory = applyMaOnlyOverride(benefits?.planCategory ?? null, dbPlanId);
+      const finalHasPartD =
+        finalCategory === PlanCategory.MA_ONLY ? false : (benefits?.hasPartD ?? null);
+      const finalOrgName = normalizeCarrierName(row.organizationname?.trim() || "Unknown");
+
       const data = {
         planYear,
-        planId: `${contractId}-${planId}`,
-        planName: row.planname?.trim() || `${contractId}-${planId}`,
-        organizationName: row.organizationname?.trim() || "Unknown",
+        planId: dbPlanId,
+        planName: row.planname?.trim() || dbPlanId,
+        organizationName: finalOrgName,
         planType,
-        planCategory: benefits?.planCategory ?? null,
+        planCategory: finalCategory,
         snpSubtype: benefits?.snpSubtype ?? null,
         chronicConditions: benefits?.chronicConditions ?? [],
-        hasPartD: benefits?.hasPartD ?? null,
+        hasPartD: finalHasPartD,
         isZeroDollarDsnp: benefits?.isZeroDollarDsnp ?? null,
         cmsContractType: benefits?.cmsContractType ?? null,
         state: stateAbbrev,
@@ -947,13 +1096,20 @@ export async function runImport(year?: number): Promise<{ imported: number; skip
         maxOutOfPocket: benefits?.maxOutOfPocket ?? landscapeMOOP,
         pcpCopay: benefits?.pcpCopay,
         specialistCopay: benefits?.specialistCopay,
+        pcpCoinsPct: benefits?.pcpCoinsPct ?? null,
+        specialistCoinsPct: benefits?.specialistCoinsPct ?? null,
         emergencyRoomCopay: benefits?.emergencyRoomCopay,
+        emergencyRoomCoinsPct: benefits?.emergencyRoomCoinsPct ?? null,
         ambulanceCopay: benefits?.ambulanceCopay,
+        ambulanceCoinsPct: benefits?.ambulanceCoinsPct ?? null,
         outpatientHospitalCopay: benefits?.outpatientHospitalCopay,
+        outpatientHospitalCoinsPct: benefits?.outpatientHospitalCoinsPct ?? null,
         hospitalStayCopay: benefits?.hospitalStayCopay,
         skilledNursingCopay: benefits?.skilledNursingCopay,
         mriCopay: benefits?.mriCopay,
         catScanCopay: benefits?.catScanCopay,
+        mriCoinsPct: benefits?.mriCoinsPct ?? null,
+        catScanCoinsPct: benefits?.catScanCoinsPct ?? null,
         drugDeductible: benefits?.drugDeductible ?? landscapeDrugDeductible ?? 0,
         drugTier1Copay: benefits?.drugTier1Copay,
         drugTier2Copay: benefits?.drugTier2Copay,
@@ -1034,16 +1190,24 @@ export async function runImport(year?: number): Promise<{ imported: number; skip
             return null;
           }
 
+          // Apply MA-Only override + carrier normalization (Pickup #2 + #3,
+          // 2026-05-11). Keep this mirrored with the upsert path above.
+          const dbPlanId = `${contractId}-${pid}`;
+          const finalCategory = applyMaOnlyOverride(benefits?.planCategory ?? null, dbPlanId);
+          const finalHasPartD =
+            finalCategory === PlanCategory.MA_ONLY ? false : (benefits?.hasPartD ?? null);
+          const finalOrgName = normalizeCarrierName(row.organizationname?.trim() || "Unknown");
+
           return {
             planYear,
-            planId: `${contractId}-${pid}`,
-            planName: row.planname?.trim() || `${contractId}-${pid}`,
-            organizationName: row.organizationname?.trim() || "Unknown",
+            planId: dbPlanId,
+            planName: row.planname?.trim() || dbPlanId,
+            organizationName: finalOrgName,
             planType,
-            planCategory: benefits?.planCategory ?? null,
+            planCategory: finalCategory,
             snpSubtype: benefits?.snpSubtype ?? null,
             chronicConditions: benefits?.chronicConditions ?? [],
-            hasPartD: benefits?.hasPartD ?? null,
+            hasPartD: finalHasPartD,
             isZeroDollarDsnp: benefits?.isZeroDollarDsnp ?? null,
             cmsContractType: benefits?.cmsContractType ?? null,
             state: stateAbbrev,
@@ -1057,13 +1221,20 @@ export async function runImport(year?: number): Promise<{ imported: number; skip
             maxOutOfPocket: benefits?.maxOutOfPocket ?? num(row.innetworkmoopamount),
             pcpCopay: benefits?.pcpCopay ?? null,
             specialistCopay: benefits?.specialistCopay ?? null,
+            pcpCoinsPct: benefits?.pcpCoinsPct ?? null,
+            specialistCoinsPct: benefits?.specialistCoinsPct ?? null,
             emergencyRoomCopay: benefits?.emergencyRoomCopay ?? null,
+            emergencyRoomCoinsPct: benefits?.emergencyRoomCoinsPct ?? null,
             ambulanceCopay: benefits?.ambulanceCopay ?? null,
+            ambulanceCoinsPct: benefits?.ambulanceCoinsPct ?? null,
             outpatientHospitalCopay: benefits?.outpatientHospitalCopay ?? null,
+            outpatientHospitalCoinsPct: benefits?.outpatientHospitalCoinsPct ?? null,
             hospitalStayCopay: benefits?.hospitalStayCopay ?? null,
             skilledNursingCopay: benefits?.skilledNursingCopay ?? null,
             mriCopay: benefits?.mriCopay ?? null,
             catScanCopay: benefits?.catScanCopay ?? null,
+            mriCoinsPct: benefits?.mriCoinsPct ?? null,
+            catScanCoinsPct: benefits?.catScanCoinsPct ?? null,
             drugDeductible: benefits?.drugDeductible ?? num(row.annualdrugdeductible) ?? 0,
             drugTier1Copay: benefits?.drugTier1Copay ?? null,
             drugTier2Copay: benefits?.drugTier2Copay ?? null,
