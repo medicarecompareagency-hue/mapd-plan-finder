@@ -59,6 +59,7 @@ interface Plan {
   drugTier6Copay: number | null;
   drugTierCoinsuranceMask: string | null;
   otcAllowance: number | null;
+  otcMaxPeriod: string | null; // "month", "quarter", "year", "6 months", "episode", "benefit period", or null
   foodCardAllowance: number | null;
   dentalBenefits: string | null;
   hearingBenefits: string | null;
@@ -129,6 +130,27 @@ type Filters = Record<string, string>;
 
 // ---------------------------------------------------------------------------
 // Enum display labels
+// OTC cell formatter (2026-05-12). The DB stores the ANNUALIZED otc
+// amount (import-pbp.js multiplies by 12 for monthly filings, 4 for
+// quarterly, etc.). When we know the original filing period we compute
+// back to the carrier's filed cadence so the agent sees "$300 / month"
+// instead of just "$3,600". Falls back to "$X / yr" when the period is
+// "year" / "other" / unknown.
+function formatOtcCell(plan: Plan): { primary: string; secondary: string | null } {
+  const amt = plan.otcAllowance;
+  if (amt == null || amt === 0) return { primary: dollars(amt), secondary: null };
+  const per = plan.otcMaxPeriod;
+  const mult: Record<string, number> = { month: 12, quarter: 4, "6 months": 2 };
+  if (per && mult[per]) {
+    const orig = amt / mult[per];
+    return {
+      primary: `$${orig.toLocaleString(undefined, { maximumFractionDigits: 0 })} / ${per === "6 months" ? "6 mo" : per === "month" ? "mo" : "qtr"}`,
+      secondary: `($${amt.toLocaleString(undefined, { maximumFractionDigits: 0 })} / yr)`,
+    };
+  }
+  return { primary: `$${amt.toLocaleString(undefined, { maximumFractionDigits: 0 })} / yr`, secondary: null };
+}
+
 // SSBCI chip renderer (2026-05-12). Surfaces chronic-condition-gated
 // benefits as a list of small badges under the OTC/Food Card cells.
 // Carriers like Humana/UHC file these flags without a dollar amount in
@@ -1035,7 +1057,15 @@ export default function PlanSearch() {
                         </>
                       )}
                       <td className="px-3 py-3 text-right text-gray-900">
-                        <div>{dollars(plan.otcAllowance)}</div>
+                        {(() => {
+                          const f = formatOtcCell(plan);
+                          return (
+                            <>
+                              <div>{f.primary}</div>
+                              {f.secondary && <div className="text-[10px] text-gray-500">{f.secondary}</div>}
+                            </>
+                          );
+                        })()}
                         <SsbciChips plan={plan} />
                       </td>
                       <td className="px-3 py-3 text-right text-gray-900">{dollars(plan.foodCardAllowance)}</td>

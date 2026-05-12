@@ -152,7 +152,8 @@ model Plan {
 
   drugTierCoinsuranceMask String?
   // Extra Benefits
-  otcAllowance              Float?   @default(0)   // Over-the-counter allowance
+  otcAllowance              Float?   @default(0)   // Annualized OTC allowance (raw amount × period multiplier from import-pbp.js)
+  otcMaxPeriod              String?  // Human-readable period the carrier filed (e.g. "month", "quarter", "year", "benefit period", "other"). Populated by scripts/import-pbp.js.
   foodCardAllowance         Float?   @default(0)
   dentalAnnualMax           Float?   @default(0)
   visionAnnualMax           Float?   @default(0)

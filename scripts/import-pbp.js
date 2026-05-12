@@ -46,6 +46,14 @@ const VERBOSE  = process.env.PBP_VERBOSE === '1';
 const PERIOD_MULT_DEFAULT = { '1': 1, '2': 12, '3': 4, '4': 2, '5': 1 };
 const PERIOD_MULT_OTC     = { '1': 1, '2': 12, '3': 4, '4': 2, '5': 12 };
 
+// Human-readable label for the OTC card filing period. Per code 5 ("other")
+// is treated as monthly for OTC (carriers typically file OTC cards as
+// monthly even when they pick "other"), matching PERIOD_MULT_OTC.
+const PERIOD_LABEL_OTC = {
+  '1': 'year', '2': 'month', '3': 'quarter', '4': '6 months',
+  '5': 'month', '6': 'episode', '7': 'benefit period',
+};
+
 function num(s) {
   if (s == null || s === '') return 0;
   const n = parseFloat(s);
@@ -104,7 +112,7 @@ async function buildAgg() {
     if (v <= 0) return;
     let cur = agg.get(planId);
     if (!cur) {
-      cur = { otcAllowance: 0, foodCardAllowance: 0, dentalAnnualMax: 0, visionAnnualMax: 0, hearingAnnualMax: 0, b13cMeal: 0 };
+      cur = { otcAllowance: 0, foodCardAllowance: 0, dentalAnnualMax: 0, visionAnnualMax: 0, hearingAnnualMax: 0, b13cMeal: 0, otcMaxPeriod: null, hearingBenefits: null };
       agg.set(planId, cur);
     }
     if (v > cur[key]) cur[key] = v;
@@ -120,6 +128,16 @@ async function buildAgg() {
     // OTC: pbp_b13b_maxplan_amt x period from pbp_b13b_otc_maxplan_per
     const otc = annualize(row.pbp_b13b_maxplan_amt, row.pbp_b13b_otc_maxplan_per, PERIOD_MULT_OTC);
     upsertMax(pid, 'otcAllowance', otc);
+    // Capture the period label — the carrier's filed cadence, NOT annualized.
+    // Only record when we actually saw an OTC max filed (otherwise the agg
+    // will overwrite a useful label with an empty one).
+    if (otc > 0) {
+      const lbl = PERIOD_LABEL_OTC[row.pbp_b13b_otc_maxplan_per];
+      if (lbl) {
+        const cur = agg.get(pid);
+        if (cur && !cur.otcMaxPeriod) cur.otcMaxPeriod = lbl;
+      }
+    }
     // Meal fallback: pbp_b13c_maxplan_amt x period from pbp_b13c_maxplan_per
     const meal = annualize(row.pbp_b13c_maxplan_amt, row.pbp_b13c_maxplan_per);
     upsertMax(pid, 'b13cMeal', meal);
@@ -185,17 +203,53 @@ async function buildAgg() {
   }
   console.log(`  scanned ${n} rows`);
 
-  // ----- Hearing annual max -----
+  // ----- Hearing annual max + description -----
+  // Carriers file hearing two ways: a maxplan_amt cap (Aetna, UHC) OR
+  // a fixed per-aid copay (HealthSpring, Devoted, Humana). The latter
+  // was previously dropped on the floor; we now emit a description
+  // string so the UI shows "$399-$1800 per aid" instead of "No Hearing".
   console.log('Reading pbp_b18_hearing_exams_aids.txt ...');
   n = 0;
   for await (const row of readPbp(fileMust('pbp_b18_hearing_exams_aids.txt'))) {
     const pid = planIdFor(row);
     if (!pid) continue;
     n++;
-    // per=3 (dominant) means per benefit period = annual. Do not annualize.
+    // Annual max path (carrier filed a $/year cap)
     const exams = num(row.pbp_b18a_maxplan_amt);
     const aids  = num(row.pbp_b18b_maxplan_amt);
     upsertMax(pid, 'hearingAnnualMax', Math.max(exams, aids));
+
+    // Copay-based path. Only build a description when annual max is 0
+    // (otherwise the $X/yr display wins). Detects b18b copays (hearing
+    // aid copay) first, then b18c (fitting/evaluation copay) as fallback.
+    if (Math.max(exams, aids) === 0) {
+      let desc = null;
+      const hasAids = row.pbp_b18b_bendesc_yn === '1';
+      if (hasAids && row.pbp_b18b_copay_yn === '1') {
+        const min = num(row.pbp_b18b_copay_at_min_amt);
+        const max = num(row.pbp_b18b_copay_at_max_amt);
+        if (min === 0 && max === 0) {
+          desc = '$0 per hearing aid';
+        } else if (min === max) {
+          desc = `$${min.toLocaleString()} per hearing aid`;
+        } else if (min > 0 || max > 0) {
+          desc = `$${min.toLocaleString()}-$${max.toLocaleString()} per hearing aid`;
+        }
+      }
+      if (!desc && hasAids && row.pbp_b18c_copay_yn === '1') {
+        const c = num(row.pbp_b18c_copay_amt);
+        if (c > 0) desc = `$${c.toLocaleString()} fitting copay`;
+      }
+      if (!desc && hasAids) {
+        desc = 'Hearing aid benefit (see plan summary)';
+      } else if (!desc && row.pbp_b18a_bendesc_yn === '1') {
+        desc = 'Hearing exam covered';
+      }
+      if (desc) {
+        const cur = agg.get(pid);
+        if (cur && !cur.hearingBenefits) cur.hearingBenefits = desc;
+      }
+    }
   }
   console.log(`  scanned ${n} rows`);
 
@@ -245,15 +299,20 @@ async function main() {
 
   async function writeOne(planId, v) {
     try {
+      const data = {
+        otcAllowance:      v.otcAllowance,
+        foodCardAllowance: v.foodCardAllowance,
+        dentalAnnualMax:   v.dentalAnnualMax,
+        visionAnnualMax:   v.visionAnnualMax,
+        hearingAnnualMax:  v.hearingAnnualMax,
+      };
+      // Only set otcMaxPeriod / hearingBenefits when we actually computed
+      // one — don't blast nulls over existing values.
+      if (v.otcMaxPeriod) data.otcMaxPeriod = v.otcMaxPeriod;
+      if (v.hearingBenefits) data.hearingBenefits = v.hearingBenefits;
       const r = await prisma.plan.updateMany({
         where: { planId, planYear: PBP_YEAR },
-        data: {
-          otcAllowance:      v.otcAllowance,
-          foodCardAllowance: v.foodCardAllowance,
-          dentalAnnualMax:   v.dentalAnnualMax,
-          visionAnnualMax:   v.visionAnnualMax,
-          hearingAnnualMax:  v.hearingAnnualMax,
-        },
+        data,
       });
       if (r.count === 0) {
         missed++;
