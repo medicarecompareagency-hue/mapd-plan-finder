@@ -9,6 +9,7 @@
     "lint": "eslint",
     "postinstall": "prisma generate",
     "import-cms": "tsx scripts/import-cms-data.ts",
+    "acquire-sb-pdfs": "tsx scripts/acquire-sb-pdfs.ts",
     "find-sb-pdf-urls": "tsx scripts/find-sb-pdf-urls.ts",
     "download-sb-pdfs": "tsx scripts/download-sb-pdfs.ts",
     "discover-sb-pdfs": "tsx scripts/discover-sb-pdfs.ts",
