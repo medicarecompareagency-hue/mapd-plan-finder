@@ -1056,7 +1056,10 @@ export default function PlanSearch() {
                           <td className="px-3 py-3 text-right text-gray-900"><DrugTierCell tier={6} value={plan.drugTier6Copay} mask={plan.drugTierCoinsuranceMask} /></td>
                         </>
                       )}
-                      <td className="px-3 py-3 text-right text-gray-900">
+                      <td
+                        className="px-3 py-3 text-right text-gray-900"
+                        title="Amount is filed under OTC in PBP. Many carriers issue combined cards that also cover food, groceries, and/or utilities for eligible (chronic-condition) members — chips show SSBCI benefits only when explicitly filed, and absence does NOT rule out combined-card semantics. Check the carrier's Summary of Benefits for definitive spending rules."
+                      >
                         {(() => {
                           const f = formatOtcCell(plan);
                           return (
