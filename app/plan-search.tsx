@@ -145,17 +145,22 @@ type Filters = Record<string, string>;
 //   undefined  -> top of plan detail
 //   "extra-benefits" -> OTC / food / dental / vision / hearing section
 //   "medical-benefits" -> copays / MOOP / hospital section
-function planCompareUrl(plan: Plan, zip?: string | null, section?: "extra-benefits" | "medical-benefits"): string {
+function planCompareUrl(plan: Plan, zip?: string | null, _section?: "extra-benefits" | "medical-benefits"): string {
   const parts = (plan.planId || "").split("-");
   if (parts.length !== 2) return "https://www.medicare.gov/plan-compare/";
   const [contract, pnum] = parts;
   const padded = pnum.padStart(3, "0");
   const seg = "000";
-  const base = `https://www.medicare.gov/plan-compare/#/plan-details/${plan.planYear}/${contract}-${padded}-${seg}${section ? "/" + section : ""}`;
+  // Try #2 (2026-05-12): query params live BEFORE the hash so the React
+  // SPA can read them on init (before the hash router runs). The previous
+  // form (?zip=… AFTER the hash) was getting ignored — medicare.gov
+  // bounced to the ZIP entry page. /extra-benefits sub-path dropped too,
+  // since it may not be a recognized route.
   const q = new URLSearchParams();
+  q.set("year", String(plan.planYear));
   if (zip) q.set("zip", zip);
-  q.set("lang", "en");
-  return q.toString() ? `${base}?${q.toString()}` : base;
+  q.set("lang", "en-US");
+  return `https://www.medicare.gov/plan-compare/?${q.toString()}#/plan-details/${plan.planYear}/${contract}-${padded}-${seg}`;
 }
 
 // OTC cell formatter (2026-05-12). The DB stores the ANNUALIZED otc
