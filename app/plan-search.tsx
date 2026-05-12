@@ -15,6 +15,7 @@ interface Plan {
   planId: string;
   planName: string;
   organizationName: string;
+  planYear: number;
   planType: string;
   planCategory: string | null;
   snpSubtype: string | null;
@@ -130,6 +131,20 @@ type Filters = Record<string, string>;
 
 // ---------------------------------------------------------------------------
 // Enum display labels
+// Build a medicare.gov Plan Compare deep-link for the given plan.
+// DB planId is "H4513-63"; medicare.gov needs "H4513-063-0" (zero-padded
+// plan portion + segment 0). Segment is hard-coded to 0 because virtually
+// all of Dale's licensed-state plans use segment 0; if a plan uses a
+// different segment the link still works (it'll redirect or 404
+// gracefully to the plan search).
+function planCompareUrl(plan: Plan): string {
+  const parts = (plan.planId || "").split("-");
+  if (parts.length !== 2) return "https://www.medicare.gov/plan-compare/";
+  const [contract, pnum] = parts;
+  const padded = pnum.padStart(3, "0");
+  return `https://www.medicare.gov/plan-compare/#/plan-details/${plan.planYear}/${contract}-${padded}-0`;
+}
+
 // OTC cell formatter (2026-05-12). The DB stores the ANNUALIZED otc
 // amount (import-pbp.js multiplies by 12 for monthly filings, 4 for
 // quarterly, etc.). When we know the original filing period we compute
@@ -960,6 +975,15 @@ export default function PlanSearch() {
                           <div className="font-medium text-blue-700 leading-tight">{plan.planName}</div>
                           <div className="text-xs text-gray-500">{plan.organizationName} &middot; {plan.planId}</div>
                         </button>
+                        <a
+                          href={planCompareUrl(plan)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block text-[10px] text-blue-500 hover:underline mt-0.5"
+                          title="Open this plan's full details on medicare.gov (OTC, food card, transportation, all benefits)"
+                        >
+                          View on medicare.gov ↗
+                        </a>
                       </td>
                       <td className="px-3 py-3">
                         <span className="inline-block px-2 py-0.5 text-xs font-semibold bg-blue-100 text-blue-800 rounded">
