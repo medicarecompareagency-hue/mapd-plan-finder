@@ -132,17 +132,30 @@ type Filters = Record<string, string>;
 // ---------------------------------------------------------------------------
 // Enum display labels
 // Build a medicare.gov Plan Compare deep-link for the given plan.
-// DB planId is "H4513-63"; medicare.gov needs "H4513-063-0" (zero-padded
-// plan portion + segment 0). Segment is hard-coded to 0 because virtually
-// all of Dale's licensed-state plans use segment 0; if a plan uses a
-// different segment the link still works (it'll redirect or 404
-// gracefully to the plan search).
-function planCompareUrl(plan: Plan): string {
+// DB planId is "H4513-63"; medicare.gov needs "H4513-063-000" (zero-padded
+// plan + 3-digit segment). Segment defaults to "000" because that covers
+// virtually all of Dale's licensed-state plans.
+//
+// IMPORTANT for direct-to-plan landing: medicare.gov is hash-routed and
+// requires either a session ZIP or a ?zip= query param to skip the ZIP
+// entry screen and go straight to the plan detail page. Pass the user's
+// search-filter ZIP when available.
+//
+// Optional `section` lands on a sub-page:
+//   undefined  -> top of plan detail
+//   "extra-benefits" -> OTC / food / dental / vision / hearing section
+//   "medical-benefits" -> copays / MOOP / hospital section
+function planCompareUrl(plan: Plan, zip?: string | null, section?: "extra-benefits" | "medical-benefits"): string {
   const parts = (plan.planId || "").split("-");
   if (parts.length !== 2) return "https://www.medicare.gov/plan-compare/";
   const [contract, pnum] = parts;
   const padded = pnum.padStart(3, "0");
-  return `https://www.medicare.gov/plan-compare/#/plan-details/${plan.planYear}/${contract}-${padded}-0`;
+  const seg = "000";
+  const base = `https://www.medicare.gov/plan-compare/#/plan-details/${plan.planYear}/${contract}-${padded}-${seg}${section ? "/" + section : ""}`;
+  const q = new URLSearchParams();
+  if (zip) q.set("zip", zip);
+  q.set("lang", "en");
+  return q.toString() ? `${base}?${q.toString()}` : base;
 }
 
 // OTC cell formatter (2026-05-12). The DB stores the ANNUALIZED otc
@@ -976,7 +989,7 @@ export default function PlanSearch() {
                           <div className="text-xs text-gray-500">{plan.organizationName} &middot; {plan.planId}</div>
                         </button>
                         <a
-                          href={planCompareUrl(plan)}
+                          href={planCompareUrl(plan, filters.zipCode)}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="block text-[10px] text-blue-500 hover:underline mt-0.5"
@@ -1094,8 +1107,30 @@ export default function PlanSearch() {
                           );
                         })()}
                         <SsbciChips plan={plan} />
+                        <a
+                          href={planCompareUrl(plan, filters.zipCode, "extra-benefits")}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block text-[10px] text-blue-500 hover:underline mt-0.5"
+                          title="Open OTC / supplemental benefits section for this plan on medicare.gov"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          Details ↗
+                        </a>
                       </td>
-                      <td className="px-3 py-3 text-right text-gray-900">{dollars(plan.foodCardAllowance)}</td>
+                      <td className="px-3 py-3 text-right text-gray-900">
+                        <div>{dollars(plan.foodCardAllowance)}</div>
+                        <a
+                          href={planCompareUrl(plan, filters.zipCode, "extra-benefits")}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block text-[10px] text-blue-500 hover:underline mt-0.5"
+                          title="Open OTC / supplemental benefits section for this plan on medicare.gov"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          Details ↗
+                        </a>
+                      </td>
                       <td className="px-3 py-3 text-sm text-gray-900 min-w-[180px]">{formatBenefitCell(plan.dentalAnnualMax, plan.dentalBenefits, "Dental")}</td>
                       <td className="px-3 py-3 text-sm text-gray-900 min-w-[180px]">{formatBenefitCell(plan.hearingAnnualMax, plan.hearingBenefits, "Hearing")}</td>
                       <td className="px-3 py-3 text-sm text-gray-900 min-w-[180px]">{formatBenefitCell(plan.visionAnnualMax, plan.visionBenefits, "Vision")}</td>
