@@ -42,7 +42,48 @@ import { LICENSED_CARRIERS } from "@/lib/licensed-carriers";
 // (the headline pitch for MA-Only plans) and dropping deductible/MOOP/
 // star. MA_ONLY is a PlanCategory enum value, orthogonal to planType
 // (HMO/PPO/PFFS/HMOPOS) — see CLAUDE.md domain terminology section.
-const DSNP_LIKE = new Set(["DSNP", "ISNP"]);
+// DSNP ranking (Dale, 2026-05-12 spec). Split by beneficiary dual level:
+//   FULL_DUAL (QMB+, QMB, SLMB+, FBDE) — 6 keys, lexicographic, NULL last:
+//     1. foodCardAllowance      DESC
+//     2. otcAllowance           DESC
+//     3. dentalAnnualMax        DESC (cmpBenefitDesc)
+//     4. visionAnnualMax        DESC (cmpBenefitDesc)
+//     5. hearingAnnualMax       DESC (cmpBenefitDesc)
+//     6. maxOutOfPocket         ASC
+//   PARTIAL_DUAL (SLMB, QI-1) — 9 keys, lexicographic, NULL last:
+//     1. hospitalStayCopay      ASC (parsed day-1 per-day)
+//     2. specialistCopay        ASC (effectiveCopay — coins→999)
+//     3. foodCardAllowance      DESC
+//     4. otcAllowance           DESC
+//     5. dentalAnnualMax        DESC
+//     6. visionAnnualMax        DESC
+//     7. skilledNursingCopay    ASC (parsed day-1 per-day, same parser)
+//     8. hearingAnnualMax       DESC
+//     9. maxOutOfPocket         ASC
+// DSNP search WITHOUT beneficiaryDualLevel returns empty results: Dale's
+// rule is that QMB+/QMB/SLMB+/FBDE plans render with a 20% co-payment
+// column that's misleading to PARTIAL_DUAL beneficiaries (and vice
+// versa), so we don't show DSNPs until the agent picks who they're
+// shopping for.
+//
+// CSNP ranking (Dale, 2026-05-12 spec). 11 keys, lexicographic, NULL last:
+//   1. monthlyPremium         ASC
+//   2. hospitalStayCopay      ASC (parsed)
+//   3. foodCardAllowance      DESC
+//   4. otcAllowance           DESC
+//   5. drugDeductible         ASC
+//   6. specialistCopay        ASC (effectiveCopay)
+//   7. dentalAnnualMax        DESC
+//   8. visionAnnualMax        DESC
+//   9. skilledNursingCopay    ASC
+//  10. hearingAnnualMax       DESC
+//  11. maxOutOfPocket         ASC
+// Supersedes the prior CSNP 8-key ranker (Phase 1.x, 2026-04-27).
+// "Chronic Lung Only" sub-filter is handled via the existing
+// chronicCondition dropdown (LUNG_DISORDERS / ANXIETY_WITH_COPD enums) —
+// no separate ranker.
+//
+// ISNP falls through to the default 6-key ranker per Dale 2026-05-12.
 
 export async function GET(request: Request) {
   const { prisma } = await import("@/lib/prisma");
@@ -112,12 +153,15 @@ export async function GET(request: Request) {
   // Hard filter — non-matching plans excluded from results entirely.
   // Spec: beneficiary_dual_level_spec memory + 2026-05-05 Dale clarification.
   const beneficiaryDualLevel = searchParams.get("beneficiaryDualLevel");
+  const FULL_DUAL_LEVELS = new Set(["QMB+", "QMB", "SLMB+", "FBDE"]);
+  const PARTIAL_DUAL_LEVELS = new Set(["SLMB", "QI-1"]);
+  let beneficiaryGroup: "FULL_DUAL" | "PARTIAL_DUAL" | null = null;
   if (beneficiaryDualLevel) {
-    const FULL_DUAL_LEVELS = new Set(["QMB+", "QMB", "SLMB+", "FBDE"]);
-    const PARTIAL_DUAL_LEVELS = new Set(["SLMB", "QI-1"]);
     if (FULL_DUAL_LEVELS.has(beneficiaryDualLevel)) {
+      beneficiaryGroup = "FULL_DUAL";
       (where as Record<string, unknown>).dsnpTargetGroup = "FULL_DUAL";
     } else if (PARTIAL_DUAL_LEVELS.has(beneficiaryDualLevel)) {
+      beneficiaryGroup = "PARTIAL_DUAL";
       (where as Record<string, unknown>).dsnpTargetGroup = "PARTIAL_DUAL";
     }
   }
@@ -186,9 +230,17 @@ export async function GET(request: Request) {
   const plans = await prisma.plan.findMany({ where, take: MAX_RESULTS * 50 });
 
   const isCsnp = planCategory === "CSNP";
-  const isDsnpLike = !!(planCategory && DSNP_LIKE.has(planCategory));
+  const isDsnp = planCategory === "DSNP";
   const isMaOnly = planCategory === "MA_ONLY";
-  const useDefaultTop5 = !isCsnp && !isDsnpLike && !isMaOnly;
+  // ISNP falls through to default 6-key per Dale 2026-05-12.
+  const useDefaultTop5 = !isCsnp && !isDsnp && !isMaOnly;
+
+  // DSNP without a beneficiary dual level returns empty: cost-share
+  // columns mean different things to FULL_DUAL vs PARTIAL_DUAL users,
+  // and showing both groups mixed produces misleading rankings.
+  if (isDsnp && beneficiaryGroup === null) {
+    return Response.json([]);
+  }
 
   function cmp(a: number | null | undefined, b: number | null | undefined, ascending: boolean): number {
     const aNull = a == null;
@@ -301,26 +353,35 @@ export async function GET(request: Request) {
         return cmp(a.starRating as number | null, b.starRating as number | null, false);
       });
   } else if (isCsnp) {
+    // CSNP 11-key ranking per Dale 2026-05-12 spec.
     sorted = (plans as Array<Record<string, unknown>>)
       .slice()
       .sort((a, b) => {
         let c = cmp(a.monthlyPremium as number | null, b.monthlyPremium as number | null, true);
         if (c !== 0) return c;
-        c = cmp(a.foodCardAllowance as number | null, b.foodCardAllowance as number | null, false);
-        if (c !== 0) return c;
-        c = cmp(a.otcAllowance as number | null, b.otcAllowance as number | null, false);
-        if (c !== 0) return c;
-        c = cmpBenefitDesc(a.dentalAnnualMax, b.dentalAnnualMax);
-        if (c !== 0) return c;
-        c = hasBenefitRank(a.dentalBenefits) - hasBenefitRank(b.dentalBenefits);
-        if (c !== 0) return c;
         const ah = parseHospitalCopayDay1(a.hospitalStayCopay);
         const bh = parseHospitalCopayDay1(b.hospitalStayCopay);
         c = cmp(ah, bh, true);
         if (c !== 0) return c;
+        c = cmp(a.foodCardAllowance as number | null, b.foodCardAllowance as number | null, false);
+        if (c !== 0) return c;
+        c = cmp(a.otcAllowance as number | null, b.otcAllowance as number | null, false);
+        if (c !== 0) return c;
+        c = cmp(a.drugDeductible as number | null, b.drugDeductible as number | null, true);
+        if (c !== 0) return c;
+        c = cmp(effectiveCopay(a, "specialistCopay", "specialistCoinsPct"), effectiveCopay(b, "specialistCopay", "specialistCoinsPct"), true);
+        if (c !== 0) return c;
+        c = cmpBenefitDesc(a.dentalAnnualMax, b.dentalAnnualMax);
+        if (c !== 0) return c;
         c = cmpBenefitDesc(a.visionAnnualMax, b.visionAnnualMax);
         if (c !== 0) return c;
-        return hasBenefitRank(a.visionBenefits) - hasBenefitRank(b.visionBenefits);
+        const asnf = parseHospitalCopayDay1(a.skilledNursingCopay);
+        const bsnf = parseHospitalCopayDay1(b.skilledNursingCopay);
+        c = cmp(asnf, bsnf, true);
+        if (c !== 0) return c;
+        c = cmpBenefitDesc(a.hearingAnnualMax, b.hearingAnnualMax);
+        if (c !== 0) return c;
+        return cmp(a.maxOutOfPocket as number | null, b.maxOutOfPocket as number | null, true);
       });
   } else if (isMaOnly) {
     // MA_ONLY 5-key ranking per Dale 2026-05-06.
@@ -341,7 +402,8 @@ export async function GET(request: Request) {
         if (c !== 0) return c;
         return cmpBenefitDesc(a.dentalAnnualMax, b.dentalAnnualMax);
       });
-  } else {
+  } else if (isDsnp && beneficiaryGroup === "FULL_DUAL") {
+    // DSNP FULL_DUAL 6-key ranking per Dale 2026-05-12 spec.
     sorted = (plans as Array<Record<string, unknown>>)
       .slice()
       .sort((a, b) => {
@@ -351,17 +413,40 @@ export async function GET(request: Request) {
         if (c !== 0) return c;
         c = cmpBenefitDesc(a.dentalAnnualMax, b.dentalAnnualMax);
         if (c !== 0) return c;
-        c = hasBenefitRank(a.dentalBenefits) - hasBenefitRank(b.dentalBenefits);
+        c = cmpBenefitDesc(a.visionAnnualMax, b.visionAnnualMax);
+        if (c !== 0) return c;
+        c = cmpBenefitDesc(a.hearingAnnualMax, b.hearingAnnualMax);
+        if (c !== 0) return c;
+        return cmp(a.maxOutOfPocket as number | null, b.maxOutOfPocket as number | null, true);
+      });
+  } else {
+    // DSNP PARTIAL_DUAL 9-key ranking per Dale 2026-05-12 spec.
+    // This branch only fires when isDsnp && beneficiaryGroup === "PARTIAL_DUAL";
+    // the no-level case returns empty earlier (above the prisma query).
+    sorted = (plans as Array<Record<string, unknown>>)
+      .slice()
+      .sort((a, b) => {
+        const ah = parseHospitalCopayDay1(a.hospitalStayCopay);
+        const bh = parseHospitalCopayDay1(b.hospitalStayCopay);
+        let c = cmp(ah, bh, true);
+        if (c !== 0) return c;
+        c = cmp(effectiveCopay(a, "specialistCopay", "specialistCoinsPct"), effectiveCopay(b, "specialistCopay", "specialistCoinsPct"), true);
+        if (c !== 0) return c;
+        c = cmp(a.foodCardAllowance as number | null, b.foodCardAllowance as number | null, false);
+        if (c !== 0) return c;
+        c = cmp(a.otcAllowance as number | null, b.otcAllowance as number | null, false);
+        if (c !== 0) return c;
+        c = cmpBenefitDesc(a.dentalAnnualMax, b.dentalAnnualMax);
         if (c !== 0) return c;
         c = cmpBenefitDesc(a.visionAnnualMax, b.visionAnnualMax);
         if (c !== 0) return c;
-        c = hasBenefitRank(a.visionBenefits) - hasBenefitRank(b.visionBenefits);
+        const asnf = parseHospitalCopayDay1(a.skilledNursingCopay);
+        const bsnf = parseHospitalCopayDay1(b.skilledNursingCopay);
+        c = cmp(asnf, bsnf, true);
         if (c !== 0) return c;
-        const ah = parseHospitalCopayDay1(a.hospitalStayCopay);
-        const bh = parseHospitalCopayDay1(b.hospitalStayCopay);
-        c = cmp(ah, bh, true);
+        c = cmpBenefitDesc(a.hearingAnnualMax, b.hearingAnnualMax);
         if (c !== 0) return c;
-        return cmp(a.monthlyPremium as number | null, b.monthlyPremium as number | null, true);
+        return cmp(a.maxOutOfPocket as number | null, b.maxOutOfPocket as number | null, true);
       });
   }
 

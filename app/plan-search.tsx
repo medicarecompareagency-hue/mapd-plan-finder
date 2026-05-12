@@ -505,6 +505,16 @@ export default function PlanSearch() {
   }
 
   async function handleSearch() {
+    // Guard: DSNP without a Medicaid Level can't be ranked — the FULL_DUAL
+    // vs PARTIAL_DUAL ranker depends on which dual group the beneficiary
+    // is in. Pop a message and bail before hitting the API.
+    if (filters.planCategory === "DSNP" && !filters.beneficiaryDualLevel) {
+      setSearchError("Please choose a Medicaid Level (QMB+, QMB, SLMB+, FBDE, SLMB, or QI-1) before searching DSNP plans.");
+      setSearched(true);
+      setPlans([]);
+      setLoading(false);
+      return;
+    }
     setLoading(true);
     setSearched(true);
     setSearchError(null);
