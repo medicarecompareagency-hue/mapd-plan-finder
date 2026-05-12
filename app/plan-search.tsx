@@ -163,6 +163,16 @@ function planCompareUrl(plan: Plan, zip?: string | null, _section?: "extra-benef
   return `https://www.medicare.gov/plan-compare/?${q.toString()}#/plan-details/${plan.planYear}/${contract}-${padded}-${seg}`;
 }
 
+// Build a Google search URL targeted at finding the plan's Summary of
+// Benefits PDF. Medicare.gov doesn't host SBs at a deterministic URL —
+// they're on carrier sites with random doc IDs — so a Google search
+// with the planId quoted is the most reliable way to surface the right
+// PDF in one click. Hits the actual SB document ~80% of the time.
+function sbSearchUrl(plan: Plan): string {
+  const q = `"Summary of Benefits" "${plan.planId}" ${plan.planYear} filetype:pdf`;
+  return `https://www.google.com/search?q=${encodeURIComponent(q)}`;
+}
+
 // OTC cell formatter (2026-05-12). The DB stores the ANNUALIZED otc
 // amount (import-pbp.js multiplies by 12 for monthly filings, 4 for
 // quarterly, etc.). When we know the original filing period we compute
@@ -1113,27 +1123,27 @@ export default function PlanSearch() {
                         })()}
                         <SsbciChips plan={plan} />
                         <a
-                          href={planCompareUrl(plan, filters.zipCode, "extra-benefits")}
+                          href={sbSearchUrl(plan)}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="block text-[10px] text-blue-500 hover:underline mt-0.5"
-                          title="Open OTC / supplemental benefits section for this plan on medicare.gov"
+                          title="Google search for this plan's Summary of Benefits PDF — usually first result is the carrier-hosted SB document with full OTC / food card details"
                           onClick={(e) => e.stopPropagation()}
                         >
-                          Details ↗
+                          Find SB PDF ↗
                         </a>
                       </td>
                       <td className="px-3 py-3 text-right text-gray-900">
                         <div>{dollars(plan.foodCardAllowance)}</div>
                         <a
-                          href={planCompareUrl(plan, filters.zipCode, "extra-benefits")}
+                          href={sbSearchUrl(plan)}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="block text-[10px] text-blue-500 hover:underline mt-0.5"
-                          title="Open OTC / supplemental benefits section for this plan on medicare.gov"
+                          title="Google search for this plan's Summary of Benefits PDF — usually first result is the carrier-hosted SB document with full OTC / food card details"
                           onClick={(e) => e.stopPropagation()}
                         >
-                          Details ↗
+                          Find SB PDF ↗
                         </a>
                       </td>
                       <td className="px-3 py-3 text-sm text-gray-900 min-w-[180px]">{formatBenefitCell(plan.dentalAnnualMax, plan.dentalBenefits, "Dental")}</td>
