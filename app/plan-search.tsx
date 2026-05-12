@@ -67,6 +67,18 @@ interface Plan {
   visionAnnualMax: number | null;
   hearingAnnualMax: number | null;
   transportationBenefit: string | null;
+  // SSBCI (chronic-condition-gated benefits). Booleans say "carrier filed
+  // benefit as offered"; dollar amounts fill only when carrier filed them.
+  // See memory: ssbci_chronic_benefits.md.
+  ssbciOffersFood: boolean | null;
+  ssbciOffersMeals: boolean | null;
+  ssbciOffersUtilities: boolean | null;
+  ssbciOffersHousing: boolean | null;
+  ssbciOffersTransportation: boolean | null;
+  ssbciFoodAllowance: number | null;
+  ssbciMealsAllowance: number | null;
+  ssbciPersonalServicesAllowance: number | null;
+  ssbciTransportationAllowance: number | null;
 }
 
 import { LICENSED_STATES } from "@/lib/licensed-states";
@@ -117,6 +129,33 @@ type Filters = Record<string, string>;
 
 // ---------------------------------------------------------------------------
 // Enum display labels
+// SSBCI chip renderer (2026-05-12). Surfaces chronic-condition-gated
+// benefits as a list of small badges under the OTC/Food Card cells.
+// Carriers like Humana/UHC file these flags without a dollar amount in
+// PBP — the agent still needs to know the benefit exists.
+function SsbciChips({ plan }: { plan: Plan }) {
+  const items: Array<{ label: string; amount: number | null }> = [];
+  if (plan.ssbciOffersFood) items.push({ label: "Food", amount: plan.ssbciFoodAllowance });
+  if (plan.ssbciOffersMeals) items.push({ label: "Meals", amount: plan.ssbciMealsAllowance });
+  if (plan.ssbciOffersUtilities) items.push({ label: "Utilities", amount: plan.ssbciPersonalServicesAllowance });
+  if (plan.ssbciOffersHousing) items.push({ label: "Housing", amount: null });
+  if (plan.ssbciOffersTransportation) items.push({ label: "Transport", amount: plan.ssbciTransportationAllowance });
+  if (items.length === 0) return null;
+  return (
+    <div className="flex flex-wrap gap-1 mt-1" title="Chronic-condition-gated benefits (SSBCI). Some carriers don't file dollar amounts in PBP — see plan summary.">
+      <span className="text-[10px] text-gray-500 uppercase tracking-wide font-semibold">Chronic:</span>
+      {items.map((it) => (
+        <span
+          key={it.label}
+          className="inline-block px-1.5 py-0.5 text-[10px] font-medium bg-amber-50 text-amber-800 border border-amber-200 rounded"
+        >
+          {it.label}{it.amount != null ? ` $${it.amount.toLocaleString()}` : ""}
+        </span>
+      ))}
+    </div>
+  );
+}
+
 // Phase 1.5: prefer numeric annual max from PBP over the legacy string column.
 function formatBenefitCell(annualMax: number | null | undefined, fallbackStr: string | null | undefined, kind: "Dental" | "Vision" | "Hearing"): string {
   const n = typeof annualMax === "number" ? annualMax : 0;
@@ -995,7 +1034,10 @@ export default function PlanSearch() {
                           <td className="px-3 py-3 text-right text-gray-900"><DrugTierCell tier={6} value={plan.drugTier6Copay} mask={plan.drugTierCoinsuranceMask} /></td>
                         </>
                       )}
-                      <td className="px-3 py-3 text-right text-gray-900">{dollars(plan.otcAllowance)}</td>
+                      <td className="px-3 py-3 text-right text-gray-900">
+                        <div>{dollars(plan.otcAllowance)}</div>
+                        <SsbciChips plan={plan} />
+                      </td>
                       <td className="px-3 py-3 text-right text-gray-900">{dollars(plan.foodCardAllowance)}</td>
                       <td className="px-3 py-3 text-sm text-gray-900 min-w-[180px]">{formatBenefitCell(plan.dentalAnnualMax, plan.dentalBenefits, "Dental")}</td>
                       <td className="px-3 py-3 text-sm text-gray-900 min-w-[180px]">{formatBenefitCell(plan.hearingAnnualMax, plan.hearingBenefits, "Hearing")}</td>

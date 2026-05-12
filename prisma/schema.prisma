@@ -162,6 +162,23 @@ model Plan {
   visionBenefits            String?  // Description of vision coverage
   transportationBenefit     String?  // Description of transportation benefit
 
+  // SSBCI (Special Supplemental Benefits for the Chronically Ill) — 2026-05-12.
+  // Source: pbp_b13i_b19b_services_vbid_ssbci.txt. These benefits are gated
+  // on the beneficiary having a qualifying chronic condition. The boolean
+  // flags say "carrier filed the benefit as offered"; the Float columns
+  // hold the dollar max IF the carrier filed one. Major carriers (Humana,
+  // UHC) tend to file boolean=true with no dollar amount — the dollar
+  // amount lives in their Summary of Benefits PDF, not the PBP.
+  ssbciOffersFood           Boolean? @default(false) // pbp_b13i_fd_bendesc_yn
+  ssbciOffersMeals          Boolean? @default(false) // pbp_b13i_ml_bendesc_service
+  ssbciOffersUtilities      Boolean? @default(false) // pbp_b13i_suppt_utility_yn
+  ssbciOffersHousing        Boolean? @default(false) // pbp_b13i_suppt_housing_yn
+  ssbciOffersTransportation Boolean? @default(false) // pbp_b13i_t_bendesc_yn
+  ssbciFoodAllowance              Float?  // pbp_b13i_fd_maxplan_amt
+  ssbciMealsAllowance             Float?  // pbp_b13i_ml_maxplan_amt
+  ssbciPersonalServicesAllowance  Float?  // pbp_b13i_ps_maxplan_amt
+  ssbciTransportationAllowance    Float?  // pbp_b13i_t_maxplan_amt
+
   // Metadata
   createdAt                 DateTime @default(now())
   updatedAt                 DateTime @updatedAt

@@ -345,6 +345,18 @@ interface PlanBenefits {
   hearingBenefits: string | null;
   // b10b - Transportation
   transportationBenefit: string | null;
+  // SSBCI (chronic-condition-gated benefits, 2026-05-12).
+  // Booleans say "carrier filed benefit as offered"; Floats hold the dollar
+  // max IF filed (Humana/UHC tend to flag with no $ amount in PBP).
+  ssbciOffersFood: boolean;
+  ssbciOffersMeals: boolean;
+  ssbciOffersUtilities: boolean;
+  ssbciOffersHousing: boolean;
+  ssbciOffersTransportation: boolean;
+  ssbciFoodAllowance: number | null;
+  ssbciMealsAllowance: number | null;
+  ssbciPersonalServicesAllowance: number | null;
+  ssbciTransportationAllowance: number | null;
 }
 
 function buildBenefitMap(extractDir: string): Map<string, PlanBenefits> {
@@ -369,6 +381,11 @@ function buildBenefitMap(extractDir: string): Map<string, PlanBenefits> {
         drugTier6Copay: null, otcAllowance: null, foodCardAllowance: null,
         dentalBenefits: null, visionBenefits: null, hearingBenefits: null,
         transportationBenefit: null,
+        ssbciOffersFood: false, ssbciOffersMeals: false,
+        ssbciOffersUtilities: false, ssbciOffersHousing: false,
+        ssbciOffersTransportation: false,
+        ssbciFoodAllowance: null, ssbciMealsAllowance: null,
+        ssbciPersonalServicesAllowance: null, ssbciTransportationAllowance: null,
       });
     }
     return map.get(key)!;
@@ -780,6 +797,48 @@ function buildBenefitMap(extractDir: string): Map<string, PlanBenefits> {
     }
   }
 
+  // b13i SSBCI: chronic-condition-gated benefits (food, meals, utilities,
+  // housing, transportation, personal services). Added 2026-05-12 after
+  // probe revealed Humana/UHC file the benefit as offered but without a
+  // dollar amount in PBP; HealthSpring/Devoted file both. Booleans surface
+  // existence; floats fill in only when carrier filed a maxplan_amt.
+  log("Parsing pbp_b13i_b19b_services_vbid_ssbci.txt...");
+  for (const row of parseTSV(path.join(extractDir, "pbp_b13i_b19b_services_vbid_ssbci.txt"))) {
+    const b = getOrCreate(planKey(row));
+    // Food (chronic-gated)
+    if (row.pbp_b13i_fd_bendesc_yn === "1") {
+      b.ssbciOffersFood = true;
+      if (row.pbp_b13i_fd_maxplan_yn === "1") {
+        b.ssbciFoodAllowance = num(row.pbp_b13i_fd_maxplan_amt);
+      }
+    }
+    // Meals (chronic-gated)
+    if (row.pbp_b13i_ml_bendesc_service === "1") {
+      b.ssbciOffersMeals = true;
+      if (row.pbp_b13i_ml_maxplan_yn === "1") {
+        b.ssbciMealsAllowance = num(row.pbp_b13i_ml_maxplan_amt);
+      }
+    }
+    // Transportation (chronic-gated)
+    if (row.pbp_b13i_t_bendesc_yn === "1") {
+      b.ssbciOffersTransportation = true;
+      if (row.pbp_b13i_t_maxplan_yn === "1") {
+        b.ssbciTransportationAllowance = num(row.pbp_b13i_t_maxplan_amt);
+      }
+    }
+    // Personal services (chronic-gated)
+    if (row.pbp_b13i_ps_bendesc_yn === "1") {
+      if (row.pbp_b13i_ps_maxplan_yn === "1") {
+        b.ssbciPersonalServicesAllowance = num(row.pbp_b13i_ps_maxplan_amt);
+      }
+    }
+    // Supportive services — supports housing and utility sub-flags
+    if (row.pbp_b13i_suppt_bendesc_yn === "1") {
+      if (row.pbp_b13i_suppt_utility_yn === "1") b.ssbciOffersUtilities = true;
+      if (row.pbp_b13i_suppt_housing_yn === "1") b.ssbciOffersHousing = true;
+    }
+  }
+
   return map;
 }
 
@@ -1123,6 +1182,15 @@ export async function runImport(year?: number): Promise<{ imported: number; skip
         hearingBenefits: benefits?.hearingBenefits,
         visionBenefits: benefits?.visionBenefits,
         transportationBenefit: benefits?.transportationBenefit,
+        ssbciOffersFood: benefits?.ssbciOffersFood ?? false,
+        ssbciOffersMeals: benefits?.ssbciOffersMeals ?? false,
+        ssbciOffersUtilities: benefits?.ssbciOffersUtilities ?? false,
+        ssbciOffersHousing: benefits?.ssbciOffersHousing ?? false,
+        ssbciOffersTransportation: benefits?.ssbciOffersTransportation ?? false,
+        ssbciFoodAllowance: benefits?.ssbciFoodAllowance ?? null,
+        ssbciMealsAllowance: benefits?.ssbciMealsAllowance ?? null,
+        ssbciPersonalServicesAllowance: benefits?.ssbciPersonalServicesAllowance ?? null,
+        ssbciTransportationAllowance: benefits?.ssbciTransportationAllowance ?? null,
       };
 
       if (!DRY_RUN) {
@@ -1248,6 +1316,15 @@ export async function runImport(year?: number): Promise<{ imported: number; skip
             hearingBenefits: benefits?.hearingBenefits ?? null,
             visionBenefits: benefits?.visionBenefits ?? null,
             transportationBenefit: benefits?.transportationBenefit ?? null,
+            ssbciOffersFood: benefits?.ssbciOffersFood ?? false,
+            ssbciOffersMeals: benefits?.ssbciOffersMeals ?? false,
+            ssbciOffersUtilities: benefits?.ssbciOffersUtilities ?? false,
+            ssbciOffersHousing: benefits?.ssbciOffersHousing ?? false,
+            ssbciOffersTransportation: benefits?.ssbciOffersTransportation ?? false,
+            ssbciFoodAllowance: benefits?.ssbciFoodAllowance ?? null,
+            ssbciMealsAllowance: benefits?.ssbciMealsAllowance ?? null,
+            ssbciPersonalServicesAllowance: benefits?.ssbciPersonalServicesAllowance ?? null,
+            ssbciTransportationAllowance: benefits?.ssbciTransportationAllowance ?? null,
           };
         })
         .filter((d): d is NonNullable<typeof d> => d !== null);
