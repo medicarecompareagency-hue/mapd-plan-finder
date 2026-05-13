@@ -81,6 +81,9 @@ interface Plan {
   ssbciMealsAllowance: number | null;
   ssbciPersonalServicesAllowance: number | null;
   ssbciTransportationAllowance: number | null;
+  sbPdfUrl: string | null;
+  sbOtcPage: number | null;
+  sbFoodCardPage: number | null;
 }
 
 import { LICENSED_STATES } from "@/lib/licensed-states";
@@ -156,6 +159,36 @@ function planCompareUrl(plan: Plan, zip?: string | null, section?: "extra-benefi
   if (zip) q.set("zip", zip);
   q.set("lang", "en");
   return q.toString() ? `${base}?${q.toString()}` : base;
+}
+
+function pdfPageUrl(url: string, page?: number | null): string {
+  if (!page || page < 1) return url;
+  const [withoutHash, hash = ""] = url.split("#", 2);
+  const params = new URLSearchParams(hash);
+  params.set("page", String(page));
+  return `${withoutHash}#${params.toString()}`;
+}
+
+function summaryOfBenefitsUrl(
+  plan: Plan,
+  zip?: string | null,
+  page?: number | null,
+): { href: string; label: string; title: string } {
+  if (plan.sbPdfUrl) {
+    return {
+      href: pdfPageUrl(plan.sbPdfUrl, page),
+      label: "SB PDF ↗",
+      title: page
+        ? `Open carrier Summary of Benefits PDF at page ${page}`
+        : "Open carrier Summary of Benefits PDF",
+    };
+  }
+
+  return {
+    href: planCompareUrl(plan, zip, "extra-benefits"),
+    label: "Details ↗",
+    title: "Open OTC / supplemental benefits section for this plan on medicare.gov",
+  };
 }
 
 // OTC cell formatter (2026-05-12). The DB stores the ANNUALIZED otc
@@ -1108,27 +1141,27 @@ export default function PlanSearch() {
                         })()}
                         <SsbciChips plan={plan} />
                         <a
-                          href={planCompareUrl(plan, filters.zipCode, "extra-benefits")}
+                          href={summaryOfBenefitsUrl(plan, filters.zipCode, plan.sbOtcPage).href}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="block text-[10px] text-blue-500 hover:underline mt-0.5"
-                          title="Open OTC / supplemental benefits section for this plan on medicare.gov"
+                          title={summaryOfBenefitsUrl(plan, filters.zipCode, plan.sbOtcPage).title}
                           onClick={(e) => e.stopPropagation()}
                         >
-                          Details ↗
+                          {summaryOfBenefitsUrl(plan, filters.zipCode, plan.sbOtcPage).label}
                         </a>
                       </td>
                       <td className="px-3 py-3 text-right text-gray-900">
                         <div>{dollars(plan.foodCardAllowance)}</div>
                         <a
-                          href={planCompareUrl(plan, filters.zipCode, "extra-benefits")}
+                          href={summaryOfBenefitsUrl(plan, filters.zipCode, plan.sbFoodCardPage).href}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="block text-[10px] text-blue-500 hover:underline mt-0.5"
-                          title="Open OTC / supplemental benefits section for this plan on medicare.gov"
+                          title={summaryOfBenefitsUrl(plan, filters.zipCode, plan.sbFoodCardPage).title}
                           onClick={(e) => e.stopPropagation()}
                         >
-                          Details ↗
+                          {summaryOfBenefitsUrl(plan, filters.zipCode, plan.sbFoodCardPage).label}
                         </a>
                       </td>
                       <td className="px-3 py-3 text-sm text-gray-900 min-w-[180px]">{formatBenefitCell(plan.dentalAnnualMax, plan.dentalBenefits, "Dental")}</td>
