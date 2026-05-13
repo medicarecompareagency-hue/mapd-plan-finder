@@ -14,15 +14,19 @@
     "update-plan-category": "tsx scripts/update-plan-category.ts",
     "prepare-pbp": "tsx scripts/prepare-pbp.ts",
     "seed-admin": "tsx scripts/seed-admin.ts",
-    "verify-plan-category": "tsx scripts/verify-plan-category.ts"
+    "verify-plan-category": "tsx scripts/verify-plan-category.ts",
+    "discover-sb-pdfs": "node scripts/discover-sb-pdfs.js",
+    "upload-sb-pdfs": "node scripts/upload-sb-pdfs.js"
   },
   "dependencies": {
     "@prisma/client": "^5.22.0",
+    "@supabase/supabase-js": "^2.49.4",
     "bcryptjs": "^3.0.3",
     "csv-parse": "^6.2.1",
     "jose": "^6.2.2",
     "next": "16.2.3",
     "nodemailer": "^8.0.5",
+    "pdf-parse": "^1.1.1",
     "prisma": "^5.22.0",
     "react": "19.2.4",
     "react-dom": "19.2.4",
