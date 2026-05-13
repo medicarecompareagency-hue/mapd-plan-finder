@@ -35,6 +35,7 @@ const APPLY = process.argv.includes("--apply");
 
 const EXTRACT_DIR = path.join(process.cwd(), ".cms-import-tmp", `pbp-${PLAN_YEAR}`);
 const SSBCI_FILE = path.join(EXTRACT_DIR, "pbp_b13i_b19b_services_vbid_ssbci.txt");
+const VBID_UF_FILE = path.join(EXTRACT_DIR, "pbp_b19b_model_test_vbid_uf.txt");
 
 const C = { g: "\x1b[32m", c: "\x1b[36m", y: "\x1b[33m", r: "\x1b[31m", z: "\x1b[0m" };
 function log(msg, color) { console.log(`${color ? C[color] : ""}${msg}${C.z}`); }
@@ -92,6 +93,28 @@ function buildSsbciFromRow(row) {
   };
 }
 
+function mergeVbidUfCard(target, row) {
+  const name = String(row.pbp_b19b_package_name || "").toLowerCase();
+  const cats = String(row.pbp_b19b_agg_nmc_bendesc_cats || "").toLowerCase();
+  const amount = row.pbp_b19b_agg_yn === "1" ? num(row.pbp_b19b_agg_amt) : null;
+  if (!name && !cats) return target;
+
+  const mentionsFood = /food|grocery|groceries/.test(name) || /13i1\b/.test(cats);
+  const mentionsUtility = /utilit/.test(name) || /13i10\b/.test(cats);
+  const mentionsHousing = /rent|housing/.test(name);
+
+  if (mentionsFood) {
+    target.ssbciOffersFood = true;
+    if (amount != null && target.ssbciFoodAllowance == null) target.ssbciFoodAllowance = amount;
+  }
+  if (mentionsUtility) target.ssbciOffersUtilities = true;
+  if (mentionsHousing) target.ssbciOffersHousing = true;
+  if (amount != null && (mentionsUtility || mentionsHousing) && target.ssbciPersonalServicesAllowance == null) {
+    target.ssbciPersonalServicesAllowance = amount;
+  }
+  return target;
+}
+
 async function main() {
   log(line(), "c");
   log(`SSBCI enrichment — planYear=${PLAN_YEAR}${APPLY ? "" : " [DRY-RUN]"}`, "c");
@@ -112,6 +135,17 @@ async function main() {
     if (!k) continue;
     if (!ssbciByPlan.has(k)) ssbciByPlan.set(k, buildSsbciFromRow(r));
   }
+
+  log("\nLoading VBID/UF aggregate card file...", "c");
+  const vbidRows = parseTSV(VBID_UF_FILE);
+  log(`  ${vbidRows.length.toLocaleString()} rows`, "c");
+  for (const r of vbidRows) {
+    const k = dbPlanKey(r);
+    if (!k) continue;
+    const current = ssbciByPlan.get(k) || buildSsbciFromRow({});
+    ssbciByPlan.set(k, mergeVbidUfCard(current, r));
+  }
+
   log(`  ${ssbciByPlan.size.toLocaleString()} distinct planIds`, "c");
 
   log(`\nFetching plans for year ${PLAN_YEAR}...`, "c");

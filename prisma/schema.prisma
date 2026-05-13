@@ -11,32 +11,24 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
-// ------------------------------------------------------------
-// PLAN TYPE TAXONOMY
-// Added 2026-04-21 for backlog item #1 (Plan Type dropdown expansion).
-// See docs/plan-type-catalog.md for raw CMS code -> enum mappings.
-// ------------------------------------------------------------
 enum PlanCategory {
-  MA_ONLY   // Medicare Advantage without drug coverage
-  MAPD      // Medicare Advantage + Part D
-  PDP       // Standalone Prescription Drug Plan
-  DSNP      // Dual-Eligible Special Needs Plan
-  CSNP      // Chronic Condition Special Needs Plan
-  ISNP      // Institutional Special Needs Plan
-  MSA       // Medical Savings Account
-  PACE      // Program of All-Inclusive Care for the Elderly
-  COST      // 1876 Cost plan / HCPP
-  MMP       // Medicare-Medicaid Plan (sunset after 2025)
+  MA_ONLY
+  MAPD
+  PDP
+  DSNP
+  CSNP
+  ISNP
+  MSA
+  PACE
+  COST
+  MMP
   OTHER
 }
 
 enum SnpSubtype {
-  // ISNP subtypes (from pbp_a_snp_institutional_type)
-  ISNP_FACILITY       // FI-SNP
-  ISNP_EQUIVALENT     // IE-SNP
-  ISNP_HYBRID         // HI-SNP
-  // DSNP Medicaid-tier subtypes (populated in backlog item #3).
-  // Listed here now so the enum is stable and we don't migrate twice.
+  ISNP_FACILITY
+  ISNP_EQUIVALENT
+  ISNP_HYBRID
   DSNP_FBDE
   DSNP_QMB_PLUS
   DSNP_QMB
@@ -82,39 +74,26 @@ enum ChronicCondition {
   OTHER_3
 }
 
-// ------------------------------------------------------------
-// PLAN - Core Medicare Advantage plan record
-// ------------------------------------------------------------
 model Plan {
   id                        Int      @id @default(autoincrement())
   planYear                  Int
-  planId                    String   // CMS Plan ID (H-number)
+  planId                    String
   planName                  String
   organizationName          String
-  planType                  String   // Legacy contract-type string from landscape CSV
-                                     // (HMO, Local PPO, PFFS, etc.). Kept for existing
-                                     // queries and the results-table "Type" column.
-
-  // Plan Type taxonomy (added 2026-04-21 â€” see docs/schema-additions-plan-type.md)
+  planType                  String
   planCategory              PlanCategory?
   snpSubtype                SnpSubtype?
   chronicConditions         ChronicCondition[] @default([])
   hasPartD                  Boolean?
   isZeroDollarDsnp          Boolean?
-  cmsContractType           String?  // Decoded pbp_a_plan_type (HMO, HMOPOS, Local PPO, ...)
-
-  // Location
+  cmsContractType           String?
   state                     String
   county                    String
   zipCode                   String?
-
-  // Premiums & Subsidies
   monthlyPremium            Float
   partBGivebackAmount       Float?   @default(0)
-  lowIncomeSubsidyLevel     String?  // Full, Partial, None
+  lowIncomeSubsidyLevel     String?
   medicaidLevel             String?
-
-  // Medical Cost Sharing
   medicalDeductible         Float?   @default(0)
   maxOutOfPocket            Float?
   pcpCopay                  Float?
@@ -122,17 +101,10 @@ model Plan {
   emergencyRoomCopay        Float?
   ambulanceCopay            Float?
   outpatientHospitalCopay   Float?
-  hospitalStayCopay         String?  // Can be per-day structure e.g. "$300/day days 1-5"
-  skilledNursingCopay       String?  // Can be per-day structure
-
-  // Imaging
+  hospitalStayCopay         String?
+  skilledNursingCopay       String?
   mriCopay                  Float?
   catScanCopay              Float?
-
-  // Partial-dual DSNP coinsurance percentages (added 2026-05-07).
-  // Populated when carrier filed coinsurance instead of a flat copay
-  // (typical SLMB / QI-1 case). Co-exist with *Copay fields; renderer
-  // falls back to "X% coins" when copay is NULL but CoinsPct is set.
   pcpCoinsPct                 Float?
   specialistCoinsPct          Float?
   emergencyRoomCoinsPct       Float?
@@ -140,8 +112,6 @@ model Plan {
   outpatientHospitalCoinsPct  Float?
   mriCoinsPct                 Float?
   catScanCoinsPct             Float?
-
-  // Prescription Drugs
   drugDeductible            Float?   @default(0)
   drugTier1Copay            Float?
   drugTier2Copay            Float?
@@ -149,60 +119,60 @@ model Plan {
   drugTier4Copay            Float?
   drugTier5Copay            Float?
   drugTier6Copay            Float?
-
   drugTierCoinsuranceMask String?
-  // Extra Benefits
-  otcAllowance              Float?   @default(0)   // Annualized OTC allowance (raw amount × period multiplier from import-pbp.js)
-  otcMaxPeriod              String?  // Human-readable period the carrier filed (e.g. "month", "quarter", "year", "benefit period", "other"). Populated by scripts/import-pbp.js.
+  otcAllowance              Float?   @default(0)
+  otcMaxPeriod              String?
   foodCardAllowance         Float?   @default(0)
   dentalAnnualMax           Float?   @default(0)
   visionAnnualMax           Float?   @default(0)
   hearingAnnualMax          Float?   @default(0)
-  dentalBenefits            String?  // Description of dental coverage
-  hearingBenefits           String?  // Description of hearing coverage
-  visionBenefits            String?  // Description of vision coverage
-  transportationBenefit     String?  // Description of transportation benefit
+  dentalBenefits            String?
+  hearingBenefits           String?
+  visionBenefits            String?
+  transportationBenefit     String?
+  ssbciOffersFood           Boolean? @default(false)
+  ssbciOffersMeals          Boolean? @default(false)
+  ssbciOffersUtilities      Boolean? @default(false)
+  ssbciOffersHousing        Boolean? @default(false)
+  ssbciOffersTransportation Boolean? @default(false)
+  ssbciFoodAllowance              Float?
+  ssbciMealsAllowance             Float?
+  ssbciPersonalServicesAllowance  Float?
+  ssbciTransportationAllowance    Float?
 
-  // SSBCI (Special Supplemental Benefits for the Chronically Ill) — 2026-05-12.
-  // Source: pbp_b13i_b19b_services_vbid_ssbci.txt. These benefits are gated
-  // on the beneficiary having a qualifying chronic condition. The boolean
-  // flags say "carrier filed the benefit as offered"; the Float columns
-  // hold the dollar max IF the carrier filed one. Major carriers (Humana,
-  // UHC) tend to file boolean=true with no dollar amount — the dollar
-  // amount lives in their Summary of Benefits PDF, not the PBP.
-  ssbciOffersFood           Boolean? @default(false) // pbp_b13i_fd_bendesc_yn
-  ssbciOffersMeals          Boolean? @default(false) // pbp_b13i_ml_bendesc_service
-  ssbciOffersUtilities      Boolean? @default(false) // pbp_b13i_suppt_utility_yn
-  ssbciOffersHousing        Boolean? @default(false) // pbp_b13i_suppt_housing_yn
-  ssbciOffersTransportation Boolean? @default(false) // pbp_b13i_t_bendesc_yn
-  ssbciFoodAllowance              Float?  // pbp_b13i_fd_maxplan_amt
-  ssbciMealsAllowance             Float?  // pbp_b13i_ml_maxplan_amt
-  ssbciPersonalServicesAllowance  Float?  // pbp_b13i_ps_maxplan_amt
-  ssbciTransportationAllowance    Float?  // pbp_b13i_t_maxplan_amt
+  sbPdfUrl                  String?
+  sbPdfChecksum             String?
+  sbPdfSourceFilename       String?
+  sbDiscoveryConfidence     Float?
+  sbLastProcessedAt         DateTime?
 
-  // Metadata
+  sbOtcPage                 Int?
+  sbFoodCardPage            Int?
+  sbDentalPage              Int?
+  sbVisionPage              Int?
+  sbHearingPage             Int?
+  sbTransportationPage      Int?
+
+  sbVerifiedOtcAmount       Float?
+  sbVerifiedFoodAmount      Float?
+
   createdAt                 DateTime @default(now())
   updatedAt                 DateTime @updatedAt
+  starRating                Float?
 
-  starRating            Float?
+  dsnpTargetGroup           DsnpTargetGroup?
+
   @@index([state, county])
   @@index([planYear])
   @@index([monthlyPremium])
   @@index([planId])
   @@index([planCategory])
   @@index([state, county, planCategory])
-
-// DSNP target-group classification (from CMS PBP zip Section A)
-
-dsnpTargetGroup           DsnpTargetGroup?
 }
 
-// ------------------------------------------------------------
-// GEOLOCATION - Reference table for US state/county/zip
-// ------------------------------------------------------------
 model GeoLocation {
   id      Int    @id @default(autoincrement())
-  state   String // 2-letter state code
+  state   String
   county  String
   zipCode String
 
@@ -211,23 +181,17 @@ model GeoLocation {
   @@unique([state, county, zipCode])
 }
 
-// ------------------------------------------------------------
-// USER - Sales agent accounts
-// ------------------------------------------------------------
 model User {
   id            Int       @id @default(autoincrement())
   email         String    @unique
   name          String?
   passwordHash  String
-  role          String    @default("agent")  // agent, admin
+  role          String    @default("agent")
   createdAt       DateTime        @default(now())
   searches        Search[]
   passwordResets  PasswordReset[]
 }
 
-// ------------------------------------------------------------
-// PASSWORD RESET - Time-limited reset tokens
-// ------------------------------------------------------------
 model PasswordReset {
   id        Int      @id @default(autoincrement())
   userId    Int
@@ -238,19 +202,16 @@ model PasswordReset {
   createdAt DateTime @default(now())
 }
 
-// ------------------------------------------------------------
-// SEARCH - Saved agent searches
-// ------------------------------------------------------------
 model Search {
   id          Int      @id @default(autoincrement())
   userId      Int
   user        User     @relation(fields: [userId], references: [id])
   searchName  String?
-  filters     Json     // Stores all selected filter criteria as JSON
+  filters     Json
   createdAt   DateTime @default(now())
 }
 
 enum DsnpTargetGroup {
-  FULL_DUAL      // dsnp_zerodollar=1 in PBP. Designed for FBDE, QMB+, SLMB+.
-  PARTIAL_DUAL   // dsnp_zerodollar=2 in PBP. Designed for QMB, SLMB, QI-1.
+  FULL_DUAL
+  PARTIAL_DUAL
 }

@@ -839,6 +839,33 @@ function buildBenefitMap(extractDir: string): Map<string, PlanBenefits> {
     }
   }
 
+  // Devoted and some other carriers file a combined VBID/UF card in
+  // pbp_b19b_model_test_vbid_uf.txt rather than separate b13i dollar fields.
+  // Example: H9888-013 "Food, Utility, and Rent Card" with an aggregate
+  // amount. Fold that into the SSBCI display fields so the UI surfaces it.
+  log("Parsing pbp_b19b_model_test_vbid_uf.txt...");
+  for (const row of parseTSV(path.join(extractDir, "pbp_b19b_model_test_vbid_uf.txt"))) {
+    const name = (row.pbp_b19b_package_name || "").toLowerCase();
+    const cats = (row.pbp_b19b_agg_nmc_bendesc_cats || "").toLowerCase();
+    const amount = row.pbp_b19b_agg_yn === "1" ? num(row.pbp_b19b_agg_amt) : null;
+
+    if (!name && !cats) continue;
+    const b = getOrCreate(planKey(row));
+    const mentionsFood = /food|grocery|groceries/.test(name) || /13i1\b/.test(cats);
+    const mentionsUtility = /utilit/.test(name) || /13i10\b/.test(cats);
+    const mentionsHousing = /rent|housing/.test(name);
+
+    if (mentionsFood) {
+      b.ssbciOffersFood = true;
+      if (amount != null && b.ssbciFoodAllowance == null) b.ssbciFoodAllowance = amount;
+    }
+    if (mentionsUtility) b.ssbciOffersUtilities = true;
+    if (mentionsHousing) b.ssbciOffersHousing = true;
+    if (amount != null && (mentionsUtility || mentionsHousing) && b.ssbciPersonalServicesAllowance == null) {
+      b.ssbciPersonalServicesAllowance = amount;
+    }
+  }
+
   return map;
 }
 
