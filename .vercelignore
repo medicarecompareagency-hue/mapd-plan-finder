@@ -1,4 +1,17 @@
 .cms-import-tmp/
 .next/
 node_modules/
+
+# Generated PDF artifacts (Summary of Benefits pipeline)
 data/
+scripts/data/
+summary-of-benefits/
+summary-of-benefits
+*.pdf
+
+# SB pipeline intermediate JSON
+sb-download-list.json
+sb-discovery-results.json
+sb-benefit-extraction-results.json
+sb-unresolved-plans.json
+top5-output.txt

@@ -58,3 +58,17 @@ scripts/data/sob-urls-v2-recon.json
 
 scripts/data/pbp-2026/
 scripts/data/pbp-benefits-2026.zip
+.env*.local
+
+# SB PDF pipeline artifacts (~400MB of PDFs + intermediate JSON, all regenerable)
+summary-of-benefits/
+sb-download-list.json
+sb-discovery-results.json
+sb-unresolved-plans.json
+sb-benefit-extraction-results.json
+
+# Local Claude/Vercel settings + transient debug files
+.claude/settings.local.json
+_*.json
+_*.py
+_*.ts
