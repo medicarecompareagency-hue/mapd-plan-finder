@@ -72,3 +72,8 @@ sb-benefit-extraction-results.json
 _*.json
 _*.py
 _*.ts
+
+.agents/
+.aider-desk/
+.augment/
+.bob/
