@@ -48,7 +48,7 @@ export async function POST(request: Request) {
         role: user.role,
       },
     });
-  } catch {
+  } catch (err) { console.error("LOGIN_ROUTE_ERROR", err);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }
