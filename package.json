@@ -23,7 +23,7 @@
     "verify-plan-category": "tsx scripts/verify-plan-category.ts"
   },
   "dependencies": {
-    "@prisma/client": "^5.22.0",
+    "@prisma/client": "^6.19.3",
     "@vercel/blob": "^2.3.3",
     "bcryptjs": "^3.0.3",
     "csv-parse": "^6.2.1",
@@ -31,7 +31,6 @@
     "next": "16.2.3",
     "nodemailer": "^8.0.5",
     "pdf-parse": "^1.1.1",
-    "prisma": "^5.22.0",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "unzipper": "^0.12.3",
@@ -48,6 +47,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.2.3",
     "playwright": "^1.59.1",
+    "prisma": "^6.19.3",
     "tailwindcss": "^4",
     "tsx": "^4.21.0",
     "typescript": "^5"
