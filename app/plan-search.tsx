@@ -346,6 +346,40 @@ function costShare(copay: number | null | undefined, coinsPct: number | null | u
   return "N/A";
 }
 
+// ---------------------------------------------------------------------------
+// QMB / QMB+ / FBDE render-time override (2026-05-19)
+// For beneficiaries in these dual eligibility groups, Medicaid covers
+// 100% of Medicare Part A/B cost-share. Carriers still file copays in PBP
+// (those are what the provider bills Medicare/Medicaid), but the member
+// pays $0. We override at the render layer rather than mutating the data
+// so the underlying CMS values remain inspectable. Does NOT apply to Part D
+// drug tiers — Part D cost-share is covered via LIS / Extra Help, which is
+// a separate program tracked by lowIncomeSubsidyLevel.
+// ---------------------------------------------------------------------------
+const MEDICAID_COVERS_COST_SHARE = new Set(["QMB+", "QMB", "FBDE"]);
+
+function isMedicaidCovered(dualLevel: string | null | undefined): boolean {
+  return !!dualLevel && MEDICAID_COVERS_COST_SHARE.has(dualLevel);
+}
+
+// $-valued cell wrappers — return "$0" when Medicaid covers cost-share,
+// otherwise delegate to dollars()/costShare().
+function dollarsQ(v: number | null | undefined, qmb: boolean): string {
+  return qmb ? "$0" : dollars(v);
+}
+
+function costShareQ(copay: number | null | undefined, coinsPct: number | null | undefined, qmb: boolean): string {
+  return qmb ? "$0" : costShare(copay, coinsPct);
+}
+
+// String-valued cells (hospitalStayCopay, skilledNursingCopay) — these
+// hold human-readable per-day strings parsed from PBP filings. For QMB/FBDE
+// the member's effective cost is $0 regardless of the per-day schedule.
+function hospitalCellQ(s: string | null | undefined, qmb: boolean): string {
+  return qmb ? "$0" : (s || "N/A");
+}
+
+
 function FilterSelect({
   label,
   name,
@@ -399,6 +433,11 @@ export default function PlanSearch() {
   const [plans, setPlans] = useState<Plan[]>([]);
   const [loading, setLoading] = useState(false);
   const [searched, setSearched] = useState(false);
+  // QMB/FBDE cost-share override is driven by the dual level that was
+  // ACTIVE when the user clicked Search. Snapshotting here prevents the
+  // display from drifting if the user changes the dropdown before
+  // re-searching (the plans list wouldn't auto-refresh).
+  const [searchedDualLevel, setSearchedDualLevel] = useState<string | null>(null);
   const [selectedPlan, setSelectedPlan] = useState<Plan | null>(null);
 
   // User / auth state
@@ -655,6 +694,7 @@ export default function PlanSearch() {
     setLoading(true);
     setSearched(true);
     setSearchError(null);
+    setSearchedDualLevel(filters.beneficiaryDualLevel ?? null);
     const params = new URLSearchParams();
     for (const [k, v] of Object.entries(filters)) {
       // zipCode is for location selection only — state+county is what filters plans
@@ -687,6 +727,7 @@ export default function PlanSearch() {
     setFilters({});
     setPlans([]);
     setSearched(false);
+    setSearchedDualLevel(null);
     fetchOptions();
   }
 
@@ -1028,7 +1069,9 @@ export default function PlanSearch() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-100">
-                  {plans.map((plan) => (
+                  {plans.map((plan) => {
+                  const qmbCovered = isMedicaidCovered(searchedDualLevel);
+                  return (
                     <tr key={plan.id} className="hover:bg-blue-50/50 transition-colors">
                       <td className="px-3 py-3 sticky left-0 bg-white z-10 font-bold text-blue-600">{plan.rank}</td>
                       <td className="px-3 py-3 sticky left-[52px] bg-white z-10">
@@ -1132,17 +1175,17 @@ export default function PlanSearch() {
                       <td className="px-3 py-3 text-right text-green-700 font-medium">{dollars(plan.partBGivebackAmount)}</td>
                       <td className="px-3 py-3 text-gray-900">{plan.lowIncomeSubsidyLevel ?? "—"}</td>
                       <td className="px-3 py-3 text-gray-900">{plan.medicaidLevel ?? "—"}</td>
-                      <td className="px-3 py-3 text-right text-gray-900">{dollars(plan.maxOutOfPocket)}</td>
-                      <td className="px-3 py-3 text-right text-gray-900">{dollars(plan.medicalDeductible)}</td>
-                      <td className="px-3 py-3 text-right text-gray-900">{costShare(plan.pcpCopay, plan.pcpCoinsPct)}</td>
-                      <td className="px-3 py-3 text-right text-gray-900">{costShare(plan.specialistCopay, plan.specialistCoinsPct)}</td>
-                      <td className="px-3 py-3 text-right text-gray-900">{costShare(plan.emergencyRoomCopay, plan.emergencyRoomCoinsPct)}</td>
-                      <td className="px-3 py-3 text-right text-gray-900">{costShare(plan.ambulanceCopay, plan.ambulanceCoinsPct)}</td>
-                      <td className="px-3 py-3 text-right text-gray-900">{costShare(plan.outpatientHospitalCopay, plan.outpatientHospitalCoinsPct)}</td>
-                      <td className="px-3 py-3 text-xs text-gray-900">{plan.hospitalStayCopay || "N/A"}</td>
-                      <td className="px-3 py-3 text-xs text-gray-900">{plan.skilledNursingCopay || "N/A"}</td>
-                      <td className="px-3 py-3 text-right text-gray-900">{costShare(plan.mriCopay, plan.mriCoinsPct)}</td>
-                      <td className="px-3 py-3 text-right text-gray-900">{costShare(plan.catScanCopay, plan.catScanCoinsPct)}</td>
+                      <td className="px-3 py-3 text-right text-gray-900">{dollarsQ(plan.maxOutOfPocket, qmbCovered)}</td>
+                      <td className="px-3 py-3 text-right text-gray-900">{dollarsQ(plan.medicalDeductible, qmbCovered)}</td>
+                      <td className="px-3 py-3 text-right text-gray-900">{costShareQ(plan.pcpCopay, plan.pcpCoinsPct, qmbCovered)}</td>
+                      <td className="px-3 py-3 text-right text-gray-900">{costShareQ(plan.specialistCopay, plan.specialistCoinsPct, qmbCovered)}</td>
+                      <td className="px-3 py-3 text-right text-gray-900">{costShareQ(plan.emergencyRoomCopay, plan.emergencyRoomCoinsPct, qmbCovered)}</td>
+                      <td className="px-3 py-3 text-right text-gray-900">{costShareQ(plan.ambulanceCopay, plan.ambulanceCoinsPct, qmbCovered)}</td>
+                      <td className="px-3 py-3 text-right text-gray-900">{costShareQ(plan.outpatientHospitalCopay, plan.outpatientHospitalCoinsPct, qmbCovered)}</td>
+                      <td className="px-3 py-3 text-xs text-gray-900">{hospitalCellQ(plan.hospitalStayCopay, qmbCovered)}</td>
+                      <td className="px-3 py-3 text-xs text-gray-900">{hospitalCellQ(plan.skilledNursingCopay, qmbCovered)}</td>
+                      <td className="px-3 py-3 text-right text-gray-900">{costShareQ(plan.mriCopay, plan.mriCoinsPct, qmbCovered)}</td>
+                      <td className="px-3 py-3 text-right text-gray-900">{costShareQ(plan.catScanCopay, plan.catScanCoinsPct, qmbCovered)}</td>
                       {!isMaOnly && (
                         <>
                           <td className="px-3 py-3 text-right text-gray-900">{dollars(plan.drugDeductible)}</td>
@@ -1197,7 +1240,8 @@ export default function PlanSearch() {
                       <td className="px-3 py-3 text-sm text-gray-900 min-w-[180px]">{formatBenefitCell(plan.visionAnnualMax, plan.visionBenefits, "Vision")}</td>
                       <td className="px-3 py-3 text-sm text-gray-900 min-w-[180px]">{plan.transportationBenefit || "No Transportation"}</td>
                     </tr>
-                  ))}
+                  );
+                })}
                 </tbody>
               </table>
             </div>
