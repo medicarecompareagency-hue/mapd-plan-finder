@@ -90,7 +90,7 @@ async function snapshot(label: string, client: PrismaClient) {
   // sbPdfUrl coverage (Neon-only feature, expected 0 on Supabase)
   let sbPdfRows = 0;
   try {
-    sbPdfRows = await client.planCounty.count({
+    sbPdfRows = await (client as any).planCounty.count({
       where: { sbPdfUrl: { not: null } as any },
     });
   } catch {
