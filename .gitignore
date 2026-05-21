@@ -67,6 +67,15 @@ sb-discovery-results.json
 sb-unresolved-plans.json
 sb-benefit-extraction-results.json
 
+# DSNP SB PDF pipeline artifacts (260 PDFs + intermediate JSON, all regenerable)
+summary-of-benefits-dsnp/
+sb-dsnp-download-list.json
+sb-dsnp-discovery-results.json
+sb-dsnp-unresolved.json
+sb-dsnp-tier-extraction.json
+sb-dsnp-test.json
+sb-dsnp-test-un.json
+
 # Local Claude/Vercel settings + transient debug files
 .claude/settings.local.json
 _*.json
