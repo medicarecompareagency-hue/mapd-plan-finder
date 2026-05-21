@@ -198,24 +198,49 @@ async function walk(dir: string): Promise<string[]> {
 async function main() {
   const pdfs = await walk(ROOT);
   const metadata = await loadDownloadListMetadata();
+  const output = path.join(process.cwd(), process.env.DISCOVER_OUTPUT || "sb-discovery-results.json");
 
   console.log(`Found ${pdfs.length} PDFs`);
   if (metadata.size) console.log(`Loaded ${metadata.size} download-list metadata entries`);
 
+  // Resume + parallel: reload prior results, skip already-scanned files,
+  // flush periodically so chunked/interrupted runs lose nothing.
   const results: MatchResult[] = [];
+  try {
+    for (const r of JSON.parse(fs.readFileSync(output, "utf8")) as MatchResult[]) results.push(r);
+  } catch { /* no prior results */ }
+  const done = new Set(results.map((r) => path.basename(r.file)));
+  const pending = pdfs.filter((p) => !done.has(path.basename(p)));
+  console.log(`${done.size} already scanned, ${pending.length} pending`);
 
-  for (const file of pdfs) {
-    const res = await scanPdf(file, metadata);
-    if (res && res.planIds.length) {
-      results.push(res);
-      for (const warning of res.warnings) {
-        console.warn(`${path.basename(file)}: ${warning}`);
+  let flushing = false;
+  async function flush(): Promise<void> {
+    if (flushing) return;
+    flushing = true;
+    try { await fs.promises.writeFile(output, JSON.stringify(results, null, 2)); }
+    finally { flushing = false; }
+  }
+
+  const CONCURRENCY = Number(process.env.DISCOVER_CONCURRENCY || 6);
+  let cursor = 0;
+  let completed = 0;
+  async function worker(): Promise<void> {
+    while (cursor < pending.length) {
+      const file = pending[cursor];
+      cursor += 1;
+      const res = await scanPdf(file, metadata);
+      if (res && res.planIds.length) results.push(res);
+      completed += 1;
+      if (completed % 10 === 0) await flush();
+      if (completed % 40 === 0 || completed === pending.length) {
+        console.log(`Scanned ${completed}/${pending.length} (matched ${results.length})`);
       }
     }
   }
-
-  const output = path.join(process.cwd(), "sb-discovery-results.json");
-  await fs.promises.writeFile(output, JSON.stringify(results, null, 2));
+  await Promise.all(
+    Array.from({ length: Math.min(CONCURRENCY, pending.length) }, () => worker()),
+  );
+  await flush();
 
   console.log(`Matched ${results.length} PDFs`);
   console.log(`Results written to ${output}`);

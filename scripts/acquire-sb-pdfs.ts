@@ -14,6 +14,7 @@ const TARGET_CARRIERS = [
   "UHC",
   "Devoted Health",
   "Aetna Medicare",
+  "Humana",
 ];
 
 const DEFAULT_YEAR = 2026;
@@ -151,6 +152,7 @@ function carrierAliases(organizationName: string): string[] {
   }
   if (org.includes("aetna")) return ["Aetna Medicare", "Aetna"];
   if (org.includes("devoted")) return ["Devoted Health", "Devoted"];
+  if (org.includes("humana")) return ["Humana"];
   if (org.includes("healthspring") || org.includes("cigna")) {
     return ["HealthSpring", "Cigna Healthcare", "Cigna-HealthSpring"];
   }
@@ -187,6 +189,7 @@ function carrierDomainHint(carrier: string): string {
   }
   if (normalized.includes("aetna")) return "aetna.com";
   if (normalized.includes("devoted")) return "devoted.com";
+  if (normalized.includes("humana")) return "humana.com";
   if (normalized.includes("healthspring") || normalized.includes("cigna")) return "cigna.com";
   return "";
 }
@@ -201,7 +204,7 @@ function targetKey(plan: PlanRow): string {
 
 async function loadPlans(year: number, limit?: number): Promise<PlanTarget[]> {
   const rows = await prisma.plan.findMany({
-    where: { planYear: year },
+    where: { planYear: year, planCategory: "DSNP", drugTier1Copay: null },
     select: {
       planId: true,
       planYear: true,
@@ -489,7 +492,31 @@ async function main() {
   const downloads: Array<DownloadListItem & { filename: string }> = [];
   const unresolved: UnresolvedPlan[] = [];
 
-  console.log(`Found ${plans.length} unique ${args.year} target carrier plans.`);
+  // Resume support: reload prior partial results so a crash mid-run does not
+  // lose work or repeat SerpAPI calls. Output files are flushed periodically.
+  function loadPrior<T>(file: string): T[] {
+    try { return JSON.parse(fs.readFileSync(path.resolve(file), "utf8")) as T[]; }
+    catch { return []; }
+  }
+  for (const d of loadPrior<DownloadListItem & { filename: string }>(args.output)) downloads.push(d);
+  for (const u of loadPrior<UnresolvedPlan>(args.unresolved)) unresolved.push(u);
+  const processedIds = new Set<string>([
+    ...downloads.map((d) => d.planId),
+    ...unresolved.map((u) => u.planId),
+  ]);
+  const pending = plans.filter((p) => !processedIds.has(p.planId));
+
+  let flushing = false;
+  async function flush(): Promise<void> {
+    if (flushing) return;
+    flushing = true;
+    try {
+      await fs.promises.writeFile(path.resolve(args.output), JSON.stringify(downloads, null, 2));
+      await fs.promises.writeFile(path.resolve(args.unresolved), JSON.stringify(unresolved, null, 2));
+    } finally { flushing = false; }
+  }
+
+  console.log(`Found ${plans.length} unique ${args.year} target carrier plans; ${processedIds.size} already done, ${pending.length} pending.`);
   if (manualCandidates.length) {
     console.log(`Loaded ${manualCandidates.length} manual/search-result candidate URLs.`);
   }
@@ -497,7 +524,7 @@ async function main() {
     console.log("No web search API key found; using manual candidates only.");
   }
 
-  for (const plan of plans) {
+  async function processPlan(plan: (typeof plans)[number]): Promise<void> {
     const candidateMap = new Map<string, SearchCandidate>();
 
     for (const candidate of manualCandidates.filter((item) => candidateAppliesToPlan(item, plan))) {
@@ -514,11 +541,13 @@ async function main() {
       }
     }
 
-    for (const candidate of [...candidateMap.values()]) {
-      for (const expanded of await expandPdfLinks(candidate)) {
-        candidateMap.set(expanded.url, expanded);
-      }
-    }
+    await Promise.all(
+      [...candidateMap.values()].map(async (candidate) => {
+        for (const expanded of await expandPdfLinks(candidate)) {
+          candidateMap.set(expanded.url, expanded);
+        }
+      }),
+    );
 
     const ranked = [...candidateMap.values()]
       .map((candidate) => ({
@@ -570,8 +599,29 @@ async function main() {
     }
   }
 
-  await fs.promises.writeFile(path.resolve(args.output), JSON.stringify(downloads, null, 2));
-  await fs.promises.writeFile(path.resolve(args.unresolved), JSON.stringify(unresolved, null, 2));
+  // Parallelized plan processing: a fixed pool of workers pulls from a shared
+  // cursor. Cuts wall-clock time ~Nx vs the original sequential loop, which
+  // was dominated by per-candidate page fetches (10s timeouts each).
+  const CONCURRENCY = Number(process.env.ACQUIRE_CONCURRENCY || 8);
+  let cursor = 0;
+  let completed = 0;
+  async function worker(): Promise<void> {
+    while (cursor < pending.length) {
+      const idx = cursor;
+      cursor += 1;
+      await processPlan(pending[idx]);
+      completed += 1;
+      if (completed % 5 === 0) await flush();
+      if (completed % 20 === 0 || completed === pending.length) {
+        console.log(`Processed ${completed}/${pending.length} pending (resolved ${downloads.length}, unresolved ${unresolved.length})`);
+      }
+    }
+  }
+  await Promise.all(
+    Array.from({ length: Math.min(CONCURRENCY, pending.length) }, () => worker()),
+  );
+
+  await flush();
 
   console.log(`Wrote ${downloads.length} download items to ${path.resolve(args.output)}`);
   console.log(`Wrote ${unresolved.length} unresolved plans to ${path.resolve(args.unresolved)}`);

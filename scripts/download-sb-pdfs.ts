@@ -39,16 +39,21 @@ function filenameFor(item: DownloadItem): string {
   return path.basename(new URL(item.url).pathname) || `sb-${Date.now()}.pdf`;
 }
 
-async function download(item: DownloadItem, outDir: string) {
+async function download(item: DownloadItem, outDir: string): Promise<"ok" | "skip" | "fail"> {
   if (!item.url) {
     console.warn("Skipping item without a URL");
-    return;
+    return "skip";
   }
 
+  const filename = filenameFor(item);
+  const outPath = path.join(outDir, filename);
+
+  // Resumable: skip files already on disk so the run can be chunked/retried.
+  if (fs.existsSync(outPath)) return "skip";
+
   const res = await fetch(item.url, {
-    headers: {
-      "User-Agent": "Mozilla/5.0",
-    },
+    headers: { "User-Agent": "Mozilla/5.0" },
+    signal: AbortSignal.timeout(25000),
   });
 
   if (!res.ok) {
@@ -56,21 +61,15 @@ async function download(item: DownloadItem, outDir: string) {
   }
 
   const contentType = res.headers.get("content-type") || "";
-
   if (!contentType.includes("pdf")) {
     console.warn(`Skipping non-PDF URL: ${item.url}`);
-    return;
+    return "skip";
   }
 
   const bytes = Buffer.from(await res.arrayBuffer());
-
-  const filename = filenameFor(item);
-
-  const outPath = path.join(outDir, filename);
-
   await fs.promises.writeFile(outPath, bytes);
-
   console.log(`Downloaded ${filename}`);
+  return "ok";
 }
 
 async function main() {
@@ -83,13 +82,25 @@ async function main() {
     await fs.promises.readFile(input, "utf8"),
   );
 
-  for (const item of items) {
-    try {
-      await download(item, outDir);
-    } catch (err) {
-      console.error(err);
+  const CONCURRENCY = Number(process.env.DOWNLOAD_CONCURRENCY || 8);
+  let cursor = 0;
+  const counts = { ok: 0, skip: 0, fail: 0 };
+  async function worker(): Promise<void> {
+    while (cursor < items.length) {
+      const item = items[cursor];
+      cursor += 1;
+      try {
+        counts[await download(item, outDir)] += 1;
+      } catch (err) {
+        counts.fail += 1;
+        console.error(`Download error: ${(err as Error).message}`);
+      }
     }
   }
+  await Promise.all(
+    Array.from({ length: Math.min(CONCURRENCY, items.length) }, () => worker()),
+  );
+  console.log(`Done. downloaded=${counts.ok} skipped=${counts.skip} failed=${counts.fail}`);
 }
 
 main().catch((err) => {
