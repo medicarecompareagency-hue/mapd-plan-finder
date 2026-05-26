@@ -4,9 +4,12 @@ import pdf from "pdf-parse";
 
 type YearSource = "filename" | "download-list" | "document-title" | "text-fallback" | "unknown";
 
+type DocType = "sb" | "enrollment-form" | "faq" | "provider-directory" | "anoc" | "eoc" | "unknown";
+
 interface MatchResult {
   file: string;
   planIds: string[];
+  docType: DocType;
   year: number | null;
   yearSource: YearSource;
   yearConfidence: number;
@@ -114,6 +117,27 @@ function chooseYear(parts: {
   return { year: null, yearSource: "unknown", yearConfidence: 0 };
 }
 
+const WRONG_DOC_PATTERNS: Array<[RegExp, DocType]> = [
+  [/do\s+not\s+return\s+this\s+form\s+to\s+cms/i, "enrollment-form"],
+  [/i\s+want\s+to\s+enroll/i, "enrollment-form"],
+  [/enrollment\s+application/i, "enrollment-form"],
+  [/social\s+security\s+number/i, "enrollment-form"],
+  [/frequently\s+asked\s+questions/i, "faq"],
+  [/provider\s+directory/i, "provider-directory"],
+  [/participating\s+provider/i, "provider-directory"],
+  [/annual\s+notice\s+of\s+change/i, "anoc"],
+  [/\banoc\b/i, "anoc"],
+  [/evidence\s+of\s+coverage/i, "eoc"],
+];
+
+function classifyDocType(text: string): DocType {
+  const head = text.slice(0, 4000);
+  for (const [pattern, kind] of WRONG_DOC_PATTERNS) {
+    if (pattern.test(head)) return kind;
+  }
+  return /summary\s+of\s+benefits/i.test(head) ? "sb" : "unknown";
+}
+
 async function scanPdf(filePath: string, metadata: Map<string, DownloadListItem>): Promise<MatchResult | null> {
   try {
     const text = await extractText(filePath);
@@ -124,12 +148,16 @@ async function scanPdf(filePath: string, metadata: Map<string, DownloadListItem>
       plans.add(normalizePlan(match[1], match[2]));
     }
 
+    const docType = classifyDocType(text);
     const fileYear = filenameYear(filePath);
     const dlYear = downloadListYear(filePath, plans, metadata);
     const titleYear = documentTitleYear(text);
     const fallbackYear = textFallbackYear(text);
     const textYears = uniqueYears(text);
     const warnings: string[] = [];
+    if (docType !== "sb" && docType !== "unknown") {
+      warnings.push(`Document classified as "${docType}", not a Summary of Benefits.`);
+    }
     const yearChoice = chooseYear({
       filename: fileYear,
       downloadList: dlYear,
@@ -161,6 +189,7 @@ async function scanPdf(filePath: string, metadata: Map<string, DownloadListItem>
     return {
       file: filePath,
       planIds: [...plans],
+      docType,
       year: yearChoice.year,
       yearSource: yearChoice.yearSource,
       yearConfidence: yearChoice.yearConfidence,

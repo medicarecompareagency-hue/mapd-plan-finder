@@ -35,6 +35,38 @@ MONEY = re.compile(r"\$\s?([0-9][0-9,]*(?:\.\d{2})?)")
 PCT = re.compile(r"(\d{1,3})\s?%")
 TIER_LINE = re.compile(r"\bTier\s+([1-6])\s*:", re.I)  # colon req: table rows have it, prose mentions do not
 
+# Patterns whose presence in the first ~4000 chars means the document is not
+# a Summary of Benefits. Ordered most-specific first; first match wins.
+_WRONG_DOC_PATTERNS = [
+    (r"do\s+not\s+return\s+this\s+form\s+to\s+cms", "enrollment-form"),
+    (r"i\s+want\s+to\s+enroll", "enrollment-form"),
+    (r"enrollment\s+application", "enrollment-form"),
+    (r"social\s+security\s+number", "enrollment-form"),
+    (r"frequently\s+asked\s+questions", "faq"),
+    (r"provider\s+directory", "provider-directory"),
+    (r"participating\s+provider", "provider-directory"),
+    (r"annual\s+notice\s+of\s+change", "anoc"),
+    (r"\banoc\b", "anoc"),
+    (r"evidence\s+of\s+coverage", "eoc"),
+]
+
+
+def detect_doc_type(text):
+    """Return a doc-type tag for the first 4000 chars of extracted text.
+
+    Returns "sb" when 'Summary of Benefits' appears in the title area,
+    a specific wrong-type label when a disqualifying pattern is found,
+    or "unknown" when neither signal is present (caller should proceed
+    normally rather than rejecting on uncertainty alone).
+    """
+    head = text[:4000].lower()
+    for pattern, kind in _WRONG_DOC_PATTERNS:
+        if re.search(pattern, head):
+            return kind
+    if re.search(r"summary\s+of\s+benefits", head):
+        return "sb"
+    return "unknown"
+
 
 def carrier_of(path):
     p = path.lower()
@@ -165,6 +197,16 @@ def main():
             continue
         lines = text.split("\n")
 
+        # Document-type guard: reject non-SB documents (provider FAQs,
+        # enrollment forms, etc.) before they consume year/tier logic.
+        doc_type = detect_doc_type(text)
+        rec["docType"] = doc_type
+        if doc_type not in ("sb", "unknown"):
+            rec["status"] = f"wrong-doc-type:{doc_type}"
+            results.append(rec)
+            maybe_flush()
+            continue
+
         # Year guard: skip stale PDFs that would write old data tagged 2026.
         yrs = detect_year(text)
         rec["year"] = sorted(yrs) if yrs else None
@@ -220,10 +262,12 @@ def main():
     json.dump(results, open(OUT, "w"), indent=2)
     ok = sum(1 for r in results if r["status"] == "ok")
     errs = sum(1 for r in results if r["status"].startswith("pdf-error"))
+    wrong_doc = sum(1 for r in results if r["status"].startswith("wrong-doc-type"))
     print(f"PDFs processed: {len(results)}")
     print(f"  ok (tiers extracted): {ok}")
     print(f"  skipped stale-year:   {skipped_year}")
     print(f"  no tier table:        {no_tiers}")
+    print(f"  wrong doc type:       {wrong_doc}")
     print(f"  pdf errors:           {errs}")
     print(f"Wrote {OUT}")
 
