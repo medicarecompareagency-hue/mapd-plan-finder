@@ -353,33 +353,24 @@ export async function GET(request: Request) {
         return cmp(a.starRating as number | null, b.starRating as number | null, false);
       });
   } else if (isCsnp) {
-    // CSNP 11-key ranking per Dale 2026-05-12 spec.
+    // CSNP 7-key ranking per Dale 2026-05-26 spec.
+    // specialist → food/utilities → OTC → hospital → dental → vision → MOOP
     sorted = (plans as Array<Record<string, unknown>>)
       .slice()
       .sort((a, b) => {
-        let c = cmp(a.monthlyPremium as number | null, b.monthlyPremium as number | null, true);
-        if (c !== 0) return c;
-        const ah = parseHospitalCopayDay1(a.hospitalStayCopay);
-        const bh = parseHospitalCopayDay1(b.hospitalStayCopay);
-        c = cmp(ah, bh, true);
+        let c = cmp(effectiveCopay(a, "specialistCopay", "specialistCoinsPct"), effectiveCopay(b, "specialistCopay", "specialistCoinsPct"), true);
         if (c !== 0) return c;
         c = cmp(a.foodCardAllowance as number | null, b.foodCardAllowance as number | null, false);
         if (c !== 0) return c;
         c = cmp(a.otcAllowance as number | null, b.otcAllowance as number | null, false);
         if (c !== 0) return c;
-        c = cmp(a.drugDeductible as number | null, b.drugDeductible as number | null, true);
-        if (c !== 0) return c;
-        c = cmp(effectiveCopay(a, "specialistCopay", "specialistCoinsPct"), effectiveCopay(b, "specialistCopay", "specialistCoinsPct"), true);
+        const ah = parseHospitalCopayDay1(a.hospitalStayCopay);
+        const bh = parseHospitalCopayDay1(b.hospitalStayCopay);
+        c = cmp(ah, bh, true);
         if (c !== 0) return c;
         c = cmpBenefitDesc(a.dentalAnnualMax, b.dentalAnnualMax);
         if (c !== 0) return c;
         c = cmpBenefitDesc(a.visionAnnualMax, b.visionAnnualMax);
-        if (c !== 0) return c;
-        const asnf = parseHospitalCopayDay1(a.skilledNursingCopay);
-        const bsnf = parseHospitalCopayDay1(b.skilledNursingCopay);
-        c = cmp(asnf, bsnf, true);
-        if (c !== 0) return c;
-        c = cmpBenefitDesc(a.hearingAnnualMax, b.hearingAnnualMax);
         if (c !== 0) return c;
         return cmp(a.maxOutOfPocket as number | null, b.maxOutOfPocket as number | null, true);
       });
@@ -403,7 +394,8 @@ export async function GET(request: Request) {
         return cmpBenefitDesc(a.dentalAnnualMax, b.dentalAnnualMax);
       });
   } else if (isDsnp && beneficiaryGroup === "FULL_DUAL") {
-    // DSNP FULL_DUAL 6-key ranking per Dale 2026-05-12 spec.
+    // DSNP FULL_DUAL (QMB, QMB+, FBDE) 5-key ranking per Dale 2026-05-26 spec.
+    // food/utilities → OTC → dental → vision → transportation
     sorted = (plans as Array<Record<string, unknown>>)
       .slice()
       .sort((a, b) => {
@@ -415,36 +407,29 @@ export async function GET(request: Request) {
         if (c !== 0) return c;
         c = cmpBenefitDesc(a.visionAnnualMax, b.visionAnnualMax);
         if (c !== 0) return c;
-        c = cmpBenefitDesc(a.hearingAnnualMax, b.hearingAnnualMax);
-        if (c !== 0) return c;
-        return cmp(a.maxOutOfPocket as number | null, b.maxOutOfPocket as number | null, true);
+        return cmp(hasBenefitRank(a.transportationBenefit), hasBenefitRank(b.transportationBenefit), true);
       });
   } else {
-    // DSNP PARTIAL_DUAL 9-key ranking per Dale 2026-05-12 spec.
+    // DSNP PARTIAL_DUAL (SLMB, QI-1) 7-key ranking per Dale 2026-05-26 spec.
+    // specialist → food/utilities → OTC → hospital → dental → vision → MOOP
     // This branch only fires when isDsnp && beneficiaryGroup === "PARTIAL_DUAL";
     // the no-level case returns empty earlier (above the prisma query).
     sorted = (plans as Array<Record<string, unknown>>)
       .slice()
       .sort((a, b) => {
-        const ah = parseHospitalCopayDay1(a.hospitalStayCopay);
-        const bh = parseHospitalCopayDay1(b.hospitalStayCopay);
-        let c = cmp(ah, bh, true);
-        if (c !== 0) return c;
-        c = cmp(effectiveCopay(a, "specialistCopay", "specialistCoinsPct"), effectiveCopay(b, "specialistCopay", "specialistCoinsPct"), true);
+        let c = cmp(effectiveCopay(a, "specialistCopay", "specialistCoinsPct"), effectiveCopay(b, "specialistCopay", "specialistCoinsPct"), true);
         if (c !== 0) return c;
         c = cmp(a.foodCardAllowance as number | null, b.foodCardAllowance as number | null, false);
         if (c !== 0) return c;
         c = cmp(a.otcAllowance as number | null, b.otcAllowance as number | null, false);
         if (c !== 0) return c;
+        const ah = parseHospitalCopayDay1(a.hospitalStayCopay);
+        const bh = parseHospitalCopayDay1(b.hospitalStayCopay);
+        c = cmp(ah, bh, true);
+        if (c !== 0) return c;
         c = cmpBenefitDesc(a.dentalAnnualMax, b.dentalAnnualMax);
         if (c !== 0) return c;
         c = cmpBenefitDesc(a.visionAnnualMax, b.visionAnnualMax);
-        if (c !== 0) return c;
-        const asnf = parseHospitalCopayDay1(a.skilledNursingCopay);
-        const bsnf = parseHospitalCopayDay1(b.skilledNursingCopay);
-        c = cmp(asnf, bsnf, true);
-        if (c !== 0) return c;
-        c = cmpBenefitDesc(a.hearingAnnualMax, b.hearingAnnualMax);
         if (c !== 0) return c;
         return cmp(a.maxOutOfPocket as number | null, b.maxOutOfPocket as number | null, true);
       });
