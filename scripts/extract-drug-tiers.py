@@ -264,15 +264,16 @@ def main():
 
         # Humana FIDE-SNP style: "$0 for a Tier 1, Tier 2 or Tier 6" prose
         # where a multi-column table collapses and loses per-row values.
-        if not tiers:
-            tiers = parse_prose_tier_list(text)
-
-        # Sanity: drop values too large to be a tier copay (MOOP / deductible /
-        # catastrophic threshold leaked from a multi-column narrative layout),
-        # and reject records with too few tiers to be a trustworthy table.
+       # Sanity: drop values too large...
         tiers = {t: vk for t, vk in tiers.items() if vk[0] <= 600}
         if len(tiers) < 3:
             tiers = {}
+
+        if not tiers:
+            tiers = parse_prose_tier_list(text)
+            tiers = {t: vk for t, vk in tiers.items() if vk[0] <= 600}
+            if len(tiers) < 3:
+                tiers = {}
 
         if not tiers:
             rec["status"] = "no-tier-table"
