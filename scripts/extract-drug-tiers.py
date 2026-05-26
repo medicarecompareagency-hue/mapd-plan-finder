@@ -43,6 +43,8 @@ _WRONG_DOC_PATTERNS = [
     (r"enrollment\s+application", "enrollment-form"),
     (r"social\s+security\s+number", "enrollment-form"),
     (r"frequently\s+asked\s+questions", "faq"),
+    (r"quick\s+reference\s+guide", "reference-guide"),
+    (r"\bqrg\b", "reference-guide"),
     (r"provider\s+directory", "provider-directory"),
     (r"participating\s+provider", "provider-directory"),
     (r"annual\s+notice\s+of\s+change", "anoc"),
@@ -143,6 +145,37 @@ def parse_tiers(lines):
     return tiers
 
 
+_PROSE_ANCHOR = re.compile(r"\$\s*(\d+)\s+(?:copay\s+)?for\s+(?:a\s+)?Tier\s+([1-6])", re.I)
+_PROSE_TIER_NUM = re.compile(r"\bTier\s+([1-6])\b(?!\s*:)", re.I)
+
+
+def parse_prose_tier_list(text):
+    """Handle Humana-style '$0 for a Tier 1, Tier 2 or Tier 6' prose.
+
+    Some FIDE-SNP layouts express shared-cost tiers in a single prose phrase
+    rather than individual table rows.  PDF column interleaving scatters the
+    tier numbers onto separate lines, so we flatten newlines and scan a short
+    window after the anchor for additional Tier N mentions.
+
+    Returns {tier_int: (value, 'copay')} with every tier that shares the
+    stated amount, or {} if the pattern is not found.
+    """
+    flat = text.replace("\n", " ")
+    m = _PROSE_ANCHOR.search(flat)
+    if not m:
+        return {}
+    val = float(m.group(1).replace(",", ""))
+    # Seed with the tier captured by the anchor ("$X for a Tier N"), then
+    # scan a short forward window for additional "Tier N" mentions (no colon
+    # means prose reference, not a table label).  Window is intentionally
+    # tight (200 chars) to avoid false positives from later table labels.
+    tiers = {int(m.group(2)): (val, "copay")}
+    window = flat[m.start(2):m.start(2) + 200]
+    for hit in _PROSE_TIER_NUM.finditer(window):
+        tiers[int(hit.group(1))] = (val, "copay")
+    return tiers
+
+
 def detect_year(text):
     head = text[:9000]
     yrs = set()
@@ -228,6 +261,11 @@ def main():
                 for t in range(1, 7):
                     tiers[t] = (v, "copay")
                 rec["flatZero"] = (v == 0)
+
+        # Humana FIDE-SNP style: "$0 for a Tier 1, Tier 2 or Tier 6" prose
+        # where a multi-column table collapses and loses per-row values.
+        if not tiers:
+            tiers = parse_prose_tier_list(text)
 
         # Sanity: drop values too large to be a tier copay (MOOP / deductible /
         # catastrophic threshold leaked from a multi-column narrative layout),

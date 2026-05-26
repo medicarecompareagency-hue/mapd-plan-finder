@@ -4,7 +4,7 @@ import pdf from "pdf-parse";
 
 type YearSource = "filename" | "download-list" | "document-title" | "text-fallback" | "unknown";
 
-type DocType = "sb" | "enrollment-form" | "faq" | "provider-directory" | "anoc" | "eoc" | "unknown";
+type DocType = "sb" | "enrollment-form" | "faq" | "reference-guide" | "provider-directory" | "anoc" | "eoc" | "unknown";
 
 interface MatchResult {
   file: string;
@@ -123,6 +123,8 @@ const WRONG_DOC_PATTERNS: Array<[RegExp, DocType]> = [
   [/enrollment\s+application/i, "enrollment-form"],
   [/social\s+security\s+number/i, "enrollment-form"],
   [/frequently\s+asked\s+questions/i, "faq"],
+  [/quick\s+reference\s+guide/i, "reference-guide"],
+  [/\bqrg\b/i, "reference-guide"],
   [/provider\s+directory/i, "provider-directory"],
   [/participating\s+provider/i, "provider-directory"],
   [/annual\s+notice\s+of\s+change/i, "anoc"],
