@@ -164,7 +164,8 @@ function carrierStrongLabels(carrier: ReturnType<typeof getCarrier>, kind: Benef
     },
     devoted: {
       otc: [...commonOtc, /devoted\s+dollars/gi, /flex\s+card/gi, /healthy\s+benefits/gi],
-      food: [...commonFood, /food\s+and\s+home\s+card/gi, /devoted\s+dollars/gi, /healthy\s+foods?\s+card/gi],
+      // "Food & Home Card" uses "&" in Devoted PDFs, not "and"
+      food: [...commonFood, /food\s+(?:and|&)\s+home\s+card/gi, /devoted\s+dollars/gi, /healthy\s+foods?\s+card/gi],
     },
     cigna: {
       otc: [...commonOtc, /cigna\s+healthy\s+today/gi, /healthy\s+today\s+card/gi, /otc\s+mail\s+order/gi],
@@ -201,7 +202,7 @@ function benefitConfig(kind: BenefitKind, carrier: ReturnType<typeof getCarrier>
       keywords: [
         ...carrierStrongLabels(carrier, "food"),
         /healthy\s+options/gi,
-        /utilities/gi,
+        /utilit(?:y|ies)/gi,
         /flex\s+card/gi,
       ],
       strongLabels: carrierStrongLabels(carrier, "food"),
@@ -381,6 +382,60 @@ function scoreAmountCandidate(
   };
 }
 
+// Matches all three category keywords in the same clause (no sentence boundary
+// between them). Sentence-boundary chars (.!?\n) act as stop markers so this
+// cannot fire across separate benefit sections (e.g. Devoted's "OTC) items.
+// [sentence end] Food & Home Card $60" pattern correctly doesn't match).
+const COMBINED_OTC_FOOD_UTIL_RE = /(?:(?:OTC|over.?the.?counter)[^.!?\n]{0,80}(?:food\b|grocery)[^.!?\n]{0,80}utilit|(?:food\b|grocery)[^.!?\n]{0,80}(?:OTC|over.?the.?counter)[^.!?\n]{0,80}utilit|utilit[^.!?\n]{0,80}(?:OTC|over.?the.?counter)[^.!?\n]{0,80}(?:food\b|grocery))/gi;
+
+function findCombinedOtcFoodUtil(text: string): ExtractedBenefit | null {
+  const moneyRe = /\$\s?[\d,]+(?:\.\d{2})?/g;
+
+  for (const phraseMatch of text.matchAll(COMBINED_OTC_FOOD_UTIL_RE)) {
+    const phraseStart = phraseMatch.index ?? 0;
+    const phraseEnd = phraseStart + phraseMatch[0].length;
+
+    // Search for dollar amounts in a generous zone around the phrase.
+    const zoneStart = Math.max(0, phraseStart - 250);
+    const zoneEnd = Math.min(text.length, phraseEnd + 250);
+    const zone = cleanText(text.slice(zoneStart, zoneEnd));
+
+    const moneyMatches = [...zone.matchAll(moneyRe)];
+    const amounts = moneyMatches
+      .map((m) => moneyToNumber(m[0]))
+      .filter((n): n is number => n != null);
+    const distinctAmounts = new Set(amounts);
+
+    // Require exactly one distinct dollar amount — two or more means separate
+    // allowances stated near each other, not a single combined line.
+    if (distinctAmounts.size !== 1) continue;
+
+    const amount = [...distinctAmounts][0];
+    const firstMoney = moneyMatches.find((m) => moneyToNumber(m[0]) === amount)!;
+    const absoluteIdx = zoneStart + (firstMoney.index ?? 0);
+
+    const evidenceSnippet = cleanText(
+      text.slice(Math.max(0, phraseStart - 60), Math.min(text.length, phraseEnd + 100)),
+    );
+    const period = detectPeriod(evidenceSnippet) || detectPeriod(zone);
+
+    let confidence = 0.90;
+    if (!period) confidence -= 0.07;
+    // Large annual amounts are suspicious without a clear annual cadence word
+    if (amount >= 2000 && period !== "month" && period !== "quarter") confidence -= 0.10;
+
+    return {
+      amount,
+      period,
+      page: pageNumberForIndex(text, absoluteIdx),
+      confidence: Math.max(0, Math.min(0.98, Number(confidence.toFixed(2)))),
+      evidence: `combined OTC/food/utilities — ${evidenceSnippet.slice(0, 400)}`,
+    };
+  }
+
+  return null;
+}
+
 function findBenefit(text: string, config: BenefitConfig): ExtractedBenefit {
   const candidates: CandidateAmount[] = [];
   const moneyRegex = /\$\s?[\d,]+(?:\.\d{2})?/g;
@@ -485,8 +540,13 @@ async function extractPdf(item: DiscoveryResult, context?: PlanContext): Promise
 
   if (DEBUG) console.log(`[debug] extracting ${file} carrier=${carrier}`);
 
-  const otc = findBenefit(text, benefitConfig("otc", carrier));
-  const food = findBenefit(text, benefitConfig("food", carrier));
+  // Pre-pass: if a single dollar amount serves OTC, food, AND utilities in one
+  // clause, assign it to both fields and skip the individual benefit searches.
+  // The combined detector uses a sentence-boundary guard so it cannot fire
+  // across separate benefit sections that happen to sit near each other.
+  const combined = findCombinedOtcFoodUtil(text);
+  const otc = combined ?? findBenefit(text, benefitConfig("otc", carrier));
+  const food = combined ?? findBenefit(text, benefitConfig("food", carrier));
   const dental = findBenefit(text, benefitConfig("dental", carrier));
   const vision = findBenefit(text, benefitConfig("vision", carrier));
   const hearing = findBenefit(text, benefitConfig("hearing", carrier));
