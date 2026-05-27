@@ -1223,7 +1223,7 @@ export default function PlanSearch() {
                         </a>
                       </td>
                       <td className="px-3 py-3 text-right text-gray-900">
-                        <div>{dollars(plan.foodCardAllowance)}</div>
+                        <div>{dollars(plan.foodCardAllowance && plan.foodCardAllowance > 0 ? plan.foodCardAllowance : (plan.ssbciFoodAllowance ?? plan.foodCardAllowance))}</div>
                         <a
                           href={summaryOfBenefitsUrl(plan, filters.zipCode, plan.sbFoodCardPage).href}
                           target="_blank"

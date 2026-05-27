@@ -242,6 +242,15 @@ export async function GET(request: Request) {
     return Response.json([]);
   }
 
+  // effectiveFoodCard: use foodCardAllowance when populated; fall back to
+  // ssbciFoodAllowance for DSNP carriers (e.g. Devoted) that file food
+  // benefits through the SSBCI mechanism rather than pbp_b13i_fd_maxplan_amt.
+  function effectiveFoodCard(plan: Record<string, unknown>): number | null {
+    const direct = plan.foodCardAllowance as number | null;
+    if (direct != null && direct > 0) return direct;
+    return (plan.ssbciFoodAllowance as number | null) ?? null;
+  }
+
   function cmp(a: number | null | undefined, b: number | null | undefined, ascending: boolean): number {
     const aNull = a == null;
     const bNull = b == null;
@@ -360,7 +369,7 @@ export async function GET(request: Request) {
       .sort((a, b) => {
         let c = cmp(effectiveCopay(a, "specialistCopay", "specialistCoinsPct"), effectiveCopay(b, "specialistCopay", "specialistCoinsPct"), true);
         if (c !== 0) return c;
-        c = cmp(a.foodCardAllowance as number | null, b.foodCardAllowance as number | null, false);
+        c = cmp(effectiveFoodCard(a), effectiveFoodCard(b), false);
         if (c !== 0) return c;
         c = cmp(a.otcAllowance as number | null, b.otcAllowance as number | null, false);
         if (c !== 0) return c;
@@ -399,7 +408,7 @@ export async function GET(request: Request) {
     sorted = (plans as Array<Record<string, unknown>>)
       .slice()
       .sort((a, b) => {
-        let c = cmp(a.foodCardAllowance as number | null, b.foodCardAllowance as number | null, false);
+        let c = cmp(effectiveFoodCard(a), effectiveFoodCard(b), false);
         if (c !== 0) return c;
         c = cmp(a.otcAllowance as number | null, b.otcAllowance as number | null, false);
         if (c !== 0) return c;
@@ -419,7 +428,7 @@ export async function GET(request: Request) {
       .sort((a, b) => {
         let c = cmp(effectiveCopay(a, "specialistCopay", "specialistCoinsPct"), effectiveCopay(b, "specialistCopay", "specialistCoinsPct"), true);
         if (c !== 0) return c;
-        c = cmp(a.foodCardAllowance as number | null, b.foodCardAllowance as number | null, false);
+        c = cmp(effectiveFoodCard(a), effectiveFoodCard(b), false);
         if (c !== 0) return c;
         c = cmp(a.otcAllowance as number | null, b.otcAllowance as number | null, false);
         if (c !== 0) return c;
@@ -521,7 +530,7 @@ export async function POST(request: Request) {
     drugTier6Copays: uniqueNumbers(plans.map((p: any) => p.drugTier6Copay)),
     drugDeductibles: uniqueNumbers(plans.map((p: any) => p.drugDeductible)),
     otcAllowances: uniqueNumbers(plans.map((p: any) => p.otcAllowance)),
-    foodCardAllowances: uniqueNumbers(plans.map((p: any) => p.foodCardAllowance)),
+    foodCardAllowances: uniqueNumbers(plans.map((p: any) => p.foodCardAllowance > 0 ? p.foodCardAllowance : (p.ssbciFoodAllowance ?? p.foodCardAllowance))),
     mriCopays: uniqueNumbers(plans.map((p: any) => p.mriCopay)),
     catScanCopays: uniqueNumbers(plans.map((p: any) => p.catScanCopay)),
     partBGivebackAmounts: uniqueNumbers(plans.map((p: any) => p.partBGivebackAmount)),
