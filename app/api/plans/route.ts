@@ -242,13 +242,22 @@ export async function GET(request: Request) {
     return Response.json([]);
   }
 
-  // effectiveFoodCard: use foodCardAllowance when populated; fall back to
-  // ssbciFoodAllowance for DSNP carriers (e.g. Devoted) that file food
-  // benefits through the SSBCI mechanism rather than pbp_b13i_fd_maxplan_amt.
+  // effectiveFoodCard: PBP foodCardAllowance → SSBCI ssbciFoodAllowance →
+  // SB-PDF-extracted sbVerifiedFoodAmount. Carriers like Humana/UHC don't
+  // file dollar amounts in PBP; the SB PDF extraction fills the gap.
   function effectiveFoodCard(plan: Record<string, unknown>): number | null {
     const direct = plan.foodCardAllowance as number | null;
     if (direct != null && direct > 0) return direct;
-    return (plan.ssbciFoodAllowance as number | null) ?? null;
+    const ssbci = plan.ssbciFoodAllowance as number | null;
+    if (ssbci != null && ssbci > 0) return ssbci;
+    return (plan.sbVerifiedFoodAmount as number | null) ?? null;
+  }
+
+  // effectiveOtc: PBP otcAllowance → SB-PDF-extracted sbVerifiedOtcAmount.
+  function effectiveOtc(plan: Record<string, unknown>): number | null {
+    const direct = plan.otcAllowance as number | null;
+    if (direct != null && direct > 0) return direct;
+    return (plan.sbVerifiedOtcAmount as number | null) ?? null;
   }
 
   function cmp(a: number | null | undefined, b: number | null | undefined, ascending: boolean): number {
@@ -371,7 +380,7 @@ export async function GET(request: Request) {
         if (c !== 0) return c;
         c = cmp(effectiveFoodCard(a), effectiveFoodCard(b), false);
         if (c !== 0) return c;
-        c = cmp(a.otcAllowance as number | null, b.otcAllowance as number | null, false);
+        c = cmp(effectiveOtc(a), effectiveOtc(b), false);
         if (c !== 0) return c;
         const ah = parseHospitalCopayDay1(a.hospitalStayCopay);
         const bh = parseHospitalCopayDay1(b.hospitalStayCopay);
@@ -410,7 +419,7 @@ export async function GET(request: Request) {
       .sort((a, b) => {
         let c = cmp(effectiveFoodCard(a), effectiveFoodCard(b), false);
         if (c !== 0) return c;
-        c = cmp(a.otcAllowance as number | null, b.otcAllowance as number | null, false);
+        c = cmp(effectiveOtc(a), effectiveOtc(b), false);
         if (c !== 0) return c;
         c = cmpBenefitDesc(a.dentalAnnualMax, b.dentalAnnualMax);
         if (c !== 0) return c;
@@ -430,7 +439,7 @@ export async function GET(request: Request) {
         if (c !== 0) return c;
         c = cmp(effectiveFoodCard(a), effectiveFoodCard(b), false);
         if (c !== 0) return c;
-        c = cmp(a.otcAllowance as number | null, b.otcAllowance as number | null, false);
+        c = cmp(effectiveOtc(a), effectiveOtc(b), false);
         if (c !== 0) return c;
         const ah = parseHospitalCopayDay1(a.hospitalStayCopay);
         const bh = parseHospitalCopayDay1(b.hospitalStayCopay);

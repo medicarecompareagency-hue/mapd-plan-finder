@@ -60,6 +60,8 @@ interface Plan {
   drugTier6Copay: number | null;
   drugTierCoinsuranceMask: string | null;
   otcAllowance: number | null;
+  sbVerifiedOtcAmount: number | null;
+  sbVerifiedFoodAmount: number | null;
   otcMaxPeriod: string | null; // "month", "quarter", "year", "6 months", "episode", "benefit period", or null
   foodCardAllowance: number | null;
   dentalBenefits: string | null;
@@ -213,7 +215,7 @@ function summaryOfBenefitsUrl(
 // instead of just "$3,600". Falls back to "$X / yr" when the period is
 // "year" / "other" / unknown.
 function formatOtcCell(plan: Plan): { primary: string; secondary: string | null } {
-  const amt = plan.otcAllowance;
+  const amt = (plan.otcAllowance && plan.otcAllowance > 0) ? plan.otcAllowance : (plan.sbVerifiedOtcAmount ?? plan.otcAllowance);
   if (amt == null || amt === 0) return { primary: dollars(amt), secondary: null };
   const per = plan.otcMaxPeriod;
   const mult: Record<string, number> = { month: 12, quarter: 4, "6 months": 2 };
@@ -1223,7 +1225,7 @@ export default function PlanSearch() {
                         </a>
                       </td>
                       <td className="px-3 py-3 text-right text-gray-900">
-                        <div>{dollars(plan.foodCardAllowance && plan.foodCardAllowance > 0 ? plan.foodCardAllowance : (plan.ssbciFoodAllowance ?? plan.foodCardAllowance))}</div>
+                        <div>{dollars(plan.foodCardAllowance && plan.foodCardAllowance > 0 ? plan.foodCardAllowance : plan.ssbciFoodAllowance && plan.ssbciFoodAllowance > 0 ? plan.ssbciFoodAllowance : (plan.sbVerifiedFoodAmount ?? plan.foodCardAllowance))}</div>
                         <a
                           href={summaryOfBenefitsUrl(plan, filters.zipCode, plan.sbFoodCardPage).href}
                           target="_blank"
