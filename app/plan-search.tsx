@@ -1226,11 +1226,14 @@ export default function PlanSearch() {
                       </td>
                       <td className="px-3 py-3 text-right text-gray-900">
                         {(() => {
-                          const fc = plan.foodCardAllowance && plan.foodCardAllowance > 0
+                          // priority: sbVerifiedFoodAmount (SB PDF, most accurate) → foodCardAllowance (PBP direct) → ssbciFoodAllowance (SSBCI PBP)
+                          const fc = plan.sbVerifiedFoodAmount != null && plan.sbVerifiedFoodAmount > 0
+                            ? plan.sbVerifiedFoodAmount
+                            : plan.foodCardAllowance && plan.foodCardAllowance > 0
                             ? plan.foodCardAllowance
                             : plan.ssbciFoodAllowance && plan.ssbciFoodAllowance > 0
                             ? plan.ssbciFoodAllowance
-                            : (plan.sbVerifiedFoodAmount ?? null);
+                            : null;
                           return fc && fc > 0
                             ? <div>${fc.toLocaleString(undefined, { maximumFractionDigits: 0 })} / yr</div>
                             : <div>{dollars(0)}</div>;
