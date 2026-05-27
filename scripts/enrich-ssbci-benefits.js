@@ -32,6 +32,9 @@ const prisma = makePrisma();
 const yearArgIdx = process.argv.indexOf("--year");
 const PLAN_YEAR = yearArgIdx >= 0 ? parseInt(process.argv[yearArgIdx + 1], 10) : 2026;
 const APPLY = process.argv.includes("--apply");
+// --force: overwrite existing allowance values (not just fill nulls).
+// Use after fixing annualization bug to correct previously stored raw amounts.
+const FORCE = process.argv.includes("--force");
 
 const EXTRACT_DIR = path.join(process.cwd(), ".cms-import-tmp", `pbp-${PLAN_YEAR}`);
 const SSBCI_FILE = path.join(EXTRACT_DIR, "pbp_b13i_b19b_services_vbid_ssbci.txt");
@@ -79,6 +82,21 @@ function num(val) {
   return isNaN(n) ? null : n;
 }
 
+// Same period codes as import-pbp.js:
+//   1 = Annual/Plan year (×1)
+//   2 = Per Month (×12)
+//   3 = Per Quarter (×4)
+//   4 = Per 6 Months (×2)
+//   5 = Other/unspecified (×1)
+const PERIOD_MULT = { '1': 1, '2': 12, '3': 4, '4': 2, '5': 1 };
+
+function annualize(amt, perCode) {
+  const n = num(amt);
+  if (n == null || n === 0) return null;
+  const m = PERIOD_MULT[perCode] !== undefined ? PERIOD_MULT[perCode] : 1;
+  return n * m;
+}
+
 function buildSsbciFromRow(row) {
   return {
     ssbciOffersFood: row.pbp_b13i_fd_bendesc_yn === "1",
@@ -86,17 +104,17 @@ function buildSsbciFromRow(row) {
     ssbciOffersTransportation: row.pbp_b13i_t_bendesc_yn === "1",
     ssbciOffersUtilities: row.pbp_b13i_suppt_bendesc_yn === "1" && row.pbp_b13i_suppt_utility_yn === "1",
     ssbciOffersHousing: row.pbp_b13i_suppt_bendesc_yn === "1" && row.pbp_b13i_suppt_housing_yn === "1",
-    ssbciFoodAllowance: row.pbp_b13i_fd_maxplan_yn === "1" ? num(row.pbp_b13i_fd_maxplan_amt) : null,
-    ssbciMealsAllowance: row.pbp_b13i_ml_maxplan_yn === "1" ? num(row.pbp_b13i_ml_maxplan_amt) : null,
-    ssbciTransportationAllowance: row.pbp_b13i_t_maxplan_yn === "1" ? num(row.pbp_b13i_t_maxplan_amt) : null,
-    ssbciPersonalServicesAllowance: row.pbp_b13i_ps_maxplan_yn === "1" ? num(row.pbp_b13i_ps_maxplan_amt) : null,
+    ssbciFoodAllowance: row.pbp_b13i_fd_maxplan_yn === "1" ? annualize(row.pbp_b13i_fd_maxplan_amt, row.pbp_b13i_fd_maxplan_per) : null,
+    ssbciMealsAllowance: row.pbp_b13i_ml_maxplan_yn === "1" ? annualize(row.pbp_b13i_ml_maxplan_amt, row.pbp_b13i_ml_maxplan_per) : null,
+    ssbciTransportationAllowance: row.pbp_b13i_t_maxplan_yn === "1" ? annualize(row.pbp_b13i_t_maxplan_amt, row.pbp_b13i_t_maxplan_per) : null,
+    ssbciPersonalServicesAllowance: row.pbp_b13i_ps_maxplan_yn === "1" ? annualize(row.pbp_b13i_ps_maxplan_amt, row.pbp_b13i_ps_maxplan_per) : null,
   };
 }
 
 function mergeVbidUfCard(target, row) {
   const name = String(row.pbp_b19b_package_name || "").toLowerCase();
   const cats = String(row.pbp_b19b_agg_nmc_bendesc_cats || "").toLowerCase();
-  const amount = row.pbp_b19b_agg_yn === "1" ? num(row.pbp_b19b_agg_amt) : null;
+  const amount = row.pbp_b19b_agg_yn === "1" ? annualize(row.pbp_b19b_agg_amt, row.pbp_b19b_agg_per) : null;
   if (!name && !cats) return target;
 
   const mentionsFood = /food|grocery|groceries/.test(name) || /13i1\b/.test(cats);
@@ -191,7 +209,7 @@ async function main() {
       "ssbciFoodAllowance", "ssbciMealsAllowance",
       "ssbciPersonalServicesAllowance", "ssbciTransportationAllowance",
     ]) {
-      if (data[k] != null && p[k] == null) {
+      if (data[k] != null && (p[k] == null || (FORCE && data[k] !== p[k]))) {
         patch[k] = data[k];
         counters[k]++;
       }

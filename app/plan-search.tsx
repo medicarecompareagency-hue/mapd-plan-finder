@@ -1225,7 +1225,16 @@ export default function PlanSearch() {
                         </a>
                       </td>
                       <td className="px-3 py-3 text-right text-gray-900">
-                        <div>{dollars(plan.foodCardAllowance && plan.foodCardAllowance > 0 ? plan.foodCardAllowance : plan.ssbciFoodAllowance && plan.ssbciFoodAllowance > 0 ? plan.ssbciFoodAllowance : (plan.sbVerifiedFoodAmount ?? plan.foodCardAllowance))}</div>
+                        {(() => {
+                          const fc = plan.foodCardAllowance && plan.foodCardAllowance > 0
+                            ? plan.foodCardAllowance
+                            : plan.ssbciFoodAllowance && plan.ssbciFoodAllowance > 0
+                            ? plan.ssbciFoodAllowance
+                            : (plan.sbVerifiedFoodAmount ?? null);
+                          return fc && fc > 0
+                            ? <div>${fc.toLocaleString(undefined, { maximumFractionDigits: 0 })} / yr</div>
+                            : <div>{dollars(0)}</div>;
+                        })()}
                         <a
                           href={summaryOfBenefitsUrl(plan, filters.zipCode, plan.sbFoodCardPage).href}
                           target="_blank"
