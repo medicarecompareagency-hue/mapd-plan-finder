@@ -242,15 +242,16 @@ export async function GET(request: Request) {
     return Response.json([]);
   }
 
-  // effectiveFoodCard: PBP foodCardAllowance → SSBCI ssbciFoodAllowance →
-  // SB-PDF-extracted sbVerifiedFoodAmount. Carriers like Humana/UHC don't
-  // file dollar amounts in PBP; the SB PDF extraction fills the gap.
+  // effectiveFoodCard priority:
+  //   1. sbVerifiedFoodAmount  — direct from SB PDF (most accurate, annualized)
+  //   2. foodCardAllowance     — from PBP pbp_b13i_fd_maxplan_amt (annualized)
+  //   3. ssbciFoodAllowance    — from SSBCI PBP (annual per enrich script)
   function effectiveFoodCard(plan: Record<string, unknown>): number | null {
+    const sbPdf = plan.sbVerifiedFoodAmount as number | null;
+    if (sbPdf != null && sbPdf > 0) return sbPdf;
     const direct = plan.foodCardAllowance as number | null;
     if (direct != null && direct > 0) return direct;
-    const ssbci = plan.ssbciFoodAllowance as number | null;
-    if (ssbci != null && ssbci > 0) return ssbci;
-    return (plan.sbVerifiedFoodAmount as number | null) ?? null;
+    return (plan.ssbciFoodAllowance as number | null) ?? null;
   }
 
   // effectiveOtc: PBP otcAllowance → SB-PDF-extracted sbVerifiedOtcAmount.

@@ -82,6 +82,11 @@ interface CandidateAmount {
 
 const DEBUG = process.argv.includes("--debug") || process.env.DEBUG_SB_EXTRACTION === "1";
 const MIN_UPDATE_CONFIDENCE = 0.85;
+// Food amounts use a slightly lower threshold — the scoring model penalizes
+// food candidates near OTC keywords (to prevent cross-contamination), which
+// legitimately lowers confidence even when the SB text is unambiguous (e.g.
+// Devoted "$296 per month toward eligible food"). 0.80 is safe here.
+const MIN_FOOD_CONFIDENCE = 0.80;
 const MIN_YEAR_UPDATE_CONFIDENCE = 0.8;
 
 function cleanText(text: string): string {
@@ -634,10 +639,10 @@ async function updatePlans(result: ExtractionResult, dryRun: boolean, allowYearC
       console.warn(`Skipping OTC verified amount for ${planId}; confidence ${result.otc.confidence} < ${MIN_UPDATE_CONFIDENCE}`);
     }
 
-    if (result.food.confidence >= MIN_UPDATE_CONFIDENCE) {
+    if (result.food.confidence >= MIN_FOOD_CONFIDENCE) {
       data.sbVerifiedFoodAmount = annualize(result.food.amount, result.food.period);
     } else if (result.food.amount != null) {
-      console.warn(`Skipping food verified amount for ${planId}; confidence ${result.food.confidence} < ${MIN_UPDATE_CONFIDENCE}`);
+      console.warn(`Skipping food verified amount for ${planId}; confidence ${result.food.confidence} < ${MIN_FOOD_CONFIDENCE}`);
     }
 
     Object.keys(data).forEach((k) => data[k] === undefined && delete data[k]);
