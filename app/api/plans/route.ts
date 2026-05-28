@@ -243,30 +243,37 @@ export async function GET(request: Request) {
   }
 
   // effectiveFoodCard priority:
-  //   1. sbVerifiedFoodAmount  — direct from SB PDF (most accurate, annualized)
+  //   1. sbVerifiedFoodAmount  — from SB PDF (annualized, most accurate)
   //   2. foodCardAllowance     — from PBP pbp_b13i_fd_maxplan_amt (annualized)
   //   3. ssbciFoodAllowance    — from SSBCI PBP (annual per enrich script)
+  //      Exception: suppressed when SB PDF confirmed an OTC-only card
+  //      (sbVerifiedOtcAmount populated, sbVerifiedFoodAmount null). For those
+  //      plans the SSBCI "food" entry is a chronic-condition-gated wallet
+  //      expansion of the OTC card, not a standalone food benefit (e.g. Aetna
+  //      H3239 Extra Benefits Card / Extra Supports Wallet).
   function effectiveFoodCard(plan: Record<string, unknown>): number | null {
     const sbPdf = plan.sbVerifiedFoodAmount as number | null;
     if (sbPdf != null && sbPdf > 0) return sbPdf;
     const direct = plan.foodCardAllowance as number | null;
     if (direct != null && direct > 0) return direct;
+    const sbOtcConfirmed = (plan.sbVerifiedOtcAmount as number | null) != null
+      && (plan.sbVerifiedOtcAmount as number) > 0;
+    const sbFoodAbsent = (plan.sbVerifiedFoodAmount as number | null) == null;
+    if (sbOtcConfirmed && sbFoodAbsent) return null;
     return (plan.ssbciFoodAllowance as number | null) ?? null;
   }
 
   // effectiveOtc priority:
-  //   1. otcAllowance         - from PBP (annualized)
-  //   2. sbVerifiedOtcAmount  - from SB PDF extractor
-  //   3. sbVerifiedFoodAmount - Humana combined "Healthy Options Allowance"
-  //                             card: OTC amount === food amount, same card
+  //   1. sbVerifiedOtcAmount  — from SB PDF (annualized, most accurate)
+  //   2. otcAllowance         — from PBP (raw per-period, may not be annualized)
+  //   3. sbVerifiedFoodAmount — Humana only: combined "Healthy Options Allowance"
+  //                            card; OTC amount === food amount for these plans
   function effectiveOtc(plan: Record<string, unknown>): number | null {
-    const direct = plan.otcAllowance as number | null;
-    if (direct != null && direct > 0) return direct;
     const sbOtc = plan.sbVerifiedOtcAmount as number | null;
     if (sbOtc != null && sbOtc > 0) return sbOtc;
-    // Humana's "Healthy Options Allowance" is a combined OTC+food card.
-    // The extractor populates sbVerifiedFoodAmount but not sbVerifiedOtcAmount
-    // for these plans. The dollar amounts are equal, so fall back to food.
+    const direct = plan.otcAllowance as number | null;
+    if (direct != null && direct > 0) return direct;
+    // Humana combined card: OTC wallet === food wallet, same dollar amount
     const orgName = String(plan.organizationName ?? "").toLowerCase();
     if (orgName.includes("humana")) {
       const sbFood = plan.sbVerifiedFoodAmount as number | null;
