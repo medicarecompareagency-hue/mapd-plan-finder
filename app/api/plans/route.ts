@@ -475,7 +475,15 @@ export async function GET(request: Request) {
       });
   }
 
-  const ranked = dedupeByCarrier(sorted, 5).map((plan, i) => ({ ...plan, rank: i + 1 }));
+  const ranked = dedupeByCarrier(sorted, 5).map((plan, i) => ({
+    ...plan,
+    rank: i + 1,
+    // Use effective values for display (effectiveOtc/effectiveFoodCard are also
+    // used for ranking, but the raw plan fields are what the UI renders).
+    otcAllowance: effectiveOtc(plan) ?? (plan.otcAllowance as number | null),
+    foodCardAllowance: effectiveFoodCard(plan) ?? 0,
+    ssbciFoodAllowance: effectiveFoodCard(plan),
+  }));
 
   return Response.json(ranked);
 }
