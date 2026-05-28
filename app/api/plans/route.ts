@@ -254,11 +254,25 @@ export async function GET(request: Request) {
     return (plan.ssbciFoodAllowance as number | null) ?? null;
   }
 
-  // effectiveOtc: PBP otcAllowance → SB-PDF-extracted sbVerifiedOtcAmount.
+  // effectiveOtc priority:
+  //   1. otcAllowance         - from PBP (annualized)
+  //   2. sbVerifiedOtcAmount  - from SB PDF extractor
+  //   3. sbVerifiedFoodAmount - Humana combined "Healthy Options Allowance"
+  //                             card: OTC amount === food amount, same card
   function effectiveOtc(plan: Record<string, unknown>): number | null {
     const direct = plan.otcAllowance as number | null;
     if (direct != null && direct > 0) return direct;
-    return (plan.sbVerifiedOtcAmount as number | null) ?? null;
+    const sbOtc = plan.sbVerifiedOtcAmount as number | null;
+    if (sbOtc != null && sbOtc > 0) return sbOtc;
+    // Humana's "Healthy Options Allowance" is a combined OTC+food card.
+    // The extractor populates sbVerifiedFoodAmount but not sbVerifiedOtcAmount
+    // for these plans. The dollar amounts are equal, so fall back to food.
+    const orgName = String(plan.organizationName ?? "").toLowerCase();
+    if (orgName.includes("humana")) {
+      const sbFood = plan.sbVerifiedFoodAmount as number | null;
+      if (sbFood != null && sbFood > 0) return sbFood;
+    }
+    return null;
   }
 
   function cmp(a: number | null | undefined, b: number | null | undefined, ascending: boolean): number {
