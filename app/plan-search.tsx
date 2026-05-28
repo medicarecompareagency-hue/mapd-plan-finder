@@ -83,6 +83,9 @@ interface Plan {
   ssbciMealsAllowance: number | null;
   ssbciPersonalServicesAllowance: number | null;
   ssbciTransportationAllowance: number | null;
+  ssbciIsConditional: boolean | null;
+  ssbciIsStandalone: boolean | null;
+  ssbciConditionNote: string | null;
   sbPdfUrl: string | null;
   sbOtcPage: number | null;
   sbFoodCardPage: number | null;
@@ -1227,13 +1230,32 @@ export default function PlanSearch() {
                       <td className="px-3 py-3 text-right text-gray-900">
                         {(() => {
                           // priority: sbVerifiedFoodAmount (SB PDF, most accurate) → foodCardAllowance (PBP direct) → ssbciFoodAllowance (SSBCI PBP)
-                          const fc = plan.sbVerifiedFoodAmount != null && plan.sbVerifiedFoodAmount > 0
-                            ? plan.sbVerifiedFoodAmount
-                            : plan.foodCardAllowance && plan.foodCardAllowance > 0
-                            ? plan.foodCardAllowance
-                            : plan.ssbciFoodAllowance && plan.ssbciFoodAllowance > 0
-                            ? plan.ssbciFoodAllowance
+                          const sbVerified = plan.sbVerifiedFoodAmount != null && plan.sbVerifiedFoodAmount > 0;
+                          const directFood = !!(plan.foodCardAllowance && plan.foodCardAllowance > 0);
+                          const ssbciFood = !!(plan.ssbciFoodAllowance && plan.ssbciFoodAllowance > 0);
+                          const fc = sbVerified
+                            ? plan.sbVerifiedFoodAmount!
+                            : directFood
+                            ? plan.foodCardAllowance!
+                            : ssbciFood
+                            ? plan.ssbciFoodAllowance!
                             : null;
+                          // Any amount whose ONLY source is SSBCI is chronic-condition-gated by
+                          // definition (SSBCI = Special Supplemental Benefits for the Chronically
+                          // Ill). Mark Conditional so a healthy client is never shown guaranteed money.
+                          const gated = plan.ssbciIsConditional === true
+                            || (ssbciFood && fc != null && fc === plan.ssbciFoodAllowance);
+                          const note = plan.ssbciConditionNote
+                            || "Requires a qualifying chronic condition (SSBCI). Not all members qualify - confirm in the plan's Summary of Benefits.";
+                          if (gated && fc && fc > 0) {
+                            return (
+                              <div title={note} className="text-amber-800">
+                                <div className="text-[9px] font-semibold uppercase tracking-wide text-amber-700">Conditional</div>
+                                <div>${fc.toLocaleString(undefined, { maximumFractionDigits: 0 })} / yr*</div>
+                                <div className="text-[9px] text-amber-600">chronic only</div>
+                              </div>
+                            );
+                          }
                           return fc && fc > 0
                             ? <div>${fc.toLocaleString(undefined, { maximumFractionDigits: 0 })} / yr</div>
                             : <div>{dollars(0)}</div>;

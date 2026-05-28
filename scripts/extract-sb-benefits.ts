@@ -54,7 +54,22 @@ interface ExtractionResult {
   vision: ExtractedBenefit;
   hearing: ExtractedBenefit;
   transportation: ExtractedBenefit;
+  ssbci: SsbciAnalysis;
   warnings: string[];
+}
+
+interface SsbciAnalysis {
+  // SSBCI = Special Supplemental Benefits for the Chronically Ill. These are
+  // condition-gated: a member only gets the dollars if they have a qualifying
+  // chronic condition (and sometimes a designated provider). The CMS PBP fields
+  // (ssbciFoodAllowance, etc.) do NOT capture that gating, so the tool was
+  // rendering them as if every member gets the money. This analyzer reads the
+  // SB PDF prose to flag the gating so the UI can stop misleading members.
+  isConditional: boolean;   // true => benefit requires a qualifying chronic condition
+  expandsBase: boolean;     // gated categories ride the existing OTC/spending card; no new $
+  isStandalone: boolean;    // gated benefit has its own separate dollar card
+  conditionNote: string | null; // plain-English snippet of the eligibility language
+  evidencePage: number | null;
 }
 
 type BenefitKind = "otc" | "food" | "dental" | "vision" | "hearing" | "transportation";
@@ -451,6 +466,80 @@ function findCombinedOtcFoodUtil(text: string): ExtractedBenefit | null {
   return null;
 }
 
+// --- SSBCI condition-gating detection (phrase-based, carrier-agnostic) ---
+// Validated 2026-05-28 across Aetna/UHC/Humana/Devoted D-SNPs (all correctly
+// flagged conditional) and 3 HealthSpring plans (all correctly NOT flagged).
+// A header-based parser fails because each carrier names the section
+// differently; these phrases are the cross-carrier signal.
+const SSBCI_GATING = /(chronically ill|special supplemental benefit|not all members qualify|available only to|high value (?:primary care )?(?:provider|pcp)|hvpip|\bssbci\b|diagnosed with (?:one or more )?(?:of the )?chronic|certain qualifying chronic|qualifying (?:chronic )?condition|if (?:you|they) have (?:certain )?(?:qualifying )?chronic|chronic condition\(s\))/gi;
+// Guard: HealthSpring uses "qualifying inpatient/hospital stay" for
+// post-discharge meals — that is NOT chronic-condition gating.
+const SSBCI_FALSE_POSITIVE = /qualifying (?:inpatient|hospital|skilled nursing|facility|stay)/gi;
+// Expansion model: the gated categories share the base OTC/spending card and
+// add NO new money (Aetna/UHC/Humana).
+const SSBCI_EXPANDS = /(will change to|replace your otc|not get any additional funds|may also use this money|plus,? members|plus,? (?:healthy )?(?:food|grocer)|same (?:card|wallet|allowance)|this (?:money|allowance|card) (?:also|can))/gi;
+// Standalone model: a dedicated gated food/home/grocery card with its own
+// dollar amount (Devoted).
+const SSBCI_STANDALONE = /(?:(?:food\s*(?:and|&)\s*home card|healthy foods? card|grocery card|food card)[^.]{0,140}\$\s?\d[\d,]*|\$\s?\d[\d,]*[^.]{0,140}(?:food\s*(?:and|&)\s*home card|healthy foods? card|grocery card|food card))/gi;
+const SSBCI_CHRONIC_CTX = /chronic|special supplemental|\bssbci\b|hvpip|high value/i;
+
+function analyzeSsbci(text: string): SsbciAnalysis {
+  // pdf-parse inserts hard newlines mid-phrase ("Food & Home Card \n(Special\n...\n$156"),
+  // which breaks any regex relying on a single line or on [^.\n] proximity. Detect on a
+  // whitespace-normalized copy so phrases and card->$ proximity survive line wrapping.
+  const flat = text.replace(/\s+/g, " ");
+
+  const real: RegExpMatchArray[] = [];
+  SSBCI_GATING.lastIndex = 0;
+  for (const m of flat.matchAll(SSBCI_GATING)) {
+    const idx = m.index ?? 0;
+    const win = flat.slice(Math.max(0, idx - 40), idx + m[0].length + 40);
+    SSBCI_FALSE_POSITIVE.lastIndex = 0;
+    if (SSBCI_FALSE_POSITIVE.test(win) && !SSBCI_CHRONIC_CTX.test(win)) continue;
+    real.push(m);
+  }
+
+  if (!real.length) {
+    return { isConditional: false, expandsBase: false, isStandalone: false, conditionNote: null, evidencePage: null };
+  }
+
+  SSBCI_EXPANDS.lastIndex = 0;
+  const expandsBase = SSBCI_EXPANDS.test(flat);
+  SSBCI_STANDALONE.lastIndex = 0;
+  const isStandalone = SSBCI_STANDALONE.test(flat) && !expandsBase;
+
+  // Prefer a gating match that sits in clearly chronic/SSBCI context for the note.
+  const chosen = real.find((m) => {
+    const idx = m.index ?? 0;
+    return SSBCI_CHRONIC_CTX.test(flat.slice(Math.max(0, idx - 60), idx + m[0].length + 60));
+  }) ?? real[0];
+
+  // Take from the gating phrase forward to the next sentence end so the note reads cleanly.
+  const kw = chosen[0].toLowerCase();
+  let i = flat.toLowerCase().indexOf(kw);
+  if (i < 0) i = 0;
+  const seg = flat.slice(i, i + 260);
+  const dot = seg.indexOf(". ");
+  const conditionNote = (dot !== -1 ? seg.slice(0, dot + 1) : seg).trim().slice(0, 240);
+
+  // evidencePage needs an index into the ORIGINAL text (it counts form-feeds), so
+  // locate the chosen phrase there with a whitespace-flexible search.
+  const flexible = new RegExp(
+    chosen[0].replace(/[.*+?^${}()|[\]\\]/g, "\\$&").replace(/\s+/g, "\\s+"),
+    "i"
+  );
+  const orig = flexible.exec(text);
+  const origIdx = orig ? orig.index : 0;
+
+  return {
+    isConditional: true,
+    expandsBase,
+    isStandalone,
+    conditionNote,
+    evidencePage: pageNumberForIndex(text, origIdx),
+  };
+}
+
 function findBenefit(text: string, config: BenefitConfig): ExtractedBenefit {
   const candidates: CandidateAmount[] = [];
   const moneyRegex = /\$\s?[\d,]+(?:\.\d{2})?/g;
@@ -566,6 +655,7 @@ async function extractPdf(item: DiscoveryResult, context?: PlanContext): Promise
   const vision = findBenefit(text, benefitConfig("vision", carrier));
   const hearing = findBenefit(text, benefitConfig("hearing", carrier));
   const transportation = findBenefit(text, benefitConfig("transportation", carrier));
+  const ssbci = analyzeSsbci(text);
 
   return {
     file,
@@ -585,6 +675,7 @@ async function extractPdf(item: DiscoveryResult, context?: PlanContext): Promise
     vision,
     hearing,
     transportation,
+    ssbci,
     warnings,
   };
 }
@@ -641,6 +732,9 @@ async function updatePlans(result: ExtractionResult, dryRun: boolean, allowYearC
       sbVisionPage: result.vision.page,
       sbHearingPage: result.hearing.page,
       sbTransportationPage: result.transportation.page,
+      ssbciIsConditional: result.ssbci.isConditional,
+      ssbciIsStandalone: result.ssbci.isStandalone,
+      ssbciConditionNote: result.ssbci.conditionNote,
     };
 
     if (result.otc.confidence >= MIN_UPDATE_CONFIDENCE) {

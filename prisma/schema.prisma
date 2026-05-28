@@ -139,6 +139,9 @@ model Plan {
   ssbciMealsAllowance             Float?
   ssbciPersonalServicesAllowance  Float?
   ssbciTransportationAllowance    Float?
+  ssbciIsConditional        Boolean? @default(false)
+  ssbciIsStandalone         Boolean? @default(false)
+  ssbciConditionNote        String?
 
   sbPdfUrl                  String?
   sbPdfChecksum             String?
