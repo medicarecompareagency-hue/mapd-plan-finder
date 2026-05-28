@@ -143,12 +143,13 @@ function filenameYear(filePath: string): number | null {
   return match ? Number(match[1]) : null;
 }
 
-function getCarrier(text: string, context?: PlanContext): "aetna" | "uhc" | "devoted" | "cigna" | "unknown" {
+function getCarrier(text: string, context?: PlanContext): "aetna" | "uhc" | "devoted" | "cigna" | "humana" | "unknown" {
   const haystack = `${context?.organizationName || ""} ${context?.planName || ""} ${text.slice(0, 3000)}`.toLowerCase();
   if (/aetna|cvs health/.test(haystack)) return "aetna";
   if (/unitedhealthcare|\buhc\b|aarp medicare/.test(haystack)) return "uhc";
   if (/devoted/.test(haystack)) return "devoted";
   if (/healthspring|cigna/.test(haystack)) return "cigna";
+  if (/humana/.test(haystack)) return "humana";
   return "unknown";
 }
 
@@ -175,6 +176,11 @@ function carrierStrongLabels(carrier: ReturnType<typeof getCarrier>, kind: Benef
     cigna: {
       otc: [...commonOtc, /cigna\s+healthy\s+today/gi, /healthy\s+today\s+card/gi, /otc\s+mail\s+order/gi],
       food: [...commonFood, /cigna\s+healthy\s+today/gi, /healthy\s+today\s+card/gi, /healthy\s+options/gi],
+    },
+    humana: {
+      // Humana's combined OTC+food card is "Humana Healthy Options Allowance™"
+      otc: [...commonOtc, /healthy\s+options\s+allowance/gi, /humana\s+healthy\s+options/gi],
+      food: [...commonFood, /healthy\s+options\s+allowance/gi, /humana\s+healthy\s+options/gi, /healthy\s+options/gi],
     },
     unknown: { otc: commonOtc, food: commonFood },
   };
@@ -328,7 +334,11 @@ function scoreAmountCandidate(
     debug.push("annual wording penalty");
   }
 
-  if (config.exclusions.some((regex) => {
+  // Skip exclusion penalty for Humana combined OTC+food card (Healthy Options
+  // Allowance) — the food-related exclusion pattern fires on "food allowance"
+  // text that is expected/intentional for this carrier's combined card.
+  const isHumanaCombinedCard = /healthy\s+options\s+allowance|humana\s+healthy\s+options/i.test(windowText);
+  if (!isHumanaCombinedCard && config.exclusions.some((regex) => {
     regex.lastIndex = 0;
     return regex.test(local) || regex.test(lowerWindow);
   })) {
@@ -341,7 +351,7 @@ function scoreAmountCandidate(
   // carry the right benefit vocabulary before giving it high confidence.
   if (config.kind === "food") {
     const hasFoodLocal = /food|foods|grocery|groceries|utility|utilities|healthy\s+options|extra\s+supports?\s+wallet/.test(lowerLocal);
-    const hasOtcLocal = /\botc\b|over.?the.?counter/.test(lowerLocal);
+    const hasOtcLocal = /\botc\b|over.?the.?counter|health(?:y)?\s+options\s+allowance|humana\s+healthy\s+options|health\s+and\s+wellness\s+products?/.test(lowerLocal);
     if (hasOtcLocal && !hasFoodLocal) {
       score -= 0.38;
       debug.push("OTC wording without local food/utility label");
@@ -352,7 +362,7 @@ function scoreAmountCandidate(
   }
 
   if (config.kind === "otc") {
-    const hasOtcLocal = /\botc\b|over.?the.?counter|health\s+and\s+wellness\s+products?/.test(lowerLocal);
+    const hasOtcLocal = /\botc\b|over.?the.?counter|health(?:y)?\s+options\s+allowance|humana\s+healthy\s+options|health\s+and\s+wellness\s+products?/.test(lowerLocal);
     const hasFoodLocal = /food|foods|grocery|groceries|utility|utilities/.test(lowerLocal);
     if (hasFoodLocal && !hasOtcLocal) {
       score -= 0.28;
