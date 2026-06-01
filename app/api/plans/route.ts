@@ -524,7 +524,51 @@ export async function POST(request: Request) {
     where.county = bare !== county ? { in: [county, bare] } : county;
   }
 
-  const plans = await prisma.plan.findMany({ where });
+  const plans = await prisma.plan.findMany({
+    where,
+    select: {
+      state: true,
+      county: true,
+      zipCode: true,
+      planType: true,
+      planCategory: true,
+      snpSubtype: true,
+      chronicConditions: true,
+      isZeroDollarDsnp: true,
+      planYear: true,
+      organizationName: true,
+      starRating: true,
+      monthlyPremium: true,
+      lowIncomeSubsidyLevel: true,
+      medicaidLevel: true,
+      pcpCopay: true,
+      specialistCopay: true,
+      hospitalStayCopay: true,
+      skilledNursingCopay: true,
+      maxOutOfPocket: true,
+      medicalDeductible: true,
+      emergencyRoomCopay: true,
+      ambulanceCopay: true,
+      outpatientHospitalCopay: true,
+      drugTier1Copay: true,
+      drugTier2Copay: true,
+      drugTier3Copay: true,
+      drugTier4Copay: true,
+      drugTier5Copay: true,
+      drugTier6Copay: true,
+      drugDeductible: true,
+      otcAllowance: true,
+      foodCardAllowance: true,
+      ssbciFoodAllowance: true,
+      mriCopay: true,
+      catScanCopay: true,
+      partBGivebackAmount: true,
+      dentalBenefits: true,
+      hearingBenefits: true,
+      visionBenefits: true,
+      transportationBenefit: true,
+    },
+  });
 
   function unique<T>(arr: (T | null | undefined)[]): T[] {
     return [...new Set(arr.filter((v): v is T => v != null && v !== undefined))].sort() as T[];
