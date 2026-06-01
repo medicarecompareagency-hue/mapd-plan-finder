@@ -153,11 +153,14 @@ async function main() {
     await fs.promises.readFile(discoveryPath, "utf8"),
   );
 
-  // Cache URLs per unique (year, filename) so each PDF is uploaded once.
-  // All matching planIds get pointed at the same shared blob URL.
+  // Phase 1: upload all blobs first (slow — network-bound).
+  // Collect (item, planId, filename, url) tuples for the DB pass.
+  // Keeping blob uploads and DB writes separate avoids Neon idle-timeout
+  // (P1017) that occurs when the connection sits open between slow uploads.
   const uploadedUrl = new Map<string, string>();
   let uniqueUploaded = 0;
-  let totalRowUpdates = 0;
+  type DbWork = { item: DiscoveryResult; planId: string; filename: string; url: string };
+  const dbWork: DbWork[] = [];
 
   for (const item of discovery) {
     const filename = path.basename(item.file);
@@ -176,10 +179,18 @@ async function main() {
     }
 
     for (const planId of item.planIds) {
-      if (!skipDb) {
-        await updatePlanUrl(item, planId, filename, url, DRY_RUN);
-        totalRowUpdates++;
-      }
+      dbWork.push({ item, planId, filename, url });
+    }
+  }
+
+  console.log(`Blob phase done: ${uniqueUploaded} unique PDF${uniqueUploaded === 1 ? "" : "s"} ${DRY_RUN ? "would be" : ""} uploaded. Starting DB phase (${dbWork.length} updateMany calls)...`);
+
+  // Phase 2: DB writes in a tight loop — connection stays active and doesn't idle-timeout.
+  let totalRowUpdates = 0;
+  if (!skipDb) {
+    for (const { item, planId, filename, url } of dbWork) {
+      await updatePlanUrl(item, planId, filename, url, DRY_RUN);
+      totalRowUpdates++;
     }
   }
 

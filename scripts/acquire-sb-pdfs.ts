@@ -10,8 +10,11 @@ const prisma = new PrismaClient({
 
 const TARGET_CARRIERS = [
   "HealthSpring",
+  "Cigna",
+  "Cigna Healthcare",
   "UnitedHealthcare",
   "UHC",
+  "Wellcare",
   "Devoted Health",
   "Aetna Medicare",
   "Humana",
@@ -156,6 +159,7 @@ function carrierAliases(organizationName: string): string[] {
   if (org.includes("healthspring") || org.includes("cigna")) {
     return ["HealthSpring", "Cigna Healthcare", "Cigna-HealthSpring"];
   }
+  if (org.includes("wellcare")) return ["Wellcare", "WellCare"];
   return [organizationName];
 }
 
@@ -191,6 +195,7 @@ function carrierDomainHint(carrier: string): string {
   if (normalized.includes("devoted")) return "devoted.com";
   if (normalized.includes("humana")) return "humana.com";
   if (normalized.includes("healthspring") || normalized.includes("cigna")) return "cigna.com";
+  if (normalized.includes("wellcare")) return "wellcare.com";
   return "";
 }
 
@@ -203,8 +208,10 @@ function targetKey(plan: PlanRow): string {
 }
 
 async function loadPlans(year: number, limit?: number): Promise<PlanTarget[]> {
+  // No planCategory filter: covers MAPD, DSNP, CSNP, MA_ONLY.
+  // No drugTier1Copay filter: that was DSNP-specific and excluded most MAPD plans.
   const rows = await prisma.plan.findMany({
-    where: { planYear: year, planCategory: "DSNP", drugTier1Copay: null },
+    where: { planYear: year },
     select: {
       planId: true,
       planYear: true,
