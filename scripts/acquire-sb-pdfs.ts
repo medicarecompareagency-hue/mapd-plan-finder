@@ -208,10 +208,13 @@ function targetKey(plan: PlanRow): string {
 }
 
 async function loadPlans(year: number, limit?: number): Promise<PlanTarget[]> {
-  // No planCategory filter: covers MAPD, DSNP, CSNP, MA_ONLY.
-  // No drugTier1Copay filter: that was DSNP-specific and excluded most MAPD plans.
+  // Only load plans that still need a PDF (sbPdfUrl null), scoped to licensed states.
+  // Covers all categories (MAPD, DSNP, CSNP, MA_ONLY) — no category or drug-tier filter.
+  const LICENSED_STATES = [
+    "AL","AR","FL","GA","IL","IN","KS","KY","LA","MO","MS","OH","OK","SC","TN","TX","VA","WV",
+  ];
   const rows = await prisma.plan.findMany({
-    where: { planYear: year },
+    where: { planYear: year, sbPdfUrl: null, state: { in: LICENSED_STATES } },
     select: {
       planId: true,
       planYear: true,
