@@ -865,6 +865,8 @@ export default function PlanSearch() {
      options={options?.organizationNames ?? []}
    />
 
+          <FilterSelect label="Part B Giveback" name="partBGivebackAmount" value={filters.partBGivebackAmount ?? ""} onChange={handleFilterChange} options={[1, 25, 50, 100, 150]} formatOption={(v) => `$${v}+ / mo`} />
+
    <FilterSelect
      label="Plan Year"
      name="planYear"
@@ -931,11 +933,6 @@ export default function PlanSearch() {
               options={["QMB+", "QMB", "SLMB+", "SLMB", "QI-1", "FBDE"]}
             />
           )}
-        </div>
-
-        <h2 className="text-sm font-bold text-gray-700 uppercase tracking-wide mb-3">Premiums & Subsidies</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 mb-4">
-          <FilterSelect label="Part B Giveback" name="partBGivebackAmount" value={filters.partBGivebackAmount ?? ""} onChange={handleFilterChange} options={[1, 25, 50, 100, 150]} formatOption={(v) => `$${v}+ / mo`} />
         </div>
 
         {/* Action buttons */}
