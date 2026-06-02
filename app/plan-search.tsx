@@ -27,6 +27,9 @@ interface Plan {
   county: string;
   zipCode: string | null;
   monthlyPremium: number;
+  partCPremium: number | null;
+  partDPremium: number | null;
+  adjustedPremium: number;   // LIS-adjusted total; equals monthlyPremium when no LIS level selected
   partBGivebackAmount: number | null;
   lowIncomeSubsidyLevel: string | null;
   medicaidLevel: string | null;
@@ -443,6 +446,9 @@ export default function PlanSearch() {
   // display from drifting if the user changes the dropdown before
   // re-searching (the plans list wouldn't auto-refresh).
   const [searchedDualLevel, setSearchedDualLevel] = useState<string | null>(null);
+  // LIS level active at search time — snapshotted so card display doesn't drift
+  // if the agent changes the dropdown without re-searching.
+  const [searchedLisLevel, setSearchedLisLevel] = useState<string | null>(null);
   const [selectedPlan, setSelectedPlan] = useState<Plan | null>(null);
 
   // User / auth state
@@ -700,6 +706,7 @@ export default function PlanSearch() {
     setSearched(true);
     setSearchError(null);
     setSearchedDualLevel(filters.beneficiaryDualLevel ?? null);
+    setSearchedLisLevel(filters.lisLevel ?? null);
     const params = new URLSearchParams();
     for (const [k, v] of Object.entries(filters)) {
       // zipCode is for location selection only — state+county is what filters plans
@@ -733,6 +740,7 @@ export default function PlanSearch() {
     setPlans([]);
     setSearched(false);
     setSearchedDualLevel(null);
+    setSearchedLisLevel(null);
     fetchOptions();
   }
 
@@ -933,6 +941,14 @@ export default function PlanSearch() {
               options={["QMB+", "QMB", "SLMB+", "SLMB", "QI-1", "FBDE"]}
             />
           )}
+          <FilterSelect
+            label="LIS / Extra Help Level"
+            name="lisLevel"
+            value={filters.lisLevel ?? ""}
+            onChange={handleFilterChange}
+            options={["FULL", "75", "50", "25"]}
+            formatOption={(v) => v === "FULL" ? "Full (100%)" : `${v}%`}
+          />
         </div>
 
         {/* Action buttons */}
@@ -989,6 +1005,7 @@ export default function PlanSearch() {
                     <th className="px-3 py-3">State</th>
                     <th className="px-3 py-3">County</th>
                     <th className="px-3 py-3 text-right">Premium</th>
+                    {searchedLisLevel && <th className="px-3 py-3 text-right text-indigo-700">With LIS</th>}
                     <th className="px-3 py-3 text-right">Part B Giveback</th>
                     <th className="px-3 py-3">LIS Level</th>
                     <th className="px-3 py-3">Medicaid</th>
@@ -1126,6 +1143,11 @@ export default function PlanSearch() {
                       <td className="px-3 py-3 text-gray-900">{plan.state}</td>
                       <td className="px-3 py-3 text-gray-900">{plan.county}</td>
                       <td className="px-3 py-3 text-right text-gray-900 font-medium">{dollars(plan.monthlyPremium)}</td>
+                      {searchedLisLevel && (
+                        <td className="px-3 py-3 text-right font-semibold text-indigo-700">
+                          {dollars(plan.adjustedPremium)}
+                        </td>
+                      )}
                       <td className="px-3 py-3 text-right text-green-700 font-medium">{dollars(plan.partBGivebackAmount)}</td>
                       <td className="px-3 py-3 text-gray-900">{plan.lowIncomeSubsidyLevel ?? "—"}</td>
                       <td className="px-3 py-3 text-gray-900">{plan.medicaidLevel ?? "—"}</td>

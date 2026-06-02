@@ -1,5 +1,6 @@
 import { Prisma } from "@prisma/client";
 import { LICENSED_CARRIERS } from "@/lib/licensed-carriers";
+import { lisAdjustedPremium, LIS_SUBSIDY_PCT, type LisLevel } from "@/lib/lisBenchmarks";
 
 // SNP ranking spec (Dale, 2026-04-27). See SNP-RANKING-SPEC-2026-04-27.md.
 // Phase 1: ranking against existing plan-level columns.
@@ -164,6 +165,18 @@ export async function GET(request: Request) {
       beneficiaryGroup = "PARTIAL_DUAL";
       (where as Record<string, unknown>).dsnpTargetGroup = "PARTIAL_DUAL";
     }
+  }
+
+  // LIS / Extra Help level — affects ranking and display, NOT the WHERE clause.
+  const lisLevelRaw = searchParams.get("lisLevel");
+  const lisLevel: LisLevel | null =
+    lisLevelRaw && (lisLevelRaw in LIS_SUBSIDY_PCT) ? (lisLevelRaw as LisLevel) : null;
+
+  // Compute LIS-adjusted premium for a plan (uses stored partC/partD columns).
+  function planAdjustedPremium(plan: Record<string, unknown>): number {
+    const partC = (plan.partCPremium as number | null) ?? (plan.monthlyPremium as number ?? 0);
+    const partD = (plan.partDPremium as number | null) ?? 0;
+    return lisAdjustedPremium(partC, partD, plan.state as string, lisLevel);
   }
 
   const numericMaxFilters: [string, keyof Prisma.PlanWhereInput][] = [
@@ -378,7 +391,8 @@ export async function GET(request: Request) {
     sorted = (plans as Array<Record<string, unknown>>)
       .slice()
       .sort((a, b) => {
-        let c = cmp(a.monthlyPremium as number | null, b.monthlyPremium as number | null, true);
+        // When LIS level selected, rank by adjusted premium; otherwise raw consolidated.
+        let c = cmp(planAdjustedPremium(a), planAdjustedPremium(b), true);
         if (c !== 0) return c;
         c = cmp(a.medicalDeductible as number | null, b.medicalDeductible as number | null, true);
         if (c !== 0) return c;
@@ -483,6 +497,9 @@ export async function GET(request: Request) {
     otcAllowance: effectiveOtc(plan) ?? (plan.otcAllowance as number | null),
     foodCardAllowance: effectiveFoodCard(plan) ?? 0,
     ssbciFoodAllowance: effectiveFoodCard(plan),
+    // LIS-adjusted premium for display on the card. Always computed; equals
+    // monthlyPremium when lisLevel is null (no subsidy applied).
+    adjustedPremium: planAdjustedPremium(plan),
   }));
 
   return Response.json(ranked);
@@ -539,6 +556,8 @@ export async function POST(request: Request) {
       organizationName: true,
       starRating: true,
       monthlyPremium: true,
+      partCPremium: true,
+      partDPremium: true,
       lowIncomeSubsidyLevel: true,
       medicaidLevel: true,
       pcpCopay: true,

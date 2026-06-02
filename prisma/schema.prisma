@@ -91,6 +91,8 @@ model Plan {
   county                    String
   zipCode                   String?
   monthlyPremium            Float
+  partCPremium              Float?   @default(0)
+  partDPremium              Float?   @default(0)
   partBGivebackAmount       Float?   @default(0)
   lowIncomeSubsidyLevel     String?
   medicaidLevel             String?
