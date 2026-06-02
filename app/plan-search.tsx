@@ -936,54 +936,7 @@ export default function PlanSearch() {
 
         <h2 className="text-sm font-bold text-gray-700 uppercase tracking-wide mb-3">Premiums & Subsidies</h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 mb-4">
-          <FilterSelect label="Monthly Premium" name="monthlyPremium" value={filters.monthlyPremium ?? ""} onChange={handleFilterChange} options={options?.monthlyPremiums ?? []} formatOption={fmt} />
           <FilterSelect label="Part B Giveback" name="partBGivebackAmount" value={filters.partBGivebackAmount ?? ""} onChange={handleFilterChange} options={options?.partBGivebackAmounts ?? []} formatOption={fmt} />
-          <FilterSelect label="LIS Level" name="lowIncomeSubsidyLevel" value={filters.lowIncomeSubsidyLevel ?? ""} onChange={handleFilterChange} options={options?.lowIncomeSubsidyLevels ?? []} />
-          <FilterSelect label="Plan Integration Level" name="medicaidLevel" value={filters.medicaidLevel ?? ""} onChange={handleFilterChange} options={options?.medicaidLevels ?? []} />
-        </div>
-
-        <h2 className="text-sm font-bold text-gray-700 uppercase tracking-wide mb-3">Medical Cost Sharing</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 mb-4">
-          <FilterSelect label="PCP Copay" name="pcpCopay" value={filters.pcpCopay ?? ""} onChange={handleFilterChange} options={options?.pcpCopays ?? []} formatOption={fmt} />
-          <FilterSelect label="Specialist Copay" name="specialistCopay" value={filters.specialistCopay ?? ""} onChange={handleFilterChange} options={options?.specialistCopays ?? []} formatOption={fmt} />
-          <FilterSelect label="ER Copay" name="emergencyRoomCopay" value={filters.emergencyRoomCopay ?? ""} onChange={handleFilterChange} options={options?.emergencyRoomCopays ?? []} formatOption={fmt} />
-          <FilterSelect label="Ambulance Copay" name="ambulanceCopay" value={filters.ambulanceCopay ?? ""} onChange={handleFilterChange} options={options?.ambulanceCopays ?? []} formatOption={fmt} />
-          <FilterSelect label="Hospital Stay" name="hospitalStayCopay" value={filters.hospitalStayCopay ?? ""} onChange={handleFilterChange} options={options?.hospitalStayCopays ?? []} />
-          <FilterSelect label="Skilled Nursing" name="skilledNursingCopay" value={filters.skilledNursingCopay ?? ""} onChange={handleFilterChange} options={options?.skilledNursingCopays ?? []} />
-          <FilterSelect label="Max Out of Pocket" name="maxOutOfPocket" value={filters.maxOutOfPocket ?? ""} onChange={handleFilterChange} options={options?.maxOutOfPockets ?? []} formatOption={fmt} />
-          <FilterSelect label="Medical Deductible" name="medicalDeductible" value={filters.medicalDeductible ?? ""} onChange={handleFilterChange} options={options?.medicalDeductibles ?? []} formatOption={fmt} />
-          <FilterSelect label="Outpatient Hospital" name="outpatientHospitalCopay" value={filters.outpatientHospitalCopay ?? ""} onChange={handleFilterChange} options={options?.outpatientHospitalCopays ?? []} formatOption={fmt} />
-        </div>
-
-        <h2 className="text-sm font-bold text-gray-700 uppercase tracking-wide mb-3">Imaging</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 mb-4">
-          <FilterSelect label="MRI Copay" name="mriCopay" value={filters.mriCopay ?? ""} onChange={handleFilterChange} options={options?.mriCopays ?? []} formatOption={fmt} />
-          <FilterSelect label="CAT Scan Copay" name="catScanCopay" value={filters.catScanCopay ?? ""} onChange={handleFilterChange} options={options?.catScanCopays ?? []} formatOption={fmt} />
-        </div>
-
-        {!isMaOnly && (
-          <>
-            <h2 className="text-sm font-bold text-gray-700 uppercase tracking-wide mb-3">Prescription Drug Costs</h2>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 mb-4">
-              <FilterSelect label="Drug Deductible" name="drugDeductible" value={filters.drugDeductible ?? ""} onChange={handleFilterChange} options={options?.drugDeductibles ?? []} formatOption={fmt} />
-              <FilterSelect label="Tier 1 (Preferred Generic)" name="drugTier1Copay" value={filters.drugTier1Copay ?? ""} onChange={handleFilterChange} options={options?.drugTier1Copays ?? []} formatOption={fmt} />
-              <FilterSelect label="Tier 2 (Generic)" name="drugTier2Copay" value={filters.drugTier2Copay ?? ""} onChange={handleFilterChange} options={options?.drugTier2Copays ?? []} formatOption={fmt} />
-              <FilterSelect label="Tier 3 (Preferred Brand)" name="drugTier3Copay" value={filters.drugTier3Copay ?? ""} onChange={handleFilterChange} options={options?.drugTier3Copays ?? []} formatOption={fmt} />
-              <FilterSelect label="Tier 4 (Non-Preferred)" name="drugTier4Copay" value={filters.drugTier4Copay ?? ""} onChange={handleFilterChange} options={options?.drugTier4Copays ?? []} formatOption={fmt} />
-              <FilterSelect label="Tier 5 (Specialty)" name="drugTier5Copay" value={filters.drugTier5Copay ?? ""} onChange={handleFilterChange} options={options?.drugTier5Copays ?? []} formatOption={fmt} />
-              <FilterSelect label="Tier 6" name="drugTier6Copay" value={filters.drugTier6Copay ?? ""} onChange={handleFilterChange} options={options?.drugTier6Copays ?? []} formatOption={fmt} />
-            </div>
-          </>
-        )}
-
-        <h2 className="text-sm font-bold text-gray-700 uppercase tracking-wide mb-3">Extra Benefits</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 mb-4">
-          <FilterSelect label="OTC Allowance" name="otcAllowance" value={filters.otcAllowance ?? ""} onChange={handleFilterChange} options={options?.otcAllowances ?? []} formatOption={fmt} />
-          <FilterSelect label="Food Card Allowance" name="foodCardAllowance" value={filters.foodCardAllowance ?? ""} onChange={handleFilterChange} options={options?.foodCardAllowances ?? []} formatOption={fmt} />
-          <FilterSelect label="Dental Benefits" name="dentalBenefits" value={filters.dentalBenefits ?? ""} onChange={handleFilterChange} options={options?.dentalBenefits ?? []} />
-          <FilterSelect label="Hearing Aid Benefits" name="hearingBenefits" value={filters.hearingBenefits ?? ""} onChange={handleFilterChange} options={options?.hearingBenefits ?? []} />
-          <FilterSelect label="Vision Benefits" name="visionBenefits" value={filters.visionBenefits ?? ""} onChange={handleFilterChange} options={options?.visionBenefits ?? []} />
-          <FilterSelect label="Transportation" name="transportationBenefit" value={filters.transportationBenefit ?? ""} onChange={handleFilterChange} options={options?.transportationBenefits ?? []} />
         </div>
 
         {/* Action buttons */}
