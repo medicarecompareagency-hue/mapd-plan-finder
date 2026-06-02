@@ -736,7 +736,6 @@ export default function PlanSearch() {
     fetchOptions();
   }
 
-  const fmt = (v: string | number) => (typeof v === "number" ? dollars(v) : v);
   const isMaOnly = filters.planCategory === "MA_ONLY";
 
   return (
@@ -936,7 +935,7 @@ export default function PlanSearch() {
 
         <h2 className="text-sm font-bold text-gray-700 uppercase tracking-wide mb-3">Premiums & Subsidies</h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 mb-4">
-          <FilterSelect label="Part B Giveback" name="partBGivebackAmount" value={filters.partBGivebackAmount ?? ""} onChange={handleFilterChange} options={options?.partBGivebackAmounts ?? []} formatOption={fmt} />
+          <FilterSelect label="Part B Giveback" name="partBGivebackAmount" value={filters.partBGivebackAmount ?? ""} onChange={handleFilterChange} options={[1, 25, 50, 100, 150]} formatOption={(v) => `$${v}+ / mo`} />
         </div>
 
         {/* Action buttons */}
