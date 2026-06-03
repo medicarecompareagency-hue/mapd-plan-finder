@@ -765,7 +765,7 @@ export default function PlanSearch() {
           <img
             src="/mca-logo.png"
             alt="MCAgency, Inc. — Helping Folks with Medicare Options"
-            className="max-w-3xl w-full max-w-[90vw] h-auto"
+            className="max-w-2xl w-full max-w-[90vw] h-auto"
           />
         </div>
       </div>
