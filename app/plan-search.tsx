@@ -451,6 +451,16 @@ export default function PlanSearch() {
   const [searchedLisLevel, setSearchedLisLevel] = useState<string | null>(null);
   const [selectedPlan, setSelectedPlan] = useState<Plan | null>(null);
 
+  // LIS Qualifier helper modal state
+  const [showLisQualifier, setShowLisQualifier] = useState(false);
+  const [lisQMarital, setLisQMarital] = useState<"single" | "married">("single");
+  const [lisQIncome, setLisQIncome] = useState("");
+  const [lisQIncomeFreq, setLisQIncomeFreq] = useState<"annual" | "monthly">("annual");
+  const [lisQResources, setLisQResources] = useState("");
+  const [lisQBurial, setLisQBurial] = useState(false);
+  const [lisQFullDual, setLisQFullDual] = useState(false);
+  const [lisQInstitutional, setLisQInstitutional] = useState(false);
+
   // User / auth state
   const [user, setUser] = useState<{ id: number; email: string; name: string | null; role: string } | null>(null);
   const [showUserMenu, setShowUserMenu] = useState(false);
@@ -814,6 +824,163 @@ export default function PlanSearch() {
         )}
       </div>
 
+      {/* LIS Qualifier Modal */}
+      {showLisQualifier && (() => {
+        // 2026 thresholds (CMS HPMS memo Oct 31 2025 + 150%-FPL standards)
+        const RES_SINGLE_NO_BURIAL  = 16590;
+        const RES_SINGLE_BURIAL     = 18090;
+        const RES_MARRIED_NO_BURIAL = 33100;
+        const RES_MARRIED_BURIAL    = 36100;
+        const INC_SINGLE_150PCT     = 23475; // annual
+        const INC_MARRIED_150PCT    = 31725;
+        const INC_SINGLE_100PCT     = 15650;
+        const INC_MARRIED_100PCT    = 21150;
+
+        const resLimit = lisQMarital === "single"
+          ? (lisQBurial ? RES_SINGLE_BURIAL    : RES_SINGLE_NO_BURIAL)
+          : (lisQBurial ? RES_MARRIED_BURIAL   : RES_MARRIED_NO_BURIAL);
+        const incLimit150 = lisQMarital === "single" ? INC_SINGLE_150PCT : INC_MARRIED_150PCT;
+        const incLimit100 = lisQMarital === "single" ? INC_SINGLE_100PCT : INC_MARRIED_100PCT;
+
+        const rawInc = parseFloat(lisQIncome.replace(/,/g, "")) || 0;
+        const annualInc = lisQIncomeFreq === "monthly" ? rawInc * 12 : rawInc;
+        const rawRes = parseFloat(lisQResources.replace(/,/g, "")) || 0;
+
+        const incOk  = annualInc <= incLimit150;
+        const resOk  = rawRes    <= resLimit;
+        const qualifies = incOk && resOk;
+
+        let copayGeneric = "";
+        let copayBrand   = "";
+        let tier         = "";
+        if (qualifies) {
+          if (lisQFullDual && lisQInstitutional) {
+            tier = "Full-dual + Institutional/HCBS"; copayGeneric = "$0.00"; copayBrand = "$0.00";
+          } else if (lisQFullDual && annualInc <= incLimit100) {
+            tier = "Full-dual ≤ 100% FPL"; copayGeneric = "$1.60"; copayBrand = "$4.90";
+          } else if (lisQFullDual) {
+            tier = "Full-dual 100–150% FPL"; copayGeneric = "$5.10"; copayBrand = "$12.65";
+          } else {
+            tier = "Non-dual LIS (applied & qualifying)"; copayGeneric = "$5.10"; copayBrand = "$12.65";
+          }
+        }
+
+        const fmt$ = (n: number) => `${n.toLocaleString()}`;
+
+        return (
+          <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4" onClick={() => setShowLisQualifier(false)}>
+            <div className="bg-white rounded-xl shadow-2xl w-full max-w-lg p-6" onClick={(e) => e.stopPropagation()}>
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-lg font-semibold text-gray-800">LIS / Extra Help Qualifier — 2026</h3>
+                <button onClick={() => setShowLisQualifier(false)} className="text-gray-400 hover:text-gray-600 text-xl leading-none">&times;</button>
+              </div>
+
+              <div className="space-y-4">
+                {/* Marital status */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Marital Status</label>
+                  <div className="flex gap-3">
+                    {(["single","married"] as const).map(v => (
+                      <button key={v} type="button" onClick={() => setLisQMarital(v)}
+                        className={`flex-1 h-9 rounded-md border text-sm font-medium transition-colors ${lisQMarital===v ? "bg-indigo-600 text-white border-indigo-600" : "bg-white text-gray-700 border-gray-300 hover:bg-gray-50"}`}>
+                        {v.charAt(0).toUpperCase()+v.slice(1)}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Income */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Annual or Monthly Income</label>
+                  <div className="flex gap-2">
+                    <input type="text" inputMode="numeric" placeholder="Amount" value={lisQIncome}
+                      onChange={e => setLisQIncome(e.target.value)}
+                      className="flex-1 h-9 rounded-md border border-gray-300 px-3 text-sm focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 focus:outline-none" />
+                    <div className="flex rounded-md border border-gray-300 overflow-hidden text-sm">
+                      {(["annual","monthly"] as const).map(v => (
+                        <button key={v} type="button" onClick={() => setLisQIncomeFreq(v)}
+                          className={`px-3 h-9 font-medium transition-colors ${lisQIncomeFreq===v ? "bg-indigo-600 text-white" : "bg-white text-gray-700 hover:bg-gray-50"}`}>
+                          {v.charAt(0).toUpperCase()+v.slice(1)}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                  <p className="text-xs text-gray-500 mt-1">
+                    2026 limit: {lisQMarital==="single" ? fmt$(INC_SINGLE_150PCT) : fmt$(INC_MARRIED_150PCT)}/yr
+                    {lisQIncomeFreq==="monthly" && rawInc>0 && <span> (entered: {fmt$(annualInc)}/yr)</span>}
+                  </p>
+                </div>
+
+                {/* Resources */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Countable Resources / Assets</label>
+                  <input type="text" inputMode="numeric" placeholder="e.g. 8000" value={lisQResources}
+                    onChange={e => setLisQResources(e.target.value)}
+                    className="w-full h-9 rounded-md border border-gray-300 px-3 text-sm focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 focus:outline-none" />
+                  <p className="text-xs text-gray-500 mt-1">
+                    2026 limit: {fmt$(resLimit)} ({lisQBurial ? "with" : "without"} $1,500 burial set-aside)
+                  </p>
+                </div>
+
+                {/* Checkboxes */}
+                <div className="space-y-2">
+                  {[
+                    { id:"burial", label:"Includes $1,500 burial set-aside (raises resource limit)", val:lisQBurial, set:setLisQBurial },
+                    { id:"fullDual", label:"Already has full Medicaid (full-benefit dual eligible)", val:lisQFullDual, set:setLisQFullDual },
+                    { id:"institutional", label:"Institutionalized or receiving HCBS waiver services", val:lisQInstitutional, set:setLisQInstitutional },
+                  ].map(({ id, label, val, set }) => (
+                    <label key={id} className="flex items-start gap-2 cursor-pointer">
+                      <input type="checkbox" checked={val} onChange={e => set(e.target.checked)}
+                        className="mt-0.5 w-4 h-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500" />
+                      <span className="text-sm text-gray-700">{label}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              {/* Result */}
+              <div className={`mt-5 rounded-lg p-4 ${qualifies ? "bg-green-50 border border-green-200" : rawInc===0&&rawRes===0 ? "bg-gray-50 border border-gray-200" : "bg-red-50 border border-red-200"}`}>
+                {rawInc===0 && rawRes===0 ? (
+                  <p className="text-sm text-gray-500 text-center">Enter income and resources above to estimate eligibility.</p>
+                ) : qualifies ? (
+                  <>
+                    <p className="text-sm font-semibold text-green-800 mb-2">✓ Likely qualifies for full Extra Help (LIS)</p>
+                    <div className="text-sm text-green-900 space-y-1">
+                      <p><span className="font-medium">Tier:</span> {tier}</p>
+                      <p><span className="font-medium">Part D deductible:</span> $0</p>
+                      <p><span className="font-medium">Generic copay:</span> {copayGeneric} &nbsp; <span className="font-medium">Brand copay:</span> {copayBrand}</p>
+                      <p><span className="font-medium">Annual OOP cap:</span> $2,100 (then $0 copays)</p>
+                    </div>
+                    <button type="button"
+                      onClick={() => { handleFilterChange("lisLevel", "FULL"); setShowLisQualifier(false); }}
+                      className="mt-3 w-full h-9 bg-indigo-600 text-white text-sm font-semibold rounded-md hover:bg-indigo-700 transition-colors">
+                      Set LIS Level to Full (100%) ↑
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <p className="text-sm font-semibold text-red-800 mb-2">✗ Does not qualify on these numbers</p>
+                    <div className="text-sm text-red-900 space-y-1">
+                      {!incOk && <p>Income: {fmt$(annualInc)}/yr exceeds limit of {fmt$(incLimit150)}/yr by {fmt$(annualInc-incLimit150)}</p>}
+                      {!resOk && <p>Resources: {fmt$(rawRes)} exceeds limit of {fmt$(resLimit)} by {fmt$(rawRes-resLimit)}</p>}
+                    </div>
+                  </>
+                )}
+                <p className="text-xs text-gray-500 mt-3">
+                  Approximate — SSA applies income disregards (e.g. $20/mo general exclusion, earned-income exclusions).
+                  Borderline cases should apply at <a href="https://www.ssa.gov/extrahelp" target="_blank" rel="noopener noreferrer" className="underline">ssa.gov/extrahelp</a>.
+                </p>
+              </div>
+
+              <button onClick={() => setShowLisQualifier(false)}
+                className="mt-3 w-full h-9 bg-white text-gray-700 text-sm font-semibold rounded-lg border border-gray-300 hover:bg-gray-50 transition-colors">
+                Close
+              </button>
+            </div>
+          </div>
+        );
+      })()}
+
       {/* Change Password Modal */}
       {showChangePassword && (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4" onClick={() => setShowChangePassword(false)}>
@@ -949,6 +1116,16 @@ export default function PlanSearch() {
             options={["FULL", "75", "50", "25"]}
             formatOption={(v) => v === "FULL" ? "Full (100%)" : `${v}%`}
           />
+          <div className="flex flex-col gap-1">
+            <span className="text-xs font-semibold text-gray-600 uppercase tracking-wide">LIS Eligibility</span>
+            <button
+              type="button"
+              onClick={() => setShowLisQualifier(true)}
+              className="h-9 rounded-md border border-indigo-300 bg-indigo-50 px-3 text-sm font-medium text-indigo-700 hover:bg-indigo-100 transition-colors text-left"
+            >
+              LIS Qualifier ↗
+            </button>
+          </div>
         </div>
 
         {/* Action buttons */}
