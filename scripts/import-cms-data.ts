@@ -902,6 +902,93 @@ function parseLandscape(csvPath: string): LandscapeRow[] {
 }
 
 // ---------------------------------------------------------------------------
+// Parse CMS-direct PlanArea.txt as the authoritative county→plan source.
+// Replaces NBER landscape CSV (lags 1-2 years, omits SNPs).
+// NBER CSV (still cached) is still read for org-name / plan-name lookups.
+// ---------------------------------------------------------------------------
+function parsePlanArea(
+  planAreaPath: string,
+  benefitMap: Map<string, PlanBenefits>,
+  nberLandscapePath: string,
+): LandscapeRow[] {
+  // Contract → orgName + plan → planName from NBER landscape for carrier name resolution.
+  const contractOrgMap = new Map<string, string>();
+  const contractPlanNameMap = new Map<string, string>();
+  if (fs.existsSync(nberLandscapePath)) {
+    for (const r of parseLandscape(nberLandscapePath)) {
+      const ct = r.contractid?.trim();
+      if (!ct) continue;
+      if (!contractOrgMap.has(ct)) contractOrgMap.set(ct, r.organizationname?.trim() || "");
+      const key = `${ct}-${r.planid?.trim()}`;
+      if (!contractPlanNameMap.has(key)) contractPlanNameMap.set(key, r.planname?.trim() || "");
+    }
+  }
+
+  // PBP plan type code → typeofmedicarehealthplan label
+  const planTypeLabels: Record<string, string> = {
+    "01": "HMO", "02": "PPO", "03": "PFFS", "10": "HMO-POS",
+    "04": "MSA", "07": "MSA", "05": "COST", "08": "COST",
+    "09": "PFFS", "11": "PFFS",
+  };
+
+  const lines = fs.readFileSync(planAreaPath, "utf-8").split(/\r?\n/).filter(Boolean);
+  const h = lines[0].split("\t").map((x: string) => x.trim());
+  const iHn = h.indexOf("pbp_a_hnumber");
+  const iPl = h.indexOf("pbp_a_plan_identifier");
+  const iSeg = h.indexOf("segment_id");
+  const iPType = h.indexOf("pbp_a_plan_type");
+  const iState = h.indexOf("stcd");
+  const iCounty = h.indexOf("county");
+  const iPending = h.indexOf("pending_flag");
+  const iEghp = h.indexOf("eghp_flag");
+
+  const seen = new Set<string>();
+  const rows: LandscapeRow[] = [];
+
+  for (const line of lines.slice(1)) {
+    const c = line.split("\t");
+    if (c[iPending]?.trim() === "1") continue; // not yet approved
+    if (c[iEghp]?.trim() === "1") continue;    // employer-group plan
+    const contractId = c[iHn]?.trim().toUpperCase();
+    const rawPlanId  = c[iPl]?.trim();
+    const segmentId  = c[iSeg]?.trim() || "0";
+    const state      = c[iState]?.trim();
+    const county     = c[iCounty]?.trim();
+    if (!contractId || !rawPlanId || !state || !county) continue;
+
+    const dedupeKey = `${contractId}|${rawPlanId}|${state}|${county}`;
+    if (seen.has(dedupeKey)) continue;
+    seen.add(dedupeKey);
+
+    const planIdNorm = String(parseInt(rawPlanId, 10));
+    const orgName    = contractOrgMap.get(contractId) || "";
+    const planType   = planTypeLabels[c[iPType]?.trim() || ""] || "HMO";
+
+    // Derive drugbenefittype from PBP: if plan has Part D in benefitMap → "Enhanced"; else ""
+    const pbpKey  = `${contractId}-${rawPlanId.padStart(3, "0")}-${segmentId}`;
+    const bens    = benefitMap.get(pbpKey);
+    const drugBT  = bens ? (bens.hasPartD !== false ? "Enhanced" : "") : "";
+
+    rows.push({
+      state, county,
+      organizationname:        orgName,
+      planname:                contractPlanNameMap.get(`${contractId}-${planIdNorm}`) || `${contractId}-${planIdNorm}`,
+      typeofmedicarehealthplan: planType,
+      monthlyconsolidatedpremiumi: "0", // PBP Section D provides premium
+      annualdrugdeductible:         "0", // PBP provides drug deductible
+      contractid: contractId,
+      planid:     planIdNorm,
+      segmentid:  segmentId,
+      innetworkmoopamount: "0",          // PBP provides MOOP
+      overallstarrating:   "",            // imported separately
+      drugbenefittype:     drugBT,
+    });
+  }
+  return rows;
+}
+
+
+// ---------------------------------------------------------------------------
 // State abbreviation lookup
 // ---------------------------------------------------------------------------
 const STATE_ABBREVS: Record<string, string> = {
@@ -934,6 +1021,7 @@ export async function runImport(year?: number): Promise<{ imported: number; skip
   const pbpZipPath = path.join(WORK_DIR, `pbp-benefits-${planYear}.zip`);
   const landscapePath = path.join(WORK_DIR, `ma${planYear}.csv`);
   const extractDir = path.join(WORK_DIR, `pbp-${planYear}`);
+  const planAreaPath = path.join(extractDir, "PlanArea.txt");
 
   // Download PBP zip
   if (!fs.existsSync(pbpZipPath)) {
@@ -963,12 +1051,10 @@ export async function runImport(year?: number): Promise<{ imported: number; skip
     log("PBP data already extracted, skipping.");
   }
 
-  // Download landscape CSV — try current year, then fall back to prior years
-  // (NBER typically publishes landscape data 1-2 years after the plan year)
-  //
-  // IMPORTANT: NBER landscape DOES NOT include SNPs and may be 1+ years stale.
-  // Plans missing from landscape (but present in CMS PBP) are added later by
-  // `npm run backfill-missing-plans`. Always run that after `import-cms`.
+  // Download NBER landscape CSV for org-name / plan-name lookups (cached OK).
+  // PlanArea.txt (CMS-direct, from PBP ZIP) is now the county→plan authority
+  // via parsePlanArea() below — not this CSV. The NBER CSV is only used as a
+  // lookup table for carrier names and plan names already in the 2025 data.
   if (!fs.existsSync(landscapePath)) {
     let downloaded = false;
     let landedYear = planYear;
@@ -1010,10 +1096,13 @@ export async function runImport(year?: number): Promise<{ imported: number; skip
   const benefitMap = buildBenefitMap(extractDir);
   log(`Parsed benefits for ${benefitMap.size} plan variants.`);
 
-  // Parse landscape CSV
-  log("Parsing landscape CSV...");
-  const allLandscapeRows = parseLandscape(landscapePath);
-  log(`Landscape CSV has ${allLandscapeRows.length} rows (plan × county).`);
+  // Parse county→plan associations from CMS-direct PlanArea.txt
+  if (!fs.existsSync(planAreaPath)) {
+    throw new Error(`PlanArea.txt not found at ${planAreaPath}. Confirm PBP ZIP was extracted to ${extractDir}`);
+  }
+  log("Parsing PlanArea.txt (CMS-direct county→plan authority)...");
+  const allLandscapeRows = parsePlanArea(planAreaPath, benefitMap, landscapePath);
+  log(`PlanArea.txt: ${allLandscapeRows.length} rows (licensed carriers, non-pending, non-EGHP).`);
 
   // LICENSED_STATES gate (2026-04-28): drop rows for states Dale isn't
   // licensed in BEFORE we touch the DB. Comparing on the abbreviated

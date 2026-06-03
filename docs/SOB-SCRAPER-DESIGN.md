@@ -113,8 +113,9 @@ Three scripts, run in order. All must be COALESCE-safe (only fill NULLs).
 1. Is the CMS Landscape file Dale imported from already present in the
    repo/data dir? If yes, it may have the SOB URL column and we skip
    the carrier-site scraping step.
-2. SNP / C-SNP ranking spec — still owed from the prior default-ranking
-   ship. Unrelated to SOB but mentioned here so it's not forgotten.
+2. ~~SNP / C-SNP ranking spec — still owed from the prior default-ranking
+   ship.~~ **DONE** — spec shipped 2026-05-12: DSNP FULL_DUAL 6-key,
+   DSNP PARTIAL_DUAL 9-key, CSNP 11-key, all live in `app/api/plans/route.ts`.
 
 ## Next session pickup
 
