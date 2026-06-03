@@ -1236,7 +1236,7 @@ export default function PlanSearch() {
                       <td className="px-3 py-3 sticky left-[52px] bg-white z-10">
                         <button type="button" onClick={() => setSelectedPlan(plan)} className="text-left hover:underline">
                           <div className="font-medium text-blue-700 leading-tight">{plan.planName}</div>
-                          <div className="text-xs text-gray-500">{plan.organizationName} &middot; {plan.planId}</div>
+                          <div className="text-xs text-gray-500"><span className="font-semibold">{plan.organizationName}</span> &middot; {plan.planId}</div>
                         </button>
                         {plan.sbPdfUrl && (
                           <a
@@ -1250,15 +1250,17 @@ export default function PlanSearch() {
                             Summary of Benefits ↗
                           </a>
                         )}
-                        <a
-                          href={planCompareUrl(plan, filters.zipCode)}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="block text-[10px] text-blue-500 hover:underline mt-0.5"
-                          title="Open this plan's full details on medicare.gov (OTC, food card, transportation, all benefits)"
-                        >
-                          View on medicare.gov ↗
-                        </a>
+                        {!plan.sbPdfUrl && (
+                          <a
+                            href={planCompareUrl(plan, filters.zipCode)}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block text-[10px] text-blue-500 hover:underline mt-0.5"
+                            title="Open this plan's full details on medicare.gov (OTC, food card, transportation, all benefits)"
+                          >
+                            View on medicare.gov ↗
+                          </a>
+                        )}
                       </td>
                       <td className="px-3 py-3">
                         <span className="inline-block px-2 py-0.5 text-xs font-semibold bg-blue-100 text-blue-800 rounded">
