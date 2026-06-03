@@ -1227,7 +1227,7 @@ export default function PlanSearch() {
                           <div className="font-medium text-blue-700 leading-tight">{plan.planName}</div>
                           <div className="text-xs text-gray-500">{plan.organizationName} &middot; {plan.planId}</div>
                         </button>
-                        {plan.sbPdfUrl ? (
+                        {plan.sbPdfUrl && (
                           <a
                             href={plan.sbPdfUrl}
                             target="_blank"
@@ -1238,17 +1238,16 @@ export default function PlanSearch() {
                             <span className="inline-block px-1 py-px text-[9px] font-bold bg-emerald-100 text-emerald-800 rounded">SB</span>
                             Summary of Benefits ↗
                           </a>
-                        ) : (
-                          <a
-                            href={planCompareUrl(plan, filters.zipCode)}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="block text-[10px] text-blue-500 hover:underline mt-0.5"
-                            title="Open this plan's full details on medicare.gov (OTC, food card, transportation, all benefits)"
-                          >
-                            View on medicare.gov ↗
-                          </a>
                         )}
+                        <a
+                          href={planCompareUrl(plan, filters.zipCode)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block text-[10px] text-blue-500 hover:underline mt-0.5"
+                          title="Open this plan's full details on medicare.gov (OTC, food card, transportation, all benefits)"
+                        >
+                          View on medicare.gov ↗
+                        </a>
                       </td>
                       <td className="px-3 py-3">
                         <span className="inline-block px-2 py-0.5 text-xs font-semibold bg-blue-100 text-blue-800 rounded">
