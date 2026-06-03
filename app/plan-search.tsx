@@ -760,12 +760,12 @@ export default function PlanSearch() {
     <div className="flex flex-col gap-6 p-4 md:p-6 max-w-[1600px] mx-auto w-full">
       {/* Logo */}
       <div className="flex justify-center mb-2">
-        <div className="bg-white rounded-lg px-4 py-2">
+        <div className="bg-white rounded-lg px-6 py-4">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/mca-logo.png"
             alt="MCAgency, Inc. — Helping Folks with Medicare Options"
-            className="max-w-sm w-full h-auto"
+            className="max-w-3xl w-full max-w-[90vw] h-auto"
           />
         </div>
       </div>
