@@ -1,18 +1,18 @@
 // backfill-lis-premiums.js
 // Populates partCPremium, partDPremium on all licensed-state plans for 2026.
 //
-// Sources:
-//   pbp_Section_D.txt  — pbp_d_mplusc_premium = Part C (M+C) premium
-//   ma2026.csv         — monthlyconsolidatedpremiumi = Part C + Part D total
+// Sources (priority order):
+//   1. CMS CY2026 Landscape (cy2026-landscape-202603.csv) — authoritative for all plan types.
+//      Has "Monthly Consolidated Premium (Part C + D)" per county.  Use this first.
+//   2. NBER ma2026.csv — secondary fallback (covers 2025 NBER plans, not new 2026 contracts).
+//   3. PBP Section D (pbp_Section_D.txt) — pbp_d_mplusc_premium = Part C (M+C) premium.
+//      Used to split consolidated into partC and partD.
 //
-// Join notes:
-//   MAPD + MA_ONLY: 100% matched in landscape → partD = max(0, consolidated−partC)
-//   DSNP/CSNP/ISNP: NOT in NBER landscape (separate CMS file). These plans
-//     have $0 premium in almost all cases (D-SNP = auto-LIS; $0 Part D by design).
-//     For the rare non-zero cases we use existing monthlyPremium as consolidated.
-//
-// Also reconciles monthlyPremium to the consolidated total so all premium math
-// shares one consistent basis going forward.
+// For each plan:
+//   partC = PBP Section D Part C premium (often $0 for MAPD plans)
+//   consolidated = CMS 2026 landscape consolidated → NBER → plan.monthlyPremium fallback
+//   partD = max(0, consolidated − partC)  [MA-Only / DSNP → 0 by definition]
+//   monthlyPremium is reconciled to consolidated so all premium math is consistent.
 
 const fs = require("fs");
 const path = require("path");
@@ -20,7 +20,9 @@ const { makePrisma } = require("./prisma-client");
 const { LICENSED_STATES } = require("./licensed-states");
 
 const PBP_DIR    = path.join(__dirname, "..", ".cms-import-tmp", "pbp-2026");
-const LANDSCAPE  = path.join(__dirname, "..", ".cms-import-tmp", "ma2026.csv");
+const LANDSCAPE  = path.join(__dirname, "..", ".cms-import-tmp", "ma2026.csv"); // NBER fallback
+const CMS_LANDSCAPE_2026 = path.join(__dirname, "..", ".cms-import-tmp",
+  "cy2026-landscape", "CY2026_Landscape_202603", "CY2026_Landscape_202603.csv");
 const CHECKPOINT = path.join(__dirname, "..", "lis-backfill-checkpoint.json");
 const YEAR       = 2026;
 const BATCH      = 100;
@@ -54,6 +56,33 @@ function normId(contractId, planId) {
   return `${contractId.toUpperCase().trim()}-${parseInt(planId, 10)}`;
 }
 
+// RFC-4180 CSV parser (handles quoted fields with embedded commas like "$2,100.00")
+function parseCSVLine(line) {
+  const fields = [];
+  let field = "";
+  let inQuotes = false;
+  for (let i = 0; i < line.length; i++) {
+    const ch = line[i];
+    if (ch === '"') {
+      if (inQuotes && line[i+1] === '"') { field += '"'; i++; }
+      else inQuotes = !inQuotes;
+    } else if (ch === ',' && !inQuotes) {
+      fields.push(field.trim());
+      field = "";
+    } else {
+      field += ch;
+    }
+  }
+  fields.push(field.trim());
+  return fields;
+}
+
+function numFromDollar(s) {
+  if (!s) return 0;
+  const n = parseFloat(s.replace(/[$,]/g, "").trim());
+  return isNaN(n) ? 0 : n;
+}
+
 async function main() {
   const prisma = makePrisma();
 
@@ -78,8 +107,40 @@ async function main() {
   }
   console.log(`  Part C map: ${partCMap.size} planIds`);
 
-  // ── Consolidated map from ma2026.csv ────────────────────────────────────
-  console.log("Loading ma2026.csv...");
+  // ── CMS 2026 Landscape (primary premium source) ────────────────────────
+  const cms2026Map = new Map(); // planId → { consolidated, hasDrug }
+  if (fs.existsSync(CMS_LANDSCAPE_2026)) {
+    console.log("Loading CMS CY2026 Landscape (primary premium source)...");
+    const cmsText = fs.readFileSync(CMS_LANDSCAPE_2026, "utf8");
+    const cmsLines = cmsText.split(/\r?\n/).filter(Boolean);
+    const cmsH = parseCSVLine(cmsLines[0]);
+    const cmsIContract   = cmsH.indexOf("Contract ID");
+    const cmsIPlan       = cmsH.indexOf("Plan ID");
+    const cmsIState      = cmsH.indexOf("State Territory Abbreviation");
+    const cmsIOrg        = cmsH.indexOf("Organization Marketing Name");
+    const cmsIConsolidated = cmsH.indexOf("Monthly Consolidated Premium (Part C + D)");
+    const cmsIDrugType   = cmsH.indexOf("Drug Benefit Type");
+    for (const line of cmsLines.slice(1)) {
+      const cols = parseCSVLine(line);
+      const state = cols[cmsIState]?.trim();
+      if (!LICENSED_STATES.includes(state)) continue;
+      const org = cols[cmsIOrg]?.trim();
+      if (!LICENSED_CARRIERS.has(org)) continue;
+      const id = normId(cols[cmsIContract], cols[cmsIPlan]);
+      if (!cms2026Map.has(id)) {
+        const consolidated = numFromDollar(cols[cmsIConsolidated]);
+        const hasDrug = !!cols[cmsIDrugType]?.trim() &&
+                        cols[cmsIDrugType].trim() !== "Not Applicable";
+        cms2026Map.set(id, { consolidated, hasDrug });
+      }
+    }
+    console.log(`  CMS 2026 map: ${cms2026Map.size} planIds (licensed states+carriers)`);
+  } else {
+    console.warn(`  WARNING: CMS CY2026 Landscape not found at ${CMS_LANDSCAPE_2026}`);
+  }
+
+  // ── Consolidated map from ma2026.csv (NBER fallback) ────────────────────
+  console.log("Loading ma2026.csv (NBER fallback)...");
   const csvText = fs.readFileSync(LANDSCAPE, "utf8");
   const csvLines = csvText.split(/\r?\n/).filter(Boolean);
   const csvH = csvLines[0].split(",").map(h => h.trim());
@@ -95,7 +156,7 @@ async function main() {
     if (!consolidatedMap.has(id))
       consolidatedMap.set(id, { consolidated: num(cols[iM]), hasDrug: !!cols[iDrug]?.trim() });
   }
-  console.log(`  Consolidated map: ${consolidatedMap.size} planIds (licensed states)`);
+  console.log(`  NBER map: ${consolidatedMap.size} planIds (licensed states)`);
 
   // ── Load plans from DB ─────────────────────────────────────────────────
   console.log("Loading plans from DB...");
@@ -107,36 +168,48 @@ async function main() {
   console.log(`  DB plans: ${dbPlans.length} rows`);
 
   // ── Compute per-planId updates (deduplicated) ──────────────────────────
-  const byPlanId = new Map(); // planId → { partC, partD, consolidated }
-  let lsMatched = 0, lsFallback = 0;
+  // Priority: (1) CMS 2026 Landscape → (2) NBER landscape → (3) plan.monthlyPremium fallback
+  const byPlanId = new Map(); // planId → { partC, partD, consolidated, source }
+  let nCms2026 = 0, nNber = 0, nFallback = 0;
   for (const plan of dbPlans) {
-    if (byPlanId.has(plan.planId)) continue; // already computed for this planId
+    if (byPlanId.has(plan.planId)) continue;
     const partC = partCMap.get(plan.planId) ?? 0;
+
+    // 1. CMS 2026 Landscape (most authoritative; covers all 2026 contracts)
+    const cms = cms2026Map.get(plan.planId);
+    if (cms) {
+      const partD = cms.hasDrug ? Math.max(0, cms.consolidated - partC) : 0;
+      byPlanId.set(plan.planId, { partC, partD, consolidated: cms.consolidated, source: "CMS2026" });
+      nCms2026++;
+      continue;
+    }
+
+    // 2. NBER landscape (2025 data; good for plans that existed in 2025)
     const ls = consolidatedMap.get(plan.planId);
     if (ls) {
       const partD = ls.hasDrug ? Math.max(0, ls.consolidated - partC) : 0;
-      byPlanId.set(plan.planId, { partC, partD, consolidated: ls.consolidated });
-      lsMatched++;
-    } else {
-      // DSNP/CSNP/ISNP not in NBER landscape — use monthlyPremium as consolidated.
-      // 612/615 of these are $0, so partD = 0 is correct. For the rare non-$0
-      // ones (CSNP H5652-4 $62.5 etc.), consolidated = monthlyPremium.
-      const consolidated = plan.monthlyPremium;
-      const partD = (plan.planCategory === "DSNP" || plan.planCategory === "MA_ONLY")
-        ? 0
-        : Math.max(0, consolidated - partC);
-      byPlanId.set(plan.planId, { partC, partD, consolidated });
-      lsFallback++;
+      byPlanId.set(plan.planId, { partC, partD, consolidated: ls.consolidated, source: "NBER" });
+      nNber++;
+      continue;
     }
+
+    // 3. Fallback: DSNP $0 by design; others use existing monthlyPremium
+    const consolidated = plan.monthlyPremium;
+    const partD = (plan.planCategory === "DSNP" || plan.planCategory === "MA_ONLY")
+      ? 0
+      : Math.max(0, consolidated - partC);
+    byPlanId.set(plan.planId, { partC, partD, consolidated, source: "fallback" });
+    nFallback++;
   }
-  console.log(`\nLandscape-sourced: ${lsMatched}, Fallback (SNP/unlisted): ${lsFallback}`);
+  console.log(`\nSources: CMS2026=${nCms2026} NBER=${nNber} Fallback=${nFallback}`);
   console.log(`Total unique planIds to update: ${byPlanId.size}`);
 
-  // Spot-check: how many MAPD plans will have monthlyPremium change by >$1?
+  // Spot-check: how many plans will have monthlyPremium change by >$1?
   const bigChanges = [];
   for (const plan of dbPlans) {
     const upd = byPlanId.get(plan.planId);
-    if (upd && consolidatedMap.has(plan.planId) && Math.abs(upd.consolidated - plan.monthlyPremium) > 1) {
+    const inAnyLandscape = cms2026Map.has(plan.planId) || consolidatedMap.has(plan.planId);
+    if (upd && inAnyLandscape && Math.abs(upd.consolidated - plan.monthlyPremium) > 1) {
       bigChanges.push(plan);
     }
   }
