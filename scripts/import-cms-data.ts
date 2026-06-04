@@ -1120,7 +1120,7 @@ export async function runImport(year?: number): Promise<{ imported: number; skip
   });
   const droppedNonLicensedCarrier = stateGatedRows.length - landscapeRows.length;
   log(
-    `Licensed-carrier gate: kept ${landscapeRows.length} rows for [${LICENSED_CARRIERS.join(", ")}], ` +
+    `Licensed-carrier gate: kept ${landscapeRows.length} rows for [${_LC.join(", ")}], ` +
       `dropped ${droppedNonLicensedCarrier} rows from non-licensed carriers.`,
   );
 
