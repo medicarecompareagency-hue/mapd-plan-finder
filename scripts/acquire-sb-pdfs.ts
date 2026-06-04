@@ -8,17 +8,10 @@ const prisma = new PrismaClient({
   },
 });
 
-const TARGET_CARRIERS = [
-  "HealthSpring",
-  "Cigna",
-  "Cigna Healthcare",
-  "UnitedHealthcare",
-  "UHC",
-  "Wellcare",
-  "Devoted Health",
-  "Aetna Medicare",
-  "Humana",
-];
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { LICENSED_CARRIERS }: { LICENSED_CARRIERS: string[] } = require("./licensed-carriers.js");
+// "UHC" is kept as an extra alias: some plan names contain "UHC" rather than "UnitedHealthcare".
+const TARGET_CARRIERS = [...LICENSED_CARRIERS, "UHC"];
 
 const DEFAULT_YEAR = 2026;
 const DEFAULT_MIN_CONFIDENCE = 0.78;

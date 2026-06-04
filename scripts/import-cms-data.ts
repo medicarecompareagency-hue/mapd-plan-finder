@@ -56,19 +56,10 @@ const LICENSED_STATES_SET = new Set(LICENSED_STATES);
 // scripts/normalize-healthspring-name.js so it doesn't need a separate
 // post-import run).
 //
-// Canonical source: lib/licensed-carriers.ts. Mirrored inline here so the
-// script doesn't depend on Next.js lib/ path mapping at runtime.
-const LICENSED_CARRIERS = [
-  "HealthSpring",
-  "Cigna",
-  "Cigna Healthcare",
-  "UnitedHealthcare",
-  "Wellcare",
-  "Aetna Medicare",
-  "Humana",
-  "Devoted Health",
-] as const;
-const LICENSED_CARRIERS_SET = new Set<string>(LICENSED_CARRIERS);
+// Canonical source: scripts/licensed-carriers.js (CommonJS — required, not imported).
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { LICENSED_CARRIERS: _LC }: { LICENSED_CARRIERS: string[] } = require("./licensed-carriers.js");
+const LICENSED_CARRIERS_SET = new Set<string>(_LC);
 
 function normalizeCarrierName(raw: string): string {
   // HealthSpring rebranded back from Cigna / Cigna Healthcare in 2026.

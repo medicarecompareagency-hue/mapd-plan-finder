@@ -22,17 +22,7 @@
 //   - dedupe top-5 by organizationName
 
 const { makePrisma } = require('./prisma-client');
-
-const LICENSED_CARRIERS = [
-  'Cigna',
-  'Cigna Healthcare',
-  'HealthSpring',
-  'UnitedHealthcare',
-  'Wellcare',
-  'Aetna Medicare',
-  'Humana',
-  'Devoted Health',
-];
+const { LICENSED_CARRIERS } = require('./licensed-carriers.js');
 
 const STATE = process.env.STATE || 'FL';
 const CATEGORY = (process.env.CATEGORY || 'MAPD').toUpperCase();

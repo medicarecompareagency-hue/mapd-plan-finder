@@ -59,18 +59,10 @@ const LICENSED_STATES_SET = new Set(LICENSED_STATES);
 // Licensed-carriers gate (added 2026-05-06). Without this, backfill pulls
 // in VIVA, Anthem, Molina, Lasso, etc. — carriers Dale doesn't sell. The
 // route's API filter already hides them, but they bloat the DB and break
-// verification scripts. Inline copy of lib/licensed-carriers.ts (CMS
-// org-name strings, exact match, case-sensitive).
-const LICENSED_CARRIERS_SET = new Set([
-  "HealthSpring",          // 2026 rebrand back from Cigna
-  "Cigna",                 // pre-2026 spelling, kept for CMS data lag
-  "Cigna Healthcare",      // 2019-era CMS spelling
-  "UnitedHealthcare",
-  "Wellcare",
-  "Aetna Medicare",
-  "Humana",
-  "Devoted Health",
-]);
+// verification scripts.
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { LICENSED_CARRIERS: _LC }: { LICENSED_CARRIERS: string[] } = require("./licensed-carriers.js");
+const LICENSED_CARRIERS_SET = new Set(_LC);
 
 // ---------------------------------------------------------------------------
 // Args

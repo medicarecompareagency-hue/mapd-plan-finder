@@ -35,13 +35,7 @@
 const { makePrisma } = require('./prisma-client');
 const { LICENSED_STATES } = require('./licensed-states');
 
-// Carrier allowlist mirrors lib/licensed-carriers.ts. Mirrored here as
-// CommonJS so this CLI script doesn't need to import the TS module.
-const LICENSED_CARRIERS = [
-  'Cigna', 'Cigna Healthcare', 'HealthSpring',
-  'UnitedHealthcare', 'Wellcare', 'Aetna Medicare',
-  'Humana', 'Devoted Health',
-];
+const { LICENSED_CARRIERS } = require('./licensed-carriers.js');
 
 const args = process.argv.slice(2);
 const DRY_RUN = args.includes('--dry-run');

@@ -27,10 +27,8 @@ const CHECKPOINT = path.join(__dirname, "..", "lis-backfill-checkpoint.json");
 const YEAR       = 2026;
 const BATCH      = 100;
 
-const LICENSED_CARRIERS = new Set([
-  "HealthSpring","Cigna","Cigna Healthcare","UnitedHealthcare",
-  "Wellcare","Aetna Medicare","Humana","Devoted Health",
-]);
+const { LICENSED_CARRIERS: _LC } = require('./licensed-carriers.js');
+const LICENSED_CARRIERS = new Set(_LC);
 
 const STATE_CODES = {
   "Alabama":"AL","Arkansas":"AR","Florida":"FL","Georgia":"GA",

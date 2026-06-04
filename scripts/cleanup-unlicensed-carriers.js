@@ -24,20 +24,7 @@ const { makePrisma } = require('./prisma-client');
 
 const APPLY = process.argv.includes('--apply');
 
-// Inline copy of lib/licensed-carriers.ts (kept in sync manually).
-// Last updated 2026-05-06: added HealthSpring (rebrand back from Cigna/
-// Cigna Healthcare in 2026). All three names accepted because CMS PBP data
-// lags rebrand events.
-const LICENSED_CARRIERS = [
-  'HealthSpring',
-  'Cigna',
-  'Cigna Healthcare',
-  'UnitedHealthcare',
-  'Wellcare',
-  'Aetna Medicare',
-  'Humana',
-  'Devoted Health',
-];
+const { LICENSED_CARRIERS } = require('./licensed-carriers.js');
 
 (async () => {
   const prisma = makePrisma();

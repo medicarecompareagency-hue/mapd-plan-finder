@@ -26,10 +26,7 @@ function readUrl() {
   throw new Error('No DIRECT_URL or DATABASE_URL found.');
 }
 
-const LICENSED_CARRIERS = [
-  'Cigna', 'Cigna Healthcare', 'HealthSpring', 'UnitedHealthcare',
-  'Wellcare', 'Aetna Medicare', 'Humana', 'Devoted Health',
-];
+const { LICENSED_CARRIERS } = require('./licensed-carriers.js');
 
 const STATE = process.env.STATE || 'FL';
 const CATEGORY = (process.env.CATEGORY || 'MAPD').toUpperCase();

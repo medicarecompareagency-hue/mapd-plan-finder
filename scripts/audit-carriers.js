@@ -9,16 +9,7 @@
 
 const { makePrisma } = require('./prisma-client');
 
-// Inline copy of lib/licensed-carriers.ts (kept in sync manually).
-// Last verified 2026-05-06.
-const LICENSED_CARRIERS = [
-  'Cigna',
-  'UnitedHealthcare',
-  'Wellcare',
-  'Aetna Medicare',
-  'Humana',
-  'Devoted Health',
-];
+const { LICENSED_CARRIERS } = require('./licensed-carriers.js');
 const LICENSED_SET = new Set(LICENSED_CARRIERS);
 
 (async () => {
