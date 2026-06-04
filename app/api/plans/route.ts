@@ -1,6 +1,7 @@
 import { Prisma } from "@prisma/client";
 import { LICENSED_CARRIERS } from "@/lib/licensed-carriers";
 import { lisAdjustedPremium, LIS_SUBSIDY_PCT, type LisLevel } from "@/lib/lisBenchmarks";
+import { zipToCounty } from "@/lib/zip-to-county";
 
 // SNP ranking spec (Dale, 2026-04-27). See SNP-RANKING-SPEC-2026-04-27.md.
 // Phase 1: ranking against existing plan-level columns.
@@ -96,7 +97,19 @@ export async function GET(request: Request) {
   };
 
   const state = searchParams.get("state");
-  const county = searchParams.get("county");
+  const zip = searchParams.get("zip");
+  let county = searchParams.get("county");
+
+  // ZIP→county: if zip provided and county absent, resolve county from ZIP
+  if (zip && !county) {
+    const resolved = zipToCounty(zip);
+    if (!resolved) {
+      return Response.json({ error: "ZIP code not recognized" }, { status: 400 });
+    }
+    county = resolved.county;
+    if (!state) where.state = resolved.state;
+  }
+
   if (state) where.state = state;
   if (county) {
     const bare = county.replace(/\s+(County|Parish|Borough|Census Area|Municipality|city)$/i, "").trim();

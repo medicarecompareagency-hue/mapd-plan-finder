@@ -719,8 +719,13 @@ export default function PlanSearch() {
     setSearchedLisLevel(filters.lisLevel ?? null);
     const params = new URLSearchParams();
     for (const [k, v] of Object.entries(filters)) {
-      // zipCode is for location selection only — state+county is what filters plans
-      if (v && k !== "zipCode") params.set(k, v);
+      if (!v) continue;
+      if (k === "zipCode") {
+        // Pass as `zip`; API resolves county server-side if county wasn't set
+        params.set("zip", v);
+      } else {
+        params.set(k, v);
+      }
     }
     const url = `/api/plans?${params.toString()}`;
     console.log("[PlanSearch] fetching:", url, "filters:", filters);
