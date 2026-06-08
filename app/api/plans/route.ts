@@ -100,14 +100,15 @@ export async function GET(request: Request) {
   const zip = searchParams.get("zip");
   let county = searchParams.get("county");
 
-  // ZIP→county: if zip provided and county absent, resolve county from ZIP
+  // ZIP→county fallback: if zip arrives but county does not, resolve server-side.
+  // Handles the race where the client fires Search before reverseZipLookup completes.
+  // Unrecognized ZIPs (e.g. PO Box ZCTAs) fall through to a statewide search.
   if (zip && !county) {
     const resolved = zipToCounty(zip);
-    if (!resolved) {
-      return Response.json({ error: "ZIP code not recognized" }, { status: 400 });
+    if (resolved) {
+      county = resolved.county;
+      if (!state) where.state = resolved.state;
     }
-    county = resolved.county;
-    if (!state) where.state = resolved.state;
   }
 
   if (state) where.state = state;
