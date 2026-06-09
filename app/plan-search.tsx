@@ -247,14 +247,31 @@ function SsbciChips({ plan }: { plan: Plan }) {
   if (plan.ssbciOffersHousing) items.push({ label: "Housing", amount: null });
   if (plan.ssbciOffersTransportation) items.push({ label: "Transport", amount: plan.ssbciTransportationAllowance });
   if (items.length === 0) return null;
+
+  // Step D two-tier styling (2026-06-09). Every SSBCI benefit is chronic-gated by CMS
+  // definition, so nothing here is ever "guaranteed/green":
+  //   confirmed === true  → SB PDF analysis found chronic-gating language → AMBER "Chronic only"
+  //   confirmed !== true  → PBP flags the benefit but the SB PDF didn't confirm gating
+  //                         → NEUTRAL GRAY "Verify" (don't assert eligibility we can't prove)
+  const confirmed = plan.ssbciIsConditional === true;
+  const note =
+    plan.ssbciConditionNote ||
+    (confirmed
+      ? "Requires a qualifying chronic condition (SSBCI). Not all members qualify — confirm in the plan's Summary of Benefits."
+      : "Filed as a Special Supplemental Benefit (SSBCI). Eligibility not confirmed from the plan's Summary of Benefits — verify the qualifying condition before quoting.");
+  const labelText = confirmed ? "Chronic only:" : "Verify:";
+  const labelClass = confirmed
+    ? "text-[10px] text-amber-700 uppercase tracking-wide font-semibold"
+    : "text-[10px] text-gray-500 uppercase tracking-wide font-semibold";
+  const chipClass = confirmed
+    ? "inline-block px-1.5 py-0.5 text-[10px] font-medium bg-amber-50 text-amber-800 border border-amber-200 rounded"
+    : "inline-block px-1.5 py-0.5 text-[10px] font-medium bg-gray-50 text-gray-600 border border-gray-200 rounded";
+
   return (
-    <div className="flex flex-wrap gap-1 mt-1" title="Chronic-condition-gated benefits (SSBCI). Some carriers don't file dollar amounts in PBP — see plan summary.">
-      <span className="text-[10px] text-gray-500 uppercase tracking-wide font-semibold">Chronic:</span>
+    <div className="flex flex-wrap gap-1 mt-1" title={note}>
+      <span className={labelClass}>{labelText}</span>
       {items.map((it) => (
-        <span
-          key={it.label}
-          className="inline-block px-1.5 py-0.5 text-[10px] font-medium bg-amber-50 text-amber-800 border border-amber-200 rounded"
-        >
+        <span key={it.label} className={chipClass}>
           {it.label}{it.amount != null ? ` $${it.amount.toLocaleString()}` : ""}
         </span>
       ))}
