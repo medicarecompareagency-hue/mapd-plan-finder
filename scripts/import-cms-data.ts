@@ -488,10 +488,16 @@ function buildBenefitMap(extractDir: string): Map<string, PlanBenefits> {
       b.pcpCopay = num(row.pbp_b7a_copay_amt_mc_min);
     }
     b.pcpCoinsPct = coinsPct(row, "pbp_b7a_coins_yn", "pbp_b7a_coins_pct_mc_min", "pbp_b7a_coins_pct_mc_max");
-    if (row.pbp_b7b_copay_yn === "1") {
-      b.specialistCopay = num(row.pbp_b7b_copay_mc_amt_min);
+    // Physician Specialist = PBP b7d ('Phys Spclist'). NOTE: b7b is Chiropractic — do not use it.
+    // b7d column names put 'amt' before 'mc' (pbp_b7d_copay_amt_mc_min/_max). Store the max of the range.
+    if (row.pbp_b7d_copay_yn === "1") {
+      const sMin = num(row.pbp_b7d_copay_amt_mc_min);
+      const sMax = num(row.pbp_b7d_copay_amt_mc_max);
+      b.specialistCopay = (sMax != null && sMin != null) ? Math.max(sMin, sMax) : (sMax ?? sMin);
+    } else if (row.pbp_b7d_coins_yn === "1") {
+      // carrier filed specialist coinsurance instead of a flat copay (typical partial-dual DSNP)
+      b.specialistCoinsPct = num(row.pbp_b7d_coins_pct_mc_min);
     }
-    b.specialistCoinsPct = coinsPct(row, "pbp_b7b_coins_yn", "pbp_b7b_coins_pct_mc_min", "pbp_b7b_coins_pct_mc_max");
   }
 
   // b4: Emergency (b4a) copay + coinsurance

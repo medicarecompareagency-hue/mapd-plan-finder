@@ -52,9 +52,9 @@ const SERVICES = [
   {
     pctField: "specialistCoinsPct",
     file: "pbp_b7_health_prof.txt",
-    coinsYn: "pbp_b7b_coins_yn",
-    minCol: "pbp_b7b_coins_pct_mc_min",
-    maxCol: "pbp_b7b_coins_pct_mc_max",
+    coinsYn: "pbp_b7d_coins_yn",
+    minCol: "pbp_b7d_coins_pct_mc_min",
+    maxCol: "pbp_b7d_coins_pct_mc_max",
   },
   {
     pctField: "emergencyRoomCoinsPct",

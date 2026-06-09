@@ -113,8 +113,9 @@ async function main() {
       const v = num(r.pbp_b7a_copay_amt_mc_min);
       if (v != null) pcpMap.set(k, v);
     }
-    if (r.pbp_b7b_copay_yn === '1') {
-      const v = num(r.pbp_b7b_copay_mc_amt_min);
+    if (r.pbp_b7d_copay_yn === '1') {
+      const mn = num(r.pbp_b7d_copay_amt_mc_min), mx = num(r.pbp_b7d_copay_amt_mc_max);
+      const v = (mn != null && mx != null) ? Math.max(mn, mx) : (mx ?? mn);
       if (v != null) specMap.set(k, v);
     }
   }

@@ -85,7 +85,7 @@ function dbPlanKey(row) {
 // which file + yn fields tell us "coinsurance applies but no flat copay".
 const SERVICES = [
   { dbField: "pcpCopay",                file: "pbp_b7_health_prof.txt",    copayYn: "pbp_b7a_copay_yn",  coinsYn: "pbp_b7a_coins_yn" },
-  { dbField: "specialistCopay",         file: "pbp_b7_health_prof.txt",    copayYn: "pbp_b7b_copay_yn",  coinsYn: "pbp_b7b_coins_yn" },
+  { dbField: "specialistCopay",         file: "pbp_b7_health_prof.txt",    copayYn: "pbp_b7d_copay_yn",  coinsYn: "pbp_b7d_coins_yn" },
   { dbField: "emergencyRoomCopay",      file: "pbp_b4_emerg_urgent.txt",   copayYn: "pbp_b4a_copay_yn",  coinsYn: "pbp_b4a_coins_yn" },
   { dbField: "ambulanceCopay",          file: "pbp_b10_amb_trans.txt",     copayYn: "pbp_b10a_copay_yn", coinsYn: "pbp_b10a_coins_yn" },
   { dbField: "outpatientHospitalCopay", file: "pbp_b9_outpat_hosp.txt",    copayYn: "pbp_b9a_copay_yn",  coinsYn: "pbp_b9a_coins_yn" },

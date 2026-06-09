@@ -86,3 +86,4 @@ _*.ts
 .aider-desk/
 .augment/
 .bob/
+copay-audit.csv

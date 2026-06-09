@@ -181,10 +181,13 @@ function buildBenefitMap() {
     } else if (row.pbp_b7a_copay_yn === "2" && row.pbp_b7a_coins_yn !== "1") {
       mergeIfNull(b, "pcpCopay", 0);
     }
-    // Specialist
-    if (row.pbp_b7b_copay_yn === "1") {
-      mergeIfNull(b, "specialistCopay", num(row.pbp_b7b_copay_mc_amt_min));
-    } else if (row.pbp_b7b_copay_yn === "2" && row.pbp_b7b_coins_yn !== "1") {
+    // Specialist — PBP b7d ('Phys Spclist'). b7b is Chiropractic; do not use it here.
+    if (row.pbp_b7d_copay_yn === "1") {
+      const sMin = num(row.pbp_b7d_copay_amt_mc_min);
+      const sMax = num(row.pbp_b7d_copay_amt_mc_max);
+      const pick = (sMax != null && sMin != null) ? Math.max(sMin, sMax) : (sMax ?? sMin);
+      mergeIfNull(b, "specialistCopay", pick);
+    } else if (row.pbp_b7d_copay_yn === "2" && row.pbp_b7d_coins_yn !== "1") {
       mergeIfNull(b, "specialistCopay", 0);
     }
   }

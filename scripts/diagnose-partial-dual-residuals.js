@@ -88,9 +88,9 @@ const SERVICES = [
   {
     dbField: "specialistCopay",
     file: "pbp_b7_health_prof.txt",
-    copayYn: "pbp_b7b_copay_yn",
-    coinsYn: "pbp_b7b_coins_yn",
-    coinsAmt: ["pbp_b7b_coins_pct_min", "pbp_b7b_coins_pct_max", "pbp_b7b_coins_amt"],
+    copayYn: "pbp_b7d_copay_yn",
+    coinsYn: "pbp_b7d_coins_yn",
+    coinsAmt: ["pbp_b7d_coins_pct_min", "pbp_b7d_coins_pct_max", "pbp_b7d_coins_amt"],
   },
   {
     dbField: "emergencyRoomCopay",
