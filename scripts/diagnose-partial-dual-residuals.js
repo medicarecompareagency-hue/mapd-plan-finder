@@ -116,16 +116,16 @@ const SERVICES = [
   {
     dbField: "mriCopay",
     file: "pbp_b8_clin_diag_ther.txt",
-    copayYn: "pbp_b8a_copay_yn",
-    coinsYn: "pbp_b8a_coins_yn",
-    coinsAmt: ["pbp_b8a_coins_pct_min", "pbp_b8a_coins_pct_max"],
+    copayYn: "pbp_b8b_copay_yn",
+    coinsYn: "pbp_b8b_coins_yn",
+    coinsAmt: ["pbp_b8b_coins_pct_drs", "pbp_b8b_coins_pct_drs_max"],
   },
   {
     dbField: "catScanCopay",
     file: "pbp_b8_clin_diag_ther.txt",
-    copayYn: "pbp_b8a_copay_yn",
-    coinsYn: "pbp_b8a_coins_yn",
-    coinsAmt: ["pbp_b8a_coins_pct_min", "pbp_b8a_coins_pct_max"],
+    copayYn: "pbp_b8b_copay_yn",
+    coinsYn: "pbp_b8b_coins_yn",
+    coinsAmt: ["pbp_b8b_coins_pct_drs", "pbp_b8b_coins_pct_drs_max"],
   },
 ];
 

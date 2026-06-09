@@ -80,16 +80,16 @@ const SERVICES = [
   {
     pctField: "mriCoinsPct",
     file: "pbp_b8_clin_diag_ther.txt",
-    coinsYn: "pbp_b8a_coins_yn",
-    minCol: "pbp_b8a_coins_pct_dmc",
-    maxCol: "pbp_b8a_coins_pct_dmc_max",
+    coinsYn: "pbp_b8b_coins_yn",
+    minCol: "pbp_b8b_coins_pct_drs",
+    maxCol: "pbp_b8b_coins_pct_drs_max",
   },
   {
     pctField: "catScanCoinsPct",
     file: "pbp_b8_clin_diag_ther.txt",
-    coinsYn: "pbp_b8a_coins_yn",
-    minCol: "pbp_b8a_coins_pct_dmc",
-    maxCol: "pbp_b8a_coins_pct_dmc_max",
+    coinsYn: "pbp_b8b_coins_yn",
+    minCol: "pbp_b8b_coins_pct_drs",
+    maxCol: "pbp_b8b_coins_pct_drs_max",
   },
 ];
 

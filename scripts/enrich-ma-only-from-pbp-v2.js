@@ -154,16 +154,11 @@ function buildDayStructure(row, prefix, tier) {
   const mriMap = new Map(), catMap = new Map();
   for (const r of parseTSV(path.join(PBP_DIR, 'pbp_b8_clin_diag_ther.txt'))) {
     const k = planKey(r); if (!k) continue;
-    if (r.pbp_b8a_copay_yn === '1') {
-      const v = num(r.pbp_b8a_copay_max_dmc_amt) ?? num(r.pbp_b8a_copay_min_dmc_amt);
-      if (v != null) { mriMap.set(k, v); catMap.set(k, v); }
-    }
+    // MRI / CT = b8b DRS (Diagnostic Radiology Services). b8a is generic lab — do not use for imaging.
     if (r.pbp_b8b_copay_yn === '1') {
-      const drs = num(r.pbp_b8b_copay_amt_drs);
-      if (drs != null) {
-        if (!mriMap.has(k)) mriMap.set(k, drs);
-        if (!catMap.has(k)) catMap.set(k, drs);
-      }
+      const mn = num(r.pbp_b8b_copay_amt_drs), mx = num(r.pbp_b8b_copay_amt_drs_max);
+      const v = (mn != null && mx != null) ? Math.max(mn, mx) : (mx ?? mn);
+      if (v != null) { mriMap.set(k, Math.max(mriMap.get(k) ?? -Infinity, v)); catMap.set(k, Math.max(catMap.get(k) ?? -Infinity, v)); }
     }
   }
   console.log(`  MRI: ${mriMap.size}, CT scan: ${catMap.size}`);

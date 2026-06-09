@@ -89,10 +89,9 @@ const SERVICES = [
   { dbField: "emergencyRoomCopay",      file: "pbp_b4_emerg_urgent.txt",   copayYn: "pbp_b4a_copay_yn",  coinsYn: "pbp_b4a_coins_yn" },
   { dbField: "ambulanceCopay",          file: "pbp_b10_amb_trans.txt",     copayYn: "pbp_b10a_copay_yn", coinsYn: "pbp_b10a_coins_yn" },
   { dbField: "outpatientHospitalCopay", file: "pbp_b9_outpat_hosp.txt",    copayYn: "pbp_b9a_copay_yn",  coinsYn: "pbp_b9a_coins_yn" },
-  // MRI and CAT both share b8a (b8b fallback handled by the main enrichment;
-  // we only care about the b8a coinsurance-only case here).
-  { dbField: "mriCopay",                file: "pbp_b8_clin_diag_ther.txt", copayYn: "pbp_b8a_copay_yn",  coinsYn: "pbp_b8a_coins_yn" },
-  { dbField: "catScanCopay",            file: "pbp_b8_clin_diag_ther.txt", copayYn: "pbp_b8a_copay_yn",  coinsYn: "pbp_b8a_coins_yn" },
+  // MRI and CAT use b8b DRS (Diagnostic Radiology Services), not b8a (generic diagnostic/lab).
+  { dbField: "mriCopay",                file: "pbp_b8_clin_diag_ther.txt", copayYn: "pbp_b8b_copay_yn",  coinsYn: "pbp_b8b_coins_yn" },
+  { dbField: "catScanCopay",            file: "pbp_b8_clin_diag_ther.txt", copayYn: "pbp_b8b_copay_yn",  coinsYn: "pbp_b8b_coins_yn" },
 ];
 const UNIQUE_FIELDS = [...new Set(SERVICES.map((s) => s.dbField))];
 

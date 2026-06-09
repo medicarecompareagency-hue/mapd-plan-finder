@@ -262,20 +262,12 @@ function buildBenefitMap() {
     const k = dbPlanKey(row);
     if (!k) continue;
     const b = getOrCreate(k);
-    if (row.pbp_b8a_copay_yn === "1") {
-      const v = num(row.pbp_b8a_copay_max_dmc_amt) ?? num(row.pbp_b8a_copay_min_dmc_amt);
+    // MRI / CT = b8b DRS (Diagnostic Radiology Services). b8a is generic lab — do not use for imaging.
+    if (row.pbp_b8b_copay_yn === "1") {
+      const mn = num(row.pbp_b8b_copay_amt_drs), mx = num(row.pbp_b8b_copay_amt_drs_max);
+      const v = (mn != null && mx != null) ? Math.max(mn, mx) : (mx ?? mn);
       mergeIfNull(b, "mriCopay", v);
       mergeIfNull(b, "catScanCopay", v);
-    } else if (row.pbp_b8a_copay_yn === "2" && row.pbp_b8a_coins_yn !== "1") {
-      mergeIfNull(b, "mriCopay", 0);
-      mergeIfNull(b, "catScanCopay", 0);
-    }
-    if (row.pbp_b8b_copay_yn === "1") {
-      const drs = num(row.pbp_b8b_copay_amt_drs);
-      if (drs !== null) {
-        mergeIfNull(b, "mriCopay", drs);
-        mergeIfNull(b, "catScanCopay", drs);
-      }
     } else if (row.pbp_b8b_copay_yn === "2" && row.pbp_b8b_coins_yn !== "1") {
       mergeIfNull(b, "mriCopay", 0);
       mergeIfNull(b, "catScanCopay", 0);

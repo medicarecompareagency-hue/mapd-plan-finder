@@ -576,24 +576,16 @@ function buildBenefitMap(extractDir: string): Map<string, PlanBenefits> {
   log("Parsing pbp_b8_clin_diag_ther.txt...");
   for (const row of parseTSV(path.join(extractDir, "pbp_b8_clin_diag_ther.txt"))) {
     const b = getOrCreate(planKey(row));
-    // Diagnostic radiology copay (b8a) — covers MRI, CT, X-ray
-    if (row.pbp_b8a_copay_yn === "1") {
-      b.mriCopay = num(row.pbp_b8a_copay_max_dmc_amt) ?? num(row.pbp_b8a_copay_min_dmc_amt);
-      b.catScanCopay = b.mriCopay; // same category in CMS data
-    }
-    // b8a coinsurance — MRI and CAT share the same diagnostic-radiology bucket
-    const b8aPct = coinsPct(row, "pbp_b8a_coins_yn", "pbp_b8a_coins_pct_dmc", "pbp_b8a_coins_pct_dmc_max");
-    if (b8aPct != null) {
-      b.mriCoinsPct = b8aPct;
-      b.catScanCoinsPct = b8aPct;
-    }
-    // If b8b (outpatient therapeutic) has separate copay for diagnostic radiology svc
+    // MRI / CT / PET = PBP b8b Diagnostic Radiology Services (DRS). NOTE: b8a is generic
+    // outpatient diagnostic procedures/tests/lab — do NOT use it for imaging. Store max of range.
     if (row.pbp_b8b_copay_yn === "1") {
-      const drs = num(row.pbp_b8b_copay_amt_drs);
-      if (drs != null) {
-        b.mriCopay = b.mriCopay ?? drs;
-        b.catScanCopay = b.catScanCopay ?? drs;
-      }
+      const drsMin = num(row.pbp_b8b_copay_amt_drs);
+      const drsMax = num(row.pbp_b8b_copay_amt_drs_max);
+      const drs = (drsMin != null && drsMax != null) ? Math.max(drsMin, drsMax) : (drsMax ?? drsMin);
+      if (drs != null) { b.mriCopay = drs; b.catScanCopay = drs; }
+    } else if (row.pbp_b8b_coins_yn === "1") {
+      const c = num(row.pbp_b8b_coins_pct_drs);
+      if (c != null) { b.mriCoinsPct = c; b.catScanCoinsPct = c; }
     }
   }
 
