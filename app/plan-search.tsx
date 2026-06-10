@@ -270,47 +270,37 @@ function formatOtcCell(plan: Plan): { primary: string; secondary: string | null 
   return formatAllowanceCell(amt, plan.otcMaxPeriod);
 }
 
-// SSBCI chip renderer (2026-05-12). Surfaces chronic-condition-gated
-// benefits as a list of small badges under the OTC/Food Card cells.
-// Carriers like Humana/UHC file these flags without a dollar amount in
-// PBP — the agent still needs to know the benefit exists.
-function SsbciChips({ plan }: { plan: Plan }) {
-  const items: Array<{ label: string; amount: number | null }> = [];
-  if (plan.ssbciOffersFood) items.push({ label: "Food", amount: plan.ssbciFoodAllowance });
-  if (plan.ssbciOffersMeals) items.push({ label: "Meals", amount: plan.ssbciMealsAllowance });
-  if (plan.ssbciOffersUtilities) items.push({ label: "Utilities", amount: plan.ssbciPersonalServicesAllowance });
-  if (plan.ssbciOffersHousing) items.push({ label: "Housing", amount: null });
-  if (plan.ssbciOffersTransportation) items.push({ label: "Transport", amount: plan.ssbciTransportationAllowance });
+// SSBCI extras line (2026-06-10, replaces the old SsbciChips badges).
+// Per Dale: the per-category dollar amounts from the PBP SSBCI filing are
+// unreliable (cadence often unfiled — e.g. Devoted "Utilities $40" that's
+// really part of a $35/mo combined wallet), and the Food Card column already
+// shows the verified conditional amount. So this renders NAMES ONLY, under
+// the Food Card cell, to preserve the "this plan helps with utilities/rent/
+// rides" selling-point signal without asserting wrong numbers. Food itself
+// is excluded — the cell it sits under IS the food signal.
+function SsbciExtras({ plan }: { plan: Plan }) {
+  const items: string[] = [];
+  if (plan.ssbciOffersMeals) items.push("Meals");
+  if (plan.ssbciOffersUtilities) items.push("Utilities");
+  if (plan.ssbciOffersHousing) items.push("Housing");
+  if (plan.ssbciOffersTransportation) items.push("Transport");
   if (items.length === 0) return null;
 
-  // Step D two-tier styling (2026-06-09). Every SSBCI benefit is chronic-gated by CMS
-  // definition, so nothing here is ever "guaranteed/green":
-  //   confirmed === true  → SB PDF analysis found chronic-gating language → AMBER "Chronic only"
-  //   confirmed !== true  → PBP flags the benefit but the SB PDF didn't confirm gating
-  //                         → NEUTRAL GRAY "Verify" (don't assert eligibility we can't prove)
+  // Step D two-tier styling (2026-06-09): amber when the SB PDF confirmed
+  // chronic gating, neutral gray "Verify" when only the PBP flags it.
   const confirmed = plan.ssbciIsConditional === true;
   const note =
     plan.ssbciConditionNote ||
     (confirmed
       ? "Requires a qualifying chronic condition (SSBCI). Not all members qualify — confirm in the plan's Summary of Benefits."
       : "Filed as a Special Supplemental Benefit (SSBCI). Eligibility not confirmed from the plan's Summary of Benefits — verify the qualifying condition before quoting.");
-  const labelText = confirmed ? "Chronic only:" : "Verify:";
-  const labelClass = confirmed
-    ? "text-[10px] text-amber-700 uppercase tracking-wide font-semibold"
-    : "text-[10px] text-gray-500 uppercase tracking-wide font-semibold";
-  const chipClass = confirmed
-    ? "inline-block px-1.5 py-0.5 text-[10px] font-medium bg-amber-50 text-amber-800 border border-amber-200 rounded"
-    : "inline-block px-1.5 py-0.5 text-[10px] font-medium bg-gray-50 text-gray-600 border border-gray-200 rounded";
-
+  const cls = confirmed
+    ? "block mt-1 text-[10px] text-amber-700"
+    : "block mt-1 text-[10px] text-gray-500";
   return (
-    <div className="flex flex-wrap gap-1 mt-1" title={note}>
-      <span className={labelClass}>{labelText}</span>
-      {items.map((it) => (
-        <span key={it.label} className={chipClass}>
-          {it.label}{it.amount != null ? ` $${it.amount.toLocaleString()}` : ""}
-        </span>
-      ))}
-    </div>
+    <span className={cls} title={note}>
+      {confirmed ? "Chronic-only extras: " : "Verify extras: "}{items.join(" · ")}
+    </span>
   );
 }
 
@@ -1432,7 +1422,6 @@ export default function PlanSearch() {
                             </>
                           );
                         })()}
-                        <SsbciChips plan={plan} />
                         <a
                           href={summaryOfBenefitsUrl(plan, filters.zipCode, plan.sbOtcPage).href}
                           target="_blank"
@@ -1496,6 +1485,7 @@ export default function PlanSearch() {
                             )
                             : <div>{dollars(0)}</div>;
                         })()}
+                        <SsbciExtras plan={plan} />
                         <a
                           href={summaryOfBenefitsUrl(plan, filters.zipCode, plan.sbFoodCardPage).href}
                           target="_blank"
