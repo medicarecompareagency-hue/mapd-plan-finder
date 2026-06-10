@@ -250,24 +250,75 @@ function formatAllowanceCell(amt: number | null, per: string | null): { primary:
   return { primary: `$${amt.toLocaleString(undefined, { maximumFractionDigits: 0 })} / yr`, secondary: null };
 }
 
-function formatOtcCell(plan: Plan): { primary: string; secondary: string | null } {
-  // SB-verified wins (matches effectiveOtc in the API route): the amount AND
-  // the cadence both come from the carrier's Summary of Benefits when we have
-  // them, per Dale 2026-06-10.
-  const sbOtc = plan.sbVerifiedOtcAmount;
-  if (sbOtc != null && sbOtc > 0) return formatAllowanceCell(sbOtc, plan.sbVerifiedOtcPeriod);
-  const amt = (plan.otcAllowance && plan.otcAllowance > 0) ? plan.otcAllowance : null;
-  // Humana combined-card fallback in effectiveOtc surfaces sbVerifiedFoodAmount
-  // as the OTC value — pair it with the SB food cadence, not the PBP OTC label.
-  if (amt != null && plan.sbVerifiedFoodAmount === amt) return formatAllowanceCell(amt, plan.sbVerifiedFoodPeriod);
-  // Suppressed case (2026-06-10): the API nulls otcAllowance when the SB shows
-  // the PBP OTC filing is really the chronic-gated wallet. Say so instead of "N/A"
-  // — the gated dollars are visible in the Food Card column / chips.
-  if ((amt == null || amt === 0) && plan.ssbciIsConditional === true
-      && plan.sbVerifiedFoodAmount != null && plan.sbVerifiedFoodAmount > 0) {
-    return { primary: "$0", secondary: "(no all-member OTC — see SB)" };
+// ---------------------------------------------------------------------------
+// OTC / Food Card allowance model + green/red flags (Dale, 2026-06-10).
+// Every spending-card amount renders with a flag:
+//   GREEN "All members"  — benefit is available to every enrollee
+//   RED   "Chronic only" — requires a qualifying chronic condition (SSBCI)
+// When one combined wallet backs both columns (Humana Healthy Options,
+// Devoted Food & Home, Aetna Extra Supports), both cells show the amount,
+// red-flagged, with a "same card" note — instead of the old confusing
+// "N/A" / "$0 — see SB" treatment.
+// ---------------------------------------------------------------------------
+interface AllowanceCell {
+  primary: string;
+  secondary: string | null;
+  gated: boolean | null; // true = red flag, false = green flag, null = no flag (no benefit)
+  sameCard: boolean;
+}
+
+function otcCellModel(plan: Plan): AllowanceCell {
+  const gatedPlan = plan.ssbciIsConditional === true;
+  const sbOtc = plan.sbVerifiedOtcAmount && plan.sbVerifiedOtcAmount > 0 ? plan.sbVerifiedOtcAmount : null;
+  // Route's effectiveOtc already applied: suppression nulls it; Humana
+  // combined-card surfaces sbVerifiedFoodAmount here.
+  const eff = plan.otcAllowance && plan.otcAllowance > 0 ? plan.otcAllowance : null;
+  const sbFood = plan.sbVerifiedFoodAmount && plan.sbVerifiedFoodAmount > 0 ? plan.sbVerifiedFoodAmount : null;
+
+  if (sbOtc) {
+    const f = formatAllowanceCell(sbOtc, plan.sbVerifiedOtcPeriod);
+    return { ...f, gated: false, sameCard: false };
   }
-  return formatAllowanceCell(amt, plan.otcMaxPeriod);
+  if (eff != null && sbFood === eff) {
+    // Combined wallet surfaced as OTC (Humana). Gating follows the plan flag.
+    const f = formatAllowanceCell(eff, plan.sbVerifiedFoodPeriod);
+    return { ...f, gated: gatedPlan, sameCard: true };
+  }
+  if (eff != null) {
+    const f = formatAllowanceCell(eff, plan.otcMaxPeriod);
+    return { ...f, gated: false, sameCard: false };
+  }
+  // No all-member OTC. If a chronic-gated wallet that covers OTC exists,
+  // show ITS amount red-flagged (per Dale: list the amount regardless).
+  const wallet = sbFood ?? (plan.foodCardAllowance && plan.foodCardAllowance > 0 ? plan.foodCardAllowance : null);
+  if (gatedPlan && wallet != null) {
+    const f = formatAllowanceCell(wallet, sbFood ? plan.sbVerifiedFoodPeriod : plan.foodCardMaxPeriod);
+    return { ...f, gated: true, sameCard: true };
+  }
+  // Gated wallet exists but the carrier filed no dollar amount we can read.
+  if (gatedPlan && (plan.ssbciOffersFood || plan.ssbciOffersUtilities)) {
+    return { primary: "—", secondary: "(amount varies — see SB)", gated: true, sameCard: true };
+  }
+  return { primary: dollars(eff), secondary: null, gated: null, sameCard: false };
+}
+
+function AllowanceFlag({ gated }: { gated: boolean | null }) {
+  if (gated == null) return null;
+  return gated ? (
+    <span
+      className="inline-block px-1.5 py-px text-[9px] font-bold bg-red-100 text-red-800 border border-red-300 rounded"
+      title="Requires a qualifying chronic condition (SSBCI). Not all members qualify — confirm in the plan's Summary of Benefits."
+    >
+      CHRONIC ONLY
+    </span>
+  ) : (
+    <span
+      className="inline-block px-1.5 py-px text-[9px] font-bold bg-green-100 text-green-800 border border-green-300 rounded"
+      title="Included for every member of this plan."
+    >
+      ALL MEMBERS
+    </span>
+  );
 }
 
 // SSBCI extras line (2026-06-10, replaces the old SsbciChips badges).
@@ -1207,10 +1258,23 @@ export default function PlanSearch() {
       {/* Results */}
       {searched && (
         <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
-          <div className="px-4 py-3 border-b border-gray-200 bg-gray-50 flex items-center justify-between">
+          <div className="px-4 py-3 border-b border-gray-200 bg-gray-50 flex items-center justify-between flex-wrap gap-2">
             <h2 className="text-sm font-bold text-gray-700 uppercase tracking-wide">
               Results ({plans.length} plan{plans.length !== 1 ? "s" : ""})
             </h2>
+            {/* Flag key for OTC / Food Card columns (Dale, 2026-06-10) */}
+            <div className="flex items-center gap-3 text-[11px] text-gray-600">
+              <span className="flex items-center gap-1">
+                <span className="inline-block px-1.5 py-px text-[9px] font-bold bg-green-100 text-green-800 border border-green-300 rounded">ALL MEMBERS</span>
+                included for every member
+              </span>
+              <span className="flex items-center gap-1">
+                <span className="inline-block px-1.5 py-px text-[9px] font-bold bg-red-100 text-red-800 border border-red-300 rounded">CHRONIC ONLY</span>
+                requires a qualifying chronic condition (SSBCI) — confirm in SB
+              </span>
+              <span className="text-gray-400">|</span>
+              <span>"Same card" = one combined OTC/food wallet</span>
+            </div>
             <p className="text-xs text-gray-500">
               {loading ? "Loading..." : `Ranked best to worst based on selected criteria`}
             </p>
@@ -1414,11 +1478,13 @@ export default function PlanSearch() {
                         title="Amount is filed under OTC in PBP. Many carriers issue combined cards that also cover food, groceries, and/or utilities for eligible (chronic-condition) members — chips show SSBCI benefits only when explicitly filed, and absence does NOT rule out combined-card semantics. Check the carrier's Summary of Benefits for definitive spending rules."
                       >
                         {(() => {
-                          const f = formatOtcCell(plan);
+                          const f = otcCellModel(plan);
                           return (
                             <>
-                              <div>{f.primary}</div>
+                              <div className="mb-0.5"><AllowanceFlag gated={f.gated} /></div>
+                              <div className={f.gated ? "text-red-800" : undefined}>{f.primary}</div>
                               {f.secondary && <div className="text-[10px] text-gray-500">{f.secondary}</div>}
+                              {f.sameCard && <div className="text-[9px] text-gray-500 italic">same card as Food</div>}
                             </>
                           );
                         })()}
@@ -1466,21 +1532,24 @@ export default function PlanSearch() {
                             ? plan.foodCardMaxPeriod
                             : (ssbciFood ? "other" : null);
                           const f = formatAllowanceCell(fc, per);
+                          const sameCard = fc != null && fc > 0 && otcCellModel(plan).sameCard;
                           if (gated && fc && fc > 0) {
                             return (
-                              <div title={note} className="text-amber-800">
-                                <div className="text-[9px] font-semibold uppercase tracking-wide text-amber-700">Conditional</div>
-                                <div>{f.primary}*</div>
-                                {f.secondary && <div className="text-[10px] text-amber-600">{f.secondary}</div>}
-                                <div className="text-[9px] text-amber-600">chronic only</div>
+                              <div title={note}>
+                                <div className="mb-0.5"><AllowanceFlag gated={true} /></div>
+                                <div className="text-red-800">{f.primary}*</div>
+                                {f.secondary && <div className="text-[10px] text-gray-500">{f.secondary}</div>}
+                                {sameCard && <div className="text-[9px] text-gray-500 italic">same card as OTC</div>}
                               </div>
                             );
                           }
                           return fc && fc > 0
                             ? (
                               <>
+                                <div className="mb-0.5"><AllowanceFlag gated={false} /></div>
                                 <div>{f.primary}</div>
                                 {f.secondary && <div className="text-[10px] text-gray-500">{f.secondary}</div>}
+                                {sameCard && <div className="text-[9px] text-gray-500 italic">same card as OTC</div>}
                               </>
                             )
                             : <div>{dollars(0)}</div>;

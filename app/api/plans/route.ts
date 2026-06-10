@@ -308,10 +308,17 @@ export async function GET(request: Request) {
     if (sbOtc != null && sbOtc > 0) return sbOtc;
     const direct = plan.otcAllowance as number | null;
     if (direct != null && direct > 0) {
-      const sbFoodConfirmed = (plan.sbVerifiedFoodAmount as number | null) != null
-        && (plan.sbVerifiedFoodAmount as number) > 0;
+      // Suppress ONLY when the PBP OTC amount is IDENTICAL to the chronic-
+      // gated wallet — that's the same wallet double-filed (e.g. Devoted
+      // D-SNPs where otcAllowance === sbVerifiedFoodAmount exactly).
+      // 2026-06-10 correction per Dale: when PBP files a DIFFERENT amount,
+      // it's a genuine all-member OTC benefit even if the SB doesn't itemize
+      // it (CMS base b13b filings must be uniform for all enrollees) — e.g.
+      // Devoted H9888-1 files $100/qtr all-member OTC alongside its $35/mo
+      // chronic Food & Home Card. Do NOT hide it.
+      const sbFood = plan.sbVerifiedFoodAmount as number | null;
       const gated = plan.ssbciIsConditional === true;
-      if (sbFoodConfirmed && gated) return null;
+      if (gated && sbFood != null && sbFood > 0 && direct === sbFood) return null;
       return direct;
     }
     // Humana combined card: OTC wallet === food wallet, same dollar amount
