@@ -1,0 +1,375 @@
+H0628-17      Aetna Medicare        OH   Aetna Medicare Premier (HMO-POS)
+H0628-21      Aetna Medicare        OH   H0628-21
+H0628-3       Aetna Medicare        OH   Aetna Medicare Premier (HMO-POS)
+H0628-5       Aetna Medicare        OH   Aetna Medicare Premier (HMO-POS)
+H0628-7       Aetna Medicare        KY   Aetna Medicare Premier (HMO-POS)
+H0628-8       Aetna Medicare        KY   Aetna Medicare Premier (HMO-POS)
+H1109-5       Aetna Medicare        GA   Aetna Medicare Select Plan (HMO)
+H1608-16      Aetna Medicare        KS   Aetna Medicare Premier Plus (PPO)
+H1608-21      Aetna Medicare        AR   Aetna Medicare Premier Plus (PPO)
+H1608-27      Aetna Medicare        WV   Aetna Medicare Advantra Gold (PPO)
+H1608-28      Aetna Medicare        GA   Aetna Medicare Advantra Preferred Plan (PPO)
+H1608-31      Aetna Medicare        WV   Aetna Medicare Advantra Credit Value (PPO)
+H1608-40      Aetna Medicare        WV   Aetna Medicare Advantra Value (PPO)
+H1608-54      Aetna Medicare        AR   Aetna Medicare Elite (PPO)
+H1608-72      Aetna Medicare        KS   H1608-72
+H1609-20      Aetna Medicare        FL   Aetna Medicare Select (HMO)
+H1609-28      Aetna Medicare        FL   Aetna Medicare Choice (HMO-POS)
+H1609-93      Aetna Medicare        FL   H1609-93
+H1692-2       Aetna Medicare        WV   Aetna Medicare Advantra Silver (HMO-POS)
+H2293-1       Aetna Medicare        GA   Aetna Medicare Value Plus Plan (PPO)
+H2293-14      Aetna Medicare        TX   Aetna Medicare Freedom Preferred Plan (PPO)
+H2293-16      Aetna Medicare        TX   Aetna Medicare Freedom Plan (PPO)
+H2293-9       Aetna Medicare        GA   Aetna Medicare Eagle Plus Plan (PPO)
+H2663-26      Aetna Medicare        MO   Aetna Medicare Premier (HMO)
+H2663-39      Aetna Medicare        AR   Aetna Medicare Premier (HMO)
+H2663-5       Aetna Medicare        MO   Aetna Medicare Gold Advantage Prime (HMO)
+H2663-53      Aetna Medicare        KS   H2663-53
+H2663-56      Aetna Medicare        MO   H2663-56
+H2663-69      Aetna Medicare        MO   H2663-69
+H3192-1       Aetna Medicare        IL   Aetna Medicare Prime (HMO-POS)
+H3192-13      Aetna Medicare        IL   Aetna Medicare Premier (HMO-POS)
+H3192-20      Aetna Medicare        IN   H3192-20
+H3192-5       Aetna Medicare        IN   Aetna Medicare Prime (HMO-POS)
+H3288-11      Aetna Medicare        TX   Aetna Medicare Choice Plan (PPO)
+H3288-16      Aetna Medicare        TX   Aetna Medicare Choice Plan (PPO)
+H3288-18      Aetna Medicare        TX   Aetna Medicare Choice II Plan (PPO)
+H3288-19      Aetna Medicare        OK   Aetna Medicare Freedom Preferred Plan (PPO)
+H3288-2       Aetna Medicare        TX   Aetna Medicare Choice II Plan (PPO)
+H3288-20      Aetna Medicare        OK   Aetna Medicare Freedom Core Plan (PPO)
+H3288-21      Aetna Medicare        OK   Aetna Medicare Freedom Core Plan (PPO)
+H3288-27      Aetna Medicare        GA   Aetna Medicare Freedom Plan (PPO)
+H3288-4       Aetna Medicare        TX   Aetna Medicare Choice Plan (PPO)
+H3288-42      Aetna Medicare        GA   Aetna Medicare Preferred Premium Plan (PPO)
+H3288-46      Aetna Medicare        TX   Aetna Medicare Choice Plan (PPO)
+H3288-48      Aetna Medicare        TX   Aetna Medicare Choice II Plan (PPO)
+H3288-6       Aetna Medicare        TX   Aetna Medicare Choice Plan (PPO)
+H3288-8       Aetna Medicare        TX   Aetna Medicare Choice Plan (PPO)
+H3931-100     Aetna Medicare        VA   Aetna Medicare Select Plan (HMO-POS)
+H3931-143     Aetna Medicare        VA   Aetna Medicare Select Plan (HMO-POS)
+H4523-1       Aetna Medicare        TX   Aetna Medicare Premier Plan (HMO)
+H4523-15      Aetna Medicare        TX   Aetna Medicare Premier Plan (HMO)
+H4523-21      Aetna Medicare        TX   Aetna Medicare Prime Plan (HMO)
+H5521-116     Aetna Medicare        AL   Aetna Medicare Freedom Plan (PPO)
+H5521-141     Aetna Medicare        TN   Aetna Medicare Premier Plan (PPO)
+H5521-156     Aetna Medicare        KY   Aetna Medicare Value Plan (PPO)
+H5521-16      Aetna Medicare        IL   Aetna Medicare Premier Plus (PPO)
+H5521-171     Aetna Medicare        AL   Aetna Medicare Freedom Plan (PPO)
+H5521-20      Aetna Medicare        OH   Aetna Medicare Premier 2 (PPO)
+H5521-211     Aetna Medicare        IN   Aetna Medicare Value (PPO)
+H5521-218     Aetna Medicare        MS   Aetna Medicare Freedom Plan (PPO)
+H5521-223     Aetna Medicare        IN   Aetna Medicare Value (PPO)
+H5521-224     Aetna Medicare        AL   Aetna Medicare Freedom Plan (PPO)
+H5521-227     Aetna Medicare        AL   Aetna Medicare Freedom Plan (PPO)
+H5521-229     Aetna Medicare        AL   Aetna Medicare Eagle Plan (PPO)
+H5521-231     Aetna Medicare        IN   Aetna Medicare Value (PPO)
+H5521-233     Aetna Medicare        LA   Aetna Medicare Freedom Plan (PPO)
+H5521-235     Aetna Medicare        LA   Aetna Medicare Eagle Plan (PPO)
+H5521-245     Aetna Medicare        SC   Aetna Medicare Premier Plan (PPO)
+H5521-249     Aetna Medicare        SC   Aetna Medicare Premier Plan (PPO)
+H5521-251     Aetna Medicare        SC   Aetna Medicare Value Plan (PPO)
+H5521-254     Aetna Medicare        TN   Aetna Medicare Premier Plan (PPO)
+H5521-260     Aetna Medicare        KY   Aetna Medicare Value Plan (PPO)
+H5521-273     Aetna Medicare        FL   Aetna Medicare Premier Plus (PPO)
+H5521-286     Aetna Medicare        IL   Aetna Medicare Eagle (PPO)
+H5521-302     Aetna Medicare        IN   Aetna Medicare Premier (PPO)
+H5521-322     Aetna Medicare        VA   Aetna Medicare Eagle (PPO)
+H5521-324     Aetna Medicare        MS   Aetna Medicare Eagle Plan (PPO)
+H5521-326     Aetna Medicare        LA   Aetna Medicare Value Plus Plan (PPO)
+H5521-33      Aetna Medicare        FL   Aetna Medicare Premier (PPO)
+H5521-365     Aetna Medicare        LA   Aetna Medicare Signature Plan (PPO)
+H5521-84      Aetna Medicare        VA   Aetna Medicare Essential Plan (PPO)
+H5521-86      Aetna Medicare        IL   Aetna Medicare Value (PPO)
+H5521-88      Aetna Medicare        OH   Aetna Medicare Value Plan (PPO)
+H5521-89      Aetna Medicare        OH   Aetna Medicare Value Plan (PPO)
+H5521-91      Aetna Medicare        GA   Aetna Medicare Essential Plan (PPO)
+H5521-99      Aetna Medicare        IN   Aetna Medicare Value (PPO)
+H7301-2       Aetna Medicare        IL   Aetna Medicare Premier Advantra (PPO)
+H7301-6       Aetna Medicare        IL   Aetna Medicare Value Advantra (PPO)
+H7301-7       Aetna Medicare        IL   Aetna Medicare Value (PPO)
+H7301-9       Aetna Medicare        IL   Aetna Medicare Premier (PPO)
+H1290-20      Devoted Health        FL   H1290-20
+H1290-34      Devoted Health        FL   H1290-34
+H1290-5       Devoted Health        FL   Devoted CORE Orlando (HMO)
+H1290-53      Devoted Health        FL   H1290-53
+H1290-77      Devoted Health        FL   H1290-77
+H3080-1       Devoted Health        AL   Devoted CORE Alabama (HMO)
+H7605-16      Devoted Health        TN   H7605-16
+H7605-4       Devoted Health        TN   Devoted CORE Tennessee (HMO)
+H7993-1       Devoted Health        TX   Devoted CORE Greater Houston (HMO)
+H7993-2       Devoted Health        TX   Devoted PRIME Greater Houston (HMO)
+H7993-6       Devoted Health        TX   Devoted GIVEBACK Greater Houston (HMO)
+H9231-6       Devoted Health        TN   H9231-6
+H9888-11      Devoted Health        AL   H9888-11
+H9888-6       Devoted Health        AL   H9888-6
+H0439-8       HealthSpring          GA   Cigna Preferred Medicare (HMO)
+H0672-13      HealthSpring          KY   Cigna Preferred Medicare (HMO)
+H4513-49      HealthSpring          TN   Cigna Preferred Medicare (HMO)
+H4513-50      HealthSpring          AR   Cigna Preferred Medicare (HMO)
+H4513-61      HealthSpring          TX   Cigna Preferred Medicare (HMO)
+H4513-74      HealthSpring          TX   Cigna Preferred Medicare (HMO)
+H5410-59      HealthSpring          FL   H5410-59
+H7787-801     HealthSpring          TX   H7787-801
+H7787-802     HealthSpring          TX   H7787-802
+H7787-803     HealthSpring          TX   H7787-803
+H7787-804     HealthSpring          TX   H7787-804
+H7787-805     HealthSpring          TX   H7787-805
+H7787-806     HealthSpring          TX   H7787-806
+H7787-807     HealthSpring          TX   H7787-807
+H7787-808     HealthSpring          TX   H7787-808
+H7787-809     HealthSpring          TX   H7787-809
+H7787-810     HealthSpring          TX   H7787-810
+H7787-811     HealthSpring          TX   H7787-811
+H7787-812     HealthSpring          TX   H7787-812
+H7787-813     HealthSpring          TX   H7787-813
+H7787-814     HealthSpring          TX   H7787-814
+H7787-815     HealthSpring          TX   H7787-815
+H7787-816     HealthSpring          TX   H7787-816
+H7787-818     HealthSpring          TX   H7787-818
+H7787-819     HealthSpring          TX   H7787-819
+H7787-820     HealthSpring          TX   H7787-820
+H7787-821     HealthSpring          TX   H7787-821
+H7787-822     HealthSpring          TX   H7787-822
+H7787-823     HealthSpring          TX   H7787-823
+H7787-824     HealthSpring          TX   H7787-824
+H7787-825     HealthSpring          TX   H7787-825
+H7787-826     HealthSpring          TX   H7787-826
+H7787-827     HealthSpring          TX   H7787-827
+H7849-102     HealthSpring          AR   Cigna True Choice Medicare (PPO)
+H7849-143     HealthSpring          AL   H7849-143
+H7849-144     HealthSpring          MS   H7849-144
+H7849-80      HealthSpring          IL   Cigna True Choice Savings Medicare (PPO)
+H9460-1       HealthSpring          MO   Cigna Preferred Medicare (HMO)
+H0028-14      Humana                IL   Humana Gold Plus H0028-014 (HMO)
+H0028-17      Humana                KS   Humana Gold Plus H0028-017 (HMO)
+H0028-54      Humana                KS   Humana Gold Plus H0028-054 (HMO-POS)
+H0028-59      Humana                TX   Humana Gold Plus H0028-059 (HMO)
+H0292-2       Humana                KY   Humana Gold Plus H0292-002 (HMO)
+H0473-4       Humana                TX   HumanaChoice H0473-004 (PPO)
+H0473-5       Humana                TX   HumanaChoice H0473-005 (PPO)
+H1036-271     Humana                FL   Humana Gold Plus H1036-271 (HMO)
+H1036-336     Humana                FL   H1036-336
+H1036-338     Humana                FL   H1036-338
+H1036-817     Humana                KY   H1036-817
+H1036-821     Humana                FL   H1036-821
+H1036-828     Humana                FL   H1036-828
+H1036-832     Humana                FL   H1036-832
+H1468-13      Humana                IL   Humana Gold Plus H1468-013 (HMO)
+H1951-48      Humana                LA   Humana Gold Plus H1951-048 (HMO)
+H4141-17      Humana                GA   Humana Gold Plus H4141-017 (HMO)
+H4141-801     Humana                GA   H4141-801
+H4141-802     Humana                GA   H4141-802
+H4141-805     Humana                GA   H4141-805
+H4141-806     Humana                GA   H4141-806
+H4461-25      Humana                TN   Humana Gold Plus H4461-025 (HMO)
+H4461-35      Humana                TN   Humana Gold Plus H4461-035 (HMO)
+H4461-39      Humana                TN   Humana Gold Plus H4461-039 (HMO)
+H4461-4       Humana                TN   Humana Honor (HMO)
+H4461-55      Humana                TX   H4461-55
+H4461-68      Humana                TX   H4461-68
+H5216-106     Humana                OH   HumanaChoice H5216-106 (PPO)
+H5216-114     Humana                IN   HumanaChoice H5216-114 (PPO)
+H5216-124     Humana                WV   HumanaChoice H5216-124 (PPO)
+H5216-136     Humana                MS   HumanaChoice H5216-136 (PPO)
+H5216-152     Humana                VA   HumanaChoice H5216-152 (PPO)
+H5216-154     Humana                GA   HumanaChoice H5216-154 (PPO)
+H5216-157     Humana                GA   HumanaChoice H5216-157 (PPO)
+H5216-160     Humana                MS   Humana Value Plus H5216-160 (PPO)
+H5216-179     Humana                AL   HumanaChoice H5216-179 (PPO)
+H5216-180     Humana                TN   HumanaChoice H5216-180 (PPO)
+H5216-188     Humana                KY   HumanaChoice H5216-188 (PPO)
+H5216-19      Humana                WV   HumanaChoice H5216-019 (PPO)
+H5216-192     Humana                IN   HumanaChoice H5216-192 (PPO)
+H5216-201     Humana                LA   Humana Honor (PPO)
+H5216-203     Humana                GA   HumanaChoice H5216-203 (PPO)
+H5216-207     Humana                GA   HumanaChoice H5216-207 (PPO)
+H5216-226     Humana                KY   HumanaChoice H5216-226 (PPO)
+H5216-229     Humana                IN   HumanaChoice H5216-229 (PPO)
+H5216-23      Humana                OH   HumanaChoice H5216-023 (PPO)
+H5216-231     Humana                AR   HumanaChoice H5216-231 (PPO)
+H5216-242     Humana                GA   H5216-242
+H5216-243     Humana                SC   H5216-243
+H5216-258     Humana                IL   Humana Honor (PPO)
+H5216-264     Humana                AR   HumanaChoice H5216-264 (PPO)
+H5216-266     Humana                VA   HumanaChoice H5216-266 (PPO)
+H5216-269     Humana                AL   HumanaChoice H5216-269 (PPO)
+H5216-280     Humana                GA   HumanaChoice H5216-280 (PPO)
+H5216-283     Humana                IL   HumanaChoice H5216-283 (PPO)
+H5216-284     Humana                GA   HumanaChoice H5216-284 (PPO)
+H5216-285     Humana                KY   HumanaChoice H5216-285 (PPO)
+H5216-286     Humana                GA   Humana Honor (PPO)
+H5216-300     Humana                MS   HumanaChoice H5216-300 (PPO)
+H5216-304     Humana                FL   HumanaChoice Florida H5216-304 (PPO)
+H5216-308     Humana                VA   HumanaChoice H5216-308 (PPO)
+H5216-309     Humana                OH   HumanaChoice H5216-309 (PPO)
+H5216-310     Humana                VA   Humana Honor (PPO)
+H5216-316     Humana                OK   HumanaChoice H5216-316 (PPO)
+H5216-317     Humana                KY   HumanaChoice H5216-317 (PPO)
+H5216-318     Humana                MO   HumanaChoice H5216-318 (PPO)
+H5216-322     Humana                KY   HumanaChoice H5216-322 (PPO)
+H5216-325     Humana                LA   HumanaChoice H5216-325 (PPO)
+H5216-327     Humana                WV   HumanaChoice H5216-327 (PPO)
+H5216-328     Humana                WV   HumanaChoice H5216-328 (PPO)
+H5216-337     Humana                AR   HumanaChoice H5216-337 (PPO)
+H5216-345     Humana                GA   HumanaChoice H5216-345 (PPO)
+H5216-347     Humana                SC   HumanaChoice H5216-347 (PPO)
+H5216-348     Humana                TX   Humana Honor (PPO)
+H5216-351     Humana                TX   Humana USAA Honor with Rx (PPO)
+H5216-352     Humana                TX   HumanaChoice H5216-352 (PPO)
+H5216-358     Humana                TX   HumanaChoice H5216-358 (PPO)
+H5216-360     Humana                TX   HumanaChoice H5216-360 (PPO)
+H5216-362     Humana                VA   H5216-362
+H5216-369     Humana                TX   H5216-369
+H5216-400     Humana                IN   H5216-400
+H5216-401     Humana                OH   H5216-401
+H5216-406     Humana                VA   H5216-406
+H5216-42      Humana                TX   HumanaChoice H5216-042 (PPO)
+H5216-43      Humana                TX   HumanaChoice H5216-043 (PPO)
+H5216-446     Humana                KY   H5216-446
+H5216-447     Humana                WV   H5216-447
+H5216-452     Humana                FL   H5216-452
+H5216-453     Humana                OH   H5216-453
+H5216-64      Humana                LA   HumanaChoice H5216-064 (PPO)
+H5216-72      Humana                FL   HumanaChoice Florida H5216-072 (PPO)
+H5216-83      Humana                OK   HumanaChoice H5216-083 (PPO)
+H5216-97      Humana                TN   HumanaChoice H5216-097 (PPO)
+H5377-2       Humana                VA   Humana Gold Plus H5377-002 (HMO-POS)
+H5525-30      Humana                OH   HumanaChoice H5525-030 (PPO)
+H5525-4       Humana                IL   HumanaChoice H5525-004 (PPO)
+H5525-41      Humana                OH   Humana Value Plus H5525-041 (PPO)
+H5525-42      Humana                OH   HumanaChoice H5525-042 (PPO)
+H5525-8       Humana                KY   HumanaChoice H5525-008 (PPO)
+H5619-111     Humana                AR   Humana Gold Plus H5619-111 (HMO-POS)
+H5619-113     Humana                WV   Humana Gold Plus H5619-113 (HMO)
+H5619-152     Humana                SC   Humana Gold Plus H5619-152 (HMO)
+H5619-161     Humana                SC   H5619-161
+H5619-47      Humana                VA   Humana Gold Plus H5619-047 (HMO)
+H5619-49      Humana                IN   Humana Gold Plus H5619-049 (HMO-POS)
+H5619-51      Humana                IN   Humana Gold Plus H5619-051 (HMO-POS)
+H5619-71      Humana                KY   Humana Gold Plus H5619-071 (HMO)
+H5619-802     Humana                SC   H5619-802
+H6622-13      Humana                OH   Humana Gold Plus H6622-013 (HMO-POS)
+H6622-23      Humana                OH   Humana Cleveland Clinic Preferred (HMO-POS)
+H6622-801     Humana                KY   H6622-801
+H7284-9       Humana                FL   HumanaChoice Florida H7284-009 (PPO)
+H8145-32      Humana                OH   Humana Gold Choice H8145-032 (PFFS)
+H8145-4       Humana                VA   Humana Gold Choice H8145-004 (PFFS)
+H8145-42      Humana                VA   Humana Gold Choice H8145-042 (PFFS)
+H8145-52      Humana                WV   Humana Gold Choice H8145-052 (PFFS)
+H8145-69      Humana                GA   Humana Gold Choice H8145-069 (PFFS)
+H8145-84      Humana                TX   Humana Gold Choice H8145-084 (PFFS)
+H0432-3       UnitedHealthcare      AL   AARP Medicare Advantage Plan 1 (HMO-POS)
+H0609-61      UnitedHealthcare      TX   H0609-61
+H0609-62      UnitedHealthcare      TX   H0609-62
+H0609-70      UnitedHealthcare      TX   H0609-70
+H1045-48      UnitedHealthcare      FL   H1045-48
+H1278-13      UnitedHealthcare      TX   AARP Medicare Advantage Choice (PPO)
+H1278-14      UnitedHealthcare      TX   AARP Medicare Advantage Choice (PPO)
+H1278-16      UnitedHealthcare      TX   AARP Medicare Advantage Choice (PPO)
+H1278-21      UnitedHealthcare      TX   H1278-21
+H1278-27      UnitedHealthcare      TX   H1278-27
+H1278-5       UnitedHealthcare      TX   AARP Medicare Advantage Choice (PPO)
+H2001-108     UnitedHealthcare      SC   H2001-108
+H2001-115     UnitedHealthcare      VA   H2001-115
+H2001-76      UnitedHealthcare      SC   H2001-76
+H2001-826     UnitedHealthcare      VA   H2001-826
+H2001-840     UnitedHealthcare      OK   H2001-840
+H2001-850     UnitedHealthcare      AR   H2001-850
+H2001-859     UnitedHealthcare      AR   H2001-859
+H2001-868     UnitedHealthcare      AR   H2001-868
+H2001-869     UnitedHealthcare      VA   H2001-869
+H2001-870     UnitedHealthcare      OK   H2001-870
+H2001-881     UnitedHealthcare      MO   H2001-881
+H2001-896     UnitedHealthcare      IL   H2001-896
+H2001-897     UnitedHealthcare      WV   H2001-897
+H2001-95      UnitedHealthcare      VA   H2001-95
+H2406-125     UnitedHealthcare      VA   H2406-125
+H2406-18      UnitedHealthcare      FL   AARP Medicare Advantage Choice (PPO)
+H2406-35      UnitedHealthcare      IN   H2406-35
+H2406-43      UnitedHealthcare      IL   H2406-43
+H2406-50      UnitedHealthcare      TX   H2406-50
+H2406-67      UnitedHealthcare      IN   H2406-67
+H2802-28      UnitedHealthcare      MO   AARP Medicare Advantage Plan 1 (HMO-POS)
+H2802-29      UnitedHealthcare      MO   AARP Medicare Advantage Plan 1 (HMO-POS)
+H2802-32      UnitedHealthcare      KS   AARP Medicare Advantage Plan 2 (HMO-POS)
+H2802-33      UnitedHealthcare      KS   AARP Medicare Advantage Plan 1 (HMO-POS)
+H2802-48      UnitedHealthcare      MO   AARP Medicare Advantage Plan 2 (HMO-POS)
+H2802-56      UnitedHealthcare      IN   H2802-56
+H2802-64      UnitedHealthcare      AL   H2802-64
+H2802-7       UnitedHealthcare      IN   AARP Medicare Advantage Profile (HMO-POS)
+H4514-15      UnitedHealthcare      TX   H4514-15
+H4514-16      UnitedHealthcare      TX   H4514-16
+H4514-21      UnitedHealthcare      TX   H4514-21
+H4514-23      UnitedHealthcare      TX   H4514-23
+H4514-24      UnitedHealthcare      TX   H4514-24
+H4527-37      UnitedHealthcare      TX   AARP Medicare Advantage Plan 1 (HMO-POS)
+H4527-39      UnitedHealthcare      TX   H4527-39
+H4527-42      UnitedHealthcare      TX   H4527-42
+H4527-45      UnitedHealthcare      TX   AARP Medicare Advantage (HMO-POS)
+H4527-54      UnitedHealthcare      TX   H4527-54
+H5253-100     UnitedHealthcare      KY   AARP Medicare Advantage Flex Plan 2 (HMO-POS)
+H5253-108     UnitedHealthcare      IL   AARP Medicare Advantage (HMO-POS)
+H5253-111     UnitedHealthcare      VA   AARP Medicare Advantage Plan 1 (HMO-POS)
+H5253-112     UnitedHealthcare      VA   AARP Medicare Advantage Plan 2 (HMO-POS)
+H5253-171     UnitedHealthcare      OK   H5253-171
+H5253-173     UnitedHealthcare      OK   H5253-173
+H5253-195     UnitedHealthcare      VA   H5253-195
+H5253-197     UnitedHealthcare      VA   H5253-197
+H5253-204     UnitedHealthcare      OK   H5253-204
+H5253-84      UnitedHealthcare      TN   AARP Medicare Advantage Plan 2 (HMO-POS)
+H5253-99      UnitedHealthcare      KY   AARP Medicare Advantage Flex Plan 1 (HMO-POS)
+H5435-1       UnitedHealthcare      KS   UnitedHealthcare MedicareDirect Patriot (PFFS)
+H5435-24      UnitedHealthcare      KS   UnitedHealthcare MedicareDirect Rx (PFFS)
+H5652-1       UnitedHealthcare      VA   Erickson Advantage Signature with Drugs (HMO-POS)
+H5652-4       UnitedHealthcare      FL   H5652-4
+H8768-13      UnitedHealthcare      KY   AARP Medicare Advantage Choice (PPO)
+H8768-16      UnitedHealthcare      OK   AARP Medicare Advantage Choice Plan 2 (PPO)
+H8768-18      UnitedHealthcare      IL   AARP Medicare Advantage Patriot (PPO)
+H8768-21      UnitedHealthcare      OH   AARP Medicare Advantage Patriot (PPO)
+H8768-23      UnitedHealthcare      KS   AARP Medicare Advantage Choice Plan 2 (PPO)
+H8768-25      UnitedHealthcare      KS   AARP Medicare Advantage Patriot (PPO)
+H8768-26      UnitedHealthcare      MO   AARP Medicare Advantage Choice (PPO)
+H8768-28      UnitedHealthcare      OK   AARP Medicare Advantage Patriot (PPO)
+H8768-30      UnitedHealthcare      MS   AARP Medicare Advantage Choice Plan 1 (PPO)
+H8768-31      UnitedHealthcare      MS   AARP Medicare Advantage Patriot (PPO)
+H8768-34      UnitedHealthcare      MS   AARP Medicare Advantage Choice Plan 2 (PPO)
+H8768-5       UnitedHealthcare      IL   AARP Medicare Advantage Choice (PPO)
+H8768-7       UnitedHealthcare      OH   AARP Medicare Advantage Choice Flex (PPO)
+H8768-8       UnitedHealthcare      OK   AARP Medicare Advantage Choice Plan 1 (PPO)
+H0111-1       Wellcare              GA   Wellcare No Premium Open (PPO)
+H0111-4       Wellcare              GA   H0111-4
+H0174-18      Wellcare              TX   Wellcare Giveback (HMO)
+H0174-23      Wellcare              TX   H0174-23
+H0174-24      Wellcare              TX   H0174-24
+H0174-26      Wellcare              TX   H0174-26
+H1032-199     Wellcare              FL   Wellcare No Premium (HMO)
+H1032-205     Wellcare              FL   Wellcare No Premium (HMO)
+H1032-210     Wellcare              FL   Wellcare Giveback (HMO)
+H1032-211     Wellcare              FL   Wellcare No Premium (HMO)
+H1032-212     Wellcare              FL   Wellcare Giveback (HMO)
+H1032-237     Wellcare              FL   H1032-237
+H1112-34      Wellcare              GA   Wellcare Patriot No Premium (HMO-POS)
+H1112-47      Wellcare              GA   H1112-47
+H1112-48      Wellcare              GA   H1112-48
+H1112-49      Wellcare              GA   H1112-49
+H1416-26      Wellcare              MS   Wellcare Low Premium (HMO-POS)
+H1416-43      Wellcare              AR   H1416-43
+H1416-44      Wellcare              MS   H1416-44
+H1416-71      Wellcare              MS   Wellcare No Premium (HMO)
+H1416-81      Wellcare              MS   H1416-81
+H1416-9       Wellcare              IL   Wellcare No Premium (HMO-POS)
+H2491-10      Wellcare              LA   Wellcare Assist (HMO)
+H2491-32      Wellcare              LA   H2491-32
+H2491-33      Wellcare              LA   H2491-33
+H3975-1       Wellcare              KY   Wellcare No Premium Open (PPO)
+H4506-10      Wellcare              TX   Wellcare TexanPlus Patriot Giveback (HMO)
+H4506-30      Wellcare              TX   H4506-30
+H5779-7       Wellcare              IL   Wellcare No Premium Exclusive (HMO)
+H7323-12      Wellcare              TX   H7323-12
+H7326-7       Wellcare              SC   Wellcare Assist Open (PPO)
+H7518-1       Wellcare              MO   Wellcare No Premium Open (PPO)
+H7518-3       Wellcare              MO   H7518-3
+H9730-10      Wellcare              KY   Wellcare Assist (HMO)
+H9730-11      Wellcare              KY   H9730-11
+H9730-4       Wellcare              KY   H9730-4
+H9730-7       Wellcare              KY   Wellcare Giveback (HMO)

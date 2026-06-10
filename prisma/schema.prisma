@@ -125,6 +125,7 @@ model Plan {
   otcAllowance              Float?   @default(0)
   otcMaxPeriod              String?
   foodCardAllowance         Float?   @default(0)
+  foodCardMaxPeriod         String?
   dentalAnnualMax           Float?   @default(0)
   visionAnnualMax           Float?   @default(0)
   hearingAnnualMax          Float?   @default(0)

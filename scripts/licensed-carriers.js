@@ -1,12 +1,11 @@
 // Canonical licensed-carrier allowlist for all import/backfill/acquire scripts.
 // CMS organizationName values, case-sensitive, exactly as stored in the Plan table.
-// Source of truth: lib/licensed-carriers.ts (same list, TypeScript version for app code).
-// Last verified: 2026-06-04.
+// Source of truth: lib/licensed-carriers.ts (app-side; also includes Cigna/Cigna Healthcare
+// for API filter safety, but those names have 0 plans in the 2026 DB — normalized to HealthSpring).
+// Last verified: 2026-06-08 (DB query confirmed 6 distinct org names, no Cigna rows).
 
 const LICENSED_CARRIERS = [
-  "HealthSpring",      // 2026 rebrand back from Cigna; CMS data lags ~1 year
-  "Cigna",             // pre-2026 CMS spelling (HealthSpring rebrand lag)
-  "Cigna Healthcare",  // 2019-era CMS spelling (HealthSpring rebrand lag)
+  "HealthSpring",      // 2026 rebrand; all Cigna/Cigna Healthcare rows normalized to this
   "UnitedHealthcare",  // includes AARP Medicare Advantage (UHC brand)
   "Wellcare",
   "Aetna Medicare",

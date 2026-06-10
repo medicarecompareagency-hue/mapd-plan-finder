@@ -175,9 +175,11 @@ function buildBenefitMap() {
     const k = dbPlanKey(row);
     if (!k) continue;
     const b = getOrCreate(k);
-    // PCP
+    // PCP — range rule per Dale: when min != max, store the MAX.
     if (row.pbp_b7a_copay_yn === "1") {
-      mergeIfNull(b, "pcpCopay", num(row.pbp_b7a_copay_amt_mc_min));
+      const pMin = num(row.pbp_b7a_copay_amt_mc_min);
+      const pMax = num(row.pbp_b7a_copay_amt_mc_max);
+      mergeIfNull(b, "pcpCopay", (pMax != null && pMin != null) ? Math.max(pMin, pMax) : (pMax ?? pMin));
     } else if (row.pbp_b7a_copay_yn === "2" && row.pbp_b7a_coins_yn !== "1") {
       mergeIfNull(b, "pcpCopay", 0);
     }
@@ -211,8 +213,13 @@ function buildBenefitMap() {
     const k = dbPlanKey(row);
     if (!k) continue;
     const b = getOrCreate(k);
+    // Range rule per Dale: store the MAX, not the min. The min is often a
+    // waived/$0 case (e.g. Devoted H9888-1 files $0–$405 ground ambulance;
+    // showing $0 is misleading — caught by Dale 2026-06-10).
     if (row.pbp_b10a_copay_yn === "1") {
-      mergeIfNull(b, "ambulanceCopay", num(row.pbp_b10a_copay_gas_amt_min));
+      const aMin = num(row.pbp_b10a_copay_gas_amt_min);
+      const aMax = num(row.pbp_b10a_copay_gas_amt_max);
+      mergeIfNull(b, "ambulanceCopay", (aMax != null && aMin != null) ? Math.max(aMin, aMax) : (aMax ?? aMin));
     } else if (row.pbp_b10a_copay_yn === "2" && row.pbp_b10a_coins_yn !== "1") {
       mergeIfNull(b, "ambulanceCopay", 0);
     }

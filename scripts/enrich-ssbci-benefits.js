@@ -82,13 +82,17 @@ function num(val) {
   return isNaN(n) ? null : n;
 }
 
-// Same period codes as import-pbp.js:
-//   1 = Annual/Plan year (×1)
-//   2 = Per Month (×12)
-//   3 = Per Quarter (×4)
-//   4 = Per 6 Months (×2)
-//   5 = Other/unspecified (×1)
-const PERIOD_MULT = { '1': 1, '2': 12, '3': 4, '4': 2, '5': 1 };
+// Same period codes as import-pbp.js. Codebook per
+// PBP_Benefits_2026_dictionary.xlsx (verified 2026-06-10 — the old table
+// here was wrong; these are the actual CMS value labels):
+//   1 = Every three years (×1/3)
+//   2 = Every two years   (×1/2)
+//   3 = Every year        (×1)
+//   4 = Every six months  (×2)
+//   5 = Every three months / quarter (×4)
+//   6 = Other, Describe   (cadence unknown, ×1)
+//   7 = Every month       (×12)
+const PERIOD_MULT = { '1': 1 / 3, '2': 1 / 2, '3': 1, '4': 2, '5': 4, '6': 1, '7': 12 };
 
 function annualize(amt, perCode) {
   const n = num(amt);

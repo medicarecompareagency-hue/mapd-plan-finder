@@ -65,8 +65,9 @@ interface Plan {
   otcAllowance: number | null;
   sbVerifiedOtcAmount: number | null;
   sbVerifiedFoodAmount: number | null;
-  otcMaxPeriod: string | null; // "month", "quarter", "year", "6 months", "episode", "benefit period", or null
+  otcMaxPeriod: string | null; // "month", "quarter", "year", "6 months", "2 years", "3 years", "other", or null
   foodCardAllowance: number | null;
+  foodCardMaxPeriod: string | null; // same label set as otcMaxPeriod
   dentalBenefits: string | null;
   hearingBenefits: string | null;
   visionBenefits: string | null;
@@ -214,25 +215,38 @@ function summaryOfBenefitsUrl(
   };
 }
 
-// OTC cell formatter (2026-05-12). The DB stores the ANNUALIZED otc
-// amount (import-pbp.js multiplies by 12 for monthly filings, 4 for
-// quarterly, etc.). When we know the original filing period we compute
-// back to the carrier's filed cadence so the agent sees "$300 / month"
-// instead of just "$3,600". Falls back to "$X / yr" when the period is
-// "year" / "other" / unknown.
-function formatOtcCell(plan: Plan): { primary: string; secondary: string | null } {
-  const amt = (plan.otcAllowance && plan.otcAllowance > 0) ? plan.otcAllowance : (plan.sbVerifiedOtcAmount ?? plan.otcAllowance);
+// Allowance cell formatter (2026-05-12, generalized for OTC + Food Card
+// 2026-06-10). The DB stores the ANNUALIZED amount (import-pbp.js /
+// rederive-otc-food-allowances.js multiply by 12 for monthly filings, 4
+// for quarterly, etc. — periodicity codebook fixed 2026-06-10). When we
+// know the filed cadence we compute back so the agent sees "$40 / qtr
+// ($160 / yr)" exactly as the Summary of Benefits states it. "other"
+// (PBP code 6) means the carrier filed a custom cadence — we show the
+// amount as filed and tell the agent to confirm in the SB, rather than
+// claiming a period we don't know.
+function formatAllowanceCell(amt: number | null, per: string | null): { primary: string; secondary: string | null } {
   if (amt == null || amt === 0) return { primary: dollars(amt), secondary: null };
-  const per = plan.otcMaxPeriod;
-  const mult: Record<string, number> = { month: 12, quarter: 4, "6 months": 2 };
+  const mult: Record<string, number> = { month: 12, quarter: 4, "6 months": 2, "2 years": 0.5, "3 years": 1 / 3 };
+  const short: Record<string, string> = { month: "mo", quarter: "qtr", "6 months": "6 mo", "2 years": "2 yrs", "3 years": "3 yrs" };
+  if (per === "other") {
+    return {
+      primary: `$${amt.toLocaleString(undefined, { maximumFractionDigits: 0 })}`,
+      secondary: "(period varies — check SB)",
+    };
+  }
   if (per && mult[per]) {
     const orig = amt / mult[per];
     return {
-      primary: `$${orig.toLocaleString(undefined, { maximumFractionDigits: 0 })} / ${per === "6 months" ? "6 mo" : per === "month" ? "mo" : "qtr"}`,
+      primary: `$${orig.toLocaleString(undefined, { maximumFractionDigits: 0 })} / ${short[per]}`,
       secondary: `($${amt.toLocaleString(undefined, { maximumFractionDigits: 0 })} / yr)`,
     };
   }
   return { primary: `$${amt.toLocaleString(undefined, { maximumFractionDigits: 0 })} / yr`, secondary: null };
+}
+
+function formatOtcCell(plan: Plan): { primary: string; secondary: string | null } {
+  const amt = (plan.otcAllowance && plan.otcAllowance > 0) ? plan.otcAllowance : (plan.sbVerifiedOtcAmount ?? plan.otcAllowance);
+  return formatAllowanceCell(amt, plan.otcMaxPeriod);
 }
 
 // SSBCI chip renderer (2026-05-12). Surfaces chronic-condition-gated
@@ -1429,17 +1443,34 @@ export default function PlanSearch() {
                             || (ssbciFood && fc != null && fc === plan.ssbciFoodAllowance);
                           const note = plan.ssbciConditionNote
                             || "Requires a qualifying chronic condition (SSBCI). Not all members qualify - confirm in the plan's Summary of Benefits.";
+                          // Filed cadence only applies when the amount came from the
+                          // PBP food filing (foodCardAllowance). SB-verified amounts are
+                          // annualized (show "/yr"). SSBCI b19b aggregate-card amounts are
+                          // filed with NO periodicity in PBP (verified 2026-06-10: Aetna
+                          // H5521-229 files $180 that its SB calls "$180 quarterly";
+                          // Devoted H9888-1 files $40 that its SB calls "$35 per month")
+                          // — so for those we must not claim a cadence.
+                          const per = (!sbVerified && directFood)
+                            ? plan.foodCardMaxPeriod
+                            : (!sbVerified && ssbciFood ? "other" : null);
+                          const f = formatAllowanceCell(fc, per);
                           if (gated && fc && fc > 0) {
                             return (
                               <div title={note} className="text-amber-800">
                                 <div className="text-[9px] font-semibold uppercase tracking-wide text-amber-700">Conditional</div>
-                                <div>${fc.toLocaleString(undefined, { maximumFractionDigits: 0 })} / yr*</div>
+                                <div>{f.primary}*</div>
+                                {f.secondary && <div className="text-[10px] text-amber-600">{f.secondary}</div>}
                                 <div className="text-[9px] text-amber-600">chronic only</div>
                               </div>
                             );
                           }
                           return fc && fc > 0
-                            ? <div>${fc.toLocaleString(undefined, { maximumFractionDigits: 0 })} / yr</div>
+                            ? (
+                              <>
+                                <div>{f.primary}</div>
+                                {f.secondary && <div className="text-[10px] text-gray-500">{f.secondary}</div>}
+                              </>
+                            )
                             : <div>{dollars(0)}</div>;
                         })()}
                         <a

@@ -35,23 +35,31 @@ const DRY_RUN  = process.env.PBP_DRY_RUN === '1';
 const VERBOSE  = process.env.PBP_VERBOSE === '1';
 
 // PBP per-codes -> annual multiplier.
-// Source: PBP Benefits codebook. Most files use codes 1-5; OTC also uses 5.
-//   1 = Per Year         (x1)
-//   2 = Per Month        (x12)
-//   3 = Per Quarter      (x4)
-//   4 = Per 6 Months     (x2)
-//   5 = Other / unspecified - for OTC fields plans typically file as
-//       "Per Month" so we annualize by 12. For all other fields we
-//       fall back to x1 (treat the amount as already annual).
-const PERIOD_MULT_DEFAULT = { '1': 1, '2': 12, '3': 4, '4': 2, '5': 1 };
-const PERIOD_MULT_OTC     = { '1': 1, '2': 12, '3': 4, '4': 2, '5': 12 };
+// Source: PBP_Benefits_2026_dictionary.xlsx "Periodicity" value labels for
+// pbp_b13b_otc_maxplan_per / pbp_b13c_maxplan_per / pbp_b13i_*_maxplan_per
+// (VERIFIED against the dictionary 2026-06-10 — these codes are NOT the
+// year/month/quarter scheme this script previously assumed):
+//   1 = Every three years (x 1/3)
+//   2 = Every two years   (x 1/2)
+//   3 = Every year        (x1)
+//   4 = Every six months  (x2)
+//   5 = Every three months / quarterly (x4)   <-- most common OTC filing
+//   6 = Other, Describe   (cadence unknown — keep amount as filed, x1)
+//   7 = Every month       (x12)
+// The old table mapped 5 -> x12 ("month"), which overstated every quarterly
+// OTC card 3x and mislabeled it "month". Caught by Dale 2026-06-10 via the
+// Shelby County AL top-5: Cigna H4513-46 files $40 per=5 and its SB PDF says
+// "$40 allowance each quarter"; Aetna H5521-229 files $180 per=5 and its SB
+// says "$180 quarterly benefit amount".
+const PERIOD_MULT_DEFAULT = { '1': 1 / 3, '2': 1 / 2, '3': 1, '4': 2, '5': 4, '6': 1, '7': 12 };
+const PERIOD_MULT_OTC     = PERIOD_MULT_DEFAULT;
 
-// Human-readable label for the OTC card filing period. Per code 5 ("other")
-// is treated as monthly for OTC (carriers typically file OTC cards as
-// monthly even when they pick "other"), matching PERIOD_MULT_OTC.
+// Human-readable label for the filed cadence (NOT annualized).
+// 'other' (code 6) = carrier described a custom cadence; the UI must not
+// claim a period for those.
 const PERIOD_LABEL_OTC = {
-  '1': 'year', '2': 'month', '3': 'quarter', '4': '6 months',
-  '5': 'month', '6': 'episode', '7': 'benefit period',
+  '1': '3 years', '2': '2 years', '3': 'year', '4': '6 months',
+  '5': 'quarter', '6': 'other', '7': 'month',
 };
 
 function num(s) {
@@ -112,7 +120,7 @@ async function buildAgg() {
     if (v <= 0) return;
     let cur = agg.get(planId);
     if (!cur) {
-      cur = { otcAllowance: 0, foodCardAllowance: 0, dentalAnnualMax: 0, visionAnnualMax: 0, hearingAnnualMax: 0, b13cMeal: 0, otcMaxPeriod: null, hearingBenefits: null };
+      cur = { otcAllowance: 0, foodCardAllowance: 0, dentalAnnualMax: 0, visionAnnualMax: 0, hearingAnnualMax: 0, b13cMeal: 0, b13cMealPeriod: null, otcMaxPeriod: null, foodCardMaxPeriod: null, hearingBenefits: null };
       agg.set(planId, cur);
     }
     if (v > cur[key]) cur[key] = v;
@@ -141,6 +149,13 @@ async function buildAgg() {
     // Meal fallback: pbp_b13c_maxplan_amt x period from pbp_b13c_maxplan_per
     const meal = annualize(row.pbp_b13c_maxplan_amt, row.pbp_b13c_maxplan_per);
     upsertMax(pid, 'b13cMeal', meal);
+    if (meal > 0) {
+      const lbl = PERIOD_LABEL_OTC[row.pbp_b13c_maxplan_per];
+      if (lbl) {
+        const cur = agg.get(pid);
+        if (cur && !cur.b13cMealPeriod) cur.b13cMealPeriod = lbl;
+      }
+    }
   }
   console.log(`  scanned ${n} rows`);
 
@@ -153,6 +168,13 @@ async function buildAgg() {
     n++;
     const fd = annualize(row.pbp_b13i_fd_maxplan_amt, row.pbp_b13i_fd_maxplan_per);
     upsertMax(pid, 'foodCardAllowance', fd);
+    if (fd > 0) {
+      const lbl = PERIOD_LABEL_OTC[row.pbp_b13i_fd_maxplan_per];
+      if (lbl) {
+        const cur = agg.get(pid);
+        if (cur && !cur.foodCardMaxPeriod) cur.foodCardMaxPeriod = lbl;
+      }
+    }
   }
   console.log(`  scanned ${n} rows`);
 
@@ -160,8 +182,10 @@ async function buildAgg() {
   for (const [pid, v] of agg) {
     if (v.foodCardAllowance === 0 && v.b13cMeal > 0) {
       v.foodCardAllowance = v.b13cMeal;
+      v.foodCardMaxPeriod = v.b13cMealPeriod;
     }
     delete v.b13cMeal;
+    delete v.b13cMealPeriod;
   }
 
   // ----- Dental annual max -----
@@ -306,9 +330,10 @@ async function main() {
         visionAnnualMax:   v.visionAnnualMax,
         hearingAnnualMax:  v.hearingAnnualMax,
       };
-      // Only set otcMaxPeriod / hearingBenefits when we actually computed
-      // one — don't blast nulls over existing values.
+      // Only set otcMaxPeriod / foodCardMaxPeriod / hearingBenefits when we
+      // actually computed one — don't blast nulls over existing values.
       if (v.otcMaxPeriod) data.otcMaxPeriod = v.otcMaxPeriod;
+      if (v.foodCardMaxPeriod) data.foodCardMaxPeriod = v.foodCardMaxPeriod;
       if (v.hearingBenefits) data.hearingBenefits = v.hearingBenefits;
       const r = await prisma.plan.updateMany({
         where: { planId, planYear: PBP_YEAR },
