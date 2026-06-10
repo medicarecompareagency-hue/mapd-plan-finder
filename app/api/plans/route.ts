@@ -292,14 +292,28 @@ export async function GET(request: Request) {
 
   // effectiveOtc priority:
   //   1. sbVerifiedOtcAmount  — from SB PDF (annualized, most accurate)
-  //   2. otcAllowance         — from PBP (raw per-period, may not be annualized)
+  //   2. otcAllowance         — from PBP (annualized; periodicity codebook fixed 2026-06-10)
+  //      Exception (2026-06-10, mirror of the effectiveFoodCard suppression):
+  //      when the SB PDF was parsed well enough to verify a chronic-gated
+  //      food/spending card (sbVerifiedFoodAmount set, ssbciIsConditional)
+  //      but found NO all-member OTC benefit, the PBP b13b OTC filing is the
+  //      gated wallet itself, not an all-member card — suppress it so the OTC
+  //      column never shows gated money as guaranteed (e.g. Devoted H9888-1:
+  //      PBP files $100/qtr OTC; its SB offers only the chronic-gated $35/mo
+  //      Food & Home Card. 95 Devoted + 30 Aetna plans fit this pattern).
   //   3. sbVerifiedFoodAmount — Humana only: combined "Healthy Options Allowance"
   //                            card; OTC amount === food amount for these plans
   function effectiveOtc(plan: Record<string, unknown>): number | null {
     const sbOtc = plan.sbVerifiedOtcAmount as number | null;
     if (sbOtc != null && sbOtc > 0) return sbOtc;
     const direct = plan.otcAllowance as number | null;
-    if (direct != null && direct > 0) return direct;
+    if (direct != null && direct > 0) {
+      const sbFoodConfirmed = (plan.sbVerifiedFoodAmount as number | null) != null
+        && (plan.sbVerifiedFoodAmount as number) > 0;
+      const gated = plan.ssbciIsConditional === true;
+      if (sbFoodConfirmed && gated) return null;
+      return direct;
+    }
     // Humana combined card: OTC wallet === food wallet, same dollar amount
     const orgName = String(plan.organizationName ?? "").toLowerCase();
     if (orgName.includes("humana")) {
@@ -508,7 +522,10 @@ export async function GET(request: Request) {
     rank: i + 1,
     // Use effective values for display (effectiveOtc/effectiveFoodCard are also
     // used for ranking, but the raw plan fields are what the UI renders).
-    otcAllowance: effectiveOtc(plan) ?? (plan.otcAllowance as number | null),
+    // No ?? fallback to the raw column: effectiveOtc returning null can mean
+    // "suppressed — SB shows the PBP OTC filing is a chronic-gated wallet"
+    // (2026-06-10), and falling back would undo that.
+    otcAllowance: effectiveOtc(plan),
     foodCardAllowance: effectiveFoodCard(plan) ?? 0,
     ssbciFoodAllowance: effectiveFoodCard(plan),
     // LIS-adjusted premium for display on the card. Always computed; equals

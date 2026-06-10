@@ -260,6 +260,13 @@ function formatOtcCell(plan: Plan): { primary: string; secondary: string | null 
   // Humana combined-card fallback in effectiveOtc surfaces sbVerifiedFoodAmount
   // as the OTC value — pair it with the SB food cadence, not the PBP OTC label.
   if (amt != null && plan.sbVerifiedFoodAmount === amt) return formatAllowanceCell(amt, plan.sbVerifiedFoodPeriod);
+  // Suppressed case (2026-06-10): the API nulls otcAllowance when the SB shows
+  // the PBP OTC filing is really the chronic-gated wallet. Say so instead of "N/A"
+  // — the gated dollars are visible in the Food Card column / chips.
+  if ((amt == null || amt === 0) && plan.ssbciIsConditional === true
+      && plan.sbVerifiedFoodAmount != null && plan.sbVerifiedFoodAmount > 0) {
+    return { primary: "$0", secondary: "(no all-member OTC — see SB)" };
+  }
   return formatAllowanceCell(amt, plan.otcMaxPeriod);
 }
 
