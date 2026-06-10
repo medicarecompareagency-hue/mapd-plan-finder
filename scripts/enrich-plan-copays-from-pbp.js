@@ -314,16 +314,20 @@ function buildBenefitMap() {
     const b = getOrCreate(k);
     const tierId = row.mrx_tier_id;
 
-    // Try flat copay first (preferred retail, then standard retail).
+    // Try flat copay first (preferred retail, then standard retail, then
+    // plain retail "rstd" — Regional PPOs file ONLY mrx_tier_rstd_* with no
+    // preferred/standard split; found 2026-06-10 via R0110-003).
     let copay = num(row.mrx_tier_rspfd_copay_1m);
     if (copay === null) copay = num(row.mrx_tier_rsstd_copay_1m);
+    if (copay === null) copay = num(row.mrx_tier_rstd_copay_1m);
 
-    // If no flat copay, fall back to coinsurance % (preferred, then standard).
+    // If no flat copay, fall back to coinsurance % (same precedence).
     // Flag the tier as coinsurance so the UI renders it with "%" instead of "$".
     let isCoinsurance = false;
     if (copay === null) {
       copay = num(row.mrx_tier_rspfd_coins_1m);
       if (copay === null) copay = num(row.mrx_tier_rsstd_coins_1m);
+      if (copay === null) copay = num(row.mrx_tier_rstd_coins_1m);
       if (copay !== null) isCoinsurance = true;
     }
     if (copay === null) continue;
