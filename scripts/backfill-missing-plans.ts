@@ -388,6 +388,11 @@ function readPlanArea(): PlanLocation[] {
     if ((r.eghp_flag || "").trim() === "1") { skippedEghp++; continue; }
     const h = (r.pbp_a_hnumber || "").trim();
     const p = (r.pbp_a_plan_identifier || "").trim();
+    // EGWP gate (2026-06-10): CMS reserves plan numbers 800-999 for
+    // employer/union-only group plans. PlanArea's eghp_flag is NOT set for
+    // many of them (e.g. H5216-805), so the eghp_flag check above is not
+    // enough — gate on the plan number itself. See cleanup-egwp-800-series.js.
+    if (parseInt(p, 10) >= 800) { skippedEghp++; continue; }
     const s = (r.segment_id || "").trim();
     const st = (r.stcd || "").trim();
     const co = (r.county || "").trim();

@@ -1210,6 +1210,13 @@ export async function runImport(year?: number): Promise<{ imported: number; skip
       const segmentId = row.segmentid?.trim() || "0";
       if (!contractId || !planId) { skipped++; continue; }
 
+      // EGWP gate (2026-06-10): plan numbers 800-999 are employer/union-only
+      // group plans (not individually enrollable; CMS filings are generic
+      // 20%-coinsurance shells). The landscape "*" marker and PlanArea
+      // eghp_flag both miss some of them (e.g. H5216-805), so gate on the
+      // number itself. See cleanup-egwp-800-series.js.
+      if (parseInt(planId, 10) >= 800) { skipped++; continue; }
+
       // PBP files zero-pad plan IDs to 3 digits (e.g. "012"), landscape does not (e.g. "12")
       const paddedPlanId = planId.padStart(3, "0");
       const key = `${contractId}-${paddedPlanId}-${segmentId}`;
