@@ -639,7 +639,25 @@ async function extractPdf(item: DiscoveryResult, context?: PlanContext): Promise
   const buffer = await fs.promises.readFile(file);
   const checksum = crypto.createHash("sha256").update(buffer).digest("hex");
   const parsed = await pdf(buffer);
-  const text = parsed.text || "";
+  let text = parsed.text || "";
+  // pdftotext fallback (2026-06-10): pdf-parse silently returns near-empty
+  // text on PDFs with font-type mismatches (all Humana 2026 SBs). These are
+  // NOT scans — `pdftotext -layout` reads them fine (caught by Dale via
+  // H1036-143, whose SB clearly files a $30/mo all-member Healthy Options
+  // allowance that pdf-parse couldn't see). Requires poppler's pdftotext on
+  // PATH (already a project prereq per HANDOFF — used by audit-copays.js).
+  if (text.trim().length < 500) {
+    try {
+      const { execFileSync } = await import("child_process");
+      const alt = execFileSync("pdftotext", ["-layout", file, "-"], {
+        encoding: "utf8",
+        maxBuffer: 64 * 1024 * 1024,
+      });
+      if (alt && alt.trim().length > text.trim().length) text = alt;
+    } catch {
+      // pdftotext unavailable or PDF truly unreadable — keep pdf-parse text.
+    }
+  }
   const warnings: string[] = [...(item.warnings || [])];
   const carrier = getCarrier(`${file} ${text}`, context);
   const derivedFilenameYear = item.filenameYear ?? filenameYear(file);
