@@ -65,6 +65,12 @@ interface Plan {
   otcAllowance: number | null;
   sbVerifiedOtcAmount: number | null;
   sbVerifiedFoodAmount: number | null;
+  // Filed cadence per the carrier's Summary of Benefits PDF (2026-06-10):
+  // "month" | "quarter" | "year" | "6 months" | "benefit period" | null.
+  // When the sbVerified amount is shown, this is the cadence to display —
+  // NOT otcMaxPeriod/foodCardMaxPeriod, which describe the PBP filing.
+  sbVerifiedOtcPeriod: string | null;
+  sbVerifiedFoodPeriod: string | null;
   otcMaxPeriod: string | null; // "month", "quarter", "year", "6 months", "2 years", "3 years", "other", or null
   foodCardAllowance: number | null;
   foodCardMaxPeriod: string | null; // same label set as otcMaxPeriod
@@ -245,7 +251,15 @@ function formatAllowanceCell(amt: number | null, per: string | null): { primary:
 }
 
 function formatOtcCell(plan: Plan): { primary: string; secondary: string | null } {
-  const amt = (plan.otcAllowance && plan.otcAllowance > 0) ? plan.otcAllowance : (plan.sbVerifiedOtcAmount ?? plan.otcAllowance);
+  // SB-verified wins (matches effectiveOtc in the API route): the amount AND
+  // the cadence both come from the carrier's Summary of Benefits when we have
+  // them, per Dale 2026-06-10.
+  const sbOtc = plan.sbVerifiedOtcAmount;
+  if (sbOtc != null && sbOtc > 0) return formatAllowanceCell(sbOtc, plan.sbVerifiedOtcPeriod);
+  const amt = (plan.otcAllowance && plan.otcAllowance > 0) ? plan.otcAllowance : null;
+  // Humana combined-card fallback in effectiveOtc surfaces sbVerifiedFoodAmount
+  // as the OTC value — pair it with the SB food cadence, not the PBP OTC label.
+  if (amt != null && plan.sbVerifiedFoodAmount === amt) return formatAllowanceCell(amt, plan.sbVerifiedFoodPeriod);
   return formatAllowanceCell(amt, plan.otcMaxPeriod);
 }
 
@@ -1450,9 +1464,11 @@ export default function PlanSearch() {
                           // H5521-229 files $180 that its SB calls "$180 quarterly";
                           // Devoted H9888-1 files $40 that its SB calls "$35 per month")
                           // — so for those we must not claim a cadence.
-                          const per = (!sbVerified && directFood)
+                          const per = sbVerified
+                            ? plan.sbVerifiedFoodPeriod
+                            : directFood
                             ? plan.foodCardMaxPeriod
-                            : (!sbVerified && ssbciFood ? "other" : null);
+                            : (ssbciFood ? "other" : null);
                           const f = formatAllowanceCell(fc, per);
                           if (gated && fc && fc > 0) {
                             return (

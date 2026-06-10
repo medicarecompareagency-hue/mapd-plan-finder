@@ -393,6 +393,20 @@ function scoreAmountCandidate(
     debug.push("large amount without preferred cadence");
   }
 
+  // An allowance/credit dollar value is never a copay. Cost-share rows often
+  // sit directly above the OTC row in benefit tables (e.g. UHC H2802-41:
+  // "individual therapy visit 2 $25 copay Not covered OTC credit $35 credit
+  // every quarter") and the copay amount lands inside the OTC keyword window
+  // with the same proximity/cadence credit as the real allowance. Penalize
+  // amounts immediately followed by cost-share wording. (2026-06-10)
+  if (config.kind === "otc" || config.kind === "food") {
+    const after = windowText.slice(amountIndex + amountMatch[0].length, amountIndex + amountMatch[0].length + 30).toLowerCase();
+    if (/^\s*(?:copay|co-?pay(?:ment)?|coinsurance|per\s+visit)/.test(after)) {
+      score -= 0.3;
+      debug.push("cost-share wording right after amount");
+    }
+  }
+
   if (competingAmounts > 1) {
     const penalty = Math.min(0.14, (competingAmounts - 1) * 0.035);
     score -= penalty;
@@ -568,9 +582,13 @@ function findBenefit(text: string, config: BenefitConfig): ExtractedBenefit {
 
   candidates.sort((a, b) => b.confidence - a.confidence);
   const best = candidates[0];
-  const runnerUp = candidates[1];
+  // Runner-up = best-scoring candidate with a DIFFERENT amount. Duplicate
+  // windows produce many copies of the same candidate; comparing against a
+  // duplicate (same amount) used to skip the guard, while a float-noise tie
+  // (0.91 - 0.83 = 0.0799…) used to fire it spuriously. (2026-06-10)
+  const runnerUp = candidates.find((c) => c.amount !== best.amount);
 
-  if (runnerUp && best.amount !== runnerUp.amount && best.confidence - runnerUp.confidence < 0.08) {
+  if (runnerUp && best.confidence - runnerUp.confidence < 0.075) {
     best.confidence = Math.max(0, Number((best.confidence - 0.08).toFixed(2)));
     best.debug.push("close competing candidate penalty");
   }
@@ -739,12 +757,14 @@ async function updatePlans(result: ExtractionResult, dryRun: boolean, allowYearC
 
     if (result.otc.confidence >= MIN_UPDATE_CONFIDENCE) {
       data.sbVerifiedOtcAmount = annualize(result.otc.amount, result.otc.period);
+      data.sbVerifiedOtcPeriod = result.otc.period; // filed cadence per the SB (2026-06-10)
     } else if (result.otc.amount != null) {
       console.warn(`Skipping OTC verified amount for ${planId}; confidence ${result.otc.confidence} < ${MIN_UPDATE_CONFIDENCE}`);
     }
 
     if (result.food.confidence >= MIN_FOOD_CONFIDENCE) {
       data.sbVerifiedFoodAmount = annualize(result.food.amount, result.food.period);
+      data.sbVerifiedFoodPeriod = result.food.period; // filed cadence per the SB (2026-06-10)
     } else if (result.food.amount != null) {
       console.warn(`Skipping food verified amount for ${planId}; confidence ${result.food.confidence} < ${MIN_FOOD_CONFIDENCE}`);
     }
