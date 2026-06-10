@@ -1540,6 +1540,7 @@ export default function PlanSearch() {
                                 <div className="text-red-800">{f.primary}*</div>
                                 {f.secondary && <div className="text-[10px] text-gray-500">{f.secondary}</div>}
                                 {sameCard && <div className="text-[9px] text-gray-500 italic">same card as OTC</div>}
+                                <SsbciExtras plan={plan} />
                               </div>
                             );
                           }
@@ -1550,14 +1551,15 @@ export default function PlanSearch() {
                                 <div>{f.primary}</div>
                                 {f.secondary && <div className="text-[10px] text-gray-500">{f.secondary}</div>}
                                 {sameCard && <div className="text-[9px] text-gray-500 italic">same card as OTC</div>}
+                                <SsbciExtras plan={plan} />
                               </>
                             )
-                            // No food card at all -> "N/A", matching the OTC column's
-                            // treatment (Dale, 2026-06-10). Chronic-only extras (if any)
-                            // still render below via SsbciExtras.
+                            // No food card at all -> clean "N/A", matching the OTC
+                            // column. Per Dale 2026-06-10 the chronic-only extras note
+                            // is dropped here too — agents can read the unlock rules in
+                            // the SB (linked below).
                             : <div>N/A</div>;
                         })()}
-                        <SsbciExtras plan={plan} />
                         <a
                           href={summaryOfBenefitsUrl(plan, filters.zipCode, plan.sbFoodCardPage).href}
                           target="_blank"
