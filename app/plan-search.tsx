@@ -1552,7 +1552,10 @@ export default function PlanSearch() {
                                 {sameCard && <div className="text-[9px] text-gray-500 italic">same card as OTC</div>}
                               </>
                             )
-                            : <div>{dollars(0)}</div>;
+                            // No food card at all -> "N/A", matching the OTC column's
+                            // treatment (Dale, 2026-06-10). Chronic-only extras (if any)
+                            // still render below via SsbciExtras.
+                            : <div>N/A</div>;
                         })()}
                         <SsbciExtras plan={plan} />
                         <a
