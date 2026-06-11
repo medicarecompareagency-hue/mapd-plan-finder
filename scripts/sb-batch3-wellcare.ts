@@ -84,7 +84,7 @@ function isPdfBytes(buf: Buffer): boolean {
 
 async function uploadPdf(planId: string, buf: Buffer, filename: string): Promise<string> {
   const blobPath = `sb-pdfs/${planId}-${filename.replace(/\s/g, "_")}`;
-  const blob = new Blob([buf], { type: "application/pdf" });
+  const blob = new Blob([new Uint8Array(buf)], { type: "application/pdf" });
   const result = await put(blobPath, blob, { access: "public", addRandomSuffix: false });
   return result.url;
 }
