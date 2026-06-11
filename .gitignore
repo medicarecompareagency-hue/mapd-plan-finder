@@ -70,6 +70,11 @@ sb-discovery-batch3.json
 sb-discovery-batch3-uhc.json
 sb-discovery-wellcare-batch4.json
 summary-of-benefits-wellcare-batch4/
+sb-discovery-uhc-batch5.json
+summary-of-benefits-uhc-batch5/
+sb-discovery-test-h9730.json
+_corrupted-extraction/
+_corrupted-discovery.json
 sb-unresolved-plans.json
 sb-benefit-extraction-results.json
 
