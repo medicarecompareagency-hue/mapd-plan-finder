@@ -277,7 +277,9 @@ function otcCellModel(plan: Plan): AllowanceCell {
 
   if (sbOtc) {
     const f = formatAllowanceCell(sbOtc, plan.sbVerifiedOtcPeriod);
-    return { ...f, gated: false, sameCard: false };
+    // Humana combined OTC+food wallet (same-wallet rule nulled food): this IS the combined card, gating applies.
+    const isGatedCombined = gatedPlan && !sbFood && plan.organizationName.toLowerCase().includes('humana');
+    return { ...f, gated: isGatedCombined ? true : false, sameCard: isGatedCombined };
   }
   if (eff != null && sbFood === eff) {
     // Combined wallet surfaced as OTC (Humana). Gating follows the plan flag.

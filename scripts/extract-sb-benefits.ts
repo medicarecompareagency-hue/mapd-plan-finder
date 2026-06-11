@@ -681,12 +681,14 @@ async function extractPdf(item: DiscoveryResult, context?: PlanContext): Promise
   if (DEBUG) console.log(`[debug] extracting ${file} carrier=${carrier}`);
 
   // Pre-pass: if a single dollar amount serves OTC, food, AND utilities in one
-  // clause, assign it to both fields and skip the individual benefit searches.
-  // The combined detector uses a sentence-boundary guard so it cannot fire
-  // across separate benefit sections that happen to sit near each other.
+  // clause it is one combined wallet — same-wallet rule (2026-06-11): write the
+  // amount to OTC only, null out food. The carrier files one card; doubling the
+  // amount across both DB columns would mislead agents. The combined detector
+  // uses a sentence-boundary guard so it cannot fire across separate sections.
+  const EMPTY_BENEFIT: ExtractedBenefit = { amount: null, period: null, page: null, confidence: 0, evidence: null };
   const combined = findCombinedOtcFoodUtil(text);
   const otc = combined ?? findBenefit(text, benefitConfig("otc", carrier));
-  const food = combined ?? findBenefit(text, benefitConfig("food", carrier));
+  const food = combined ? EMPTY_BENEFIT : findBenefit(text, benefitConfig("food", carrier));
   const dental = findBenefit(text, benefitConfig("dental", carrier));
   const vision = findBenefit(text, benefitConfig("vision", carrier));
   const hearing = findBenefit(text, benefitConfig("hearing", carrier));
