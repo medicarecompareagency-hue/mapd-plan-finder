@@ -66,6 +66,8 @@ sb-download-list.json
 sb-discovery-results.json
 sb-discovery-7-corrupted.json
 sb-discovery-batch2.json
+sb-discovery-batch3.json
+sb-discovery-batch3-uhc.json
 sb-unresolved-plans.json
 sb-benefit-extraction-results.json
 
