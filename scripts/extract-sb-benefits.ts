@@ -158,20 +158,21 @@ function filenameYear(filePath: string): number | null {
   return match ? Number(match[1]) : null;
 }
 
-function getCarrier(text: string, context?: PlanContext): "aetna" | "uhc" | "devoted" | "cigna" | "humana" | "unknown" {
+function getCarrier(text: string, context?: PlanContext): "aetna" | "uhc" | "devoted" | "cigna" | "humana" | "wellcare" | "unknown" {
   const haystack = `${context?.organizationName || ""} ${context?.planName || ""} ${text.slice(0, 3000)}`.toLowerCase();
   if (/aetna|cvs health/.test(haystack)) return "aetna";
   if (/unitedhealthcare|\buhc\b|aarp medicare/.test(haystack)) return "uhc";
   if (/devoted/.test(haystack)) return "devoted";
   if (/healthspring|cigna/.test(haystack)) return "cigna";
   if (/humana/.test(haystack)) return "humana";
+  if (/wellcare/.test(haystack)) return "wellcare";
   return "unknown";
 }
 
 function carrierStrongLabels(carrier: ReturnType<typeof getCarrier>, kind: BenefitKind): RegExp[] {
   // Carrier names for OTC/food cards change frequently; these labels anchor the
   // dollar value to the product vocabulary instead of generic marketing totals.
-  const commonOtc = [/over-the-counter/gi, /\bOTC\b/g, /otc\s+(allowance|credit|benefit|items|card)/gi];
+  const commonOtc = [/over-the-counter/gi, /\bOTC\b/g, /otc\s+(allowance|credit|benefit|items|card)/gi, /wellcare\s+spendables/gi, /\bspendables\b/gi, /preloaded\s+on\s+your/gi];
   const commonFood = [/food\s+(card|allowance|benefit|credit)/gi, /grocery\s+(card|allowance|benefit|credit)/gi, /healthy\s+(food|foods)/gi];
 
   const labels: Record<string, { otc: RegExp[]; food: RegExp[] }> = {
@@ -197,6 +198,7 @@ function carrierStrongLabels(carrier: ReturnType<typeof getCarrier>, kind: Benef
       otc: [...commonOtc, /healthy\s+options\s+allowance/gi, /humana\s+healthy\s+options/gi],
       food: [...commonFood, /healthy\s+options\s+allowance/gi, /humana\s+healthy\s+options/gi, /healthy\s+options/gi],
     },
+    wellcare: { otc: commonOtc, food: commonFood },
     unknown: { otc: commonOtc, food: commonFood },
   };
 
@@ -366,7 +368,7 @@ function scoreAmountCandidate(
   // carry the right benefit vocabulary before giving it high confidence.
   if (config.kind === "food") {
     const hasFoodLocal = /food|foods|grocery|groceries|utility|utilities|healthy\s+options|extra\s+supports?\s+wallet/.test(lowerLocal);
-    const hasOtcLocal = /\botc\b|over.?the.?counter|health(?:y)?\s+options\s+allowance|humana\s+healthy\s+options|health\s+and\s+wellness\s+products?/.test(lowerLocal);
+    const hasOtcLocal = /\botc\b|over.?the.?counter|health(?:y)?\s+options\s+allowance|humana\s+healthy\s+options|health\s+and\s+wellness\s+products?|wellcare\s+spendables|\bspendables\b|preloaded\s+on\s+your/.test(lowerLocal);
     if (hasOtcLocal && !hasFoodLocal) {
       score -= 0.38;
       debug.push("OTC wording without local food/utility label");
@@ -377,7 +379,7 @@ function scoreAmountCandidate(
   }
 
   if (config.kind === "otc") {
-    const hasOtcLocal = /\botc\b|over.?the.?counter|health(?:y)?\s+options\s+allowance|humana\s+healthy\s+options|health\s+and\s+wellness\s+products?/.test(lowerLocal);
+    const hasOtcLocal = /\botc\b|over.?the.?counter|health(?:y)?\s+options\s+allowance|humana\s+healthy\s+options|health\s+and\s+wellness\s+products?|wellcare\s+spendables|\bspendables\b|preloaded\s+on\s+your/.test(lowerLocal);
     const hasFoodLocal = /food|foods|grocery|groceries|utility|utilities/.test(lowerLocal);
     if (hasFoodLocal && !hasOtcLocal) {
       score -= 0.28;
@@ -634,28 +636,107 @@ async function loadPlanContext(planIds: string[], year: number | null, organizat
   };
 }
 
+interface SpendablesResult {
+  amount: number | null;
+  period: string | null;
+  coversFood: boolean;
+  evidence: string;
+}
+
+export function extractWellcareSpendables(layoutText: string, plan3: string): SpendablesResult | null {
+  if (!/spendables/i.test(layoutText)) return null;
+  const lines = layoutText.split(/\r?\n/);
+
+  // 1. Column anchors: collect x-offsets of "Plan ###" header tokens per plan number.
+  //    Headers repeat per page; use the median x-offset per plan number for stability.
+  const anchors = new Map<string, number[]>();
+  const headerRe = /H\d{4},?\s*Plan\s*(\d{3})/g;
+  for (const line of lines) {
+    let m: RegExpExecArray | null;
+    headerRe.lastIndex = 0;
+    while ((m = headerRe.exec(line)) !== null) {
+      const arr = anchors.get(m[1]) ?? [];
+      arr.push(m.index);
+      anchors.set(m[1], arr);
+    }
+  }
+  const median = (a: number[]) => a.slice().sort((x, y) => x - y)[Math.floor(a.length / 2)];
+  const planCols = [...anchors.entries()]
+    .map(([p, xs]) => ({ plan: p, x: median(xs) }))
+    .sort((a, b) => a.x - b.x);
+
+  // Single-plan doc (or no headers found): simple multiline regex on collapsed text.
+  if (planCols.length <= 1) {
+    const flat = layoutText.replace(/\s+/g, " ");
+    const m = /(?:you will receive\s+)?\$\s?([\d,]+)\s+(monthly|quarterly|per month|per quarter|every month|every quarter)[^.]{0,60}?preloaded on your\s+wellcare\s+spendables/i.exec(flat);
+    if (!m) return null;
+    const coversFood = /card allowance can be used towards[^]*?(healthy foods?|groceries|food)/i.test(flat.slice(m.index, m.index + 1200));
+    return { amount: Number(m[1].replace(/,/g, "")), period: /quarter/i.test(m[2]) ? "quarter" : "month", coversFood, evidence: m[0].slice(0, 160) };
+  }
+
+  // 2. Multi-plan: find target column boundaries [xStart, xEnd).
+  const idx = planCols.findIndex(c => c.plan === plan3);
+  if (idx === -1) return null;
+  const PAD = 6;
+  const xStart = Math.max(0, planCols[idx].x - PAD);
+  const xEnd = idx + 1 < planCols.length ? planCols[idx + 1].x - PAD : Number.MAX_SAFE_INTEGER;
+
+  // 3. Find each "Wellcare Spendables" label row; take the ~25 lines after it,
+  //    slice the target column, and parse.
+  for (let i = 0; i < lines.length; i++) {
+    if (!/wellcare\s+spendables/i.test(lines[i])) continue;
+    // benefit labels live in the left label column; skip rewards-section mentions
+    const labelX = lines[i].search(/\S/);
+    if (labelX > 40) continue;
+    const cell: string[] = [];
+    for (let j = i; j < Math.min(i + 26, lines.length); j++) {
+      cell.push(lines[j].slice(xStart, xEnd === Number.MAX_SAFE_INTEGER ? undefined : xEnd).trim());
+    }
+    const cellText = cell.join(" ").replace(/\s+/g, " ").trim();
+    const m = /\$\s?([\d,]+)\s+(monthly|quarterly|per month|per quarter|every month|every quarter)/i.exec(cellText);
+    if (m) {
+      const coversFood = /(healthy foods?|groceries|food items?)/i.test(cellText);
+      return { amount: Number(m[1].replace(/,/g, "")), period: /quarter/i.test(m[2]) ? "quarter" : "month", coversFood, evidence: cellText.slice(0, 160) };
+    }
+    if (/not covered/i.test(cellText)) {
+      return { amount: null, period: null, coversFood: false, evidence: "Not covered (column-resolved)" };
+    }
+  }
+  return null;
+}
+
 async function extractPdf(item: DiscoveryResult, context?: PlanContext): Promise<ExtractionResult> {
   const file = item.file;
   const buffer = await fs.promises.readFile(file);
   const checksum = crypto.createHash("sha256").update(buffer).digest("hex");
   const parsed = await pdf(buffer);
   let text = parsed.text || "";
-  // pdftotext fallback (2026-06-10): pdf-parse silently returns near-empty
-  // text on PDFs with font-type mismatches (all Humana 2026 SBs). These are
-  // NOT scans — `pdftotext -layout` reads them fine (caught by Dale via
-  // H1036-143, whose SB clearly files a $30/mo all-member Healthy Options
-  // allowance that pdf-parse couldn't see). Requires poppler's pdftotext on
-  // PATH (already a project prereq per HANDOFF — used by audit-copays.js).
-  if (text.trim().length < 500) {
-    try {
-      const { execFileSync } = await import("child_process");
-      const alt = execFileSync("pdftotext", ["-layout", file, "-"], {
-        encoding: "utf8",
-        maxBuffer: 64 * 1024 * 1024,
-      });
-      if (alt && alt.trim().length > text.trim().length) text = alt;
-    } catch {
-      // pdftotext unavailable or PDF truly unreadable — keep pdf-parse text.
+  let layoutText: string | null = null;
+  // pdftotext -layout (2026-06-10/2026-06-11): two purposes —
+  //   1. Fallback when pdf-parse returns near-empty text (Humana font mismatches)
+  //   2. Column-aware extraction for Wellcare multi-plan comparison SBs
+  // Requires poppler's pdftotext on PATH (project prereq per HANDOFF).
+  const needsLayout = text.trim().length < 500 || /spendables/i.test(text);
+  if (needsLayout) {
+    const { execFileSync } = await import("child_process");
+    // On Windows the binary may only be in the Git MinGW prefix, not system PATH.
+    const pdftotextCandidates = process.platform === "win32"
+      ? ["pdftotext", "C:\\Program Files\\Git\\mingw64\\bin\\pdftotext.exe"]
+      : ["pdftotext"];
+    for (const bin of pdftotextCandidates) {
+      try {
+        const alt = execFileSync(bin, ["-layout", file, "-"], {
+          encoding: "utf8",
+          maxBuffer: 64 * 1024 * 1024,
+        });
+        if (alt && alt.trim().length > 0) {
+          layoutText = alt;
+          if (text.trim().length < 500 && alt.trim().length > text.trim().length) text = alt;
+          break;
+        }
+      } catch {
+        // try next candidate or give up
+      }
     }
   }
   const warnings: string[] = [...(item.warnings || [])];
@@ -680,15 +761,29 @@ async function extractPdf(item: DiscoveryResult, context?: PlanContext): Promise
 
   if (DEBUG) console.log(`[debug] extracting ${file} carrier=${carrier}`);
 
-  // Pre-pass: if a single dollar amount serves OTC, food, AND utilities in one
-  // clause it is one combined wallet — same-wallet rule (2026-06-11): write the
-  // amount to OTC only, null out food. The carrier files one card; doubling the
-  // amount across both DB columns would mislead agents. The combined detector
-  // uses a sentence-boundary guard so it cannot fire across separate sections.
   const EMPTY_BENEFIT: ExtractedBenefit = { amount: null, period: null, page: null, confidence: 0, evidence: null };
-  const combined = findCombinedOtcFoodUtil(text);
-  const otc = combined ?? findBenefit(text, benefitConfig("otc", carrier));
-  const food = combined ? EMPTY_BENEFIT : findBenefit(text, benefitConfig("food", carrier));
+
+  // Pre-pass 1: Wellcare Spendables column-aware extraction.
+  // Uses pdftotext -layout output for correct column attribution in multi-plan docs.
+  // Confidence 0.93 (column-resolved) always clears MIN_UPDATE_CONFIDENCE.
+  // Spendables is one combined wallet — same-wallet rule: OTC only, food=null.
+  const plan3 = item.planIds[0]?.match(/-(\d+)$/)?.[1]?.padStart(3, "0") ?? null;
+  const spendables = plan3 !== null ? extractWellcareSpendables(layoutText ?? text, plan3) : null;
+
+  let otc: ExtractedBenefit;
+  let food: ExtractedBenefit;
+
+  if (spendables !== null) {
+    otc = { amount: spendables.amount, period: spendables.period, page: null, confidence: 0.93, evidence: spendables.evidence };
+    food = EMPTY_BENEFIT;
+  } else {
+    // Pre-pass 2: if a single dollar amount serves OTC, food, AND utilities in one
+    // clause it is one combined wallet — same-wallet rule (2026-06-11): write the
+    // amount to OTC only, null out food.
+    const combined = findCombinedOtcFoodUtil(text);
+    otc = combined ?? findBenefit(text, benefitConfig("otc", carrier));
+    food = combined ? EMPTY_BENEFIT : findBenefit(text, benefitConfig("food", carrier));
+  }
   const dental = findBenefit(text, benefitConfig("dental", carrier));
   const vision = findBenefit(text, benefitConfig("vision", carrier));
   const hearing = findBenefit(text, benefitConfig("hearing", carrier));
