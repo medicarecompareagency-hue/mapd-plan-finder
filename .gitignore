@@ -64,6 +64,7 @@ scripts/data/pbp-benefits-2026.zip
 summary-of-benefits/
 sb-download-list.json
 sb-discovery-results.json
+sb-discovery-7-corrupted.json
 sb-unresolved-plans.json
 sb-benefit-extraction-results.json
 
