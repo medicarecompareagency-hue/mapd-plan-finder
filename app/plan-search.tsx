@@ -459,7 +459,7 @@ function costShare(copay: number | null | undefined, coinsPct: number | null | u
 // drug tiers — Part D cost-share is covered via LIS / Extra Help, which is
 // a separate program tracked by lowIncomeSubsidyLevel.
 // ---------------------------------------------------------------------------
-const MEDICAID_COVERS_COST_SHARE = new Set(["QMB+", "QMB", "FBDE"]);
+const MEDICAID_COVERS_COST_SHARE = new Set(["QMB+", "QMB", "SLMB+", "FBDE"]);
 
 function isMedicaidCovered(dualLevel: string | null | undefined): boolean {
   return !!dualLevel && MEDICAID_COVERS_COST_SHARE.has(dualLevel);

@@ -44,48 +44,43 @@ import { zipToCounty } from "@/lib/zip-to-county";
 // (the headline pitch for MA-Only plans) and dropping deductible/MOOP/
 // star. MA_ONLY is a PlanCategory enum value, orthogonal to planType
 // (HMO/PPO/PFFS/HMOPOS) — see CLAUDE.md domain terminology section.
-// DSNP ranking (Dale, 2026-05-12 spec). Split by beneficiary dual level:
-//   FULL_DUAL (QMB+, QMB, SLMB+, FBDE) — 6 keys, lexicographic, NULL last:
-//     1. foodCardAllowance      DESC
-//     2. otcAllowance           DESC
-//     3. dentalAnnualMax        DESC (cmpBenefitDesc)
-//     4. visionAnnualMax        DESC (cmpBenefitDesc)
-//     5. hearingAnnualMax       DESC (cmpBenefitDesc)
-//     6. maxOutOfPocket         ASC
-//   PARTIAL_DUAL (SLMB, QI-1) — 9 keys, lexicographic, NULL last:
-//     1. hospitalStayCopay      ASC (parsed day-1 per-day)
-//     2. specialistCopay        ASC (effectiveCopay — coins→999)
-//     3. foodCardAllowance      DESC
-//     4. otcAllowance           DESC
-//     5. dentalAnnualMax        DESC
-//     6. visionAnnualMax        DESC
-//     7. skilledNursingCopay    ASC (parsed day-1 per-day, same parser)
-//     8. hearingAnnualMax       DESC
-//     9. maxOutOfPocket         ASC
+// DSNP ranking (Dale, 2026-05-26 spec). Split by beneficiary dual level:
+//   FULL_DUAL (QMB+, QMB, SLMB+, FBDE) — 5 keys, lexicographic, NULL last:
+//     1. foodCardAllowance        DESC (effectiveFoodCard)
+//     2. otcAllowance             DESC (effectiveOtc)
+//     3. dentalAnnualMax          DESC (cmpBenefitDesc)
+//     4. visionAnnualMax          DESC (cmpBenefitDesc)
+//     5. transportationBenefit    (hasBenefitRank)
+//   PARTIAL_DUAL (SLMB, QI-1) — 7 keys, lexicographic, NULL last:
+//     1. specialistCopay        ASC (effectiveCopay — coins→999)
+//     2. foodCardAllowance      DESC (effectiveFoodCard)
+//     3. otcAllowance           DESC (effectiveOtc)
+//     4. hospitalStayCopay      ASC (parsed day-1 per-day)
+//     5. dentalAnnualMax        DESC (cmpBenefitDesc)
+//     6. visionAnnualMax        DESC (cmpBenefitDesc)
+//     7. maxOutOfPocket         ASC
 // DSNP search WITHOUT beneficiaryDualLevel returns empty results: Dale's
 // rule is that QMB+/QMB/SLMB+/FBDE plans render with a 20% co-payment
 // column that's misleading to PARTIAL_DUAL beneficiaries (and vice
 // versa), so we don't show DSNPs until the agent picks who they're
 // shopping for.
 //
-// CSNP ranking (Dale, 2026-05-12 spec). 11 keys, lexicographic, NULL last:
-//   1. monthlyPremium         ASC
-//   2. hospitalStayCopay      ASC (parsed)
-//   3. foodCardAllowance      DESC
-//   4. otcAllowance           DESC
-//   5. drugDeductible         ASC
-//   6. specialistCopay        ASC (effectiveCopay)
-//   7. dentalAnnualMax        DESC
-//   8. visionAnnualMax        DESC
-//   9. skilledNursingCopay    ASC
-//  10. hearingAnnualMax       DESC
-//  11. maxOutOfPocket         ASC
-// Supersedes the prior CSNP 8-key ranker (Phase 1.x, 2026-04-27).
+// CSNP ranking (Dale, 2026-05-26 spec). 7 keys, lexicographic, NULL last,
+// premium-agnostic (intentional — LIS/Extra Help does not re-order CSNP):
+//   1. specialistCopay        ASC (effectiveCopay)
+//   2. foodCardAllowance      DESC (effectiveFoodCard)
+//   3. otcAllowance           DESC (effectiveOtc)
+//   4. hospitalStayCopay      ASC (parsed)
+//   5. dentalAnnualMax        DESC (cmpBenefitDesc)
+//   6. visionAnnualMax        DESC (cmpBenefitDesc)
+//   7. maxOutOfPocket         ASC
+// Supersedes the prior CSNP 11-key ranker (2026-05-12 spec).
 // "Chronic Lung Only" sub-filter is handled via the existing
 // chronicCondition dropdown (LUNG_DISORDERS / ANXIETY_WITH_COPD enums) —
 // no separate ranker.
 //
-// ISNP falls through to the default 6-key ranker per Dale 2026-05-12.
+// ISNP is excluded at the query-level where-clause (see the GET/POST
+// `where` blocks below) — it never reaches any ranker.
 
 export async function GET(request: Request) {
   const { prisma } = await import("@/lib/prisma");
@@ -248,6 +243,15 @@ export async function GET(request: Request) {
     }
   }
 
+  const isDsnp = planCategory === "DSNP";
+
+  // DSNP without a beneficiary dual level returns empty: cost-share
+  // columns mean different things to FULL_DUAL vs PARTIAL_DUAL users,
+  // and showing both groups mixed produces misleading rankings.
+  if (isDsnp && beneficiaryGroup === null) {
+    return Response.json([]);
+  }
+
   const MAX_RESULTS = 500;
   // Pull a wide candidate pool so the ranking sees all carriers in the
   // result set, not just the first 2000 rows by insertion order. A
@@ -257,17 +261,9 @@ export async function GET(request: Request) {
   const plans = await prisma.plan.findMany({ where, take: MAX_RESULTS * 50 });
 
   const isCsnp = planCategory === "CSNP";
-  const isDsnp = planCategory === "DSNP";
   const isMaOnly = planCategory === "MA_ONLY";
-  // ISNP falls through to default 6-key per Dale 2026-05-12.
+  // ISNP is excluded at the query-level where-clause.
   const useDefaultTop5 = !isCsnp && !isDsnp && !isMaOnly;
-
-  // DSNP without a beneficiary dual level returns empty: cost-share
-  // columns mean different things to FULL_DUAL vs PARTIAL_DUAL users,
-  // and showing both groups mixed produces misleading rankings.
-  if (isDsnp && beneficiaryGroup === null) {
-    return Response.json([]);
-  }
 
   // effectiveFoodCard priority:
   //   1. sbVerifiedFoodAmount  — from SB PDF (annualized, most accurate)

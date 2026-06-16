@@ -99,7 +99,8 @@ async function main() {
         continue;
       }
       const blobPath = `sb-pdfs/${planId}-${file}`;
-      const result = await put(blobPath, new Uint8Array(buf), {
+      const blob = new Blob([new Uint8Array(buf)], { type: "application/pdf" });
+      const result = await put(blobPath, blob, {
         access: "public",
         addRandomSuffix: false,
         contentType: "application/pdf",
