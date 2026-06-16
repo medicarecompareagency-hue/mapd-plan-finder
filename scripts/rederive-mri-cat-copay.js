@@ -62,11 +62,22 @@ function loadPbp() {
     if (!hnum || !pid) continue;
     const planId = `${hnum}-${parseInt(pid, 10)}`;
     const e = byPlan.get(planId) || { copay: null, coins: null };
+    // 2026-06-16 fix: some PBP rows file copay_yn=1 (Yes) AND coins_yn=1 (Yes)
+    // simultaneously, with BOTH copay amount fields blank — only the coins
+    // amount is actually populated. The old code committed to the (empty)
+    // copay branch and never checked coinsurance for that row, leaving the
+    // plan N/A even though a real coinsurance % was sitting right there.
+    // Fall through to coinsurance whenever the copay branch yields no amount.
+    let gotCopay = false;
     if ((r[cCopYn] || "").trim() === "1") {
       const mn = num(r[cDrs]), mx = num(r[cDrsMax]);
       const pick = (mn != null && mx != null) ? Math.max(mn, mx) : (mx != null ? mx : mn);
-      if (pick != null) e.copay = e.copay == null ? pick : Math.max(e.copay, pick);
-    } else if ((r[cCoinYn] || "").trim() === "1") {
+      if (pick != null) {
+        e.copay = e.copay == null ? pick : Math.max(e.copay, pick);
+        gotCopay = true;
+      }
+    }
+    if (!gotCopay && (r[cCoinYn] || "").trim() === "1") {
       const c = num(r[cCoinDrsMax]);
       if (c != null) e.coins = e.coins == null ? c : Math.max(e.coins, c);
     }
