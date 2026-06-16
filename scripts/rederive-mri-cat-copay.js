@@ -4,6 +4,12 @@
 // PBP field b8b DRS (Diagnostic Radiology Services). Fixes the b8a(generic diagnostic)
 // mis-map. Range rule: store the MAX. Clears the bogus b8a value where b8b files no DRS.
 //
+// 2026-06-16 fix: coinsurance was reading pbp_b8b_coins_pct_drs (the MIN of the filed
+// range, often 0 — a narrow carve-out like in-office EKG) instead of
+// pbp_b8b_coins_pct_drs_max (the MAX, the real general-case cost-share, e.g. 20%).
+// Confirmed against SB PDFs (HealthSpring H4513-55, UnitedHealthcare H2802-64): both file
+// "0%-20%" / "$0 copay or 20% coinsurance otherwise" ranges where 20% is the standard rate.
+//
 // USAGE (from repo root):
 //   node scripts/rederive-mri-cat-copay.js                 # dry-run
 //   node scripts/rederive-mri-cat-copay.js --apply         # write
@@ -45,7 +51,7 @@ function loadPbp() {
   const cDrs = col("pbp_b8b_copay_amt_drs");
   const cDrsMax = col("pbp_b8b_copay_amt_drs_max");
   const cCoinYn = col("pbp_b8b_coins_yn");
-  const cCoinDrs = col("pbp_b8b_coins_pct_drs");
+  const cCoinDrsMax = col("pbp_b8b_coins_pct_drs_max");
 
   const byPlan = new Map(); // planId -> { copay, coins }
   for (let i = 1; i < lines.length; i++) {
@@ -61,8 +67,8 @@ function loadPbp() {
       const pick = (mn != null && mx != null) ? Math.max(mn, mx) : (mx != null ? mx : mn);
       if (pick != null) e.copay = e.copay == null ? pick : Math.max(e.copay, pick);
     } else if ((r[cCoinYn] || "").trim() === "1") {
-      const c = num(r[cCoinDrs]);
-      if (c != null) e.coins = e.coins == null ? c : Math.min(e.coins, c);
+      const c = num(r[cCoinDrsMax]);
+      if (c != null) e.coins = e.coins == null ? c : Math.max(e.coins, c);
     }
     byPlan.set(planId, e);
   }
