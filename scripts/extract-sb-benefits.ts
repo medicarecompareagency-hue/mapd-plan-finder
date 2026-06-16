@@ -452,11 +452,29 @@ function findCombinedOtcFoodUtil(text: string): ExtractedBenefit | null {
       .filter((n): n is number => n != null);
     const distinctAmounts = new Set(amounts);
 
-    // Require exactly one distinct dollar amount — two or more means separate
-    // allowances stated near each other, not a single combined line.
-    if (distinctAmounts.size !== 1) continue;
+    let amount: number;
+    if (distinctAmounts.size === 1) {
+      amount = [...distinctAmounts][0];
+    } else {
+      // 2026-06-23 UHC fix: UHC's dense "Additional benefits" tables pack this
+      // combined-wallet row right next to unrelated copay lines (e.g. a nearby
+      // "$0 copay" for an outpatient visit), so the ±250-char zone can contain
+      // more than one distinct dollar amount even though only ONE belongs to
+      // this benefit — the old "exactly one amount" rule rejected every UHC
+      // plan. "credit" is a safe disambiguator: across every UHC SB sampled it
+      // appears exactly once in the whole document, directly after the
+      // combined-wallet's own dollar amount, and never near a copay/coinsurance
+      // line. Only use it when it isolates a single candidate amount.
+      const creditMoneyRe = /\$\s?[\d,]+(?:\.\d{2})?\s*credit\b/gi;
+      const creditAmounts = new Set(
+        [...zone.matchAll(creditMoneyRe)]
+          .map((m) => moneyToNumber(m[0]))
+          .filter((n): n is number => n != null),
+      );
+      if (creditAmounts.size !== 1) continue;
+      amount = [...creditAmounts][0];
+    }
 
-    const amount = [...distinctAmounts][0];
     const firstMoney = moneyMatches.find((m) => moneyToNumber(m[0]) === amount)!;
     const absoluteIdx = zoneStart + (firstMoney.index ?? 0);
 
