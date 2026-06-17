@@ -99,3 +99,15 @@ _*.ts
 .bob/
 copay-audit.csv
 sb-otc-food-audit.csv
+
+# SB new-discovery pipeline artifacts (regenerable)
+summary-of-benefits-rediscovered/
+sb-rediscovery-discovery.json
+sb-rediscovery-progress.json
+sb-rediscovery-results.csv
+sb-serp-progress.json
+sb-serp-results.csv
+sb-unresolved.csv
+sb-validation-progress.json
+sb-validation-results.csv
+reacquire-progress.json
