@@ -84,8 +84,9 @@ async function main() {
   });
   console.log(`${dbPlans.length} distinct DB plans (year ${PLAN_YEAR}).`);
 
-  let toCopay = 0, toCoins = 0, toNull = 0, unchanged = 0, noPbp = 0, changedRows = 0;
+  let toCopay = 0, toCoins = 0, toNull = 0, unchanged = 0, noPbp = 0, changedRows = 0, protectedCount = 0;
   const samples = [];
+  const protectedSamples = [];
   const HEADLINE = new Set(["H1290-14","H1290-15","H2697-1","H2697-15","H7993-1","H7993-19","H1290-13"]);
 
   for (const p of dbPlans) {
@@ -93,6 +94,14 @@ async function main() {
     if (!src) { noPbp++; continue; }
     const newCopay = src.copay;                       // may be null
     const newCoins = src.copay == null ? src.coins : null; // coins only when no copay
+    // ── GUARD (2026-06-18): never let a PBP-only re-derive NULL OUT an existing specialist value.
+    // The ~29 SB-derived specialist copays (costshare Fix C, ranking key #4) file copay_yn=2/coins_yn=2
+    // in PBP, so both newCopay and newCoins are null here — without this guard, --apply would wipe them.
+    if (newCopay == null && newCoins == null && (p.specialistCopay != null || p.specialistCoinsPct != null)) {
+      protectedCount++;
+      if (protectedSamples.length < 40) protectedSamples.push(`${p.planId}: PROTECTED — PBP files no specialist; keeping DB copay=${p.specialistCopay}, coins=${p.specialistCoinsPct}`);
+      continue;
+    }
     const changed = (newCopay !== p.specialistCopay) || (newCoins !== p.specialistCoinsPct);
     if (!changed) { unchanged++; continue; }
     if (newCopay != null) toCopay++; else if (newCoins != null) toCoins++; else toNull++;
@@ -110,6 +119,8 @@ async function main() {
 
   console.log(`\nPlans changed: ${toCopay + toCoins + toNull} (->copay ${toCopay}, ->coins ${toCoins}, ->null ${toNull})`);
   console.log(`Unchanged: ${unchanged} | DB plans with no b7d row: ${noPbp}`);
+  console.log(`Protected (PBP empty but DB had a value — NOT nulled): ${protectedCount}`);
+  for (const s of protectedSamples) console.log("  " + s);
   console.log(`\nSample / headline:`);
   for (const s of samples.filter(x => HEADLINE.has(x.split(":")[0])).concat(samples.slice(0, 15))) console.log("  " + s);
   if (APPLY) console.log(`\nRows written: ${changedRows}`);
