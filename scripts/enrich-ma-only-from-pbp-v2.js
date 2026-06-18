@@ -20,6 +20,17 @@ const fs = require('fs');
 const path = require('path');
 const { makePrisma } = require('./prisma-client');
 
+// Fill-only write: set `field` from `value` ONLY where the plan's current value is null.
+// Preserves any existing (possibly SB-derived) value — never overwrites. Returns rows filled.
+async function setIfNull(prisma, planId, planYear, field, value) {
+  if (value == null) return 0;
+  const r = await prisma.plan.updateMany({
+    where: { planId, planYear, [field]: null },
+    data: { [field]: value },
+  });
+  return r.count;
+}
+
 const APPLY = process.argv.includes('--apply');
 const PLAN_YEAR = 2026;
 const PBP_DIR = path.join(process.cwd(), '.cms-import-tmp', `pbp-${PLAN_YEAR}`);
@@ -215,9 +226,10 @@ function buildDayStructure(row, prefix, tier) {
     const h = m[1]; const padded = m[2].padStart(3, '0');
     const key = `${h}-${padded}-0`;
 
+    const specValue = specMap.has(key) ? specMap.get(key) : null; // fill-only below
     const data = {};
     if (pcpMap.has(key))      data.pcpCopay              = pcpMap.get(key);
-    if (specMap.has(key))     data.specialistCopay       = specMap.get(key);
+    // specialistCopay NOT in bulk data — written fill-only via setIfNull to protect SB-derived values
     if (hospMap.has(key))     data.hospitalStayCopay     = hospMap.get(key);
     if (snfMap.has(key))      data.skilledNursingCopay   = snfMap.get(key);
     if (erMap.has(key))       data.emergencyRoomCopay    = erMap.get(key);
@@ -228,14 +240,17 @@ function buildDayStructure(row, prefix, tier) {
     if (dentalStrMap.has(key)) data.dentalBenefits       = dentalStrMap.get(key);
     if (dentalNumMap.has(key)) data.dentalAnnualMax      = dentalNumMap.get(key);
 
-    if (Object.keys(data).length === 0) { noBenefitData++; continue; }
+    if (Object.keys(data).length === 0 && specValue == null) { noBenefitData++; continue; }
 
     if (APPLY) {
-      const r = await prisma.plan.updateMany({
-        where: { planYear: PLAN_YEAR, planCategory: 'MA_ONLY', planId: p.planId },
-        data,
-      });
-      totalRowsTouched += r.count;
+      if (Object.keys(data).length > 0) {
+        const r = await prisma.plan.updateMany({
+          where: { planYear: PLAN_YEAR, planCategory: 'MA_ONLY', planId: p.planId },
+          data,
+        });
+        totalRowsTouched += r.count;
+      }
+      await setIfNull(prisma, p.planId, PLAN_YEAR, 'specialistCopay', specValue);
     }
     updates++;
   }
