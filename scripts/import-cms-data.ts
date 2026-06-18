@@ -518,7 +518,9 @@ function buildBenefitMap(extractDir: string): Map<string, PlanBenefits> {
     if (row.pbp_b10a_copay_yn === "1") {
       b.ambulanceCopay = num(row.pbp_b10a_copay_gas_amt_min);
     }
-    b.ambulanceCoinsPct = coinsPct(row, "pbp_b10a_coins_yn", "pbp_b10a_coins_gas_pct_min", "pbp_b10a_coins_gas_pct_max");
+    // coins_gas_pct = standard ground ambulance; coins_aas_pct = all-ambulance-services (HealthSpring files here)
+    b.ambulanceCoinsPct = coinsPct(row, "pbp_b10a_coins_yn", "pbp_b10a_coins_gas_pct_min", "pbp_b10a_coins_gas_pct_max")
+      ?? coinsPct(row, "pbp_b10a_coins_yn", "pbp_b10a_coins_aas_pct_min", "pbp_b10a_coins_aas_pct_max");
     // b10b: Transportation benefit
     // Sources: trip count (bendesc_amt_pal), dollar max (maxplan_amt), or all-transport trips (amt_al)
     if (row.pbp_b10b_bendesc_yn === "1") {
