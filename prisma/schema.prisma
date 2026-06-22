@@ -109,6 +109,7 @@ model Plan {
   catScanCopay              Float?
   pcpCoinsPct                 Float?
   specialistCoinsPct          Float?
+  specialistDisplay           String?
   emergencyRoomCoinsPct       Float?
   ambulanceCoinsPct           Float?
   outpatientHospitalCoinsPct  Float?

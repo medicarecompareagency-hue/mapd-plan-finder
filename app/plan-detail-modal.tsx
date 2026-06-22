@@ -35,6 +35,7 @@ interface Plan {
   catScanCopay: number | null;
   pcpCoinsPct?: number | null;
   specialistCoinsPct?: number | null;
+  specialistDisplay?: string | null;
   emergencyRoomCoinsPct?: number | null;
   ambulanceCoinsPct?: number | null;
   outpatientHospitalCoinsPct?: number | null;
@@ -250,7 +251,7 @@ export default function PlanDetailModal({
 
             <Section title="Medical Cost Sharing">
               <Row label="PCP Copay" value={cs(plan.pcpCopay, plan.pcpCoinsPct)} />
-              <Row label="Specialist Copay" value={cs(plan.specialistCopay, plan.specialistCoinsPct)} />
+              <Row label="Specialist Copay" value={plan.specialistDisplay ?? cs(plan.specialistCopay, plan.specialistCoinsPct)} />
               <Row label="Emergency Room" value={cs(plan.emergencyRoomCopay, plan.emergencyRoomCoinsPct)} />
               <Row label="Ambulance" value={cs(plan.ambulanceCopay, plan.ambulanceCoinsPct)} />
               <Row label="Outpatient Hospital" value={cs(plan.outpatientHospitalCopay, plan.outpatientHospitalCoinsPct)} />

@@ -15,10 +15,11 @@ const APPLY = process.argv.includes('--apply');
 
 // Each fixer is independent + idempotent; loose order. Add new SB-truth fixers here as they ship.
 const FIXERS = [
-  'scripts/fix-specialist-typediff-zero.js',    // 82 specialist coins -> $0 copay (re-classifies from SB; STOPs if >110)
-  'scripts/fix-aetna-extra-supports-wallet.js', // Aetna converting wallet -> Food Card + chronic-only chips
-  'scripts/sweep-converting-wallets.js',        // Humana/UHC/Wellcare converting wallets (if shipped)
-  'scripts/fill-aetna-quarterly-foodcard.js',   // Aetna quarterly Extra Supports -> Food Card (if shipped)
+  'scripts/fix-specialist-typediff-zero.js',       // 82 specialist coins -> $0 copay (re-classifies from SB; STOPs if >110)
+  'scripts/set-uhc-specialist-choice-display.js', // UHC-16 "$0 or NN%" display (re-proves from SB; STOPs if >30)
+  'scripts/fix-aetna-extra-supports-wallet.js',   // Aetna converting wallet -> Food Card + chronic-only chips
+  'scripts/sweep-converting-wallets.js',          // Humana/UHC/Wellcare converting wallets (if shipped)
+  'scripts/fill-aetna-quarterly-foodcard.js',     // Aetna quarterly Extra Supports -> Food Card (if shipped)
 ];
 
 let ran = 0, skipped = 0;

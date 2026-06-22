@@ -596,6 +596,7 @@ export async function POST(request: Request) {
       medicaidLevel: true,
       pcpCopay: true,
       specialistCopay: true,
+      specialistDisplay: true,
       hospitalStayCopay: true,
       skilledNursingCopay: true,
       maxOutOfPocket: true,

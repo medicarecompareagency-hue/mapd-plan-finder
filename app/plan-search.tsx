@@ -49,6 +49,7 @@ interface Plan {
   // when copay is null but CoinsPct is set.
   pcpCoinsPct: number | null;
   specialistCoinsPct: number | null;
+  specialistDisplay: string | null;
   emergencyRoomCoinsPct: number | null;
   ambulanceCoinsPct: number | null;
   outpatientHospitalCoinsPct: number | null;
@@ -1469,7 +1470,7 @@ export default function PlanSearch() {
                       <td className="px-3 py-3 text-right text-gray-900">{dollarsQ(plan.maxOutOfPocket, qmbCovered)}</td>
                       <td className="px-3 py-3 text-right text-gray-900">{dollarsQ(plan.medicalDeductible, qmbCovered)}</td>
                       <td className="px-3 py-3 text-right text-gray-900">{costShareQ(plan.pcpCopay, plan.pcpCoinsPct, qmbCovered)}</td>
-                      <td className="px-3 py-3 text-right text-gray-900">{costShareQ(plan.specialistCopay, plan.specialistCoinsPct, qmbCovered)}</td>
+                      <td className="px-3 py-3 text-right text-gray-900">{plan.specialistDisplay && !qmbCovered ? plan.specialistDisplay : costShareQ(plan.specialistCopay, plan.specialistCoinsPct, qmbCovered)}</td>
                       <td className="px-3 py-3 text-right text-gray-900">{costShareQ(plan.emergencyRoomCopay, plan.emergencyRoomCoinsPct, qmbCovered)}</td>
                       <td className="px-3 py-3 text-right text-gray-900">{costShareQ(plan.ambulanceCopay, plan.ambulanceCoinsPct, qmbCovered)}</td>
                       <td className="px-3 py-3 text-right text-gray-900">{costShareQ(plan.outpatientHospitalCopay, plan.outpatientHospitalCoinsPct, qmbCovered)}</td>
