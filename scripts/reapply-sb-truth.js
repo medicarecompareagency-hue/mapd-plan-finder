@@ -19,6 +19,7 @@ const FIXERS = [
   'scripts/set-uhc-specialist-choice-display.js', // UHC-16 "$0 or NN%" display (re-proves from SB; STOPs if >30)
   'scripts/fix-aetna-extra-supports-wallet.js',   // Aetna converting wallet -> Food Card + chronic-only chips
   'scripts/sweep-converting-wallets.js',          // Humana/UHC/Wellcare converting wallets (if shipped)
+  'scripts/fill-uhc-foodcard-from-sb.js',         // UHC/Wellcare converting-wallet food $ from SB monthly credits
   'scripts/fill-aetna-quarterly-foodcard.js',     // Aetna quarterly Extra Supports -> Food Card (if shipped)
 ];
 
