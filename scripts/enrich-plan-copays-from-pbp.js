@@ -85,6 +85,26 @@ function num(v) {
   return isNaN(n) ? null : n;
 }
 
+// mrx_alt_no_ded_tier: 7-char bitmap, index 0 = padding, indexes 1-6 = Tiers 1-6.
+// "0" = deductible applies to that tier; "1" = tier is exempt.
+// Returns compact range like "3-5" for a strict subset; null if all or none.
+function drugDeductibleTierLabel(bitmap, maxTier) {
+  if (!bitmap || bitmap.length < 7 || !maxTier) return null;
+  const cap = Math.min(6, maxTier);
+  const applies = [];
+  for (let t = 1; t <= cap; t++) if (bitmap[t] === "0") applies.push(t);
+  if (applies.length === 0 || applies.length === cap) return null;
+  const parts = [];
+  let start = applies[0], prev = applies[0];
+  for (let k = 1; k <= applies.length; k++) {
+    const cur = applies[k];
+    if (cur === prev + 1) { prev = cur; continue; }
+    parts.push(start === prev ? `${start}` : `${start}-${prev}`);
+    start = cur; prev = cur;
+  }
+  return parts.join(", ");
+}
+
 // DB planId format: "${hnumber}-${parseInt(plan_identifier, 10)}"
 // (no zero-padding on the plan portion — see import-cms-data.ts L879 and
 // backfill-missing-plans.ts L388).
@@ -131,6 +151,7 @@ function buildBenefitMap() {
         mriCopay: null,
         catScanCopay: null,
         drugDeductible: null,
+        drugDeductibleTiers: null,
         drugTier1Copay: null,
         drugTier2Copay: null,
         drugTier3Copay: null,
@@ -282,15 +303,25 @@ function buildBenefitMap() {
   }
 
   // mrx: Drug deductible
+  // mrx_alt_ded_charge coding: "1"=standard Part D deductible ($615 for 2026),
+  // "2"=plan-specific alternative (reduced) deductible, "3"=waived, blank=no Part D.
+  // Both "1" and "2" carry a real dollar amount in mrx_alt_ded_amount.
   log("  pbp_mrx.txt ...");
   for (const row of parseTSV(path.join(EXTRACT_DIR, "pbp_mrx.txt"))) {
     const k = dbPlanKey(row);
     if (!k) continue;
     const b = getOrCreate(k);
-    if (row.mrx_alt_ded_charge === "2") {
+    if (row.mrx_alt_ded_charge === "1" || row.mrx_alt_ded_charge === "2") {
       mergeIfNull(b, "drugDeductible", num(row.mrx_alt_ded_amount) ?? 0);
+      const maxTier = num(row.mrx_formulary_tiers_num);
+      if (b.drugDeductibleTiers === null || b.drugDeductibleTiers === undefined) {
+        b.drugDeductibleTiers = drugDeductibleTierLabel(row.mrx_alt_no_ded_tier, maxTier);
+      }
     } else {
       mergeIfNull(b, "drugDeductible", 0);
+      if (b.drugDeductibleTiers === null || b.drugDeductibleTiers === undefined) {
+        b.drugDeductibleTiers = null;
+      }
     }
   }
 
@@ -368,7 +399,7 @@ const NUM_FIELDS = [
   "drugTier5Copay",
   "drugTier6Copay",
 ];
-const STR_FIELDS = ["hospitalStayCopay", "skilledNursingCopay"];
+const STR_FIELDS = ["hospitalStayCopay", "skilledNursingCopay", "drugDeductibleTiers"];
 // drugTierCoinsuranceMask is derived from the _coinsuranceTiers Set rather
 // than being read as a column from PBP. It's a String? like "45" meaning
 // tiers 4 and 5 are coinsurance percentages rather than flat copays.

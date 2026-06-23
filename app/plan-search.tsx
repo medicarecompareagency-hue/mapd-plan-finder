@@ -57,6 +57,7 @@ interface Plan {
   mriCoinsPct: number | null;
   catScanCoinsPct: number | null;
   drugDeductible: number | null;
+  drugDeductibleTiers: string | null;
   drugTier1Copay: number | null;
   drugTier2Copay: number | null;
   drugTier3Copay: number | null;
@@ -1484,7 +1485,7 @@ export default function PlanSearch() {
                       <td className="px-3 py-3 text-right text-gray-900">{costShareQ(plan.catScanCopay, plan.catScanCoinsPct, qmbCovered)}</td>
                       {!isMaOnly && (
                         <>
-                          <td className="px-3 py-3 text-right text-gray-900">{(isDsnp && searchedDualLevel) ? "$0" : dollars(plan.drugDeductible)}</td>
+                          <td className="px-3 py-3 text-right text-gray-900">{(isDsnp && searchedDualLevel) ? "$0" : <>{dollars(plan.drugDeductible)}{plan.drugDeductibleTiers ? ` (Tiers ${plan.drugDeductibleTiers})` : ""}</>}</td>
                           <td className="px-3 py-3 text-right text-gray-900">{drugTierCellQ(<DrugTierCell tier={1} value={plan.drugTier1Copay} mask={plan.drugTierCoinsuranceMask} />, 1, isDsnp, searchedDualLevel)}</td>
                           <td className="px-3 py-3 text-right text-gray-900">{drugTierCellQ(<DrugTierCell tier={2} value={plan.drugTier2Copay} mask={plan.drugTierCoinsuranceMask} />, 2, isDsnp, searchedDualLevel)}</td>
                           <td className="px-3 py-3 text-right text-gray-900">{drugTierCellQ(<DrugTierCell tier={3} value={plan.drugTier3Copay} mask={plan.drugTierCoinsuranceMask} />, 3, isDsnp, searchedDualLevel)}</td>

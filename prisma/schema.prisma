@@ -116,6 +116,7 @@ model Plan {
   mriCoinsPct                 Float?
   catScanCoinsPct             Float?
   drugDeductible            Float?   @default(0)
+  drugDeductibleTiers       String?
   drugTier1Copay            Float?
   drugTier2Copay            Float?
   drugTier3Copay            Float?

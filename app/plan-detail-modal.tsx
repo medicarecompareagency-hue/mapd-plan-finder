@@ -42,6 +42,7 @@ interface Plan {
   mriCoinsPct?: number | null;
   catScanCoinsPct?: number | null;
   drugDeductible: number | null;
+  drugDeductibleTiers?: string | null;
   drugTier1Copay: number | null;
   drugTier2Copay: number | null;
   drugTier3Copay: number | null;
@@ -267,7 +268,7 @@ export default function PlanDetailModal({
 
           <div>
             <Section title="Prescription Drug Costs">
-              <Row label="Drug Deductible" value={$(plan.drugDeductible)} />
+              <Row label="Drug Deductible" value={plan.drugDeductibleTiers ? `${$(plan.drugDeductible)} (Tiers ${plan.drugDeductibleTiers})` : $(plan.drugDeductible)} />
               <Row label="Tier 1 (Preferred Generic)" value={$(plan.drugTier1Copay)} />
               <Row label="Tier 2 (Generic)" value={$(plan.drugTier2Copay)} />
               <Row label="Tier 3 (Preferred Brand)" value={$(plan.drugTier3Copay)} />

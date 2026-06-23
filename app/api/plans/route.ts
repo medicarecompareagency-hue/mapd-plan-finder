@@ -611,6 +611,7 @@ export async function POST(request: Request) {
       drugTier5Copay: true,
       drugTier6Copay: true,
       drugDeductible: true,
+      drugDeductibleTiers: true,
       otcAllowance: true,
       foodCardAllowance: true,
       ssbciFoodAllowance: true,

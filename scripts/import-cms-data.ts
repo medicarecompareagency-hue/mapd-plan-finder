@@ -274,6 +274,27 @@ function num(val: string | undefined): number | null {
   return isNaN(n) ? null : n;
 }
 
+// mrx_alt_no_ded_tier: 7-char bitmap, index 0 = padding, indexes 1-6 = Tiers 1-6.
+// "0" = deductible applies to that tier; "1" = tier is exempt.
+// Returns a compact range like "3-5" when the deductible applies to a strict
+// subset of tiers; returns null when it applies to all tiers or none.
+function drugDeductibleTierLabel(bitmap: string | undefined, maxTier: number | null): string | null {
+  if (!bitmap || bitmap.length < 7 || !maxTier) return null;
+  const cap = Math.min(6, maxTier);
+  const applies: number[] = [];
+  for (let t = 1; t <= cap; t++) if (bitmap[t] === "0") applies.push(t);
+  if (applies.length === 0 || applies.length === cap) return null;
+  const parts: string[] = [];
+  let start = applies[0], prev = applies[0];
+  for (let k = 1; k <= applies.length; k++) {
+    const cur = applies[k];
+    if (cur === prev + 1) { prev = cur; continue; }
+    parts.push(start === prev ? `${start}` : `${start}-${prev}`);
+    start = cur; prev = cur;
+  }
+  return parts.join(", ");
+}
+
 function planKey(row: PBPRow): string {
   return `${row.pbp_a_hnumber}-${row.pbp_a_plan_identifier}-${row.segment_id || "0"}`;
 }
@@ -319,6 +340,7 @@ interface PlanBenefits {
   catScanCoinsPct: number | null;
   // mrx - Drug
   drugDeductible: number | null;
+  drugDeductibleTiers: string | null;
   drugTier1Copay: number | null;
   drugTier2Copay: number | null;
   drugTier3Copay: number | null;
@@ -367,7 +389,7 @@ function buildBenefitMap(extractDir: string): Map<string, PlanBenefits> {
         hospitalStayCopay: null, skilledNursingCopay: null,
         mriCopay: null, catScanCopay: null,
         mriCoinsPct: null, catScanCoinsPct: null,
-        drugDeductible: null, drugTier1Copay: null, drugTier2Copay: null,
+        drugDeductible: null, drugDeductibleTiers: null, drugTier1Copay: null, drugTier2Copay: null,
         drugTier3Copay: null, drugTier4Copay: null, drugTier5Copay: null,
         drugTier6Copay: null, otcAllowance: null, foodCardAllowance: null,
         dentalBenefits: null, visionBenefits: null, hearingBenefits: null,
@@ -592,14 +614,19 @@ function buildBenefitMap(extractDir: string): Map<string, PlanBenefits> {
   }
 
   // mrx: Drug deductible
+  // mrx_alt_ded_charge coding: "1"=standard Part D deductible ($615 for 2026),
+  // "2"=plan-specific alternative (reduced) deductible, "3"=waived, blank=no Part D.
+  // Both "1" and "2" carry a real dollar amount in mrx_alt_ded_amount.
   log("Parsing pbp_mrx.txt...");
   for (const row of parseTSV(path.join(extractDir, "pbp_mrx.txt"))) {
     const b = getOrCreate(planKey(row));
-    if (row.mrx_alt_ded_charge === "2") {
-      // charge=2 means deductible applies
+    if (row.mrx_alt_ded_charge === "1" || row.mrx_alt_ded_charge === "2") {
       b.drugDeductible = num(row.mrx_alt_ded_amount) ?? 0;
+      const maxTier = num(row.mrx_formulary_tiers_num);
+      b.drugDeductibleTiers = drugDeductibleTierLabel(row.mrx_alt_no_ded_tier, maxTier);
     } else {
       b.drugDeductible = 0;
+      b.drugDeductibleTiers = null;
     }
   }
 
@@ -1284,6 +1311,7 @@ export async function runImport(year?: number): Promise<{ imported: number; skip
         mriCoinsPct: benefits?.mriCoinsPct ?? null,
         catScanCoinsPct: benefits?.catScanCoinsPct ?? null,
         drugDeductible: benefits?.drugDeductible ?? landscapeDrugDeductible ?? 0,
+        drugDeductibleTiers: benefits?.drugDeductibleTiers ?? null,
         drugTier1Copay: benefits?.drugTier1Copay,
         drugTier2Copay: benefits?.drugTier2Copay,
         drugTier3Copay: benefits?.drugTier3Copay,
@@ -1418,6 +1446,7 @@ export async function runImport(year?: number): Promise<{ imported: number; skip
             mriCoinsPct: benefits?.mriCoinsPct ?? null,
             catScanCoinsPct: benefits?.catScanCoinsPct ?? null,
             drugDeductible: benefits?.drugDeductible ?? num(row.annualdrugdeductible) ?? 0,
+            drugDeductibleTiers: benefits?.drugDeductibleTiers ?? null,
             drugTier1Copay: benefits?.drugTier1Copay ?? null,
             drugTier2Copay: benefits?.drugTier2Copay ?? null,
             drugTier3Copay: benefits?.drugTier3Copay ?? null,
