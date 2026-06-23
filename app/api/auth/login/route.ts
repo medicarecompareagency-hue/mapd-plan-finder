@@ -18,7 +18,7 @@ export async function POST(request: Request) {
       where: { email: email.toLowerCase().trim() },
     });
 
-    if (!user) {
+    if (!user || !user.active) {
       return NextResponse.json(
         { error: "Invalid email or password" },
         { status: 401 }

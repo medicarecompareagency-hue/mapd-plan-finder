@@ -196,6 +196,7 @@ model User {
   name          String?
   passwordHash  String
   role          String    @default("agent")
+  active        Boolean   @default(true)
   createdAt       DateTime        @default(now())
   searches        Search[]
   passwordResets  PasswordReset[]
