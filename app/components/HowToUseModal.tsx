@@ -30,6 +30,11 @@ const SECTIONS: Section[] = [
     "OTC and Food Card cells show the cadence (monthly, quarterly, yearly) and whether the benefit is for All Members or Chronic-condition only.",
     "Star ratings are CMS's 1 to 5 quality score — higher is better.",
   ]},
+  { title: 'Save it to your home screen', items: [
+    "iPhone or iPad (Safari) — Tap the Share button, then Add to Home Screen, then Add. Safari never shows an automatic prompt, so this step is always manual.",
+    "Android (Chrome) — Tap the ⋮ menu, then Add to Home screen. An install banner may also appear on its own.",
+    "Laptop (Chrome or Edge) — Click the install icon in the address bar, then Install.",
+  ]},
 ];
 
 function withBoldLabel(s: string) {
