@@ -20,8 +20,16 @@ const SECTIONS: Section[] = [
     "Beneficiary Medicaid Level — required for D-SNP searches. Choose the client's level (QMB+, QMB, SLMB+, SLMB, QI-1, or FBDE) so plans rank correctly. The red prompt after clicking Search is expected, not an error.",
     "LIS / Extra Help Level — set the client's Extra Help level (Full, 75%, 50%, or 25%) to see adjusted drug copays. Use the LIS Qualifier button to check whether a client qualifies and which level applies.",
   ]},
+  { title: 'How the top plans are ranked', paras: [
+    "Ranking is automatic, and the priorities change by plan type:",
+  ], items: [
+    "MAPD (medical + drug) — lowest monthly premium first, then lowest medical deductible, hospital copay, specialist copay, max out-of-pocket, and finally highest star rating.",
+    "MA-Only (no drug coverage) — biggest Part B giveback first, then lowest hospital copay, specialist copay, primary-care copay, and the best dental annual max.",
+    "D-SNP, full-dual (QMB+, QMB, SLMB+, FBDE) — premium is $0 to the member; ranked on highest food card first, then highest OTC allowance, then best dental annual max, best vision annual max, and finally plans that offer transportation.",
+    "D-SNP, partial-dual (SLMB, QI-1) — lowest specialist copay first, then highest food card, highest OTC allowance, lowest hospital copay, best dental annual max, best vision annual max, and lowest max out-of-pocket.",
+    "Chronic (C-SNP) — lowest specialist copay first, then highest food card, highest OTC allowance, lowest hospital copay, best dental annual max, best vision annual max, and lowest max out-of-pocket.",
+  ]},
   { title: 'Reading the results', paras: [
-    "Up to 10 plans are returned, ranked best to worst: lowest adjusted premium first, then lowest medical deductible, hospital copay, specialist copay, max out-of-pocket, and finally highest star rating.",
     "Each row shows premium, deductibles, key copays, MOOP, drug tiers, and extra benefits such as OTC allowance, Food Card, dental, hearing, vision, and Part B Giveback. Click a plan name to open the detail view. Follow the SB PDF link for the carrier's official Summary of Benefits, or the medicare.gov link if no PDF is on file.",
   ]},
   { title: 'Tips', items: [
