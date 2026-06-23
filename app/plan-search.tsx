@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Combobox from "./combobox";
 import PlanDetailModal from "./plan-detail-modal";
 import PasswordInput from "./password-input";
+import HowToUseModal from "./components/HowToUseModal";
 
 // ---------------------------------------------------------------------------
 // Types
@@ -883,12 +884,15 @@ export default function PlanSearch() {
         </div>
       </div>
       {/* Header */}
-      <div className="flex items-center justify-between border-b border-gray-200 pb-4">
+      <div className="flex flex-wrap items-start justify-between border-b border-gray-200 pb-4 gap-3">
         <div>
-          <h1 className="text-2xl font-bold text-white">Medicare Advantage Plan Finder</h1>
+          <h1 className="text-xl sm:text-2xl font-bold text-white">Medicare Advantage Plan Finder</h1>
           <p className="text-sm text-gray-300 mt-1">
             Filter and compare plans — results ranked best to worst based on your criteria
           </p>
+          <div className="mt-3">
+            <HowToUseModal />
+          </div>
         </div>
         {user && (
           <div className="relative" ref={userMenuRef}>
@@ -1253,17 +1257,17 @@ export default function PlanSearch() {
         </div>
 
         {/* Action buttons */}
-        <div className="flex gap-3 pt-2">
+        <div className="flex flex-wrap gap-3 pt-2">
           <button
             onClick={handleSearch}
             disabled={loading}
-            className="px-6 py-2 bg-blue-600 text-white text-sm font-semibold rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            className="w-full sm:w-auto px-6 py-2 bg-blue-600 text-white text-sm font-semibold rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
             {loading ? "Searching..." : "Search Plans"}
           </button>
           <button
             onClick={handleReset}
-            className="px-6 py-2 bg-white text-gray-700 text-sm font-semibold rounded-md border border-gray-300 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 transition-colors"
+            className="w-full sm:w-auto px-6 py-2 bg-white text-gray-700 text-sm font-semibold rounded-md border border-gray-300 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 transition-colors"
           >
             Reset
           </button>
@@ -1314,7 +1318,7 @@ export default function PlanSearch() {
               <div style={{ width: tableWidth || "100%", height: 1 }} />
             </div>
             <div ref={tableScrollRef} onScroll={handleTableScroll} className="overflow-x-auto">
-              <table className="w-full text-sm">
+              <table className="w-full min-w-[720px] text-sm">
                 <thead>
                   <tr className="bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                     <th className="px-3 py-3 sticky left-0 bg-gray-50 z-10">Rank</th>
