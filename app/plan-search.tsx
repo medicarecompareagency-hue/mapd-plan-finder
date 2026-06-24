@@ -896,6 +896,31 @@ export default function PlanSearch() {
           </div>
         </div>
         {user && (
+          <div className="flex items-center gap-2">
+            {/* Mobile-only quick actions — standalone PWA has no browser chrome */}
+            <div className="flex items-center gap-2 sm:hidden">
+              <button
+                type="button"
+                onClick={() => window.location.reload()}
+                aria-label="Refresh"
+                className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-white/10 hover:bg-white/20 active:bg-white/30 text-white text-sm transition-colors"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                  fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"
+                  strokeLinejoin="round" aria-hidden="true">
+                  <path d="M21 12a9 9 0 1 1-2.64-6.36" />
+                  <path d="M21 3v6h-6" />
+                </svg>
+                Refresh
+              </button>
+              <button
+                type="button"
+                onClick={handleLogout}
+                className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-white/10 hover:bg-white/20 active:bg-white/30 text-white text-sm transition-colors"
+              >
+                Log out
+              </button>
+            </div>
           <div className="relative" ref={userMenuRef}>
             <button
               onClick={() => setShowUserMenu(!showUserMenu)}
@@ -949,6 +974,7 @@ export default function PlanSearch() {
                 </div>
               </div>
             )}
+          </div>
           </div>
         )}
       </div>
