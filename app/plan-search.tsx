@@ -888,7 +888,7 @@ export default function PlanSearch() {
       <div className="flex flex-wrap items-start justify-between border-b border-gray-200 pb-4 gap-3">
         <div>
           <h1 className="text-xl sm:text-2xl font-bold text-white">Medicare Advantage Plan Finder</h1>
-          <p className="text-sm text-gray-300 mt-1">
+          <p className="text-sm text-gray-100 mt-1">
             Filter and compare plans — results ranked best to worst based on your criteria
           </p>
           <div className="mt-3">
