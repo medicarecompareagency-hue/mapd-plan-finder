@@ -887,8 +887,8 @@ export default function PlanSearch() {
       {/* Header */}
       <div className="flex flex-wrap items-start justify-between border-b border-gray-200 pb-4 gap-3">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold text-white">Medicare Advantage Plan Finder</h1>
-          <p className="text-sm text-gray-100 mt-1">
+          <h1 className="text-xl sm:text-2xl font-bold text-gray-900 sm:text-white">Medicare Advantage Plan Finder</h1>
+          <p className="text-sm text-gray-600 sm:text-gray-100 mt-1">
             Filter and compare plans — results ranked best to worst based on your criteria
           </p>
           <div className="mt-3">
@@ -903,7 +903,7 @@ export default function PlanSearch() {
                 type="button"
                 onClick={() => window.location.reload()}
                 aria-label="Refresh"
-                className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-white/10 hover:bg-white/20 active:bg-white/30 text-white text-sm transition-colors"
+                className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-[#1a3a5c] hover:bg-[#0f2744] text-white text-sm transition-colors"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
                   fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"
@@ -916,7 +916,7 @@ export default function PlanSearch() {
               <button
                 type="button"
                 onClick={handleLogout}
-                className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-white/10 hover:bg-white/20 active:bg-white/30 text-white text-sm transition-colors"
+                className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-[#1a3a5c] hover:bg-[#0f2744] text-white text-sm transition-colors"
               >
                 Log out
               </button>
@@ -924,7 +924,7 @@ export default function PlanSearch() {
           <div className="relative" ref={userMenuRef}>
             <button
               onClick={() => setShowUserMenu(!showUserMenu)}
-              className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-white text-sm transition-colors"
+              className="hidden sm:flex items-center gap-2 px-3 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-white text-sm transition-colors"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
