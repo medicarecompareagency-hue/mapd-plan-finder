@@ -166,6 +166,9 @@ model Plan {
   sbVerifiedOtcPeriod       String?
   sbVerifiedFoodPeriod      String?
 
+  qmbCostShareProtected     Boolean?  // SB-derived: true = standalone QMB is $0 on this plan
+  costShareProtectedLevels  String?   // audit: comma-joined normalized levels, e.g. "FBDE,QMB,QMB+,SLMB+"
+
   createdAt                 DateTime @default(now())
   updatedAt                 DateTime @updatedAt
   starRating                Float?

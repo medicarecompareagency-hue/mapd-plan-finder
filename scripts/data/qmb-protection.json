@@ -1,0 +1,5281 @@
+{
+  "H0028-14": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0028-15": {
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H0028-16": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0028-17": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0028-29": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0028-30": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0028-32": {
+    "protected": true,
+    "levels": [
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H0028-35": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0028-36": {
+    "protected": true,
+    "levels": [
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H0028-37": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0028-39": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0028-41": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0028-42": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0028-43": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0028-46": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0028-51": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0028-54": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0028-55": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0028-56": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0028-59": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0028-60": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0028-67": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0169-10": {
+    "protected": true,
+    "levels": [
+      "QMB"
+    ],
+    "signal": "rule3:eligibility-list"
+  },
+  "H0169-2": {
+    "protected": true,
+    "levels": [
+      "QMB",
+      "QMB+"
+    ],
+    "signal": "rule3:eligibility-list"
+  },
+  "H0169-4": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0169-8": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0169-9": {
+    "protected": false,
+    "levels": [
+      "QMB+",
+      "SLMB",
+      "SLMB+"
+    ],
+    "signal": "rule3:eligibility-list"
+  },
+  "H0174-10": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0174-15": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0174-20": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0174-21": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0174-22": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0174-25": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0174-4": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0174-6": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0251-2": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0251-4": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0292-1": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0292-2": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0292-3": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0421-1": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0432-12": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0432-13": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0432-17": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0432-4": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0432-9": {
+    "protected": false,
+    "levels": [
+      "QMB+"
+    ],
+    "signal": "rule3:eligibility-list"
+  },
+  "H0439-10": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0439-11": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0439-13": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0439-22": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0439-23": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0439-3": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0439-6": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0439-8": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0439-9": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0473-3": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0473-4": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0473-5": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0609-52": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0609-58": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0609-65": {
+    "protected": true,
+    "levels": [
+      "QMB",
+      "QMB+"
+    ],
+    "signal": "rule3:eligibility-list"
+  },
+  "H0628-1": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0628-10": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0628-12": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0628-13": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0628-17": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0628-18": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0628-3": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0628-31": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0628-32": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0628-33": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0628-34": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0628-35": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0628-36": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0628-37": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0628-38": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0628-39": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0628-40": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0628-41": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0628-5": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0628-7": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0628-8": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0672-15": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0672-16": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0672-17": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0672-18": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0672-6": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0908-1": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0908-6": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0908-7": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H0908-8": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1032-193": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1032-194": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1032-195": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1032-196": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1032-198": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1032-200": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1032-201": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1032-202": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1032-204": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1032-213": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1032-245": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1036-102": {
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H1036-119": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1036-121": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1036-143": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1036-146": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1036-151": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1036-157": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1036-209": {
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H1036-210": {
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H1036-213": {
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H1036-214": {
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H1036-217": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1036-222": {
+    "protected": true,
+    "levels": [
+      "QMB"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H1036-226": {
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H1036-229": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1036-230": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1036-234": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1036-235": {
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H1036-236": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1036-25": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1036-265": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1036-266": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1036-269": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1036-270": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1036-271": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1036-278": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1036-279": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1036-280": {
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H1036-286": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1036-290": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1036-292": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1036-297": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1036-298": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1036-299": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1036-300": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1036-301": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1036-302": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1036-304": {
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H1036-305": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1036-310": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1036-311": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1036-312": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1036-313": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1036-314": {
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H1036-315": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1036-316": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1036-328": {
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H1036-330": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1036-337": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1036-339": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1036-341": {
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H1036-44": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1036-54": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1036-62": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1036-65": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1036-68": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1036-74": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1036-77": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1045-1": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1045-12": {
+    "protected": true,
+    "levels": [
+      "QMB",
+      "QMB+"
+    ],
+    "signal": "rule3:eligibility-list"
+  },
+  "H1045-18": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1045-25": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1045-26": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1045-28": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1045-30": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1045-31": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1045-33": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1045-34": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1045-36": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1045-37": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1045-38": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1045-39": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1045-41": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1045-42": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1045-43": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1045-45": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1045-5": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1045-55": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1045-56": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1045-61": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1045-63": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1045-64": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1045-65": {
+    "protected": false,
+    "levels": [
+      "QMB+",
+      "SLMB",
+      "SLMB+"
+    ],
+    "signal": "rule3:eligibility-list"
+  },
+  "H1109-5": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1112-33": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1112-39": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1112-42": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1112-43": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1112-46": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1112-6": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1206-4": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1206-9": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1278-10": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1278-15": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1278-3": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-1": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-13": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-14": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-15": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-18": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-19": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-2": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-20": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-21": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-22": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-23": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-24": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-25": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-27": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-29": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-3": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-31": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-32": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-33": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-35": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-36": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-37": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-39": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-41": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-42": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-43": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-44": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-45": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-46": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-49": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-50": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-51": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-52": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-53": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-54": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-55": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-67": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-68": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-69": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-70": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-71": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-72": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-73": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-74": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-78": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-79": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-80": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-81": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-82": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-83": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-84": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-85": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-86": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-87": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-88": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-89": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-90": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1290-91": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1396-1": {
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule3:eligibility-list"
+  },
+  "H1416-34": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1416-35": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1416-42": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1416-55": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1416-58": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1416-61": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1416-68": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1468-13": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1468-17": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1468-7": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1608-13": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1608-16": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1608-17": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1608-18": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1608-21": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1608-24": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1608-27": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1608-28": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1608-29": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1608-31": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1608-40": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1608-50": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1608-51": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1608-52": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1608-54": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1608-76": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1608-77": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1609-17": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1609-18": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1609-19": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1609-21": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1609-22": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1609-25": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1609-27": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1609-28": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1609-41": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1609-43": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1609-44": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1609-45": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1609-46": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1609-47": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1609-48": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1609-49": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1609-55": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1609-56": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1609-59": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1609-61": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1609-62": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1609-63": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1609-64": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1609-73": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1609-74": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1609-75": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1609-76": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1609-77": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1609-78": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1609-79": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1609-80": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1609-81": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1609-82": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1609-83": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1609-84": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1609-85": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1609-88": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1609-89": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1609-90": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1609-92": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1609-94": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1659-2": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1664-12": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1664-5": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1692-2": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1692-3": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1692-5": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1692-6": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1692-7": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1889-10": {
+    "protected": true,
+    "levels": [
+      "QMB",
+      "QMB+"
+    ],
+    "signal": "rule3:eligibility-list"
+  },
+  "H1889-11": {
+    "protected": true,
+    "levels": [
+      "QMB",
+      "QMB+"
+    ],
+    "signal": "rule3:eligibility-list"
+  },
+  "H1889-19": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1889-2": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1889-20": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1889-25": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1889-26": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1889-28": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1889-30": {
+    "protected": false,
+    "levels": [],
+    "signal": "rule2:full-medicaid-conditional"
+  },
+  "H1889-31": {
+    "protected": false,
+    "levels": [],
+    "signal": "rule2:full-medicaid-conditional"
+  },
+  "H1889-32": {
+    "protected": false,
+    "levels": [],
+    "signal": "rule2:full-medicaid-conditional"
+  },
+  "H1889-8": {
+    "protected": true,
+    "levels": [
+      "QMB",
+      "QMB+"
+    ],
+    "signal": "rule3:eligibility-list"
+  },
+  "H1889-9": {
+    "protected": false,
+    "levels": [],
+    "signal": "rule2:full-medicaid-conditional"
+  },
+  "H1951-13": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1951-24": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1951-28": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1951-38": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1951-39": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1951-44": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1951-47": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1951-48": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1951-49": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1951-51": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1951-52": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1951-53": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H1951-56": {
+    "protected": false,
+    "levels": [
+      "QI",
+      "SLMB"
+    ],
+    "signal": "rule3:eligibility-list"
+  },
+  "H1951-57": {
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule3:eligibility-list"
+  },
+  "H1951-61": {
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H2001-30": {
+    "protected": true,
+    "levels": [
+      "QMB",
+      "QMB+"
+    ],
+    "signal": "rule3:eligibility-list"
+  },
+  "H2001-32": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2001-34": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2001-35": {
+    "protected": true,
+    "levels": [
+      "QMB",
+      "QMB+"
+    ],
+    "signal": "rule3:eligibility-list"
+  },
+  "H2001-37": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2001-38": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2001-40": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2001-55": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2001-56": {
+    "protected": true,
+    "levels": [
+      "QMB",
+      "QMB+"
+    ],
+    "signal": "rule3:eligibility-list"
+  },
+  "H2001-58": {
+    "protected": true,
+    "levels": [
+      "QMB",
+      "QMB+"
+    ],
+    "signal": "rule3:eligibility-list"
+  },
+  "H2001-59": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2001-60": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2001-61": {
+    "protected": true,
+    "levels": [
+      "QMB",
+      "QMB+"
+    ],
+    "signal": "rule3:eligibility-list"
+  },
+  "H2001-65": {
+    "protected": false,
+    "levels": [],
+    "signal": "rule2:full-medicaid-conditional"
+  },
+  "H2001-75": {
+    "protected": false,
+    "levels": [],
+    "signal": "rule2:full-medicaid-conditional"
+  },
+  "H2001-82": {
+    "protected": false,
+    "levels": [],
+    "signal": "rule2:full-medicaid-conditional"
+  },
+  "H2041-11": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2041-12": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2041-13": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2041-14": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2041-15": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2041-16": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2041-7": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2041-8": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2293-1": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2293-10": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2293-14": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2293-16": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2293-17": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2293-19": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2293-2": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2293-21": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2293-35": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2293-4": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2293-9": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2385-1": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2385-4": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2406-10": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2406-11": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2406-13": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2406-15": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2406-16": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2406-17": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2406-18": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2406-19": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2406-52": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2406-8": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2406-9": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2445-2": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2445-5": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2491-25": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2509-1": {
+    "protected": false,
+    "levels": [
+      "QMB+",
+      "SLMB",
+      "SLMB+"
+    ],
+    "signal": "rule3:eligibility-list"
+  },
+  "H2509-3": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2526-1": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2663-100": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2663-102": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2663-17": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2663-21": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2663-22": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2663-23": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2663-25": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2663-26": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2663-28": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2663-29": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2663-34": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2663-38": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2663-39": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2663-40": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2663-41": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2663-42": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2663-43": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2663-5": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2663-6": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2663-97": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2663-98": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2663-99": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2697-1": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2697-10": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2697-11": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2697-16": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2697-17": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2697-18": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2697-2": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2697-20": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2697-3": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2697-4": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2697-6": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2697-7": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2697-9": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2802-10": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2802-12": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2802-24": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2802-25": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2802-30": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2802-31": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2802-32": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2802-33": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2802-34": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2802-35": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2802-41": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2802-44": {
+    "protected": false,
+    "levels": [
+      "QMB+"
+    ],
+    "signal": "rule3:eligibility-list"
+  },
+  "H2802-49": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2802-50": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2802-52": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2802-54": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2802-64": {
+    "protected": false,
+    "levels": [],
+    "signal": "rule2:full-medicaid-conditional"
+  },
+  "H2802-67": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2802-68": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2802-70": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2802-8": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2845-10": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2845-3": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2845-8": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2845-9": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H2875-1": {
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule3:eligibility-list"
+  },
+  "H2875-2": {
+    "protected": true,
+    "levels": [
+      "QMB"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H2875-3": {
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule3:eligibility-list"
+  },
+  "H2875-4": {
+    "protected": true,
+    "levels": [
+      "QMB"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H2875-5": {
+    "protected": false,
+    "levels": [
+      "QI",
+      "SLMB"
+    ],
+    "signal": "rule3:eligibility-list"
+  },
+  "H2875-6": {
+    "protected": false,
+    "levels": [
+      "QI",
+      "SLMB"
+    ],
+    "signal": "rule3:eligibility-list"
+  },
+  "H3041-1": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3080-2": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3080-3": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3080-4": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3080-7": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3146-11": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3146-12": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3146-14": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3146-16": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3146-23": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3146-36": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3146-38": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3192-1": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3192-13": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3192-28": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3192-29": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3192-5": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3239-1": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3239-10": {
+    "protected": false,
+    "levels": [
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule3:eligibility-list"
+  },
+  "H3239-12": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3239-15": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3239-2": {
+    "protected": false,
+    "levels": [
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule3:eligibility-list"
+  },
+  "H3239-23": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3239-26": {
+    "protected": false,
+    "levels": [
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule3:eligibility-list"
+  },
+  "H3239-27": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3239-28": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3239-30": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3239-5": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3239-7": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3256-4": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3256-5": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3256-6": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3288-1": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3288-11": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3288-16": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3288-17": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3288-18": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3288-19": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3288-2": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3288-20": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3288-21": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3288-27": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3288-3": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3288-34": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3288-4": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3288-42": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3288-46": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3288-47": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3288-48": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3288-5": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3288-51": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3288-53": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3288-6": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3288-7": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3288-8": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3288-9": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3928-1": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3931-100": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3931-101": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3931-107": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3931-108": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3931-109": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3931-143": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3931-99": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3975-2": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H3975-4": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4141-15": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4141-17": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4141-24": {
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H4141-25": {
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H4141-3": {
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H4329-1": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4348-3": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4348-4": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4348-7": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4407-11": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4407-27": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4461-22": {
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule3:eligibility-list"
+  },
+  "H4461-25": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4461-35": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4461-38": {
+    "protected": true,
+    "levels": [
+      "QMB"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H4461-39": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4461-4": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4461-42": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4461-44": {
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H4461-66": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4461-67": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4461-76": {
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H4506-3": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4513-26": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4513-30": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4513-33": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4513-35": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4513-36": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4513-37": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4513-38": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4513-45": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4513-46": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4513-49": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4513-50": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4513-52": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4513-53": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4513-61": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4513-64": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4513-68": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4513-73": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4513-74": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4513-9": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4514-14": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4514-17": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4514-18": {
+    "protected": true,
+    "levels": [
+      "QMB",
+      "QMB+"
+    ],
+    "signal": "rule3:eligibility-list"
+  },
+  "H4514-24": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4514-7": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4523-1": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4523-15": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4523-20": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4523-21": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4523-24": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4523-28": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4523-29": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4523-30": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4523-34": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4523-37": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4523-38": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4523-39": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4523-41": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4523-43": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4523-44": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4527-1": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4527-13": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4527-15": {
+    "protected": true,
+    "levels": [
+      "QMB",
+      "QMB+"
+    ],
+    "signal": "rule3:eligibility-list"
+  },
+  "H4527-2": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4527-24": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4527-3": {
+    "protected": true,
+    "levels": [
+      "QMB",
+      "QMB+"
+    ],
+    "signal": "rule3:eligibility-list"
+  },
+  "H4527-40": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4527-41": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4527-5": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4527-57": {
+    "protected": true,
+    "levels": [
+      "QMB"
+    ],
+    "signal": "rule3:eligibility-list"
+  },
+  "H4537-4": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4623-1": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4623-2": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4847-1": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4847-5": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H4939-2": {
+    "protected": true,
+    "levels": [
+      "QMB"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H4939-3": {
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H5008-16": {
+    "protected": true,
+    "levels": [
+      "QMB",
+      "QMB+"
+    ],
+    "signal": "rule3:eligibility-list"
+  },
+  "H5008-17": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5216-100": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5216-105": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5216-106": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5216-114": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5216-124": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5216-128": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5216-13": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5216-136": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5216-144": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5216-152": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5216-154": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5216-157": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5216-160": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5216-161": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5216-164": {
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H5216-179": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5216-180": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5216-188": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5216-19": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5216-192": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5216-200": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5216-201": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5216-205": {
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H5216-206": {
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H5216-207": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5216-217": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5216-218": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5216-219": {
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H5216-220": {
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H5216-225": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5216-235": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5216-236": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5216-256": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5216-257": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5216-258": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5216-264": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5216-27": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5216-277": {
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule3:eligibility-list"
+  },
+  "H5216-278": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5216-284": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5216-286": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5216-292": {
+    "protected": true,
+    "levels": [
+      "QMB"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H5216-298": {
+    "protected": false,
+    "levels": [
+      "QI",
+      "SLMB"
+    ],
+    "signal": "rule3:eligibility-list"
+  },
+  "H5216-310": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5216-311": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5216-32": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5216-325": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5216-330": {
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H5216-332": {
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H5216-334": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5216-348": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5216-352": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5216-355": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5216-414": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5216-470": {
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H5216-83": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5253-100": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5253-108": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5253-109": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5253-111": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5253-112": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5253-113": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5253-119": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5253-120": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5253-121": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5253-122": {
+    "protected": true,
+    "levels": [
+      "QMB",
+      "QMB+"
+    ],
+    "signal": "rule3:eligibility-list"
+  },
+  "H5253-175": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5253-176": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5253-180": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5253-182": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5253-183": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5253-190": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5253-193": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5253-194": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5253-196": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5253-47": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5253-48": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5253-51": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5253-59": {
+    "protected": true,
+    "levels": [
+      "QMB",
+      "QMB+"
+    ],
+    "signal": "rule3:eligibility-list"
+  },
+  "H5253-62": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5253-81": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5253-82": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5253-87": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5253-88": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5253-89": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5253-99": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5302-12": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5302-20": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5302-24": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5302-26": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5322-25": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5322-26": {
+    "protected": true,
+    "levels": [
+      "QMB",
+      "QMB+"
+    ],
+    "signal": "rule3:eligibility-list"
+  },
+  "H5322-29": {
+    "protected": false,
+    "levels": [],
+    "signal": "rule2:full-medicaid-conditional"
+  },
+  "H5322-31": {
+    "protected": true,
+    "levels": [
+      "QMB",
+      "QMB+"
+    ],
+    "signal": "rule3:eligibility-list"
+  },
+  "H5322-33": {
+    "protected": true,
+    "levels": [
+      "QMB",
+      "QMB+"
+    ],
+    "signal": "rule3:eligibility-list"
+  },
+  "H5322-34": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5322-38": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5322-46": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5322-50": {
+    "protected": true,
+    "levels": [
+      "QMB",
+      "QMB+"
+    ],
+    "signal": "rule3:eligibility-list"
+  },
+  "H5325-11": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5325-12": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5325-13": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5325-14": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5325-15": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5325-3": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5325-4": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5325-5": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5325-7": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5377-2": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5410-13": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5410-18": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5410-24": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5410-25": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5410-26": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5410-31": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5410-32": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5410-4": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5410-42": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5410-45": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5410-46": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5410-47": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5410-55": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5410-56": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5420-1": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5420-15": {
+    "protected": true,
+    "levels": [
+      "QMB",
+      "QMB+"
+    ],
+    "signal": "rule3:eligibility-list"
+  },
+  "H5420-3": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5420-6": {
+    "protected": true,
+    "levels": [
+      "QMB",
+      "QMB+"
+    ],
+    "signal": "rule3:eligibility-list"
+  },
+  "H5435-1": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5435-24": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5453-15": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5453-16": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5453-17": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5453-18": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5521-116": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5521-140": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5521-141": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5521-156": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5521-16": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5521-171": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5521-20": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5521-211": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5521-218": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5521-223": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5521-224": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5521-227": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5521-229": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5521-231": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5521-233": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5521-235": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5521-245": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5521-249": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5521-251": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5521-254": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5521-260": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5521-269": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5521-270": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5521-271": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5521-272": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5521-273": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5521-279": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5521-286": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5521-302": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5521-305": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5521-306": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5521-314": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5521-319": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5521-322": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5521-324": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5521-326": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5521-33": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5521-364": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5521-365": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5521-464": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5521-465": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5521-472": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5521-84": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5521-85": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5521-86": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5521-87": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5521-88": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5521-89": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5521-91": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5521-99": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5525-45": {
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H5525-46": {
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H5619-111": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5619-122": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5619-126": {
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H5619-135": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5619-145": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5619-151": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5619-162": {
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H5619-163": {
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H5619-170": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5619-179": {
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H5619-46": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5619-47": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5619-53": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5619-55": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5619-69": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5619-75": {
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H5619-90": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5619-91": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5619-93": {
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H5619-95": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5652-2": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5652-3": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5652-6": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5652-8": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5718-4": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5718-5": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5718-6": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H5779-2": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H6348-5": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H6545-1": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H6595-4": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H6595-5": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H6622-15": {
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H6622-17": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H6622-18": {
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H6622-32": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H6622-33": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H6622-48": {
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H6622-71": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H6622-84": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H6622-87": {
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H6813-1": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H6994-10": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H6994-13": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H6994-3": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H6994-4": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7020-5": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7028-1": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7028-2": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7028-4": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7028-5": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7028-6": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7151-1": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7151-3": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7151-5": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7151-6": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7284-10": {
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H7301-2": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7301-6": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7301-7": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7301-9": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7323-7": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7326-1": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7355-10": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7355-4": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7355-6": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7355-7": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7355-9": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7397-10": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7397-3": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7397-4": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7397-6": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7397-7": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7397-9": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7471-13": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7471-14": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7471-15": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7471-16": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7471-17": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7518-2": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7605-1": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7605-2": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7605-5": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7605-7": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7605-8": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7617-74": {
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H7766-12": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7766-13": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7766-14": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7766-4": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7787-1": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7849-102": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7849-15": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7849-2": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7849-24": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7849-59": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7849-70": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7849-77": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7849-80": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7849-88": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7993-1": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7993-10": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7993-12": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7993-15": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7993-17": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7993-2": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7993-23": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7993-24": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7993-27": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7993-28": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7993-29": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7993-3": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7993-30": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7993-31": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7993-33": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7993-37": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7993-38": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7993-4": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7993-40": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7993-41": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7993-46": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7993-6": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7993-7": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H7993-8": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H8145-42": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H8145-55": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H8145-91": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H8211-1": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H8211-5": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H8211-6": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H8320-11": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H8320-12": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H8320-13": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H8320-14": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H8332-4": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H8597-1": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H8597-2": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H8597-3": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H8768-10": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H8768-11": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H8768-17": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H8768-19": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H8768-20": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H8768-21": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H8768-23": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H8768-24": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H8768-25": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H8768-27": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H8768-28": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H8768-30": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H8768-31": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H8768-34": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H8768-7": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H8768-8": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H8768-9": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H9231-16": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H9231-17": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H9231-18": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H9231-19": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H9231-20": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H9387-2": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H9460-1": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H9730-3": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H9730-9": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H9884-8": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H9888-1": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H9888-10": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H9888-12": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H9888-13": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H9888-14": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H9888-15": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H9888-2": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H9888-8": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  },
+  "H9888-9": {
+    "protected": null,
+    "levels": [],
+    "signal": "uncertain"
+  }
+}

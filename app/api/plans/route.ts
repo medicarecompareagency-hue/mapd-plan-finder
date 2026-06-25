@@ -176,6 +176,28 @@ export async function GET(request: Request) {
     }
   }
 
+  // QMB-only is NOT full Medicaid. On a QMB+-targeted FULL_DUAL plan a QMB-only
+  // member pays cost-sharing, so exclude those. A plan is a valid QMB match only
+  // if its Summary of Benefits confirms standalone QMB is cost-share protected
+  // (scripts/classify-qmb-protection.py -> Plan.qmbCostShareProtected).
+  // QMB+, SLMB+, FBDE are full Medicaid => protected on every FULL_DUAL plan, so
+  // they are NOT gated here.
+  // Lenient: show confirmed-true + null (unclassified), hide only confirmed-false (QMB+ plans).
+  // Strict (true-only) is commented out; 111/151 FULL_DUAL plans had null (corrupted/unmatched SBs)
+  // so strict mode would have hidden 73% of QMB options. Re-evaluate after SB corpus improves.
+  const QMB_REQUIRE_CONFIRMED = false;
+  if (beneficiaryDualLevel === "QMB") {
+    if (QMB_REQUIRE_CONFIRMED) {
+      (where as Record<string, unknown>).qmbCostShareProtected = true;
+    } else {
+      // Postgres NULL semantics: NOT { field: false } evaluates NULL as unknown (not TRUE),
+      // so it silently excludes unclassified plans. Explicit OR is the correct form.
+      ((where as Prisma.PlanWhereInput).AND as Prisma.PlanWhereInput[]).push({
+        OR: [{ qmbCostShareProtected: true }, { qmbCostShareProtected: null }],
+      });
+    }
+  }
+
   // LIS / Extra Help level — affects ranking and display, NOT the WHERE clause.
   const lisLevelRaw = searchParams.get("lisLevel");
   const lisLevel: LisLevel | null =
