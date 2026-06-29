@@ -19,7 +19,9 @@ const PDFTOTEXT = process.platform === 'win32'
   : 'pdftotext';
 
 // The 14 clean-monthly DSNPs from the diagnostic — used ONLY as a sanity check that the extractor reproduces them.
-const EXPECTED = { 'H0074-4':77,'H0174-22':69,'H0174-23':112,'H0174-26':114,'H1032-202':50,'H1112-47':91,'H1416-35':173,'H1416-81':72,'H2491-25':90,'H2491-30':40,'H3975-4':128,'H4537-4':122,'H7518-3':130,'H9730-11':80,'H1889-9':75 };
+const EXPECTED = { 'H0074-4':77,'H0174-22':69,'H0174-23':112,'H0174-26':114,'H1032-202':50,'H1112-47':91,'H1416-35':173,'H1416-81':72,'H2491-25':90,'H2491-30':40,'H3975-4':128,'H4537-4':122,'H7518-3':130,'H9730-11':80,'H1889-9':75,
+  // Added 2026-06-29 sweep (backfill UHC/Wellcare plans):
+  'H1889-19':40,'H1889-20':40,'H1889-28':90,'H2445-5':250,'H3868-1':185,'H6595-4':140 };
 
 async function sbText(url){
   const res = await fetch(url); if (!res.ok) throw new Error('HTTP ' + res.status);
@@ -53,7 +55,13 @@ function extractMonthlyFood(text){
   const F = Object.keys(await prisma.plan.findFirst()); const has = f => F.includes(f);
   const sel = ['planId','organizationName','state','planCategory','otcAllowance','foodCardAllowance','ssbciIsConditional','sbPdfUrl'].filter(has);
   const orFilter = CARRIERS.map(c => ({ organizationName: { contains: c, mode: 'insensitive' } }));
-  const where = { planYear: 2026, OR: orFilter, ssbciIsConditional: true, AND: [{ OR: [{ foodCardAllowance: 0 }, { foodCardAllowance: null }] }] };
+  // Pool: UHC/Wellcare plans where food = $0/null AND either ssbciIsConditional=true (already classified)
+  // OR ssbciOffersFood=true (PBP says food offered but conditionality was mis-filed — the H1889-9 pattern).
+  const where = { planYear: 2026, AND: [
+    { OR: orFilter },
+    { OR: [{ ssbciIsConditional: true }, { ssbciOffersFood: true }] },
+    { OR: [{ foodCardAllowance: 0 }, { foodCardAllowance: null }] },
+  ] };
   const plans = await prisma.plan.findMany({ where, select: Object.fromEntries(sel.map(f=>[f,true])), distinct: ['planId'], orderBy: { planId: 'asc' } });
   console.log(`Target pool (UHC/Wellcare converting wallets, foodCardAllowance 0/null): ${plans.length}. ${APPLY ? 'APPLY' : 'DRY-RUN'}.`);
 
@@ -118,6 +126,8 @@ function extractMonthlyFood(text){
     if (has('foodCardMaxPeriod')) data.foodCardMaxPeriod = 'month';
     if (has('ssbciFoodAllowance')) data.ssbciFoodAllowance = t.monthly;
     if (has('ssbciOffersFood')) data.ssbciOffersFood = true;
+    // Lock conditionality=true so this plan re-enters the pool on future re-imports (durability).
+    if (has('ssbciIsConditional')) data.ssbciIsConditional = true;
     const u = await prisma.plan.updateMany({ where:{ planId:t.planId, planYear:2026, OR:[{foodCardAllowance:0},{foodCardAllowance:null}] }, data }); written += u.count;
   }
   console.log(`\nApplied. planIds ${target.length} | county rows written ${written}. (sbVerifiedFoodAmount NOT set; otcAllowance untouched.)`);
