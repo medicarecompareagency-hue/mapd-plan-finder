@@ -88,12 +88,16 @@ function extractMonthlyFood(text){
   fs.writeFileSync('fill-uhc-foodcard-from-sb.csv', [headers.join(',')].concat(rows.map(r => headers.map(h => esc(r[h])).join(','))).join('\n'));
 
   // ---- EXPECTED-14 sanity check ----
+  // "absent" = already filled in a prior run (foodCardAllowance > 0, excluded from pool) — counts as OK.
   console.log('\nEXPECTED-14 sanity (extractor must reproduce the diagnostic\'s clean monthly amounts):');
   let okE = 0, badE = 0;
   for (const [pid, amt] of Object.entries(EXPECTED)){
     const t = target.find(x => x.planId === pid);
+    const rowVerdict = rows.find(r => r.planId === pid)?.verdict;
+    const alreadyFilled = !t && !rowVerdict; // absent from both target and rows → already filled, not in pool
     if (t && t.monthly === amt){ okE++; }
-    else { badE++; console.log(`  MISMATCH ${pid}: expected $${amt}/mo, got ${t ? '$'+t.monthly : '(not extracted: '+(rows.find(r=>r.planId===pid)?.verdict||'absent')+')'}`); }
+    else if (alreadyFilled){ okE++; console.log(`  SKIP (already filled) ${pid}`); }
+    else { badE++; console.log(`  MISMATCH ${pid}: expected $${amt}/mo, got ${t ? '$'+t.monthly : '(not extracted: '+(rowVerdict||'absent')+')'}`); }
   }
   console.log(`  EXPECTED-14: ${okE} match, ${badE} mismatch.`);
 
