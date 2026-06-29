@@ -488,8 +488,11 @@ function hospitalCellQ(s: string | null | undefined, qmb: boolean): string {
 
 // For DSNP results, drug tiers show the member's LIS copay (not the plan's filed tier). For every
 // other category, render the existing value unchanged.
-function drugTierCellQ(existing: React.ReactNode, tierNum: number, isDsnp: boolean, dualLevel: string | null): React.ReactNode {
-  if (isDsnp && dualLevel) {
+// rawValue: the plan's filed copay (null = tier absent). LIS overlay is skipped for absent tiers so
+// a plan with no Tier 6 shows "N/A" instead of "$0" (LIS T6 = $0 select-care, but that's only
+// meaningful when the tier actually exists in the plan's formulary).
+function drugTierCellQ(existing: React.ReactNode, tierNum: number, isDsnp: boolean, dualLevel: string | null, rawValue?: number | null): React.ReactNode {
+  if (isDsnp && dualLevel && rawValue !== null && rawValue !== undefined) {
     const v = lisCopayForTier(tierNum, dualLevel);
     if (v !== null) return v === 0 ? "$0" : "$" + v.toFixed(2);
   }
@@ -1512,12 +1515,12 @@ export default function PlanSearch() {
                       {!isMaOnly && (
                         <>
                           <td className="px-3 py-3 text-right text-gray-900">{(isDsnp && searchedDualLevel) ? "$0" : <>{dollars(plan.drugDeductible)}{plan.drugDeductibleTiers ? ` (Tiers ${plan.drugDeductibleTiers})` : ""}</>}</td>
-                          <td className="px-3 py-3 text-right text-gray-900">{drugTierCellQ(<DrugTierCell tier={1} value={plan.drugTier1Copay} mask={plan.drugTierCoinsuranceMask} />, 1, isDsnp, searchedDualLevel)}</td>
-                          <td className="px-3 py-3 text-right text-gray-900">{drugTierCellQ(<DrugTierCell tier={2} value={plan.drugTier2Copay} mask={plan.drugTierCoinsuranceMask} />, 2, isDsnp, searchedDualLevel)}</td>
-                          <td className="px-3 py-3 text-right text-gray-900">{drugTierCellQ(<DrugTierCell tier={3} value={plan.drugTier3Copay} mask={plan.drugTierCoinsuranceMask} />, 3, isDsnp, searchedDualLevel)}</td>
-                          <td className="px-3 py-3 text-right text-gray-900">{drugTierCellQ(<DrugTierCell tier={4} value={plan.drugTier4Copay} mask={plan.drugTierCoinsuranceMask} />, 4, isDsnp, searchedDualLevel)}</td>
-                          <td className="px-3 py-3 text-right text-gray-900">{drugTierCellQ(<DrugTierCell tier={5} value={plan.drugTier5Copay} mask={plan.drugTierCoinsuranceMask} />, 5, isDsnp, searchedDualLevel)}</td>
-                          <td className="px-3 py-3 text-right text-gray-900">{drugTierCellQ(<DrugTierCell tier={6} value={plan.drugTier6Copay} mask={plan.drugTierCoinsuranceMask} />, 6, isDsnp, searchedDualLevel)}</td>
+                          <td className="px-3 py-3 text-right text-gray-900">{drugTierCellQ(<DrugTierCell tier={1} value={plan.drugTier1Copay} mask={plan.drugTierCoinsuranceMask} />, 1, isDsnp, searchedDualLevel, plan.drugTier1Copay)}</td>
+                          <td className="px-3 py-3 text-right text-gray-900">{drugTierCellQ(<DrugTierCell tier={2} value={plan.drugTier2Copay} mask={plan.drugTierCoinsuranceMask} />, 2, isDsnp, searchedDualLevel, plan.drugTier2Copay)}</td>
+                          <td className="px-3 py-3 text-right text-gray-900">{drugTierCellQ(<DrugTierCell tier={3} value={plan.drugTier3Copay} mask={plan.drugTierCoinsuranceMask} />, 3, isDsnp, searchedDualLevel, plan.drugTier3Copay)}</td>
+                          <td className="px-3 py-3 text-right text-gray-900">{drugTierCellQ(<DrugTierCell tier={4} value={plan.drugTier4Copay} mask={plan.drugTierCoinsuranceMask} />, 4, isDsnp, searchedDualLevel, plan.drugTier4Copay)}</td>
+                          <td className="px-3 py-3 text-right text-gray-900">{drugTierCellQ(<DrugTierCell tier={5} value={plan.drugTier5Copay} mask={plan.drugTierCoinsuranceMask} />, 5, isDsnp, searchedDualLevel, plan.drugTier5Copay)}</td>
+                          <td className="px-3 py-3 text-right text-gray-900">{drugTierCellQ(<DrugTierCell tier={6} value={plan.drugTier6Copay} mask={plan.drugTierCoinsuranceMask} />, 6, isDsnp, searchedDualLevel, plan.drugTier6Copay)}</td>
                         </>
                       )}
                       <td
