@@ -928,6 +928,7 @@ function parsePlanArea(
   planAreaPath: string,
   benefitMap: Map<string, PlanBenefits>,
   nberLandscapePath: string,
+  sectionAPath: string,
 ): LandscapeRow[] {
   // Contract → orgName + plan → planName from NBER landscape for carrier name resolution.
   const contractOrgMap = new Map<string, string>();
@@ -939,6 +940,31 @@ function parsePlanArea(
       if (!contractOrgMap.has(ct)) contractOrgMap.set(ct, r.organizationname?.trim() || "");
       const key = `${ct}-${r.planid?.trim()}`;
       if (!contractPlanNameMap.has(key)) contractPlanNameMap.set(key, r.planname?.trim() || "");
+    }
+  }
+
+  // Section A fallback: contracts new to 2026 (absent from NBER) have empty org names above,
+  // which causes the licensed-carriers gate in runImport to drop them (e.g. H1889-9 / UHC).
+  // Read pbp_Section_A.txt for pbp_a_org_marketing_name and pbp_a_plan_name as fallback.
+  const sectionAOrgMap = new Map<string, string>();
+  const sectionAPlanNameMap = new Map<string, string>();
+  if (fs.existsSync(sectionAPath)) {
+    for (const r of parseTSV(sectionAPath)) {
+      const ct = r.pbp_a_hnumber?.trim().toUpperCase();
+      if (!ct) continue;
+      if (!sectionAOrgMap.has(ct)) {
+        const mkt = r.pbp_a_org_marketing_name?.trim() || r.pbp_a_org_name?.trim() || "";
+        if (mkt) sectionAOrgMap.set(ct, mkt);
+      }
+      const rawPlanId = r.pbp_a_plan_identifier?.trim();
+      if (rawPlanId) {
+        const planIdNorm = String(parseInt(rawPlanId, 10));
+        const key = `${ct}-${planIdNorm}`;
+        if (!sectionAPlanNameMap.has(key)) {
+          const pn = r.pbp_a_plan_name?.trim() || "";
+          if (pn) sectionAPlanNameMap.set(key, pn);
+        }
+      }
     }
   }
 
@@ -979,7 +1005,7 @@ function parsePlanArea(
     seen.add(dedupeKey);
 
     const planIdNorm = String(parseInt(rawPlanId, 10));
-    const orgName    = contractOrgMap.get(contractId) || "";
+    const orgName    = contractOrgMap.get(contractId) || sectionAOrgMap.get(contractId) || "";
     const planType   = planTypeLabels[c[iPType]?.trim() || ""] || "HMO";
 
     // Derive drugbenefittype from PBP: if plan has Part D in benefitMap → "Enhanced"; else ""
@@ -990,7 +1016,7 @@ function parsePlanArea(
     rows.push({
       state, county,
       organizationname:        orgName,
-      planname:                contractPlanNameMap.get(`${contractId}-${planIdNorm}`) || `${contractId}-${planIdNorm}`,
+      planname:                contractPlanNameMap.get(`${contractId}-${planIdNorm}`) || sectionAPlanNameMap.get(`${contractId}-${planIdNorm}`) || `${contractId}-${planIdNorm}`,
       typeofmedicarehealthplan: planType,
       monthlyconsolidatedpremiumi: "0", // PBP Section D provides premium
       annualdrugdeductible:         "0", // PBP provides drug deductible
@@ -1119,7 +1145,7 @@ export async function runImport(year?: number): Promise<{ imported: number; skip
     throw new Error(`PlanArea.txt not found at ${planAreaPath}. Confirm PBP ZIP was extracted to ${extractDir}`);
   }
   log("Parsing PlanArea.txt (CMS-direct county→plan authority)...");
-  const allLandscapeRows = parsePlanArea(planAreaPath, benefitMap, landscapePath);
+  const allLandscapeRows = parsePlanArea(planAreaPath, benefitMap, landscapePath, path.join(extractDir, "pbp_Section_A.txt"));
   log(`PlanArea.txt: ${allLandscapeRows.length} rows (licensed carriers, non-pending, non-EGHP).`);
 
   // LICENSED_STATES gate (2026-04-28): drop rows for states Dale isn't

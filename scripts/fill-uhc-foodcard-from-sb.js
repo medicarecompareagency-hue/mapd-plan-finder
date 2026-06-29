@@ -106,7 +106,7 @@ function extractMonthlyFood(text){
 
   if (badE > 0){ console.error(`\nSTOP: ${badE} of the EXPECTED-14 didn't reproduce — the extractor regressed vs the diagnostic. No writes. Fix the regex/context before --apply.`); await prisma.$disconnect(); process.exit(2); }
   if (target.length === 0){ console.log('\nNothing to write.'); await prisma.$disconnect(); return; }
-  if (target.length > 60){ console.error(`\nSTOP: ${target.length} WRITE targets is above the sane ceiling (~14 DSNP + ~20 CSNP) — likely false positives. No writes; review the CSV.`); await prisma.$disconnect(); process.exit(2); }
+  if (target.length > 200){ console.error(`\nSTOP: ${target.length} WRITE targets is above the sane ceiling (~200) — likely false positives. No writes; review the CSV.`); await prisma.$disconnect(); process.exit(2); }
   if (!APPLY){ console.log('\nDRY-RUN — no writes. Confirm EXPECTED-14 all match, eyeball the WRITE list + REVIEW_MULTI, then --apply.'); await prisma.$disconnect(); return; }
 
   for (const t of target){

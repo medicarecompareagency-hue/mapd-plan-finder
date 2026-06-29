@@ -169,7 +169,10 @@ export async function GET(request: Request) {
   if (beneficiaryDualLevel) {
     if (FULL_DUAL_LEVELS.has(beneficiaryDualLevel)) {
       beneficiaryGroup = "FULL_DUAL";
-      (where as Record<string, unknown>).dsnpTargetGroup = "FULL_DUAL";
+      // QMB gets the broadened B-lite OR gate below; QMB+/SLMB+/FBDE keep the hard FULL_DUAL pin.
+      if (beneficiaryDualLevel !== "QMB") {
+        (where as Record<string, unknown>).dsnpTargetGroup = "FULL_DUAL";
+      }
     } else if (PARTIAL_DUAL_LEVELS.has(beneficiaryDualLevel)) {
       beneficiaryGroup = "PARTIAL_DUAL";
       (where as Record<string, unknown>).dsnpTargetGroup = "PARTIAL_DUAL";
@@ -190,11 +193,15 @@ export async function GET(request: Request) {
     if (QMB_REQUIRE_CONFIRMED) {
       (where as Record<string, unknown>).qmbCostShareProtected = true;
     } else {
-      // Postgres NULL semantics: NOT { field: false } evaluates NULL as unknown (not TRUE),
-      // so it silently excludes unclassified plans. Explicit OR is the correct form.
-      ((where as Prisma.PlanWhereInput).AND as Prisma.PlanWhereInput[]).push({
-        OR: [{ qmbCostShareProtected: true }, { qmbCostShareProtected: null }],
-      });
+      // B-lite: QMB standalone is full Medicaid for cost-share purposes on plans that confirm it.
+      // Show a plan if it's FULL_DUAL OR SB/override-confirmed QMB-protected (covers CO duals
+      // bucketed PARTIAL_DUAL, e.g. H1889-9). Still hide confirmed QMB+-only plans (e.g. H2802-64).
+      delete (where as Record<string, unknown>).dsnpTargetGroup;
+      (where as Record<string, unknown>).OR = [
+        { dsnpTargetGroup: "FULL_DUAL" },
+        { qmbCostShareProtected: true },
+      ];
+      (where as Record<string, unknown>).NOT = { qmbCostShareProtected: false };
     }
   }
 

@@ -62,10 +62,38 @@ for (const f of FIXERS) {
   catch (e) { console.error(`\nFIXER FAILED: ${f} (exit ${e.status}). Stopping so you can inspect — re-apply is all-or-nothing on a failure.`); process.exit(e.status || 1); }
 }
 
+// Applies human-confirmed overrides from qmb-protection-overrides.json AFTER the parser so they win.
+async function applyQmbOverrides() {
+  const path = 'scripts/data/qmb-protection-overrides.json';
+  if (!fs.existsSync(path)) { console.log('  qmb-overrides: none'); return; }
+  const data = JSON.parse(fs.readFileSync(path, 'utf8'));
+  if (!APPLY) {
+    console.log(`  [dry-run] would apply qmb-overrides to ${Object.keys(data).length} planIds`);
+    return;
+  }
+  const prisma = makePrisma();
+  let n = 0;
+  try {
+    for (const [planId, v] of Object.entries(data)) {
+      const r = await prisma.plan.updateMany({ where: { planId },
+        data: { qmbCostShareProtected: v.protected, costShareProtectedLevels: (v.levels || []).join(',') || null } });
+      n += r.count;
+    }
+    console.log(`  reapply-sb-truth: qmb-overrides reapplied to ${n} rows`);
+  } finally {
+    await prisma.$disconnect();
+  }
+}
+
 // Async fixers (DB-direct, no child process)
 console.log(`\n=== ${APPLY ? 'APPLY' : 'DRY-RUN'}: reapplyQmbProtection (inline) ===`);
-reapplyQmbProtection().then(() => {
-  console.log(`\nreapply-sb-truth: ran ${ran}, skipped ${skipped}. ${APPLY ? 'Re-applied all present fixers.' : 'Dry-run only — re-run with --apply.'}`);
-  console.log('NOTE: the 15 HealthSpring + 3 other one-off specialist point-fixes from 2026-06-18 are NOT in a re-runnable script.');
-  console.log('      They are captured in audit-specialist-allcarriers.csv — re-run the all-carrier specialist audit after a re-import to re-detect them.');
-}).catch((e) => { console.error('reapplyQmbProtection failed:', e); process.exit(1); });
+reapplyQmbProtection()
+  .then(() => {
+    console.log(`\n=== ${APPLY ? 'APPLY' : 'DRY-RUN'}: applyQmbOverrides (inline, runs after parser) ===`);
+    return applyQmbOverrides();
+  })
+  .then(() => {
+    console.log(`\nreapply-sb-truth: ran ${ran}, skipped ${skipped}. ${APPLY ? 'Re-applied all present fixers.' : 'Dry-run only — re-run with --apply.'}`);
+    console.log('NOTE: the 15 HealthSpring + 3 other one-off specialist point-fixes from 2026-06-18 are NOT in a re-runnable script.');
+    console.log('      They are captured in audit-specialist-allcarriers.csv — re-run the all-carrier specialist audit after a re-import to re-detect them.');
+  }).catch((e) => { console.error('reapplyQmbProtection/applyQmbOverrides failed:', e); process.exit(1); });

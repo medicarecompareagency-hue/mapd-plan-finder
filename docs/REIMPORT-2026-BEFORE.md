@@ -74,3 +74,26 @@ was missing entirely from the DB — it exposed the NBER fallback issue.
 ## After target
 
 ~2,135 unique planIds, all 2026 CMS-approved plans for licensed carriers + states.
+
+---
+
+## Round 2 BEFORE snapshot (2026-06-29, before backfill run)
+
+After the June 3 re-import, H1889-9 (UHC Dual Complete AL-D002, PPO D-SNP) was still absent.
+Root cause: H1889 contract absent from NBER 2025 CSV → `parsePlanArea()` returned `orgName=""` for
+H1889 rows → licensed-carriers gate dropped them.
+
+Fix: added `sectionAPath` parameter to `parsePlanArea()` in `import-cms-data.ts`; builds a fallback
+contract→marketingName map from `pbp_Section_A.txt` so contracts absent from NBER get their
+carrier name from Section A. Also ran `backfill-missing-plans.ts 2026` to add 9,935 missing
+DSNP/CSNP/ISNP/MA_ONLY plans non-destructively.
+
+**Total rows (all 2026) before Round 2 backfill:** 48,894
+
+| Category | Rows |
+|---|---|
+| DSNP | 9,621 |
+| MAPD | 26,723 |
+| MA_ONLY | 7,837 |
+| CSNP | 3,428 |
+| ISNP | 1,285 |
