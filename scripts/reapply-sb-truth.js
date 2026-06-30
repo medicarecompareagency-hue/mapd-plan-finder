@@ -51,6 +51,7 @@ const FIXERS = [
   'scripts/sweep-converting-wallets.js',          // Humana/UHC/Wellcare converting wallets (if shipped)
   'scripts/fill-uhc-foodcard-from-sb.js',         // UHC/Wellcare converting-wallet food $ from SB monthly credits
   'scripts/extract-devoted-foodcard.js',          // Devoted Food & Home Card (SSBCI chronic-conditional, monthly) from SB
+  'scripts/fill-aetna-dsnp-csnp-converting-wallet.js', // Aetna DSNP/CSNP OTC->Extra Supports converting wallet (verify-first from SB)
   'scripts/fill-aetna-quarterly-foodcard.js',     // Aetna quarterly Extra Supports -> Food Card (if shipped)
 ];
 
