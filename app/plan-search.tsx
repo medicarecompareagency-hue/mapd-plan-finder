@@ -100,6 +100,12 @@ interface Plan {
   ssbciIsStandalone: boolean | null;
   ssbciConditionNote: string | null;
   sbPdfUrl: string | null;
+  // CMS service-area segment for this county-row ("0" / null = non-segmented).
+  segmentId: string | null;
+  // Which segment the stored SB represents; when it != segmentId the API
+  // suppresses sbPdfUrl (wrong-segment SB) and sets sbSegmentMismatch.
+  sbSegmentId: string | null;
+  sbSegmentMismatch?: boolean;
   sbOtcPage: number | null;
   sbFoodCardPage: number | null;
 }
@@ -172,7 +178,10 @@ function planCompareUrl(plan: Plan, zip?: string | null, _section?: "extra-benef
   if (parts.length !== 2) return "https://www.medicare.gov/plan-compare/";
   const [contract, pnum] = parts;
   const padded = pnum.padStart(3, "0");
-  const seg = "000";
+  // Segment-correct deep link: multi-segment plans expose this row's segmentId
+  // (e.g. "2" -> "002"); single-segment plans have null segmentId -> "000"
+  // (medicare.gov's default, unchanged for the ~96% non-segmented majority).
+  const seg = plan.segmentId ? String(plan.segmentId).padStart(3, "0") : "000";
   // Try #2 (2026-05-12): query params live BEFORE the hash so the React
   // SPA can read them on init (before the hash router runs). The previous
   // form (?zip=… AFTER the hash) was getting ignored — medicare.gov
@@ -1419,9 +1428,13 @@ export default function PlanSearch() {
                             target="_blank"
                             rel="noopener noreferrer"
                             className="block text-[10px] text-blue-500 hover:underline mt-0.5"
-                            title="Open this plan's full details on medicare.gov (OTC, food card, transportation, all benefits)"
+                            title={
+                              plan.sbSegmentMismatch
+                                ? "This plan has multiple service-area segments with different Summary of Benefits documents. Opening the segment that serves this county on medicare.gov."
+                                : "Open this plan's full details on medicare.gov (OTC, food card, transportation, all benefits)"
+                            }
                           >
-                            View on medicare.gov ↗
+                            {plan.sbSegmentMismatch ? "Segment SB on medicare.gov ↗" : "View on medicare.gov ↗"}
                           </a>
                         )}
                       </td>

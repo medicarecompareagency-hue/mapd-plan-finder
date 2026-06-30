@@ -90,6 +90,16 @@ model Plan {
   state                     String
   county                    String
   zipCode                   String?
+  // CMS service-area segment for THIS county-row (PlanArea.txt segment_id).
+  // "0" = non-segmented plan. Segmented plans number segments 1,2,3,...
+  // Each segment can have a different service area AND a different SB PDF.
+  segmentId                 String?
+  // Which segment the currently-stored sbPdfUrl actually represents. When
+  // segmentId != sbSegmentId, the stored SB is for a DIFFERENT segment than
+  // this county — the API suppresses the wrong PDF and falls back to a
+  // segment-correct medicare.gov link. The full fix sets sbSegmentId =
+  // segmentId once each segment's own SB is acquired. (2026-06-30)
+  sbSegmentId               String?
   monthlyPremium            Float
   partCPremium              Float?   @default(0)
   partDPremium              Float?   @default(0)

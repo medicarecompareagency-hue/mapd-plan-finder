@@ -549,9 +549,26 @@ export async function GET(request: Request) {
       });
   }
 
+  // Segment-aware SB gate (2026-06-30). CMS publishes a separate Summary of
+  // Benefits per (contract, plan, segment), but the DB stores one SB per
+  // planId. For a multi-segment plan, a county served by a NON-stored segment
+  // was being shown the wrong segment's SB (e.g. H4407-30 Perry [seg 2] saw
+  // the seg-1 Gulf Coast SB). When this row's segment != the stored SB's
+  // segment, suppress sbPdfUrl so the UI falls back to a segment-correct
+  // medicare.gov link, and flag it. The full fix acquires each segment's own
+  // SB and sets sbSegmentId = segmentId, which re-opens the gate.
+  function isSbSegmentMismatch(plan: Record<string, unknown>): boolean {
+    const seg = plan.segmentId as string | null;
+    const sbSeg = plan.sbSegmentId as string | null;
+    return seg != null && sbSeg != null && String(seg) !== String(sbSeg);
+  }
+
   const ranked = dedupeByCarrier(sorted, 5).map((plan, i) => ({
     ...plan,
     rank: i + 1,
+    // Suppress the wrong-segment SB; UI shows a segment-correct fallback.
+    sbPdfUrl: isSbSegmentMismatch(plan) ? null : ((plan.sbPdfUrl as string | null) ?? null),
+    sbSegmentMismatch: isSbSegmentMismatch(plan),
     // Use effective values for display (effectiveOtc/effectiveFoodCard are also
     // used for ranking, but the raw plan fields are what the UI renders).
     // No ?? fallback to the raw column: effectiveOtc returning null can mean
