@@ -41,6 +41,17 @@ const KEY = process.env.SERPAPI_KEY || process.env.SERPAPI_API_KEY;
 if (!KEY) { console.error("SERPAPI_KEY not set"); process.exit(1); }
 
 const APPLY = process.argv.includes("--apply");
+
+// Plans where the SB food amount differs from otcAllowance (PBP/food are different benefits).
+// foodCardAllowance must be set to this amount, NOT otcAllowance.
+// These plans are reprocessed from their already-ingested sbPdfUrl (no SerpAPI re-spend).
+// H8597 2026 SBs show $70/$60/mo which equals otcAllowance/12 — amounts match.
+// These entries exist so the script can re-apply from sbPdfUrl (bypassing SerpAPI + stale MISMATCH
+// checkpoint) on a CMS re-import without spending quota.
+const FOOD_AMOUNT_OVERRIDES = {
+  "H8597-2": 840, // 2026 SB $70/mo × 12 = $840 = otcAllowance
+  "H8597-3": 720, // 2026 SB $60/mo × 12 = $720 = otcAllowance
+};
 const PDFTOTEXT = "C:\\Program Files\\Git\\mingw64\\bin\\pdftotext.exe";
 const PROG = "aetna-converting-wallet-progress.json";
 
@@ -250,6 +261,40 @@ async function ingestSB(prisma, planId, sourceUrl, buf) {
     }
 
     console.log(`\n  → ${planId} (${planCategory} ${state}) otc=$${otcAllowance}/yr`);
+
+    // OVERRIDE PATH: plans where foodCardAllowance ≠ otcAllowance (SB is authoritative)
+    if (FOOD_AMOUNT_OVERRIDES[planId] !== undefined) {
+      const overrideAmt = FOOD_AMOUNT_OVERRIDES[planId];
+      // Reload from DB to get sbPdfUrl (not in the initial query)
+      const dbFull = await prisma.plan.findFirst({ where: { planId, planYear: 2026 }, select: { sbPdfUrl: true } });
+      if (!dbFull?.sbPdfUrl) {
+        console.log(`  OVERRIDE ${planId}: sbPdfUrl not yet set — run residual-sb-apply.js first`);
+        done[planId] = { status: "NEEDS_INGEST" };
+        fs.writeFileSync(PROG, JSON.stringify(done));
+        continue;
+      }
+      console.log(`  OVERRIDE ${planId}: using on-file SB, foodCardAllowance=${overrideAmt}`);
+      if (APPLY) {
+        const buf = await dlBuf(dbFull.sbPdfUrl);
+        if (!buf) { console.error(`  FAIL — could not re-fetch blob ${dbFull.sbPdfUrl}`); continue; }
+        const txt = pdfToText(buf);
+        const low = txt.toLowerCase(), norm = txt.replace(/\s+/g, " ");
+        const ok = low.includes("extra supports wallet") && /healthy foods?|eligible food|\bfood\b/i.test(norm)
+                   && /(will change to|not get any additional funds)/i.test(norm);
+        if (!ok) { console.error(`  FAIL — converting-wallet food language not found in blob SB`); continue; }
+        await prisma.plan.updateMany({
+          where: { planId, planYear: 2026, OR: [{ foodCardAllowance: 0 }, { foodCardAllowance: null }] },
+          data: { foodCardAllowance: overrideAmt, ssbciIsConditional: true, foodCardMaxPeriod: "month" },
+        });
+        console.log(`  FILLED ${planId} override $${overrideAmt}/yr`);
+      } else {
+        console.log(`  DRY-RUN ${planId}: would write foodCardAllowance=$${overrideAmt}/yr`);
+      }
+      done[planId] = { status: "GOOD", foodAllowance: overrideAmt, monthly: overrideAmt / 12 };
+      results.filled.push({ planId, state, planCategory, otcAllowance, foodAllowance: overrideAmt, monthly: overrideAmt / 12, pattern: "A" });
+      fs.writeFileSync(PROG, JSON.stringify(done));
+      continue;
+    }
 
     // SerpAPI: try 2 queries
     const queries = [
