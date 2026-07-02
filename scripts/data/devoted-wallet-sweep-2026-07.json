@@ -1,0 +1,171 @@
+{
+  "anchorVerified": true,
+  "plan_H9888-12": {
+    "done": true,
+    "result": "NO_WALLET"
+  },
+  "plan_H9888-15": {
+    "done": true,
+    "result": "NO_WALLET"
+  },
+  "plan_H7397-10": {
+    "done": true,
+    "result": "NO_WALLET"
+  },
+  "plan_H7397-4": {
+    "done": true,
+    "result": "NO_WALLET"
+  },
+  "plan_H7397-9": {
+    "done": true,
+    "result": "FILL",
+    "monthly": 275,
+    "evidence": "The Food & Home Card is a special supplemental benefit offered on certain plans and available only to chronically ill m"
+  },
+  "plan_H5453-16": {
+    "done": true,
+    "result": "NO_WALLET"
+  },
+  "plan_H5453-18": {
+    "done": true,
+    "result": "FILL",
+    "monthly": 200,
+    "evidence": "The Food & Home Card is a special supplemental benefit offered on certain plans and available only to chronically ill"
+  },
+  "plan_H8320-12": {
+    "done": true,
+    "result": "NO_WALLET"
+  },
+  "plan_H7471-13": {
+    "done": true,
+    "result": "NO_WALLET"
+  },
+  "plan_H7471-17": {
+    "done": true,
+    "result": "FILL",
+    "monthly": 200,
+    "evidence": "The Food & Home Card is a special supplemental benefit offered on certain plans and available only to chronically ill"
+  },
+  "plan_H4348-4": {
+    "done": true,
+    "result": "NO_WALLET"
+  },
+  "plan_H4348-7": {
+    "done": true,
+    "result": "FILL",
+    "monthly": 200,
+    "evidence": "The Food & Home Card is a special supplemental benefit offered on certain plans and available only to chronically ill"
+  },
+  "plan_H5718-4": {
+    "done": true,
+    "result": "NO_WALLET"
+  },
+  "plan_H5718-5": {
+    "done": true,
+    "result": "FILL",
+    "monthly": 200,
+    "evidence": "The Food & Home Card is a special supplemental benefit offered on certain plans and available only to chronically ill"
+  },
+  "plan_H5718-6": {
+    "done": true,
+    "result": "FILL",
+    "monthly": 200,
+    "evidence": "The Food & Home Card is a special supplemental benefit offered on certain plans and available only to chronically ill"
+  },
+  "plan_H7766-14": {
+    "done": true,
+    "result": "NO_WALLET"
+  },
+  "plan_H7766-15": {
+    "done": true,
+    "result": "NO_WALLET"
+  },
+  "plan_H7766-4": {
+    "done": true,
+    "result": "NO_WALLET"
+  },
+  "plan_H2041-12": {
+    "done": true,
+    "result": "FILL",
+    "monthly": 200,
+    "evidence": "The Food & Home Card is a special supplemental benefit offered on certain plans and available only to chronically ill me"
+  },
+  "plan_H2041-13": {
+    "done": true,
+    "result": "FILL",
+    "monthly": 200,
+    "evidence": "The Food & Home Card is a special supplemental benefit offered on certain plans and available only to chronically ill me"
+  },
+  "plan_H2041-7": {
+    "done": true,
+    "result": "FILL",
+    "monthly": 307,
+    "evidence": "The Food & Home Card is a special supplemental benefit offered on certain plans and available only to chronically ill me"
+  },
+  "plan_H2041-8": {
+    "done": true,
+    "result": "FILL",
+    "monthly": 118,
+    "evidence": "The Food & Home Card is a special supplemental benefit offered on certain plans and available only to chronically ill m"
+  },
+  "plan_H7355-10": {
+    "done": true,
+    "result": "NO_WALLET"
+  },
+  "plan_H7355-4": {
+    "done": true,
+    "result": "NO_WALLET"
+  },
+  "plan_H7355-6": {
+    "done": true,
+    "result": "FILL",
+    "monthly": 49,
+    "evidence": "The Food & Home Card is a special supplemental benefit offered on certain plans and available only to chronically ill"
+  },
+  "plan_H7355-9": {
+    "done": true,
+    "result": "FILL",
+    "monthly": 316,
+    "evidence": "The Food & Home Card is a special supplemental benefit offered on certain plans and available only to chronically ill m"
+  },
+  "plan_H2845-10": {
+    "done": true,
+    "result": "FILL",
+    "monthly": 193,
+    "evidence": "The Food & Home Card is a special supplemental benefit offered on certain plans and available only to chronically ill"
+  },
+  "plan_H2845-3": {
+    "done": true,
+    "result": "NO_WALLET"
+  },
+  "plan_H2845-8": {
+    "done": true,
+    "result": "NO_WALLET"
+  },
+  "plan_H7028-6": {
+    "done": true,
+    "result": "NO_WALLET"
+  },
+  "plan_H9231-20": {
+    "done": true,
+    "result": "NO_WALLET"
+  },
+  "plan_H6994-13": {
+    "done": true,
+    "result": "FILL",
+    "monthly": 200,
+    "evidence": "The Food & Home Card is a special supplemental benefit offered on certain plans and available only to chronically ill me"
+  },
+  "plan_H6994-3": {
+    "done": true,
+    "result": "FILL",
+    "monthly": 200,
+    "evidence": "The Food & Home Card is a special supplemental benefit offered on certain plans and available only to chronically ill me"
+  },
+  "plan_H6994-4": {
+    "done": true,
+    "result": "FILL",
+    "monthly": 421,
+    "evidence": "The Food & Home Card is a special supplemental benefit offered on certain plans and available only to chronically ill me"
+  }
+}

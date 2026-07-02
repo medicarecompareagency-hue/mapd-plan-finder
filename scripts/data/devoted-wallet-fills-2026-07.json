@@ -1,0 +1,138 @@
+{
+  "note": "SB-verified Devoted DSNP/CSNP foodCardAllowance fills (2026). fill-devoted-foodcard.js run 2026-07-02. Anchor: H1290-86=$5916/yr.",
+  "fills": [
+    {
+      "planId": "H7397-9",
+      "monthly": 275,
+      "annual": 3300,
+      "state": "AR",
+      "cat": "DSNP"
+    },
+    {
+      "planId": "H5453-18",
+      "monthly": 200,
+      "annual": 2400,
+      "state": "GA",
+      "cat": "CSNP"
+    },
+    {
+      "planId": "H7471-17",
+      "monthly": 200,
+      "annual": 2400,
+      "state": "IN",
+      "cat": "CSNP"
+    },
+    {
+      "planId": "H4348-7",
+      "monthly": 200,
+      "annual": 2400,
+      "state": "KS",
+      "cat": "CSNP"
+    },
+    {
+      "planId": "H5718-5",
+      "monthly": 200,
+      "annual": 2400,
+      "state": "KY",
+      "cat": "CSNP"
+    },
+    {
+      "planId": "H5718-6",
+      "monthly": 200,
+      "annual": 2400,
+      "state": "KY",
+      "cat": "CSNP"
+    },
+    {
+      "planId": "H2041-12",
+      "monthly": 200,
+      "annual": 2400,
+      "state": "MO",
+      "cat": "CSNP"
+    },
+    {
+      "planId": "H2041-13",
+      "monthly": 200,
+      "annual": 2400,
+      "state": "MO",
+      "cat": "CSNP"
+    },
+    {
+      "planId": "H2041-7",
+      "monthly": 307,
+      "annual": 3684,
+      "state": "MO",
+      "cat": "DSNP"
+    },
+    {
+      "planId": "H2041-8",
+      "monthly": 118,
+      "annual": 1416,
+      "state": "MO",
+      "cat": "DSNP"
+    },
+    {
+      "planId": "H7355-6",
+      "monthly": 49,
+      "annual": 588,
+      "state": "MS",
+      "cat": "CSNP"
+    },
+    {
+      "planId": "H7355-9",
+      "monthly": 316,
+      "annual": 3792,
+      "state": "MS",
+      "cat": "DSNP"
+    },
+    {
+      "planId": "H2845-10",
+      "monthly": 193,
+      "annual": 2316,
+      "state": "OK",
+      "cat": "CSNP"
+    },
+    {
+      "planId": "H6994-13",
+      "monthly": 200,
+      "annual": 2400,
+      "state": "VA",
+      "cat": "CSNP"
+    },
+    {
+      "planId": "H6994-3",
+      "monthly": 200,
+      "annual": 2400,
+      "state": "VA",
+      "cat": "CSNP"
+    },
+    {
+      "planId": "H6994-4",
+      "monthly": 421,
+      "annual": 5052,
+      "state": "VA",
+      "cat": "CSNP"
+    }
+  ],
+  "noWallet": [
+    "H9888-12",
+    "H9888-15",
+    "H7397-10",
+    "H7397-4",
+    "H5453-16",
+    "H8320-12",
+    "H7471-13",
+    "H4348-4",
+    "H5718-4",
+    "H7766-14",
+    "H7766-15",
+    "H7766-4",
+    "H7355-10",
+    "H7355-4",
+    "H2845-3",
+    "H2845-8",
+    "H7028-6",
+    "H9231-20"
+  ],
+  "notFound": []
+}
