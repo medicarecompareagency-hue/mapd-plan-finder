@@ -1,0 +1,41 @@
+{
+  "note": "SB-verified Humana Healthy Options sbVerifiedFoodAmount fills (2026). Source: fill-humana-healthy-options.js, run 2026-07-02. Anchor: H0028-32 = $105/mo ($1260/yr) confirmed. DO NOT edit amounts without re-verifying from SB.",
+  "fills": [
+    {"planId": "H0028-51",  "monthly": 60,  "annual": 720,  "state": "MO", "cat": "CSNP"},
+    {"planId": "H0028-67",  "monthly": 150, "annual": 1800, "state": "KS", "cat": "CSNP"},
+    {"planId": "H1036-102", "monthly": 125, "annual": 1500, "state": "FL", "cat": "DSNP"},
+    {"planId": "H1036-121", "monthly": 35,  "annual": 420,  "state": "FL", "cat": "CSNP"},
+    {"planId": "H1036-209", "monthly": 125, "annual": 1500, "state": "FL", "cat": "DSNP"},
+    {"planId": "H1036-210", "monthly": 100, "annual": 1200, "state": "FL", "cat": "DSNP"},
+    {"planId": "H1036-213", "monthly": 125, "annual": 1500, "state": "FL", "cat": "DSNP"},
+    {"planId": "H1036-214", "monthly": 100, "annual": 1200, "state": "FL", "cat": "DSNP"},
+    {"planId": "H2875-2",   "monthly": 105, "annual": 1260, "state": "VA", "cat": "DSNP"},
+    {"planId": "H2875-4",   "monthly": 125, "annual": 1500, "state": "VA", "cat": "DSNP"},
+    {"planId": "H2875-5",   "monthly": 75,  "annual": 900,  "state": "VA", "cat": "DSNP"},
+    {"planId": "H2875-6",   "monthly": 90,  "annual": 1080, "state": "VA", "cat": "DSNP"},
+    {"planId": "H4939-2",   "monthly": 115, "annual": 1380, "state": "IN", "cat": "DSNP"},
+    {"planId": "H4939-3",   "monthly": 125, "annual": 1500, "state": "IN", "cat": "DSNP"},
+    {"planId": "H7617-113", "monthly": 90,  "annual": 1080, "state": "FL", "cat": "DSNP"},
+    {"planId": "H7617-6",   "monthly": 275, "annual": 3300, "state": "MO", "cat": "DSNP"},
+    {"planId": "H7617-74",  "monthly": 100, "annual": 1200, "state": "AR", "cat": "DSNP"},
+    {"planId": "H7617-75",  "monthly": 225, "annual": 2700, "state": "AR", "cat": "DSNP"},
+    {"planId": "H7617-76",  "monthly": 225, "annual": 2700, "state": "OK", "cat": "DSNP"},
+    {"planId": "H7617-77",  "monthly": 40,  "annual": 480,  "state": "AR", "cat": "CSNP"},
+    {"planId": "H7617-78",  "monthly": 55,  "annual": 660,  "state": "OK", "cat": "CSNP"},
+    {"planId": "H7617-82",  "monthly": 100, "annual": 1200, "state": "MS", "cat": "DSNP"},
+    {"planId": "H7617-83",  "monthly": 100, "annual": 1200, "state": "MS", "cat": "DSNP"},
+    {"planId": "H7617-84",  "monthly": 225, "annual": 2700, "state": "MS", "cat": "DSNP"}
+  ],
+  "noWallet": [
+    {"planId": "H1036-330", "note": "CSNP MS — no Humana Healthy Options section in SB"},
+    {"planId": "H1396-1",   "note": "DSNP SC — no wallet language in SB"},
+    {"planId": "H2875-1",   "note": "DSNP VA — Humana Dual Fully Integrated (different SB structure)"},
+    {"planId": "H2875-3",   "note": "DSNP VA — Humana Dual Fully Integrated"},
+    {"planId": "H4329-1",   "note": "DSNP IL — Humana Dual Fully Integrated"},
+    {"planId": "H4939-1",   "note": "DSNP IN — Humana Dual Fully Integrated"},
+    {"planId": "H5216-206", "note": "DSNP GA — no Humana Healthy Options in SB"},
+    {"planId": "H5216-334", "note": "CSNP MS — no Humana Healthy Options in SB"},
+    {"planId": "H5525-45",  "note": "DSNP KY — no Humana Healthy Options in SB"},
+    {"planId": "H5619-170", "note": "CSNP IN — no Humana Healthy Options in SB (dental allowance only)"}
+  ]
+}

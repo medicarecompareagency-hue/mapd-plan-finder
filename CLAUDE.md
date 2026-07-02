@@ -1,10 +1,13 @@
 @AGENTS.md
 
 # Persistent memory — latest handoff
-Most recent session: **2026-06-30** — full record in `HANDOFF-2026-06-30.md`.
+Most recent session: **2026-07-02** — full record in `HANDOFF-2026-07-02.md`. Prior: `HANDOFF-2026-06-30.md`.
 
-- **Segment-aware SB fix — DONE & deployed.** Multi-segment plans were showing the WRONG segment's Summary of Benefits (CMS publishes one SB per contract-plan-SEGMENT; DB stored one per planId). Added `Plan.segmentId` + `Plan.sbSegmentId`; `/api/plans` `isSbSegmentMismatch()` gate suppresses wrong-segment SBs -> segment-correct medicare.gov fallback. **91/91 affected segments linked to correct per-segment SBs; 0 gated.** Tooling: `scripts/backfill-segment-ids.js`, `scripts/link-segment-sbs.js`. Commits c28bc07, f0e10bd, 5455de5.
+- **Tier 6 audit — DONE (2026-07-02).** 295 T6=$0 plans confirmed vs. PBP ("Select Care Drugs"). Zero data fixes. LIS lesser-of bug fixed in `drugTierCellQ` (`app/plan-search.tsx`): prior code showed flat LIS copay; fix applies `min(rawValue, lisV)`. Commit `67346c9`, deployed. Audit record: `scripts/data/tier6-audit-2026-07.json`.
+- **Humana Healthy Options sweep — DONE (2026-07-02).** 24 plans newly filled via `fill-humana-healthy-options.js` → `sbVerifiedFoodAmount` (annualized, 1059 county rows). 104 already filled from prior session. 10 confirmed no-wallet (4 Humana Dual Fully Integrated, 6 genuinely no food section). Write target: `sbVerifiedFoodAmount`, NOT `foodCardAllowance` — `effectiveFoodCard()` and `effectiveOtc()` both read it for Humana. Durability: `scripts/reapply-humana-wallet-fills.js` + `scripts/data/humana-wallet-fills-2026.json`, wired into `reapply-sb-truth.js`. No deploy needed (data-only).
+- **Humana wallet sample-check — DONE (2026-07-02, read-only).** See above; sweep complete.
+- **HealthSpring wallet sample-check — DONE (2026-07-02, read-only).** HealthSpring Flex Card = OTC-only ($225/qtr already in DB as `otcAllowance`). No food/grocery benefit. **$0 food is legitimate — HealthSpring food backlog CLOSED.**
+- **Segment-aware SB fix — DONE & deployed (2026-06-30).** `Plan.segmentId` + `Plan.sbSegmentId`; 91/91 segments linked; gate live. Re-import note: must re-run `backfill-segment-ids.js` + re-apply segment SB links after any CMS re-import.
   - **The plan/county membership was CORRECT** — do NOT "fix" segment-SB issues by removing plans from counties.
-  - **Re-import durability:** a CMS re-import wipes `sbPdfUrl`/`sbSegmentId` and re-introduces the mismatch — must re-run `backfill-segment-ids.js` AND re-apply the per-segment SB links, or the fix is lost.
-- **Carried forward (untouched this session):** food/OTC wallet fill-rate backlog (Humana 138 @ 0%, HealthSpring 28 @ 13%, UHC/Wellcare/Devoted tails). Next action: read-only Humana + HealthSpring SB sample-check. Details in `HANDOFF-2026-06-30.md` Part 2.
+- **Food/OTC next priority:** UHC unswept families (~43 plans: H0251, H2385, H2445, H2509, H2802, H3256, H5008), then Wellcare, Devoted tail. Humana CLOSED. HealthSpring CLOSED.
 - DB is **Neon** (older notes say Supabase — stale). `makePrisma()` appends `?pgbouncer=true`.

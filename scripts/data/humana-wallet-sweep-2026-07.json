@@ -1,0 +1,196 @@
+{
+  "runDate": "2026-07-02",
+  "mode": "apply",
+  "totalTargets": 34,
+  "fills": [
+    {
+      "planId": "H0028-51",
+      "monthly": 60,
+      "annual": 720,
+      "gating": "all_members"
+    },
+    {
+      "planId": "H0028-67",
+      "monthly": 150,
+      "annual": 1800,
+      "gating": "all_members"
+    },
+    {
+      "planId": "H1036-102",
+      "monthly": 125,
+      "annual": 1500,
+      "gating": "all_members"
+    },
+    {
+      "planId": "H1036-121",
+      "monthly": 35,
+      "annual": 420,
+      "gating": "all_members"
+    },
+    {
+      "planId": "H1036-209",
+      "monthly": 125,
+      "annual": 1500,
+      "gating": "all_members"
+    },
+    {
+      "planId": "H1036-210",
+      "monthly": 100,
+      "annual": 1200,
+      "gating": "all_members"
+    },
+    {
+      "planId": "H1036-213",
+      "monthly": 125,
+      "annual": 1500,
+      "gating": "all_members"
+    },
+    {
+      "planId": "H1036-214",
+      "monthly": 100,
+      "annual": 1200,
+      "gating": "all_members"
+    },
+    {
+      "planId": "H2875-2",
+      "monthly": 105,
+      "annual": 1260,
+      "gating": "all_members"
+    },
+    {
+      "planId": "H2875-4",
+      "monthly": 125,
+      "annual": 1500,
+      "gating": "all_members"
+    },
+    {
+      "planId": "H2875-5",
+      "monthly": 75,
+      "annual": 900,
+      "gating": "all_members"
+    },
+    {
+      "planId": "H2875-6",
+      "monthly": 90,
+      "annual": 1080,
+      "gating": "all_members"
+    },
+    {
+      "planId": "H4939-2",
+      "monthly": 115,
+      "annual": 1380,
+      "gating": "all_members"
+    },
+    {
+      "planId": "H4939-3",
+      "monthly": 125,
+      "annual": 1500,
+      "gating": "all_members"
+    },
+    {
+      "planId": "H7617-113",
+      "monthly": 90,
+      "annual": 1080,
+      "gating": "all_members"
+    },
+    {
+      "planId": "H7617-6",
+      "monthly": 275,
+      "annual": 3300,
+      "gating": "all_members"
+    },
+    {
+      "planId": "H7617-74",
+      "monthly": 100,
+      "annual": 1200,
+      "gating": "all_members"
+    },
+    {
+      "planId": "H7617-75",
+      "monthly": 225,
+      "annual": 2700,
+      "gating": "all_members"
+    },
+    {
+      "planId": "H7617-76",
+      "monthly": 225,
+      "annual": 2700,
+      "gating": "all_members"
+    },
+    {
+      "planId": "H7617-77",
+      "monthly": 40,
+      "annual": 480,
+      "gating": "all_members"
+    },
+    {
+      "planId": "H7617-78",
+      "monthly": 55,
+      "annual": 660,
+      "gating": "all_members"
+    },
+    {
+      "planId": "H7617-82",
+      "monthly": 100,
+      "annual": 1200,
+      "gating": "all_members"
+    },
+    {
+      "planId": "H7617-83",
+      "monthly": 100,
+      "annual": 1200,
+      "gating": "all_members"
+    },
+    {
+      "planId": "H7617-84",
+      "monthly": 225,
+      "annual": 2700,
+      "gating": "all_members"
+    }
+  ],
+  "deepGated": [],
+  "noSb": [],
+  "noAmount": [],
+  "errors": [
+    {
+      "planId": "H1036-330",
+      "error": "Humana Healthy Options section not found in first 50 pages"
+    },
+    {
+      "planId": "H1396-1",
+      "error": "Humana Healthy Options section not found in first 50 pages"
+    },
+    {
+      "planId": "H2875-1",
+      "error": "Humana Healthy Options section not found in first 50 pages"
+    },
+    {
+      "planId": "H2875-3",
+      "error": "Humana Healthy Options section not found in first 50 pages"
+    },
+    {
+      "planId": "H4329-1",
+      "error": "Humana Healthy Options section not found in first 50 pages"
+    },
+    {
+      "planId": "H4939-1",
+      "error": "Humana Healthy Options section not found in first 50 pages"
+    },
+    {
+      "planId": "H5216-206",
+      "error": "Humana Healthy Options section not found in first 50 pages"
+    },
+    {
+      "planId": "H5216-334",
+      "error": "Humana Healthy Options section not found in first 50 pages"
+    },
+    {
+      "planId": "H5525-45",
+      "error": "Humana Healthy Options section not found in first 50 pages"
+    },
+    {
+      "planId": "H5619-170",
+      "error": "Humana Healthy Options section not found in first 50 pages"
+    }
+  ]
+}
