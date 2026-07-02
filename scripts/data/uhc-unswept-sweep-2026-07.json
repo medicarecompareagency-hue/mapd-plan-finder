@@ -1,0 +1,111 @@
+{
+  "anchorVerified": true,
+  "plan_H2509-2": {
+    "done": true,
+    "result": "FILL",
+    "monthly": 229,
+    "evidence": "OTC, healthy food, utilities + $229 credit every month for over-the-counter (OTC)"
+  },
+  "plan_H2509-3": {
+    "done": true,
+    "result": "FILL",
+    "monthly": 349,
+    "evidence": "OTC, healthy food, utilities + $349 credit every month for over-the-counter (OTC)"
+  },
+  "plan_H5008-11": {
+    "done": true,
+    "result": "NOT_FOUND"
+  },
+  "plan_H5008-16": {
+    "done": true,
+    "result": "NOT_FOUND"
+  },
+  "plan_H3256-6": {
+    "done": true,
+    "result": "FILL",
+    "monthly": 64,
+    "evidence": "OTC, healthy food, utilities + $64 credit every month for over-the-counter (OTC)"
+  },
+  "plan_H0251-2": {
+    "done": true,
+    "result": "NOT_FOUND"
+  },
+  "plan_H3256-5": {
+    "done": true,
+    "result": "FILL",
+    "monthly": 101,
+    "evidence": "OTC, healthy food, utilities + $101 credit every month for over-the-counter (OTC)"
+  },
+  "plan_H0251-8": {
+    "done": true,
+    "result": "NO_WALLET"
+  },
+  "plan_H0251-4": {
+    "done": true,
+    "result": "NOT_FOUND"
+  },
+  "plan_H2385-1": {
+    "done": true,
+    "result": "NOT_FOUND"
+  },
+  "plan_H2385-2": {
+    "done": true,
+    "result": "FILL",
+    "monthly": 93,
+    "evidence": "OTC, healthy food, utilities + $93 credit every month for over-the-counter (OTC)"
+  },
+  "plan_H2385-3": {
+    "done": true,
+    "result": "NOT_FOUND"
+  },
+  "plan_H2385-4": {
+    "done": true,
+    "result": "FILL",
+    "monthly": 378,
+    "evidence": "Additional Food, over-the- $0"
+  },
+  "plan_H2445-1": {
+    "done": true,
+    "result": "FILL",
+    "monthly": 407,
+    "evidence": "Additional OTC, healthy food,"
+  },
+  "plan_H2445-2": {
+    "done": true,
+    "result": "NOT_FOUND"
+  },
+  "plan_H2445-3": {
+    "done": true,
+    "result": "NOT_FOUND"
+  },
+  "plan_H2445-4": {
+    "done": true,
+    "result": "FILL",
+    "monthly": 61,
+    "evidence": "$61 credit every month for over-the-counter (OTC)"
+  },
+  "plan_H2509-1": {
+    "done": true,
+    "result": "FILL",
+    "monthly": 418,
+    "evidence": "Food, over-the-counter (OTC) and $418 credit every month to buy covered OTC"
+  },
+  "plan_H2802-70": {
+    "done": true,
+    "result": "NO_WALLET"
+  },
+  "plan_H3256-4": {
+    "done": true,
+    "result": "FILL",
+    "monthly": 194,
+    "evidence": "OTC, healthy food, utilities + $194 credit every month for over-the-counter (OTC)"
+  },
+  "plan_H5008-10": {
+    "done": true,
+    "result": "NOT_FOUND"
+  },
+  "plan_H5008-17": {
+    "done": true,
+    "result": "NOT_FOUND"
+  }
+}

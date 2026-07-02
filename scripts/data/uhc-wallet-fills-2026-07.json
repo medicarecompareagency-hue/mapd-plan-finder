@@ -1,0 +1,92 @@
+{
+  "note": "SB-verified UHC unswept-family foodCardAllowance fills (2026). Source: fill-uhc-unswept-families.js, run 2026-07-02. Anchor: H1889-9=$75/mo ($900/yr) confirmed.",
+  "fills": [
+    {
+      "planId": "H2509-2",
+      "monthly": 229,
+      "annual": 2748,
+      "state": "FL",
+      "cat": "DSNP"
+    },
+    {
+      "planId": "H2509-3",
+      "monthly": 349,
+      "annual": 4188,
+      "state": "FL",
+      "cat": "DSNP"
+    },
+    {
+      "planId": "H3256-6",
+      "monthly": 64,
+      "annual": 768,
+      "state": "GA",
+      "cat": "DSNP"
+    },
+    {
+      "planId": "H3256-5",
+      "monthly": 101,
+      "annual": 1212,
+      "state": "GA",
+      "cat": "DSNP"
+    },
+    {
+      "planId": "H2385-2",
+      "monthly": 93,
+      "annual": 1116,
+      "state": "IN",
+      "cat": "DSNP"
+    },
+    {
+      "planId": "H2385-4",
+      "monthly": 378,
+      "annual": 4536,
+      "state": "IN",
+      "cat": "DSNP"
+    },
+    {
+      "planId": "H2445-1",
+      "monthly": 407,
+      "annual": 4884,
+      "state": "VA",
+      "cat": "DSNP"
+    },
+    {
+      "planId": "H2445-4",
+      "monthly": 61,
+      "annual": 732,
+      "state": "VA",
+      "cat": "DSNP"
+    },
+    {
+      "planId": "H2509-1",
+      "monthly": 418,
+      "annual": 5016,
+      "state": "FL",
+      "cat": "DSNP"
+    },
+    {
+      "planId": "H3256-4",
+      "monthly": 194,
+      "annual": 2328,
+      "state": "GA",
+      "cat": "DSNP"
+    }
+  ],
+  "noWallet": [
+    "H0251-8",
+    "H2802-70"
+  ],
+  "notFound": [
+    "H5008-11",
+    "H5008-16",
+    "H0251-2",
+    "H0251-4",
+    "H2385-1",
+    "H2385-3",
+    "H2445-2",
+    "H2445-3",
+    "H5008-10",
+    "H5008-17"
+  ],
+  "multiAmounts": []
+}

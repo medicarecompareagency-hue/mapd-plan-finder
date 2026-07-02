@@ -9,5 +9,6 @@ Most recent session: **2026-07-02** — full record in `HANDOFF-2026-07-02.md`. 
 - **HealthSpring wallet sample-check — DONE (2026-07-02, read-only).** HealthSpring Flex Card = OTC-only ($225/qtr already in DB as `otcAllowance`). No food/grocery benefit. **$0 food is legitimate — HealthSpring food backlog CLOSED.**
 - **Segment-aware SB fix — DONE & deployed (2026-06-30).** `Plan.segmentId` + `Plan.sbSegmentId`; 91/91 segments linked; gate live. Re-import note: must re-run `backfill-segment-ids.js` + re-apply segment SB links after any CMS re-import.
   - **The plan/county membership was CORRECT** — do NOT "fix" segment-SB issues by removing plans from counties.
-- **Food/OTC next priority:** UHC unswept families (~43 plans: H0251, H2385, H2445, H2509, H2802, H3256, H5008), then Wellcare, Devoted tail. Humana CLOSED. HealthSpring CLOSED.
+- **UHC unswept-family sweep — PARTIAL DONE (2026-07-02).** 10/22 plans filled → `foodCardAllowance` (1050 county rows). 2 no-wallet (H0251-8, H2802-70). 10 not-found (SBs not indexed yet): H5008-10/11/16/17, H0251-2/4, H2385-1/3, H2445-2/3. Durability: `scripts/reapply-uhc-wallet-fills.js` + `scripts/data/uhc-wallet-fills-2026-07.json`, wired into `reapply-sb-truth.js`. No deploy (data-only). Retry not-found after Aug 2026 re-posting.
+- **Food/OTC next priority:** Wellcare (~33 plans), then Devoted unswept tail, then retry 10 UHC not-found. Humana CLOSED. HealthSpring CLOSED.
 - DB is **Neon** (older notes say Supabase — stale). `makePrisma()` appends `?pgbouncer=true`.
