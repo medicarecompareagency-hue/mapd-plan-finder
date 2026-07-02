@@ -53,8 +53,9 @@ const FIXERS = [
   'scripts/extract-devoted-foodcard.js',          // Devoted Food & Home Card (SSBCI chronic-conditional, monthly) from SB
   'scripts/fill-aetna-dsnp-csnp-converting-wallet.js', // Aetna DSNP/CSNP OTC->Extra Supports converting wallet (verify-first from SB)
   'scripts/fill-aetna-quarterly-foodcard.js',     // Aetna quarterly Extra Supports -> Food Card (if shipped)
-  'scripts/reapply-humana-wallet-fills.js',       // Humana Healthy Options sbVerifiedFoodAmount (24 plans, artifact-driven)
-  'scripts/reapply-uhc-wallet-fills.js',          // UHC unswept-family foodCardAllowance (10 plans, artifact-driven)
+  'scripts/reapply-humana-wallet-fills.js',        // Humana Healthy Options sbVerifiedFoodAmount (24 plans, artifact-driven)
+  'scripts/reapply-uhc-wallet-fills.js',           // UHC unswept-family foodCardAllowance (10 plans, artifact-driven)
+  'scripts/reapply-wellcare-wallet-fills.js',      // Wellcare DSNP/CSNP foodCardAllowance (4 plans, artifact-driven)
 ];
 
 let ran = 0, skipped = 0;

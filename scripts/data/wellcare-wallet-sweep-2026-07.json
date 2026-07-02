@@ -1,0 +1,148 @@
+{
+  "anchorVerified": true,
+  "plan_H0111-4": {
+    "done": true,
+    "result": "GIVEBACK"
+  },
+  "plan_H0174-24": {
+    "done": true,
+    "result": "NO_WALLET"
+  },
+  "plan_H0174-25": {
+    "done": true,
+    "result": "NO_WALLET"
+  },
+  "plan_H0174-4": {
+    "done": true,
+    "result": "NO_WALLET"
+  },
+  "plan_H0174-6": {
+    "done": true,
+    "result": "NO_WALLET"
+  },
+  "dam_H0908": "MISS",
+  "plan_H0908-1": {
+    "done": true,
+    "result": "FILL",
+    "monthly": 100,
+    "evidence": "You will receive $100 monthly preloaded on your Wellcare (manual-resolved from MULTI: $77 is co-plan variant in same SB)"
+  },
+  "plan_H0908-6": {
+    "done": true,
+    "result": "FILL",
+    "monthly": 125,
+    "evidence": "Wellcare Spendables� You will receive $125 monthly preloaded on your Wellcare"
+  },
+  "plan_H0908-7": {
+    "done": true,
+    "result": "NOT_FOUND"
+  },
+  "plan_H0908-8": {
+    "done": true,
+    "result": "NOT_FOUND"
+  },
+  "plan_H1032-240": {
+    "done": true,
+    "result": "NO_WALLET"
+  },
+  "plan_H1032-241": {
+    "done": true,
+    "result": "NO_WALLET"
+  },
+  "plan_H1032-242": {
+    "done": true,
+    "result": "NO_WALLET"
+  },
+  "plan_H1032-243": {
+    "done": true,
+    "result": "NO_WALLET"
+  },
+  "plan_H1032-244": {
+    "done": true,
+    "result": "NO_WALLET"
+  },
+  "plan_H1032-245": {
+    "done": true,
+    "result": "NO_WALLET"
+  },
+  "plan_H1112-33": {
+    "done": true,
+    "result": "NO_WALLET"
+  },
+  "plan_H1112-46": {
+    "done": true,
+    "result": "NO_WALLET"
+  },
+  "plan_H1112-48": {
+    "done": true,
+    "result": "NO_WALLET"
+  },
+  "plan_H1112-6": {
+    "done": true,
+    "result": "NO_WALLET"
+  },
+  "plan_H1416-33": {
+    "done": true,
+    "result": "NO_WALLET"
+  },
+  "plan_H1416-34": {
+    "done": true,
+    "result": "NO_WALLET"
+  },
+  "plan_H1416-43": {
+    "done": true,
+    "result": "NO_WALLET"
+  },
+  "plan_H1416-44": {
+    "done": true,
+    "result": "NO_WALLET"
+  },
+  "dam_H1664": "MISS",
+  "plan_H1664-12": {
+    "done": true,
+    "result": "NOT_FOUND"
+  },
+  "plan_H1664-5": {
+    "done": true,
+    "result": "NOT_FOUND"
+  },
+  "plan_H2491-32": {
+    "done": true,
+    "result": "NO_WALLET"
+  },
+  "plan_H2491-33": {
+    "done": true,
+    "result": "NO_WALLET"
+  },
+  "dam_H4158": "MISS",
+  "plan_H4158-1": {
+    "done": true,
+    "result": "FILL",
+    "monthly": 215,
+    "evidence": "Additional services $0 You will receive a $215 monthly preloaded on"
+  },
+  "dam_H6550": "MISS",
+  "plan_H6550-4": {
+    "done": true,
+    "result": "NO_WALLET"
+  },
+  "plan_H6550-9": {
+    "done": true,
+    "result": "NO_WALLET"
+  },
+  "dam_H9387": "MISS",
+  "plan_H9387-4": {
+    "done": true,
+    "result": "FILL",
+    "monthly": 95,
+    "evidence": "Wellcare Spendables� You will receive $95 monthly preloaded on your Wellcare"
+  },
+  "plan_H9730-3": {
+    "done": true,
+    "result": "NO_WALLET"
+  },
+  "plan_H9730-4": {
+    "done": true,
+    "result": "NO_WALLET"
+  }
+}

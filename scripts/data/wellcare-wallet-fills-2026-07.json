@@ -1,0 +1,69 @@
+{
+  "note": "SB-verified Wellcare DSNP/CSNP foodCardAllowance fills (2026). fill-wellcare-foodcard.js run 2026-07-02. Anchor: H3868-1=$185/mo ($2220/yr).",
+  "fills": [
+    {
+      "planId": "H0908-1",
+      "monthly": 100,
+      "annual": 1200,
+      "state": "OH",
+      "cat": "DSNP"
+    },
+    {
+      "planId": "H0908-6",
+      "monthly": 125,
+      "annual": 1500,
+      "state": "OH",
+      "cat": "DSNP"
+    },
+    {
+      "planId": "H4158-1",
+      "monthly": 215,
+      "annual": 2580,
+      "state": "OH",
+      "cat": "DSNP"
+    },
+    {
+      "planId": "H9387-4",
+      "monthly": 95,
+      "annual": 1140,
+      "state": "KS",
+      "cat": "DSNP"
+    }
+  ],
+  "noWallet": [
+    "H0174-24",
+    "H0174-25",
+    "H0174-4",
+    "H0174-6",
+    "H1032-240",
+    "H1032-241",
+    "H1032-242",
+    "H1032-243",
+    "H1032-244",
+    "H1032-245",
+    "H1112-33",
+    "H1112-46",
+    "H1112-48",
+    "H1112-6",
+    "H1416-33",
+    "H1416-34",
+    "H1416-43",
+    "H1416-44",
+    "H2491-32",
+    "H2491-33",
+    "H6550-4",
+    "H6550-9",
+    "H9730-3",
+    "H9730-4"
+  ],
+  "giveback": [
+    "H0111-4"
+  ],
+  "otcOnly": [],
+  "notFound": [
+    "H0908-7",
+    "H0908-8",
+    "H1664-12",
+    "H1664-5"
+  ]
+}
