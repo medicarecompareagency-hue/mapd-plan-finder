@@ -1,0 +1,62 @@
+{
+  "auditDate": "2026-07-02",
+  "planYear": 2026,
+  "summary": {
+    "totalDistinctPartDPlans": 1537,
+    "t6Null": 1238,
+    "t6Zero": 295,
+    "t6NonZero": 4,
+    "fillRatePct": 19.5
+  },
+  "buckets": {
+    "A_correct_zero": 295,
+    "B_wrong_zero": 0,
+    "C_should_be_null": 0,
+    "D_import_gap": 0,
+    "E_correct_null": 1238,
+    "F_spot_check_nonzero": 4
+  },
+  "dataFixes": {
+    "applied": [],
+    "note": "No fixes required — all buckets B/C/D empty. All $0s confirmed by PBP. All nonzeros ($9 HealthSpring CSNP Select Diabetic Drugs) match PBP."
+  },
+  "pbpGroundTruth": {
+    "t6LabelForZeroPlans": "Select Care Drugs",
+    "t6TypeId": "1",
+    "carriersWithT6": ["Humana (DSNP/CSNP)", "Wellcare (MAPD/DSNP)", "Devoted (DSNP/CSNP)"],
+    "carriersWithNoT6": ["Aetna", "UnitedHealthcare", "HealthSpring MAPD/DSNP"],
+    "healthSpringCsnpT6": "$9 (Select Diabetic Drugs) — PBP-confirmed"
+  },
+  "sbVerification": {
+    "plansVerified": 5,
+    "confirmed": ["H0028-39 (Humana CSNP)", "H0174-10 (Wellcare MAPD)", "H0908-1 (Wellcare MAPD OH)", "H9231-16 (Devoted CSNP)"],
+    "unverifiedNote": "H9730-3 (Wellcare DSNP) — stored PDF is an EOC document (208 pages), not a Summary of Benefits. PBP confirms $0. DSNP SBs may render LIS-format tables without standard tier rows.",
+    "verdict": "4/5 directly SB-confirmed. All $0s are genuine Select Care Drugs tiers."
+  },
+  "anchors": {
+    "H5619_93_T6_null_in_db": true,
+    "H5619_93_absent_from_pbp": true,
+    "bucketA_reparsed": "H0074-1 PBP=$0 (second parse) — matches DB"
+  },
+  "lisOverlay": {
+    "t6Behavior": {
+      "rawNull": "N/A — correct, gate works",
+      "raw0": "min($0, LIS$0) = $0 — correct",
+      "rawGtLis": "impossible (no DSNP has T6>0)",
+      "rawLtLisNonzero": "impossible (LIS T6=0, plan T6=0)"
+    },
+    "t1t5Bug": {
+      "found": true,
+      "description": "Prior code showed flat LIS copay without min(plan, LIS). 292 DSNP plans had T1=$0 or T2=$0 shown as $1.60 (full-benefit LIS). 3 plans had T1=$1 shown as $1.60.",
+      "fixApplied": "min(rawValue, lisV) in drugTierCellQ — 2026-07-02"
+    }
+  },
+  "displayDecision": {
+    "fillRate": "19.5%",
+    "bracket": "10–40%",
+    "decision": "KEEP Tier 6 column",
+    "rationale": "Select Care Drugs tier is a real, filed benefit for Wellcare, Devoted, and Humana CSNP/DSNP plans. N/A correctly displays for plans without this tier."
+  },
+  "importerNote": "No importer bug found for T6. All PBP T6 rows imported correctly via mrx_tier_id='6' path. No importer patch needed.",
+  "rankingAssert": "Drug tier values are NOT used as ranking keys in this codebase. Verified: plan-search.tsx sorts by monthlyPremium only; no drugTierNCopay appears in any ORDER BY or sort comparator."
+}

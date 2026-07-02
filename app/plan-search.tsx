@@ -495,15 +495,16 @@ function hospitalCellQ(s: string | null | undefined, qmb: boolean): string {
   return qmb ? "$0" : (s || "N/A");
 }
 
-// For DSNP results, drug tiers show the member's LIS copay (not the plan's filed tier). For every
-// other category, render the existing value unchanged.
-// rawValue: the plan's filed copay (null = tier absent). LIS overlay is skipped for absent tiers so
-// a plan with no Tier 6 shows "N/A" instead of "$0" (LIS T6 = $0 select-care, but that's only
-// meaningful when the tier actually exists in the plan's formulary).
+// For DSNP results, drug tiers show the member's effective cost: min(plan copay, LIS copay).
+// Federal rule: LIS/Extra Help is a ceiling — beneficiary pays the lesser of the plan's
+// tier cost-share and the LIS copay. rawValue null (tier absent) shows "N/A", not "$0".
 function drugTierCellQ(existing: React.ReactNode, tierNum: number, isDsnp: boolean, dualLevel: string | null, rawValue?: number | null): React.ReactNode {
   if (isDsnp && dualLevel && rawValue !== null && rawValue !== undefined) {
-    const v = lisCopayForTier(tierNum, dualLevel);
-    if (v !== null) return v === 0 ? "$0" : "$" + v.toFixed(2);
+    const lisV = lisCopayForTier(tierNum, dualLevel);
+    if (lisV !== null) {
+      const effective = Math.min(rawValue, lisV);
+      return effective === 0 ? "$0" : "$" + effective.toFixed(2);
+    }
   }
   return existing;
 }
