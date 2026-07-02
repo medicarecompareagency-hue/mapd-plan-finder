@@ -1,5 +1,5 @@
 {
-  "note": "SB-verified UHC unswept-family foodCardAllowance fills (2026). Source: fill-uhc-unswept-families.js, run 2026-07-02. Anchor: H1889-9=$75/mo ($900/yr) confirmed.",
+  "note": "SB-verified UHC unswept-family foodCardAllowance fills (2026). Source: fill-uhc-unswept-families.js, run 2026-07-02. Anchor: H1889-9=$75/mo ($900/yr) confirmed. | Updated 2026-07-02 with final-20 sweep (fill-uhc-final20.js).",
   "fills": [
     {
       "planId": "H2509-2",
@@ -70,11 +70,76 @@
       "annual": 2328,
       "state": "GA",
       "cat": "DSNP"
+    },
+    {
+      "planId": "H1889-2",
+      "monthly": 139,
+      "annual": 1668,
+      "state": "FL",
+      "cat": "DSNP",
+      "evidence": "OTC, healthy food, utilities + $139 credit every month for over-the-counter (OTC)"
+    },
+    {
+      "planId": "H1889-11",
+      "monthly": 173,
+      "annual": 2076,
+      "state": "MS",
+      "cat": "DSNP",
+      "evidence": "OTC, healthy food, utilities + $173 credit every month for over-the-counter (OTC)"
+    },
+    {
+      "planId": "H1889-26",
+      "monthly": 222,
+      "annual": 2664,
+      "state": "FL",
+      "cat": "DSNP",
+      "evidence": "OTC, healthy food, utilities + $222 credit every month for over-the-counter (OTC)"
+    },
+    {
+      "planId": "H1889-30",
+      "monthly": 112,
+      "annual": 1344,
+      "state": "KY",
+      "cat": "DSNP",
+      "evidence": "OTC, healthy food, utilities + $112 credit every month for over-the-counter (OTC)"
+    },
+    {
+      "planId": "H5322-31",
+      "monthly": 175,
+      "annual": 2100,
+      "state": "OK",
+      "cat": "DSNP",
+      "evidence": "OTC, healthy food, utilities + $175 credit every month for over-the-counter (OTC)"
+    },
+    {
+      "planId": "H5322-49",
+      "monthly": 240,
+      "annual": 2880,
+      "state": "GA",
+      "cat": "DSNP",
+      "evidence": "OTC, healthy food, utilities + $240 credit every month for over-the-counter (OTC)"
+    },
+    {
+      "planId": "H6595-5",
+      "monthly": 190,
+      "annual": 2280,
+      "state": "KY",
+      "cat": "DSNP",
+      "evidence": "OTC, healthy food, utilities + $190 credit every month for over-the-counter (OTC)"
+    },
+    {
+      "planId": "H0169-4",
+      "monthly": 243,
+      "annual": 2916,
+      "state": "KS",
+      "cat": "DSNP",
+      "evidence": "OTC, healthy food, utilities + $243 credit every month for over-the-counter (OTC)"
     }
   ],
   "noWallet": [
     "H0251-8",
-    "H2802-70"
+    "H2802-70",
+    "H0421-1"
   ],
   "notFound": [
     "H5008-11",
@@ -86,7 +151,18 @@
     "H2445-2",
     "H2445-3",
     "H5008-10",
-    "H5008-17"
+    "H5008-17",
+    "H1889-8",
+    "H1889-10",
+    "H1889-25",
+    "H1889-31",
+    "H1889-32",
+    "H5322-26",
+    "H5322-33",
+    "H5322-38",
+    "H6595-3",
+    "H0169-2",
+    "H0169-8"
   ],
   "multiAmounts": []
 }
