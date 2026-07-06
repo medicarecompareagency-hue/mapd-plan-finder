@@ -57,6 +57,7 @@ const FIXERS = [
   'scripts/reapply-uhc-wallet-fills.js',           // UHC unswept-family foodCardAllowance (10 plans, artifact-driven)
   'scripts/reapply-wellcare-wallet-fills.js',      // Wellcare DSNP/CSNP foodCardAllowance (4 plans, artifact-driven)
   'scripts/reapply-devoted-wallet-fills.js',       // Devoted DSNP/CSNP foodCardAllowance (16 plans, artifact-driven)
+  'scripts/fix-mri-outpatient-from-sb.js',         // MRI/CAT copay outpatient-hospital rule (SB-verified, artifact-driven)
 ];
 
 let ran = 0, skipped = 0;
