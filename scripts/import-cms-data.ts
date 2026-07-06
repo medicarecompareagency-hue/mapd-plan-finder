@@ -495,8 +495,18 @@ function buildBenefitMap(extractDir: string): Map<string, PlanBenefits> {
     coinsYn: string,
     minCol: string,
     maxCol: string,
+    preferMax = false,
   ): number | null {
     if (row[coinsYn] !== "1") return null;
+    // preferMax: the filed range's min is a preventive/carve-out floor (e.g. $0
+    // for a screening colonoscopy), not the general rate a member actually pays
+    // for typical services. Dale's 2026-07-06 rule (mirrors the MRI range-max
+    // rule): the headline value must be the general rate, i.e. the max.
+    if (preferMax) {
+      const max = num(row[maxCol]);
+      if (max != null) return max;
+      return num(row[minCol]);
+    }
     const min = num(row[minCol]);
     if (min != null) return min;
     return num(row[maxCol]);
@@ -573,7 +583,12 @@ function buildBenefitMap(extractDir: string): Map<string, PlanBenefits> {
       // Use max amount for "up to" semantics
       b.outpatientHospitalCopay = num(row.pbp_b9a_copay_ohs_amt_max) ?? num(row.pbp_b9a_copay_ohs_amt_min);
     }
-    b.outpatientHospitalCoinsPct = coinsPct(row, "pbp_b9a_coins_yn", "pbp_b9a_coins_ohs_pct_min", "pbp_b9a_coins_ohs_pct_max");
+    // preferMax=true: outpatient-hospital coinsurance is commonly filed as a
+    // range where the min is a preventive carve-out (e.g. 0% for a screening
+    // colonoscopy) and the max is the general outpatient surgery/services
+    // rate a member actually pays. The headline value must be the general
+    // rate, never the carve-out floor (Dale, 2026-07-06).
+    b.outpatientHospitalCoinsPct = coinsPct(row, "pbp_b9a_coins_yn", "pbp_b9a_coins_ohs_pct_min", "pbp_b9a_coins_ohs_pct_max", true);
   }
 
   // b1a: Inpatient hospital stay copay (per-day interval structure)

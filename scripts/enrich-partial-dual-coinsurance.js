@@ -76,6 +76,10 @@ const SERVICES = [
     coinsYn: "pbp_b9a_coins_yn",
     minCol: "pbp_b9a_coins_ohs_pct_min",
     maxCol: "pbp_b9a_coins_ohs_pct_max",
+    // The min is a preventive/carve-out floor (e.g. 0% for a screening
+    // colonoscopy), not the general rate. Headline value = general rate =
+    // the max (Dale, 2026-07-06; mirrors the MRI range-max rule).
+    preferMax: true,
   },
   {
     pctField: "mriCoinsPct",
@@ -129,12 +133,14 @@ function dbPlanKey(row) {
 }
 
 // Returns the coinsurance percentage as a Number, or null.
-// Reads min first; falls back to max. Treats blank / non-numeric as null.
+// Reads min first, falls back to max -- UNLESS svc.preferMax is set, in which
+// case max is read first (the general rate, not a preventive carve-out floor).
+// Treats blank / non-numeric as null.
 function extractPct(row, svc) {
   if (!row) return null;
   const yn = row[svc.coinsYn];
   if (yn !== "1") return null; // Only honor coinsurance when carrier filed it.
-  const candidates = [row[svc.minCol], row[svc.maxCol]];
+  const candidates = svc.preferMax ? [row[svc.maxCol], row[svc.minCol]] : [row[svc.minCol], row[svc.maxCol]];
   for (const v of candidates) {
     if (v === undefined || v === null) continue;
     const trimmed = String(v).trim();
