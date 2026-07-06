@@ -14320,6 +14320,56 @@
         "SPREAD",
         "IMPLAUSIBLE"
       ]
+    },
+    {
+      "planId": "H2875-5",
+      "organizationName": "Humana",
+      "buckets": [
+        "SPREAD",
+        "IMPLAUSIBLE"
+      ],
+      "reason": "no sbPdfUrl in DB",
+      "sbPdfUrl": "local://summary-of-benefits/sb-2026-H2875_5-humana-va-bristol-city.pdf"
+    },
+    {
+      "planId": "H7617-82",
+      "organizationName": "Humana",
+      "buckets": [
+        "SPREAD",
+        "IMPLAUSIBLE"
+      ],
+      "reason": "no sbPdfUrl in DB",
+      "sbPdfUrl": "https://content.medicareadvantage.com/2026/Humana-H7617082000SB26pdf-2026-SF20250928.pdf"
+    },
+    {
+      "planId": "H7617-83",
+      "organizationName": "Humana",
+      "buckets": [
+        "SPREAD",
+        "IMPLAUSIBLE"
+      ],
+      "reason": "no sbPdfUrl in DB",
+      "sbPdfUrl": "https://content.medicareadvantage.com/2026/Humana-H7617083000SB26pdf-2026-SF20251001.pdf"
+    },
+    {
+      "planId": "H7617-84",
+      "organizationName": "Humana",
+      "buckets": [
+        "SPREAD",
+        "IMPLAUSIBLE"
+      ],
+      "reason": "no sbPdfUrl in DB",
+      "sbPdfUrl": "https://content.medicareadvantage.com/2026/Humana-H7617084000SB26pdf-2026-SF20250928.pdf"
+    },
+    {
+      "planId": "H2875-4",
+      "organizationName": "Humana",
+      "buckets": [
+        "SPREAD",
+        "IMPLAUSIBLE"
+      ],
+      "reason": "no sbPdfUrl in DB",
+      "sbPdfUrl": "local://summary-of-benefits/sb-2026-H2875_4-humana-va-bristol-city.pdf"
     }
   ],
   "noUrl": [
@@ -14344,15 +14394,6 @@
       "organizationName": "Humana",
       "buckets": [
         "SPREAD"
-      ],
-      "reason": "no sbPdfUrl in DB"
-    },
-    {
-      "planId": "H2875-5",
-      "organizationName": "Humana",
-      "buckets": [
-        "SPREAD",
-        "IMPLAUSIBLE"
       ],
       "reason": "no sbPdfUrl in DB"
     },
@@ -14465,33 +14506,6 @@
       "organizationName": "Humana",
       "buckets": [
         "SPREAD"
-      ],
-      "reason": "no sbPdfUrl in DB"
-    },
-    {
-      "planId": "H7617-82",
-      "organizationName": "Humana",
-      "buckets": [
-        "SPREAD",
-        "IMPLAUSIBLE"
-      ],
-      "reason": "no sbPdfUrl in DB"
-    },
-    {
-      "planId": "H7617-83",
-      "organizationName": "Humana",
-      "buckets": [
-        "SPREAD",
-        "IMPLAUSIBLE"
-      ],
-      "reason": "no sbPdfUrl in DB"
-    },
-    {
-      "planId": "H7617-84",
-      "organizationName": "Humana",
-      "buckets": [
-        "SPREAD",
-        "IMPLAUSIBLE"
       ],
       "reason": "no sbPdfUrl in DB"
     },
@@ -14684,15 +14698,6 @@
       "organizationName": "Wellcare",
       "buckets": [
         "SPREAD"
-      ],
-      "reason": "no sbPdfUrl in DB"
-    },
-    {
-      "planId": "H2875-4",
-      "organizationName": "Humana",
-      "buckets": [
-        "SPREAD",
-        "IMPLAUSIBLE"
       ],
       "reason": "no sbPdfUrl in DB"
     },

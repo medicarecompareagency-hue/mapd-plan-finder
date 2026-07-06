@@ -582,6 +582,16 @@
       "evidence": "\u2022 Outpatient hospital $300 copay 50% of the cost"
     },
     {
+      "planId": "H5216-367",
+      "organizationName": "Humana",
+      "oldMri": 780,
+      "newMri": 0.0,
+      "changed": true,
+      "source": "sb-outpatient-range-max",
+      "sbDoc": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/2026/sb-pdfs/sb-2026-H5216_367-humana-reacquired.pdf",
+      "evidence": "\u2022 Outpatient hospital $0 copay $0 or 20% of the cost"
+    },
+    {
       "planId": "R3444-12",
       "organizationName": "UnitedHealthcare",
       "oldMri": 260,
@@ -822,6 +832,16 @@
       "evidence": "Diagnostic radiology services, such as $0 copay"
     },
     {
+      "planId": "H5216-124",
+      "organizationName": "Humana",
+      "oldMri": 780,
+      "newMri": 335.0,
+      "changed": true,
+      "source": "sb-outpatient-range-max",
+      "sbDoc": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/2026/sb-pdfs/sb-2026-H5216_124-reacquired.pdf",
+      "evidence": "\u2022 Outpatient hospital $335 copay $335 copay"
+    },
+    {
       "planId": "H1036-302",
       "organizationName": "Humana",
       "oldMri": 250,
@@ -1000,6 +1020,16 @@
       "source": "sb-outpatient",
       "sbDoc": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/2026/sb-pdfs/sb-2026-H5216_154-reacquired.pdf",
       "evidence": "\u2022 Outpatient hospital $335 copay 45% of the cost"
+    },
+    {
+      "planId": "H5216-192",
+      "organizationName": "Humana",
+      "oldMri": 780,
+      "newMri": 335.0,
+      "changed": true,
+      "source": "sb-outpatient-range-max",
+      "sbDoc": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/2026/sb-pdfs/sb-2026-H5216_192-humana-in-adams.pdf",
+      "evidence": "\u2022 Outpatient hospital $335 copay $335 copay"
     },
     {
       "planId": "H8768-31",
@@ -1390,6 +1420,16 @@
       "source": "sb-flat",
       "sbDoc": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H5325-3.pdf",
       "evidence": "Diagnostic radiology services, such as $0 copay"
+    },
+    {
+      "planId": "H8145-52",
+      "organizationName": "Humana",
+      "oldMri": 780,
+      "newMri": 335.0,
+      "changed": true,
+      "source": "sb-outpatient-range-max",
+      "sbDoc": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H8145-52.pdf",
+      "evidence": "\u2022 Outpatient hospital $335 copay $335 copay"
     },
     {
       "planId": "H2663-21",
@@ -1912,6 +1952,16 @@
       "evidence": "Diagnostic radiology services, such as $100 copay"
     },
     {
+      "planId": "H5216-298",
+      "organizationName": "Humana",
+      "oldMri": 780,
+      "newMri": 335.0,
+      "changed": true,
+      "source": "sb-outpatient-range-max",
+      "sbDoc": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/2026/sb-pdfs/sb-2026-H5216_298-humana-ms-adams.pdf",
+      "evidence": "\u2022 Outpatient hospital $335 copay $335 copay"
+    },
+    {
       "planId": "H5521-324",
       "organizationName": "Aetna Medicare",
       "oldMri": 300,
@@ -2100,6 +2150,16 @@
       "source": "sb-outpatient",
       "sbDoc": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/2026/sb-pdfs/sb-2026-H1036_333-humana-va-charles-city.pdf",
       "evidence": "scans) \u2022 Outpatient hospital: $335 copay"
+    },
+    {
+      "planId": "H5525-30",
+      "organizationName": "Humana",
+      "oldMri": 780,
+      "newMri": 325.0,
+      "changed": true,
+      "source": "sb-outpatient-range-max",
+      "sbDoc": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H5525-30.pdf",
+      "evidence": "\u2022 Outpatient hospital $325 copay $325 copay"
     },
     {
       "planId": "H1951-60",
@@ -2480,6 +2540,36 @@
       "source": "sb-outpatient",
       "sbDoc": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/2026/sb-pdfs/sb-2026-H5216_360-reacquired.pdf",
       "evidence": "\u2022 Outpatient hospital $300 copay 50% of the cost"
+    },
+    {
+      "planId": "H5525-42",
+      "organizationName": "Humana",
+      "oldMri": 780,
+      "newMri": 335.0,
+      "changed": true,
+      "source": "sb-outpatient-range-max",
+      "sbDoc": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/2026/sb-pdfs/sb-2026-H5525_42-reacquired.pdf",
+      "evidence": "\u2022 Outpatient hospital $335 copay $335 copay"
+    },
+    {
+      "planId": "H8145-32",
+      "organizationName": "Humana",
+      "oldMri": 780,
+      "newMri": 335.0,
+      "changed": true,
+      "source": "sb-outpatient-range-max",
+      "sbDoc": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/2026/sb-pdfs/sb-2026-H8145_32-reacquired.pdf",
+      "evidence": "\u2022 Outpatient hospital $335 copay $335 copay"
+    },
+    {
+      "planId": "H5216-292",
+      "organizationName": "Humana",
+      "oldMri": 780,
+      "newMri": 0.0,
+      "changed": true,
+      "source": "sb-outpatient-range-max",
+      "sbDoc": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/2026/sb-pdfs/sb-2026-H5216_292-humana-ms-adams.pdf",
+      "evidence": "\u2022 Outpatient hospital $0 copay $0 or 20% of the cost"
     },
     {
       "planId": "H6622-83",
@@ -3052,6 +3142,16 @@
       "evidence": "MRI, CT $260 copay otherwise"
     },
     {
+      "planId": "H5619-93",
+      "organizationName": "Humana",
+      "oldMri": 780,
+      "newMri": 335.0,
+      "changed": true,
+      "source": "sb-outpatient-range-max",
+      "sbDoc": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/2026/sb-pdfs/sb-2026-H5619_93-humana-al-autauga.pdf",
+      "evidence": "\u2022 Outpatient hospital $0 or $335 copay"
+    },
+    {
       "planId": "H3288-11",
       "organizationName": "Aetna Medicare",
       "oldMri": 325,
@@ -3420,6 +3520,16 @@
       "source": "sb-outpatient",
       "sbDoc": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/2026/sb-pdfs/sb-2026-H6622_14-humana-oh-ashland.pdf",
       "evidence": "scans) \u2022 Outpatient hospital: $335 copay"
+    },
+    {
+      "planId": "H5525-41",
+      "organizationName": "Humana",
+      "oldMri": 780,
+      "newMri": 335.0,
+      "changed": true,
+      "source": "sb-outpatient-range-max",
+      "sbDoc": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H5525-41.pdf",
+      "evidence": "\u2022 Outpatient hospital $335 copay $335 copay"
     },
     {
       "planId": "H0628-1",
@@ -4562,6 +4672,16 @@
       "evidence": "(e.g. MRI, CAT Scan) $0 copay"
     },
     {
+      "planId": "H5216-330",
+      "organizationName": "Humana",
+      "oldMri": 780,
+      "newMri": 0.0,
+      "changed": true,
+      "source": "sb-outpatient-range-max",
+      "sbDoc": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/2026/sb-pdfs/sb-2026-H5216_330-humana-la-acadia.pdf",
+      "evidence": "\u2022 Outpatient hospital $0 copay $0 or 20% of the cost"
+    },
+    {
       "planId": "H6622-32",
       "organizationName": "Humana",
       "oldMri": 360,
@@ -4680,6 +4800,16 @@
       "source": "sb-flat",
       "sbDoc": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb-pdfs/H7518-3-H7518-003.pdf",
       "evidence": "(e.g. MRI, CAT Scan) $0 copay"
+    },
+    {
+      "planId": "H5216-334",
+      "organizationName": "Humana",
+      "oldMri": 780,
+      "newMri": 335.0,
+      "changed": true,
+      "source": "sb-outpatient-range-max",
+      "sbDoc": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/2026/sb-pdfs/sb-2026-H5216_334-humana-ms-adams.pdf",
+      "evidence": "\u2022 Outpatient hospital $335 copay $335 copay"
     },
     {
       "planId": "H5216-144",
@@ -6052,6 +6182,16 @@
       "evidence": "Diagnostic radiology $300 copay 50% coinsurance"
     },
     {
+      "planId": "H5216-332",
+      "organizationName": "Humana",
+      "oldMri": 780,
+      "newMri": 0.0,
+      "changed": true,
+      "source": "sb-outpatient-range-max",
+      "sbDoc": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/2026/sb-pdfs/sb-2026-H5216_332-humana-la-ascension.pdf",
+      "evidence": "\u2022 Outpatient hospital $0 copay $0 or 20% of the cost"
+    },
+    {
       "planId": "H4461-62",
       "organizationName": "Humana",
       "oldMri": 300,
@@ -6660,6 +6800,16 @@
       "source": "sb-outpatient",
       "sbDoc": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/2026/sb-pdfs/sb-2026-H5216_68-humana-fl-broward.pdf",
       "evidence": "\u2022 Outpatient hospital $335 copay 50% of the cost"
+    },
+    {
+      "planId": "H5216-370",
+      "organizationName": "Humana",
+      "oldMri": 780,
+      "newMri": 0.0,
+      "changed": true,
+      "source": "sb-outpatient-range-max",
+      "sbDoc": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/2026/sb-pdfs/sb-2026-H5216_370-humana-al-autauga.pdf",
+      "evidence": "\u2022 Outpatient hospital $0 copay $0 or 20% of the cost"
     },
     {
       "planId": "H1036-54",
@@ -7330,6 +7480,56 @@
       "source": "sb-outpatient",
       "sbDoc": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/2026/sb-pdfs/sb-2026-H5178_2-humana-ky-fayette.pdf",
       "evidence": "scans) \u2022 Outpatient hospital: $335 copay"
+    },
+    {
+      "planId": "H2875-5",
+      "organizationName": "Humana",
+      "oldMri": 780,
+      "newMri": 335.0,
+      "changed": true,
+      "source": "sb-outpatient",
+      "sbDoc": "local://summary-of-benefits/sb-2026-H2875_5-humana-va-bristol-city.pdf",
+      "evidence": "\u2022 Outpatient hospital $335 copay"
+    },
+    {
+      "planId": "H7617-82",
+      "organizationName": "Humana",
+      "oldMri": 780,
+      "newMri": 0.0,
+      "changed": true,
+      "source": "sb-outpatient-range-max",
+      "sbDoc": "https://content.medicareadvantage.com/2026/Humana-H7617082000SB26pdf-2026-SF20250928.pdf",
+      "evidence": "\u2022 Outpatient hospital $0 copay $0 or 20% of the cost"
+    },
+    {
+      "planId": "H7617-83",
+      "organizationName": "Humana",
+      "oldMri": 780,
+      "newMri": 335.0,
+      "changed": true,
+      "source": "sb-outpatient-range-max",
+      "sbDoc": "https://content.medicareadvantage.com/2026/Humana-H7617083000SB26pdf-2026-SF20251001.pdf",
+      "evidence": "\u2022 Outpatient hospital $335 copay $335 copay"
+    },
+    {
+      "planId": "H7617-84",
+      "organizationName": "Humana",
+      "oldMri": 780,
+      "newMri": 0.0,
+      "changed": true,
+      "source": "sb-outpatient-range-max",
+      "sbDoc": "https://content.medicareadvantage.com/2026/Humana-H7617084000SB26pdf-2026-SF20250928.pdf",
+      "evidence": "\u2022 Outpatient hospital $0 copay $0 or 20% of the cost"
+    },
+    {
+      "planId": "H2875-4",
+      "organizationName": "Humana",
+      "oldMri": 780,
+      "newMri": 0.0,
+      "changed": true,
+      "source": "sb-outpatient",
+      "sbDoc": "local://summary-of-benefits/sb-2026-H2875_4-humana-va-bristol-city.pdf",
+      "evidence": "\u2022 Outpatient hospital $0 copay"
     }
   ],
   "skipped": [
@@ -7766,14 +7966,6 @@
       "evidence": null
     },
     {
-      "planId": "H5216-367",
-      "organizationName": "Humana",
-      "oldMri": 780,
-      "reason": "outpatient hospital line itself shows a range, ambiguous single value",
-      "sbDoc": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/2026/sb-pdfs/sb-2026-H5216_367-humana-reacquired.pdf",
-      "evidence": "\u2022 Outpatient hospital $0 copay $0 or 20% of the cost"
-    },
-    {
       "planId": "H0609-80",
       "organizationName": "UnitedHealthcare",
       "oldMri": 260,
@@ -7878,14 +8070,6 @@
       "evidence": null
     },
     {
-      "planId": "H5216-124",
-      "organizationName": "Humana",
-      "oldMri": 780,
-      "reason": "outpatient hospital line itself shows a range, ambiguous single value",
-      "sbDoc": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/2026/sb-pdfs/sb-2026-H5216_124-reacquired.pdf",
-      "evidence": "\u2022 Outpatient hospital $335 copay $335 copay"
-    },
-    {
       "planId": "H2509-3",
       "organizationName": "UnitedHealthcare",
       "oldMri": 0,
@@ -7988,14 +8172,6 @@
       "reason": "heading line shows a range with no place-of-service breakdown",
       "sbDoc": "https://content.medicareadvantage.com/2026/Healthspring_sb-h7020-011-003_2026_SB_SF20260211.pdf",
       "evidence": "Diagnostic Radiology (MRIs, CT scans, etc.)1 $ 0\u2013$195 copay"
-    },
-    {
-      "planId": "H5216-192",
-      "organizationName": "Humana",
-      "oldMri": 780,
-      "reason": "outpatient hospital line itself shows a range, ambiguous single value",
-      "sbDoc": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/2026/sb-pdfs/sb-2026-H5216_192-humana-in-adams.pdf",
-      "evidence": "\u2022 Outpatient hospital $335 copay $335 copay"
     },
     {
       "planId": "H5216-207",
@@ -8180,14 +8356,6 @@
       "reason": "heading line shows a range with no place-of-service breakdown",
       "sbDoc": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb-pdfs/H1112-38-H1112-038.pdf",
       "evidence": "Diagnostic Radiology Services $0 copay for a diagnostic $0 copay for a diagnostic"
-    },
-    {
-      "planId": "H8145-52",
-      "organizationName": "Humana",
-      "oldMri": 780,
-      "reason": "outpatient hospital line itself shows a range, ambiguous single value",
-      "sbDoc": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H8145-52.pdf",
-      "evidence": "\u2022 Outpatient hospital $335 copay $335 copay"
     },
     {
       "planId": "H2445-5",
@@ -8558,14 +8726,6 @@
       "evidence": "\u2022 Outpatient hospital $335 copay $335 copay"
     },
     {
-      "planId": "H5216-298",
-      "organizationName": "Humana",
-      "oldMri": 780,
-      "reason": "outpatient hospital line itself shows a range, ambiguous single value",
-      "sbDoc": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/2026/sb-pdfs/sb-2026-H5216_298-humana-ms-adams.pdf",
-      "evidence": "\u2022 Outpatient hospital $335 copay $335 copay"
-    },
-    {
       "planId": "H5253-128",
       "organizationName": "UnitedHealthcare",
       "oldMri": 260,
@@ -8612,14 +8772,6 @@
       "reason": "outpatient hospital line itself shows a range, ambiguous single value",
       "sbDoc": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb-pdfs/R0110-3-R0110-003.pdf",
       "evidence": "\u2022 Outpatient hospital $335 copay $335 copay"
-    },
-    {
-      "planId": "H5525-30",
-      "organizationName": "Humana",
-      "oldMri": 780,
-      "reason": "outpatient hospital line itself shows a range, ambiguous single value",
-      "sbDoc": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H5525-30.pdf",
-      "evidence": "\u2022 Outpatient hospital $325 copay $325 copay"
     },
     {
       "planId": "H1416-61",
@@ -8790,14 +8942,6 @@
       "evidence": null
     },
     {
-      "planId": "H5525-42",
-      "organizationName": "Humana",
-      "oldMri": 780,
-      "reason": "outpatient hospital line itself shows a range, ambiguous single value",
-      "sbDoc": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/2026/sb-pdfs/sb-2026-H5525_42-reacquired.pdf",
-      "evidence": "\u2022 Outpatient hospital $335 copay $335 copay"
-    },
-    {
       "planId": "H2001-58",
       "organizationName": "UnitedHealthcare",
       "oldMri": 0,
@@ -8812,22 +8956,6 @@
       "reason": "heading line shows a range with no place-of-service breakdown",
       "sbDoc": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/2026/sb-pdfs/sb-2026-H1608_27-aetna-medicare-wv-boone.pdf",
       "evidence": "Diagnostic radiology $0 \u2011 $225 copay 20% coinsurance"
-    },
-    {
-      "planId": "H8145-32",
-      "organizationName": "Humana",
-      "oldMri": 780,
-      "reason": "outpatient hospital line itself shows a range, ambiguous single value",
-      "sbDoc": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/2026/sb-pdfs/sb-2026-H8145_32-reacquired.pdf",
-      "evidence": "\u2022 Outpatient hospital $335 copay $335 copay"
-    },
-    {
-      "planId": "H5216-292",
-      "organizationName": "Humana",
-      "oldMri": 780,
-      "reason": "outpatient hospital line itself shows a range, ambiguous single value",
-      "sbDoc": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/2026/sb-pdfs/sb-2026-H5216_292-humana-ms-adams.pdf",
-      "evidence": "\u2022 Outpatient hospital $0 copay $0 or 20% of the cost"
     },
     {
       "planId": "H6595-5",
@@ -9206,14 +9334,6 @@
       "evidence": null
     },
     {
-      "planId": "H5619-93",
-      "organizationName": "Humana",
-      "oldMri": 780,
-      "reason": "outpatient hospital line itself shows a range, ambiguous single value",
-      "sbDoc": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/2026/sb-pdfs/sb-2026-H5619_93-humana-al-autauga.pdf",
-      "evidence": "\u2022 Outpatient hospital $0 or $335 copay"
-    },
-    {
       "planId": "H4513-38",
       "organizationName": "HealthSpring",
       "oldMri": 250,
@@ -9404,14 +9524,6 @@
       "reason": "advanced imaging heading not found in SB text",
       "sbDoc": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/2026/sb-pdfs/sb-2026-H2802_61-unitedhealthcare-ar-arkansas.pdf",
       "evidence": null
-    },
-    {
-      "planId": "H5525-41",
-      "organizationName": "Humana",
-      "oldMri": 780,
-      "reason": "outpatient hospital line itself shows a range, ambiguous single value",
-      "sbDoc": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H5525-41.pdf",
-      "evidence": "\u2022 Outpatient hospital $335 copay $335 copay"
     },
     {
       "planId": "H2491-31",
@@ -10286,14 +10398,6 @@
       "evidence": "Diagnostic radiology services, such as $0 \u2011 $125 copay"
     },
     {
-      "planId": "H5216-330",
-      "organizationName": "Humana",
-      "oldMri": 780,
-      "reason": "outpatient hospital line itself shows a range, ambiguous single value",
-      "sbDoc": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/2026/sb-pdfs/sb-2026-H5216_330-humana-la-acadia.pdf",
-      "evidence": "\u2022 Outpatient hospital $0 copay $0 or 20% of the cost"
-    },
-    {
       "planId": "H1290-37",
       "organizationName": "Devoted Health",
       "oldMri": 300,
@@ -10372,14 +10476,6 @@
       "reason": "jumbled multi-column layout detected at heading line (duplicate label text) -- cannot reliably parse",
       "sbDoc": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/2026/sb-pdfs/sb-2026-H9231_15-devoted-health-tn-cannon.pdf",
       "evidence": "\u2022Diagnostic Radiology \u2022Diagnostic Radiology"
-    },
-    {
-      "planId": "H5216-334",
-      "organizationName": "Humana",
-      "oldMri": 780,
-      "reason": "outpatient hospital line itself shows a range, ambiguous single value",
-      "sbDoc": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/2026/sb-pdfs/sb-2026-H5216_334-humana-ms-adams.pdf",
-      "evidence": "\u2022 Outpatient hospital $335 copay $335 copay"
     },
     {
       "planId": "H0609-58",
@@ -11526,14 +11622,6 @@
       "evidence": "Diagnostic Radiology Services $0 copay for a diagnostic $0 copay for a diagnostic"
     },
     {
-      "planId": "H5216-332",
-      "organizationName": "Humana",
-      "oldMri": 780,
-      "reason": "outpatient hospital line itself shows a range, ambiguous single value",
-      "sbDoc": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/2026/sb-pdfs/sb-2026-H5216_332-humana-la-ascension.pdf",
-      "evidence": "\u2022 Outpatient hospital $0 copay $0 or 20% of the cost"
-    },
-    {
       "planId": "H5410-26",
       "organizationName": "HealthSpring",
       "oldMri": 195,
@@ -12156,14 +12244,6 @@
       "reason": "heading line shows a range with no place-of-service breakdown",
       "sbDoc": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/2026/sb-pdfs/sb-2026-H1609_61-aetna-medicare-fl-citrus.pdf",
       "evidence": "Diagnostic radiology services, such as $0 copay or $0 \u2011 $200 copay"
-    },
-    {
-      "planId": "H5216-370",
-      "organizationName": "Humana",
-      "oldMri": 780,
-      "reason": "outpatient hospital line itself shows a range, ambiguous single value",
-      "sbDoc": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/2026/sb-pdfs/sb-2026-H5216_370-humana-al-autauga.pdf",
-      "evidence": "\u2022 Outpatient hospital $0 copay $0 or 20% of the cost"
     },
     {
       "planId": "H1609-80",
@@ -12877,11 +12957,6 @@
       "reason": "no sbPdfUrl in DB"
     },
     {
-      "planId": "H2875-5",
-      "organizationName": "Humana",
-      "reason": "no sbPdfUrl in DB"
-    },
-    {
       "planId": "H2875-6",
       "organizationName": "Humana",
       "reason": "no sbPdfUrl in DB"
@@ -12948,21 +13023,6 @@
     },
     {
       "planId": "H7617-78",
-      "organizationName": "Humana",
-      "reason": "no sbPdfUrl in DB"
-    },
-    {
-      "planId": "H7617-82",
-      "organizationName": "Humana",
-      "reason": "no sbPdfUrl in DB"
-    },
-    {
-      "planId": "H7617-83",
-      "organizationName": "Humana",
-      "reason": "no sbPdfUrl in DB"
-    },
-    {
-      "planId": "H7617-84",
       "organizationName": "Humana",
       "reason": "no sbPdfUrl in DB"
     },
@@ -13084,11 +13144,6 @@
     {
       "planId": "H9387-2",
       "organizationName": "Wellcare",
-      "reason": "no sbPdfUrl in DB"
-    },
-    {
-      "planId": "H2875-4",
-      "organizationName": "Humana",
       "reason": "no sbPdfUrl in DB"
     },
     {

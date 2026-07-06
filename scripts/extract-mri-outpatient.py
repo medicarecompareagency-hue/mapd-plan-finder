@@ -98,11 +98,15 @@ DANGLING_DASH_RE = re.compile(r"[-–—]\s*$")
 def _classify(cand):
     """Classify a candidate string that should carry the outpatient-hospital
     (or flat) value. Returns (kind, value) where kind in
-    {"single", "range", "coins", "none"}.
+    {"single", "range", "coins", "none"}. For "range", value is the MAX of
+    the dollar amounts found (Dale's 2026-07-06 mop-up rule: a range -- either
+    the outpatient-hospital line itself, or a flat range with no per-setting
+    split -- resolves to its max, conservative and never understates), or
+    None if the range is truncated/unresolvable (can't safely take a max).
     """
     dollars = DOLLAR_RE.findall(cand)
     if len(dollars) >= 2:
-        return "range", None
+        return "range", max(num(d) for d in dollars)
     if len(dollars) == 1:
         if DANGLING_DASH_RE.search(cand.strip()):
             # a lone $ followed by a trailing dash usually means the range's
@@ -131,7 +135,9 @@ def try_mammogram_otherwise(lines, idx):
             if nkind == "single":
                 return _ok(nval, "sb-flat-otherwise", nxt)
             if nkind == "range":
-                return _skip("mammogram carve-out found but the following 'other' line shows a range", nxt)
+                if nval is not None:
+                    return _ok(nval, "sb-flat-otherwise-range-max", nxt)
+                return _skip("mammogram carve-out found but the following 'other' line shows a truncated/unresolvable range", nxt)
         if "$" in nxt:
             break
     return None
@@ -190,7 +196,9 @@ def scan_window(lines, start_idx, max_window=45):
                 if kind == "single":
                     return _ok(val, "sb-outpatient", cand)
                 if kind == "range":
-                    return _skip("outpatient hospital line itself shows a range, ambiguous single value", cand)
+                    if val is not None:
+                        return _ok(val, "sb-outpatient-range-max", cand)
+                    return _skip("outpatient hospital line shows a truncated/unresolvable range", cand)
                 if kind == "coins":
                     return _skip("outpatient hospital line shows coinsurance not copay", cand)
                 return _skip("outpatient hospital line found but no $ amount parsed", cand)
@@ -203,15 +211,18 @@ def scan_window(lines, start_idx, max_window=45):
                         return res
                     # unresolved mammogram carve-out -- don't treat $0 as the real value
                 else:
-                    flat_candidate = (val, line)
+                    flat_candidate = ("single", val, line)
             elif kind == "range":
-                flat_candidate = ("range", line)
+                flat_candidate = ("range", val, line)
     if saw_place_keyword:
         return _skip("per-setting breakdown found but no outpatient hospital line", None)
     if flat_candidate is not None:
-        if flat_candidate[0] == "range":
-            return _skip("flat value is a range with no place-of-service breakdown", flat_candidate[1])
-        return _ok(flat_candidate[0], "sb-flat", flat_candidate[1])
+        fkind, fval, fline = flat_candidate
+        if fkind == "range":
+            if fval is not None:
+                return _ok(fval, "sb-flat-range-max", fline)
+            return _skip("flat value is a truncated/unresolvable range", fline)
+        return _ok(fval, "sb-flat", fline)
     return None
 
 
@@ -235,7 +246,9 @@ def parse_pdf_text(full_text):
         kind, val = _classify(line)
         heading_has_place_keyword = PLACE_KEYWORDS_RE.search(line)
         if kind == "range" and not heading_has_place_keyword:
-            return _skip("heading line shows a range with no place-of-service breakdown", line.strip())
+            if val is not None:
+                return _ok(val, "sb-flat-range-max", line.strip())
+            return _skip("heading line shows a truncated/unresolvable range", line.strip())
         if kind == "single" and not heading_has_place_keyword:
             if MAMMOGRAM_RE.search(line) and not OTHER_RE.search(line):
                 res = try_mammogram_otherwise(lines, i)

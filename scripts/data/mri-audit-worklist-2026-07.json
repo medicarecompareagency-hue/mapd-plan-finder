@@ -587,18 +587,6 @@
       ]
     },
     {
-      "planId": "H2875-5",
-      "organizationName": "Humana",
-      "state": "VA",
-      "mriCopay": 780,
-      "drsMin": 0,
-      "drsMax": 780,
-      "buckets": [
-        "SPREAD",
-        "IMPLAUSIBLE"
-      ]
-    },
-    {
       "planId": "H2875-6",
       "organizationName": "Humana",
       "state": "VA",
@@ -1226,6 +1214,17 @@
       ]
     },
     {
+      "planId": "H2875-5",
+      "organizationName": "Humana",
+      "state": "VA",
+      "mriCopay": 335,
+      "drsMin": 0,
+      "drsMax": 780,
+      "buckets": [
+        "ORPHAN"
+      ]
+    },
+    {
       "planId": "H3239-1",
       "organizationName": "Aetna Medicare",
       "state": "LA",
@@ -1281,6 +1280,17 @@
       ]
     },
     {
+      "planId": "H5216-367",
+      "organizationName": "Humana",
+      "state": "MS",
+      "mriCopay": 0,
+      "drsMin": 200,
+      "drsMax": 780,
+      "buckets": [
+        "ORPHAN"
+      ]
+    },
+    {
       "planId": "H0473-4",
       "organizationName": "Humana",
       "state": "TX",
@@ -1289,18 +1299,6 @@
       "drsMax": 300,
       "buckets": [
         "SPREAD"
-      ]
-    },
-    {
-      "planId": "H5216-367",
-      "organizationName": "Humana",
-      "state": "MS",
-      "mriCopay": 780,
-      "drsMin": 200,
-      "drsMax": 780,
-      "buckets": [
-        "SPREAD",
-        "IMPLAUSIBLE"
       ]
     },
     {
@@ -1557,18 +1555,6 @@
       ]
     },
     {
-      "planId": "H7617-82",
-      "organizationName": "Humana",
-      "state": "MS",
-      "mriCopay": 780,
-      "drsMin": 200,
-      "drsMax": 780,
-      "buckets": [
-        "SPREAD",
-        "IMPLAUSIBLE"
-      ]
-    },
-    {
       "planId": "H5521-87",
       "organizationName": "Aetna Medicare",
       "state": "OH",
@@ -1577,6 +1563,17 @@
       "drsMax": 200,
       "buckets": [
         "SPREAD"
+      ]
+    },
+    {
+      "planId": "H7617-82",
+      "organizationName": "Humana",
+      "state": "MS",
+      "mriCopay": 0,
+      "drsMin": 200,
+      "drsMax": 780,
+      "buckets": [
+        "ORPHAN"
       ]
     },
     {
@@ -1627,12 +1624,11 @@
       "planId": "H7617-83",
       "organizationName": "Humana",
       "state": "MS",
-      "mriCopay": 780,
+      "mriCopay": 335,
       "drsMin": 0,
       "drsMax": 780,
       "buckets": [
-        "SPREAD",
-        "IMPLAUSIBLE"
+        "ORPHAN"
       ]
     },
     {
@@ -1658,24 +1654,23 @@
       ]
     },
     {
-      "planId": "H7617-84",
-      "organizationName": "Humana",
-      "state": "MS",
-      "mriCopay": 780,
-      "drsMin": 200,
-      "drsMax": 780,
-      "buckets": [
-        "SPREAD",
-        "IMPLAUSIBLE"
-      ]
-    },
-    {
       "planId": "H3239-27",
       "organizationName": "Aetna Medicare",
       "state": "LA",
       "mriCopay": 0,
       "drsMin": null,
       "drsMax": null,
+      "buckets": [
+        "ORPHAN"
+      ]
+    },
+    {
+      "planId": "H7617-84",
+      "organizationName": "Humana",
+      "state": "MS",
+      "mriCopay": 0,
+      "drsMin": 200,
+      "drsMax": 780,
       "buckets": [
         "ORPHAN"
       ]
@@ -1747,6 +1742,17 @@
       ]
     },
     {
+      "planId": "H5216-124",
+      "organizationName": "Humana",
+      "state": "WV",
+      "mriCopay": 335,
+      "drsMin": 0,
+      "drsMax": 780,
+      "buckets": [
+        "ORPHAN"
+      ]
+    },
+    {
       "planId": "H1036-300",
       "organizationName": "Humana",
       "state": "FL",
@@ -1766,18 +1772,6 @@
       "drsMax": null,
       "buckets": [
         "ORPHAN"
-      ]
-    },
-    {
-      "planId": "H5216-124",
-      "organizationName": "Humana",
-      "state": "WV",
-      "mriCopay": 780,
-      "drsMin": 0,
-      "drsMax": 780,
-      "buckets": [
-        "SPREAD",
-        "IMPLAUSIBLE"
       ]
     },
     {
@@ -2122,18 +2116,6 @@
       ]
     },
     {
-      "planId": "H5216-192",
-      "organizationName": "Humana",
-      "state": "IN",
-      "mriCopay": 780,
-      "drsMin": 0,
-      "drsMax": 780,
-      "buckets": [
-        "SPREAD",
-        "IMPLAUSIBLE"
-      ]
-    },
-    {
       "planId": "H5216-207",
       "organizationName": "Humana",
       "state": "GA",
@@ -2142,6 +2124,17 @@
       "drsMax": 335,
       "buckets": [
         "SPREAD"
+      ]
+    },
+    {
+      "planId": "H5216-192",
+      "organizationName": "Humana",
+      "state": "IN",
+      "mriCopay": 335,
+      "drsMin": 0,
+      "drsMax": 780,
+      "buckets": [
+        "ORPHAN"
       ]
     },
     {
@@ -2861,6 +2854,17 @@
       ]
     },
     {
+      "planId": "H8145-52",
+      "organizationName": "Humana",
+      "state": "WV",
+      "mriCopay": 335,
+      "drsMin": 0,
+      "drsMax": 780,
+      "buckets": [
+        "ORPHAN"
+      ]
+    },
+    {
       "planId": "H5325-3",
       "organizationName": "Aetna Medicare",
       "state": "MO",
@@ -2869,18 +2873,6 @@
       "drsMax": null,
       "buckets": [
         "ORPHAN"
-      ]
-    },
-    {
-      "planId": "H8145-52",
-      "organizationName": "Humana",
-      "state": "WV",
-      "mriCopay": 780,
-      "drsMin": 0,
-      "drsMax": 780,
-      "buckets": [
-        "SPREAD",
-        "IMPLAUSIBLE"
       ]
     },
     {
@@ -4028,18 +4020,6 @@
       ]
     },
     {
-      "planId": "H5216-298",
-      "organizationName": "Humana",
-      "state": "MS",
-      "mriCopay": 780,
-      "drsMin": 0,
-      "drsMax": 780,
-      "buckets": [
-        "SPREAD",
-        "IMPLAUSIBLE"
-      ]
-    },
-    {
       "planId": "H5521-324",
       "organizationName": "Aetna Medicare",
       "state": "MS",
@@ -4048,6 +4028,17 @@
       "drsMax": 300,
       "buckets": [
         "SPREAD"
+      ]
+    },
+    {
+      "planId": "H5216-298",
+      "organizationName": "Humana",
+      "state": "MS",
+      "mriCopay": 335,
+      "drsMin": 0,
+      "drsMax": 780,
+      "buckets": [
+        "ORPHAN"
       ]
     },
     {
@@ -4340,12 +4331,11 @@
       "planId": "H5525-30",
       "organizationName": "Humana",
       "state": "OH",
-      "mriCopay": 780,
+      "mriCopay": 325,
       "drsMin": 0,
       "drsMax": 780,
       "buckets": [
-        "SPREAD",
-        "IMPLAUSIBLE"
+        "ORPHAN"
       ]
     },
     {
@@ -4987,24 +4977,23 @@
       ]
     },
     {
-      "planId": "H5525-42",
-      "organizationName": "Humana",
-      "state": "OH",
-      "mriCopay": 780,
-      "drsMin": 0,
-      "drsMax": 780,
-      "buckets": [
-        "SPREAD",
-        "IMPLAUSIBLE"
-      ]
-    },
-    {
       "planId": "H2001-58",
       "organizationName": "UnitedHealthcare",
       "state": "OH",
       "mriCopay": 0,
       "drsMin": null,
       "drsMax": null,
+      "buckets": [
+        "ORPHAN"
+      ]
+    },
+    {
+      "planId": "H5525-42",
+      "organizationName": "Humana",
+      "state": "OH",
+      "mriCopay": 335,
+      "drsMin": 0,
+      "drsMax": 780,
       "buckets": [
         "ORPHAN"
       ]
@@ -5024,24 +5013,11 @@
       "planId": "H8145-32",
       "organizationName": "Humana",
       "state": "OH",
-      "mriCopay": 780,
+      "mriCopay": 335,
       "drsMin": 0,
       "drsMax": 780,
       "buckets": [
-        "SPREAD",
-        "IMPLAUSIBLE"
-      ]
-    },
-    {
-      "planId": "H5216-292",
-      "organizationName": "Humana",
-      "state": "MS",
-      "mriCopay": 780,
-      "drsMin": 200,
-      "drsMax": 780,
-      "buckets": [
-        "SPREAD",
-        "IMPLAUSIBLE"
+        "ORPHAN"
       ]
     },
     {
@@ -5051,6 +5027,17 @@
       "mriCopay": 0,
       "drsMin": null,
       "drsMax": null,
+      "buckets": [
+        "ORPHAN"
+      ]
+    },
+    {
+      "planId": "H5216-292",
+      "organizationName": "Humana",
+      "state": "MS",
+      "mriCopay": 0,
+      "drsMin": 200,
+      "drsMax": 780,
       "buckets": [
         "ORPHAN"
       ]
@@ -6248,12 +6235,11 @@
       "planId": "H5619-93",
       "organizationName": "Humana",
       "state": "AL",
-      "mriCopay": 780,
+      "mriCopay": 335,
       "drsMin": 0,
       "drsMax": 780,
       "buckets": [
-        "SPREAD",
-        "IMPLAUSIBLE"
+        "ORPHAN"
       ]
     },
     {
@@ -6975,12 +6961,11 @@
       "planId": "H5525-41",
       "organizationName": "Humana",
       "state": "OH",
-      "mriCopay": 780,
+      "mriCopay": 335,
       "drsMin": 0,
       "drsMax": 780,
       "buckets": [
-        "SPREAD",
-        "IMPLAUSIBLE"
+        "ORPHAN"
       ]
     },
     {
@@ -8591,24 +8576,23 @@
       ]
     },
     {
-      "planId": "H2875-4",
-      "organizationName": "Humana",
-      "state": "VA",
-      "mriCopay": 780,
-      "drsMin": 200,
-      "drsMax": 780,
-      "buckets": [
-        "SPREAD",
-        "IMPLAUSIBLE"
-      ]
-    },
-    {
       "planId": "H1036-266",
       "organizationName": "Humana",
       "state": "FL",
       "mriCopay": 175,
       "drsMin": 0,
       "drsMax": 250,
+      "buckets": [
+        "ORPHAN"
+      ]
+    },
+    {
+      "planId": "H2875-4",
+      "organizationName": "Humana",
+      "state": "VA",
+      "mriCopay": 0,
+      "drsMin": 200,
+      "drsMax": 780,
       "buckets": [
         "ORPHAN"
       ]
@@ -9497,12 +9481,11 @@
       "planId": "H5216-330",
       "organizationName": "Humana",
       "state": "LA",
-      "mriCopay": 780,
+      "mriCopay": 0,
       "drsMin": 200,
       "drsMax": 780,
       "buckets": [
-        "SPREAD",
-        "IMPLAUSIBLE"
+        "ORPHAN"
       ]
     },
     {
@@ -9737,18 +9720,6 @@
       ]
     },
     {
-      "planId": "H5216-334",
-      "organizationName": "Humana",
-      "state": "MS",
-      "mriCopay": 780,
-      "drsMin": 0,
-      "drsMax": 780,
-      "buckets": [
-        "SPREAD",
-        "IMPLAUSIBLE"
-      ]
-    },
-    {
       "planId": "H5216-144",
       "organizationName": "Humana",
       "state": "VA",
@@ -9757,6 +9728,17 @@
       "drsMax": 335,
       "buckets": [
         "SPREAD"
+      ]
+    },
+    {
+      "planId": "H5216-334",
+      "organizationName": "Humana",
+      "state": "MS",
+      "mriCopay": 335,
+      "drsMin": 0,
+      "drsMax": 780,
+      "buckets": [
+        "ORPHAN"
       ]
     },
     {
@@ -12862,18 +12844,6 @@
       ]
     },
     {
-      "planId": "H5216-332",
-      "organizationName": "Humana",
-      "state": "LA",
-      "mriCopay": 780,
-      "drsMin": 200,
-      "drsMax": 780,
-      "buckets": [
-        "SPREAD",
-        "IMPLAUSIBLE"
-      ]
-    },
-    {
       "planId": "H5410-26",
       "organizationName": "HealthSpring",
       "state": "FL",
@@ -12937,6 +12907,17 @@
       "drsMax": 200,
       "buckets": [
         "SPREAD"
+      ]
+    },
+    {
+      "planId": "H5216-332",
+      "organizationName": "Humana",
+      "state": "LA",
+      "mriCopay": 0,
+      "drsMin": 200,
+      "drsMax": 780,
+      "buckets": [
+        "ORPHAN"
       ]
     },
     {
@@ -14428,12 +14409,11 @@
       "planId": "H5216-370",
       "organizationName": "Humana",
       "state": "AL",
-      "mriCopay": 780,
+      "mriCopay": 0,
       "drsMin": 200,
       "drsMax": 780,
       "buckets": [
-        "SPREAD",
-        "IMPLAUSIBLE"
+        "ORPHAN"
       ]
     },
     {
