@@ -448,17 +448,24 @@ export async function GET(request: Request) {
   let sorted: Array<Record<string, unknown>>;
 
   if (useDefaultTop5) {
+    // MAPD hospital-first 6-key ranking (Dale, 2026-07-08). Lexicographic,
+    // NULL last on every key. No premium cap: a $20/$100-premium plan with
+    // the lowest full-stay cost outranks every $0-premium plan above it.
+    //   1. hospitalFullStayCost  ASC  (derive-hospital-fullstay.js; NULL last)
+    //   2. adjusted premium      ASC  (LIS-adjusted when lisLevel set)
+    //   3. medicalDeductible     ASC
+    //   4. specialistCopay       ASC  (effectiveCopay — coins→999)
+    //   5. maxOutOfPocket        ASC
+    //   6. starRating            DESC
     sorted = (plans as Array<Record<string, unknown>>)
       .slice()
       .sort((a, b) => {
+        let c = cmp(a.hospitalFullStayCost as number | null, b.hospitalFullStayCost as number | null, true);
+        if (c !== 0) return c;
         // When LIS level selected, rank by adjusted premium; otherwise raw consolidated.
-        let c = cmp(planAdjustedPremium(a), planAdjustedPremium(b), true);
+        c = cmp(planAdjustedPremium(a), planAdjustedPremium(b), true);
         if (c !== 0) return c;
         c = cmp(a.medicalDeductible as number | null, b.medicalDeductible as number | null, true);
-        if (c !== 0) return c;
-        const ah = parseHospitalCopayDay1(a.hospitalStayCopay);
-        const bh = parseHospitalCopayDay1(b.hospitalStayCopay);
-        c = cmp(ah, bh, true);
         if (c !== 0) return c;
         c = cmp(effectiveCopay(a, "specialistCopay", "specialistCoinsPct"), effectiveCopay(b, "specialistCopay", "specialistCoinsPct"), true);
         if (c !== 0) return c;

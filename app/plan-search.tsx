@@ -518,6 +518,7 @@ function FilterSelect({
   options,
   formatOption,
     disabledOptions,
+  emptyLabel = "Any",
 }: {
   label: string;
   name: string;
@@ -526,6 +527,9 @@ function FilterSelect({
   options: (string | number)[];
   formatOption?: (v: string | number) => string;
  disabledOptions?: (string | number)[];
+  // Label for the no-filter sentinel option (value=""). "All" for Contract
+  // Type/Carrier, "None" for LIS (2026-07-08); everything else keeps "Any".
+  emptyLabel?: string;
 }) {
   return (
     <div className="flex flex-col gap-1">
@@ -539,7 +543,7 @@ function FilterSelect({
         onChange={(e) => onChange(name, e.target.value)}
         className="h-9 rounded-md border border-gray-300 bg-white px-2 text-sm text-gray-800 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none"
       >
-        <option value="">Any</option>
+        <option value="">{emptyLabel}</option>
         {options.map((opt) => {
              const disabled = disabledOptions?.some((d) => String(d) === String(opt)) ?? false;
              return (
@@ -1198,7 +1202,7 @@ export default function PlanSearch() {
           <Combobox label="State" name="state" value={filters.state ?? ""} onChange={handleFilterChange} options={geoStates} placeholder="Search states..." />
           <Combobox label="County" name="county" value={filters.county ?? ""} onChange={handleFilterChange} options={geoCounties} placeholder="Search counties..." disabled={!filters.state} />
           <Combobox label="Zip Code" name="zipCode" value={filters.zipCode ?? ""} onChange={handleFilterChange} options={geoZipCodes} placeholder="Enter zip code..." onInputChange={reverseZipLookup} />
-          <FilterSelect label="Contract Type" name="planType" value={filters.planType ?? ""} onChange={handleFilterChange} options={options?.planTypes ?? []} />
+          <FilterSelect label="Contract Type" name="planType" value={filters.planType ?? ""} onChange={handleFilterChange} options={options?.planTypes ?? []} emptyLabel="All" />
 
    <FilterSelect
      label="Carrier"
@@ -1206,6 +1210,7 @@ export default function PlanSearch() {
      value={filters.organizationName ?? ""}
      onChange={handleFilterChange}
      options={options?.organizationNames ?? []}
+     emptyLabel="All"
    />
 
           <FilterSelect label="Part B Giveback" name="partBGivebackAmount" value={filters.partBGivebackAmount ?? ""} onChange={handleFilterChange} options={[1, 25, 50, 100, 150]} formatOption={(v) => `$${v}+ / mo`} />
@@ -1276,6 +1281,9 @@ export default function PlanSearch() {
               options={["QMB+", "QMB", "SLMB+", "SLMB", "QI-1", "FBDE"]}
             />
           )}
+          {/* "None" (value="") is the default: no LIS param is sent, so the API
+              takes the same no-LIS path as the old "Any" — no drug-copay overlay,
+              no premium adjustment, no re-ranking. */}
           <FilterSelect
             label="LIS / Extra Help Level"
             name="lisLevel"
@@ -1283,6 +1291,7 @@ export default function PlanSearch() {
             onChange={handleFilterChange}
             options={["FULL", "75", "50", "25"]}
             formatOption={(v) => v === "FULL" ? "Full (100%)" : `${v}%`}
+            emptyLabel="None"
           />
           <div className="flex flex-col gap-1">
             <span className="text-xs font-semibold text-gray-600 uppercase tracking-wide">LIS Eligibility</span>

@@ -58,6 +58,7 @@ const FIXERS = [
   'scripts/reapply-wellcare-wallet-fills.js',      // Wellcare DSNP/CSNP foodCardAllowance (4 plans, artifact-driven)
   'scripts/reapply-devoted-wallet-fills.js',       // Devoted DSNP/CSNP foodCardAllowance (16 plans, artifact-driven)
   'scripts/fix-mri-outpatient-from-sb.js',         // MRI/CAT copay outpatient-hospital rule (SB-verified, artifact-driven)
+  'scripts/derive-hospital-fullstay.js',           // hospitalFullStayCost from hospitalStayCopay string (MAPD ranking key #1) — LAST so it sees any string fixes above
 ];
 
 let ran = 0, skipped = 0;

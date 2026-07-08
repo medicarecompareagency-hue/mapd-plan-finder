@@ -114,6 +114,12 @@ model Plan {
   ambulanceCopay            Float?
   outpatientHospitalCopay   Float?
   hospitalStayCopay         String?
+  // Total member cost for ONE complete inpatient benefit-period stay, derived
+  // from hospitalStayCopay by scripts/derive-hospital-fullstay.js (sum of
+  // rate x days over intervals, or the flat per-stay amount). Coinsurance-only
+  // or unparseable -> NULL (sorts last). Ranking-only — never displayed.
+  // Wiped by CMS re-import; re-derived via reapply-sb-truth.js.
+  hospitalFullStayCost      Float?
   skilledNursingCopay       String?
   mriCopay                  Float?
   catScanCopay              Float?

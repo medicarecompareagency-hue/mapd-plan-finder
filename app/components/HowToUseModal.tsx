@@ -18,12 +18,12 @@ const SECTIONS: Section[] = [
   ]},
   { title: 'Dual-eligible and Extra Help', items: [
     "Beneficiary Medicaid Level — required for D-SNP searches. Choose the client's level (QMB+, QMB, SLMB+, SLMB, QI-1, or FBDE) so plans rank correctly. The red prompt after clicking Search is expected, not an error.",
-    "LIS / Extra Help Level — set the client's Extra Help level (Full, 75%, 50%, or 25%) to see adjusted drug copays. Use the LIS Qualifier button to check whether a client qualifies and which level applies.",
+    "LIS / Extra Help Level — defaults to None (client has no Extra Help). Set the client's level (Full, 75%, 50%, or 25%) to see adjusted drug copays and premiums. Use the LIS Qualifier button to check whether a client qualifies and which level applies.",
   ]},
   { title: 'How the top plans are ranked', paras: [
     "Ranking is automatic, and the priorities change by plan type:",
   ], items: [
-    "MAPD (medical + drug) — lowest monthly premium first, then lowest medical deductible, hospital copay, specialist copay, max out-of-pocket, and finally highest star rating.",
+    "MAPD (medical + drug) — lowest total hospital stay cost first (the member's full copay for one complete inpatient stay), then lowest monthly premium, medical deductible, specialist copay, max out-of-pocket, and finally highest star rating.",
     "MA-Only (no drug coverage) — biggest Part B giveback first, then lowest hospital copay, specialist copay, primary-care copay, and the best dental annual max.",
     "D-SNP, full-dual (QMB+, QMB, SLMB+, FBDE) — premium is $0 to the member; ranked on highest food card first, then highest OTC allowance, then best dental annual max, best vision annual max, and finally plans that offer transportation.",
     "D-SNP, partial-dual (SLMB, QI-1) — lowest specialist copay first, then highest food card, highest OTC allowance, lowest hospital copay, best dental annual max, best vision annual max, and lowest max out-of-pocket.",
