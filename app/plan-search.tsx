@@ -1383,10 +1383,10 @@ export default function PlanSearch() {
                     <th className="px-3 py-3 text-right">Med. Deduct.</th>
                     <th className="px-3 py-3 text-right">PCP</th>
                     <th className="px-3 py-3 text-right">Specialist</th>
+                    <th className="px-3 py-3">Hospital Stay</th>
                     <th className="px-3 py-3 text-right">ER</th>
                     <th className="px-3 py-3 text-right">Ambulance</th>
                     <th className="px-3 py-3 text-right">Outpatient Hosp.</th>
-                    <th className="px-3 py-3">Hospital Stay</th>
                     <th className="px-3 py-3">Skilled Nursing</th>
                     <th className="px-3 py-3 text-right">MRI</th>
                     <th className="px-3 py-3 text-right">CAT Scan</th>
@@ -1528,10 +1528,10 @@ export default function PlanSearch() {
                       <td className="px-3 py-3 text-right text-gray-900">{dollarsQ(plan.medicalDeductible, qmbCovered)}</td>
                       <td className="px-3 py-3 text-right text-gray-900">{costShareQ(plan.pcpCopay, plan.pcpCoinsPct, qmbCovered)}</td>
                       <td className="px-3 py-3 text-right text-gray-900">{plan.specialistDisplay && !qmbCovered ? plan.specialistDisplay : costShareQ(plan.specialistCopay, plan.specialistCoinsPct, qmbCovered)}</td>
+                      <td className="px-3 py-3 text-xs text-gray-900">{hospitalCellQ(plan.hospitalStayCopay, qmbCovered)}</td>
                       <td className="px-3 py-3 text-right text-gray-900">{costShareQ(plan.emergencyRoomCopay, plan.emergencyRoomCoinsPct, qmbCovered)}</td>
                       <td className="px-3 py-3 text-right text-gray-900">{costShareQ(plan.ambulanceCopay, plan.ambulanceCoinsPct, qmbCovered)}</td>
                       <td className="px-3 py-3 text-right text-gray-900">{costShareQ(plan.outpatientHospitalCopay, plan.outpatientHospitalCoinsPct, qmbCovered)}</td>
-                      <td className="px-3 py-3 text-xs text-gray-900">{hospitalCellQ(plan.hospitalStayCopay, qmbCovered)}</td>
                       <td className="px-3 py-3 text-xs text-gray-900">{hospitalCellQ(plan.skilledNursingCopay, qmbCovered)}</td>
                       <td className="px-3 py-3 text-right text-gray-900">{costShareQ(plan.mriCopay, plan.mriCoinsPct, qmbCovered)}</td>
                       <td className="px-3 py-3 text-right text-gray-900">{costShareQ(plan.catScanCopay, plan.catScanCoinsPct, qmbCovered)}</td>

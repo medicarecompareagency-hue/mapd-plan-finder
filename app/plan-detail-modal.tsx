@@ -253,10 +253,10 @@ export default function PlanDetailModal({
             <Section title="Medical Cost Sharing">
               <Row label="PCP Copay" value={cs(plan.pcpCopay, plan.pcpCoinsPct)} />
               <Row label="Specialist Copay" value={plan.specialistDisplay ?? cs(plan.specialistCopay, plan.specialistCoinsPct)} />
+              <Row label="Hospital Stay" value={plan.hospitalStayCopay ?? "—"} />
               <Row label="Emergency Room" value={cs(plan.emergencyRoomCopay, plan.emergencyRoomCoinsPct)} />
               <Row label="Ambulance" value={cs(plan.ambulanceCopay, plan.ambulanceCoinsPct)} />
               <Row label="Outpatient Hospital" value={cs(plan.outpatientHospitalCopay, plan.outpatientHospitalCoinsPct)} />
-              <Row label="Hospital Stay" value={plan.hospitalStayCopay ?? "—"} />
               <Row label="Skilled Nursing" value={plan.skilledNursingCopay ?? "—"} />
             </Section>
 
