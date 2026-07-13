@@ -1215,6 +1215,18 @@ export default function PlanSearch() {
 
           <FilterSelect label="Part B Giveback" name="partBGivebackAmount" value={filters.partBGivebackAmount ?? ""} onChange={handleFilterChange} options={[1, 25, 50, 100, 150]} formatOption={(v) => `$${v}+ / mo`} />
 
+          {/* "Any" (value="") is the default: no premiumFilter param is sent and
+              the API path is identical to before this filter existed. Filters on
+              the LIS-adjusted premium the card displays — see route.ts. */}
+          <FilterSelect
+            label="Premium"
+            name="premiumFilter"
+            value={filters.premiumFilter ?? ""}
+            onChange={handleFilterChange}
+            options={["zero", "nonzero"]}
+            formatOption={(v) => (v === "zero" ? "No Premium" : "Premium")}
+          />
+
    <FilterSelect
      label="Plan Year"
      name="planYear"

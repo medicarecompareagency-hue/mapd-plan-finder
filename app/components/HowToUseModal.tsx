@@ -15,6 +15,7 @@ const SECTIONS: Section[] = [
     "Plan Category — MAPD, D-SNP, C-SNP, I-SNP, MA-Only, and others.",
     "Carrier — limit results to one organization.",
     "Part B Giveback — show only plans that pay back part of the client's Part B premium.",
+    "Premium — Any shows every plan; No Premium shows only $0-premium plans; Premium shows only plans with a monthly premium. Uses the LIS-adjusted premium when an Extra Help level is set.",
   ]},
   { title: 'Dual-eligible and Extra Help', items: [
     "Beneficiary Medicaid Level — required for D-SNP searches. Choose the client's level (QMB+, QMB, SLMB+, SLMB, QI-1, or FBDE) so plans rank correctly. The red prompt after clicking Search is expected, not an error.",

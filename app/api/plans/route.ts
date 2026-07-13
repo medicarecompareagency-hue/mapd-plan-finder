@@ -217,6 +217,21 @@ export async function GET(request: Request) {
     return lisAdjustedPremium(partC, partD, plan.state as string, lisLevel);
   }
 
+  // Premium filter (2026-07-13): "zero" = only plans whose effective monthly
+  // premium is exactly $0; "nonzero" = only plans with a premium > $0; param
+  // absent = no constraint (identical code path to before this filter existed).
+  // Filters on the SAME LIS-adjusted premium the result card displays
+  // (planAdjustedPremium), so with an LIS level selected a plan whose subsidy
+  // brings the premium to $0 counts as "No Premium". Applied post-fetch,
+  // BEFORE ranking and the top-5 carrier dedupe, so "No Premium" surfaces the
+  // best $0-premium plan per carrier. Ranking order of whatever passes is
+  // untouched. Plans with no premium data at all (monthlyPremium, partCPremium
+  // AND partDPremium all NULL) match neither option — "Any" only. Part B
+  // giveback is NOT netted against the premium.
+  const premiumFilterRaw = searchParams.get("premiumFilter");
+  const premiumFilter =
+    premiumFilterRaw === "zero" || premiumFilterRaw === "nonzero" ? premiumFilterRaw : null;
+
   const numericMaxFilters: [string, keyof Prisma.PlanWhereInput][] = [
     ["monthlyPremium", "monthlyPremium"],
     ["maxOutOfPocket", "maxOutOfPocket"],
@@ -287,7 +302,25 @@ export async function GET(request: Request) {
   // statewide D-SNP search has ~22k county-rows; nationwide ~178k. We
   // cap at 25,000 which is enough for any single-state search and a
   // reasonable subset for nationwide.
-  const plans = await prisma.plan.findMany({ where, take: MAX_RESULTS * 50 });
+  let plans = await prisma.plan.findMany({ where, take: MAX_RESULTS * 50 });
+
+  if (premiumFilter) {
+    plans = plans.filter((row: unknown) => {
+      const plan = row as Record<string, unknown>;
+      // No premium data at all → matches neither "zero" nor "nonzero".
+      if (
+        plan.monthlyPremium == null &&
+        plan.partCPremium == null &&
+        plan.partDPremium == null
+      ) {
+        return false;
+      }
+      // Compare in whole cents: the LIS subsidy subtraction leaves float dust
+      // (e.g. 3.2600000000000016) and the card rounds to cents anyway.
+      const cents = Math.round(planAdjustedPremium(plan) * 100);
+      return premiumFilter === "zero" ? cents === 0 : cents > 0;
+    });
+  }
 
   const isCsnp = planCategory === "CSNP";
   const isMaOnly = planCategory === "MA_ONLY";
