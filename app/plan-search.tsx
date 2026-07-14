@@ -474,6 +474,11 @@ function costShare(copay: number | null | undefined, coinsPct: number | null | u
 // ---------------------------------------------------------------------------
 const MEDICAID_COVERS_COST_SHARE = new Set(["QMB+", "QMB", "SLMB+", "FBDE"]);
 
+// Cost-share protected levels per CMS D-SNP rules (confirmed verbatim in the
+// Humana H1036-314 2026 SB): FBDE, QMB, QMB+, SLMB+ only. Plain SLMB and QI-1
+// are NOT protected — "$0 or $X" split fields bill them the $X amount.
+const NON_COST_SHARE_PROTECTED = new Set(["SLMB", "QI-1"]);
+
 function isMedicaidCovered(dualLevel: string | null | undefined): boolean {
   return !!dualLevel && MEDICAID_COVERS_COST_SHARE.has(dualLevel);
 }
@@ -1343,7 +1348,7 @@ export default function PlanSearch() {
               Results ({plans.length} plan{plans.length !== 1 ? "s" : ""})
             </h2>
             {/* Flag key for OTC / Food Card columns (Dale, 2026-06-10) */}
-            <div className="flex items-center gap-3 text-[11px] text-gray-600">
+            <div className="flex items-center gap-3 text-[11px] text-gray-600 flex-wrap">
               <span className="flex items-center gap-1">
                 <span className="inline-block px-1.5 py-px text-[9px] font-bold bg-green-100 text-green-800 border border-green-300 rounded">ALL MEMBERS</span>
                 included for every member
@@ -1354,6 +1359,14 @@ export default function PlanSearch() {
               </span>
               <span className="text-gray-400">|</span>
               <span>"Same card" = one combined OTC/food wallet</span>
+              {isDsnp && searchedDualLevel && NON_COST_SHARE_PROTECTED.has(searchedDualLevel) && (
+                <span className="flex items-center gap-1 flex-wrap">
+                  <span className="inline-block px-1.5 py-px text-[9px] font-bold bg-amber-100 text-amber-800 border border-amber-300 rounded">SLMB / QI</span>
+                  <span className="text-amber-800">
+                    <b>not cost-share protected</b> — only FBDE, QMB, QMB+, SLMB+ are. $0 hospital/PCP/specialist hold, but split fields (ER, ambulance, outpatient, SNF days 21–40, DME, some labs/imaging, Part B drugs) bill the non-$0 amount. Confirm in SB.
+                  </span>
+                </span>
+              )}
             </div>
             <p className="text-xs text-gray-500">
               {loading ? "Loading..." : `Ranked best to worst based on selected criteria`}
