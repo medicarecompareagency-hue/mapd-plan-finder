@@ -196,12 +196,28 @@ export async function GET(request: Request) {
       // B-lite: QMB standalone is full Medicaid for cost-share purposes on plans that confirm it.
       // Show a plan if it's FULL_DUAL OR SB/override-confirmed QMB-protected (covers CO duals
       // bucketed PARTIAL_DUAL, e.g. H1889-9). Still hide confirmed QMB+-only plans (e.g. H2802-64).
+      //
+      // BUG FIX 2026-07-27: previously used NOT { qmbCostShareProtected: false },
+      // but SQL three-valued logic makes NOT(col = false) also exclude NULL rows,
+      // silently dropping every unclassified FULL_DUAL plan (169 planIds across all
+      // 18 states — e.g. Tuscaloosa AL QMB returned 0 plans). The lenient policy
+      // (null passes, only confirmed-false hidden) is now spelled out explicitly.
       delete (where as Record<string, unknown>).dsnpTargetGroup;
-      (where as Record<string, unknown>).OR = [
-        { dsnpTargetGroup: "FULL_DUAL" },
-        { qmbCostShareProtected: true },
+      (where as Record<string, unknown>).AND = [
+        {
+          OR: [
+            { dsnpTargetGroup: "FULL_DUAL" },
+            { qmbCostShareProtected: true },
+          ],
+        },
+        {
+          // "not confirmed-false", with NULL explicitly allowed
+          OR: [
+            { qmbCostShareProtected: true },
+            { qmbCostShareProtected: null },
+          ],
+        },
       ];
-      (where as Record<string, unknown>).NOT = { qmbCostShareProtected: false };
     }
   }
 
