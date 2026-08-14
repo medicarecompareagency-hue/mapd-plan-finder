@@ -185,9 +185,13 @@ export async function GET(request: Request) {
   // (scripts/classify-qmb-protection.py -> Plan.qmbCostShareProtected).
   // QMB+, SLMB+, FBDE are full Medicaid => protected on every FULL_DUAL plan, so
   // they are NOT gated here.
-  // Lenient: show confirmed-true + null (unclassified), hide only confirmed-false (QMB+ plans).
-  // Strict (true-only) is commented out; 111/151 FULL_DUAL plans had null (corrupted/unmatched SBs)
-  // so strict mode would have hidden 73% of QMB options. Re-evaluate after SB corpus improves.
+  // STRICT (2026-08-14): plain QMB matches only qmbCostShareProtected === true. The FULL_DUAL
+  // null bucket is now 0 (all planIds SB/EOC-classified), so strict and lenient agree today;
+  // strict is intentional future-proofing: unclassified (null) plans — e.g. new planIds after
+  // a CMS re-import — are HIDDEN from plain QMB until the classifier runs (fail-safe, vs the
+  // fail-open pattern that ranked QMB+-only H5216-367 #1 for a QMB search). After any CMS
+  // re-import: run scripts/reapply-sb-truth.js, and for genuinely new planIds run
+  // scripts/classify-qmb-protection.py + apply.
   const QMB_REQUIRE_CONFIRMED = false;
   if (beneficiaryDualLevel === "QMB") {
     if (QMB_REQUIRE_CONFIRMED) {
@@ -197,11 +201,11 @@ export async function GET(request: Request) {
       // Show a plan if it's FULL_DUAL OR SB/override-confirmed QMB-protected (covers CO duals
       // bucketed PARTIAL_DUAL, e.g. H1889-9). Still hide confirmed QMB+-only plans (e.g. H2802-64).
       //
-      // BUG FIX 2026-07-27: previously used NOT { qmbCostShareProtected: false },
-      // but SQL three-valued logic makes NOT(col = false) also exclude NULL rows,
-      // silently dropping every unclassified FULL_DUAL plan (169 planIds across all
-      // 18 states — e.g. Tuscaloosa AL QMB returned 0 plans). The lenient policy
-      // (null passes, only confirmed-false hidden) is now spelled out explicitly.
+      // BUG FIX 2026-07-27 (twice regressed — NEVER reintroduce): never use Prisma
+      // NOT/not on qmbCostShareProtected. SQL three-valued logic makes NOT(col = false)
+      // also exclude NULL rows, silently dropping every unclassified FULL_DUAL plan
+      // (169 planIds across all 18 states — e.g. Tuscaloosa AL QMB returned 0 plans).
+      // The strict form below needs no negation at all.
       delete (where as Record<string, unknown>).dsnpTargetGroup;
       (where as Record<string, unknown>).AND = [
         {
@@ -210,13 +214,8 @@ export async function GET(request: Request) {
             { qmbCostShareProtected: true },
           ],
         },
-        {
-          // "not confirmed-false", with NULL explicitly allowed
-          OR: [
-            { qmbCostShareProtected: true },
-            { qmbCostShareProtected: null },
-          ],
-        },
+        // strict arm: confirmed-true only — unclassified (null) plans are hidden
+        { qmbCostShareProtected: true },
       ];
     }
   }
