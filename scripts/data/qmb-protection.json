@@ -138,9 +138,9 @@
     "signal": "rule3:eligibility-list"
   },
   "H0169-4": {
-    "protected": null,
+    "protected": false,
     "levels": [],
-    "signal": "uncertain"
+    "signal": "rule2:full-medicaid-conditional"
   },
   "H0169-8": {
     "protected": null,
@@ -182,19 +182,26 @@
     "signal": "uncertain"
   },
   "H0174-25": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": false,
+    "levels": [
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule4:wellcare-msp-list"
   },
   "H0174-4": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": true,
+    "levels": [
+      "QMB"
+    ],
+    "signal": "rule4:wellcare-msp-list"
   },
   "H0174-6": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": true,
+    "levels": [
+      "QMB"
+    ],
+    "signal": "rule4:wellcare-msp-list"
   },
   "H0251-2": {
     "protected": null,
@@ -274,9 +281,11 @@
     "signal": "uncertain"
   },
   "H0439-23": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": true,
+    "levels": [
+      "QMB"
+    ],
+    "signal": "rule3:eligibility-list"
   },
   "H0439-3": {
     "protected": null,
@@ -342,14 +351,22 @@
     "signal": "uncertain"
   },
   "H0628-12": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule6:aetna-elig-table"
   },
   "H0628-13": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule6:aetna-elig-table"
   },
   "H0628-17": {
     "protected": null,
@@ -412,14 +429,20 @@
     "signal": "uncertain"
   },
   "H0628-40": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": true,
+    "levels": [
+      "QMB",
+      "QMB+"
+    ],
+    "signal": "rule6:aetna-elig-table"
   },
   "H0628-41": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": true,
+    "levels": [
+      "QMB",
+      "QMB+"
+    ],
+    "signal": "rule6:aetna-elig-table"
   },
   "H0628-5": {
     "protected": null,
@@ -452,9 +475,11 @@
     "signal": "uncertain"
   },
   "H0672-18": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": true,
+    "levels": [
+      "QMB"
+    ],
+    "signal": "rule3:eligibility-list"
   },
   "H0672-6": {
     "protected": null,
@@ -532,9 +557,13 @@
     "signal": "uncertain"
   },
   "H1032-245": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule4:wellcare-msp-list"
   },
   "H1036-102": {
     "protected": true,
@@ -837,9 +866,13 @@
     "signal": "uncertain"
   },
   "H1036-339": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
   },
   "H1036-341": {
     "protected": false,
@@ -999,9 +1032,13 @@
     "signal": "uncertain"
   },
   "H1045-63": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": false,
+    "levels": [
+      "QMB+",
+      "SLMB",
+      "SLMB+"
+    ],
+    "signal": "rule3:eligibility-list"
   },
   "H1045-64": {
     "protected": null,
@@ -1023,9 +1060,14 @@
     "signal": "uncertain"
   },
   "H1112-33": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule4:wellcare-msp-list"
   },
   "H1112-39": {
     "protected": null,
@@ -1048,9 +1090,14 @@
     "signal": "uncertain"
   },
   "H1112-6": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule4:wellcare-msp-list"
   },
   "H1206-4": {
     "protected": null,
@@ -1198,9 +1245,14 @@
     "signal": "uncertain"
   },
   "H1290-42": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule5:devoted-zero-list"
   },
   "H1290-43": {
     "protected": null,
@@ -1238,24 +1290,44 @@
     "signal": "uncertain"
   },
   "H1290-52": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule5:devoted-zero-list"
   },
   "H1290-53": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule5:devoted-zero-list"
   },
   "H1290-54": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule5:devoted-zero-list"
   },
   "H1290-55": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule5:devoted-zero-list"
   },
   "H1290-67": {
     "protected": null,
@@ -1298,34 +1370,58 @@
     "signal": "uncertain"
   },
   "H1290-78": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule5:devoted-zero-list"
   },
   "H1290-79": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule5:devoted-zero-list"
   },
   "H1290-80": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule5:devoted-zero-list"
   },
   "H1290-81": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule5:devoted-zero-list"
   },
   "H1290-82": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule5:devoted-zero-list"
   },
   "H1290-83": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule5:devoted-zero-list"
   },
   "H1290-84": {
     "protected": null,
@@ -1377,14 +1473,21 @@
     "signal": "rule3:eligibility-list"
   },
   "H1416-34": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule4:wellcare-msp-list"
   },
   "H1416-35": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": true,
+    "levels": [
+      "QMB"
+    ],
+    "signal": "rule4:wellcare-msp-list"
   },
   "H1416-42": {
     "protected": null,
@@ -1502,9 +1605,14 @@
     "signal": "uncertain"
   },
   "H1608-76": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule6:aetna-elig-table"
   },
   "H1608-77": {
     "protected": null,
@@ -1627,39 +1735,67 @@
     "signal": "uncertain"
   },
   "H1609-73": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule6:aetna-elig-table"
   },
   "H1609-74": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule6:aetna-elig-table"
   },
   "H1609-75": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule6:aetna-elig-table"
   },
   "H1609-76": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule6:aetna-elig-table"
   },
   "H1609-77": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule6:aetna-elig-table"
   },
   "H1609-78": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule6:aetna-elig-table"
   },
   "H1609-79": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule6:aetna-elig-table"
   },
   "H1609-80": {
     "protected": null,
@@ -1692,24 +1828,40 @@
     "signal": "uncertain"
   },
   "H1609-88": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule6:aetna-elig-table"
   },
   "H1609-89": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule6:aetna-elig-table"
   },
   "H1609-90": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule6:aetna-elig-table"
   },
   "H1609-92": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule6:aetna-elig-table"
   },
   "H1609-94": {
     "protected": null,
@@ -1742,9 +1894,14 @@
     "signal": "uncertain"
   },
   "H1692-5": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule6:aetna-elig-table"
   },
   "H1692-6": {
     "protected": null,
@@ -1793,9 +1950,9 @@
     "signal": "uncertain"
   },
   "H1889-26": {
-    "protected": null,
+    "protected": false,
     "levels": [],
-    "signal": "uncertain"
+    "signal": "rule2:full-medicaid-conditional"
   },
   "H1889-28": {
     "protected": null,
@@ -1925,14 +2082,17 @@
     "signal": "rule3:eligibility-list"
   },
   "H2001-32": {
-    "protected": null,
+    "protected": false,
     "levels": [],
-    "signal": "uncertain"
+    "signal": "rule2:full-medicaid-conditional"
   },
   "H2001-34": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": true,
+    "levels": [
+      "QMB",
+      "QMB+"
+    ],
+    "signal": "rule3:eligibility-list"
   },
   "H2001-35": {
     "protected": true,
@@ -1953,9 +2113,12 @@
     "signal": "uncertain"
   },
   "H2001-40": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": true,
+    "levels": [
+      "QMB",
+      "QMB+"
+    ],
+    "signal": "rule3:eligibility-list"
   },
   "H2001-55": {
     "protected": null,
@@ -2177,9 +2340,13 @@
     "signal": "uncertain"
   },
   "H2445-5": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": false,
+    "levels": [
+      "QMB+",
+      "SLMB",
+      "SLMB+"
+    ],
+    "signal": "rule3:eligibility-list"
   },
   "H2491-25": {
     "protected": null,
@@ -2196,9 +2363,13 @@
     "signal": "rule3:eligibility-list"
   },
   "H2509-3": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": false,
+    "levels": [
+      "QMB+",
+      "SLMB",
+      "SLMB+"
+    ],
+    "signal": "rule3:eligibility-list"
   },
   "H2526-1": {
     "protected": null,
@@ -2301,9 +2472,13 @@
     "signal": "uncertain"
   },
   "H2663-97": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule6:aetna-elig-table"
   },
   "H2663-98": {
     "protected": null,
@@ -2321,9 +2496,14 @@
     "signal": "uncertain"
   },
   "H2697-10": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule5:devoted-zero-list"
   },
   "H2697-11": {
     "protected": null,
@@ -2566,9 +2746,14 @@
     "signal": "uncertain"
   },
   "H3080-3": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule5:devoted-zero-list"
   },
   "H3080-4": {
     "protected": null,
@@ -2596,14 +2781,22 @@
     "signal": "uncertain"
   },
   "H3146-16": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule6:aetna-elig-table"
   },
   "H3146-23": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule6:aetna-elig-table"
   },
   "H3146-36": {
     "protected": null,
@@ -2641,9 +2834,14 @@
     "signal": "uncertain"
   },
   "H3239-1": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule6:aetna-elig-table"
   },
   "H3239-10": {
     "protected": false,
@@ -2659,9 +2857,14 @@
     "signal": "uncertain"
   },
   "H3239-15": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "web:aetna-elig-table"
   },
   "H3239-2": {
     "protected": false,
@@ -2685,14 +2888,22 @@
     "signal": "rule3:eligibility-list"
   },
   "H3239-27": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule6:aetna-elig-table"
   },
   "H3239-28": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule6:aetna-elig-table"
   },
   "H3239-30": {
     "protected": null,
@@ -2700,14 +2911,24 @@
     "signal": "uncertain"
   },
   "H3239-5": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule6:aetna-elig-table"
   },
   "H3239-7": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule6:aetna-elig-table"
   },
   "H3256-4": {
     "protected": null,
@@ -2820,9 +3041,14 @@
     "signal": "uncertain"
   },
   "H3288-53": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule6:aetna-elig-table"
   },
   "H3288-6": {
     "protected": null,
@@ -2890,9 +3116,14 @@
     "signal": "uncertain"
   },
   "H3975-4": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule4:wellcare-msp-list"
   },
   "H4141-15": {
     "protected": null,
@@ -3150,9 +3381,11 @@
     "signal": "rule3:eligibility-list"
   },
   "H4514-24": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": true,
+    "levels": [
+      "QMB"
+    ],
+    "signal": "rule3:eligibility-list"
   },
   "H4514-7": {
     "protected": null,
@@ -3185,24 +3418,36 @@
     "signal": "uncertain"
   },
   "H4523-28": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": false,
+    "levels": [
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule6:aetna-elig-table"
   },
   "H4523-29": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": false,
+    "levels": [
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule6:aetna-elig-table"
   },
   "H4523-30": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": false,
+    "levels": [
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule6:aetna-elig-table"
   },
   "H4523-34": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": false,
+    "levels": [
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule6:aetna-elig-table"
   },
   "H4523-37": {
     "protected": null,
@@ -3220,19 +3465,28 @@
     "signal": "uncertain"
   },
   "H4523-41": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": true,
+    "levels": [
+      "QMB",
+      "QMB+"
+    ],
+    "signal": "rule6:aetna-elig-table"
   },
   "H4523-43": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": true,
+    "levels": [
+      "QMB",
+      "QMB+"
+    ],
+    "signal": "rule6:aetna-elig-table"
   },
   "H4523-44": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": true,
+    "levels": [
+      "QMB",
+      "QMB+"
+    ],
+    "signal": "rule6:aetna-elig-table"
   },
   "H4527-1": {
     "protected": null,
@@ -3342,9 +3596,13 @@
     "signal": "rule3:eligibility-list"
   },
   "H5008-17": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "web:uhc-elig-list"
   },
   "H5216-100": {
     "protected": null,
@@ -3841,9 +4099,13 @@
     "signal": "uncertain"
   },
   "H5302-24": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule6:aetna-elig-table"
   },
   "H5302-26": {
     "protected": null,
@@ -3895,9 +4157,13 @@
     "signal": "uncertain"
   },
   "H5322-46": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": false,
+    "levels": [
+      "QMB+",
+      "SLMB",
+      "SLMB+"
+    ],
+    "signal": "rule3:eligibility-list"
   },
   "H5322-50": {
     "protected": true,
@@ -3913,44 +4179,80 @@
     "signal": "uncertain"
   },
   "H5325-12": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule6:aetna-elig-table"
   },
   "H5325-13": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule6:aetna-elig-table"
   },
   "H5325-14": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule6:aetna-elig-table"
   },
   "H5325-15": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule6:aetna-elig-table"
   },
   "H5325-3": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule6:aetna-elig-table"
   },
   "H5325-4": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule6:aetna-elig-table"
   },
   "H5325-5": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule6:aetna-elig-table"
   },
   "H5325-7": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule6:aetna-elig-table"
   },
   "H5377-2": {
     "protected": null,
@@ -3973,9 +4275,11 @@
     "signal": "uncertain"
   },
   "H5410-25": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": false,
+    "levels": [
+      "QMB+"
+    ],
+    "signal": "rule3:eligibility-list"
   },
   "H5410-26": {
     "protected": null,
@@ -3983,14 +4287,18 @@
     "signal": "uncertain"
   },
   "H5410-31": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": false,
+    "levels": [
+      "QMB+"
+    ],
+    "signal": "rule3:eligibility-list"
   },
   "H5410-32": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": false,
+    "levels": [
+      "QMB+"
+    ],
+    "signal": "rule3:eligibility-list"
   },
   "H5410-4": {
     "protected": null,
@@ -3998,9 +4306,11 @@
     "signal": "uncertain"
   },
   "H5410-42": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": false,
+    "levels": [
+      "QMB+"
+    ],
+    "signal": "rule3:eligibility-list"
   },
   "H5410-45": {
     "protected": null,
@@ -4013,9 +4323,11 @@
     "signal": "uncertain"
   },
   "H5410-47": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": false,
+    "levels": [
+      "QMB+"
+    ],
+    "signal": "rule3:eligibility-list"
   },
   "H5410-55": {
     "protected": null,
@@ -4279,9 +4591,14 @@
     "signal": "uncertain"
   },
   "H5521-464": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule6:aetna-elig-table"
   },
   "H5521-465": {
     "protected": null,
@@ -4289,9 +4606,14 @@
     "signal": "uncertain"
   },
   "H5521-472": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule6:aetna-elig-table"
   },
   "H5521-84": {
     "protected": null,
@@ -4531,14 +4853,21 @@
     "signal": "uncertain"
   },
   "H6595-4": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": true,
+    "levels": [
+      "QMB",
+      "QMB+"
+    ],
+    "signal": "rule3:eligibility-list"
   },
   "H6595-5": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": false,
+    "levels": [
+      "QMB+",
+      "SLMB",
+      "SLMB+"
+    ],
+    "signal": "rule3:eligibility-list"
   },
   "H6622-15": {
     "protected": true,
@@ -4739,9 +5068,13 @@
     "signal": "uncertain"
   },
   "H7355-9": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule5:devoted-zero-list"
   },
   "H7397-10": {
     "protected": null,
@@ -4749,9 +5082,14 @@
     "signal": "uncertain"
   },
   "H7397-3": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule5:devoted-zero-list"
   },
   "H7397-4": {
     "protected": null,
@@ -4769,9 +5107,13 @@
     "signal": "uncertain"
   },
   "H7397-9": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule5:devoted-zero-list"
   },
   "H7471-13": {
     "protected": null,
@@ -5084,19 +5426,31 @@
     "signal": "uncertain"
   },
   "H8597-1": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": true,
+    "levels": [
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule6:aetna-elig-table"
   },
   "H8597-2": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": true,
+    "levels": [
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule6:aetna-elig-table"
   },
   "H8597-3": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": true,
+    "levels": [
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule6:aetna-elig-table"
   },
   "H8768-10": {
     "protected": null,
@@ -5219,9 +5573,14 @@
     "signal": "uncertain"
   },
   "H9730-3": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule4:wellcare-msp-list"
   },
   "H9730-9": {
     "protected": null,
@@ -5249,14 +5608,22 @@
     "signal": "uncertain"
   },
   "H9888-13": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule5:devoted-zero-list"
   },
   "H9888-14": {
-    "protected": null,
-    "levels": [],
-    "signal": "uncertain"
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule5:devoted-zero-list"
   },
   "H9888-15": {
     "protected": null,
@@ -5277,5 +5644,485 @@
     "protected": null,
     "levels": [],
     "signal": "uncertain"
+  },
+  "H0074-4": {
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule4:wellcare-msp-list"
+  },
+  "H0111-4": {
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule4:wellcare-msp-list"
+  },
+  "H0174-23": {
+    "protected": false,
+    "levels": [
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule4:wellcare-msp-list"
+  },
+  "H0174-24": {
+    "protected": false,
+    "levels": [
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule4:wellcare-msp-list"
+  },
+  "H0174-26": {
+    "protected": false,
+    "levels": [
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule4:wellcare-msp-list"
+  },
+  "H0439-12": {
+    "protected": true,
+    "levels": [
+      "QMB"
+    ],
+    "signal": "rule3:eligibility-list"
+  },
+  "H1032-240": {
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule4:wellcare-msp-list"
+  },
+  "H1032-241": {
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule4:wellcare-msp-list"
+  },
+  "H1032-242": {
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule4:wellcare-msp-list"
+  },
+  "H1032-243": {
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule4:wellcare-msp-list"
+  },
+  "H1032-244": {
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule4:wellcare-msp-list"
+  },
+  "H1036-320": {
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H1036-340": {
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H1112-47": {
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule4:wellcare-msp-list"
+  },
+  "H1290-77": {
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule5:devoted-zero-list"
+  },
+  "H1416-44": {
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule4:wellcare-msp-list"
+  },
+  "H1951-32": {
+    "protected": true,
+    "levels": [
+      "QMB"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H1951-41": {
+    "protected": true,
+    "levels": [
+      "QMB"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H2491-32": {
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule4:wellcare-msp-list"
+  },
+  "H2491-33": {
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule4:wellcare-msp-list"
+  },
+  "H3080-6": {
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule5:devoted-zero-list"
+  },
+  "H3868-1": {
+    "protected": false,
+    "levels": [
+      "QMB+",
+      "SLMB",
+      "SLMB+"
+    ],
+    "signal": "rule3:eligibility-list"
+  },
+  "H4407-29": {
+    "protected": true,
+    "levels": [
+      "QMB"
+    ],
+    "signal": "rule3:eligibility-list"
+  },
+  "H4461-69": {
+    "protected": true,
+    "levels": [
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H4461-70": {
+    "protected": false,
+    "levels": [
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H4461-71": {
+    "protected": true,
+    "levels": [
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H4461-72": {
+    "protected": false,
+    "levels": [
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H4461-74": {
+    "protected": true,
+    "levels": [
+      "QMB"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H4513-34": {
+    "protected": true,
+    "levels": [
+      "QMB"
+    ],
+    "signal": "rule3:eligibility-list"
+  },
+  "H4513-39": {
+    "protected": true,
+    "levels": [
+      "QMB"
+    ],
+    "signal": "rule3:eligibility-list"
+  },
+  "H4513-63": {
+    "protected": true,
+    "levels": [
+      "QMB"
+    ],
+    "signal": "rule3:eligibility-list"
+  },
+  "H4513-79": {
+    "protected": true,
+    "levels": [
+      "QMB"
+    ],
+    "signal": "rule3:eligibility-list"
+  },
+  "H4514-21": {
+    "protected": false,
+    "levels": [
+      "QMB+",
+      "SLMB",
+      "SLMB+"
+    ],
+    "signal": "rule3:eligibility-list"
+  },
+  "H4527-54": {
+    "protected": false,
+    "levels": [
+      "QMB+",
+      "SLMB",
+      "SLMB+"
+    ],
+    "signal": "rule3:eligibility-list"
+  },
+  "H5008-11": {
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "web:uhc-qmb-zero-list"
+  },
+  "H5216-228": {
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H5216-331": {
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H5216-367": {
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H5216-370": {
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H5216-469": {
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H5325-6": {
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule6:aetna-elig-table"
+  },
+  "H5420-16": {
+    "protected": false,
+    "levels": [
+      "QMB+",
+      "SLMB",
+      "SLMB+"
+    ],
+    "signal": "rule3:eligibility-list"
+  },
+  "H5619-123": {
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule1:protected-list"
+  },
+  "H6550-4": {
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule4:wellcare-msp-list"
+  },
+  "H6550-9": {
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule4:wellcare-msp-list"
+  },
+  "H7355-3": {
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule5:devoted-zero-list"
+  },
+  "H7518-3": {
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule4:wellcare-msp-list"
+  },
+  "H7617-6": {
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "web:humana-may-enroll"
+  },
+  "H7617-75": {
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "web:humana-may-enroll"
+  },
+  "H7617-76": {
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "web:humana-may-enroll"
+  },
+  "H7617-82": {
+    "protected": true,
+    "levels": [
+      "QMB"
+    ],
+    "signal": "web:humana-may-enroll"
+  },
+  "H7617-84": {
+    "protected": false,
+    "levels": [
+      "FBDE",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "web:humana-may-enroll"
+  },
+  "H9387-4": {
+    "protected": true,
+    "levels": [
+      "QMB",
+      "QMB+"
+    ],
+    "signal": "rule4:wellcare-msp-list"
+  },
+  "H9730-4": {
+    "protected": true,
+    "levels": [
+      "FBDE",
+      "QMB",
+      "QMB+",
+      "SLMB+"
+    ],
+    "signal": "rule4:wellcare-msp-list"
   }
 }

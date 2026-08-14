@@ -65,7 +65,49 @@ def classify(full):
             lv = levels_in(m.group(1))
             if lv:
                 return ("QMB" in lv, sorted(lv), "rule3:eligibility-list")
+    # rule4 (Wellcare): "you must be eligible for the following medicare savings program:
+    #   <contract+name> (XXX d-snp) - <levels> refer to "medicare savings program (msp) levels""
+    m = re.search(r"following medicare savings program[:\s].{0,160}?d-snp\)\s*-\s*([a-z0-9 ,+]+?)\s*(?:refer to|\.|please contact)", low)
+    if m:
+        lv = levels_in(m.group(1))
+        if lv:
+            return ("QMB" in lv, sorted(lv), "rule4:wellcare-msp-list")
+    # rule5 (Devoted): "...full medicaid benefits or are a qualified medicare beneficiary
+    #   (fbde, slmb+, qmb+, qmb), you may pay $0 for your medicare-covered services"
+    m = re.search(r"full medicaid benefits or are a qualified medicare beneficiary \(([a-z0-9 ,+]+)\),? you (?:may )?pay \$0", low)
+    if m:
+        lv = levels_in(m.group(1))
+        if lv:
+            return ("QMB" in lv, sorted(lv), "rule5:devoted-zero-list")
+    # rule6 (Aetna 2026 table): "eligibility category | what it covers" table names exactly
+    # the categories that may enroll; standalone "(qmb)" row = QMB eligible.
+    m = re.search(r"eligibility categor(?:y|ies)\.? what it covers(.{0,900})", low)
+    if m:
+        span = m.group(1)
+        lv = set()
+        if re.search(r"\(qmb\)", span): lv.add("QMB")
+        if re.search(r"\(qmb plus\)|\(qmb\+\)", span): lv.add("QMB+")
+        if re.search(r"\(slmb plus\)|\(slmb\+\)", span): lv.add("SLMB+")
+        if re.search(r"\(slmb\)", span): lv.add("SLMB")
+        if re.search(r"\(fbde\)", span): lv.add("FBDE")
+        if lv:
+            return ("QMB" in lv, sorted(lv), "rule6:aetna-elig-table")
     return (None, [], "uncertain")
+
+def extract_columns(f, cap=20):
+    """De-interleave two-column layouts: left half then right half per page.
+    Cigna/HealthSpring + Aetna SBs interleave two columns, which breaks the
+    rule3 anchors on plain extraction."""
+    parts = []
+    with pdfplumber.open(f) as pdf:
+        for pg in pdf.pages[:cap]:
+            w, h = pg.width, pg.height
+            for box in [(0, 0, w/2, h), (w/2, 0, w, h)]:
+                try:
+                    parts.append(pg.crop(box).extract_text() or "")
+                except Exception:
+                    pass
+    return "\n".join(parts)
 
 def planid_from_name(fn):
     # DB stores planIds without zero-padding (H2802-64, not H2802-064).
@@ -91,6 +133,12 @@ def main():
         except Exception as e:
             print(f"  ERR {pid}: {e}", file=sys.stderr); continue
         prot, lv, sig = classify(full)
+        if prot is None:
+            # two-column retry: plain extraction interleaves columns on some carriers
+            try:
+                prot, lv, sig = classify(extract_columns(f))
+            except Exception as e:
+                print(f"  ERR {pid} (column retry): {e}", file=sys.stderr)
         # keep the most-confident answer if a planId appears across multiple county PDFs
         prev = out.get(pid)
         if prev is None or (prev["protected"] is None and prot is not None):
