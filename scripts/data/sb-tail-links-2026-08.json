@@ -1,0 +1,382 @@
+{
+  "H4329-1": {
+    "planId": "H4329-1",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H4329-1.pdf",
+    "sourceUrl": "https://content.medicareadvantage.com/2026/Humana-H4329001000SB26pdf-2026-SF20251001.pdf"
+  },
+  "H1889-10": {
+    "planId": "H1889-10",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H1889-10.pdf",
+    "sourceUrl": "https://content.medicareadvantage.com/2026/UHC_CSLA26LP0332572_2026_SB_SF20260204.pdf"
+  },
+  "H1396-1": {
+    "planId": "H1396-1",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H1396-1.pdf",
+    "sourceUrl": "https://content.medicareadvantage.com/2026/Humana-H1396001000SB26pdf-2026-SF20251001.pdf"
+  },
+  "H5008-11": {
+    "planId": "H5008-11",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H5008-11.pdf",
+    "sourceUrl": "https://content.medicareadvantage.com/2026/UHC_CSMS26HP0332933_2026_SB_SF20260204.pdf"
+  },
+  "H9387-2": {
+    "planId": "H9387-2",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H9387-2.pdf",
+    "sourceUrl": "https://wellcare.sunflowerhealthplan.com/content/dam/centene/medicare/pdfs/aep/2026/sb/H9387_2026_KS_SB_PMAO_4626770ENG_M.pdf"
+  },
+  "H2875-6": {
+    "planId": "H2875-6",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H2875-6.pdf",
+    "sourceUrl": "https://content.medicareadvantage.com/2026/Humana-H2875006000SB26pdf-2026-SF20251001.pdf"
+  },
+  "H2875-2": {
+    "planId": "H2875-2",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H2875-2.pdf",
+    "sourceUrl": "https://content.medicareadvantage.com/2026/Humana-H2875002000SB26pdf-2026-SF20251001.pdf"
+  },
+  "H4939-2": {
+    "planId": "H4939-2",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H4939-2.pdf",
+    "sourceUrl": "https://content.medicareadvantage.com/2026/Humana-H4939002000SB26pdf-2026-SF20251001.pdf"
+  },
+  "H2445-3": {
+    "planId": "H2445-3",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H2445-3.pdf",
+    "sourceUrl": "https://content.medicareadvantage.com/2026/UHC_CSVA26HP0320008_2026_SB_SF20260204.pdf"
+  },
+  "H4939-3": {
+    "planId": "H4939-3",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H4939-3.pdf",
+    "sourceUrl": "https://content.medicareadvantage.com/2026/Humana-H4939003000SB26pdf-2026-SF20251001.pdf"
+  },
+  "H7617-6": {
+    "planId": "H7617-6",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/2026/sb-pdfs/sb-2026-H7617_6-humana-mo-adair.pdf",
+    "sourceUrl": "sb-2026-H7617_6-humana-mo-adair.pdf"
+  },
+  "H7617-74": {
+    "planId": "H7617-74",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H7617-74.pdf",
+    "sourceUrl": "https://content.medicareadvantage.com/2026/Humana-H7617074000SB26pdf-2026-SF20251001.pdf"
+  },
+  "H3256-5#s2": {
+    "planId": "H3256-5",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H3256-5-s2.pdf",
+    "sourceUrl": "https://content.medicareadvantage.com/2026/UHC-CSGA26LP0332837-000-H3256005002-SB-28082025-055816-2026-SF20250917.pdf",
+    "segmentId": "2"
+  },
+  "H2875-5": {
+    "planId": "H2875-5",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H2875-5.pdf",
+    "sourceUrl": "https://content.medicareadvantage.com/2026/Humana-H2875005000SB26pdf-2026-SF20251001.pdf"
+  },
+  "H5322-49#s2": {
+    "planId": "H5322-49",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H5322-49-s2.pdf",
+    "sourceUrl": "https://content.medicareadvantage.com/2026/UHC_CSGA26HP0333084_2026_SB_SF20260204.pdf",
+    "segmentId": "2"
+  },
+  "H6595-3": {
+    "planId": "H6595-3",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H6595-3.pdf",
+    "sourceUrl": "https://content.medicareadvantage.com/2026/UHC_CSKY26HP0333101_2026_SB_SF20260204.pdf"
+  },
+  "H0169-8": {
+    "planId": "H0169-8",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H0169-8.pdf",
+    "sourceUrl": "https://content.medicareadvantage.com/2026/UHC_CSMO26HP0332351_2026_SB_SF20260204.pdf"
+  },
+  "H7617-75": {
+    "planId": "H7617-75",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H7617-75.pdf",
+    "sourceUrl": "https://content.medicareadvantage.com/2026/Humana-H7617075000SB26pdf-2026-SF20251001.pdf"
+  },
+  "H0251-2": {
+    "planId": "H0251-2",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H0251-2.pdf",
+    "sourceUrl": "https://content.medicareadvantage.com/2026/UHC_CSTN26HP0332354_2026_SB_SF20260204.pdf"
+  },
+  "H1664-12": {
+    "planId": "H1664-12",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H1664-12.pdf",
+    "sourceUrl": "https://wellcare.homestatehealth.com/content/dam/centene/medicare/pdfs/aep/2026/sb/H1664_2026_MO_SB_DSNP_4626737ENG_M.pdf"
+  },
+  "H1664-5": {
+    "planId": "H1664-5",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H1664-5.pdf",
+    "sourceUrl": "https://wellcare.homestatehealth.com/content/dam/centene/medicare/pdfs/aep/2026/sb/H1664_2026_MO_SB_DSNP_4626685ENG_M.pdf"
+  },
+  "H7617-113": {
+    "planId": "H7617-113",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/2026/sb-pdfs/sb-2026-H7617_113-humana-fl-brevard.pdf",
+    "sourceUrl": "sb-2026-H7617_113-humana-fl-brevard.pdf"
+  },
+  "H7617-78": {
+    "planId": "H7617-78",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H7617-78.pdf",
+    "sourceUrl": "https://content.medicareadvantage.com/2026/Humana-H7617078000SB26pdf-2026-SF20251001.pdf"
+  },
+  "H7617-83": {
+    "planId": "H7617-83",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H7617-83.pdf",
+    "sourceUrl": "https://content.medicareadvantage.com/2026/Humana-H7617083000SB26pdf-2026-SF20251001.pdf"
+  },
+  "H3256-4#s2": {
+    "planId": "H3256-4",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H3256-4-s2.pdf",
+    "sourceUrl": "https://content.medicareadvantage.com/2026/UHC-CSGA26LP0332835-001-H3256004002-SB-30092025-091411-2026-SF20251006.pdf",
+    "segmentId": "2"
+  },
+  "H1889-2#s2": {
+    "planId": "H1889-2",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H1889-2-s2.pdf",
+    "sourceUrl": "https://content.medicareadvantage.com/2026/UHC-UHFL26LP0332567-000-H1889002002-SB-26082025-062804-2026-SF20250917.pdf",
+    "segmentId": "2"
+  },
+  "H0251-4": {
+    "planId": "H0251-4",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H0251-4.pdf",
+    "sourceUrl": "https://www.uhc.com/communityplan/alphadog/CSTN26HP0319995_000"
+  },
+  "H5008-10": {
+    "planId": "H5008-10",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H5008-10.pdf",
+    "sourceUrl": "https://content.medicareadvantage.com/2026/UHC_CSLA26HP0332932_2026_SB_SF20260204.pdf"
+  },
+  "H7617-82": {
+    "planId": "H7617-82",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H7617-82.pdf",
+    "sourceUrl": "https://content.medicareadvantage.com/2026/Humana-H7617082000SB26pdf-2026-SF20251001.pdf"
+  },
+  "H7617-84": {
+    "planId": "H7617-84",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H7617-84.pdf",
+    "sourceUrl": "https://content.medicareadvantage.com/2026/Humana-H7617084000SB26pdf-2026-SF20251001.pdf"
+  },
+  "H1889-25": {
+    "planId": "H1889-25",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H1889-25.pdf",
+    "sourceUrl": "https://content.medicareadvantage.com/2026/UHC_UHAR26LP0332584_2026_SB_SF20260204.pdf"
+  },
+  "H5322-33": {
+    "planId": "H5322-33",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/2026/sb-pdfs/sb-2026-H5322_33-unitedhealthcare-ok-adair.pdf",
+    "sourceUrl": "sb-2026-H5322_33-unitedhealthcare-ok-adair.pdf"
+  },
+  "H7617-76": {
+    "planId": "H7617-76",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H7617-76.pdf",
+    "sourceUrl": "https://content.medicareadvantage.com/2026/Humana-H7617076000SB26pdf-2026-SF20251001.pdf"
+  },
+  "H5322-38": {
+    "planId": "H5322-38",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H5322-38.pdf",
+    "sourceUrl": "https://content.medicareadvantage.com/2026/UHC_CSTX26HP0333076_2026_SB_SF20260204.pdf"
+  },
+  "H1889-31": {
+    "planId": "H1889-31",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H1889-31.pdf",
+    "sourceUrl": "https://content.medicareadvantage.com/2026/UHC_CSLA26LP0332588_2026_SB_SF20260204.pdf"
+  },
+  "H1889-32": {
+    "planId": "H1889-32",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H1889-32.pdf",
+    "sourceUrl": "https://content.medicareadvantage.com/2026/UHC_CSMS26LP0332589_2026_SB_SF20260204.pdf"
+  },
+  "H0710-32": {
+    "planId": "H0710-32",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H0710-32.pdf",
+    "sourceUrl": "https://content.medicareadvantage.com/2026/UHC_UHEX26LP0332484_2026_SB_SF20260204.pdf"
+  },
+  "H2875-1": {
+    "planId": "H2875-1",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H2875-1.pdf",
+    "sourceUrl": "https://content.medicareadvantage.com/2026/Humana-H2875001000SB26pdf-2026-SF20251001.pdf"
+  },
+  "H1889-8": {
+    "planId": "H1889-8",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H1889-8.pdf",
+    "sourceUrl": "https://content.medicareadvantage.com/2026/UHC_CSKY26LP0332570_2026_SB_SF20260204.pdf"
+  },
+  "H0908-7": {
+    "planId": "H0908-7",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H0908-7.pdf",
+    "sourceUrl": "https://wellcare.buckeyehealthplan.com/content/dam/centene/medicare/pdfs/aep/2026/sb/H0908_2026_OH_SB_DSNP_4626790ENG_M.pdf"
+  },
+  "H2385-3": {
+    "planId": "H2385-3",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H2385-3.pdf",
+    "sourceUrl": "https://content.medicareadvantage.com/2026/UHC_CSIN26LP0320006_2026_SB_SF20260204.pdf"
+  },
+  "H0710-57": {
+    "planId": "H0710-57",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H0710-57.pdf",
+    "sourceUrl": "https://www.uhc.com/medicare/alphadog/UHOH26LP0332495_000"
+  },
+  "H1889-15": {
+    "planId": "H1889-15",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H1889-15.pdf",
+    "sourceUrl": "https://content.medicareadvantage.com/2026/UHC_AAAL26LP0332577_2026_SB_SF20260204.pdf"
+  },
+  "H4939-1": {
+    "planId": "H4939-1",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H4939-1.pdf",
+    "sourceUrl": "https://content.medicareadvantage.com/2026/Humana-H4939001000SB26pdf-2026-SF20251001.pdf"
+  },
+  "H5008-16": {
+    "planId": "H5008-16",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/2026/sb-pdfs/sb-2026-H5008_16-unitedhealthcare-ms-alcorn.pdf",
+    "sourceUrl": "sb-2026-H5008_16-unitedhealthcare-ms-alcorn.pdf"
+  },
+  "H3239-23": {
+    "planId": "H3239-23",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H3239-23.pdf",
+    "sourceUrl": "https://content.medicareadvantage.com/2026/Aetna-Y0001-H3239-023-DS60-SB2026-M-SF20250923.pdf"
+  },
+  "H1889-2#s1": {
+    "planId": "H1889-2",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H1889-2-s1.pdf",
+    "sourceUrl": "https://content.medicareadvantage.com/2026/UHC-UHFL26LP0332566-000-H1889002001-SB-26082025-062804-2026-SF20250917.pdf",
+    "segmentId": "1"
+  },
+  "H3256-6#s2": {
+    "planId": "H3256-6",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H3256-6-s2.pdf",
+    "sourceUrl": "https://content.medicareadvantage.com/2026/UHC-CSGA26LP0332839-001-H3256006002-SB-30092025-091415-2026-SF20251006.pdf",
+    "segmentId": "2"
+  },
+  "H2445-2": {
+    "planId": "H2445-2",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H2445-2.pdf",
+    "sourceUrl": "https://content.medicareadvantage.com/2026/UHC-CSVA26HP0332781-000-H2445002000-SB-27082025-044608-2026-SF20250917.pdf"
+  },
+  "H0710-13": {
+    "planId": "H0710-13",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H0710-13.pdf",
+    "sourceUrl": "https://www.uhc.com/medicare/alphadog/UHIN26LP0332476_000"
+  },
+  "H7617-77": {
+    "planId": "H7617-77",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H7617-77.pdf",
+    "sourceUrl": "https://content.medicareadvantage.com/2026/Humana-H7617077000SB26pdf-2026-SF20251001.pdf"
+  },
+  "H3256-4#s1": {
+    "planId": "H3256-4",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H3256-4-s1.pdf",
+    "sourceUrl": "https://content.medicareadvantage.com/2026/UHC-CSGA26LP0332834-000-H3256004001-SB-28082025-055812-2026-SF20250917.pdf",
+    "segmentId": "1"
+  },
+  "H5008-17": {
+    "planId": "H5008-17",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H5008-17.pdf",
+    "sourceUrl": "https://content.medicareadvantage.com/2026/UHC_CSMS26HP0332936_2026_SB_SF20260204.pdf"
+  },
+  "H6348-5": {
+    "planId": "H6348-5",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H6348-5.pdf",
+    "sourceUrl": "https://wellcare.mhsindiana.com/content/dam/centene/medicare/pdfs/aep/2026/sb/H6348_2026_IN_SB_PMAO_4626674ENG_M.pdf"
+  },
+  "H0169-2": {
+    "planId": "H0169-2",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H0169-2.pdf",
+    "sourceUrl": "https://content.medicareadvantage.com/2026/UHC_CSMO26HP0332347_2026_SB_SF20260204.pdf"
+  },
+  "H0710-52": {
+    "planId": "H0710-52",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H0710-52.pdf",
+    "sourceUrl": "https://www.uhc.com/medicare/alphadog/UHOK26LP0332493_000"
+  },
+  "H2385-1": {
+    "planId": "H2385-1",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H2385-1.pdf",
+    "sourceUrl": "https://content.medicareadvantage.com/2026/UHC_CSIN26LP0332705_2026_SB_SF20260204.pdf"
+  },
+  "H0710-4": {
+    "planId": "H0710-4",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H0710-4.pdf",
+    "sourceUrl": "https://content.medicareadvantage.com/2026/UHC_UHEX26LP0332472_2026_SB_SF20260204.pdf"
+  },
+  "H0710-27": {
+    "planId": "H0710-27",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H0710-27.pdf",
+    "sourceUrl": "https://www.uhc.com/medicare/alphadog/UHOH26LP0332481_000"
+  },
+  "H0710-33": {
+    "planId": "H0710-33",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H0710-33.pdf",
+    "sourceUrl": "https://www.uhc.com/medicare/alphadog/UHGA26LP0332485_000"
+  },
+  "H0710-53": {
+    "planId": "H0710-53",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H0710-53.pdf",
+    "sourceUrl": "https://www.uhc.com/medicare/alphadog/UHSC26LP0332494_000"
+  },
+  "H5322-26": {
+    "planId": "H5322-26",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/2026/sb-pdfs/sb-2026-H5322_26-unitedhealthcare-tx-cameron.pdf",
+    "sourceUrl": "sb-2026-H5322_26-unitedhealthcare-tx-cameron.pdf"
+  },
+  "H3256-6#s1": {
+    "planId": "H3256-6",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H3256-6-s1.pdf",
+    "sourceUrl": "https://content.medicareadvantage.com/2026/UHC-CSGA26LP0332838-001-H3256006001-SB-30092025-091415-2026-SF20251006.pdf",
+    "segmentId": "1"
+  },
+  "H2875-3": {
+    "planId": "H2875-3",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H2875-3.pdf",
+    "sourceUrl": "https://content.medicareadvantage.com/2026/Humana-H2875003000SB26pdf-2026-SF20251001.pdf"
+  },
+  "H2875-4": {
+    "planId": "H2875-4",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H2875-4.pdf",
+    "sourceUrl": "https://content.medicareadvantage.com/2026/Humana-H2875004000SB26pdf-2026-SF20251001.pdf"
+  },
+  "H3239-15": {
+    "planId": "H3239-15",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H3239-15.pdf",
+    "sourceUrl": "https://content.medicareadvantage.com/2026/Aetna-Y0001-H3239-015-DS87-SB2026-M-SF20250923.pdf"
+  },
+  "H5322-49#s1": {
+    "planId": "H5322-49",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H5322-49-s1.pdf",
+    "sourceUrl": "https://content.medicareadvantage.com/2026/UHC_CSGA26HP0333083_2026_SB_SF20260204.pdf",
+    "segmentId": "1"
+  },
+  "H0710-10": {
+    "planId": "H0710-10",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H0710-10.pdf",
+    "sourceUrl": "https://www.uhc.com/medicare/alphadog/UHFL26LP0332475_000"
+  },
+  "H0710-16": {
+    "planId": "H0710-16",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H0710-16.pdf",
+    "sourceUrl": "https://www.uhc.com/medicare/alphadog/UHMO26LP0332477_000"
+  },
+  "H0710-20": {
+    "planId": "H0710-20",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H0710-20.pdf",
+    "sourceUrl": "https://www.uhc.com/medicare/alphadog/UHTX26LP0332479_000"
+  },
+  "H0710-39": {
+    "planId": "H0710-39",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H0710-39.pdf",
+    "sourceUrl": "https://www.uhc.com/medicare/alphadog/UHIL26LP0332491_000"
+  },
+  "H3256-5#s1": {
+    "planId": "H3256-5",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H3256-5-s1.pdf",
+    "sourceUrl": "https://content.medicareadvantage.com/2026/UHC-CSGA26LP0332836-000-H3256005001-SB-28082025-055813-2026-SF20250917.pdf",
+    "segmentId": "1"
+  },
+  "H0710-38": {
+    "planId": "H0710-38",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H0710-38.pdf",
+    "sourceUrl": "https://www.uhc.com/medicare/alphadog/UHFL26LP0332490_000"
+  },
+  "H0908-8": {
+    "planId": "H0908-8",
+    "sbPdfUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2026/H0908-8.pdf",
+    "sourceUrl": "https://wellcare.buckeyehealthplan.com/content/dam/centene/medicare/pdfs/aep/2026/sb/H0908_2026_OH_SB_DSNP_4626853ENG_M.pdf"
+  }
+}

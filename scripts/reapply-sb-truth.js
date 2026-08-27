@@ -45,6 +45,7 @@ async function reapplyQmbProtection() {
 
 // Each fixer is independent + idempotent; loose order. Add new SB-truth fixers here as they ship.
 const FIXERS = [
+  'scripts/reapply-sb-tail-links.js',              // 2026-08 SB-link tail (69 plans, NULL-only) — FIRST so SB-reading fixers below see the links
   'scripts/fix-specialist-typediff-zero.js',       // 82 specialist coins -> $0 copay (re-classifies from SB; STOPs if >110)
   'scripts/set-uhc-specialist-choice-display.js', // UHC-16 "$0 or NN%" display (re-proves from SB; STOPs if >30)
   'scripts/fix-aetna-extra-supports-wallet.js',   // Aetna converting wallet -> Food Card + chronic-only chips
