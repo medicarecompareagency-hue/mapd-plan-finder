@@ -19,4 +19,65 @@ Most recent session: **2026-08-27**. Prior full records: `HANDOFF-2026-07-02.md`
 - **Devoted unswept tail sweep — DONE (2026-07-02).** 16/34 plans filled → `foodCardAllowance` (495 county rows). 18 no-wallet (all "Choice Plus" variants + H7766-15 LA DUAL FULL). 0 not-found. Anchor: H1290-86=$5916/yr. Direct URL pattern via `content.medicareadvantage.com` covered 100%. Write target: `foodCardAllowance` + `ssbciIsConditional=true` only. Durability: `scripts/reapply-devoted-wallet-fills.js` + `scripts/data/devoted-wallet-fills-2026-07.json`, wired into `reapply-sb-truth.js`. No deploy. **Devoted CLOSED. Food/OTC workstream CLOSED.**
 - **Final food-floor audit — DONE (2026-07-02, read-only).** 589 DSNP+CSNP planIds: 492 filled (84%), 52 verified-$0 OTC-only, 43 unverified with blockers. Full detail: `scripts/data/food-floor-audit-2026-07.md`. 43 unverified = 9 confirmed-$0 (no retry), 14 not-found (retry Aug 2026), 20 unswept UHC families (H1889/H5322/H6595/H0169/H0421).
 - **Food/OTC next:** UHC not-found retry (25 plans) after Aug 2026 re-posting: original 14 (H5008-10/11/16/17, H0251-2/4, H2385-1/3, H2445-2/3, H0908-7/8, H1664-5/12) + 11 new from Final-20 sweep (H1889-8/10/25/31/32, H5322-26/33/38, H6595-3, H0169-2/8). All carriers CLOSED except UHC retry.
-- DB is **Neon** (older notes say Supabase — stale). `makePrisma()` appends `?pgbouncer=true`.
+## Database: Neon + Prisma (re-verified 2026-08-27)
+
+The app DB is **Neon** (host `ep-gentle-forest-aqk2n9ca-pooler.….neon.tech`, via Vercel Storage). The raw `DATABASE_URL` has no `pgbouncer` flag; `makePrisma()` appends `?pgbouncer=true` itself.
+
+> CLI scripts must use `makePrisma()` from `scripts/prisma-client.js` — never
+> instantiate `new PrismaClient()` directly.
+> NEVER run `prisma migrate dev` against the production DB (it wipes it). Use
+> `prisma db push`.
+
+SUPERSEDED (historical): older notes (e.g. `HANDOFF.md`) describe a Supabase pooler at `aws-1-*.pooler.supabase.com` — the DB moved to Neon; only the `?pgbouncer=true` requirement carried over.
+
+## Search API & ranking — verified against code 2026-08-27
+
+- Results are the top **5 distinct carriers**, not top-10: every ranking branch sorts, then `dedupeByCarrier(sorted, 5)` keeps one best plan per carrier and truncates to 5 (`app/api/plans/route.ts`). 5 results in the UI is by design, not a bug.
+- MAPD (non-SNP) default is the hospital-first 6-key order (2026-07-08, `ff118ec`) — see the Hospital-first bullet above for the exact keys. No premium cap; NULL sorts last; the `hospitalFullStayCost` deriver runs LAST in `scripts/reapply-sb-truth.js`.
+- SNP / C-SNP ranking is **SHIPPED and live** (first shipped 2026-05-12; current specs 2026-05-26): separate comparators for FULL_DUAL (5-key), PARTIAL_DUAL (7-key), CSNP (7-key), plus MA_ONLY (5-key). All SNP rankers are premium-agnostic — LIS never re-orders SNP results. I-SNP is excluded. Do not ask Dale for this spec — it exists in code.
+- A DSNP search with no Medicaid Level selected is intentionally guarded (error message instead of results, `app/plan-search.tsx`) — do not "fix" it.
+- LIS param `lisLevel` values are **case-sensitive**: `FULL` / `75` / `50` / `25` (`lib/lisBenchmarks.ts`). Medicaid Level param `beneficiaryDualLevel`: QMB+ / QMB / SLMB+ / FBDE / SLMB / QI-1. Both dropdowns shipped long ago — nothing is "blocked on CMS files".
+- Plan table: **58,895 rows, all `planYear` 2026** (counted 2026-08-27, licensed states only). The year column is `planYear` — there is no `year` field.
+
+## SB (Summary of Benefits) PDFs — CLOSED 2026-08-27
+
+Coverage is 100%: every licensed-state 2026 plan row has a validated SB PDF link
+(commit `97d6557`, deployed). There is NO permanent tail. Any older figure —
+"74.1%", "34,713 / 46,856", "~14 unfindable", "351 remaining" — is STALE.
+
+- SerpApi is DEAD. Both keys return 401. It was not needed; the final 69 plans were
+  resolved via direct carrier URL patterns (Humana/Aetna on
+  content.medicareadvantage.com, UHC CDN + alphadog doc IDs, Wellcare state-affiliate
+  benefit-materials pages).
+- NEVER replay the old `acquire -> download -> discover -> upload` pipeline.
+  `upload-sb-pdfs.ts` replays the entire stale discovery file and will overwrite SB
+  links fixed in later sessions. `sb-download-list.json`,
+  `sb-unresolved-plans.json`, and `sb-discovery-results.json` are stale.
+- Durability: `scripts/data/sb-tail-links-2026-08.json` +
+  `scripts/reapply-sb-tail-links.js` (NULL-only), registered FIRST in
+  `scripts/reapply-sb-truth.js`.
+- Segmented plans need a per-segment SB with its own `sbSegmentId`. Known:
+  H1889-2, H3256-4/5/6, H5322-49. Never blanket-link a plan ID without checking.
+- Open followup: the 69 links added 2026-08-27 have NULL `sbOtcPage` /
+  `sbFoodCardPage`.
+
+## After ANY CMS re-import — MANDATORY
+
+The importer is delete-and-reload (`deleteMany` + `createMany` per batch in
+`scripts/import-cms-data.ts`). It WIPES every SB-derived fix (wallets, copays,
+QMB classification, hospital costs, SB links). After any re-import you MUST run:
+
+    node scripts/reapply-sb-truth.js --apply
+
+plus `backfill-segment-ids.js` (see the Segment-aware bullet above). The 2027
+import must also run the QMB classifier, or QMB search results will come back
+sparse. Do not use `NOT` / `not` on `qmbCostShareProtected` — the gate is
+strict (`qmb === true` only).
+
+## Licensed carriers gate
+
+All import and backfill scripts must gate on the **6-name** allowlist in
+`scripts/licensed-carriers.js` (canonical org names as stored in the Plan table;
+"Cigna"/"Cigna Healthcare" rows were normalized to **"HealthSpring"** — the 2026
+DB has zero Cigna-named rows). Licensed states (18) live at
+`scripts/licensed-states.js`.
