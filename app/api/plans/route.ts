@@ -2,6 +2,7 @@ import { Prisma } from "@prisma/client";
 import { LICENSED_CARRIERS } from "@/lib/licensed-carriers";
 import { lisAdjustedPremium, LIS_SUBSIDY_PCT, type LisLevel } from "@/lib/lisBenchmarks";
 import { zipToCounty } from "@/lib/zip-to-county";
+import { DEFAULT_PLAN_YEAR } from "@/lib/plan-year";
 
 // SNP ranking spec (Dale, 2026-04-27). See SNP-RANKING-SPEC-2026-04-27.md.
 // Phase 1: ranking against existing plan-level columns.
@@ -112,11 +113,12 @@ export async function GET(request: Request) {
     where.county = bare !== county ? { in: [county, bare] } : county;
   }
 
+  // Plan year (2026-10-02): ALWAYS scope to one year. No year picked (or an
+  // unparseable one) means DEFAULT_PLAN_YEAR — never "all years", or 2027 rows
+  // would mix into 2026 results.
   const planYear = searchParams.get("planYear");
-  if (planYear) {
-    const yearNum = parseInt(planYear, 10);
-    if (!Number.isNaN(yearNum)) where.planYear = yearNum;
-  }
+  const yearNum = planYear ? parseInt(planYear, 10) : NaN;
+  where.planYear = Number.isNaN(yearNum) ? DEFAULT_PLAN_YEAR : yearNum;
 
   const organizationName = searchParams.get("organizationName");
   if (organizationName) where.organizationName = organizationName;
@@ -676,7 +678,7 @@ export async function POST(request: Request) {
     where.county = bare !== county ? { in: [county, bare] } : county;
   }
 
-  const plans = await prisma.plan.findMany({
+  const allYearPlans = await prisma.plan.findMany({
     where,
     select: {
       state: true,
@@ -726,6 +728,12 @@ export async function POST(request: Request) {
     },
   });
 
+  // Plan year (2026-10-02): the Plan Year dropdown lists every year in the DB,
+  // but every OTHER dropdown is built from DEFAULT_PLAN_YEAR rows only, so
+  // 2027-only carriers / values do not leak into the filters.
+  const planYearsInDb = [...new Set(allYearPlans.map((p: any) => p.planYear as number))].sort((a, b) => a - b);
+  const plans = allYearPlans.filter((p: any) => p.planYear === DEFAULT_PLAN_YEAR);
+
   function unique<T>(arr: (T | null | undefined)[]): T[] {
     return [...new Set(arr.filter((v): v is T => v != null && v !== undefined))].sort() as T[];
   }
@@ -746,7 +754,7 @@ export async function POST(request: Request) {
     snpSubtypes: unique(plans.map((p: any) => p.snpSubtype)),
     chronicConditions: chronicConditionsInScope,
     hasZeroDollarDsnp: plans.some((p: any) => p.isZeroDollarDsnp === true),
-    planYears: uniqueNumbers(plans.map((p: any) => p.planYear)),
+    planYears: planYearsInDb,
     organizationNames: unique(plans.map((p: any) => p.organizationName)),
     starRatings: uniqueNumbers(plans.map((p: any) => p.starRating)),
     monthlyPremiums: uniqueNumbers(plans.map((p: any) => p.monthlyPremium)),

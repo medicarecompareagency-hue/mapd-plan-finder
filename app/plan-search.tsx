@@ -6,6 +6,7 @@ import Combobox from "./combobox";
 import PlanDetailModal from "./plan-detail-modal";
 import PasswordInput from "./password-input";
 import HowToUseModal from "./components/HowToUseModal";
+import { DEFAULT_PLAN_YEAR } from "@/lib/plan-year";
 
 // ---------------------------------------------------------------------------
 // Types
@@ -1237,8 +1238,9 @@ export default function PlanSearch() {
      name="planYear"
      value={filters.planYear ?? ""}
      onChange={handleFilterChange}
-     options={[...(options?.planYears ?? []), 2027]}
+     options={[...new Set([...(options?.planYears ?? []), 2027])].filter((y) => Number(y) !== DEFAULT_PLAN_YEAR)}
      disabledOptions={[2027]}
+     emptyLabel={String(DEFAULT_PLAN_YEAR)}
      formatOption={(v) => (Number(v) === 2027 ? "2027 (coming soon)" : String(v))}
    />
         </div>
