@@ -1,0 +1,76 @@
+# 2027 import runbook (as run 2026-10-02)
+
+Everything here is scoped to `planYear = 2027`. 2026 rows were checksummed before and after and did not change.
+Run from the repo root. Scripts in this folder are standalone (`node scripts/import2027/<name>.js`).
+
+**If CMS refreshes the 2027 PBP ZIP and you re-import, every step below must be re-run in this order,**
+then the SB steps (apply links, `reapply-sb-truth.js`, QMB classifier).
+
+## Result
+
+68,711 rows · 1,921 plan IDs · 2,034 plan-segments · 18 states · 6 carriers.
+Matches the CMS CY2027 landscape exactly (plan IDs, county counts, categories, contract types, premiums, MOOP, drug deductible).
+
+| Category | Rows | Plan IDs |
+|---|---|---|
+| MAPD | 30,474 | 1,079 |
+| DSNP | 17,941 | 394 |
+| MA_ONLY | 10,343 | 121 |
+| CSNP | 7,457 | 295 |
+| ISNP | 2,496 | 32 |
+
+## Order
+
+1. **Prep** (`.cms-import-tmp/`): download + unzip `pbp-benefits-2027.zip` to `pbp-2027/`; unzip the CY2027 landscape to `cy2027-landscape/`;
+   `node scripts/import2027/mk-ma2027.js` builds `ma2027.csv` (carrier + plan names from the CMS landscape, NOT NBER).
+2. **Base import:** `npx tsx scripts/import-cms-data.ts --year 2027 --dry-run`, then without `--dry-run`. Expect 63,656 rows.
+   `node scripts/import2027/recon.js` and `verify.js` reconcile against the landscape.
+3. **Regional PPOs** (33 plans, 5,055 rows; not in PlanArea.txt): `python3 scripts/import2027/build-regional-planarea.py <file>`,
+   then run the importer with that file as its PlanArea input and deletes disabled (rows don't exist yet). On 10-02 this was a
+   patched copy of the importer (`planAreaPath` from env, fast path forced). The importer has no flag for this yet.
+4. `PBP_DIR=.cms-import-tmp/pbp-2027 PBP_YEAR=2027 node scripts/import-pbp.js`
+5. `node scripts/import2027/dsnp-tg-set.js` — same logic as `import-dsnp-target-group.js`, one UPDATE instead of 949.
+6. `node scripts/enrich-plan-copays-from-pbp.js --year 2027 --apply` (fill-only)
+7. `reclassify-ma-only-from-mrx.js` — **hard-coded `PLAN_YEAR = 2026`**; run with the constant changed to 2027. Result must equal the landscape "MA" count (10,343 rows).
+8. `rederive-ambulance-pcp-copay.js` — **hard-coded 2026**, same treatment. REQUIRED: without it 442 plans show a $0 ambulance copay (the range minimum).
+   It also nulls the DSNP full-dual $0s, so it must run BEFORE step 10.
+9. `fill-hospital-nulls.js` — **hard-coded 2026**, same treatment.
+10. `enrich-dsnp-fulldual-coins-as-zero.js`, `...-strings-as-zero.js`, `...-residual-nulls.js` — each `--year 2027 --apply`.
+11. `node scripts/enrich-partial-dual-coinsurance.js --year 2027`
+12. `node scripts/enrich-ssbci-benefits.js --year 2027 --apply`
+13. `node scripts/backfill-segment-ids.js 2027`
+14. `node scripts/import2027/premiums2027.js --apply` — replaces `backfill-lis-premiums.js` for 2027. Same derivation, but per plan-SEGMENT
+    (12 segmented plans have different premiums per segment; the old script took the first row) and it does not use the 2026 checkpoint file.
+15. `node scripts/import2027/ded-fix.js --apply` — Defined Standard plans file no "alt" deductible, so the importer leaves $0; sets the landscape value ($700 in 2027).
+16. `node scripts/import2027/plantype-fix.js --apply` — only needed for rows imported before the importer's contract-type map was fixed.
+17. `derive-hospital-fullstay.js` — **hard-coded 2026**, same treatment. Re-run after any SB string fixes.
+18. QA: `node scripts/import2027/qa-landscape.js` (drug deductible + MOOP vs landscape, 2026 checksum) and `fill-by-cat.js` (filled % by category, 2026 vs 2027).
+
+## Deliberately NOT run
+
+- `enrich-ma-only-from-pbp-v2.js` — overwrites (not fill-only) and uses the ambulance range MINIMUM. MA_ONLY rows were already 100% filled without it.
+- `rederive-otc-food-allowances.js` — dry-run showed 0 changes for 2027.
+- `backfill-missing-plans.ts` — not needed; the PlanArea import + Section A fallback + `ma2027.csv` brought in every SNP.
+- `import-star-ratings.js` — 2027 Star Ratings not published as of 10-02.
+
+## Importer fixes made 10-02 (`scripts/import-cms-data.ts`)
+
+1. EGWP gate added to the createMany path. Before, a live run wrote every 800-series employer-group row (98,944 for 2027) while the dry-run count said they were skipped.
+2. `planTypeLabels` in `parsePlanArea()` corrected. It had `"02" -> PPO` and `"04" -> MSA`; CMS codes are 02 = HMOPOS, 04 = Local PPO, 31 = Regional PPO.
+
+## 2026 live-data repairs made 2026-10-02 (approved by Dale)
+
+Script: `scripts/import2027/fix-2026-plantype-deductible.js` (dry-run by default). Before-image of every changed row:
+`scripts/import2027/fix-2026-backup-2026-10-02T20-48-29-679Z.json`.
+
+- **Contract Type:** 313 HMO-POS plan IDs (11,061 rows) were labeled `PPO`; now `HMOPOS`. Each was confirmed HMO-POS in the CY2026 landscape.
+- **Drug deductible:** 181 plan-segments (4,718 rows) showed $0 where the CY2026 landscape has a real deductible (173 of them $615):
+  CSNP 151, ISNP 22, MAPD 8. Set to the landscape value.
+- **Left alone on purpose:** 357 DSNP plan-segments (16,345 rows) still show $0 against a landscape deductible. Duals do not pay it.
+- A 2026 re-import would bring both errors back unless the fixed importer is used (contract type) and this script is re-run (deductible).
+- Not touched: the odd 2026 labels `Local PPO`, `Local HMO`, `Local PPO *` etc. The Contract Type filter is a "contains" match, so picking HMO also returns HMOPOS plans.
+
+## Still to do for 2027
+
+SB links (`scripts/sb2027/apply-links.js` does not exist yet), UHC SBs (380 missing), `reapply-sb-truth.js` (check year scoping first),
+QMB classifier, SB benefit extraction, Star Ratings, 2027 LIS figures (`lib/lisDrugCopays2026.ts`, benchmarks), then un-gray 2027 in the dropdown.

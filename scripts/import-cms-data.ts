@@ -984,10 +984,14 @@ function parsePlanArea(
   }
 
   // PBP plan type code → typeofmedicarehealthplan label
+  // FIXED 2026-10-02. The old map had the CMS codes wrong ("02" -> PPO, "04" -> MSA),
+  // so every Local PPO imported as "MSA" and every HMO-POS as "PPO" (2026 needed
+  // fix-msa-plantype.js; 2027 needed a DB repair). Codes per CONTRACT_TYPE_LABELS above;
+  // labels match the planType vocabulary already in the Plan table.
   const planTypeLabels: Record<string, string> = {
-    "01": "HMO", "02": "PPO", "03": "PFFS", "10": "HMO-POS",
-    "04": "MSA", "07": "MSA", "05": "COST", "08": "COST",
-    "09": "PFFS", "11": "PFFS",
+    "01": "HMO", "02": "HMOPOS", "04": "PPO", "05": "PSO",
+    "07": "MSA", "08": "PFFS", "09": "PFFS",
+    "18": "COST", "19": "COST", "31": "Regional PPO",
   };
 
   const lines = fs.readFileSync(planAreaPath, "utf-8").split(/\r?\n/).filter(Boolean);
@@ -1426,6 +1430,11 @@ export async function runImport(year?: number): Promise<{ imported: number; skip
           const pid = row.planid?.trim();
           const segId = row.segmentid?.trim() || "0";
           if (!contractId || !pid) return null;
+          // EGWP gate — MUST mirror the counting loop above. Fixed 2026-10-02:
+          // this path had no gate, so a live run wrote every 800-series
+          // employer-group row (98,944 of them on the 2027 import) while the
+          // dry-run count said they were skipped.
+          if (parseInt(pid, 10) >= 800) return null;
 
           const paddedPid = pid.padStart(3, "0");
           const key = `${contractId}-${paddedPid}-${segId}`;
