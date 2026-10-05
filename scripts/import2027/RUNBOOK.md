@@ -90,7 +90,12 @@ Each row gets the SB of its own segment and `sbSegmentId = segmentId`. Idempoten
   so when UHC posts them the normal `acquire.js --retry` picks them up. Jarvis says 2027 materials are late ("extended benefit finalization").
   Real 2027 "Plan Highlights" PDFs (~11 MB) do exist there for 85 of the 93, and mpp.uhc.com/plans/plan-details.<H####-###-###>.2027.html
   shows full 2027 benefits (incl. a "Special Eligibility" line naming the Medicaid levels each D-SNP takes) for every UHC plan. Both need Dale's login.
-  Aetna H1610-1: no SB on aetna.com or Producer World; only a broker plan guide (PG27-VAS01-VA-FIDE-DSNP.pdf, login required).
+  Aetna H1610-1: not on aetna.com or Producer World, but FOUND later on 10-05 on the public mirror:
+  `https://content.medicareadvantage.com/2027/Aetna-H1610_001_DS17_SB2027_M-2027-SB_SF20260918.pdf` (in `sb-url-hints-2027.json`; validated, linked).
+  Mirror pattern for Aetna 2027: `Aetna-<SB doc stem>-2027-SB_SF<yyyymmdd>.pdf`; the date is not guessable, probe September dates.
+  UHC mirror names carry a generation timestamp, so they cannot be probed; a web search for the plan ID is the only way in.
+- **SerpApi:** the one key in `.env.local` (`SERPAPI_API_KEY`) still returns 401 "Invalid API key" (checked 10-05, no searches used).
+  Search cannot find the 93 UHC SBs anyway: they are not published. A search did find the Aetna one above.
 - **Re-run `apply-links.js --apply` after `backfill-segment-ids.js 2027`** — that script resets `sbSegmentId` to one value per plan.
 
 ## reapply-sb-truth.js is 2026-only (checked 2026-10-05)

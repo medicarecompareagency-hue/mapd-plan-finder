@@ -6587,5 +6587,17 @@
    "SLMB+"
   ],
   "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ },
+ "H1610-001-0": {
+  "planId": "H1610-1",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare FIDE (HMO D-SNP)",
+  "states": [
+   "VA"
+  ],
+  "protected": null,
+  "levels": [],
+  "signal": "uncertain"
  }
 }
