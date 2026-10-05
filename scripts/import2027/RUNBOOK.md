@@ -191,8 +191,60 @@ Other decisions the same day: Wellcare Spendables = chronic-only food card (as a
 Not done from the 2026 list: the MRI/CAT outpatient-hospital audit (display only, needs a fresh 2027 audit), SB page numbers (the extractor returns none),
 H4939-4 Humana PathWays NFLOC (allowance amount not read).
 
+## 2027 LIS figures — code change 2026-10-05 (needs a deploy)
+
+The LIS tables are now plan-year aware. A 2026 search gives exactly what it gave before; a 2027 search uses the 2027 figures.
+
+- `lib/lisBenchmarks.ts`: `LIS_BENCHMARKS_2027` (18 states) and `LIS_BENCHMARKS_BY_YEAR`; `lisAdjustedPremium(..., planYear = 2026)`.
+  Source: CMS "Regional Rates and Benchmarks 2027" (`regional-rates-and-benchmarks-2027.pdf`). The 2026 table was re-checked against CMS's 2026 file and matches.
+- `lib/lisDrugCopays2026.ts`: `LIS_DRUG_COPAY_2027` (full benefit $1.65 / $5.00, others $5.80 / $14.40, out-of-pocket threshold $2,400),
+  `lisDrugCopayTable(planYear)`, and an optional `planYear` on `lisScheduleForLevel` / `lisCopayForTier`. Source: CMS CY2027 Rate Announcement, Table V-2.
+- `app/api/plans/route.ts` passes `plan.planYear` to `lisAdjustedPremium`. `app/plan-search.tsx` passes it to the tier cells and the banner.
+- NOT done: the LIS Qualifier modal still holds the 2026 income / resource limits. CMS had not published the CY2027 resource-limits memo or the 2027 poverty guidelines.
+
+## Star Ratings — script made year-safe 2026-10-05 (2027 ratings not posted yet)
+
+`scripts/import-star-ratings.js` used to read and write EVERY row in the Plan table. Run with a 2027 file it would have overwritten 2026.
+It now takes the plan year: `node scripts/import-star-ratings.js 2027` reads `scripts/data/star-ratings-2027-summary.csv`, looks for the
+`2027 Overall` column and touches `planYear = 2027` rows only. No argument = 2026.
+When CMS posts the 2027 ratings: download `2027-star-ratings-data-tables.zip` from the CMS Part C and D Performance Data page, save its
+"Summary Ratings" CSV as `scripts/data/star-ratings-2027-summary.csv`, run the command above. Until then all 68,143 rows have no rating
+and ranking key 6 does nothing for 2027.
+
+## MRI / CT cost share — applied 2026-10-05
+
+`python3 scripts/sb2027/mri-from-sb.py` (reads all 1,940 staged SBs, no DB, writes `scripts/data/mri-sb-2027.json`), then
+`node scripts/sb2027/fix-mri.js` (dry-run) and `--apply`. This one pair replaces the three 2026 steps
+(`rederive-mri-cat-copay.js`, `audit-mri-copay-outliers.js`, `fix-mri-outpatient-from-sb.js`). **Do not run `rederive-mri-cat-copay.js` on 2027**:
+it wipes the D-SNP full-dual $0.
+
+Result: 455 plan-segments, 21,879 rows changed; 373 of them (17,864 rows) change what an agent sees. Applied list with the SB sentence
+behind each SB-based value: `scripts/data/mri-fixes-2027.json`. After it: 1,855 plan-segments show a copay, 170 a coinsurance, 1 blank.
+
+- **SB outpatient-hospital amount instead of the CMS range top (Dale's 2026-07-06 rule):** 180 Humana plan-segments. CMS files one range for
+  all imaging settings; its top ($360, $700, $720, $780) is not the outpatient-hospital copay. The SB says $345 on most.
+- **Full-dual D-SNPs to $0:** 40 Humana plan-segments showed $335 / $345 / $780. Their SB says $0 in-network.
+- **Coinsurance stored as 0%:** 111 plan-segments (partial-dual D-SNP, C-SNP, I-SNP, 3 MAPD) showed 0% or blank where CMS and the SB say 20%.
+  The base import read the low end of the filed range. The 2026 fix for this was never re-run for 2027.
+- **Devoted:** 40 plan-segments 40% -> 50% (SB "Outpatient Hospital: 50% coinsurance"). 2 HealthSpring MAPD blank -> $0.
+
+Rules in `fix-mri.js`: CMS value per plan-SEGMENT (copay range top, else coinsurance range top); the SB wins when it states a cost share;
+for a D-SNP an SB "$0" is the with-Medicaid amount, so it is stored only on FULL_DUAL plans (as a $0 copay with the % left underneath, same
+as 2026), and other D-SNPs keep the CMS-filed amount unless the SB has a "Without Medicaid cost share assistance" column (Devoted).
+SB reading is carrier-specific and in-network only. SB and CMS agree on every plan-segment outside the groups above.
+Seen, not changed: 2026 still shows $335 on 11 Humana full-dual D-SNPs.
+
+## import-pbp.js columns per plan-segment — applied 2026-10-05
+
+`node scripts/import2027/pbp-by-segment.js` (dry-run) and `--apply`. `import-pbp.js` keeps the highest value across a plan's segments, so every
+segment of the 73 segmented plans showed the richest segment's OTC, food card, dental, vision and hearing amounts. This script recomputes
+those columns per plan-segment with the same code (`buildAgg` is now exported from `import-pbp.js` and takes a key function; its default
+behaviour is unchanged) and corrects a row only if it still holds the plan-level value. Corrected: OTC 27 plan-segments, food card 2,
+dental max 68, vision max 51, hearing max 9, OTC period 5, hearing text 11 (3,390 column-rows). The per-segment OTC and food values now
+equal the SB values on every segment that has both. **Run it after `import-pbp.js` + `backfill-segment-ids.js` on any re-import.**
+The copay columns from the base import (MRI, hospital, specialist, ...) were already per segment. 2026 has the same plan-level issue and was not touched.
+
 ## Still to do for 2027
 
-Retry the 88 UHC SBs + Wellcare H1416-81 (then re-run the QMB and benefit steps above for the new ones), 2027 LIS figures (`lib/lisDrugCopays2026.ts`,
-`lib/lisBenchmarks.ts` hold 2026 values — needs a code change and a deploy), Star Ratings (CMS had not posted them as of 10-05), the MRI/CAT audit,
-a segment-aware PBP import, then un-gray 2027 in the dropdown.
+Retry the 88 UHC SBs + Wellcare H1416-81 (then re-run the QMB, benefit and MRI steps above for the new ones), Star Ratings when CMS posts them
+(command above), the LIS Qualifier modal's 2027 income / resource limits when CMS publishes them, then un-gray 2027 in the dropdown.

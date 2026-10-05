@@ -112,7 +112,9 @@ function fileMust(name) {
 
 // agg: planId -> { otcAllowance, foodCardAllowance, dentalAnnualMax,
 //                  visionAnnualMax, hearingAnnualMax }
-async function buildAgg() {
+// keyFn picks the aggregation key. Default = plan ID (highest value across a plan's segments), which is what
+// main() below has always written. scripts/import2027/pbp-by-segment.js passes a plan-SEGMENT key instead.
+async function buildAgg(keyFn = planIdFor) {
   const agg = new Map();
   const upsertMax = (planId, key, value) => {
     if (!planId) return;
@@ -130,7 +132,7 @@ async function buildAgg() {
   console.log('Reading pbp_b13_other_services.txt ...');
   let n = 0;
   for await (const row of readPbp(fileMust('pbp_b13_other_services.txt'))) {
-    const pid = planIdFor(row);
+    const pid = keyFn(row);
     if (!pid) continue;
     n++;
     // OTC: pbp_b13b_maxplan_amt x period from pbp_b13b_otc_maxplan_per
@@ -163,7 +165,7 @@ async function buildAgg() {
   console.log('Reading pbp_b13i_b19b_services_vbid_ssbci.txt ...');
   n = 0;
   for await (const row of readPbp(fileMust('pbp_b13i_b19b_services_vbid_ssbci.txt'))) {
-    const pid = planIdFor(row);
+    const pid = keyFn(row);
     if (!pid) continue;
     n++;
     const fd = annualize(row.pbp_b13i_fd_maxplan_amt, row.pbp_b13i_fd_maxplan_per);
@@ -197,7 +199,7 @@ async function buildAgg() {
   console.log('Reading pbp_b16_dental.txt ...');
   n = 0;
   for await (const row of readPbp(fileMust('pbp_b16_dental.txt'))) {
-    const pid = planIdFor(row);
+    const pid = keyFn(row);
     if (!pid) continue;
     n++;
     // per=3 (dominant) means per benefit period = annual. Do not annualize.
@@ -211,7 +213,7 @@ async function buildAgg() {
   console.log('Reading pbp_b17_eye_exams_wear.txt ...');
   n = 0;
   for await (const row of readPbp(fileMust('pbp_b17_eye_exams_wear.txt'))) {
-    const pid = planIdFor(row);
+    const pid = keyFn(row);
     if (!pid) continue;
     n++;
     // per=3 (dominant) means per benefit period = annual. Do not annualize.
@@ -235,7 +237,7 @@ async function buildAgg() {
   console.log('Reading pbp_b18_hearing_exams_aids.txt ...');
   n = 0;
   for await (const row of readPbp(fileMust('pbp_b18_hearing_exams_aids.txt'))) {
-    const pid = planIdFor(row);
+    const pid = keyFn(row);
     if (!pid) continue;
     n++;
     // Annual max path (carrier filed a $/year cap)
@@ -374,7 +376,11 @@ async function main() {
   await prisma.$disconnect();
 }
 
-main().catch((e) => {
-  console.error(e);
-  process.exit(1);
-});
+if (require.main === module) {
+  main().catch((e) => {
+    console.error(e);
+    process.exit(1);
+  });
+}
+
+module.exports = { buildAgg, planIdFor };

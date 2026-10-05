@@ -1,10 +1,13 @@
 // scripts/import-star-ratings.js
-// Populates Plan.starRating from the CMS 2026 Star Ratings CSV.
+// Populates Plan.starRating for ONE plan year from that year's CMS Star
+// Ratings CSV. Rows of every other plan year are never read or written.
 //
 // Usage (from repo root):
-//   node scripts/import-star-ratings.js
+//   node scripts/import-star-ratings.js          (plan year 2026)
+//   node scripts/import-star-ratings.js 2027     (plan year 2027)
 //
-// Source CSV:  scripts/data/star-ratings-2026-summary.csv
+// Source CSV:  scripts/data/star-ratings-<year>-summary.csv
+// (the "Summary Ratings" CSV inside CMS's <year>-star-ratings-data-tables.zip)
 // Downloaded from:
 //   https://www.cms.gov/files/zip/2026-star-ratings-data-tables.zip
 //   file "2026 Star Ratings Data Table - Summary Ratings (Oct 8 2025).csv"
@@ -24,7 +27,12 @@ const { makePrisma } = require("./prisma-client");
 
 const prisma = makePrisma();
 
-const CSV_PATH = path.join(__dirname, "data", "star-ratings-2026-summary.csv");
+const YEAR = Number(process.argv[2] || 2026);
+if (!Number.isInteger(YEAR) || YEAR < 2026 || YEAR > 2035) {
+  console.error(`Bad plan year: ${process.argv[2]}`);
+  process.exit(1);
+}
+const CSV_PATH = path.join(__dirname, "data", `star-ratings-${YEAR}-summary.csv`);
 const UPDATE_CHUNK = 2000; // max ids per UPDATE ... WHERE id IN (...)
 
 function log(msg, color) {
@@ -61,7 +69,7 @@ function buildRatingMap() {
   // Line 0 is the banner, line 1 is the header.
   const header = parseCsvLine(lines[1]).map((c) => c.trim());
   const contractIdx = header.indexOf("Contract Number");
-  const overallIdx = header.indexOf("2026 Overall");
+  const overallIdx = header.indexOf(`${YEAR} Overall`);
   if (contractIdx < 0 || overallIdx < 0) {
     throw new Error(`CSV header missing expected columns. Saw: ${JSON.stringify(header)}`);
   }
@@ -95,10 +103,11 @@ async function main() {
   const withRating = [...ratings.values()].filter((v) => v !== null).length;
   log(`    Loaded ${ratings.size} contracts (${withRating} with numeric rating).`, "green");
 
-  log("[2/4] Reading all plans from DB (raw SQL)", "cyan");
+  log(`[2/4] Reading plan year ${YEAR} plans from DB (raw SQL)`, "cyan");
   const plans = await prisma.$queryRaw`
     SELECT id, "planId", "starRating"
     FROM "Plan"
+    WHERE "planYear" = ${YEAR}
   `;
   log(`    Found ${plans.length.toLocaleString()} plans.`, "green");
 
@@ -141,10 +150,10 @@ async function main() {
     for (const ids_chunk of chunk(ids, UPDATE_CHUNK)) {
       const idList = Prisma.join(ids_chunk.map((id) => Prisma.sql`${id}`));
       if (ratingKey === "null") {
-        await prisma.$executeRaw`UPDATE "Plan" SET "starRating" = NULL WHERE id IN (${idList})`;
+        await prisma.$executeRaw`UPDATE "Plan" SET "starRating" = NULL, "updatedAt" = now() WHERE "planYear" = ${YEAR} AND id IN (${idList})`;
       } else {
         const val = Number(ratingKey);
-        await prisma.$executeRaw`UPDATE "Plan" SET "starRating" = ${val} WHERE id IN (${idList})`;
+        await prisma.$executeRaw`UPDATE "Plan" SET "starRating" = ${val}, "updatedAt" = now() WHERE "planYear" = ${YEAR} AND id IN (${idList})`;
       }
       done += ids_chunk.length;
       log(`    ${done.toLocaleString()}/${totalUpdates.toLocaleString()}`, "yellow");

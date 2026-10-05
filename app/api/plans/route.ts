@@ -231,7 +231,7 @@ export async function GET(request: Request) {
   function planAdjustedPremium(plan: Record<string, unknown>): number {
     const partC = (plan.partCPremium as number | null) ?? (plan.monthlyPremium as number ?? 0);
     const partD = (plan.partDPremium as number | null) ?? 0;
-    return lisAdjustedPremium(partC, partD, plan.state as string, lisLevel);
+    return lisAdjustedPremium(partC, partD, plan.state as string, lisLevel, plan.planYear as number | null);
   }
 
   // Premium filter (2026-07-13): "zero" = only plans whose effective monthly

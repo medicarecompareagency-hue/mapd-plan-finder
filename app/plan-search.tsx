@@ -113,7 +113,7 @@ interface Plan {
 
 import { LICENSED_STATES } from "@/lib/licensed-states";
 import DrugTierCell from "@/components/DrugTierCell";
-import { lisCopayForTier } from "@/lib/lisDrugCopays2026";
+import { lisCopayForTier, lisDrugCopayTable } from "@/lib/lisDrugCopays2026";
 
 interface FilterOptions {
   states: string[];
@@ -504,9 +504,9 @@ function hospitalCellQ(s: string | null | undefined, qmb: boolean): string {
 // For DSNP results, drug tiers show the member's effective cost: min(plan copay, LIS copay).
 // Federal rule: LIS/Extra Help is a ceiling — beneficiary pays the lesser of the plan's
 // tier cost-share and the LIS copay. rawValue null (tier absent) shows "N/A", not "$0".
-function drugTierCellQ(existing: React.ReactNode, tierNum: number, isDsnp: boolean, dualLevel: string | null, rawValue?: number | null): React.ReactNode {
+function drugTierCellQ(existing: React.ReactNode, tierNum: number, isDsnp: boolean, dualLevel: string | null, rawValue?: number | null, planYear?: number | null): React.ReactNode {
   if (isDsnp && dualLevel && rawValue !== null && rawValue !== undefined) {
-    const lisV = lisCopayForTier(tierNum, dualLevel);
+    const lisV = lisCopayForTier(tierNum, dualLevel, planYear);
     if (lisV !== null) {
       const effective = Math.min(rawValue, lisV);
       return effective === 0 ? "$0" : "$" + effective.toFixed(2);
@@ -1376,7 +1376,7 @@ export default function PlanSearch() {
           </div>
           {isDsnp && searchedDualLevel && (
             <div className="px-4 py-1.5 border-b border-gray-200 bg-indigo-50 text-[11px] text-indigo-800">
-              Rx tiers show 2026 Extra Help (LIS) copays for the selected level — $0 after the $2,100 annual out-of-pocket cap.
+              Rx tiers show {plans[0]?.planYear ?? DEFAULT_PLAN_YEAR} Extra Help (LIS) copays for the selected level — $0 after the ${lisDrugCopayTable(plans[0]?.planYear ?? DEFAULT_PLAN_YEAR).OOP_THRESHOLD.toLocaleString()} annual out-of-pocket cap.
             </div>
           )}
 
@@ -1565,12 +1565,12 @@ export default function PlanSearch() {
                       {!isMaOnly && (
                         <>
                           <td className="px-3 py-3 text-right text-gray-900">{(isDsnp && searchedDualLevel) ? "$0" : <>{dollars(plan.drugDeductible)}{plan.drugDeductibleTiers ? ` (Tiers ${plan.drugDeductibleTiers})` : ""}</>}</td>
-                          <td className="px-3 py-3 text-right text-gray-900">{drugTierCellQ(<DrugTierCell tier={1} value={plan.drugTier1Copay} mask={plan.drugTierCoinsuranceMask} />, 1, isDsnp, searchedDualLevel, plan.drugTier1Copay)}</td>
-                          <td className="px-3 py-3 text-right text-gray-900">{drugTierCellQ(<DrugTierCell tier={2} value={plan.drugTier2Copay} mask={plan.drugTierCoinsuranceMask} />, 2, isDsnp, searchedDualLevel, plan.drugTier2Copay)}</td>
-                          <td className="px-3 py-3 text-right text-gray-900">{drugTierCellQ(<DrugTierCell tier={3} value={plan.drugTier3Copay} mask={plan.drugTierCoinsuranceMask} />, 3, isDsnp, searchedDualLevel, plan.drugTier3Copay)}</td>
-                          <td className="px-3 py-3 text-right text-gray-900">{drugTierCellQ(<DrugTierCell tier={4} value={plan.drugTier4Copay} mask={plan.drugTierCoinsuranceMask} />, 4, isDsnp, searchedDualLevel, plan.drugTier4Copay)}</td>
-                          <td className="px-3 py-3 text-right text-gray-900">{drugTierCellQ(<DrugTierCell tier={5} value={plan.drugTier5Copay} mask={plan.drugTierCoinsuranceMask} />, 5, isDsnp, searchedDualLevel, plan.drugTier5Copay)}</td>
-                          <td className="px-3 py-3 text-right text-gray-900">{drugTierCellQ(<DrugTierCell tier={6} value={plan.drugTier6Copay} mask={plan.drugTierCoinsuranceMask} />, 6, isDsnp, searchedDualLevel, plan.drugTier6Copay)}</td>
+                          <td className="px-3 py-3 text-right text-gray-900">{drugTierCellQ(<DrugTierCell tier={1} value={plan.drugTier1Copay} mask={plan.drugTierCoinsuranceMask} />, 1, isDsnp, searchedDualLevel, plan.drugTier1Copay, plan.planYear)}</td>
+                          <td className="px-3 py-3 text-right text-gray-900">{drugTierCellQ(<DrugTierCell tier={2} value={plan.drugTier2Copay} mask={plan.drugTierCoinsuranceMask} />, 2, isDsnp, searchedDualLevel, plan.drugTier2Copay, plan.planYear)}</td>
+                          <td className="px-3 py-3 text-right text-gray-900">{drugTierCellQ(<DrugTierCell tier={3} value={plan.drugTier3Copay} mask={plan.drugTierCoinsuranceMask} />, 3, isDsnp, searchedDualLevel, plan.drugTier3Copay, plan.planYear)}</td>
+                          <td className="px-3 py-3 text-right text-gray-900">{drugTierCellQ(<DrugTierCell tier={4} value={plan.drugTier4Copay} mask={plan.drugTierCoinsuranceMask} />, 4, isDsnp, searchedDualLevel, plan.drugTier4Copay, plan.planYear)}</td>
+                          <td className="px-3 py-3 text-right text-gray-900">{drugTierCellQ(<DrugTierCell tier={5} value={plan.drugTier5Copay} mask={plan.drugTierCoinsuranceMask} />, 5, isDsnp, searchedDualLevel, plan.drugTier5Copay, plan.planYear)}</td>
+                          <td className="px-3 py-3 text-right text-gray-900">{drugTierCellQ(<DrugTierCell tier={6} value={plan.drugTier6Copay} mask={plan.drugTierCoinsuranceMask} />, 6, isDsnp, searchedDualLevel, plan.drugTier6Copay, plan.planYear)}</td>
                         </>
                       )}
                       <td
