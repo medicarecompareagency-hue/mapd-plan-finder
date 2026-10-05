@@ -1,0 +1,2518 @@
+{
+ "H0169-002-0": {
+  "closed": false,
+  "amount": 122,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H0169-004-0": {
+  "closed": false,
+  "amount": 296,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H0169-010-0": {
+  "closed": false,
+  "amount": 121,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H0169-014-1": {
+  "closed": false,
+  "amount": 279,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H0169-014-2": {
+  "closed": false,
+  "amount": 319,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H0169-014-3": {
+  "closed": false,
+  "amount": 224,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H0169-015-1": {
+  "closed": false,
+  "amount": 40,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H0169-015-2": {
+  "closed": false,
+  "amount": 54,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H0169-015-3": {
+  "closed": false,
+  "amount": 45,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H0169-016-0": {
+  "closed": false,
+  "amount": 265,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H0251-004-0": {
+  "closed": false,
+  "amount": 500,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H0251-009-1": {
+  "closed": false,
+  "amount": 370,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H0251-009-2": {
+  "closed": false,
+  "amount": 250,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H0251-009-3": {
+  "closed": false,
+  "amount": 349,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H0251-010-1": {
+  "closed": false,
+  "amount": 174,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H0251-010-2": {
+  "closed": false,
+  "amount": 93,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H0251-010-3": {
+  "closed": false,
+  "amount": 193,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H0421-001-0": {
+  "closed": true,
+  "amount": 201,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H0432-003-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H0432-004-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H0432-009-0": {
+  "closed": false,
+  "amount": 50,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H0432-012-0": {
+  "closed": false,
+  "amount": 100,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H0432-017-0": {
+  "closed": false,
+  "amount": 45,
+  "period": "month",
+  "gated": true,
+  "utilities": false
+ },
+ "H0609-050-0": {
+  "closed": false,
+  "amount": 25,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H0609-051-0": {
+  "closed": false,
+  "amount": 25,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H0609-052-0": {
+  "closed": false,
+  "amount": 62,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H0609-054-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H0609-055-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H0609-056-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H0609-058-0": {
+  "closed": false,
+  "amount": 100,
+  "period": "month",
+  "gated": true,
+  "utilities": false
+ },
+ "H0609-059-0": {
+  "closed": false,
+  "amount": 25,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H0609-060-0": {
+  "closed": false,
+  "amount": 30,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H0609-061-0": {
+  "closed": false,
+  "amount": 50,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H0609-062-0": {
+  "closed": false,
+  "amount": 68,
+  "period": "month",
+  "gated": true,
+  "utilities": false
+ },
+ "H0609-063-0": {
+  "closed": false,
+  "amount": 70,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H0609-066-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H0609-067-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H0609-068-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H0609-070-0": {
+  "closed": false,
+  "amount": 50,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H0609-071-0": {
+  "closed": false,
+  "amount": 60,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H0609-077-0": {
+  "closed": false,
+  "amount": 25,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H0609-080-0": {
+  "closed": false,
+  "amount": 60,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H0609-090-0": {
+  "closed": false,
+  "amount": 25,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H0609-091-0": {
+  "closed": false,
+  "amount": 40,
+  "period": "month",
+  "gated": true,
+  "utilities": false
+ },
+ "H0710-004-0": {
+  "closed": false,
+  "status": "not-in-portal"
+ },
+ "H0710-010-0": {
+  "closed": false,
+  "status": "not-in-portal"
+ },
+ "H0710-013-0": {
+  "closed": false,
+  "status": "not-in-portal"
+ },
+ "H0710-016-0": {
+  "closed": false,
+  "status": "not-in-portal"
+ },
+ "H0710-020-0": {
+  "closed": false,
+  "status": "not-in-portal"
+ },
+ "H0710-027-0": {
+  "closed": false,
+  "status": "not-in-portal"
+ },
+ "H0710-032-0": {
+  "closed": false,
+  "status": "not-in-portal"
+ },
+ "H0710-033-0": {
+  "closed": false,
+  "status": "not-in-portal"
+ },
+ "H0710-038-0": {
+  "closed": false,
+  "status": "not-in-portal"
+ },
+ "H0710-039-0": {
+  "closed": false,
+  "status": "not-in-portal"
+ },
+ "H0710-052-0": {
+  "closed": false,
+  "status": "not-in-portal"
+ },
+ "H0710-053-0": {
+  "closed": false,
+  "status": "not-in-portal"
+ },
+ "H0710-057-0": {
+  "closed": false,
+  "status": "not-in-portal"
+ },
+ "H1045-001-0": {
+  "closed": false,
+  "amount": 25,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H1045-005-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H1045-012-0": {
+  "closed": false,
+  "amount": 240,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H1045-018-0": {
+  "closed": false,
+  "amount": 40,
+  "period": "month",
+  "gated": true,
+  "utilities": false
+ },
+ "H1045-025-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H1045-026-0": {
+  "closed": false,
+  "amount": 25,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H1045-028-0": {
+  "closed": false,
+  "amount": 45,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H1045-030-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H1045-031-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H1045-033-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H1045-034-0": {
+  "closed": false,
+  "amount": 25,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H1045-036-0": {
+  "closed": false,
+  "amount": 25,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H1045-037-0": {
+  "closed": false,
+  "amount": 70,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H1045-038-0": {
+  "closed": false,
+  "amount": 224,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H1045-039-0": {
+  "closed": false,
+  "amount": 250,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H1045-041-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H1045-042-0": {
+  "closed": false,
+  "amount": 30,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H1045-043-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H1045-045-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H1045-048-1": {
+  "closed": false,
+  "amount": 40,
+  "period": "month",
+  "gated": true,
+  "utilities": false
+ },
+ "H1045-048-2": {
+  "closed": false,
+  "amount": 45,
+  "period": "month",
+  "gated": true,
+  "utilities": false
+ },
+ "H1045-048-3": {
+  "closed": false,
+  "amount": 45,
+  "period": "month",
+  "gated": true,
+  "utilities": false
+ },
+ "H1045-055-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H1045-056-0": {
+  "closed": false,
+  "amount": 85,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H1045-059-0": {
+  "closed": false,
+  "amount": 30,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H1045-061-0": {
+  "closed": false,
+  "amount": 127,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H1045-063-0": {
+  "closed": false,
+  "amount": 405,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H1045-065-0": {
+  "closed": false,
+  "amount": 405,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H1045-067-0": {
+  "closed": false,
+  "amount": 30,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H1045-069-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H1045-071-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H1045-073-0": {
+  "closed": false,
+  "amount": 390,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H1278-003-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H1278-010-0": {
+  "closed": false,
+  "amount": 25,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H1278-015-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H1278-016-0": {
+  "closed": false,
+  "amount": 25,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H1278-024-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H1278-027-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H1659-002-0": {
+  "closed": false,
+  "amount": 100,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H1889-002-1": {
+  "closed": true,
+  "amount": 115,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H1889-002-2": {
+  "closed": true,
+  "amount": 115,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H1889-008-0": {
+  "closed": true,
+  "amount": 97,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H1889-009-0": {
+  "closed": false,
+  "amount": 70,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H1889-010-0": {
+  "closed": false,
+  "amount": 110,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H1889-013-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H1889-014-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H1889-015-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H1889-019-0": {
+  "closed": false,
+  "amount": 40,
+  "period": "month",
+  "gated": true,
+  "utilities": false
+ },
+ "H1889-020-0": {
+  "closed": false,
+  "amount": 40,
+  "period": "month",
+  "gated": true,
+  "utilities": false
+ },
+ "H1889-022-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H1889-025-0": {
+  "closed": false,
+  "amount": 75,
+  "period": "month",
+  "gated": true,
+  "utilities": false
+ },
+ "H1889-026-0": {
+  "closed": true,
+  "amount": 222,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H1889-028-0": {
+  "closed": false,
+  "amount": 80,
+  "period": "month",
+  "gated": true,
+  "utilities": false
+ },
+ "H1889-030-0": {
+  "closed": true,
+  "amount": 177,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H1889-031-0": {
+  "closed": false,
+  "amount": 165,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H1889-043-0": {
+  "closed": false,
+  "amount": 120,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H1889-044-1": {
+  "closed": false,
+  "amount": 275,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H1889-044-2": {
+  "closed": false,
+  "amount": 370,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H1889-045-1": {
+  "closed": false,
+  "amount": 151,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H1889-045-2": {
+  "closed": false,
+  "amount": 176,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H2001-030-0": {
+  "closed": false,
+  "amount": 104,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H2001-032-0": {
+  "closed": false,
+  "amount": 223,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H2001-034-0": {
+  "closed": false,
+  "amount": 144,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H2001-035-0": {
+  "closed": false,
+  "amount": 104,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H2001-037-0": {
+  "closed": false,
+  "amount": 223,
+  "period": "month",
+  "gated": true,
+  "utilities": false
+ },
+ "H2001-038-0": {
+  "closed": false,
+  "amount": 304,
+  "period": "month",
+  "gated": true,
+  "utilities": false
+ },
+ "H2001-040-0": {
+  "closed": false,
+  "amount": 133,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H2001-055-0": {
+  "closed": false,
+  "amount": 45,
+  "period": "month",
+  "gated": true,
+  "utilities": false
+ },
+ "H2001-056-0": {
+  "closed": false,
+  "amount": 140,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H2001-059-0": {
+  "closed": false,
+  "amount": 70,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H2001-060-0": {
+  "closed": false,
+  "amount": 40,
+  "period": "month",
+  "gated": true,
+  "utilities": false
+ },
+ "H2001-061-0": {
+  "closed": false,
+  "amount": 102,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H2001-065-0": {
+  "closed": false,
+  "amount": 269,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H2001-075-0": {
+  "closed": false,
+  "amount": 310,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H2001-076-0": {
+  "closed": false,
+  "amount": 100,
+  "period": "month",
+  "gated": true,
+  "utilities": false
+ },
+ "H2001-082-0": {
+  "closed": false,
+  "amount": 245,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H2001-094-0": {
+  "closed": false,
+  "amount": 25,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H2001-095-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H2001-096-0": {
+  "closed": false,
+  "amount": 25,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H2001-097-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H2001-098-0": {
+  "closed": false,
+  "amount": 25,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H2001-099-0": {
+  "closed": false,
+  "amount": 25,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H2001-104-0": {
+  "closed": false,
+  "amount": 25,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H2001-108-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H2001-109-0": {
+  "closed": false,
+  "amount": 60,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H2001-140-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H2385-001-0": {
+  "closed": false,
+  "amount": 137,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H2385-002-0": {
+  "closed": false,
+  "amount": 102,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H2385-003-0": {
+  "closed": false,
+  "amount": 314,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H2385-004-0": {
+  "closed": false,
+  "amount": 442,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H2406-009-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H2406-010-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H2406-011-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H2406-013-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H2406-015-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H2406-016-0": {
+  "closed": false,
+  "amount": 25,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H2406-017-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H2406-018-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H2406-019-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H2406-035-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H2406-036-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H2406-037-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H2406-038-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H2406-039-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H2406-043-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H2406-050-0": {
+  "closed": false,
+  "amount": 50,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H2406-056-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H2406-066-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H2406-068-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H2406-074-0": {
+  "closed": false,
+  "amount": 140,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H2406-087-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H2406-119-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H2406-121-0": {
+  "closed": false,
+  "amount": 25,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H2406-125-0": {
+  "closed": false,
+  "amount": 25,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H2406-130-0": {
+  "closed": false,
+  "amount": 50,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H2406-135-0": {
+  "closed": false,
+  "amount": 45,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H2445-001-0": {
+  "closed": false,
+  "amount": 419,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H2445-002-0": {
+  "closed": false,
+  "amount": 110,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H2445-003-0": {
+  "closed": false,
+  "amount": 315,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H2445-004-0": {
+  "closed": false,
+  "amount": 56,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H2509-001-0": {
+  "closed": false,
+  "amount": 498,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H2509-002-0": {
+  "closed": false,
+  "amount": 90,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H2509-003-0": {
+  "closed": false,
+  "amount": 190,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H2802-007-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H2802-008-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H2802-010-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H2802-012-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H2802-024-0": {
+  "closed": false,
+  "amount": 25,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H2802-025-0": {
+  "closed": false,
+  "amount": 50,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H2802-028-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H2802-030-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H2802-031-0": {
+  "closed": false,
+  "amount": 50,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H2802-032-0": {
+  "closed": false,
+  "amount": 25,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H2802-033-0": {
+  "closed": false,
+  "amount": 40,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H2802-034-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H2802-035-0": {
+  "closed": false,
+  "amount": 50,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H2802-041-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H2802-044-0": {
+  "closed": false,
+  "amount": 100,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H2802-048-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H2802-049-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H2802-050-0": {
+  "closed": false,
+  "amount": 90,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H2802-052-0": {
+  "closed": false,
+  "amount": 50,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H2802-054-0": {
+  "closed": false,
+  "amount": 25,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H2802-055-0": {
+  "closed": false,
+  "amount": 40,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H2802-056-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H2802-058-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H2802-059-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H2802-060-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H2802-061-0": {
+  "closed": false,
+  "amount": 45,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H2802-062-0": {
+  "closed": false,
+  "amount": 120,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H2802-063-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H2802-064-0": {
+  "closed": false,
+  "amount": 240,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H2802-067-0": {
+  "closed": false,
+  "amount": 95,
+  "period": "month",
+  "gated": true,
+  "utilities": false
+ },
+ "H2802-068-0": {
+  "closed": false,
+  "amount": 40,
+  "period": "month",
+  "gated": true,
+  "utilities": false
+ },
+ "H2802-070-0": {
+  "closed": false,
+  "amount": 55,
+  "period": "month",
+  "gated": true,
+  "utilities": false
+ },
+ "H2802-071-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H2802-072-0": {
+  "closed": false,
+  "amount": 50,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H2802-073-0": {
+  "closed": false,
+  "amount": 25,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H2802-075-0": {
+  "closed": false,
+  "amount": 75,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H2802-076-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H2802-077-0": {
+  "closed": false,
+  "amount": 60,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H2802-078-0": {
+  "closed": false,
+  "amount": 25,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H2802-079-0": {
+  "closed": false,
+  "amount": 30,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H2802-086-0": {
+  "closed": false,
+  "amount": 55,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H2802-087-0": {
+  "closed": false,
+  "amount": 30,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H2802-088-0": {
+  "closed": false,
+  "amount": 63,
+  "period": "month",
+  "gated": true,
+  "utilities": false
+ },
+ "H2802-090-0": {
+  "closed": false,
+  "amount": 153,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H2802-091-0": {
+  "closed": false,
+  "amount": 100,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H3256-004-1": {
+  "closed": false,
+  "amount": 181,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H3256-004-2": {
+  "closed": false,
+  "amount": 190,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H3256-005-1": {
+  "closed": false,
+  "amount": 130,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H3256-005-2": {
+  "closed": false,
+  "amount": 127,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H3256-006-1": {
+  "closed": false,
+  "amount": 62,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H3256-006-2": {
+  "closed": false,
+  "amount": 62,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H3256-006-3": {
+  "closed": false,
+  "amount": 40,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H3868-001-0": {
+  "closed": false,
+  "amount": 265,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H3868-003-1": {
+  "closed": false,
+  "amount": 120,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H3868-003-2": {
+  "closed": false,
+  "amount": 55,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H3868-003-3": {
+  "closed": false,
+  "amount": 70,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H3868-004-1": {
+  "closed": false,
+  "amount": 250,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H3868-004-2": {
+  "closed": false,
+  "amount": 195,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H3868-005-0": {
+  "closed": false,
+  "amount": 80,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H3868-007-0": {
+  "closed": false,
+  "amount": 288,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H4514-007-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H4514-014-0": {
+  "closed": false,
+  "amount": 25,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H4514-015-0": {
+  "closed": false,
+  "amount": 75,
+  "period": "month",
+  "gated": true,
+  "utilities": false
+ },
+ "H4514-017-0": {
+  "closed": false,
+  "amount": 60,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H4514-022-0": {
+  "closed": false,
+  "amount": 70,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H4514-023-0": {
+  "closed": false,
+  "amount": 75,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H4527-001-0": {
+  "closed": false,
+  "amount": 25,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H4527-002-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H4527-003-0": {
+  "closed": false,
+  "amount": 40,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H4527-005-0": {
+  "closed": false,
+  "amount": 35,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H4527-013-0": {
+  "closed": false,
+  "amount": 60,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H4527-024-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H4527-037-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H4527-039-0": {
+  "closed": false,
+  "amount": 40,
+  "period": "month",
+  "gated": true,
+  "utilities": false
+ },
+ "H4527-040-0": {
+  "closed": false,
+  "amount": 80,
+  "period": "month",
+  "gated": true,
+  "utilities": false
+ },
+ "H4527-041-0": {
+  "closed": false,
+  "amount": 50,
+  "period": "month",
+  "gated": true,
+  "utilities": false
+ },
+ "H4527-042-0": {
+  "closed": false,
+  "amount": 45,
+  "period": "month",
+  "gated": true,
+  "utilities": false
+ },
+ "H4527-045-0": {
+  "closed": false,
+  "amount": 40,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H4527-048-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H4527-051-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H4527-052-0": {
+  "closed": false,
+  "amount": 25,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H4527-053-0": {
+  "closed": false,
+  "amount": 25,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H4527-055-0": {
+  "closed": false,
+  "amount": 60,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H4527-056-0": {
+  "closed": false,
+  "amount": 75,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H4527-057-0": {
+  "closed": false,
+  "amount": 90,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H4527-058-0": {
+  "closed": false,
+  "amount": 60,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H4527-059-0": {
+  "closed": false,
+  "amount": 25,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H4527-060-1": {
+  "closed": false,
+  "amount": 258,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H4527-060-2": {
+  "closed": true,
+  "amount": 149,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H4527-061-0": {
+  "closed": false,
+  "amount": 256,
+  "period": "month",
+  "gated": true,
+  "utilities": false
+ },
+ "H4604-033-0": {
+  "closed": false,
+  "amount": 25,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H4604-034-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H4604-036-0": {
+  "closed": false,
+  "amount": 30,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H4604-037-0": {
+  "closed": false,
+  "amount": 40,
+  "period": "month",
+  "gated": true,
+  "utilities": false
+ },
+ "H5008-010-0": {
+  "closed": false,
+  "amount": 99,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H5008-011-0": {
+  "closed": false,
+  "amount": 126,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H5008-016-0": {
+  "closed": false,
+  "amount": 100,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H5008-017-0": {
+  "closed": false,
+  "amount": 259,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H5253-047-0": {
+  "closed": false,
+  "amount": 40,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H5253-048-0": {
+  "closed": false,
+  "amount": 90,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H5253-051-0": {
+  "closed": false,
+  "amount": 40,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H5253-062-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H5253-081-0": {
+  "closed": false,
+  "amount": 25,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H5253-082-0": {
+  "closed": false,
+  "amount": 200,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H5253-084-0": {
+  "closed": false,
+  "amount": 25,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H5253-087-0": {
+  "closed": false,
+  "amount": 25,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H5253-088-0": {
+  "closed": false,
+  "amount": 100,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H5253-089-0": {
+  "closed": false,
+  "amount": 25,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H5253-099-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H5253-100-0": {
+  "closed": false,
+  "amount": 40,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H5253-108-1": {
+  "closed": false,
+  "amount": 25,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H5253-113-0": {
+  "closed": false,
+  "amount": 110,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H5253-119-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H5253-121-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H5253-124-1": {
+  "closed": false,
+  "amount": 25,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H5253-124-2": {
+  "closed": false,
+  "amount": 50,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H5253-125-1": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H5253-125-2": {
+  "closed": false,
+  "amount": 25,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H5253-126-1": {
+  "closed": false,
+  "amount": 95,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H5253-126-2": {
+  "closed": false,
+  "amount": 110,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H5253-127-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H5253-128-0": {
+  "closed": false,
+  "amount": 25,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H5253-130-0": {
+  "closed": false,
+  "amount": 25,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H5253-131-0": {
+  "closed": false,
+  "amount": 40,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H5253-132-0": {
+  "closed": false,
+  "amount": 40,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H5253-133-0": {
+  "closed": false,
+  "amount": 150,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H5253-134-0": {
+  "closed": false,
+  "amount": 30,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H5253-135-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H5253-141-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H5253-144-1": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H5253-144-2": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H5253-171-0": {
+  "closed": false,
+  "amount": 25,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H5253-172-0": {
+  "closed": false,
+  "amount": 70,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H5253-173-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H5253-174-0": {
+  "closed": false,
+  "amount": 50,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H5253-175-0": {
+  "closed": false,
+  "amount": 40,
+  "period": "month",
+  "gated": true,
+  "utilities": false
+ },
+ "H5253-176-0": {
+  "closed": false,
+  "amount": 95,
+  "period": "month",
+  "gated": true,
+  "utilities": false
+ },
+ "H5253-182-0": {
+  "closed": false,
+  "amount": 40,
+  "period": "month",
+  "gated": true,
+  "utilities": false
+ },
+ "H5253-183-0": {
+  "closed": false,
+  "amount": 72,
+  "period": "month",
+  "gated": true,
+  "utilities": false
+ },
+ "H5253-190-0": {
+  "closed": false,
+  "amount": 85,
+  "period": "month",
+  "gated": true,
+  "utilities": false
+ },
+ "H5253-193-1": {
+  "closed": false,
+  "amount": 48,
+  "period": "month",
+  "gated": true,
+  "utilities": false
+ },
+ "H5253-193-2": {
+  "closed": false,
+  "amount": 100,
+  "period": "month",
+  "gated": true,
+  "utilities": false
+ },
+ "H5253-194-1": {
+  "closed": false,
+  "amount": 100,
+  "period": "month",
+  "gated": true,
+  "utilities": false
+ },
+ "H5253-194-2": {
+  "closed": false,
+  "amount": 130,
+  "period": "month",
+  "gated": true,
+  "utilities": false
+ },
+ "H5253-195-0": {
+  "closed": false,
+  "amount": 48,
+  "period": "month",
+  "gated": true,
+  "utilities": false
+ },
+ "H5253-196-0": {
+  "closed": false,
+  "amount": 90,
+  "period": "month",
+  "gated": true,
+  "utilities": false
+ },
+ "H5253-197-0": {
+  "closed": false,
+  "amount": 45,
+  "period": "month",
+  "gated": true,
+  "utilities": false
+ },
+ "H5253-201-0": {
+  "closed": false,
+  "amount": 30,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H5253-204-0": {
+  "closed": false,
+  "amount": 25,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H5253-205-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H5253-213-0": {
+  "closed": false,
+  "amount": 40,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H5253-214-0": {
+  "closed": false,
+  "amount": 44,
+  "period": "month",
+  "gated": true,
+  "utilities": false
+ },
+ "H5253-221-0": {
+  "closed": false,
+  "amount": 45,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H5253-222-0": {
+  "closed": false,
+  "status": "not-in-portal"
+ },
+ "H5253-223-0": {
+  "closed": false,
+  "status": "not-in-portal"
+ },
+ "H5253-235-0": {
+  "closed": false,
+  "amount": 100,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H5253-241-0": {
+  "closed": false,
+  "amount": 40,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H5253-243-2": {
+  "closed": false,
+  "amount": 40,
+  "period": "month",
+  "gated": true,
+  "utilities": false
+ },
+ "H5253-244-0": {
+  "closed": false,
+  "amount": 70,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H5253-246-0": {
+  "closed": false,
+  "status": "not-in-portal"
+ },
+ "H5253-247-0": {
+  "closed": false,
+  "status": "not-in-portal"
+ },
+ "H5253-248-0": {
+  "closed": false,
+  "status": "not-in-portal"
+ },
+ "H5253-249-0": {
+  "closed": false,
+  "status": "not-in-portal"
+ },
+ "H5253-253-0": {
+  "closed": false,
+  "status": "not-in-portal"
+ },
+ "H5253-255-0": {
+  "closed": false,
+  "amount": 80,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H5253-256-0": {
+  "closed": false,
+  "amount": 50,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H5253-257-0": {
+  "closed": false,
+  "amount": 55,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H5253-258-0": {
+  "closed": false,
+  "amount": 25,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H5253-259-0": {
+  "closed": false,
+  "amount": 85,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H5253-260-0": {
+  "closed": false,
+  "amount": 110,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H5253-262-0": {
+  "closed": false,
+  "amount": 347,
+  "period": "month",
+  "gated": true,
+  "utilities": false
+ },
+ "H5253-264-0": {
+  "closed": false,
+  "amount": 322,
+  "period": "month",
+  "gated": true,
+  "utilities": false
+ },
+ "H5322-025-0": {
+  "closed": false,
+  "amount": 89,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H5322-033-0": {
+  "closed": false,
+  "amount": 40,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H5322-038-0": {
+  "closed": false,
+  "amount": 46,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H5322-040-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H5322-043-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H5322-044-0": {
+  "closed": false,
+  "amount": 25,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H5322-046-0": {
+  "closed": false,
+  "amount": 174,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H5322-049-1": {
+  "closed": false,
+  "amount": 257,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H5322-049-2": {
+  "closed": false,
+  "amount": 255,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H5322-049-3": {
+  "closed": false,
+  "amount": 141,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H5322-050-1": {
+  "closed": false,
+  "amount": 70,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H5322-050-2": {
+  "closed": false,
+  "amount": 70,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H5322-050-3": {
+  "closed": false,
+  "amount": 60,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H5322-052-1": {
+  "closed": false,
+  "amount": 256,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H5322-052-2": {
+  "closed": false,
+  "amount": 221,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H5322-052-3": {
+  "closed": false,
+  "amount": 166,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H5322-053-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H5420-001-0": {
+  "closed": false,
+  "amount": 25,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H5420-003-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H5420-014-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H5435-001-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H5435-024-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H6595-003-0": {
+  "closed": false,
+  "amount": 71,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H6595-006-1": {
+  "closed": false,
+  "amount": 239,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H6595-006-2": {
+  "closed": false,
+  "amount": 224,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H6595-007-1": {
+  "closed": false,
+  "amount": 110,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H6595-007-2": {
+  "closed": false,
+  "amount": 40,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "H8211-001-0": {
+  "closed": false,
+  "amount": 25,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H8211-005-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H8211-006-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H8211-011-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H8768-005-0": {
+  "closed": false,
+  "amount": 25,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H8768-007-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H8768-008-0": {
+  "closed": false,
+  "amount": 25,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H8768-009-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H8768-010-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H8768-011-0": {
+  "closed": false,
+  "amount": 35,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H8768-013-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H8768-016-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H8768-017-2": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H8768-018-0": {
+  "closed": false,
+  "amount": 40,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H8768-019-0": {
+  "closed": false,
+  "amount": 50,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H8768-020-0": {
+  "closed": false,
+  "amount": 120,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H8768-021-0": {
+  "closed": false,
+  "amount": 225,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H8768-023-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H8768-024-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H8768-025-0": {
+  "closed": false,
+  "amount": 90,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H8768-027-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H8768-028-0": {
+  "closed": false,
+  "amount": 25,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H8768-030-0": {
+  "closed": false,
+  "amount": 55,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H8768-031-0": {
+  "closed": false,
+  "amount": 160,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H8768-034-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H8768-039-0": {
+  "closed": false,
+  "amount": 25,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "H8768-040-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H8768-063-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "H8768-064-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "R0759-001-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "R0759-002-0": {
+  "closed": false,
+  "status": "not-covered"
+ },
+ "R0759-003-0": {
+  "closed": true,
+  "amount": 35,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "R2604-002-0": {
+  "closed": false,
+  "amount": 45,
+  "period": "month",
+  "gated": true,
+  "utilities": false
+ },
+ "R2604-005-0": {
+  "closed": false,
+  "amount": 65,
+  "period": "quarter",
+  "gated": false,
+  "utilities": false
+ },
+ "R6801-009-0": {
+  "closed": false,
+  "amount": 40,
+  "period": "month",
+  "gated": true,
+  "utilities": false
+ },
+ "R6801-011-0": {
+  "closed": false,
+  "amount": 27,
+  "period": "month",
+  "gated": true,
+  "utilities": true
+ },
+ "R6801-012-0": {
+  "closed": false,
+  "status": "not-covered"
+ }
+}

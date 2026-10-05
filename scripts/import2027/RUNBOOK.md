@@ -134,7 +134,65 @@ Unclassified (stay hidden from a plain QMB search): Wellcare Dual Align H0062-11
 Medicaid levels); UHC H0421-1, H1889-2 (both segments), H1889-26, R0759-3 (UHC's portal says "not accepting new members starting Jan 1, 2027");
 Aetna H1610-1 and Wellcare H1416-81 (no SB).
 
+## SerpApi sweep — 2026-10-05 (key replaced by Dale, works again)
+
+`node scripts/sb2027/serp-sweep.js --budget 150 --conc 6` — 2 Google queries per still-missing plan-segment, PDF links on carrier/mirror hosts are
+added to `sb-url-hints-2027.json`, then `acquire.js --retry` runs them through the strict validator. Result on 10-05: 94 plan-segments searched
+(about 205 searches), 16 returned candidate links, **0 were the right document** (all rejected as another plan's SB; the rejected hints were removed
+again). Google cannot find an SB the carrier has not published. Use it for stragglers, not for the UHC backlog.
+
+## Specialist copay from the SB — applied 2026-10-05
+
+`node scripts/sb2027/fix-specialist.js` (dry-run) / `--apply`. 2027 port of `fix-specialist-typediff-zero.js` + `set-uhc-specialist-choice-display.js`
+(same `analyze()` / `analyzeChoice()`, verbatim), per plan-segment, local SBs, set-based.
+- 153 plan-segments had specialist coinsurance and no copay (25 without an SB). 1 clean "$0 copay" (Wellcare H9630-11, 75 rows -> $0).
+- 18 UHC "$0 copay or 20% coinsurance" plans got `specialistDisplay = "$0 or 20%"` (863 rows, display only).
+- 2027 trap: UHC C-SNP SBs wrap "$0 / copay or 20% coinsurance" over two lines, which the 2026 analyzer reads as a clean $0. A member-choice match now wins.
+
+## OTC / food card / wallets from the SB — applied 2026-10-05
+
+1. **Extract** with the 2026 extractor, extraction-only (it never touches the DB without `--update-db`):
+   build chunk files under `.cms-import-tmp/sb-2027/extract/in/` (30 SBs or 90 MB each; `organization` filled so no DB lookup), then per chunk, from a scratch
+   cwd: `ESBUILD_BINARY_PATH=<linux esbuild> DATABASE_URL=postgresql://none:none@127.0.0.1:1/none node node_modules/tsx/dist/cli.mjs scripts/extract-sb-benefits.ts <chunk.json>`
+   and move `sb-benefit-extraction-results.json` to `extract/out/`. 1,940 SBs took about 7 minutes in 3 calls. Merged result: `extract/all.json` keyed by plan-segment.
+   (Do NOT run it from the repo root: it overwrites the old `sb-benefit-extraction-results.json` there.)
+2. `node scripts/sb2027/build-benefits.js` — proposals + review report, no DB writes -> `scripts/data/sb-benefits-2027.json` (every entry carries its SB sentence).
+3. `node scripts/sb2027/apply-benefits.js` (dry-run) / `--apply` — one UPDATE, 2027 only, by segment, only the columns each SB supports.
+
+Rules (2026 conventions; the 2026 fixer each one ports is named in `build-benefits.js`):
+- BASE: `sbVerifiedOtcAmount` at extractor confidence >= 0.85, `sbVerifiedFoodAmount` at >= 0.80; SSBCI flags only where the PBP flags an SSBCI benefit.
+- Aetna D-SNP/C-SNP: "$X monthly ... OTC Wallet will change to the Extra Supports Wallet" -> `foodCardAllowance = X*12`, conditional. Never `sbVerifiedFoodAmount`.
+- Aetna other: "Extra Supports Wallet with a $Q quarterly benefit" -> `foodCardAllowance = Q*4`, conditional.
+- UHC: benefit-row title decides. "OTC, healthy food, utilities +" (D-SNP) / "OTC and food credit" (C-SNP) = gated food card at the credit amount; "OTC credit" = OTC only.
+- Wellcare: "$X monthly preloaded on your Wellcare Spendables card to spend on OTC items ... and if eligible, SSBCI" with Healthy Food in the SSBCI list ->
+  food card at the Spendables amount, conditional. **This is a judgment call:** in 2026 only 16 of 50 Wellcare D-SNPs carried a food $ (the rest were treated as
+  OTC-only under the "same wallet" rule). The 2027 SB wording is uniform and is the same structure as the Aetna/UHC/Humana wallets Dale approved as food cards.
+- Devoted: "Food & Home Card $X per month for qualifying members" -> `sbVerifiedFoodAmount = X*12`, conditional + standalone; SNPs also `foodCardAllowance`.
+- Humana: Healthy Options Allowance -> `sbVerifiedOtcAmount = sbVerifiedFoodAmount` (BASE finds 127 of 132 SNPs; a fallback regex catches 5 more).
+- HealthSpring: Healthy Grocery Allowance accepted at confidence 0.75 (it equals the PBP-filed amount on every non-segmented plan).
+- UHC with no SB: `scripts/data/uhc-mpp-otc-2027.json` (agent portal, read 10-05). Portal vs SB agree on amount, period and food gating on 305 of 305
+  plan-segments that have both. 61 food cards + 11 OTC-only filled this way; they are replaced by the SB rule as soon as the SB is staged (re-run steps 1-3 for it).
+
+Result: 1,288 plan-segments, 45,036 rows written. D-SNP/C-SNP plan-segments with a food card: Aetna 122/122, Devoted 165/211, HealthSpring 36/38, Humana 133/143,
+UHC 156/157, Wellcare 52/58. SB OTC = PBP OTC on every non-segmented plan where both exist. 2026 checksum unchanged.
+
+**Finding — PBP benefits are not segment-aware.** `import-pbp.js` keys by plan ID and keeps the MAX across segments, so on the 74 segmented 2027 plans
+(4,626 rows) every segment carries the richest segment's PBP numbers (OTC, food, and likely copays). Example H4513-109: segment 2's SB says OTC $60/qtr and
+grocery $200/qtr; the DB had segment 1's $150 and $300 on both. The SB values written today outrank the PBP columns for OTC and food, so those two are right
+per segment now (23 corrections listed in the build report). Other PBP columns on segmented plans are still collapsed. 2026 has the same issue.
+
+**UHC plans closed to new members for 2027** (agent portal): H0421-1, H1889-2 (both segments), H1889-8, H1889-26, H1889-30, H4527-60 segment 2, R0759-3.
+**Removed from 2027 on Dale's decision, 2026-10-05:** `node scripts/import2027/remove-closed-uhc-2027.js --apply` — 568 rows, each saved first in
+`scripts/import2027/removed-closed-uhc-2027-backup.json`. 2027 is now 68,143 rows · 1,915 plan IDs · 2,026 plan-segments (1,937 with an SB).
+**Re-run that script after any 2027 re-import.** The SB manifest and `plans.json` still list these plan-segments, so `apply-links.js`, `apply-qmb.js` and
+`apply-benefits.js` will report a few entries with no 2027 row; that is expected.
+Other decisions the same day: Wellcare Spendables = chronic-only food card (as applied); Aetna H1610-1 (FIDE, VA) stays in.
+
+Not done from the 2026 list: the MRI/CAT outpatient-hospital audit (display only, needs a fresh 2027 audit), SB page numbers (the extractor returns none),
+H4939-4 Humana PathWays NFLOC (allowance amount not read).
+
 ## Still to do for 2027
 
-Remaining UHC SBs (93) + 2 stragglers (then re-run the QMB steps above), the 2027 SB-fix pass, SB benefit extraction (OTC / food card pages, wallets),
-hospital full-stay re-derive, Star Ratings, 2027 LIS figures (`lib/lisDrugCopays2026.ts`, benchmarks), then un-gray 2027 in the dropdown.
+Retry the 88 UHC SBs + Wellcare H1416-81 (then re-run the QMB and benefit steps above for the new ones), 2027 LIS figures (`lib/lisDrugCopays2026.ts`,
+`lib/lisBenchmarks.ts` hold 2026 values — needs a code change and a deploy), Star Ratings (CMS had not posted them as of 10-05), the MRI/CAT audit,
+a segment-aware PBP import, then un-gray 2027 in the dropdown.
