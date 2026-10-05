@@ -1,0 +1,6591 @@
+{
+ "H5216-164-0": {
+  "planId": "H5216-164",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "HumanaChoice SNP-DE H5216-164 (PPO D-SNP)",
+  "states": [
+   "MO"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H0028-015-0": {
+  "planId": "H0028-15",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Gold Plus SNP-DE H0028-015 (HMO-POS D-SNP)",
+  "states": [
+   "MO"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H0028-032-0": {
+  "planId": "H0028-32",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Gold Plus SNP-DE H0028-032 (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H0028-036-0": {
+  "planId": "H0028-36",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Gold Plus SNP-DE H0028-036 (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H0062-011-0": {
+  "planId": "H0062-11",
+  "seg": "0",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Superior HealthPlan Dual Align (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": null,
+  "levels": [],
+  "signal": "uncertain"
+ },
+ "H0062-012-0": {
+  "planId": "H0062-12",
+  "seg": "0",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Superior HealthPlan Dual Align (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": null,
+  "levels": [],
+  "signal": "uncertain"
+ },
+ "H0062-013-0": {
+  "planId": "H0062-13",
+  "seg": "0",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Superior HealthPlan Dual Reserve Value (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QI",
+   "SLMB"
+  ],
+  "signal": "rule4:wellcare-msp-list"
+ },
+ "H0074-004-0": {
+  "planId": "H0074-4",
+  "seg": "0",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Magnolia Health Dual Access Open (PPO D-SNP)",
+  "states": [
+   "MS"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule4:wellcare-msp-list"
+ },
+ "H0111-004-0": {
+  "planId": "H0111-4",
+  "seg": "0",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Peach State Health Plan Dual Access Open (PPO D-SNP)",
+  "states": [
+   "GA"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule4:wellcare-msp-list"
+ },
+ "H0169-002-0": {
+  "planId": "H0169-2",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete MO-Q1 (HMO-POS D-SNP)",
+  "states": [
+   "MO"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H0169-014-1": {
+  "planId": "H0169-14",
+  "seg": "1",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete MO-S3 (HMO-POS D-SNP)",
+  "states": [
+   "MO"
+  ],
+  "protected": false,
+  "levels": [
+   "QMB+",
+   "SLMB",
+   "SLMB+"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H0169-014-2": {
+  "planId": "H0169-14",
+  "seg": "2",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete MO-S3 (HMO-POS D-SNP)",
+  "states": [
+   "MO"
+  ],
+  "protected": false,
+  "levels": [
+   "QMB+",
+   "SLMB",
+   "SLMB+"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H0169-014-3": {
+  "planId": "H0169-14",
+  "seg": "3",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete MO-S3 (HMO-POS D-SNP)",
+  "states": [
+   "MO"
+  ],
+  "protected": false,
+  "levels": [
+   "QMB+",
+   "SLMB",
+   "SLMB+"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H0169-015-1": {
+  "planId": "H0169-15",
+  "seg": "1",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Advantage MO-V1 (HMO-POS D-SNP)",
+  "states": [
+   "MO"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H0169-015-2": {
+  "planId": "H0169-15",
+  "seg": "2",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Advantage MO-V1 (HMO-POS D-SNP)",
+  "states": [
+   "MO"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H0169-015-3": {
+  "planId": "H0169-15",
+  "seg": "3",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Advantage MO-V1 (HMO-POS D-SNP)",
+  "states": [
+   "MO"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H0174-004-0": {
+  "planId": "H0174-4",
+  "seg": "0",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Superior HealthPlan Dual Access (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "rule4:wellcare-msp-list"
+ },
+ "H0174-022-0": {
+  "planId": "H0174-22",
+  "seg": "0",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Superior HealthPlan Dual Reserve (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QI",
+   "SLMB"
+  ],
+  "signal": "rule4:wellcare-msp-list"
+ },
+ "H0174-023-0": {
+  "planId": "H0174-23",
+  "seg": "0",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Superior HealthPlan Dual Liberty Sync (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": false,
+  "levels": [
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule4:wellcare-msp-list"
+ },
+ "H0174-024-0": {
+  "planId": "H0174-24",
+  "seg": "0",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Superior HealthPlan Dual Liberty Sync (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": false,
+  "levels": [
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule4:wellcare-msp-list"
+ },
+ "H0174-025-0": {
+  "planId": "H0174-25",
+  "seg": "0",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Superior HealthPlan Dual Liberty Sync (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": false,
+  "levels": [
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule4:wellcare-msp-list"
+ },
+ "H0174-026-0": {
+  "planId": "H0174-26",
+  "seg": "0",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Superior HealthPlan Dual Liberty Sync (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": false,
+  "levels": [
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule4:wellcare-msp-list"
+ },
+ "H0174-027-1": {
+  "planId": "H0174-27",
+  "seg": "1",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Superior HealthPlan Dual Liberty (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": false,
+  "levels": [
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule4:wellcare-msp-list"
+ },
+ "H0174-027-2": {
+  "planId": "H0174-27",
+  "seg": "2",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Superior HealthPlan Dual Liberty (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": false,
+  "levels": [
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule4:wellcare-msp-list"
+ },
+ "H0439-002-0": {
+  "planId": "H0439-2",
+  "seg": "0",
+  "carrier": "HealthSpring",
+  "planName": "HealthSpring TotalCare (HMO D-SNP)",
+  "states": [
+   "GA"
+  ],
+  "protected": false,
+  "levels": [
+   "QI",
+   "SLMB"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H0439-012-0": {
+  "planId": "H0439-12",
+  "seg": "0",
+  "carrier": "HealthSpring",
+  "planName": "HealthSpring TotalCare Plus (HMO D-SNP)",
+  "states": [
+   "GA"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H0439-022-0": {
+  "planId": "H0439-22",
+  "seg": "0",
+  "carrier": "HealthSpring",
+  "planName": "HealthSpring TotalCare (HMO D-SNP)",
+  "states": [
+   "MO"
+  ],
+  "protected": false,
+  "levels": [
+   "QI",
+   "SLMB"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H0439-023-0": {
+  "planId": "H0439-23",
+  "seg": "0",
+  "carrier": "HealthSpring",
+  "planName": "HealthSpring TotalCare Plus (HMO D-SNP)",
+  "states": [
+   "MO"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H0609-052-0": {
+  "planId": "H0609-52",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete TX-Q4 (HMO-POS D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H0628-012-0": {
+  "planId": "H0628-12",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare HIDE (HMO D-SNP)",
+  "states": [
+   "KY"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H0628-040-0": {
+  "planId": "H0628-40",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Partial Dual (HMO D-SNP)",
+  "states": [
+   "KY"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H1032-202-0": {
+  "planId": "H1032-202",
+  "seg": "0",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Sunshine Health Dual Reserve (HMO-POS D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "QI",
+   "SLMB"
+  ],
+  "signal": "rule4:wellcare-msp-list"
+ },
+ "H1032-246-0": {
+  "planId": "H1032-246",
+  "seg": "0",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Sunshine Health Dual Align (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule4:wellcare-msp-list"
+ },
+ "H1032-247-0": {
+  "planId": "H1032-247",
+  "seg": "0",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Sunshine Health Dual Align (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule4:wellcare-msp-list"
+ },
+ "H1032-248-0": {
+  "planId": "H1032-248",
+  "seg": "0",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Sunshine Health Dual Access (HMO-POS D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "rule4:wellcare-msp-list"
+ },
+ "H1032-249-0": {
+  "planId": "H1032-249",
+  "seg": "0",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Sunshine Health Dual Access (HMO-POS D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "rule4:wellcare-msp-list"
+ },
+ "H1032-250-0": {
+  "planId": "H1032-250",
+  "seg": "0",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Sunshine Health Dual Align Unity (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule4:wellcare-msp-list"
+ },
+ "H1036-077-0": {
+  "planId": "H1036-77",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Dual Select H1036-077 (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": true,
+  "levels": [
+   "QI",
+   "QMB",
+   "SLMB"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H1036-102-0": {
+  "planId": "H1036-102",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Dual Select H1036-102 (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": true,
+  "levels": [
+   "QI",
+   "QMB",
+   "SLMB"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H1036-209-0": {
+  "planId": "H1036-209",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Dual Select H1036-209 (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": true,
+  "levels": [
+   "QI",
+   "QMB",
+   "SLMB"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H1036-210-0": {
+  "planId": "H1036-210",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Dual Select H1036-210 (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": true,
+  "levels": [
+   "QI",
+   "QMB",
+   "SLMB"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H1036-213-0": {
+  "planId": "H1036-213",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Dual Select H1036-213 (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": true,
+  "levels": [
+   "QI",
+   "QMB",
+   "SLMB"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H1036-214-0": {
+  "planId": "H1036-214",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Dual Select H1036-214 (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": true,
+  "levels": [
+   "QI",
+   "QMB",
+   "SLMB"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H1036-222-0": {
+  "planId": "H1036-222",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Dual QMB Only (HMO D-SNP)",
+  "states": [
+   "MS"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H1036-226-0": {
+  "planId": "H1036-226",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Dual Select H1036-226 (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": true,
+  "levels": [
+   "QI",
+   "QMB",
+   "SLMB"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H1036-280-0": {
+  "planId": "H1036-280",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Fully Integrated H1036-280 (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H1036-285-0": {
+  "planId": "H1036-285",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Dual Select H1036-285 (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": true,
+  "levels": [
+   "QI",
+   "QMB",
+   "SLMB"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H1036-304-0": {
+  "planId": "H1036-304",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Dual Select H1036-304 (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": true,
+  "levels": [
+   "QI",
+   "QMB",
+   "SLMB"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H1036-314-0": {
+  "planId": "H1036-314",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Dual Select H1036-314 (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": true,
+  "levels": [
+   "QI",
+   "QMB",
+   "SLMB"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H1036-328-0": {
+  "planId": "H1036-328",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Gold Plus SNP-DE H1036-328 (HMO D-SNP)",
+  "states": [
+   "MS"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H1036-329-0": {
+  "planId": "H1036-329",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Dual Select H1036-329 (HMO D-SNP)",
+  "states": [
+   "MS"
+  ],
+  "protected": false,
+  "levels": [
+   "QI",
+   "SLMB"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H1036-339-0": {
+  "planId": "H1036-339",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Dual Integrated (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H1036-340-0": {
+  "planId": "H1036-340",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Dual Integrated (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H1036-341-0": {
+  "planId": "H1036-341",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Dual Integrated (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H1112-006-0": {
+  "planId": "H1112-6",
+  "seg": "0",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Peach State Health Plan Dual Access (HMO-POS D-SNP)",
+  "states": [
+   "GA"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "rule4:wellcare-msp-list"
+ },
+ "H1112-033-0": {
+  "planId": "H1112-33",
+  "seg": "0",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Peach State Health Plan Dual Liberty (HMO-POS D-SNP)",
+  "states": [
+   "GA"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule4:wellcare-msp-list"
+ },
+ "H1112-046-0": {
+  "planId": "H1112-46",
+  "seg": "0",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Peach State Health Plan Dual Reserve (HMO-POS D-SNP)",
+  "states": [
+   "GA"
+  ],
+  "protected": false,
+  "levels": [
+   "QI",
+   "SLMB"
+  ],
+  "signal": "rule4:wellcare-msp-list"
+ },
+ "H1112-047-0": {
+  "planId": "H1112-47",
+  "seg": "0",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Peach State Health Plan Dual Access (HMO-POS D-SNP)",
+  "states": [
+   "GA"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule4:wellcare-msp-list"
+ },
+ "H1112-048-0": {
+  "planId": "H1112-48",
+  "seg": "0",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Peach State Health Plan Dual Reserve (HMO-POS D-SNP)",
+  "states": [
+   "GA"
+  ],
+  "protected": false,
+  "levels": [
+   "QI",
+   "SLMB"
+  ],
+  "signal": "rule4:wellcare-msp-list"
+ },
+ "H1290-019-0": {
+  "planId": "H1290-19",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL 019 FL (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "QI",
+   "SLMB"
+  ],
+  "signal": "rule5b:devoted-assistance-list"
+ },
+ "H1290-020-0": {
+  "planId": "H1290-20",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL 020 FL (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "QI",
+   "SLMB"
+  ],
+  "signal": "rule5b:devoted-assistance-list"
+ },
+ "H1290-021-0": {
+  "planId": "H1290-21",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL 021 FL (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "QI",
+   "SLMB"
+  ],
+  "signal": "rule5b:devoted-assistance-list"
+ },
+ "H1290-022-0": {
+  "planId": "H1290-22",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL 022 FL (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "QI",
+   "SLMB"
+  ],
+  "signal": "rule5b:devoted-assistance-list"
+ },
+ "H1290-023-0": {
+  "planId": "H1290-23",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL 023 FL (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "QI",
+   "SLMB"
+  ],
+  "signal": "rule5b:devoted-assistance-list"
+ },
+ "H1290-024-0": {
+  "planId": "H1290-24",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL 024 FL (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "QI",
+   "SLMB"
+  ],
+  "signal": "rule5b:devoted-assistance-list"
+ },
+ "H1290-033-0": {
+  "planId": "H1290-33",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL 033 FL (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "QI",
+   "SLMB"
+  ],
+  "signal": "rule5b:devoted-assistance-list"
+ },
+ "H1290-034-0": {
+  "planId": "H1290-34",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL 034 FL (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "QI",
+   "SLMB"
+  ],
+  "signal": "rule5b:devoted-assistance-list"
+ },
+ "H1290-039-0": {
+  "planId": "H1290-39",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL 039 FL (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "QI",
+   "SLMB"
+  ],
+  "signal": "rule5b:devoted-assistance-list"
+ },
+ "H1290-041-0": {
+  "planId": "H1290-41",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL 041 FL (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "QI",
+   "SLMB"
+  ],
+  "signal": "rule5b:devoted-assistance-list"
+ },
+ "H1290-042-0": {
+  "planId": "H1290-42",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL QMB 042 FL (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "rule5b:devoted-assistance-list"
+ },
+ "H1290-043-0": {
+  "planId": "H1290-43",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL 043 FL (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "QI",
+   "SLMB"
+  ],
+  "signal": "rule5b:devoted-assistance-list"
+ },
+ "H1290-052-0": {
+  "planId": "H1290-52",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL QMB 052 FL (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "rule5b:devoted-assistance-list"
+ },
+ "H1290-053-0": {
+  "planId": "H1290-53",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL QMB 053 FL (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "rule5b:devoted-assistance-list"
+ },
+ "H1290-054-0": {
+  "planId": "H1290-54",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL QMB 054 FL (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "rule5b:devoted-assistance-list"
+ },
+ "H1290-055-0": {
+  "planId": "H1290-55",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL QMB 055 FL (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "rule5b:devoted-assistance-list"
+ },
+ "H1290-077-0": {
+  "planId": "H1290-77",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL FULL 077 FL (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule5b:devoted-assistance-list"
+ },
+ "H1290-078-0": {
+  "planId": "H1290-78",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL FULL 078 FL (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule5b:devoted-assistance-list"
+ },
+ "H1290-079-0": {
+  "planId": "H1290-79",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL FULL 079 FL (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule5b:devoted-assistance-list"
+ },
+ "H1290-080-0": {
+  "planId": "H1290-80",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL FULL 080 FL (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule5b:devoted-assistance-list"
+ },
+ "H1290-081-0": {
+  "planId": "H1290-81",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL FULL 081 FL (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule5b:devoted-assistance-list"
+ },
+ "H1290-082-0": {
+  "planId": "H1290-82",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL FULL 082 FL (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule5b:devoted-assistance-list"
+ },
+ "H1290-083-0": {
+  "planId": "H1290-83",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL FULL 083 FL (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule5b:devoted-assistance-list"
+ },
+ "H1290-096-0": {
+  "planId": "H1290-96",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL FULL 096 FL (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule5b:devoted-assistance-list"
+ },
+ "H1290-098-0": {
+  "planId": "H1290-98",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL FULL 098 FL (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule5b:devoted-assistance-list"
+ },
+ "H1290-100-0": {
+  "planId": "H1290-100",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL FULL 100 FL (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule5b:devoted-assistance-list"
+ },
+ "H1290-101-0": {
+  "planId": "H1290-101",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL FULL 101 FL (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule5b:devoted-assistance-list"
+ },
+ "H1290-103-0": {
+  "planId": "H1290-103",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL FULL 103 FL (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule5b:devoted-assistance-list"
+ },
+ "H1290-104-0": {
+  "planId": "H1290-104",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL FULL 104 FL (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule5b:devoted-assistance-list"
+ },
+ "H1396-001-0": {
+  "planId": "H1396-1",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Dual Integrated (HMO D-SNP)",
+  "states": [
+   "SC"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule3c:may-enroll-list"
+ },
+ "H1416-044-0": {
+  "planId": "H1416-44",
+  "seg": "0",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Magnolia Health Dual Liberty (HMO-POS D-SNP)",
+  "states": [
+   "MS"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule4:wellcare-msp-list"
+ },
+ "H1416-087-1": {
+  "planId": "H1416-87",
+  "seg": "1",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Magnolia Health Dual Access (HMO-POS D-SNP)",
+  "states": [
+   "MS"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "rule4:wellcare-msp-list"
+ },
+ "H1416-087-2": {
+  "planId": "H1416-87",
+  "seg": "2",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Magnolia Health Dual Access (HMO-POS D-SNP)",
+  "states": [
+   "MS"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "rule4:wellcare-msp-list"
+ },
+ "H1416-087-3": {
+  "planId": "H1416-87",
+  "seg": "3",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Magnolia Health Dual Access (HMO-POS D-SNP)",
+  "states": [
+   "MS"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "rule4:wellcare-msp-list"
+ },
+ "H1609-043-0": {
+  "planId": "H1609-43",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare QMB Only Select (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H1609-044-0": {
+  "planId": "H1609-44",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare QMB Only Select (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H1609-045-0": {
+  "planId": "H1609-45",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Partial Dual Select (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+",
+   "SLMB",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H1609-046-0": {
+  "planId": "H1609-46",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Partial Dual Select (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+",
+   "SLMB",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H1609-047-0": {
+  "planId": "H1609-47",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Partial Dual Select (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+",
+   "SLMB",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H1609-048-0": {
+  "planId": "H1609-48",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare QMB Only Select (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H1609-055-0": {
+  "planId": "H1609-55",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Partial Dual Select (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+",
+   "SLMB",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H1609-056-0": {
+  "planId": "H1609-56",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Partial Dual Select (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+",
+   "SLMB",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H1609-062-0": {
+  "planId": "H1609-62",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Partial Dual Select (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+",
+   "SLMB",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H1609-064-0": {
+  "planId": "H1609-64",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Partial Dual Select (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+",
+   "SLMB",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H1609-073-0": {
+  "planId": "H1609-73",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Full Dual Select (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H1609-074-0": {
+  "planId": "H1609-74",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Full Dual Select (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H1609-075-0": {
+  "planId": "H1609-75",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Full Dual Select (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H1609-077-0": {
+  "planId": "H1609-77",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Full Dual Select (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H1609-078-0": {
+  "planId": "H1609-78",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Full Dual Select (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H1609-079-0": {
+  "planId": "H1609-79",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Full Dual Select (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H1609-088-0": {
+  "planId": "H1609-88",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Full Dual Select (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H1609-089-0": {
+  "planId": "H1609-89",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Full Dual Select (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H1609-090-0": {
+  "planId": "H1609-90",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Full Dual Select (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H1609-092-0": {
+  "planId": "H1609-92",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Full Dual Select (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H1609-103-0": {
+  "planId": "H1609-103",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Partial Dual Select (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "SLMB",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H1609-104-0": {
+  "planId": "H1609-104",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Partial Dual Select (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "SLMB",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H1609-105-0": {
+  "planId": "H1609-105",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Partial Dual Select (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "SLMB",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H1664-005-0": {
+  "planId": "H1664-5",
+  "seg": "0",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Home State Health Dual Access (HMO-POS D-SNP)",
+  "states": [
+   "MO"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule4:wellcare-msp-list"
+ },
+ "H1664-012-0": {
+  "planId": "H1664-12",
+  "seg": "0",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Home State Health Dual Reserve (HMO-POS D-SNP)",
+  "states": [
+   "MO"
+  ],
+  "protected": false,
+  "levels": [
+   "QI",
+   "SLMB"
+  ],
+  "signal": "rule4:wellcare-msp-list"
+ },
+ "H1692-005-0": {
+  "planId": "H1692-5",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Full Dual (HMO D-SNP)",
+  "states": [
+   "WV"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H1692-010-0": {
+  "planId": "H1692-10",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Partial Dual (HMO D-SNP)",
+  "states": [
+   "WV"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H1692-011-0": {
+  "planId": "H1692-11",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Full Dual Extra (HMO D-SNP)",
+  "states": [
+   "WV"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H1889-008-0": {
+  "planId": "H1889-8",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete KY-Q1 (PPO D-SNP)",
+  "states": [
+   "KY"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule3b:category-bullets(rule2-override)"
+ },
+ "H1889-010-0": {
+  "planId": "H1889-10",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete LA-Q1 (PPO D-SNP)",
+  "states": [
+   "LA"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H1889-030-0": {
+  "planId": "H1889-30",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete KY-S3 (PPO D-SNP)",
+  "states": [
+   "KY"
+  ],
+  "protected": false,
+  "levels": [],
+  "signal": "rule2:full-medicaid-conditional"
+ },
+ "H1889-031-0": {
+  "planId": "H1889-31",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete LA-S4 (PPO D-SNP)",
+  "states": [
+   "LA"
+  ],
+  "protected": false,
+  "levels": [],
+  "signal": "rule2:full-medicaid-conditional"
+ },
+ "H1889-044-2": {
+  "planId": "H1889-44",
+  "seg": "2",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete MS-S3 (PPO D-SNP)",
+  "states": [
+   "MS"
+  ],
+  "protected": false,
+  "levels": [],
+  "signal": "rule2:full-medicaid-conditional"
+ },
+ "H1951-032-0": {
+  "planId": "H1951-32",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Dual QMB Only (HMO D-SNP)",
+  "states": [
+   "LA"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H1951-041-0": {
+  "planId": "H1951-41",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Dual QMB Only (HMO D-SNP)",
+  "states": [
+   "LA"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H1951-056-0": {
+  "planId": "H1951-56",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Dual Select H1951-056 (HMO D-SNP)",
+  "states": [
+   "LA"
+  ],
+  "protected": false,
+  "levels": [
+   "QI",
+   "SLMB"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H1951-057-0": {
+  "planId": "H1951-57",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Gold Plus SNP-DE H1951-057 (HMO D-SNP)",
+  "states": [
+   "LA"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H1951-061-0": {
+  "planId": "H1951-61",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Gold Plus SNP-DE H1951-061 (HMO D-SNP)",
+  "states": [
+   "LA"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H2001-040-0": {
+  "planId": "H2001-40",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete MO-Q2 (PPO D-SNP)",
+  "states": [
+   "MO"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule3b:category-bullets(rule2-override)"
+ },
+ "H2001-065-0": {
+  "planId": "H2001-65",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete AR-S2 (PPO D-SNP)",
+  "states": [
+   "AR"
+  ],
+  "protected": false,
+  "levels": [],
+  "signal": "rule2:full-medicaid-conditional"
+ },
+ "H2001-075-0": {
+  "planId": "H2001-75",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete SC-S2 (PPO D-SNP)",
+  "states": [
+   "SC"
+  ],
+  "protected": false,
+  "levels": [],
+  "signal": "rule2:full-medicaid-conditional"
+ },
+ "H2001-082-0": {
+  "planId": "H2001-82",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete WV-S2 (PPO D-SNP)",
+  "states": [
+   "WV"
+  ],
+  "protected": false,
+  "levels": [],
+  "signal": "rule2:full-medicaid-conditional"
+ },
+ "H2041-007-0": {
+  "planId": "H2041-7",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL PLUS 007 MO (HMO D-SNP)",
+  "states": [
+   "MO"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule5:devoted-zero-list"
+ },
+ "H2041-008-0": {
+  "planId": "H2041-8",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL 008 MO (HMO D-SNP)",
+  "states": [
+   "MO"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule5:devoted-zero-list"
+ },
+ "H2041-011-0": {
+  "planId": "H2041-11",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL FULL 011 MO (HMO D-SNP)",
+  "states": [
+   "MO"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule5b:devoted-assistance-list"
+ },
+ "H2293-002-0": {
+  "planId": "H2293-2",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Dual Extra Care (PPO D-SNP)",
+  "states": [
+   "GA"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+",
+   "SLMB",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H2293-004-0": {
+  "planId": "H2293-4",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Dual Care (PPO D-SNP)",
+  "states": [
+   "GA"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+",
+   "SLMB",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H2293-021-0": {
+  "planId": "H2293-21",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Dual Extra (PPO D-SNP)",
+  "states": [
+   "GA"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+",
+   "SLMB",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H2491-025-0": {
+  "planId": "H2491-25",
+  "seg": "0",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Louisiana Connections Dual Reserve (HMO-POS D-SNP)",
+  "states": [
+   "LA"
+  ],
+  "protected": false,
+  "levels": [
+   "QI",
+   "SLMB"
+  ],
+  "signal": "rule4:wellcare-msp-list"
+ },
+ "H2491-035-0": {
+  "planId": "H2491-35",
+  "seg": "0",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Louisiana Connections Dual Liberty (HMO-POS D-SNP)",
+  "states": [
+   "LA"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule4:wellcare-msp-list"
+ },
+ "H2491-036-0": {
+  "planId": "H2491-36",
+  "seg": "0",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Louisiana Connections Dual Liberty (HMO-POS D-SNP)",
+  "states": [
+   "LA"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule4:wellcare-msp-list"
+ },
+ "H2491-037-0": {
+  "planId": "H2491-37",
+  "seg": "0",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Louisiana Connections Dual Access (HMO-POS D-SNP)",
+  "states": [
+   "LA"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "rule4:wellcare-msp-list"
+ },
+ "H2491-038-0": {
+  "planId": "H2491-38",
+  "seg": "0",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Louisiana Connections Dual Access (HMO-POS D-SNP)",
+  "states": [
+   "LA"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "rule4:wellcare-msp-list"
+ },
+ "H2663-097-0": {
+  "planId": "H2663-97",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Full Dual Care (HMO D-SNP)",
+  "states": [
+   "AR"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H2663-109-0": {
+  "planId": "H2663-109",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Full Dual Extra Care (HMO D-SNP)",
+  "states": [
+   "MO"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H2663-110-0": {
+  "planId": "H2663-110",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Full Dual Extra (HMO D-SNP)",
+  "states": [
+   "MO"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H2663-112-0": {
+  "planId": "H2663-112",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Full Dual Extra (HMO D-SNP)",
+  "states": [
+   "MO"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H2663-114-0": {
+  "planId": "H2663-114",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Full Dual Extra (HMO D-SNP)",
+  "states": [
+   "MO"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H2663-117-0": {
+  "planId": "H2663-117",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Dual Extra Care (HMO D-SNP)",
+  "states": [
+   "OK"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H2845-003-0": {
+  "planId": "H2845-3",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL CHOICE FULL 003 OK (PPO D-SNP)",
+  "states": [
+   "OK"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule5b:devoted-assistance-list"
+ },
+ "H2875-001-0": {
+  "planId": "H2875-1",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Dual Fully Integrated H2875-001 (HMO-POS D-SNP)",
+  "states": [
+   "VA"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule3c:may-enroll-list"
+ },
+ "H2875-002-0": {
+  "planId": "H2875-2",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Dual QMB Only (HMO-POS D-SNP)",
+  "states": [
+   "VA"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H2875-003-0": {
+  "planId": "H2875-3",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Dual Fully Integrated H2875-003 (HMO D-SNP)",
+  "states": [
+   "VA"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule3c:may-enroll-list"
+ },
+ "H2875-004-0": {
+  "planId": "H2875-4",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Dual QMB Only (HMO D-SNP)",
+  "states": [
+   "VA"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H2875-005-0": {
+  "planId": "H2875-5",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Dual Select H2875-005 (HMO D-SNP)",
+  "states": [
+   "VA"
+  ],
+  "protected": false,
+  "levels": [
+   "QI",
+   "SLMB"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H2875-006-0": {
+  "planId": "H2875-6",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Dual Select H2875-006 (HMO-POS D-SNP)",
+  "states": [
+   "VA"
+  ],
+  "protected": false,
+  "levels": [
+   "QI",
+   "SLMB"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H3080-003-0": {
+  "planId": "H3080-3",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL PLUS 003 AL (HMO D-SNP)",
+  "states": [
+   "AL"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule5b:devoted-assistance-list"
+ },
+ "H3080-004-0": {
+  "planId": "H3080-4",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL 004 AL (HMO D-SNP)",
+  "states": [
+   "AL"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule5:devoted-zero-list"
+ },
+ "H3080-006-0": {
+  "planId": "H3080-6",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL PLUS 006 AL (HMO D-SNP)",
+  "states": [
+   "AL"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule5b:devoted-assistance-list"
+ },
+ "H3080-007-0": {
+  "planId": "H3080-7",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL 007 AL (HMO D-SNP)",
+  "states": [
+   "AL"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule5:devoted-zero-list"
+ },
+ "H3146-016-0": {
+  "planId": "H3146-16",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Full Dual (HMO D-SNP)",
+  "states": [
+   "SC"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H3146-023-0": {
+  "planId": "H3146-23",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Full Dual Care (HMO D-SNP)",
+  "states": [
+   "SC"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H3239-001-0": {
+  "planId": "H3239-1",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare QMB Only Care (HMO D-SNP)",
+  "states": [
+   "LA"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H3239-002-0": {
+  "planId": "H3239-2",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Dual Extra Care (HMO D-SNP)",
+  "states": [
+   "AL"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+",
+   "SLMB",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H3239-005-0": {
+  "planId": "H3239-5",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Dual Extra (HMO D-SNP)",
+  "states": [
+   "MS"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H3239-010-0": {
+  "planId": "H3239-10",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Dual Care (HMO D-SNP)",
+  "states": [
+   "AL"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+",
+   "SLMB",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H3239-012-0": {
+  "planId": "H3239-12",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Dual Care (HMO D-SNP)",
+  "states": [
+   "MS"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+",
+   "SLMB",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H3239-015-0": {
+  "planId": "H3239-15",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Dual Extra Care (HMO D-SNP)",
+  "states": [
+   "MS"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H3239-023-0": {
+  "planId": "H3239-23",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Partial Dual Care (HMO D-SNP)",
+  "states": [
+   "LA"
+  ],
+  "protected": false,
+  "levels": [
+   "SLMB",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H3239-026-0": {
+  "planId": "H3239-26",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Full Dual Care (HMO D-SNP)",
+  "states": [
+   "AL"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H3239-027-0": {
+  "planId": "H3239-27",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Full Dual Care (HMO D-SNP)",
+  "states": [
+   "LA"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H3239-028-0": {
+  "planId": "H3239-28",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Full Dual Care (HMO D-SNP)",
+  "states": [
+   "MS"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H3256-004-2": {
+  "planId": "H3256-4",
+  "seg": "2",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete GA-S2 (PPO D-SNP)",
+  "states": [
+   "GA"
+  ],
+  "protected": false,
+  "levels": [],
+  "signal": "rule2:full-medicaid-conditional"
+ },
+ "H3256-005-2": {
+  "planId": "H3256-5",
+  "seg": "2",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete GA-Q2 (PPO D-SNP)",
+  "states": [
+   "GA"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H3288-053-0": {
+  "planId": "H3288-53",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Dual Care (PPO D-SNP)",
+  "states": [
+   "OK"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H3868-003-1": {
+  "planId": "H3868-3",
+  "seg": "1",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete TX-Q6 (HMO-POS D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": true,
+  "levels": [
+   "QI",
+   "QMB"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H3868-003-2": {
+  "planId": "H3868-3",
+  "seg": "2",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete TX-Q6 (HMO-POS D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": true,
+  "levels": [
+   "QI",
+   "QMB"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H3868-004-1": {
+  "planId": "H3868-4",
+  "seg": "1",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete TX-S6 (HMO-POS D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": false,
+  "levels": [
+   "QMB+",
+   "SLMB",
+   "SLMB+"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H3868-004-2": {
+  "planId": "H3868-4",
+  "seg": "2",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete TX-S6 (HMO-POS D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": false,
+  "levels": [
+   "QMB+",
+   "SLMB",
+   "SLMB+"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H3868-005-0": {
+  "planId": "H3868-5",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Advantage TX-V11 (HMO-POS D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": false,
+  "levels": [
+   "QI",
+   "SLMB"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H3868-007-0": {
+  "planId": "H3868-7",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete TX-YL2 (HMO-POS D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": false,
+  "levels": [
+   "QMB+",
+   "SLMB",
+   "SLMB+"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H3975-004-0": {
+  "planId": "H3975-4",
+  "seg": "0",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Dual Access Sync Open (PPO D-SNP)",
+  "states": [
+   "KY"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule4:wellcare-msp-list"
+ },
+ "H4141-003-0": {
+  "planId": "H4141-3",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Gold Plus SNP-DE H4141-003 (HMO D-SNP)",
+  "states": [
+   "GA"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H4141-024-0": {
+  "planId": "H4141-24",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Gold Plus SNP-DE H4141-024 (HMO D-SNP)",
+  "states": [
+   "GA"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H4158-001-0": {
+  "planId": "H4158-1",
+  "seg": "0",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Buckeye MyCare Ohio Dual Align Unity (HMO D-SNP)",
+  "states": [
+   "OH"
+  ],
+  "protected": null,
+  "levels": [],
+  "signal": "uncertain"
+ },
+ "H4158-002-0": {
+  "planId": "H4158-2",
+  "seg": "0",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Buckeye Health Dual Access (HMO D-SNP)",
+  "states": [
+   "OH"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "rule4:wellcare-msp-list"
+ },
+ "H4158-003-0": {
+  "planId": "H4158-3",
+  "seg": "0",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Buckeye Health Dual Reserve (HMO D-SNP)",
+  "states": [
+   "OH"
+  ],
+  "protected": false,
+  "levels": [
+   "QI",
+   "SLMB"
+  ],
+  "signal": "rule4:wellcare-msp-list"
+ },
+ "H4158-004-0": {
+  "planId": "H4158-4",
+  "seg": "0",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Buckeye MyCare Ohio Dual Align (HMO D-SNP)",
+  "states": [
+   "OH"
+  ],
+  "protected": null,
+  "levels": [],
+  "signal": "uncertain"
+ },
+ "H4329-001-0": {
+  "planId": "H4329-1",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Dual Fully Integrated (HMO D-SNP)",
+  "states": [
+   "IL"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule3c:may-enroll-list"
+ },
+ "H4407-004-0": {
+  "planId": "H4407-4",
+  "seg": "0",
+  "carrier": "HealthSpring",
+  "planName": "HealthSpring TotalCare (HMO D-SNP)",
+  "states": [
+   "MS"
+  ],
+  "protected": false,
+  "levels": [
+   "QI",
+   "SLMB"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H4407-029-0": {
+  "planId": "H4407-29",
+  "seg": "0",
+  "carrier": "HealthSpring",
+  "planName": "HealthSpring TotalCare Plus (HMO D-SNP)",
+  "states": [
+   "MS"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H4461-022-0": {
+  "planId": "H4461-22",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Gold Plus SNP-DE H4461-022 (HMO D-SNP)",
+  "states": [
+   "TN"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H4461-038-0": {
+  "planId": "H4461-38",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Dual QMB Only (HMO D-SNP)",
+  "states": [
+   "TN"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H4461-044-0": {
+  "planId": "H4461-44",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Gold Plus SNP-DE H4461-044 (HMO-POS D-SNP)",
+  "states": [
+   "MO"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H4461-069-0": {
+  "planId": "H4461-69",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Gold Plus SNP-DE H4461-069 (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H4461-070-0": {
+  "planId": "H4461-70",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Gold Plus SNP-DE H4461-070 (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": false,
+  "levels": [
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H4461-071-0": {
+  "planId": "H4461-71",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Gold Plus SNP-DE H4461-071 (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H4461-072-0": {
+  "planId": "H4461-72",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Gold Plus SNP-DE H4461-072 (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": false,
+  "levels": [
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H4461-074-0": {
+  "planId": "H4461-74",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Dual QMB Only (HMO D-SNP)",
+  "states": [
+   "AL"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H4461-076-0": {
+  "planId": "H4461-76",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Gold Plus SNP-DE H4461-076 (HMO D-SNP)",
+  "states": [
+   "AL"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H4461-077-0": {
+  "planId": "H4461-77",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Dual Select H4461-077 (HMO D-SNP)",
+  "states": [
+   "AL"
+  ],
+  "protected": false,
+  "levels": [
+   "QI",
+   "SLMB"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H4513-027-0": {
+  "planId": "H4513-27",
+  "seg": "0",
+  "carrier": "HealthSpring",
+  "planName": "HealthSpring TotalCare (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H4513-034-0": {
+  "planId": "H4513-34",
+  "seg": "0",
+  "carrier": "HealthSpring",
+  "planName": "HealthSpring TotalCare Plus (HMO D-SNP)",
+  "states": [
+   "TN"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H4513-039-0": {
+  "planId": "H4513-39",
+  "seg": "0",
+  "carrier": "HealthSpring",
+  "planName": "HealthSpring TotalCare Plus (HMO D-SNP)",
+  "states": [
+   "AR"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H4513-060-1": {
+  "planId": "H4513-60",
+  "seg": "1",
+  "carrier": "HealthSpring",
+  "planName": "HealthSpring TotalCare (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H4513-060-2": {
+  "planId": "H4513-60",
+  "seg": "2",
+  "carrier": "HealthSpring",
+  "planName": "HealthSpring TotalCare (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H4513-060-3": {
+  "planId": "H4513-60",
+  "seg": "3",
+  "carrier": "HealthSpring",
+  "planName": "HealthSpring TotalCare (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H4513-060-4": {
+  "planId": "H4513-60",
+  "seg": "4",
+  "carrier": "HealthSpring",
+  "planName": "HealthSpring TotalCare (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H4513-060-5": {
+  "planId": "H4513-60",
+  "seg": "5",
+  "carrier": "HealthSpring",
+  "planName": "HealthSpring TotalCare (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H4513-075-0": {
+  "planId": "H4513-75",
+  "seg": "0",
+  "carrier": "HealthSpring",
+  "planName": "HealthSpring TotalCare (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H4513-079-0": {
+  "planId": "H4513-79",
+  "seg": "0",
+  "carrier": "HealthSpring",
+  "planName": "HealthSpring TotalCare Plus (HMO D-SNP)",
+  "states": [
+   "GA"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H4513-080-0": {
+  "planId": "H4513-80",
+  "seg": "0",
+  "carrier": "HealthSpring",
+  "planName": "HealthSpring TotalCare (HMO D-SNP)",
+  "states": [
+   "GA"
+  ],
+  "protected": false,
+  "levels": [
+   "QI",
+   "SLMB"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H4513-081-0": {
+  "planId": "H4513-81",
+  "seg": "0",
+  "carrier": "HealthSpring",
+  "planName": "HealthSpring TotalCare (HMO D-SNP)",
+  "states": [
+   "AR"
+  ],
+  "protected": false,
+  "levels": [
+   "QI",
+   "SLMB"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H4513-104-0": {
+  "planId": "H4513-104",
+  "seg": "0",
+  "carrier": "HealthSpring",
+  "planName": "HealthSpring TotalCare Plus (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": false,
+  "levels": [
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule3b:category-bullets"
+ },
+ "H4513-105-0": {
+  "planId": "H4513-105",
+  "seg": "0",
+  "carrier": "HealthSpring",
+  "planName": "HealthSpring TotalCare Plus (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": false,
+  "levels": [
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule3b:category-bullets"
+ },
+ "H4513-109-1": {
+  "planId": "H4513-109",
+  "seg": "1",
+  "carrier": "HealthSpring",
+  "planName": "HealthSpring TotalCare (HMO D-SNP)",
+  "states": [
+   "AL"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H4513-109-2": {
+  "planId": "H4513-109",
+  "seg": "2",
+  "carrier": "HealthSpring",
+  "planName": "HealthSpring TotalCare (HMO D-SNP)",
+  "states": [
+   "AL"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H4513-110-1": {
+  "planId": "H4513-110",
+  "seg": "1",
+  "carrier": "HealthSpring",
+  "planName": "HealthSpring TotalCare Plus (HMO D-SNP)",
+  "states": [
+   "AL"
+  ],
+  "protected": false,
+  "levels": [
+   "QMB+"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H4513-110-2": {
+  "planId": "H4513-110",
+  "seg": "2",
+  "carrier": "HealthSpring",
+  "planName": "HealthSpring TotalCare Plus (HMO D-SNP)",
+  "states": [
+   "AL"
+  ],
+  "protected": false,
+  "levels": [
+   "QMB+"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H4514-023-0": {
+  "planId": "H4514-23",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete TX-Q7 (HMO-POS D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H4523-028-0": {
+  "planId": "H4523-28",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Full Dual (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": false,
+  "levels": [
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H4523-029-0": {
+  "planId": "H4523-29",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Full Dual Extra Care (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": false,
+  "levels": [
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H4523-030-0": {
+  "planId": "H4523-30",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Full Dual Extra Care (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": false,
+  "levels": [
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H4523-034-0": {
+  "planId": "H4523-34",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Full Dual Extra Care (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": false,
+  "levels": [
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H4523-041-0": {
+  "planId": "H4523-41",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare QMB Only Extra Care (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H4523-043-0": {
+  "planId": "H4523-43",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare QMB Only Extra Care (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H4523-044-0": {
+  "planId": "H4523-44",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare QMB Only Extra Care (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H4527-003-0": {
+  "planId": "H4527-3",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Advantage TX-V2 (HMO-POS D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H4527-057-0": {
+  "planId": "H4527-57",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete TX-Q2 (HMO-POS D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H4527-060-1": {
+  "planId": "H4527-60",
+  "seg": "1",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete TX-S4 (HMO-POS D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": false,
+  "levels": [
+   "QMB+",
+   "SLMB",
+   "SLMB+"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H4527-060-2": {
+  "planId": "H4527-60",
+  "seg": "2",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete TX-S4 (HMO-POS D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": false,
+  "levels": [
+   "QMB+",
+   "SLMB",
+   "SLMB+"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H4939-001-0": {
+  "planId": "H4939-1",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana PathWays Dual Care (HMO-POS D-SNP)",
+  "states": [
+   "IN"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule3c:may-enroll-list"
+ },
+ "H4939-002-0": {
+  "planId": "H4939-2",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Dual Select H4939-002 (HMO-POS D-SNP)",
+  "states": [
+   "IN"
+  ],
+  "protected": true,
+  "levels": [
+   "QI",
+   "QMB",
+   "SLMB"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H4939-003-0": {
+  "planId": "H4939-3",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Gold Plus SNP-DE H4939-003 (HMO-POS D-SNP)",
+  "states": [
+   "IN"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H4939-004-0": {
+  "planId": "H4939-4",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana PathWays Dual Care NFLOC (HMO-POS D-SNP)",
+  "states": [
+   "IN"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule3c:may-enroll-list"
+ },
+ "H5008-010-0": {
+  "planId": "H5008-10",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete LA-Q2 (HMO-POS D-SNP)",
+  "states": [
+   "LA"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H5008-011-0": {
+  "planId": "H5008-11",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete MS-Q2 (HMO-POS D-SNP)",
+  "states": [
+   "MS"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H5008-016-0": {
+  "planId": "H5008-16",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Advantage MS-V1 (HMO-POS D-SNP)",
+  "states": [
+   "MS"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H5008-017-0": {
+  "planId": "H5008-17",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete MS-S4 (HMO-POS D-SNP)",
+  "states": [
+   "MS"
+  ],
+  "protected": false,
+  "levels": [
+   "QMB+",
+   "SLMB",
+   "SLMB+"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H5216-205-0": {
+  "planId": "H5216-205",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "HumanaChoice SNP-DE H5216-205 (PPO D-SNP)",
+  "states": [
+   "GA"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H5216-206-0": {
+  "planId": "H5216-206",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Dual Select H5216-206 (PPO D-SNP)",
+  "states": [
+   "GA"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H5216-219-0": {
+  "planId": "H5216-219",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "HumanaChoice SNP-DE H5216-219 (PPO D-SNP)",
+  "states": [
+   "AR"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H5216-220-0": {
+  "planId": "H5216-220",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "HumanaChoice SNP-DE H5216-220 (PPO D-SNP)",
+  "states": [
+   "WV"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QMB"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H5216-228-0": {
+  "planId": "H5216-228",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "HumanaChoice SNP-DE H5216-228 (PPO D-SNP)",
+  "states": [
+   "OK"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H5216-277-0": {
+  "planId": "H5216-277",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "HumanaChoice SNP-DE H5216-277 (PPO D-SNP)",
+  "states": [
+   "SC"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H5216-292-0": {
+  "planId": "H5216-292",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Dual QMB Only (PPO D-SNP)",
+  "states": [
+   "MS"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H5216-298-0": {
+  "planId": "H5216-298",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Dual Select H5216-298 (PPO D-SNP)",
+  "states": [
+   "MS"
+  ],
+  "protected": false,
+  "levels": [
+   "QI",
+   "SLMB"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H5216-330-0": {
+  "planId": "H5216-330",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "HumanaChoice SNP-DE H5216-330 (PPO D-SNP)",
+  "states": [
+   "LA"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H5216-331-0": {
+  "planId": "H5216-331",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "HumanaChoice SNP-DE H5216-331 (PPO D-SNP)",
+  "states": [
+   "OK"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H5216-332-0": {
+  "planId": "H5216-332",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "HumanaChoice SNP-DE H5216-332 (PPO D-SNP)",
+  "states": [
+   "LA"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H5216-361-0": {
+  "planId": "H5216-361",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Dual Select H5216-361 (PPO D-SNP)",
+  "states": [
+   "AR"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H5216-367-0": {
+  "planId": "H5216-367",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "HumanaChoice SNP-DE H5216-367 (PPO D-SNP)",
+  "states": [
+   "MS"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H5216-370-0": {
+  "planId": "H5216-370",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "HumanaChoice SNP-DE H5216-370 (PPO D-SNP)",
+  "states": [
+   "AL"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H5216-394-0": {
+  "planId": "H5216-394",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Dual Select H5216-394 (PPO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": true,
+  "levels": [
+   "QI",
+   "QMB",
+   "SLMB"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H5216-479-0": {
+  "planId": "H5216-479",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Dual Integrated (PPO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H5216-480-0": {
+  "planId": "H5216-480",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Dual Integrated (PPO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H5272-001-0": {
+  "planId": "H5272-1",
+  "seg": "0",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Absolute Total Care Dual Align (HMO D-SNP)",
+  "states": [
+   "SC"
+  ],
+  "protected": null,
+  "levels": [],
+  "signal": "uncertain"
+ },
+ "H5294-010-0": {
+  "planId": "H5294-10",
+  "seg": "0",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Superior HealthPlan Dual Liberty (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": false,
+  "levels": [
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule4:wellcare-msp-list"
+ },
+ "H5294-021-0": {
+  "planId": "H5294-21",
+  "seg": "0",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Superior HealthPlan Dual Liberty Sync (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": false,
+  "levels": [
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule4:wellcare-msp-list"
+ },
+ "H5294-022-0": {
+  "planId": "H5294-22",
+  "seg": "0",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Superior HealthPlan Dual Liberty Sync (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": false,
+  "levels": [
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule4:wellcare-msp-list"
+ },
+ "H5294-023-0": {
+  "planId": "H5294-23",
+  "seg": "0",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Superior HealthPlan Dual Liberty Sync (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": false,
+  "levels": [
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule4:wellcare-msp-list"
+ },
+ "H5294-024-0": {
+  "planId": "H5294-24",
+  "seg": "0",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Superior HealthPlan Dual Liberty Sync (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": false,
+  "levels": [
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule4:wellcare-msp-list"
+ },
+ "H5294-025-0": {
+  "planId": "H5294-25",
+  "seg": "0",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Superior HealthPlan Dual Liberty Sync (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": false,
+  "levels": [
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule4:wellcare-msp-list"
+ },
+ "H5302-012-0": {
+  "planId": "H5302-12",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Dual Extra Care (HMO D-SNP)",
+  "states": [
+   "GA"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+",
+   "SLMB",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H5302-020-0": {
+  "planId": "H5302-20",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Dual Care (HMO D-SNP)",
+  "states": [
+   "GA"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+",
+   "SLMB",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H5302-024-0": {
+  "planId": "H5302-24",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Full Dual Care (HMO D-SNP)",
+  "states": [
+   "GA"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H5322-025-0": {
+  "planId": "H5322-25",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete TX-Q8 (HMO-POS D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H5322-033-0": {
+  "planId": "H5322-33",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Advantage OK-V1 (HMO-POS D-SNP)",
+  "states": [
+   "OK"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H5322-038-0": {
+  "planId": "H5322-38",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Advantage TX-V10 (HMO-POS D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H5322-046-0": {
+  "planId": "H5322-46",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete TX-S5 (HMO-POS D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": false,
+  "levels": [
+   "QMB+",
+   "SLMB",
+   "SLMB+"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H5322-049-2": {
+  "planId": "H5322-49",
+  "seg": "2",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete GA-S3 (HMO-POS D-SNP)",
+  "states": [
+   "GA"
+  ],
+  "protected": false,
+  "levels": [],
+  "signal": "rule2:full-medicaid-conditional"
+ },
+ "H5322-049-3": {
+  "planId": "H5322-49",
+  "seg": "3",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete GA-S3 (HMO-POS D-SNP)",
+  "states": [
+   "GA"
+  ],
+  "protected": false,
+  "levels": [],
+  "signal": "rule2:full-medicaid-conditional"
+ },
+ "H5322-050-1": {
+  "planId": "H5322-50",
+  "seg": "1",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete GA-Q3 (HMO-POS D-SNP)",
+  "states": [
+   "GA"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H5322-050-2": {
+  "planId": "H5322-50",
+  "seg": "2",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete GA-Q3 (HMO-POS D-SNP)",
+  "states": [
+   "GA"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H5322-050-3": {
+  "planId": "H5322-50",
+  "seg": "3",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete GA-Q3 (HMO-POS D-SNP)",
+  "states": [
+   "GA"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H5322-052-1": {
+  "planId": "H5322-52",
+  "seg": "1",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete OK-S002 (HMO-POS D-SNP)",
+  "states": [
+   "OK"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H5322-052-2": {
+  "planId": "H5322-52",
+  "seg": "2",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete OK-S002 (HMO-POS D-SNP)",
+  "states": [
+   "OK"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H5322-052-3": {
+  "planId": "H5322-52",
+  "seg": "3",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete OK-S002 (HMO-POS D-SNP)",
+  "states": [
+   "OK"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H5325-003-0": {
+  "planId": "H5325-3",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Dual Care (HMO D-SNP)",
+  "states": [
+   "MO"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H5325-004-0": {
+  "planId": "H5325-4",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Dual (HMO D-SNP)",
+  "states": [
+   "MO"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H5325-005-0": {
+  "planId": "H5325-5",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Dual (HMO D-SNP)",
+  "states": [
+   "MO"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H5325-006-0": {
+  "planId": "H5325-6",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Dual (HMO D-SNP)",
+  "states": [
+   "MO"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H5325-007-0": {
+  "planId": "H5325-7",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Dual Extra Care (HMO D-SNP)",
+  "states": [
+   "AR"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H5325-012-0": {
+  "planId": "H5325-12",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Full Dual Care (HMO D-SNP)",
+  "states": [
+   "MO"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H5325-013-0": {
+  "planId": "H5325-13",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Full Dual (HMO D-SNP)",
+  "states": [
+   "MO"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H5325-014-0": {
+  "planId": "H5325-14",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Full Dual (HMO D-SNP)",
+  "states": [
+   "MO"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H5325-015-0": {
+  "planId": "H5325-15",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Full Dual (HMO D-SNP)",
+  "states": [
+   "MO"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H5410-013-0": {
+  "planId": "H5410-13",
+  "seg": "0",
+  "carrier": "HealthSpring",
+  "planName": "HealthSpring TotalCare (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H5410-025-0": {
+  "planId": "H5410-25",
+  "seg": "0",
+  "carrier": "HealthSpring",
+  "planName": "HealthSpring TotalCare Plus (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "QMB+"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H5410-031-0": {
+  "planId": "H5410-31",
+  "seg": "0",
+  "carrier": "HealthSpring",
+  "planName": "HealthSpring TotalCare Plus (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "QMB+"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H5410-032-0": {
+  "planId": "H5410-32",
+  "seg": "0",
+  "carrier": "HealthSpring",
+  "planName": "HealthSpring TotalCare Plus (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "QMB+"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H5410-042-0": {
+  "planId": "H5410-42",
+  "seg": "0",
+  "carrier": "HealthSpring",
+  "planName": "HealthSpring TotalCare Plus (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "QMB+"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H5410-045-0": {
+  "planId": "H5410-45",
+  "seg": "0",
+  "carrier": "HealthSpring",
+  "planName": "HealthSpring TotalCare (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H5410-046-0": {
+  "planId": "H5410-46",
+  "seg": "0",
+  "carrier": "HealthSpring",
+  "planName": "HealthSpring TotalCare (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H5521-464-0": {
+  "planId": "H5521-464",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Dual Extra Care (PPO D-SNP)",
+  "states": [
+   "MS"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H5521-465-0": {
+  "planId": "H5521-465",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Dual Care (PPO D-SNP)",
+  "states": [
+   "MS"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+",
+   "SLMB",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H5525-045-0": {
+  "planId": "H5525-45",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "HumanaChoice SNP-DE H5525-045 (PPO D-SNP)",
+  "states": [
+   "KY"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H5619-075-0": {
+  "planId": "H5619-75",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Dual Select H5619-075 (HMO D-SNP)",
+  "states": [
+   "KY"
+  ],
+  "protected": false,
+  "levels": [
+   "QI",
+   "SLMB"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H5619-093-0": {
+  "planId": "H5619-93",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Dual Select H5619-093 (HMO D-SNP)",
+  "states": [
+   "AL"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H5619-123-0": {
+  "planId": "H5619-123",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Gold Plus SNP-DE H5619-123 (HMO-POS D-SNP)",
+  "states": [
+   "AR"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H5619-126-0": {
+  "planId": "H5619-126",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Dual Select H5619-126 (HMO-POS D-SNP)",
+  "states": [
+   "WV"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QI",
+   "QMB",
+   "SLMB"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H5619-162-0": {
+  "planId": "H5619-162",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Gold Plus SNP-DE H5619-162 (HMO-POS D-SNP)",
+  "states": [
+   "WV"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H5619-163-0": {
+  "planId": "H5619-163",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Gold Plus SNP-DE H5619-163 (HMO D-SNP)",
+  "states": [
+   "KY"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H5619-179-0": {
+  "planId": "H5619-179",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Gold Plus SNP-DE H5619-179 (HMO-POS D-SNP)",
+  "states": [
+   "WV"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H5619-190-0": {
+  "planId": "H5619-190",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Dual QMB Only (HMO D-SNP)",
+  "states": [
+   "KY"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H6550-004-0": {
+  "planId": "H6550-4",
+  "seg": "0",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Sunflower Health Plan Dual Access (HMO-POS D-SNP)",
+  "states": [
+   "KS"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "rule4:wellcare-msp-list"
+ },
+ "H6550-009-0": {
+  "planId": "H6550-9",
+  "seg": "0",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Sunflower Health Plan Dual Liberty Sync (HMO-POS D-SNP)",
+  "states": [
+   "KS"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule4:wellcare-msp-list"
+ },
+ "H6595-003-0": {
+  "planId": "H6595-3",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Advantage KY-V1 (HMO-POS D-SNP)",
+  "states": [
+   "KY"
+  ],
+  "protected": false,
+  "levels": [
+   "QI",
+   "SLMB"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H6595-006-1": {
+  "planId": "H6595-6",
+  "seg": "1",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete KY-S4 (HMO-POS D-SNP)",
+  "states": [
+   "KY"
+  ],
+  "protected": false,
+  "levels": [
+   "QMB+",
+   "SLMB",
+   "SLMB+"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H6595-006-2": {
+  "planId": "H6595-6",
+  "seg": "2",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete KY-S4 (HMO-POS D-SNP)",
+  "states": [
+   "KY"
+  ],
+  "protected": false,
+  "levels": [
+   "QMB+",
+   "SLMB",
+   "SLMB+"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H6595-007-1": {
+  "planId": "H6595-7",
+  "seg": "1",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete KY-Q2 (HMO-POS D-SNP)",
+  "states": [
+   "KY"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H6595-007-2": {
+  "planId": "H6595-7",
+  "seg": "2",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete KY-Q2 (HMO-POS D-SNP)",
+  "states": [
+   "KY"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H6622-018-0": {
+  "planId": "H6622-18",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Gold Plus SNP-DE H6622-018 (HMO D-SNP)",
+  "states": [
+   "KY"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H6622-048-0": {
+  "planId": "H6622-48",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Gold Plus SNP-DE H6622-048 (HMO D-SNP)",
+  "states": [
+   "MS"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H6622-105-0": {
+  "planId": "H6622-105",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Dual QMB Only (HMO D-SNP)",
+  "states": [
+   "KY"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H6971-001-0": {
+  "planId": "H6971-1",
+  "seg": "0",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Meridian Dual Align (HMO D-SNP)",
+  "states": [
+   "IL"
+  ],
+  "protected": false,
+  "levels": [],
+  "signal": "rule7:fide-full-medicaid-required"
+ },
+ "H7028-011-0": {
+  "planId": "H7028-11",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL CHOICE FULL 011 AL (PPO D-SNP)",
+  "states": [
+   "AL"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule5b:devoted-assistance-list"
+ },
+ "H7028-012-0": {
+  "planId": "H7028-12",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL CHOICE FULL 012 AL (PPO D-SNP)",
+  "states": [
+   "AL"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule5b:devoted-assistance-list"
+ },
+ "H7284-010-0": {
+  "planId": "H7284-10",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Dual Select H7284-010 (PPO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": true,
+  "levels": [
+   "QI",
+   "QMB",
+   "SLMB"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H7284-013-0": {
+  "planId": "H7284-13",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Dual Integrated (PPO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H7355-003-0": {
+  "planId": "H7355-3",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL CHOICE PLUS 003 MS (PPO D-SNP)",
+  "states": [
+   "MS"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule5b:devoted-assistance-list"
+ },
+ "H7355-004-0": {
+  "planId": "H7355-4",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL CHOICE 004 MS (PPO D-SNP)",
+  "states": [
+   "MS"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule5:devoted-zero-list"
+ },
+ "H7355-009-0": {
+  "planId": "H7355-9",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL CHOICE FULL 009 MS (PPO D-SNP)",
+  "states": [
+   "MS"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule5b:devoted-assistance-list"
+ },
+ "H7397-003-0": {
+  "planId": "H7397-3",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL CHOICE PLUS 003 AR (PPO D-SNP)",
+  "states": [
+   "AR"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule5b:devoted-assistance-list"
+ },
+ "H7397-004-0": {
+  "planId": "H7397-4",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL CHOICE 004 AR (PPO D-SNP)",
+  "states": [
+   "AR"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule5:devoted-zero-list"
+ },
+ "H7397-009-0": {
+  "planId": "H7397-9",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL CHOICE FULL 009 AR (PPO D-SNP)",
+  "states": [
+   "AR"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule5b:devoted-assistance-list"
+ },
+ "H7518-003-0": {
+  "planId": "H7518-3",
+  "seg": "0",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Home State Health Dual Access Open (PPO D-SNP)",
+  "states": [
+   "MO"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule4:wellcare-msp-list"
+ },
+ "H7617-006-0": {
+  "planId": "H7617-6",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "HumanaChoice SNP-DE H7617-006 (PPO D-SNP)",
+  "states": [
+   "MO"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H7617-074-0": {
+  "planId": "H7617-74",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Dual Select H7617-074 (PPO D-SNP)",
+  "states": [
+   "AR"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H7617-075-0": {
+  "planId": "H7617-75",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "HumanaChoice SNP-DE H7617-075 (PPO D-SNP)",
+  "states": [
+   "AR"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H7617-076-0": {
+  "planId": "H7617-76",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "HumanaChoice SNP-DE H7617-076 (PPO D-SNP)",
+  "states": [
+   "OK"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H7617-082-0": {
+  "planId": "H7617-82",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Dual QMB Only (PPO D-SNP)",
+  "states": [
+   "MS"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H7617-083-0": {
+  "planId": "H7617-83",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "Humana Dual Select H7617-083 (PPO D-SNP)",
+  "states": [
+   "MS"
+  ],
+  "protected": false,
+  "levels": [
+   "QI",
+   "SLMB"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H7617-084-0": {
+  "planId": "H7617-84",
+  "seg": "0",
+  "carrier": "Humana",
+  "planName": "HumanaChoice SNP-DE H7617-084 (PPO D-SNP)",
+  "states": [
+   "MS"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule1:protected-list"
+ },
+ "H7766-004-0": {
+  "planId": "H7766-4",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL CHOICE 004 LA (PPO D-SNP)",
+  "states": [
+   "LA"
+  ],
+  "protected": false,
+  "levels": [
+   "QI",
+   "SLMB"
+  ],
+  "signal": "rule5b:devoted-assistance-list"
+ },
+ "H7766-015-0": {
+  "planId": "H7766-15",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL CHOICE FULL 015 LA (PPO D-SNP)",
+  "states": [
+   "LA"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule5b:devoted-assistance-list"
+ },
+ "H7766-022-0": {
+  "planId": "H7766-22",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL CHOICE FULL 022 LA (PPO D-SNP)",
+  "states": [
+   "LA"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule5b:devoted-assistance-list"
+ },
+ "H7766-023-0": {
+  "planId": "H7766-23",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL CHOICE 023 LA (PPO D-SNP)",
+  "states": [
+   "LA"
+  ],
+  "protected": false,
+  "levels": [
+   "QI",
+   "SLMB"
+  ],
+  "signal": "rule5b:devoted-assistance-list"
+ },
+ "H7766-025-0": {
+  "planId": "H7766-25",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL CHOICE QMB 025 LA (PPO D-SNP)",
+  "states": [
+   "LA"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "rule5b:devoted-assistance-list"
+ },
+ "H7766-026-0": {
+  "planId": "H7766-26",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL CHOICE QMB 026 LA (PPO D-SNP)",
+  "states": [
+   "LA"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "rule5b:devoted-assistance-list"
+ },
+ "H7993-010-0": {
+  "planId": "H7993-10",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL 010 TX (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule5:devoted-zero-list"
+ },
+ "H7993-012-0": {
+  "planId": "H7993-12",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL 012 TX (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule5:devoted-zero-list"
+ },
+ "H7993-015-0": {
+  "planId": "H7993-15",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL 015 TX (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule5:devoted-zero-list"
+ },
+ "H7993-017-0": {
+  "planId": "H7993-17",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL 017 TX (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule5:devoted-zero-list"
+ },
+ "H7993-037-0": {
+  "planId": "H7993-37",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL FULL 037 TX (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule5b:devoted-assistance-list"
+ },
+ "H7993-038-0": {
+  "planId": "H7993-38",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL FULL 038 TX (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule5b:devoted-assistance-list"
+ },
+ "H7993-040-0": {
+  "planId": "H7993-40",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL FULL 040 TX (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule5b:devoted-assistance-list"
+ },
+ "H7993-041-0": {
+  "planId": "H7993-41",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL FULL 041 TX (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule5b:devoted-assistance-list"
+ },
+ "H7993-071-0": {
+  "planId": "H7993-71",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL 071 TX (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule5:devoted-zero-list"
+ },
+ "H7993-072-0": {
+  "planId": "H7993-72",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL FULL 072 TX (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule5b:devoted-assistance-list"
+ },
+ "H7993-118-0": {
+  "planId": "H7993-118",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL 118 TX (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule5:devoted-zero-list"
+ },
+ "H7993-119-0": {
+  "planId": "H7993-119",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL FULL 119 TX (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule5b:devoted-assistance-list"
+ },
+ "H8597-001-0": {
+  "planId": "H8597-1",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Full Dual Care (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": false,
+  "levels": [
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H8597-002-0": {
+  "planId": "H8597-2",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Full Dual Care (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": false,
+  "levels": [
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H8597-003-0": {
+  "planId": "H8597-3",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare Full Dual Care (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": false,
+  "levels": [
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H8597-004-0": {
+  "planId": "H8597-4",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare QMB Only Care (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H8597-005-0": {
+  "planId": "H8597-5",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare QMB Only Care (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H8597-006-0": {
+  "planId": "H8597-6",
+  "seg": "0",
+  "carrier": "Aetna Medicare",
+  "planName": "Aetna Medicare QMB Only Care (HMO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+"
+  ],
+  "signal": "rule6:aetna-elig-table"
+ },
+ "H9630-010-0": {
+  "planId": "H9630-10",
+  "seg": "0",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Arkansas Total Care Dual Access (HMO-POS D-SNP)",
+  "states": [
+   "AR"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "rule4:wellcare-msp-list"
+ },
+ "H9630-011-0": {
+  "planId": "H9630-11",
+  "seg": "0",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Arkansas Total Care Dual Liberty (HMO-POS D-SNP)",
+  "states": [
+   "AR"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule4:wellcare-msp-list"
+ },
+ "H9630-014-0": {
+  "planId": "H9630-14",
+  "seg": "0",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Arkansas Total Care Dual Reserve (HMO-POS D-SNP)",
+  "states": [
+   "AR"
+  ],
+  "protected": false,
+  "levels": [
+   "QI",
+   "SLMB"
+  ],
+  "signal": "rule4:wellcare-msp-list"
+ },
+ "H9730-003-0": {
+  "planId": "H9730-3",
+  "seg": "0",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Dual Access (HMO-POS D-SNP)",
+  "states": [
+   "KY"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "rule4:wellcare-msp-list"
+ },
+ "H9730-004-0": {
+  "planId": "H9730-4",
+  "seg": "0",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Dual Liberty Sync (HMO-POS D-SNP)",
+  "states": [
+   "KY"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule4:wellcare-msp-list"
+ },
+ "H9730-011-0": {
+  "planId": "H9730-11",
+  "seg": "0",
+  "carrier": "Wellcare",
+  "planName": "Wellcare Dual Reserve (HMO-POS D-SNP)",
+  "states": [
+   "KY"
+  ],
+  "protected": false,
+  "levels": [
+   "QI",
+   "SLMB"
+  ],
+  "signal": "rule4:wellcare-msp-list"
+ },
+ "H9888-013-0": {
+  "planId": "H9888-13",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL CHOICE FULL 013 AL (PPO D-SNP)",
+  "states": [
+   "AL"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule5b:devoted-assistance-list"
+ },
+ "H9888-014-0": {
+  "planId": "H9888-14",
+  "seg": "0",
+  "carrier": "Devoted Health",
+  "planName": "DEVOTED DUAL CHOICE FULL 014 AL (PPO D-SNP)",
+  "states": [
+   "AL"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule5b:devoted-assistance-list"
+ },
+ "R6801-011-0": {
+  "planId": "R6801-11",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete TX-S001 (Regional PPO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "rule3b:category-bullets(rule2-override)"
+ },
+ "H0169-004-0": {
+  "planId": "H0169-4",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete KS-S001 (HMO-POS D-SNP)",
+  "states": [
+   "KS"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ },
+ "H0169-010-0": {
+  "planId": "H0169-10",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete KS-QV1 (HMO-POS D-SNP)",
+  "states": [
+   "KS"
+  ],
+  "protected": true,
+  "levels": [
+   "QI",
+   "QMB",
+   "SLMB"
+  ],
+  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ },
+ "H0169-016-0": {
+  "planId": "H0169-16",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete KS-S2 (HMO-POS D-SNP)",
+  "states": [
+   "KS"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ },
+ "H0251-004-0": {
+  "planId": "H0251-4",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete TN-YL (HMO-POS D-SNP)",
+  "states": [
+   "TN"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ },
+ "H0251-009-1": {
+  "planId": "H0251-9",
+  "seg": "1",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete TN-Y2 (HMO-POS D-SNP)",
+  "states": [
+   "TN"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ },
+ "H0251-009-2": {
+  "planId": "H0251-9",
+  "seg": "2",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete TN-Y2 (HMO-POS D-SNP)",
+  "states": [
+   "TN"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ },
+ "H0251-009-3": {
+  "planId": "H0251-9",
+  "seg": "3",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete TN-Y2 (HMO-POS D-SNP)",
+  "states": [
+   "TN"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ },
+ "H0251-010-1": {
+  "planId": "H0251-10",
+  "seg": "1",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete TN-Q1 (HMO-POS D-SNP)",
+  "states": [
+   "TN"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+"
+  ],
+  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ },
+ "H0251-010-2": {
+  "planId": "H0251-10",
+  "seg": "2",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete TN-Q1 (HMO-POS D-SNP)",
+  "states": [
+   "TN"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+"
+  ],
+  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ },
+ "H0251-010-3": {
+  "planId": "H0251-10",
+  "seg": "3",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete TN-Q1 (HMO-POS D-SNP)",
+  "states": [
+   "TN"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+"
+  ],
+  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ },
+ "H0432-009-0": {
+  "planId": "H0432-9",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete AL-Q1 (HMO-POS D-SNP)",
+  "states": [
+   "AL"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QI",
+   "QMB",
+   "QMB+",
+   "SLMB",
+   "SLMB+"
+  ],
+  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ },
+ "H1045-012-0": {
+  "planId": "H1045-12",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Preferred Dual Complete FL-QV4 (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": true,
+  "levels": [
+   "QI",
+   "QMB",
+   "SLMB"
+  ],
+  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ },
+ "H1045-038-0": {
+  "planId": "H1045-38",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Preferred Dual Complete FL-QV1P (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": true,
+  "levels": [
+   "QI",
+   "QMB",
+   "SLMB"
+  ],
+  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ },
+ "H1045-039-0": {
+  "planId": "H1045-39",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete FL-QV2 (HMO-POS D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": true,
+  "levels": [
+   "QI",
+   "QMB",
+   "SLMB"
+  ],
+  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ },
+ "H1045-061-0": {
+  "planId": "H1045-61",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Preferred Dual Complete FL-QV5 (HMO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": true,
+  "levels": [
+   "QI",
+   "QMB",
+   "SLMB"
+  ],
+  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ },
+ "H1045-063-0": {
+  "planId": "H1045-63",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Preferred Dual Complete FL-Y6 (HMO-POS D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ },
+ "H1045-065-0": {
+  "planId": "H1045-65",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Preferred Dual Complete FL-Y3P (HMO-POS D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ },
+ "H1045-073-0": {
+  "planId": "H1045-73",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete FL-Y5 (HMO-POS D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ },
+ "H1889-009-0": {
+  "planId": "H1889-9",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete AL-Q2 (PPO D-SNP)",
+  "states": [
+   "AL"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QI",
+   "QMB",
+   "QMB+",
+   "SLMB",
+   "SLMB+"
+  ],
+  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ },
+ "H1889-043-0": {
+  "planId": "H1889-43",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Advantage MS-V2 (PPO D-SNP)",
+  "states": [
+   "MS"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QI",
+   "QMB",
+   "QMB+",
+   "SLMB",
+   "SLMB+"
+  ],
+  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ },
+ "H1889-044-1": {
+  "planId": "H1889-44",
+  "seg": "1",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete MS-S3 (PPO D-SNP)",
+  "states": [
+   "MS"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ },
+ "H1889-045-1": {
+  "planId": "H1889-45",
+  "seg": "1",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete MS-Q1 (PPO D-SNP)",
+  "states": [
+   "MS"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QI",
+   "QMB",
+   "QMB+",
+   "SLMB",
+   "SLMB+"
+  ],
+  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ },
+ "H1889-045-2": {
+  "planId": "H1889-45",
+  "seg": "2",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete MS-Q1 (PPO D-SNP)",
+  "states": [
+   "MS"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QI",
+   "QMB",
+   "QMB+",
+   "SLMB",
+   "SLMB+"
+  ],
+  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ },
+ "H2001-030-0": {
+  "planId": "H2001-30",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete WV-Q1 (PPO D-SNP)",
+  "states": [
+   "WV"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QI",
+   "QMB",
+   "QMB+",
+   "SLMB",
+   "SLMB+"
+  ],
+  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ },
+ "H2001-032-0": {
+  "planId": "H2001-32",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete SC-S001 (PPO D-SNP)",
+  "states": [
+   "SC"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ },
+ "H2001-034-0": {
+  "planId": "H2001-34",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete AR-Q1 (PPO D-SNP)",
+  "states": [
+   "AR"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QI",
+   "QMB",
+   "QMB+",
+   "SLMB",
+   "SLMB+"
+  ],
+  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ },
+ "H2001-035-0": {
+  "planId": "H2001-35",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Advantage AR-V1 (PPO D-SNP)",
+  "states": [
+   "AR"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QI",
+   "QMB",
+   "QMB+",
+   "SLMB",
+   "SLMB+"
+  ],
+  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ },
+ "H2001-056-0": {
+  "planId": "H2001-56",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete OK-S001 (PPO D-SNP)",
+  "states": [
+   "OK"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ },
+ "H2001-059-0": {
+  "planId": "H2001-59",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Advantage SC-V1 (PPO D-SNP)",
+  "states": [
+   "SC"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QI",
+   "QMB+",
+   "SLMB",
+   "SLMB+"
+  ],
+  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ },
+ "H2001-061-0": {
+  "planId": "H2001-61",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Advantage WV-V1 (PPO D-SNP)",
+  "states": [
+   "WV"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QI",
+   "QMB",
+   "QMB+",
+   "SLMB",
+   "SLMB+"
+  ],
+  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ },
+ "H2385-001-0": {
+  "planId": "H2385-1",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete IN-S002 (PPO D-SNP)",
+  "states": [
+   "IN"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ },
+ "H2385-002-0": {
+  "planId": "H2385-2",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete IN-Q1 (PPO D-SNP)",
+  "states": [
+   "IN"
+  ],
+  "protected": true,
+  "levels": [
+   "QDWI",
+   "QI",
+   "QMB",
+   "SLMB"
+  ],
+  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ },
+ "H2385-003-0": {
+  "planId": "H2385-3",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC PathWays Dual Care IN-Y1 (PPO D-SNP)",
+  "states": [
+   "IN"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ },
+ "H2385-004-0": {
+  "planId": "H2385-4",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC PathWays Dual Care IN-YL (PPO D-SNP)",
+  "states": [
+   "IN"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ },
+ "H2406-050-0": {
+  "planId": "H2406-50",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete TX-Q5 (PPO D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QI",
+   "QMB",
+   "QMB+",
+   "SLMB",
+   "SLMB+"
+  ],
+  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ },
+ "H2445-001-0": {
+  "planId": "H2445-1",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete VA-YL (HMO-POS D-SNP)",
+  "states": [
+   "VA"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ },
+ "H2445-002-0": {
+  "planId": "H2445-2",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete VA-Q001 (HMO-POS D-SNP)",
+  "states": [
+   "VA"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB"
+  ],
+  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ },
+ "H2445-003-0": {
+  "planId": "H2445-3",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete VA-Y002 (HMO-POS D-SNP)",
+  "states": [
+   "VA"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ },
+ "H2445-004-0": {
+  "planId": "H2445-4",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Advantage VA-V1 (HMO-POS D-SNP)",
+  "states": [
+   "VA"
+  ],
+  "protected": false,
+  "levels": [
+   "QI",
+   "SLMB"
+  ],
+  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ },
+ "H2509-001-0": {
+  "planId": "H2509-1",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete FL-YL (HMO-POS D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ },
+ "H2509-002-0": {
+  "planId": "H2509-2",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete FL-Q2 (HMO-POS D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": true,
+  "levels": [
+   "QI",
+   "QMB",
+   "SLMB"
+  ],
+  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ },
+ "H2509-003-0": {
+  "planId": "H2509-3",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete FL-Y8 (HMO-POS D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ },
+ "H2802-044-0": {
+  "planId": "H2802-44",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Advantage AL-V2 (HMO-POS D-SNP)",
+  "states": [
+   "AL"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QI",
+   "QMB",
+   "QMB+",
+   "SLMB",
+   "SLMB+"
+  ],
+  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ },
+ "H2802-064-0": {
+  "planId": "H2802-64",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete AL-S1 (HMO-POS D-SNP)",
+  "states": [
+   "AL"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ },
+ "H2802-090-0": {
+  "planId": "H2802-90",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete AL-Q3 (HMO-POS D-SNP)",
+  "states": [
+   "AL"
+  ],
+  "protected": true,
+  "levels": [
+   "QI",
+   "QMB",
+   "SLMB"
+  ],
+  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ },
+ "H3256-004-1": {
+  "planId": "H3256-4",
+  "seg": "1",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete GA-S2 (PPO D-SNP)",
+  "states": [
+   "GA"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ },
+ "H3256-005-1": {
+  "planId": "H3256-5",
+  "seg": "1",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete GA-Q2 (PPO D-SNP)",
+  "states": [
+   "GA"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QMB",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ },
+ "H3256-006-1": {
+  "planId": "H3256-6",
+  "seg": "1",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Advantage GA-V1 (PPO D-SNP)",
+  "states": [
+   "GA"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QI",
+   "QMB",
+   "QMB+",
+   "SLMB",
+   "SLMB+"
+  ],
+  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ },
+ "H3256-006-2": {
+  "planId": "H3256-6",
+  "seg": "2",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Advantage GA-V1 (PPO D-SNP)",
+  "states": [
+   "GA"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QI",
+   "QMB",
+   "QMB+",
+   "SLMB",
+   "SLMB+"
+  ],
+  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ },
+ "H3256-006-3": {
+  "planId": "H3256-6",
+  "seg": "3",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Advantage GA-V1 (PPO D-SNP)",
+  "states": [
+   "GA"
+  ],
+  "protected": true,
+  "levels": [
+   "FBDE",
+   "QI",
+   "QMB",
+   "QMB+",
+   "SLMB",
+   "SLMB+"
+  ],
+  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ },
+ "H3868-001-0": {
+  "planId": "H3868-1",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete TX-Y1 (HMO-POS D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ },
+ "H3868-003-3": {
+  "planId": "H3868-3",
+  "seg": "3",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete TX-Q6 (HMO-POS D-SNP)",
+  "states": [
+   "TX"
+  ],
+  "protected": true,
+  "levels": [
+   "QI",
+   "QMB",
+   "SLMB"
+  ],
+  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ },
+ "H5322-049-1": {
+  "planId": "H5322-49",
+  "seg": "1",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete GA-S3 (HMO-POS D-SNP)",
+  "states": [
+   "GA"
+  ],
+  "protected": false,
+  "levels": [
+   "FBDE",
+   "QMB+",
+   "SLMB+"
+  ],
+  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+ }
+}

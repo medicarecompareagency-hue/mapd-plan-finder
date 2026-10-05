@@ -83,6 +83,14 @@ Each row gets the SB of its own segment and `sbSegmentId = segmentId`. Idempoten
 - **UHC `too_short_text` cause:** uhc.com serves a 102,407-byte one-page "PDF coming soon..." placeholder for an SB it has not posted yet.
   The validator is right to reject it. 287 of the 380 were live by 10-05. To pick up the rest:
   `node scripts/sb2027/acquire.js --carrier UnitedHealthcare --retry --budget 120 --conc 10`, then `apply-links.js --apply`.
+- **Checked the broker portals 2026-10-05 (Dale's logged-in Chrome).** The 93 UHC SBs are not posted anywhere yet:
+  the Jarvis Sales Materials Portal (uhc-materials.sbs.shutterfly.com, search "2027 English SB") lists 86 of them, and every one
+  downloads as the same 16,718-byte one-page placeholder; the other 7 (H1889-002 seg 1+2, H1889-026, R0759-003, H0710-013, H0710-052,
+  H0421-001) have no SB entry at all. A posted SB there is ~1 MB. The portal's document IDs are the same alphadog IDs the public site uses,
+  so when UHC posts them the normal `acquire.js --retry` picks them up. Jarvis says 2027 materials are late ("extended benefit finalization").
+  Real 2027 "Plan Highlights" PDFs (~11 MB) do exist there for 85 of the 93, and mpp.uhc.com/plans/plan-details.<H####-###-###>.2027.html
+  shows full 2027 benefits (incl. a "Special Eligibility" line naming the Medicaid levels each D-SNP takes) for every UHC plan. Both need Dale's login.
+  Aetna H1610-1: no SB on aetna.com or Producer World; only a broker plan guide (PG27-VAS01-VA-FIDE-DSNP.pdf, login required).
 - **Re-run `apply-links.js --apply` after `backfill-segment-ids.js 2027`** — that script resets `sbSegmentId` to one value per plan.
 
 ## reapply-sb-truth.js is 2026-only (checked 2026-10-05)
@@ -95,7 +103,33 @@ Each row gets the SB of its own segment and `sbSegmentId = segmentId`. Idempoten
 - **QMB is a go-live blocker:** the plain-QMB search matches only `qmbCostShareProtected = true`, and every 2027 row is NULL,
   so a 2027 QMB search returns no D-SNPs until the classifier has run.
 
+## QMB classification — applied 2026-10-05
+
+1. `python3 scripts/sb2027/classify-qmb.py --budget 160` — repeat until "left 0" (about 1.2 s per SB; 370 D-SNP SBs = 4 calls).
+   Imports the 2026 rules from `classify-qmb-protection.py` and adds 2027-only rules (`post_2027`). Caches SB text in
+   `.cms-import-tmp/sb-2027/txt/` and two-column text in `txt2col/`. Writes `scripts/data/qmb-protection-2027.json`, keyed by plan-segment.
+2. `python3 scripts/sb2027/merge-uhc-mpp-qmb.py` — fills the UHC D-SNPs that have no SB yet from `scripts/data/uhc-mpp-eligibility-2027.json`
+   (UHC agent portal, read 10-05). Never overrides an SB answer. Re-running step 1 after an SB posts replaces the `mpp:` entry.
+3. `node scripts/sb2027/apply-qmb.js` (dry-run) / `--apply` — one UPDATE, 2027 rows only, by segment.
+
+Result: 430 D-SNP plan-segments -> **201 show for QMB, 217 hide, 12 unclassified** (17,198 rows written). 2026 checksum unchanged.
+
+2027 SB layouts that broke the 2026 rules, and the fix in `post_2027`:
+- **UHC PPO D-SNPs:** rule 2 ("if you have full Medicaid ... otherwise you will pay") fires on the OUT-of-network column even when the
+  in-network column gives standalone QMB $0. 3 plans read as hide that are show (KY-Q1, MO-Q2, TX-S001). Fixed from the Medicaid-category bullets.
+- **Devoted:** two-column pages break rule 5 (53 uncertain). Fixed by reading the "receive assistance from the <state> Medicaid program as a ..."
+  sentence from de-interleaved text. Devoted plan names now say it too: QMB / PLUS = show, FULL = hide, plain DUAL with SLMB/QI = hide.
+- **Humana integrated plans:** "this plan may enroll ... (FBDE), ... (QMB+), ... (SLMB+)" has parentheses the rule 3 pattern rejects (6 uncertain).
+- **Never read a level from its spelled-out name** when a "+" abbreviation follows: "Qualified Medicare Beneficiary (QMB+)" is not QMB.
+  The 2027 rules read the parenthesised abbreviations only.
+- 14 plans changed answer from 2026. All were checked against the 2027 SB text and are real plan changes (e.g. Wellcare Dual Liberty dropped
+  standalone QMB; Aetna H3239-2 and -10 added it; Humana H5619-75 is now SLMB/QI only).
+
+Unclassified (stay hidden from a plain QMB search): Wellcare Dual Align H0062-11, H0062-12, H4158-1, H4158-4, H5272-1 (integrated plans, SB names no
+Medicaid levels); UHC H0421-1, H1889-2 (both segments), H1889-26, R0759-3 (UHC's portal says "not accepting new members starting Jan 1, 2027");
+Aetna H1610-1 and Wellcare H1416-81 (no SB).
+
 ## Still to do for 2027
 
-Remaining UHC SBs (93) + 2 stragglers, the 2027 SB-fix pass, QMB classifier, SB benefit extraction (OTC / food card pages, wallets),
+Remaining UHC SBs (93) + 2 stragglers (then re-run the QMB steps above), the 2027 SB-fix pass, SB benefit extraction (OTC / food card pages, wallets),
 hospital full-stay re-derive, Star Ratings, 2027 LIS figures (`lib/lisDrugCopays2026.ts`, benchmarks), then un-gray 2027 in the dropdown.
