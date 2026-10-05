@@ -29,7 +29,7 @@ async function reapplyQmbProtection() {
   try {
     for (const [planId, v] of Object.entries(data)) {
       const r = await prisma.plan.updateMany({
-        where: { planId },
+        where: { planId, planYear: 2026 },   // qmb-protection.json is the 2026 SB classification; never stamp it onto another plan year
         data: {
           qmbCostShareProtected: v.protected,
           costShareProtectedLevels: (v.levels || []).join(',') || null,
@@ -84,7 +84,7 @@ async function applyQmbOverrides() {
   let n = 0;
   try {
     for (const [planId, v] of Object.entries(data)) {
-      const r = await prisma.plan.updateMany({ where: { planId },
+      const r = await prisma.plan.updateMany({ where: { planId, planYear: 2026 },   // 2026 overrides only
         data: { qmbCostShareProtected: v.protected, costShareProtectedLevels: (v.levels || []).join(',') || null } });
       n += r.count;
     }

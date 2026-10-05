@@ -70,7 +70,32 @@ Script: `scripts/import2027/fix-2026-plantype-deductible.js` (dry-run by default
 - A 2026 re-import would bring both errors back unless the fixed importer is used (contract type) and this script is re-run (deductible).
 - Not touched: the odd 2026 labels `Local PPO`, `Local HMO`, `Local PPO *` etc. The Contract Type filter is a "contains" match, so picking HMO also returns HMOPOS plans.
 
+## SB links — applied 2026-10-05
+
+`node scripts/sb2027/apply-links.js` (dry-run) / `--verify-blobs` (HEAD every blob) / `--apply`. One set-based UPDATE, 2027 rows only.
+Each row gets the SB of its own segment and `sbSegmentId = segmentId`. Idempotent.
+
+- Before applying: `node scripts/sb2027/upload.js` until "remaining 0". On 10-05, 314 Humana SBs were validated but had never been uploaded
+  (`blobUrl: null`). Uploads run about 30 files per 2 minutes from Cowork (Humana SBs are ~13 MB each).
+- Result: **1,939 of 2,034 plan-segments linked, 64,519 of 68,711 rows.** All 1,939 blobs answer 200 with the manifest byte size;
+  47 sampled blobs (all 6 carriers, segmented ones included) re-passed the strict validator. 2026 checksum unchanged.
+- Not linked: 93 UnitedHealthcare, Aetna H1610-1 (FIDE, VA), Wellcare H1416-81 (Magnolia Dual Reserve, MS).
+- **UHC `too_short_text` cause:** uhc.com serves a 102,407-byte one-page "PDF coming soon..." placeholder for an SB it has not posted yet.
+  The validator is right to reject it. 287 of the 380 were live by 10-05. To pick up the rest:
+  `node scripts/sb2027/acquire.js --carrier UnitedHealthcare --retry --budget 120 --conc 10`, then `apply-links.js --apply`.
+- **Re-run `apply-links.js --apply` after `backfill-segment-ids.js 2027`** — that script resets `sbSegmentId` to one value per plan.
+
+## reapply-sb-truth.js is 2026-only (checked 2026-10-05)
+
+- All 15 child fixers are hard-coded to `planYear: 2026`. Running the chain does nothing for 2027.
+- Its two inline QMB steps, and `apply-qmb-protection.js` / `apply-qmb-overrides.js`, had NO year filter: `--apply` would have written the
+  2026 QMB classification onto 2027 rows with the same plan ID. Fixed 10-05: all four writes now carry `planYear: 2026`.
+- 2027 needs its own pass: each SB-reading fixer run against 2027 rows and 2027 SBs (dry-run first; several have 2026 thresholds,
+  reference plans and artifact files baked in), and `classify-qmb-protection.py` over the 2027 SBs.
+- **QMB is a go-live blocker:** the plain-QMB search matches only `qmbCostShareProtected = true`, and every 2027 row is NULL,
+  so a 2027 QMB search returns no D-SNPs until the classifier has run.
+
 ## Still to do for 2027
 
-SB links (`scripts/sb2027/apply-links.js` does not exist yet), UHC SBs (380 missing), `reapply-sb-truth.js` (check year scoping first),
-QMB classifier, SB benefit extraction, Star Ratings, 2027 LIS figures (`lib/lisDrugCopays2026.ts`, benchmarks), then un-gray 2027 in the dropdown.
+Remaining UHC SBs (93) + 2 stragglers, the 2027 SB-fix pass, QMB classifier, SB benefit extraction (OTC / food card pages, wallets),
+hospital full-stay re-derive, Star Ratings, 2027 LIS figures (`lib/lisDrugCopays2026.ts`, benchmarks), then un-gray 2027 in the dropdown.

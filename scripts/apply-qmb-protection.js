@@ -8,7 +8,7 @@ async function main() {
   let updated = 0;
   for (const [planId, v] of Object.entries(data)) {
     const r = await prisma.plan.updateMany({
-      where: { planId },
+      where: { planId, planYear: 2026 },   // 2026 SB classification only; never stamp it onto another plan year
       data: {
         qmbCostShareProtected: v.protected,            // true | false | null
         costShareProtectedLevels: (v.levels || []).join(",") || null,
