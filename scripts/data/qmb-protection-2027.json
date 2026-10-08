@@ -5708,12 +5708,8 @@
    "KS"
   ],
   "protected": false,
-  "levels": [
-   "FBDE",
-   "QMB+",
-   "SLMB+"
-  ],
-  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+  "levels": [],
+  "signal": "rule2:full-medicaid-conditional"
  },
  "H0169-010-0": {
   "planId": "H0169-10",
@@ -5740,12 +5736,8 @@
    "KS"
   ],
   "protected": false,
-  "levels": [
-   "FBDE",
-   "QMB+",
-   "SLMB+"
-  ],
-  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+  "levels": [],
+  "signal": "rule2:full-medicaid-conditional"
  },
  "H0251-004-0": {
   "planId": "H0251-4",
@@ -5886,10 +5878,9 @@
   "protected": true,
   "levels": [
    "QI",
-   "QMB",
-   "SLMB"
+   "QMB"
   ],
-  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+  "signal": "rule3:eligibility-list"
  },
  "H1045-038-0": {
   "planId": "H1045-38",
@@ -5902,10 +5893,9 @@
   "protected": true,
   "levels": [
    "QI",
-   "QMB",
-   "SLMB"
+   "QMB"
   ],
-  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+  "signal": "rule3:eligibility-list"
  },
  "H1045-039-0": {
   "planId": "H1045-39",
@@ -5918,10 +5908,9 @@
   "protected": true,
   "levels": [
    "QI",
-   "QMB",
-   "SLMB"
+   "QMB"
   ],
-  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+  "signal": "rule3:eligibility-list"
  },
  "H1045-061-0": {
   "planId": "H1045-61",
@@ -5934,10 +5923,9 @@
   "protected": true,
   "levels": [
    "QI",
-   "QMB",
-   "SLMB"
+   "QMB"
   ],
-  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+  "signal": "rule3:eligibility-list"
  },
  "H1045-063-0": {
   "planId": "H1045-63",
@@ -5949,11 +5937,11 @@
   ],
   "protected": false,
   "levels": [
-   "FBDE",
    "QMB+",
+   "SLMB",
    "SLMB+"
   ],
-  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+  "signal": "rule3:eligibility-list"
  },
  "H1045-065-0": {
   "planId": "H1045-65",
@@ -5965,11 +5953,11 @@
   ],
   "protected": false,
   "levels": [
-   "FBDE",
    "QMB+",
+   "SLMB",
    "SLMB+"
   ],
-  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+  "signal": "rule3:eligibility-list"
  },
  "H1045-073-0": {
   "planId": "H1045-73",
@@ -5997,14 +5985,10 @@
   ],
   "protected": true,
   "levels": [
-   "FBDE",
-   "QI",
    "QMB",
-   "QMB+",
-   "SLMB",
-   "SLMB+"
+   "QMB+"
   ],
-  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+  "signal": "rule3:eligibility-list"
  },
  "H1889-043-0": {
   "planId": "H1889-43",
@@ -6016,14 +6000,10 @@
   ],
   "protected": true,
   "levels": [
-   "FBDE",
-   "QI",
    "QMB",
-   "QMB+",
-   "SLMB",
-   "SLMB+"
+   "QMB+"
   ],
-  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+  "signal": "rule3:eligibility-list"
  },
  "H1889-044-1": {
   "planId": "H1889-44",
@@ -6034,12 +6014,8 @@
    "MS"
   ],
   "protected": false,
-  "levels": [
-   "FBDE",
-   "QMB+",
-   "SLMB+"
-  ],
-  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+  "levels": [],
+  "signal": "rule2:full-medicaid-conditional"
  },
  "H1889-045-1": {
   "planId": "H1889-45",
@@ -6051,14 +6027,10 @@
   ],
   "protected": true,
   "levels": [
-   "FBDE",
-   "QI",
    "QMB",
-   "QMB+",
-   "SLMB",
-   "SLMB+"
+   "QMB+"
   ],
-  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+  "signal": "rule3:eligibility-list"
  },
  "H1889-045-2": {
   "planId": "H1889-45",
@@ -6070,14 +6042,10 @@
   ],
   "protected": true,
   "levels": [
-   "FBDE",
-   "QI",
    "QMB",
-   "QMB+",
-   "SLMB",
-   "SLMB+"
+   "QMB+"
   ],
-  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+  "signal": "rule3:eligibility-list"
  },
  "H2001-030-0": {
   "planId": "H2001-30",
@@ -6089,14 +6057,10 @@
   ],
   "protected": true,
   "levels": [
-   "FBDE",
-   "QI",
    "QMB",
-   "QMB+",
-   "SLMB",
-   "SLMB+"
+   "QMB+"
   ],
-  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+  "signal": "rule3:eligibility-list"
  },
  "H2001-032-0": {
   "planId": "H2001-32",
@@ -6107,12 +6071,8 @@
    "SC"
   ],
   "protected": false,
-  "levels": [
-   "FBDE",
-   "QMB+",
-   "SLMB+"
-  ],
-  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+  "levels": [],
+  "signal": "rule2:full-medicaid-conditional"
  },
  "H2001-034-0": {
   "planId": "H2001-34",
@@ -6124,14 +6084,10 @@
   ],
   "protected": true,
   "levels": [
-   "FBDE",
-   "QI",
    "QMB",
-   "QMB+",
-   "SLMB",
-   "SLMB+"
+   "QMB+"
   ],
-  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+  "signal": "rule3:eligibility-list"
  },
  "H2001-035-0": {
   "planId": "H2001-35",
@@ -6143,14 +6099,10 @@
   ],
   "protected": true,
   "levels": [
-   "FBDE",
-   "QI",
    "QMB",
-   "QMB+",
-   "SLMB",
-   "SLMB+"
+   "QMB+"
   ],
-  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+  "signal": "rule3:eligibility-list"
  },
  "H2001-056-0": {
   "planId": "H2001-56",
@@ -6162,12 +6114,10 @@
   ],
   "protected": true,
   "levels": [
-   "FBDE",
    "QMB",
-   "QMB+",
-   "SLMB+"
+   "QMB+"
   ],
-  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+  "signal": "rule3:eligibility-list"
  },
  "H2001-059-0": {
   "planId": "H2001-59",
@@ -6179,13 +6129,10 @@
   ],
   "protected": false,
   "levels": [
-   "FBDE",
    "QI",
-   "QMB+",
-   "SLMB",
-   "SLMB+"
+   "QMB+"
   ],
-  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+  "signal": "rule3:eligibility-list"
  },
  "H2001-061-0": {
   "planId": "H2001-61",
@@ -6197,14 +6144,10 @@
   ],
   "protected": true,
   "levels": [
-   "FBDE",
-   "QI",
    "QMB",
-   "QMB+",
-   "SLMB",
-   "SLMB+"
+   "QMB+"
   ],
-  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+  "signal": "rule3:eligibility-list"
  },
  "H2385-001-0": {
   "planId": "H2385-1",
@@ -6281,14 +6224,10 @@
   ],
   "protected": true,
   "levels": [
-   "FBDE",
-   "QI",
    "QMB",
-   "QMB+",
-   "SLMB",
-   "SLMB+"
+   "QMB+"
   ],
-  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+  "signal": "rule3:eligibility-list"
  },
  "H2445-001-0": {
   "planId": "H2445-1",
@@ -6378,10 +6317,9 @@
   "protected": true,
   "levels": [
    "QI",
-   "QMB",
-   "SLMB"
+   "QMB"
   ],
-  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+  "signal": "rule3:eligibility-list"
  },
  "H2509-003-0": {
   "planId": "H2509-3",
@@ -6409,14 +6347,10 @@
   ],
   "protected": true,
   "levels": [
-   "FBDE",
-   "QI",
    "QMB",
-   "QMB+",
-   "SLMB",
-   "SLMB+"
+   "QMB+"
   ],
-  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+  "signal": "rule3:eligibility-list"
  },
  "H2802-064-0": {
   "planId": "H2802-64",
@@ -6428,11 +6362,11 @@
   ],
   "protected": false,
   "levels": [
-   "FBDE",
    "QMB+",
+   "SLMB",
    "SLMB+"
   ],
-  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+  "signal": "rule3:eligibility-list"
  },
  "H2802-090-0": {
   "planId": "H2802-90",
@@ -6445,10 +6379,9 @@
   "protected": true,
   "levels": [
    "QI",
-   "QMB",
-   "SLMB"
+   "QMB"
   ],
-  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+  "signal": "rule3:eligibility-list"
  },
  "H3256-004-1": {
   "planId": "H3256-4",
@@ -6459,12 +6392,8 @@
    "GA"
   ],
   "protected": false,
-  "levels": [
-   "FBDE",
-   "QMB+",
-   "SLMB+"
-  ],
-  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+  "levels": [],
+  "signal": "rule2:full-medicaid-conditional"
  },
  "H3256-005-1": {
   "planId": "H3256-5",
@@ -6476,12 +6405,10 @@
   ],
   "protected": true,
   "levels": [
-   "FBDE",
    "QMB",
-   "QMB+",
-   "SLMB+"
+   "QMB+"
   ],
-  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+  "signal": "rule3:eligibility-list"
  },
  "H3256-006-1": {
   "planId": "H3256-6",
@@ -6493,14 +6420,10 @@
   ],
   "protected": true,
   "levels": [
-   "FBDE",
-   "QI",
    "QMB",
-   "QMB+",
-   "SLMB",
-   "SLMB+"
+   "QMB+"
   ],
-  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+  "signal": "rule3:eligibility-list"
  },
  "H3256-006-2": {
   "planId": "H3256-6",
@@ -6512,14 +6435,10 @@
   ],
   "protected": true,
   "levels": [
-   "FBDE",
-   "QI",
    "QMB",
-   "QMB+",
-   "SLMB",
-   "SLMB+"
+   "QMB+"
   ],
-  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+  "signal": "rule3:eligibility-list"
  },
  "H3256-006-3": {
   "planId": "H3256-6",
@@ -6531,14 +6450,10 @@
   ],
   "protected": true,
   "levels": [
-   "FBDE",
-   "QI",
    "QMB",
-   "QMB+",
-   "SLMB",
-   "SLMB+"
+   "QMB+"
   ],
-  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+  "signal": "rule3:eligibility-list"
  },
  "H3868-001-0": {
   "planId": "H3868-1",
@@ -6581,12 +6496,8 @@
    "GA"
   ],
   "protected": false,
-  "levels": [
-   "FBDE",
-   "QMB+",
-   "SLMB+"
-  ],
-  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+  "levels": [],
+  "signal": "rule2:full-medicaid-conditional"
  },
  "H1610-001-0": {
   "planId": "H1610-1",
@@ -6599,5 +6510,50 @@
   "protected": null,
   "levels": [],
   "signal": "uncertain"
+ },
+ "H1889-002-1": {
+  "planId": "H1889-2",
+  "seg": "1",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete FL-Q1 (PPO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "H1889-002-2": {
+  "planId": "H1889-2",
+  "seg": "2",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete FL-Q1 (PPO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+"
+  ],
+  "signal": "rule3:eligibility-list"
+ },
+ "R0759-003-0": {
+  "planId": "R0759-3",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "planName": "UHC Dual Complete FL-Q3 (Regional PPO D-SNP)",
+  "states": [
+   "FL"
+  ],
+  "protected": true,
+  "levels": [
+   "QMB",
+   "QMB+"
+  ],
+  "signal": "rule3:eligibility-list"
  }
 }
