@@ -569,20 +569,23 @@
   "cat": "DSNP",
   "name": "UHC Dual Complete KS-QV1 (HMO-POS D-SNP)",
   "rules": [
-   "UHC-MPP-CREDIT"
+   "BASE-FOOD",
+   "UHC-CREDIT"
   ],
   "set": {
+   "sbVerifiedFoodAmount": 1452,
+   "sbVerifiedFoodPeriod": "month",
+   "ssbciIsConditional": true,
+   "ssbciIsStandalone": false,
+   "ssbciConditionNote": "Up to $121/mo for healthy food, utilities after you qualify with a chronic condition (SSBCI) — the same OTC credit, not additional funds. Confirm eligibility in the plan's Summary of Benefits.",
    "sbVerifiedOtcAmount": 1452,
    "sbVerifiedOtcPeriod": "month",
    "foodCardAllowance": 1452,
    "foodCardMaxPeriod": "month",
-   "ssbciIsConditional": true,
-   "ssbciIsStandalone": false,
-   "ssbciConditionNote": "Up to $121/mo for healthy food, utilities after you qualify with a chronic condition (SSBCI) — the same OTC credit, not additional funds. Confirm eligibility in the plan's Summary of Benefits.",
    "ssbciOffersFood": true,
    "ssbciOffersUtilities": true
   },
-  "evidence": "UHC agent portal (mpp.uhc.com), read 2026-10-05, no SB posted yet: $121/month OTC; healthy food and utilities for qualifying members"
+  "evidence": "OTC, healthy food, utilities + $121 credit every month No coverage wellness support for over-the-counter (OTC) Special Supplemental Benefits products and wellness for the Chronically Ill (SSBCI) support, plus healthy food allow eligible members-whose and utili"
  },
  "H0169-014-1": {
   "planId": "H0169-14",
@@ -1285,20 +1288,23 @@
   "cat": "DSNP",
   "name": "UHC Dual Complete AL-Q1 (HMO-POS D-SNP)",
   "rules": [
-   "UHC-MPP-CREDIT"
+   "BASE-FOOD",
+   "UHC-CREDIT"
   ],
   "set": {
+   "sbVerifiedFoodAmount": 600,
+   "sbVerifiedFoodPeriod": "month",
+   "ssbciIsConditional": true,
+   "ssbciIsStandalone": false,
+   "ssbciConditionNote": "Up to $50/mo for healthy food, utilities after you qualify with a chronic condition (SSBCI) — the same OTC credit, not additional funds. Confirm eligibility in the plan's Summary of Benefits.",
    "sbVerifiedOtcAmount": 600,
    "sbVerifiedOtcPeriod": "month",
    "foodCardAllowance": 600,
    "foodCardMaxPeriod": "month",
-   "ssbciIsConditional": true,
-   "ssbciIsStandalone": false,
-   "ssbciConditionNote": "Up to $50/mo for healthy food, utilities after you qualify with a chronic condition (SSBCI) — the same OTC credit, not additional funds. Confirm eligibility in the plan's Summary of Benefits.",
    "ssbciOffersFood": true,
    "ssbciOffersUtilities": true
   },
-  "evidence": "UHC agent portal (mpp.uhc.com), read 2026-10-05, no SB posted yet: $50/month OTC; healthy food and utilities for qualifying members"
+  "evidence": "OTC, healthy food, utilities + $50 credit every month for over-the-counter (OTC) wellness support products and wellness support, plus healthy food and Special Supplemental Benefits utilities for qualifying members for the Chronically Ill (SSBCI) • Choose from "
  },
  "H0439-011-0": {
   "planId": "H0439-11",
@@ -12448,20 +12454,23 @@
   "cat": "DSNP",
   "name": "UHC Dual Complete TX-Q6 (HMO-POS D-SNP)",
   "rules": [
-   "UHC-MPP-CREDIT"
+   "BASE-FOOD",
+   "UHC-CREDIT"
   ],
   "set": {
+   "sbVerifiedFoodAmount": 840,
+   "sbVerifiedFoodPeriod": "month",
+   "ssbciIsConditional": true,
+   "ssbciIsStandalone": false,
+   "ssbciConditionNote": "Up to $70/mo for healthy food, utilities after you qualify with a chronic condition (SSBCI) — the same OTC credit, not additional funds. Confirm eligibility in the plan's Summary of Benefits.",
    "sbVerifiedOtcAmount": 840,
    "sbVerifiedOtcPeriod": "month",
    "foodCardAllowance": 840,
    "foodCardMaxPeriod": "month",
-   "ssbciIsConditional": true,
-   "ssbciIsStandalone": false,
-   "ssbciConditionNote": "Up to $70/mo for healthy food, utilities after you qualify with a chronic condition (SSBCI) — the same OTC credit, not additional funds. Confirm eligibility in the plan's Summary of Benefits.",
    "ssbciOffersFood": true,
    "ssbciOffersUtilities": true
   },
-  "evidence": "UHC agent portal (mpp.uhc.com), read 2026-10-05, no SB posted yet: $70/month OTC; healthy food and utilities for qualifying members"
+  "evidence": "OTC, healthy food, utilities + $70 credit every month for over-the-counter (OTC) wellness support products and wellness support, plus healthy food and Special Supplemental Benefits utilities for qualifying members for the Chronically Ill (SSBCI) • Choose from "
  },
  "H3868-004-1": {
   "planId": "H3868-4",

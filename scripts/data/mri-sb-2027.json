@@ -265,6 +265,13 @@
 "kind": "copay",
 "value": 0.0
 },
+"H0169-010-0": {
+"basis": "otherwise",
+"carrier": "UnitedHealthcare",
+"evidence": "Diagnostic tests, Diagnostic $0 copay for each Not covered lab and radiology radiology services diagnostic mammogram services, and X- (e.g. MRI, CT scan)2 $0 copay or 20% rays coinsurance otherwise",
+"kind": "coins",
+"value": 20.0
+},
 "H0169-014-1": {
 "basis": "flat",
 "carrier": "UnitedHealthcare",
@@ -439,6 +446,13 @@
 "evidence": "Diagnostic tests, Diagnostic $0 copay for each diagnostic mammogram lab and radiology radiology services $320 copay otherwise services, and X- (e.g. MRI, CT scan)2 rays",
 "kind": "copay",
 "value": 320.0
+},
+"H0432-009-0": {
+"basis": "otherwise",
+"carrier": "UnitedHealthcare",
+"evidence": "Diagnostic tests, Diagnostic $0 copay for each diagnostic mammogram lab and radiology radiology services $0 copay or 20% coinsurance otherwise services, and X- (e.g. MRI, CT scan)2 rays",
+"kind": "coins",
+"value": 20.0
 },
 "H0432-012-0": {
 "basis": "otherwise",
@@ -5873,6 +5887,13 @@
 "value": 20.0
 },
 "H3868-003-2": {
+"basis": "otherwise",
+"carrier": "UnitedHealthcare",
+"evidence": "Diagnostic tests, Diagnostic $0 copay for each diagnostic mammogram lab and radiology radiology services $0 copay or 20% coinsurance otherwise services, and X- (e.g. MRI, CT scan)2 rays",
+"kind": "coins",
+"value": 20.0
+},
+"H3868-003-3": {
 "basis": "otherwise",
 "carrier": "UnitedHealthcare",
 "evidence": "Diagnostic tests, Diagnostic $0 copay for each diagnostic mammogram lab and radiology radiology services $0 copay or 20% coinsurance otherwise services, and X- (e.g. MRI, CT scan)2 rays",

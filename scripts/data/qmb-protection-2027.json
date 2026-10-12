@@ -5722,10 +5722,9 @@
   "protected": true,
   "levels": [
    "QI",
-   "QMB",
-   "SLMB"
+   "QMB"
   ],
-  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+  "signal": "rule3:eligibility-list"
  },
  "H0169-016-0": {
   "planId": "H0169-16",
@@ -5858,14 +5857,10 @@
   ],
   "protected": true,
   "levels": [
-   "FBDE",
-   "QI",
    "QMB",
-   "QMB+",
-   "SLMB",
-   "SLMB+"
+   "QMB+"
   ],
-  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+  "signal": "rule3:eligibility-list"
  },
  "H1045-012-0": {
   "planId": "H1045-12",
@@ -6482,10 +6477,9 @@
   "protected": true,
   "levels": [
    "QI",
-   "QMB",
-   "SLMB"
+   "QMB"
   ],
-  "signal": "mpp:uhc-special-eligibility(no-sb-yet)"
+  "signal": "rule3:eligibility-list"
  },
  "H5322-049-1": {
   "planId": "H5322-49",

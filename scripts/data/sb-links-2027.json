@@ -26115,5 +26115,44 @@
   "bytes": 661222,
   "segVerified": null,
   "validatedAt": "2026-10-08T13:55:58.116Z"
+ },
+ "H0432-009-0": {
+  "planId": "H0432-9",
+  "contract": "H0432",
+  "plan3": "009",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "sourceUrl": "https://www.uhc.com/medicare/alphadog/CSAL27HP0412271_000",
+  "blobUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2027/H0432-9.pdf",
+  "sha256": "24bd7bd35a4e43349d48f4b2b695dd142c4af833a867717429cd15d847c194af",
+  "bytes": 651992,
+  "segVerified": null,
+  "validatedAt": "2026-10-12T13:59:24.512Z"
+ },
+ "H0169-010-0": {
+  "planId": "H0169-10",
+  "contract": "H0169",
+  "plan3": "010",
+  "seg": "0",
+  "carrier": "UnitedHealthcare",
+  "sourceUrl": "https://www.uhc.com/medicare/alphadog/CSKS27HP0412241_000",
+  "blobUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2027/H0169-10.pdf",
+  "sha256": "df868c3d256b97835b621e345cd4f26b8520f0d38bf696ec0052178119dd7b83",
+  "bytes": 671086,
+  "segVerified": null,
+  "validatedAt": "2026-10-12T13:59:24.747Z"
+ },
+ "H3868-003-3": {
+  "planId": "H3868-3",
+  "contract": "H3868",
+  "plan3": "003",
+  "seg": "3",
+  "carrier": "UnitedHealthcare",
+  "sourceUrl": "https://www.uhc.com/medicare/alphadog/CSTX27HP0412782_000",
+  "blobUrl": "https://cqqxtzauqu7qz7ey.public.blob.vercel-storage.com/sb/2027/H3868-3-s3.pdf",
+  "sha256": "df04ff82e7d3f3df432683dda8a067b657151dbabf5b9cccd41a13faae77a648",
+  "bytes": 712195,
+  "segVerified": true,
+  "validatedAt": "2026-10-12T13:59:27.936Z"
  }
 }
