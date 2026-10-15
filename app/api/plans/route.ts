@@ -120,6 +120,11 @@ export async function GET(request: Request) {
   const yearNum = planYear ? parseInt(planYear, 10) : NaN;
   where.planYear = Number.isNaN(yearNum) ? DEFAULT_PLAN_YEAR : yearNum;
 
+  // Non-commissionable plans (2026-10-15): carriers' 2027 commission schedules name plan-segments they pay
+  // nothing on (scripts/data/noncommissionable-2027.json). Agents should not see a plan they can't be paid on,
+  // so they are hidden unless the caller asks for them (audit only: includeNonCommissionable=1).
+  if (searchParams.get("includeNonCommissionable") !== "1") (where as Record<string, unknown>).nonCommissionable = false;
+
   const organizationName = searchParams.get("organizationName");
   if (organizationName) where.organizationName = organizationName;
 
@@ -678,6 +683,7 @@ export async function POST(request: Request) {
     where.county = bare !== county ? { in: [county, bare] } : county;
   }
 
+  (where as Record<string, unknown>).nonCommissionable = false; // options come from sellable plans only (2026-10-15)
   const allYearPlans = await prisma.plan.findMany({
     where,
     select: {

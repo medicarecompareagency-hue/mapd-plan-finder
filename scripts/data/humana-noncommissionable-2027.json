@@ -1,0 +1,3709 @@
+{
+ "source": "Humana 2027 Individual Products Producer Partnership Plan GHHN7GKEN 01/2027 A, pp.19-27",
+ "blocks": [
+  {
+   "state": "Alabama",
+   "counties": "All Counties",
+   "plans": [
+    {
+     "contract": "H5216",
+     "pbp": "179",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "269",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "368",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "370",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "466",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5619",
+     "pbp": "089",
+     "seg": "000",
+     "type": "HMO"
+    },
+    {
+     "contract": "H5619",
+     "pbp": "093",
+     "seg": "000",
+     "type": "HMO"
+    },
+    {
+     "contract": "R0110",
+     "pbp": "017",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "R0110",
+     "pbp": "018",
+     "seg": "000",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "Arizona",
+   "counties": "All Counties",
+   "plans": [
+    {
+     "contract": "H0028",
+     "pbp": "074",
+     "seg": "001",
+     "type": "HMO"
+    },
+    {
+     "contract": "H0028",
+     "pbp": "074",
+     "seg": "002",
+     "type": "HMO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "265",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "371",
+     "seg": "000",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "Arkansas",
+   "counties": "Arkansas, Ashley, Baxter, Benton, Boone, Bradley, Calhoun, Carroll, Chicot, Clark, Clay, Cleburne, Cleveland, Columbia, Conway, Craighead, Crawford, Crittenden, Cross, Dallas, Desha, Drew, Faulkner, Franklin, Fulton, Garland, Grant, Greene, Hempstead, Hot Spring, Howard, Izard, Jackson, Jefferson, Johnson, Lafayette, Lawrence, Lee, Lincoln, Little River, Logan, Lonoke, Madison, Marion, Miller, Mississippi, Montgomery, Nevada, Newton, Ouachita, Perry, Phillips, Pike, Poinsett, Polk, Pope, Prairie, Pulaski, Randolph, St. Francis, Saline, Scott, Searcy, Sebastian, Sevier, Sharp, Stone, Union, Van Buren, Washington, Yell",
+   "plans": [
+    {
+     "contract": "H5216",
+     "pbp": "278",
+     "seg": "001",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "Arkansas",
+   "counties": "All Counties",
+   "plans": [
+    {
+     "contract": "H5216",
+     "pbp": "097",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "264",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "337",
+     "seg": "003",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "361",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "366",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H8145",
+     "pbp": "126",
+     "seg": "000",
+     "type": "PFFS"
+    }
+   ]
+  },
+  {
+   "state": "California",
+   "counties": "All Counties",
+   "plans": [
+    {
+     "contract": "H5619",
+     "pbp": "016",
+     "seg": "000",
+     "type": "HMO"
+    },
+    {
+     "contract": "H5619",
+     "pbp": "021",
+     "seg": "000",
+     "type": "HMO"
+    }
+   ]
+  },
+  {
+   "state": "Colorado",
+   "counties": "Boulder, Douglas, Jefferson",
+   "plans": [
+    {
+     "contract": "H0028",
+     "pbp": "081",
+     "seg": "001",
+     "type": "HMO"
+    }
+   ]
+  },
+  {
+   "state": "Colorado",
+   "counties": "Adams, Arapahoe, Boulder, Broomfield, Denver, Douglas, Jefferson",
+   "plans": [
+    {
+     "contract": "H5216",
+     "pbp": "435",
+     "seg": "002",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "Colorado",
+   "counties": "All Counties",
+   "plans": [
+    {
+     "contract": "H0028",
+     "pbp": "081",
+     "seg": "002",
+     "type": "HMO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "261",
+     "seg": "000",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "Delaware",
+   "counties": "All Counties",
+   "plans": [
+    {
+     "contract": "H5216",
+     "pbp": "308",
+     "seg": "000",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "District of Columbia",
+   "counties": "All Counties",
+   "plans": [
+    {
+     "contract": "H5216",
+     "pbp": "383",
+     "seg": "000",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "Florida",
+   "counties": "All Counties",
+   "plans": [
+    {
+     "contract": "H5216",
+     "pbp": "068",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "311",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "480",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H7284",
+     "pbp": "008",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H7284",
+     "pbp": "009",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H7284",
+     "pbp": "013",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "R5826",
+     "pbp": "074",
+     "seg": "000",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "Georgia",
+   "counties": "All Counties",
+   "plans": [
+    {
+     "contract": "H5216",
+     "pbp": "203",
+     "seg": "001",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "242",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "286",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "345",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "347",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "421",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "466",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H7617",
+     "pbp": "092",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H7617",
+     "pbp": "093",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H7617",
+     "pbp": "094",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H7617",
+     "pbp": "095",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H7617",
+     "pbp": "130",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H7617",
+     "pbp": "132",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H7617",
+     "pbp": "135",
+     "seg": "000",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "Hawaii",
+   "counties": "All Counties",
+   "plans": [
+    {
+     "contract": "H5216",
+     "pbp": "234",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "313",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "314",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "464",
+     "seg": "000",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "Idaho",
+   "counties": "All Counties",
+   "plans": [
+    {
+     "contract": "H5216",
+     "pbp": "048",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "132",
+     "seg": "000",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "Illinois",
+   "counties": "Adams, Alexander, Boone, Brown, Bureau, Carroll, Cass, Champaign, Christian, Clark, Clay, Coles, Cook, Crawford, Cumberland, Dekalb, De Witt, Douglas, DuPage, Edgar, Edwards, Effingham, Fayette, Ford, Franklin, Fulton, Gallatin, Greene, Grundy, Hamilton, Hancock, Hardin, Henderson, Henry, Iroquois, Jackson, Jasper, Jefferson, Jo Daviess, Johnson, Kane, Kankakee, Kendall, Knox, Lake, La Salle, Lawrence, Lee, Livingston, Logan, McDonough, McHenry, Mclean, Macon, Marshall, Mason, Massac, Menard, Mercer, Montgomery, Morgan, Moultrie, Ogle, Peoria, Perry, Piatt, Pike, Pope, Pulaski, Putnam, Randolph, Richland, Saline, Sangamon, Schuyler, Scott, Shelby, Stark, Stephenson, Tazewell, Union, Vermilion, Wabash, Warren, Washington, Wayne, White, Whiteside, Will, Winnebago, Woodford",
+   "plans": [
+    {
+     "contract": "H5216",
+     "pbp": "355",
+     "seg": "000",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "Illinois",
+   "counties": "All Counties",
+   "plans": [
+    {
+     "contract": "H0028",
+     "pbp": "014",
+     "seg": "000",
+     "type": "HMO"
+    },
+    {
+     "contract": "H0028",
+     "pbp": "065",
+     "seg": "000",
+     "type": "HMO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "251",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "278",
+     "seg": "001",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "318",
+     "seg": "001",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "403",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "407",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H8145",
+     "pbp": "126",
+     "seg": "000",
+     "type": "PFFS"
+    },
+    {
+     "contract": "R5361",
+     "pbp": "002",
+     "seg": "000",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "Indiana",
+   "counties": "All Counties",
+   "plans": [
+    {
+     "contract": "H5216",
+     "pbp": "019",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "053",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "226",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "317",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "322",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "441",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "446",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "481",
+     "seg": "001",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5525",
+     "pbp": "008",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5619",
+     "pbp": "051",
+     "seg": "000",
+     "type": "HMO"
+    }
+   ]
+  },
+  {
+   "state": "Indiana",
+   "counties": "All Counties",
+   "plans": [
+    {
+     "contract": "H7617",
+     "pbp": "142",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H7617",
+     "pbp": "143",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "R0110",
+     "pbp": "011",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "R0110",
+     "pbp": "012",
+     "seg": "000",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "Iowa",
+   "counties": "All Counties",
+   "plans": [
+    {
+     "contract": "H7617",
+     "pbp": "118",
+     "seg": "000",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "Kansas",
+   "counties": "Allen, Anderson, Atchison, Barton, Bourbon, Butler, Chase, Cherokee, Clay, Coffey, Cowley, Crawford, Dickinson, Doniphan, Douglas, Ellsworth, Franklin, Geary, Greenwood, Harper, Harvey, Jackson, Jefferson, Johnson, Kingman, Labette, Leavenworth, Linn, McPherson, Marion, Marshall, Miami, Montgomery, Morris, Nemaha, Osage, Ottawa, Pawnee, Pottawatomie, Pratt, Reno, Rice, Riley, Russell, Saline, Sedgwick, Shawnee, Sumner, Wabaunsee, Washington, Wilson, Wyandotte",
+   "plans": [
+    {
+     "contract": "H5216",
+     "pbp": "278",
+     "seg": "001",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "Kansas",
+   "counties": "All Counties",
+   "plans": [
+    {
+     "contract": "H0028",
+     "pbp": "054",
+     "seg": "001",
+     "type": "HMO"
+    },
+    {
+     "contract": "H0028",
+     "pbp": "066",
+     "seg": "000",
+     "type": "HMO"
+    },
+    {
+     "contract": "H4461",
+     "pbp": "047",
+     "seg": "000",
+     "type": "HMO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "318",
+     "seg": "002",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "405",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "409",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H7617",
+     "pbp": "010",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H8145",
+     "pbp": "126",
+     "seg": "000",
+     "type": "PFFS"
+    }
+   ]
+  },
+  {
+   "state": "Kentucky",
+   "counties": "Boone, Caldwell, Campbell, Carroll, Cumberland, Edmonson, Estill, Floyd, Grant, Greenup, Hancock, Hardin, Harrison, Henderson, Kenton, McLean, Meade, Monroe, Ohio, Oldham, Owen, Pendleton, Robertson, Shelby, Todd, Trigg, Union, Webster, Wolfe",
+   "plans": [
+    {
+     "contract": "H7617",
+     "pbp": "049",
+     "seg": "000",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "Kentucky",
+   "counties": "All Counties",
+   "plans": [
+    {
+     "contract": "H5216",
+     "pbp": "019",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "226",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "285",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "317",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "322",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "446",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "481",
+     "seg": "002",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5525",
+     "pbp": "008",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5525",
+     "pbp": "030",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5525",
+     "pbp": "045",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H6622",
+     "pbp": "021",
+     "seg": "001",
+     "type": "HMO"
+    },
+    {
+     "contract": "H7617",
+     "pbp": "142",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H7617",
+     "pbp": "143",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H8145",
+     "pbp": "052",
+     "seg": "000",
+     "type": "PFFS"
+    },
+    {
+     "contract": "R0110",
+     "pbp": "011",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "R0110",
+     "pbp": "012",
+     "seg": "000",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "Louisiana",
+   "counties": "All Counties",
+   "plans": [
+    {
+     "contract": "H1951",
+     "pbp": "044",
+     "seg": "000",
+     "type": "HMO"
+    },
+    {
+     "contract": "H1951",
+     "pbp": "057",
+     "seg": "000",
+     "type": "HMO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "064",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "161",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "325",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "326",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "330",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "332",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "417",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H7617",
+     "pbp": "079",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "R0110",
+     "pbp": "001",
+     "seg": "000",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "Maine",
+   "counties": "Androscoggin, Cumberland, Franklin, Kennebec, Knox, Lincoln, Oxford, Piscataquis, Sagadahoc, Somerset, Waldo, Washington, York",
+   "plans": [
+    {
+     "contract": "H5216",
+     "pbp": "138",
+     "seg": "000",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "Maine",
+   "counties": "All Counties",
+   "plans": [
+    {
+     "contract": "H5216",
+     "pbp": "175",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "291",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5619",
+     "pbp": "066",
+     "seg": "000",
+     "type": "HMO"
+    },
+    {
+     "contract": "H5619",
+     "pbp": "137",
+     "seg": "000",
+     "type": "HMO"
+    },
+    {
+     "contract": "H5619",
+     "pbp": "181",
+     "seg": "000",
+     "type": "HMO"
+    },
+    {
+     "contract": "H7617",
+     "pbp": "046",
+     "seg": "000",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "Maryland",
+   "counties": "All Counties",
+   "plans": [
+    {
+     "contract": "H5216",
+     "pbp": "376",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H6622",
+     "pbp": "081",
+     "seg": "000",
+     "type": "HMO"
+    }
+   ]
+  },
+  {
+   "state": "Massachusetts",
+   "counties": "All Counties",
+   "plans": [
+    {
+     "contract": "H5216",
+     "pbp": "138",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H7617",
+     "pbp": "046",
+     "seg": "000",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "Michigan",
+   "counties": "Alcona, Alger, Allegan, Antrim, Arenac, Baraga, Barry, Bay, Benzie, Berrien, Branch, Cass, Charlevoix, Cheboygan, Clare, Clinton, Crawford, Delta, Dickinson, Eaton, Emmet, Genesee, Gladwin, Grand Traverse, Gratiot, Hillsdale, Houghton, Huron, Ingham, Ionia, Iosco, Iron, Isabella, Jackson, Kalkaska, Kent, Keweenaw, Lake, Lapeer, Leelanau, Lenawee, Livingston, Luce, Macomb, Manistee, Marquette, Mecosta, Menominee, Midland, Missaukee, Monroe, Montcalm, Montmorency, Newaygo, Oakland, Ogemaw, Ontonagon, Osceola, Oscoda, Otsego, Presque Isle, Roscommon, Saginaw, St. Clair, St. Joseph, Sanilac, Schoolcraft, Shiawassee, Tuscola, Van Buren, Washtenaw, Wayne, Wexford",
+   "plans": [
+    {
+     "contract": "H5216",
+     "pbp": "190",
+     "seg": "000",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "Michigan",
+   "counties": "Allegan, Arenac, Barry, Bay, Berrien, Branch, Cass, Clare, Clinton, Delta, Dickinson, Eaton, Genesee, Gratiot, Hillsdale, Ingham, Ionia, Jackson, Kent, Lapeer, Lenawee, Livingston, Macomb, Marquette, Mecosta, Menominee, Midland, Monroe, Montcalm, Newaygo, Oakland, Saginaw, St. Clair, St. Joseph, Sanilac, Shiawassee, Tuscola, Van Buren, Washtenaw, Wayne",
+   "plans": [
+    {
+     "contract": "H5216",
+     "pbp": "306",
+     "seg": "000",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "Michigan",
+   "counties": "Allegan, Antrim, Arenac, Barry, Bay, Benzie, Berrien, Branch, Cass, Cheboygan, Clare, Clinton, Crawford, Delta, Dickinson, Eaton, Genesee, Grand Traverse, Gratiot, Hillsdale, Ingham, Ionia, Isabella, Jackson, Kent, Lapeer, Leelanau, Lenawee, Livingston, Macomb, Marquette, Mecosta, Menominee, Midland, Missaukee, Monroe, Montcalm, Montmorency, Newaygo, Oakland, Oceana, Ogemaw, Osceola, Oscoda, Roscommon, Saginaw, St. Clair, St. Joseph, Shiawassee, Van Buren, Washtenaw, Wayne, Wexford",
+   "plans": [
+    {
+     "contract": "H5216",
+     "pbp": "384",
+     "seg": "000",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "Michigan",
+   "counties": "Alger, Baraga, Houghton, Iron, Keweenaw, Luce, Ontonagon, Schoolcraft",
+   "plans": [
+    {
+     "contract": "H7617",
+     "pbp": "058",
+     "seg": "000",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "Mississippi",
+   "counties": "Adams, Alcorn, Attala, Benton, Bolivar, Calhoun, Chickasaw, Claiborne, Clarke, Coahoma, Copiah, Covington, Desoto, Forrest, Franklin, George, Greene, Hancock, Harrison, Hinds, Humphreys, Issaquena, Jackson, Jasper, Jefferson, Jefferson Davis, Jones, Kemper, Lafayette, Lamar, Lauderdale, Leake, Leflore, Madison, Marion, Marshall, Monroe, Montgomery, Neshoba, Panola, Pearl River, Perry, Pike, Prentiss, Quitman, Rankin, Scott, Sharkey, Stone, Sunflower, Tallahatchie, Tate, Tishomingo, Tunica, Union, Walthall, Warren, Washington, Wayne, Webster, Wilkinson, Winston, Yalobusha, Yazoo",
+   "plans": [
+    {
+     "contract": "H5216",
+     "pbp": "200",
+     "seg": "000",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "Mississippi",
+   "counties": "All Counties",
+   "plans": [
+    {
+     "contract": "H5216",
+     "pbp": "097",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "160",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "292",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "298",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "300",
+     "seg": "000",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "Mississippi",
+   "counties": "All Counties",
+   "plans": [
+    {
+     "contract": "H5216",
+     "pbp": "367",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H6622",
+     "pbp": "047",
+     "seg": "000",
+     "type": "HMO"
+    },
+    {
+     "contract": "H6622",
+     "pbp": "048",
+     "seg": "000",
+     "type": "HMO"
+    },
+    {
+     "contract": "R0110",
+     "pbp": "001",
+     "seg": "000",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "Missouri",
+   "counties": "Adair, Andrew, Atchison, Audrain, Barry, Barton, Bates, Benton, Bollinger, Boone, Caldwell, Callaway, Camden, Cape Girardeau, Carroll, Franklin, Carter, Cass, Cedar, Chariton, Christian, Clark, Clay, Clinton, Cole, Cooper, Crawford, Dade, Dallas, Daviess, Dekalb, Dent, Douglas, Gasconade, Greene, Grundy, Henry, Hickory, Holt, Howard, Howell, Iron, Jackson, Jasper, Jefferson, Johnson, Knox, Laclede, Lafayette, Lawrence, Lewis, Lincoln, Linn, Macon, Madison, Marion, McDonald, Mercer, Miller, Mississippi, Moniteau, Monroe, Morgan, New Madrid, Newton, Oregon, Osage, Ozark, Pemiscot, Perry, Pettis, Phelps, Pike, Platte, Polk, Pulaski, Putnam, Ralls, Randolph, Ray, Reynolds, Ripley, Saline, Schuyler, Scotland, Scott, Shannon, Shelby, St. Charles, St. Clair, St. Francois, St. Louis City, St. Louis, Ste. Genevieve, Stoddard, Stone, Sullivan, Taney, Texas, Vernon, Warren, Washington, Wayne, Webster, Worth, Wright",
+   "plans": [
+    {
+     "contract": "H5216",
+     "pbp": "278",
+     "seg": "001",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "Missouri",
+   "counties": "All Counties",
+   "plans": [
+    {
+     "contract": "H0028",
+     "pbp": "014",
+     "seg": "000",
+     "type": "HMO"
+    },
+    {
+     "contract": "H0028",
+     "pbp": "054",
+     "seg": "001",
+     "type": "HMO"
+    },
+    {
+     "contract": "H0028",
+     "pbp": "065",
+     "seg": "000",
+     "type": "HMO"
+    },
+    {
+     "contract": "H0028",
+     "pbp": "066",
+     "seg": "000",
+     "type": "HMO"
+    },
+    {
+     "contract": "H4461",
+     "pbp": "047",
+     "seg": "000",
+     "type": "HMO"
+    },
+    {
+     "contract": "H4623",
+     "pbp": "002",
+     "seg": "000",
+     "type": "HMO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "318",
+     "seg": "001",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "318",
+     "seg": "002",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "404",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "405",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "407",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H7617",
+     "pbp": "010",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H8145",
+     "pbp": "126",
+     "seg": "000",
+     "type": "PFFS"
+    }
+   ]
+  },
+  {
+   "state": "Montana",
+   "counties": "All Counties",
+   "plans": [
+    {
+     "contract": "H5216",
+     "pbp": "048",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "457",
+     "seg": "001",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "457",
+     "seg": "002",
+     "type": "PPO"
+    },
+    {
+     "contract": "H7617",
+     "pbp": "024",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H7617",
+     "pbp": "026",
+     "seg": "000",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "Nevada",
+   "counties": "All Counties",
+   "plans": [
+    {
+     "contract": "H5216",
+     "pbp": "281",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H6622",
+     "pbp": "056",
+     "seg": "000",
+     "type": "HMO"
+    }
+   ]
+  },
+  {
+   "state": "New Hampshire",
+   "counties": "Hillsborough, Merrimack, Rockingham, Strafford",
+   "plans": [
+    {
+     "contract": "H5216",
+     "pbp": "138",
+     "seg": "000",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "New Hampshire",
+   "counties": "All Counties",
+   "plans": [
+    {
+     "contract": "H5619",
+     "pbp": "137",
+     "seg": "000",
+     "type": "HMO"
+    }
+   ]
+  },
+  {
+   "state": "New Jersey",
+   "counties": "All Counties",
+   "plans": [
+    {
+     "contract": "H5216",
+     "pbp": "319",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H7617",
+     "pbp": "045",
+     "seg": "000",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "New Mexico",
+   "counties": "Bernalillo, Sandoval, San Miguel, Santa Fe, Torrance, Valencia",
+   "plans": [
+    {
+     "contract": "H5216",
+     "pbp": "223",
+     "seg": "000",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "New Mexico",
+   "counties": "All Counties",
+   "plans": [
+    {
+     "contract": "H0028",
+     "pbp": "019",
+     "seg": "000",
+     "type": "HMO"
+    }
+   ]
+  },
+  {
+   "state": "North Carolina",
+   "counties": "All Counties",
+   "plans": [
+    {
+     "contract": "H5525",
+     "pbp": "035",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H6622",
+     "pbp": "057",
+     "seg": "000",
+     "type": "HMO"
+    }
+   ]
+  },
+  {
+   "state": "Ohio",
+   "counties": "Adams, Allen, Ashland, Auglaize, Belmont, Brown, Butler, Carroll, Champaign, Clark, Clermont, Clinton, Columbiana, Cuyahoga, Darke, Delaware, Erie, Fairfield, Franklin, Fulton, Geauga, Greene, Guernsey, Hamilton, Hancock, Hardin, Harrison, Henry, Holmes, Huron, Jackson, Jefferson, Knox, Lake, Lawrence, Licking, Logan, Lorain, Lucas, Madison, Mahoning, Marion, Medina, Meigs, Miami, Monroe, Montgomery, Morrow, Noble, Ottawa, Paulding, Perry, Pickaway, Portage, Preble, Putnam, Sandusky, Seneca, Shelby, Stark, Summit, Trumbull, Tuscarawas, Union, Van Wert, Warren, Wayne, Williams, Wood, Wyandot",
+   "plans": [
+    {
+     "contract": "H5216",
+     "pbp": "441",
+     "seg": "000",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "Ohio",
+   "counties": "Adams, Allen, Ashland, Auglaize, Belmont, Brown, Butler, Carroll, Champaign, Clark, Clermont, Clinton, Columbiana, Cuyahoga, Darke, Delaware, Erie, Fairfield, Franklin, Fulton, Geauga, Greene, Hamilton, Hancock, Hardin, Harrison, Henry, Holmes, Jefferson, Knox, Lake, Lawrence, Licking, Logan, Lorain, Lucas, Madison, Mahoning, Marion, Medina, Miami, Montgomery, Morrow, Ottawa, Paulding, Pickaway, Portage, Preble, Putnam, Sandusky, Seneca, Shelby, Stark, Summit, Trumbull, Tuscarawas, Union, Van Wert, Warren, Wayne, Williams, Wood, Wyandot",
+   "plans": [
+    {
+     "contract": "H5216",
+     "pbp": "481",
+     "seg": "002",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "Ohio",
+   "counties": "All Counties",
+   "plans": [
+    {
+     "contract": "H5216",
+     "pbp": "106",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "285",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "401",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5525",
+     "pbp": "030",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5525",
+     "pbp": "042",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H7617",
+     "pbp": "140",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H7617",
+     "pbp": "142",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "R0110",
+     "pbp": "015",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "R0110",
+     "pbp": "016",
+     "seg": "000",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "Oklahoma",
+   "counties": "Adair, Alfalfa, Atoka, Bryan, Caddo, Canadian, Cherokee, Choctaw, Cleveland, Comanche, Cotton, Craig, Creek, Delaware, Dewey, Garfield, Garvin, Grady, Grant, Greer, Haskell, Hughes, Jackson, Jefferson, Johnston, Kay, Kingfisher, Kiowa, Latimer, Le Flore, Lincoln, Logan, Love, Major, Marshall, Mayes, McClain, McCurtain, McIntosh, Murray, Muskogee, Noble, Nowata, Okfuskee, Oklahoma, Okmulgee, Osage, Ottawa, Pawnee, Pittsburg, Pontotoc, Pottawatomie, Pushmataha, Rogers, Seminole, Sequoyah, Stephens, Tillman, Tulsa, Wagoner, Woods",
+   "plans": [
+    {
+     "contract": "H5216",
+     "pbp": "278",
+     "seg": "001",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "Oklahoma",
+   "counties": "All Counties",
+   "plans": [
+    {
+     "contract": "H5216",
+     "pbp": "264",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "337",
+     "seg": "002",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "372",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H8145",
+     "pbp": "126",
+     "seg": "000",
+     "type": "PFFS"
+    }
+   ]
+  },
+  {
+   "state": "Oregon",
+   "counties": "All Counties",
+   "plans": [
+    {
+     "contract": "H1036",
+     "pbp": "306",
+     "seg": "000",
+     "type": "HMO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "048",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "132",
+     "seg": "000",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "Pennsylvania",
+   "counties": "All Counties",
+   "plans": [
+    {
+     "contract": "H5216",
+     "pbp": "120",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5525",
+     "pbp": "005",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5525",
+     "pbp": "006",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H8145",
+     "pbp": "052",
+     "seg": "000",
+     "type": "PFFS"
+    },
+    {
+     "contract": "R0110",
+     "pbp": "007",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "R0110",
+     "pbp": "008",
+     "seg": "000",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "South Carolina",
+   "counties": "All Counties",
+   "plans": [
+    {
+     "contract": "H5216",
+     "pbp": "243",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "277",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "286",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "345",
+     "seg": "000",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "South Carolina",
+   "counties": "All Counties",
+   "plans": [
+    {
+     "contract": "H5216",
+     "pbp": "347",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "466",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H7617",
+     "pbp": "094",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H7617",
+     "pbp": "095",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H7617",
+     "pbp": "128",
+     "seg": "000",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "Tennessee",
+   "counties": "All Counties",
+   "plans": [
+    {
+     "contract": "H4461",
+     "pbp": "022",
+     "seg": "000",
+     "type": "HMO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "097",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "180",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "416",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H7617",
+     "pbp": "117",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "R0110",
+     "pbp": "017",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "R0110",
+     "pbp": "018",
+     "seg": "000",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "Texas",
+   "counties": "Anderson, Andrews, Angelina, Aransas, Archer, Armstrong, Atascosa, Austin, Bandera, Bastrop, Baylor, Bee, Bexar, Blanco, Bowie, Brazoria, Brooks, Brown, Burleson, Burnet, Caldwell, Calhoun, Callahan, Cameron, Camp, Carson, Cass, Chambers, Cherokee, Clay, Coke, Coleman, Collin, Colorado, Comal, Comanche, Concho, Cooke, Coryell, Crosby, Dallas, Dawson, Deaf Smith, Delta, Denton, Dewitt, Dickens, Dimmit, Duval, Eastland, Ector, Edwards, Ellis, El Paso, Erath, Falls, Fannin, Fayette, Franklin, Freestone, Frio, Galveston, Garza, Gillespie, Goliad, Gonzales, Gray, Grayson, Gregg, Grimes, Guadalupe, Hale, Hall, Hamilton, Hardin, Harris, Harrison, Hartley, Haskell, Hays, Henderson, Hidalgo, Hill, Hockley, Hopkins, Houston, Howard, Hudspeth, Hunt, Hutchinson, Irion, Jack, Jackson, Jasper, Jefferson, Jim Hogg, Jim Wells, Johnson, Jones, Karnes, Kaufman, Kendall, Kenedy, Kerr, Kinney, Kleberg, Lamar, Lamb, Lampasas, Lavaca, Lee, Leon, Liberty, Limestone, Live Oak, Llano, Lubbock, Lynn, McCulloch, McLennan, Madison, Marion, Martin, Matagorda, Maverick, Medina, Midland, Milam, Montague, Montgomery, Moore, Morris, Nacogdoches, Navarro, Newton, Nolan, Nueces, Orange, Palo Pinto, Panola, Parker, Pecos, Polk, Potter, Rains, Randall, Real, Red River, Reeves, Refugio, Robertson, Rockwall, Runnels, Rusk, Sabine, San Augustine, San Jacinto, San Patricio, San Saba, Schleicher, Shackelford, Shelby, Smith, Somervell, Starr, Stephens, Tarrant, Terry, Throckmorton, Titus, Tom Green, Travis, Trinity, Tyler, Upshur, Uvalde, Val Verde, Van Zandt, Victoria, Walker, Waller, Ward, Washington, Webb, Wharton, Wilbarger, Willacy, Williamson, Wilson, Wise, Wood, Young, Zapata, Zavala",
+   "plans": [
+    {
+     "contract": "H5216",
+     "pbp": "348",
+     "seg": "000",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "Texas",
+   "counties": "Anderson, Angelina, Aransas, Bastrop, Bee, Bowie, Brazoria, Caldwell, Cass, Chambers, Collin, Cooke, Coryell, Delta, Denton, Ector, Ellis, Fannin, Fayette, Galveston, Grayson, Gregg, Hale, Hardin, Harris, Harrison, Hays, Henderson, Hill, Hood, Hopkins, Howard, Jasper, Jefferson, Jim Wells, Johnson, Kaufman, Kleberg, Lamar, Liberty, Llano, Lubbock, Maverick, Milam, Montague, Montgomery, Nacogdoches, Navarro, Nueces, Orange, Parker, Potter, Randall, Red River, Rockwall, Rusk, San Jacinto, San Patricio, Smith, Tarrant, Titus, Tom Green, Travis, Tyler, Upshur, Van Zandt, Victoria, Walker, Waller, Washington, Wharton, Williamson, Wise, Wood",
+   "plans": [
+    {
+     "contract": "H5216",
+     "pbp": "358",
+     "seg": "000",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "Texas",
+   "counties": "Cooke, Dallas, Denton, Ellis, Hill, Hood, Kaufman, Montague, Tarrant, Wise",
+   "plans": [
+    {
+     "contract": "H7617",
+     "pbp": "035",
+     "seg": "000",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "Texas",
+   "counties": "All Counties",
+   "plans": [
+    {
+     "contract": "H0028",
+     "pbp": "029",
+     "seg": "000",
+     "type": "HMO"
+    },
+    {
+     "contract": "H0028",
+     "pbp": "030",
+     "seg": "000",
+     "type": "HMO"
+    },
+    {
+     "contract": "H0028",
+     "pbp": "032",
+     "seg": "000",
+     "type": "HMO"
+    },
+    {
+     "contract": "H0028",
+     "pbp": "035",
+     "seg": "000",
+     "type": "HMO"
+    },
+    {
+     "contract": "H0028",
+     "pbp": "036",
+     "seg": "000",
+     "type": "HMO"
+    }
+   ]
+  },
+  {
+   "state": "Texas",
+   "counties": "All Counties",
+   "plans": [
+    {
+     "contract": "H0028",
+     "pbp": "037",
+     "seg": "000",
+     "type": "HMO"
+    },
+    {
+     "contract": "H0028",
+     "pbp": "039",
+     "seg": "000",
+     "type": "HMO"
+    },
+    {
+     "contract": "H0028",
+     "pbp": "041",
+     "seg": "000",
+     "type": "HMO"
+    },
+    {
+     "contract": "H0028",
+     "pbp": "042",
+     "seg": "000",
+     "type": "HMO"
+    },
+    {
+     "contract": "H0028",
+     "pbp": "043",
+     "seg": "001",
+     "type": "HMO"
+    },
+    {
+     "contract": "H0028",
+     "pbp": "043",
+     "seg": "002",
+     "type": "HMO"
+    },
+    {
+     "contract": "H0028",
+     "pbp": "046",
+     "seg": "000",
+     "type": "HMO"
+    },
+    {
+     "contract": "H0028",
+     "pbp": "059",
+     "seg": "000",
+     "type": "HMO"
+    },
+    {
+     "contract": "H0028",
+     "pbp": "060",
+     "seg": "000",
+     "type": "HMO"
+    },
+    {
+     "contract": "H0028",
+     "pbp": "070",
+     "seg": "000",
+     "type": "HMO"
+    },
+    {
+     "contract": "H0028",
+     "pbp": "072",
+     "seg": "000",
+     "type": "HMO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "042",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "043",
+     "seg": "001",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "043",
+     "seg": "006",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "350",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "351",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "352",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "369",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "431",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "432",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "433",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H7617",
+     "pbp": "042",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H7617",
+     "pbp": "136",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H7617",
+     "pbp": "137",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H7617",
+     "pbp": "138",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H8145",
+     "pbp": "126",
+     "seg": "000",
+     "type": "PFFS"
+    },
+    {
+     "contract": "R4182",
+     "pbp": "003",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "R4182",
+     "pbp": "004",
+     "seg": "000",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "Utah",
+   "counties": "Davis, Salt Lake, Utah, Weber",
+   "plans": [
+    {
+     "contract": "H5216",
+     "pbp": "471",
+     "seg": "000",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "Utah",
+   "counties": "All Counties",
+   "plans": [
+    {
+     "contract": "H5216",
+     "pbp": "048",
+     "seg": "000",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "Vermont",
+   "counties": "All Counties",
+   "plans": [
+    {
+     "contract": "H5216",
+     "pbp": "138",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H7617",
+     "pbp": "046",
+     "seg": "000",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "Virginia",
+   "counties": "Amelia, Bland, Buckingham, Craig, Dinwiddie, Essex, Fluvanna, Franklin City, Galax City, Hanover, Highland, Isle Of Wight, King William, Mathews, Richmond, Stafford, Westmoreland",
+   "plans": [
+    {
+     "contract": "H7617",
+     "pbp": "098",
+     "seg": "000",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "Virginia",
+   "counties": "Alexandria City, Amelia, Bath, Bland, Buckingham, Craig, Dinwiddie, Essex, Fluvanna, Franklin City, Galax City, Giles, Hanover, Highland, Isle Of Wight, King William, Lancaster, Mathews, New Kent, Richmond, Shenandoah, Stafford, Westmoreland",
+   "plans": [
+    {
+     "contract": "H7617",
+     "pbp": "100",
+     "seg": "000",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "Virginia",
+   "counties": "Alexandria City, Bath, Giles, Lancaster, New Kent, Shenandoah",
+   "plans": [
+    {
+     "contract": "H7617",
+     "pbp": "101",
+     "seg": "000",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "Virginia",
+   "counties": "All Counties",
+   "plans": [
+    {
+     "contract": "H5216",
+     "pbp": "100",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "266",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "271",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "308",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "310",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "362",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "406",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "408",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H6622",
+     "pbp": "004",
+     "seg": "000",
+     "type": "HMO"
+    },
+    {
+     "contract": "H6622",
+     "pbp": "090",
+     "seg": "000",
+     "type": "HMO"
+    }
+   ]
+  },
+  {
+   "state": "Virginia",
+   "counties": "All Counties",
+   "plans": [
+    {
+     "contract": "H7617",
+     "pbp": "131",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H7617",
+     "pbp": "133",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H7617",
+     "pbp": "134",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H8145",
+     "pbp": "091",
+     "seg": "000",
+     "type": "PFFS"
+    }
+   ]
+  },
+  {
+   "state": "Washington",
+   "counties": "All Counties",
+   "plans": [
+    {
+     "contract": "H1036",
+     "pbp": "306",
+     "seg": "000",
+     "type": "HMO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "048",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "427",
+     "seg": "001",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5619",
+     "pbp": "057",
+     "seg": "000",
+     "type": "HMO"
+    },
+    {
+     "contract": "H5619",
+     "pbp": "165",
+     "seg": "000",
+     "type": "HMO"
+    },
+    {
+     "contract": "H5619",
+     "pbp": "174",
+     "seg": "000",
+     "type": "HMO"
+    }
+   ]
+  },
+  {
+   "state": "West Virginia",
+   "counties": "Barbour, Braxton, Brooke, Calhoun, Doddridge, Gilmer, Grant, Hampshire, Hancock, Hardy, Harrison, Jackson, Lewis, Marion, Marshall, Mineral, Monongalia, Morgan, Ohio, Pendleton, Pleasants, Pocahontas, Preston, Randolph, Ritchie, Roane, Taylor, Tucker, Tyler, Upshur, Webster, Wetzel, Wirt, Wyoming",
+   "plans": [
+    {
+     "contract": "H7617",
+     "pbp": "065",
+     "seg": "000",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "West Virginia",
+   "counties": "All Counties",
+   "plans": [
+    {
+     "contract": "H5216",
+     "pbp": "019",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "124",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "328",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5525",
+     "pbp": "005",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H7617",
+     "pbp": "139",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H8145",
+     "pbp": "052",
+     "seg": "000",
+     "type": "PFFS"
+    },
+    {
+     "contract": "R0110",
+     "pbp": "007",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "R0110",
+     "pbp": "008",
+     "seg": "000",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "Wisconsin",
+   "counties": "All Counties",
+   "plans": [
+    {
+     "contract": "H5216",
+     "pbp": "006",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "173",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "252",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "253",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "355",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "H5216",
+     "pbp": "410",
+     "seg": "000",
+     "type": "PPO"
+    },
+    {
+     "contract": "R5361",
+     "pbp": "002",
+     "seg": "000",
+     "type": "PPO"
+    }
+   ]
+  },
+  {
+   "state": "Wyoming",
+   "counties": "All Counties",
+   "plans": [
+    {
+     "contract": "H5216",
+     "pbp": "048",
+     "seg": "000",
+     "type": "PPO"
+    }
+   ]
+  }
+ ],
+ "hits": [
+  {
+   "planId": "H5216-179",
+   "seg": 0,
+   "state": "AL",
+   "rows": 65,
+   "planName": "Humana Value Plus H5216-179 (PPO)"
+  },
+  {
+   "planId": "H5216-269",
+   "seg": 0,
+   "state": "AL",
+   "rows": 54,
+   "planName": "HumanaChoice H5216-269 (PPO)"
+  },
+  {
+   "planId": "H5216-368",
+   "seg": 0,
+   "state": "AL",
+   "rows": 67,
+   "planName": "HumanaChoice H5216-368 (PPO)"
+  },
+  {
+   "planId": "H5216-370",
+   "seg": 0,
+   "state": "AL",
+   "rows": 67,
+   "planName": "HumanaChoice SNP-DE H5216-370 (PPO D-SNP)"
+  },
+  {
+   "planId": "H5216-466",
+   "seg": 0,
+   "state": "AL",
+   "rows": 4,
+   "planName": "HumanaChoice H5216-466 (PPO)"
+  },
+  {
+   "planId": "H5619-89",
+   "seg": 0,
+   "state": "AL",
+   "rows": 67,
+   "planName": "Humana Gold Plus H5619-089 (HMO)"
+  },
+  {
+   "planId": "H5619-93",
+   "seg": 0,
+   "state": "AL",
+   "rows": 63,
+   "planName": "Humana Dual Select H5619-093 (HMO D-SNP)"
+  },
+  {
+   "planId": "R0110-17",
+   "seg": 0,
+   "state": "AL",
+   "rows": 67,
+   "planName": "HumanaChoice R0110-017 (Regional PPO)"
+  },
+  {
+   "planId": "R0110-18",
+   "seg": 0,
+   "state": "AL",
+   "rows": 67,
+   "planName": "HumanaChoice R0110-018 (Regional PPO)"
+  },
+  {
+   "planId": "H5216-278",
+   "seg": 1,
+   "state": "AR",
+   "rows": 71,
+   "planName": "Humana USAA Honor Giveback (PPO)"
+  },
+  {
+   "planId": "H5216-97",
+   "seg": 0,
+   "state": "AR",
+   "rows": 1,
+   "planName": "HumanaChoice H5216-097 (PPO)"
+  },
+  {
+   "planId": "H5216-264",
+   "seg": 0,
+   "state": "AR",
+   "rows": 65,
+   "planName": "HumanaChoice Giveback H5216-264 (PPO)"
+  },
+  {
+   "planId": "H5216-337",
+   "seg": 3,
+   "state": "AR",
+   "rows": 58,
+   "planName": "HumanaChoice H5216-337 (PPO)"
+  },
+  {
+   "planId": "H5216-361",
+   "seg": 0,
+   "state": "AR",
+   "rows": 63,
+   "planName": "Humana Dual Select H5216-361 (PPO D-SNP)"
+  },
+  {
+   "planId": "H5216-366",
+   "seg": 0,
+   "state": "AR",
+   "rows": 63,
+   "planName": "HumanaChoice - Diabetes and Heart (PPO C-SNP)"
+  },
+  {
+   "planId": "H8145-126",
+   "seg": 0,
+   "state": "AR",
+   "rows": 38,
+   "planName": "Humana Gold Choice H8145-126 (PFFS)"
+  },
+  {
+   "planId": "H5216-68",
+   "seg": 0,
+   "state": "FL",
+   "rows": 3,
+   "planName": "HumanaChoice Florida H5216-068 (PPO)"
+  },
+  {
+   "planId": "H5216-311",
+   "seg": 0,
+   "state": "FL",
+   "rows": 9,
+   "planName": "HumanaChoice Giveback H5216-311 (PPO)"
+  },
+  {
+   "planId": "H5216-480",
+   "seg": 0,
+   "state": "FL",
+   "rows": 36,
+   "planName": "Humana Dual Integrated (PPO D-SNP)"
+  },
+  {
+   "planId": "H7284-8",
+   "seg": 0,
+   "state": "FL",
+   "rows": 4,
+   "planName": "HumanaChoice Florida H7284-008 (PPO)"
+  },
+  {
+   "planId": "H7284-9",
+   "seg": 0,
+   "state": "FL",
+   "rows": 34,
+   "planName": "HumanaChoice Florida H7284-009 (PPO)"
+  },
+  {
+   "planId": "H7284-13",
+   "seg": 0,
+   "state": "FL",
+   "rows": 8,
+   "planName": "Humana Dual Integrated (PPO D-SNP)"
+  },
+  {
+   "planId": "R5826-74",
+   "seg": 0,
+   "state": "FL",
+   "rows": 67,
+   "planName": "HumanaChoice R5826-074 (Regional PPO)"
+  },
+  {
+   "planId": "H5216-203",
+   "seg": 1,
+   "state": "GA",
+   "rows": 30,
+   "planName": "HumanaChoice H5216-203 (PPO)"
+  },
+  {
+   "planId": "H5216-242",
+   "seg": 0,
+   "state": "GA",
+   "rows": 159,
+   "planName": "Humana Together in Health (PPO I-SNP)"
+  },
+  {
+   "planId": "H5216-286",
+   "seg": 0,
+   "state": "GA",
+   "rows": 153,
+   "planName": "Humana USAA Honor Giveback (PPO)"
+  },
+  {
+   "planId": "H5216-345",
+   "seg": 0,
+   "state": "GA",
+   "rows": 124,
+   "planName": "HumanaChoice Giveback H5216-345 (PPO)"
+  },
+  {
+   "planId": "H5216-347",
+   "seg": 0,
+   "state": "GA",
+   "rows": 10,
+   "planName": "HumanaChoice H5216-347 (PPO)"
+  },
+  {
+   "planId": "H5216-421",
+   "seg": 0,
+   "state": "GA",
+   "rows": 154,
+   "planName": "HumanaChoice H5216-421 (PPO)"
+  },
+  {
+   "planId": "H5216-466",
+   "seg": 0,
+   "state": "GA",
+   "rows": 44,
+   "planName": "HumanaChoice H5216-466 (PPO)"
+  },
+  {
+   "planId": "H7617-92",
+   "seg": 0,
+   "state": "GA",
+   "rows": 31,
+   "planName": "HumanaChoice H7617-092 (PPO)"
+  },
+  {
+   "planId": "H7617-93",
+   "seg": 0,
+   "state": "GA",
+   "rows": 158,
+   "planName": "HumanaChoice H7617-093 (PPO)"
+  },
+  {
+   "planId": "H7617-94",
+   "seg": 0,
+   "state": "GA",
+   "rows": 129,
+   "planName": "HumanaChoice Giveback H7617-094 (PPO)"
+  },
+  {
+   "planId": "H7617-95",
+   "seg": 0,
+   "state": "GA",
+   "rows": 10,
+   "planName": "HumanaChoice H7617-095 (PPO)"
+  },
+  {
+   "planId": "H7617-130",
+   "seg": 0,
+   "state": "GA",
+   "rows": 158,
+   "planName": "Humana Together in Health (PPO I-SNP)"
+  },
+  {
+   "planId": "H7617-132",
+   "seg": 0,
+   "state": "GA",
+   "rows": 41,
+   "planName": "Humana Kidney Care (PPO C-SNP)"
+  },
+  {
+   "planId": "H7617-135",
+   "seg": 0,
+   "state": "GA",
+   "rows": 41,
+   "planName": "Humana Kidney Care (PPO C-SNP)"
+  },
+  {
+   "planId": "H5216-355",
+   "seg": 0,
+   "state": "IL",
+   "rows": 91,
+   "planName": "Humana USAA Honor Giveback (PPO)"
+  },
+  {
+   "planId": "H0028-14",
+   "seg": 0,
+   "state": "IL",
+   "rows": 6,
+   "planName": "Humana Total Complete (HMO)"
+  },
+  {
+   "planId": "H0028-65",
+   "seg": 0,
+   "state": "IL",
+   "rows": 6,
+   "planName": "Humana Essentials Plus Giveback (HMO)"
+  },
+  {
+   "planId": "H5216-251",
+   "seg": 0,
+   "state": "IL",
+   "rows": 13,
+   "planName": "Humana Value Choice (PPO)"
+  },
+  {
+   "planId": "H5216-278",
+   "seg": 1,
+   "state": "IL",
+   "rows": 8,
+   "planName": "Humana USAA Honor Giveback (PPO)"
+  },
+  {
+   "planId": "H5216-318",
+   "seg": 1,
+   "state": "IL",
+   "rows": 7,
+   "planName": "Humana Value Choice (PPO)"
+  },
+  {
+   "planId": "H5216-403",
+   "seg": 0,
+   "state": "IL",
+   "rows": 87,
+   "planName": "HumanaChoice Giveback H5216-403 (PPO)"
+  },
+  {
+   "planId": "H5216-407",
+   "seg": 0,
+   "state": "IL",
+   "rows": 6,
+   "planName": "Humana Full Access (PPO)"
+  },
+  {
+   "planId": "H8145-126",
+   "seg": 0,
+   "state": "IL",
+   "rows": 41,
+   "planName": "Humana Gold Choice H8145-126 (PFFS)"
+  },
+  {
+   "planId": "R5361-2",
+   "seg": 0,
+   "state": "IL",
+   "rows": 102,
+   "planName": "HumanaChoice R5361-002 (Regional PPO)"
+  },
+  {
+   "planId": "H5216-19",
+   "seg": 0,
+   "state": "IN",
+   "rows": 44,
+   "planName": "HumanaChoice H5216-019 (PPO)"
+  },
+  {
+   "planId": "H5216-53",
+   "seg": 0,
+   "state": "IN",
+   "rows": 25,
+   "planName": "HumanaChoice H5216-053 (PPO)"
+  },
+  {
+   "planId": "H5216-226",
+   "seg": 0,
+   "state": "IN",
+   "rows": 1,
+   "planName": "HumanaChoice H5216-226 (PPO)"
+  },
+  {
+   "planId": "H5216-317",
+   "seg": 0,
+   "state": "IN",
+   "rows": 2,
+   "planName": "HumanaChoice H5216-317 (PPO)"
+  },
+  {
+   "planId": "H5216-322",
+   "seg": 0,
+   "state": "IN",
+   "rows": 3,
+   "planName": "HumanaChoice Giveback H5216-322 (PPO)"
+  },
+  {
+   "planId": "H5216-441",
+   "seg": 0,
+   "state": "IN",
+   "rows": 92,
+   "planName": "Humana USAA Honor Giveback (PPO)"
+  },
+  {
+   "planId": "H5216-446",
+   "seg": 0,
+   "state": "IN",
+   "rows": 92,
+   "planName": "Humana Together in Health (PPO I-SNP)"
+  },
+  {
+   "planId": "H5216-481",
+   "seg": 1,
+   "state": "IN",
+   "rows": 67,
+   "planName": "HumanaChoice Giveback H5216-481 (PPO)"
+  },
+  {
+   "planId": "H5525-8",
+   "seg": 0,
+   "state": "IN",
+   "rows": 16,
+   "planName": "HumanaChoice H5525-008 (PPO)"
+  },
+  {
+   "planId": "H5619-51",
+   "seg": 0,
+   "state": "IN",
+   "rows": 12,
+   "planName": "Humana Gold Plus H5619-051 (HMO-POS)"
+  },
+  {
+   "planId": "H7617-142",
+   "seg": 0,
+   "state": "IN",
+   "rows": 92,
+   "planName": "Humana Senior Living Plan (PPO I-SNP)"
+  },
+  {
+   "planId": "H7617-143",
+   "seg": 0,
+   "state": "IN",
+   "rows": 92,
+   "planName": "Humana Together in Health (PPO I-SNP)"
+  },
+  {
+   "planId": "R0110-11",
+   "seg": 0,
+   "state": "IN",
+   "rows": 92,
+   "planName": "HumanaChoice R0110-011 (Regional PPO)"
+  },
+  {
+   "planId": "R0110-12",
+   "seg": 0,
+   "state": "IN",
+   "rows": 92,
+   "planName": "HumanaChoice R0110-012 (Regional PPO)"
+  },
+  {
+   "planId": "H5216-278",
+   "seg": 1,
+   "state": "KS",
+   "rows": 52,
+   "planName": "Humana USAA Honor Giveback (PPO)"
+  },
+  {
+   "planId": "H0028-54",
+   "seg": 1,
+   "state": "KS",
+   "rows": 7,
+   "planName": "Humana Total Complete (HMO-POS)"
+  },
+  {
+   "planId": "H0028-66",
+   "seg": 0,
+   "state": "KS",
+   "rows": 7,
+   "planName": "Humana Total Complete Giveback (HMO-POS)"
+  },
+  {
+   "planId": "H4461-47",
+   "seg": 0,
+   "state": "KS",
+   "rows": 7,
+   "planName": "Humana Total Complete Giveback (HMO-POS)"
+  },
+  {
+   "planId": "H5216-318",
+   "seg": 2,
+   "state": "KS",
+   "rows": 21,
+   "planName": "Humana Value Choice (PPO)"
+  },
+  {
+   "planId": "H5216-405",
+   "seg": 0,
+   "state": "KS",
+   "rows": 23,
+   "planName": "Humana Essentials Plus Giveback (PPO)"
+  },
+  {
+   "planId": "H5216-409",
+   "seg": 0,
+   "state": "KS",
+   "rows": 29,
+   "planName": "HumanaChoice Giveback H5216-409 (PPO)"
+  },
+  {
+   "planId": "H7617-10",
+   "seg": 0,
+   "state": "KS",
+   "rows": 21,
+   "planName": "Humana Value Choice (PPO)"
+  },
+  {
+   "planId": "H8145-126",
+   "seg": 0,
+   "state": "KS",
+   "rows": 19,
+   "planName": "Humana Gold Choice H8145-126 (PFFS)"
+  },
+  {
+   "planId": "H7617-49",
+   "seg": 0,
+   "state": "KY",
+   "rows": 29,
+   "planName": "Humana Essentials Plus Giveback (PPO)"
+  },
+  {
+   "planId": "H5216-19",
+   "seg": 0,
+   "state": "KY",
+   "rows": 26,
+   "planName": "HumanaChoice H5216-019 (PPO)"
+  },
+  {
+   "planId": "H5216-226",
+   "seg": 0,
+   "state": "KY",
+   "rows": 83,
+   "planName": "HumanaChoice H5216-226 (PPO)"
+  },
+  {
+   "planId": "H5216-285",
+   "seg": 0,
+   "state": "KY",
+   "rows": 4,
+   "planName": "HumanaChoice H5216-285 (PPO)"
+  },
+  {
+   "planId": "H5216-317",
+   "seg": 0,
+   "state": "KY",
+   "rows": 95,
+   "planName": "HumanaChoice H5216-317 (PPO)"
+  },
+  {
+   "planId": "H5216-322",
+   "seg": 0,
+   "state": "KY",
+   "rows": 87,
+   "planName": "HumanaChoice Giveback H5216-322 (PPO)"
+  },
+  {
+   "planId": "H5216-446",
+   "seg": 0,
+   "state": "KY",
+   "rows": 120,
+   "planName": "Humana Together in Health (PPO I-SNP)"
+  },
+  {
+   "planId": "H5216-481",
+   "seg": 2,
+   "state": "KY",
+   "rows": 5,
+   "planName": "HumanaChoice Giveback H5216-481 (PPO)"
+  },
+  {
+   "planId": "H5525-8",
+   "seg": 0,
+   "state": "KY",
+   "rows": 43,
+   "planName": "HumanaChoice H5525-008 (PPO)"
+  },
+  {
+   "planId": "H5525-30",
+   "seg": 0,
+   "state": "KY",
+   "rows": 3,
+   "planName": "HumanaChoice H5525-030 (PPO)"
+  },
+  {
+   "planId": "H5525-45",
+   "seg": 0,
+   "state": "KY",
+   "rows": 103,
+   "planName": "HumanaChoice SNP-DE H5525-045 (PPO D-SNP)"
+  },
+  {
+   "planId": "H6622-21",
+   "seg": 1,
+   "state": "KY",
+   "rows": 5,
+   "planName": "Humana Gold Plus H6622-021 (HMO-POS)"
+  },
+  {
+   "planId": "H7617-142",
+   "seg": 0,
+   "state": "KY",
+   "rows": 120,
+   "planName": "Humana Senior Living Plan (PPO I-SNP)"
+  },
+  {
+   "planId": "H7617-143",
+   "seg": 0,
+   "state": "KY",
+   "rows": 120,
+   "planName": "Humana Together in Health (PPO I-SNP)"
+  },
+  {
+   "planId": "H8145-52",
+   "seg": 0,
+   "state": "KY",
+   "rows": 8,
+   "planName": "Humana Gold Choice H8145-052 (PFFS)"
+  },
+  {
+   "planId": "R0110-11",
+   "seg": 0,
+   "state": "KY",
+   "rows": 120,
+   "planName": "HumanaChoice R0110-011 (Regional PPO)"
+  },
+  {
+   "planId": "R0110-12",
+   "seg": 0,
+   "state": "KY",
+   "rows": 120,
+   "planName": "HumanaChoice R0110-012 (Regional PPO)"
+  },
+  {
+   "planId": "H1951-44",
+   "seg": 0,
+   "state": "LA",
+   "rows": 2,
+   "planName": "Humana Gold Plus - Diabetes and Heart (HMO C-SNP)"
+  },
+  {
+   "planId": "H1951-57",
+   "seg": 0,
+   "state": "LA",
+   "rows": 63,
+   "planName": "Humana Gold Plus SNP-DE H1951-057 (HMO D-SNP)"
+  },
+  {
+   "planId": "H5216-64",
+   "seg": 0,
+   "state": "LA",
+   "rows": 63,
+   "planName": "HumanaChoice H5216-064 (PPO)"
+  },
+  {
+   "planId": "H5216-161",
+   "seg": 0,
+   "state": "LA",
+   "rows": 40,
+   "planName": "Humana Value Plus H5216-161 (PPO)"
+  },
+  {
+   "planId": "H5216-325",
+   "seg": 0,
+   "state": "LA",
+   "rows": 8,
+   "planName": "HumanaChoice H5216-325 (PPO)"
+  },
+  {
+   "planId": "H5216-326",
+   "seg": 0,
+   "state": "LA",
+   "rows": 45,
+   "planName": "HumanaChoice H5216-326 (PPO)"
+  },
+  {
+   "planId": "H5216-330",
+   "seg": 0,
+   "state": "LA",
+   "rows": 43,
+   "planName": "HumanaChoice SNP-DE H5216-330 (PPO D-SNP)"
+  },
+  {
+   "planId": "H5216-332",
+   "seg": 0,
+   "state": "LA",
+   "rows": 20,
+   "planName": "HumanaChoice SNP-DE H5216-332 (PPO D-SNP)"
+  },
+  {
+   "planId": "H5216-417",
+   "seg": 0,
+   "state": "LA",
+   "rows": 2,
+   "planName": "HumanaChoice H5216-417 (PPO)"
+  },
+  {
+   "planId": "H7617-79",
+   "seg": 0,
+   "state": "LA",
+   "rows": 8,
+   "planName": "HumanaChoice H7617-079 (PPO)"
+  },
+  {
+   "planId": "R0110-1",
+   "seg": 0,
+   "state": "LA",
+   "rows": 64,
+   "planName": "HumanaChoice R0110-001 (Regional PPO)"
+  },
+  {
+   "planId": "H5216-200",
+   "seg": 0,
+   "state": "MS",
+   "rows": 64,
+   "planName": "Humana USAA Honor Giveback (PPO)"
+  },
+  {
+   "planId": "H5216-97",
+   "seg": 0,
+   "state": "MS",
+   "rows": 4,
+   "planName": "HumanaChoice H5216-097 (PPO)"
+  },
+  {
+   "planId": "H5216-160",
+   "seg": 0,
+   "state": "MS",
+   "rows": 65,
+   "planName": "Humana Value Plus H5216-160 (PPO)"
+  },
+  {
+   "planId": "H5216-292",
+   "seg": 0,
+   "state": "MS",
+   "rows": 65,
+   "planName": "Humana Dual QMB Only (PPO D-SNP)"
+  },
+  {
+   "planId": "H5216-298",
+   "seg": 0,
+   "state": "MS",
+   "rows": 65,
+   "planName": "Humana Dual Select H5216-298 (PPO D-SNP)"
+  },
+  {
+   "planId": "H5216-300",
+   "seg": 0,
+   "state": "MS",
+   "rows": 63,
+   "planName": "HumanaChoice H5216-300 (PPO)"
+  },
+  {
+   "planId": "H5216-367",
+   "seg": 0,
+   "state": "MS",
+   "rows": 76,
+   "planName": "HumanaChoice SNP-DE H5216-367 (PPO D-SNP)"
+  },
+  {
+   "planId": "H6622-47",
+   "seg": 0,
+   "state": "MS",
+   "rows": 19,
+   "planName": "Humana Gold Plus H6622-047 (HMO)"
+  },
+  {
+   "planId": "H6622-48",
+   "seg": 0,
+   "state": "MS",
+   "rows": 19,
+   "planName": "Humana Gold Plus SNP-DE H6622-048 (HMO D-SNP)"
+  },
+  {
+   "planId": "R0110-1",
+   "seg": 0,
+   "state": "MS",
+   "rows": 82,
+   "planName": "HumanaChoice R0110-001 (Regional PPO)"
+  },
+  {
+   "planId": "H5216-278",
+   "seg": 1,
+   "state": "MO",
+   "rows": 106,
+   "planName": "Humana USAA Honor Giveback (PPO)"
+  },
+  {
+   "planId": "H0028-14",
+   "seg": 0,
+   "state": "MO",
+   "rows": 16,
+   "planName": "Humana Total Complete (HMO)"
+  },
+  {
+   "planId": "H0028-54",
+   "seg": 1,
+   "state": "MO",
+   "rows": 6,
+   "planName": "Humana Total Complete (HMO-POS)"
+  },
+  {
+   "planId": "H0028-65",
+   "seg": 0,
+   "state": "MO",
+   "rows": 17,
+   "planName": "Humana Essentials Plus Giveback (HMO)"
+  },
+  {
+   "planId": "H0028-66",
+   "seg": 0,
+   "state": "MO",
+   "rows": 6,
+   "planName": "Humana Total Complete Giveback (HMO-POS)"
+  },
+  {
+   "planId": "H4461-47",
+   "seg": 0,
+   "state": "MO",
+   "rows": 6,
+   "planName": "Humana Total Complete Giveback (HMO-POS)"
+  },
+  {
+   "planId": "H4623-2",
+   "seg": 0,
+   "state": "MO",
+   "rows": 14,
+   "planName": "Humana Community (HMO-POS)"
+  },
+  {
+   "planId": "H5216-318",
+   "seg": 1,
+   "state": "MO",
+   "rows": 63,
+   "planName": "Humana Value Choice (PPO)"
+  },
+  {
+   "planId": "H5216-318",
+   "seg": 2,
+   "state": "MO",
+   "rows": 6,
+   "planName": "Humana Value Choice (PPO)"
+  },
+  {
+   "planId": "H5216-404",
+   "seg": 0,
+   "state": "MO",
+   "rows": 27,
+   "planName": "HumanaChoice Giveback H5216-404 (PPO)"
+  },
+  {
+   "planId": "H5216-405",
+   "seg": 0,
+   "state": "MO",
+   "rows": 6,
+   "planName": "Humana Essentials Plus Giveback (PPO)"
+  },
+  {
+   "planId": "H5216-407",
+   "seg": 0,
+   "state": "MO",
+   "rows": 17,
+   "planName": "Humana Full Access (PPO)"
+  },
+  {
+   "planId": "H7617-10",
+   "seg": 0,
+   "state": "MO",
+   "rows": 6,
+   "planName": "Humana Value Choice (PPO)"
+  },
+  {
+   "planId": "H8145-126",
+   "seg": 0,
+   "state": "MO",
+   "rows": 35,
+   "planName": "Humana Gold Choice H8145-126 (PFFS)"
+  },
+  {
+   "planId": "H5216-441",
+   "seg": 0,
+   "state": "OH",
+   "rows": 70,
+   "planName": "Humana USAA Honor Giveback (PPO)"
+  },
+  {
+   "planId": "H5216-481",
+   "seg": 2,
+   "state": "OH",
+   "rows": 63,
+   "planName": "HumanaChoice Giveback H5216-481 (PPO)"
+  },
+  {
+   "planId": "H5216-106",
+   "seg": 0,
+   "state": "OH",
+   "rows": 21,
+   "planName": "HumanaChoice H5216-106 (PPO)"
+  },
+  {
+   "planId": "H5216-285",
+   "seg": 0,
+   "state": "OH",
+   "rows": 73,
+   "planName": "HumanaChoice H5216-285 (PPO)"
+  },
+  {
+   "planId": "H5216-401",
+   "seg": 0,
+   "state": "OH",
+   "rows": 74,
+   "planName": "Humana Together in Health (PPO I-SNP)"
+  },
+  {
+   "planId": "H5525-30",
+   "seg": 0,
+   "state": "OH",
+   "rows": 84,
+   "planName": "HumanaChoice H5525-030 (PPO)"
+  },
+  {
+   "planId": "H5525-42",
+   "seg": 0,
+   "state": "OH",
+   "rows": 87,
+   "planName": "Humana Full Access (PPO)"
+  },
+  {
+   "planId": "H7617-140",
+   "seg": 0,
+   "state": "OH",
+   "rows": 72,
+   "planName": "Humana Together in Health (PPO I-SNP)"
+  },
+  {
+   "planId": "H7617-142",
+   "seg": 0,
+   "state": "OH",
+   "rows": 72,
+   "planName": "Humana Senior Living Plan (PPO I-SNP)"
+  },
+  {
+   "planId": "R0110-15",
+   "seg": 0,
+   "state": "OH",
+   "rows": 88,
+   "planName": "HumanaChoice R0110-015 (Regional PPO)"
+  },
+  {
+   "planId": "R0110-16",
+   "seg": 0,
+   "state": "OH",
+   "rows": 88,
+   "planName": "HumanaChoice R0110-016 (Regional PPO)"
+  },
+  {
+   "planId": "H5216-278",
+   "seg": 1,
+   "state": "OK",
+   "rows": 61,
+   "planName": "Humana USAA Honor Giveback (PPO)"
+  },
+  {
+   "planId": "H5216-264",
+   "seg": 0,
+   "state": "OK",
+   "rows": 44,
+   "planName": "HumanaChoice Giveback H5216-264 (PPO)"
+  },
+  {
+   "planId": "H5216-337",
+   "seg": 2,
+   "state": "OK",
+   "rows": 18,
+   "planName": "HumanaChoice H5216-337 (PPO)"
+  },
+  {
+   "planId": "H5216-372",
+   "seg": 0,
+   "state": "OK",
+   "rows": 42,
+   "planName": "HumanaChoice - Diabetes and Heart (PPO C-SNP)"
+  },
+  {
+   "planId": "H8145-126",
+   "seg": 0,
+   "state": "OK",
+   "rows": 33,
+   "planName": "Humana Gold Choice H8145-126 (PFFS)"
+  },
+  {
+   "planId": "H5216-243",
+   "seg": 0,
+   "state": "SC",
+   "rows": 46,
+   "planName": "Humana Together in Health (PPO I-SNP)"
+  },
+  {
+   "planId": "H5216-277",
+   "seg": 0,
+   "state": "SC",
+   "rows": 44,
+   "planName": "HumanaChoice SNP-DE H5216-277 (PPO D-SNP)"
+  },
+  {
+   "planId": "H5216-286",
+   "seg": 0,
+   "state": "SC",
+   "rows": 45,
+   "planName": "Humana USAA Honor Giveback (PPO)"
+  },
+  {
+   "planId": "H5216-345",
+   "seg": 0,
+   "state": "SC",
+   "rows": 39,
+   "planName": "HumanaChoice Giveback H5216-345 (PPO)"
+  },
+  {
+   "planId": "H5216-347",
+   "seg": 0,
+   "state": "SC",
+   "rows": 44,
+   "planName": "HumanaChoice H5216-347 (PPO)"
+  },
+  {
+   "planId": "H5216-466",
+   "seg": 0,
+   "state": "SC",
+   "rows": 17,
+   "planName": "HumanaChoice H5216-466 (PPO)"
+  },
+  {
+   "planId": "H7617-94",
+   "seg": 0,
+   "state": "SC",
+   "rows": 38,
+   "planName": "HumanaChoice Giveback H7617-094 (PPO)"
+  },
+  {
+   "planId": "H7617-95",
+   "seg": 0,
+   "state": "SC",
+   "rows": 43,
+   "planName": "HumanaChoice H7617-095 (PPO)"
+  },
+  {
+   "planId": "H7617-128",
+   "seg": 0,
+   "state": "SC",
+   "rows": 46,
+   "planName": "Humana Together in Health (PPO I-SNP)"
+  },
+  {
+   "planId": "H4461-22",
+   "seg": 0,
+   "state": "TN",
+   "rows": 89,
+   "planName": "Humana Gold Plus SNP-DE H4461-022 (HMO D-SNP)"
+  },
+  {
+   "planId": "H5216-97",
+   "seg": 0,
+   "state": "TN",
+   "rows": 74,
+   "planName": "HumanaChoice H5216-097 (PPO)"
+  },
+  {
+   "planId": "H5216-180",
+   "seg": 0,
+   "state": "TN",
+   "rows": 81,
+   "planName": "Humana Value Plus H5216-180 (PPO)"
+  },
+  {
+   "planId": "H5216-416",
+   "seg": 0,
+   "state": "TN",
+   "rows": 95,
+   "planName": "Humana Together in Health (PPO I-SNP)"
+  },
+  {
+   "planId": "H7617-117",
+   "seg": 0,
+   "state": "TN",
+   "rows": 93,
+   "planName": "Humana Together in Health (PPO I-SNP)"
+  },
+  {
+   "planId": "R0110-17",
+   "seg": 0,
+   "state": "TN",
+   "rows": 95,
+   "planName": "HumanaChoice R0110-017 (Regional PPO)"
+  },
+  {
+   "planId": "R0110-18",
+   "seg": 0,
+   "state": "TN",
+   "rows": 95,
+   "planName": "HumanaChoice R0110-018 (Regional PPO)"
+  },
+  {
+   "planId": "H5216-348",
+   "seg": 0,
+   "state": "TX",
+   "rows": 194,
+   "planName": "Humana USAA Honor Giveback (PPO)"
+  },
+  {
+   "planId": "H5216-358",
+   "seg": 0,
+   "state": "TX",
+   "rows": 74,
+   "planName": "HumanaChoice Giveback H5216-358 (PPO)"
+  },
+  {
+   "planId": "H7617-35",
+   "seg": 0,
+   "state": "TX",
+   "rows": 10,
+   "planName": "Humana Essentials Plus Giveback (PPO)"
+  },
+  {
+   "planId": "H0028-29",
+   "seg": 0,
+   "state": "TX",
+   "rows": 6,
+   "planName": "Humana Gold Plus H0028-029 (HMO)"
+  },
+  {
+   "planId": "H0028-30",
+   "seg": 0,
+   "state": "TX",
+   "rows": 8,
+   "planName": "Humana Gold Plus H0028-030 (HMO)"
+  },
+  {
+   "planId": "H0028-32",
+   "seg": 0,
+   "state": "TX",
+   "rows": 48,
+   "planName": "Humana Gold Plus SNP-DE H0028-032 (HMO D-SNP)"
+  },
+  {
+   "planId": "H0028-35",
+   "seg": 0,
+   "state": "TX",
+   "rows": 2,
+   "planName": "Humana Gold Plus H0028-035 (HMO)"
+  },
+  {
+   "planId": "H0028-36",
+   "seg": 0,
+   "state": "TX",
+   "rows": 19,
+   "planName": "Humana Gold Plus SNP-DE H0028-036 (HMO D-SNP)"
+  },
+  {
+   "planId": "H0028-37",
+   "seg": 0,
+   "state": "TX",
+   "rows": 7,
+   "planName": "Humana Gold Plus H0028-037 (HMO)"
+  },
+  {
+   "planId": "H0028-39",
+   "seg": 0,
+   "state": "TX",
+   "rows": 19,
+   "planName": "Humana Gold Plus - Diabetes and Heart (HMO C-SNP)"
+  },
+  {
+   "planId": "H0028-41",
+   "seg": 0,
+   "state": "TX",
+   "rows": 12,
+   "planName": "Humana Gold Plus H0028-041 (HMO)"
+  },
+  {
+   "planId": "H0028-42",
+   "seg": 0,
+   "state": "TX",
+   "rows": 9,
+   "planName": "Humana Gold Plus H0028-042 (HMO)"
+  },
+  {
+   "planId": "H0028-43",
+   "seg": 1,
+   "state": "TX",
+   "rows": 14,
+   "planName": "Humana Gold Plus H0028-043 (HMO)"
+  },
+  {
+   "planId": "H0028-43",
+   "seg": 2,
+   "state": "TX",
+   "rows": 7,
+   "planName": "Humana Gold Plus H0028-043 (HMO)"
+  },
+  {
+   "planId": "H0028-46",
+   "seg": 0,
+   "state": "TX",
+   "rows": 3,
+   "planName": "Humana Gold Plus H0028-046 (HMO)"
+  },
+  {
+   "planId": "H0028-59",
+   "seg": 0,
+   "state": "TX",
+   "rows": 13,
+   "planName": "Humana Gold Plus H0028-059 (HMO)"
+  },
+  {
+   "planId": "H0028-60",
+   "seg": 0,
+   "state": "TX",
+   "rows": 9,
+   "planName": "Humana Gold Plus - Diabetes and Heart (HMO C-SNP)"
+  },
+  {
+   "planId": "H0028-70",
+   "seg": 0,
+   "state": "TX",
+   "rows": 14,
+   "planName": "Humana Gold Plus H0028-070 (HMO)"
+  },
+  {
+   "planId": "H0028-72",
+   "seg": 0,
+   "state": "TX",
+   "rows": 3,
+   "planName": "Humana Gold Plus H0028-072 (HMO)"
+  },
+  {
+   "planId": "H5216-42",
+   "seg": 0,
+   "state": "TX",
+   "rows": 84,
+   "planName": "HumanaChoice H5216-042 (PPO)"
+  },
+  {
+   "planId": "H5216-43",
+   "seg": 1,
+   "state": "TX",
+   "rows": 57,
+   "planName": "HumanaChoice H5216-043 (PPO)"
+  },
+  {
+   "planId": "H5216-43",
+   "seg": 6,
+   "state": "TX",
+   "rows": 25,
+   "planName": "HumanaChoice H5216-043 (PPO)"
+  },
+  {
+   "planId": "H5216-350",
+   "seg": 0,
+   "state": "TX",
+   "rows": 7,
+   "planName": "HumanaChoice Giveback H5216-350 (PPO)"
+  },
+  {
+   "planId": "H5216-351",
+   "seg": 0,
+   "state": "TX",
+   "rows": 11,
+   "planName": "Humana USAA Honor Giveback with Rx (PPO)"
+  },
+  {
+   "planId": "H5216-352",
+   "seg": 0,
+   "state": "TX",
+   "rows": 14,
+   "planName": "HumanaChoice H5216-352 (PPO)"
+  },
+  {
+   "planId": "H5216-369",
+   "seg": 0,
+   "state": "TX",
+   "rows": 203,
+   "planName": "Humana Together in Health (PPO I-SNP)"
+  },
+  {
+   "planId": "H5216-431",
+   "seg": 0,
+   "state": "TX",
+   "rows": 2,
+   "planName": "Humana Direct Choice Giveback (PPO)"
+  },
+  {
+   "planId": "H5216-432",
+   "seg": 0,
+   "state": "TX",
+   "rows": 6,
+   "planName": "HumanaChoice H5216-432 (PPO)"
+  },
+  {
+   "planId": "H5216-433",
+   "seg": 0,
+   "state": "TX",
+   "rows": 1,
+   "planName": "HumanaChoice Giveback H5216-433 (PPO)"
+  },
+  {
+   "planId": "H7617-42",
+   "seg": 0,
+   "state": "TX",
+   "rows": 11,
+   "planName": "Humana USAA Honor Giveback with Rx (PPO)"
+  },
+  {
+   "planId": "H7617-136",
+   "seg": 0,
+   "state": "TX",
+   "rows": 18,
+   "planName": "Humana DaVita Kidney Care (PPO C-SNP)"
+  },
+  {
+   "planId": "H7617-137",
+   "seg": 0,
+   "state": "TX",
+   "rows": 18,
+   "planName": "Humana DaVita Kidney Care (PPO C-SNP)"
+  },
+  {
+   "planId": "H7617-138",
+   "seg": 0,
+   "state": "TX",
+   "rows": 199,
+   "planName": "Humana Together in Health (PPO I-SNP)"
+  },
+  {
+   "planId": "H8145-126",
+   "seg": 0,
+   "state": "TX",
+   "rows": 41,
+   "planName": "Humana Gold Choice H8145-126 (PFFS)"
+  },
+  {
+   "planId": "R4182-3",
+   "seg": 0,
+   "state": "TX",
+   "rows": 254,
+   "planName": "HumanaChoice R4182-003 (Regional PPO)"
+  },
+  {
+   "planId": "R4182-4",
+   "seg": 0,
+   "state": "TX",
+   "rows": 254,
+   "planName": "HumanaChoice R4182-004 (Regional PPO)"
+  },
+  {
+   "planId": "H7617-98",
+   "seg": 0,
+   "state": "VA",
+   "rows": 17,
+   "planName": "Humana Value Choice (PPO)"
+  },
+  {
+   "planId": "H7617-100",
+   "seg": 0,
+   "state": "VA",
+   "rows": 23,
+   "planName": "Humana Essentials Plus Giveback (PPO)"
+  },
+  {
+   "planId": "H7617-101",
+   "seg": 0,
+   "state": "VA",
+   "rows": 6,
+   "planName": "Humana USAA Honor Giveback (PPO)"
+  },
+  {
+   "planId": "H5216-100",
+   "seg": 0,
+   "state": "VA",
+   "rows": 13,
+   "planName": "HumanaChoice H5216-100 (PPO)"
+  },
+  {
+   "planId": "H5216-266",
+   "seg": 0,
+   "state": "VA",
+   "rows": 74,
+   "planName": "Humana Value Choice (PPO)"
+  },
+  {
+   "planId": "H5216-271",
+   "seg": 0,
+   "state": "VA",
+   "rows": 13,
+   "planName": "HumanaChoice H5216-271 (PPO)"
+  },
+  {
+   "planId": "H5216-308",
+   "seg": 0,
+   "state": "VA",
+   "rows": 87,
+   "planName": "Humana Essentials Plus Giveback (PPO)"
+  },
+  {
+   "planId": "H5216-310",
+   "seg": 0,
+   "state": "VA",
+   "rows": 105,
+   "planName": "Humana USAA Honor Giveback (PPO)"
+  },
+  {
+   "planId": "H5216-362",
+   "seg": 0,
+   "state": "VA",
+   "rows": 133,
+   "planName": "Humana Together in Health (PPO I-SNP)"
+  },
+  {
+   "planId": "H5216-406",
+   "seg": 0,
+   "state": "VA",
+   "rows": 18,
+   "planName": "Humana Direct Choice Giveback (PPO)"
+  },
+  {
+   "planId": "H5216-408",
+   "seg": 0,
+   "state": "VA",
+   "rows": 112,
+   "planName": "HumanaChoice H5216-408 (PPO)"
+  },
+  {
+   "planId": "H6622-4",
+   "seg": 0,
+   "state": "VA",
+   "rows": 25,
+   "planName": "Humana Gold Plus H6622-004 (HMO)"
+  },
+  {
+   "planId": "H6622-90",
+   "seg": 0,
+   "state": "VA",
+   "rows": 19,
+   "planName": "Humana Gold Plus Giveback H6622-090 (HMO)"
+  },
+  {
+   "planId": "H7617-131",
+   "seg": 0,
+   "state": "VA",
+   "rows": 133,
+   "planName": "Humana Together in Health (PPO I-SNP)"
+  },
+  {
+   "planId": "H7617-133",
+   "seg": 0,
+   "state": "VA",
+   "rows": 120,
+   "planName": "Humana DaVita Kidney Care (PPO C-SNP)"
+  },
+  {
+   "planId": "H7617-134",
+   "seg": 0,
+   "state": "VA",
+   "rows": 120,
+   "planName": "Humana DaVita Kidney Care (PPO C-SNP)"
+  },
+  {
+   "planId": "H8145-91",
+   "seg": 0,
+   "state": "VA",
+   "rows": 11,
+   "planName": "Humana Gold Choice H8145-091 (PFFS)"
+  },
+  {
+   "planId": "H7617-65",
+   "seg": 0,
+   "state": "WV",
+   "rows": 34,
+   "planName": "Humana Essentials Plus Giveback (PPO)"
+  },
+  {
+   "planId": "H5216-19",
+   "seg": 0,
+   "state": "WV",
+   "rows": 20,
+   "planName": "HumanaChoice H5216-019 (PPO)"
+  },
+  {
+   "planId": "H5216-124",
+   "seg": 0,
+   "state": "WV",
+   "rows": 53,
+   "planName": "Humana Full Access (PPO)"
+  },
+  {
+   "planId": "H5216-328",
+   "seg": 0,
+   "state": "WV",
+   "rows": 21,
+   "planName": "HumanaChoice Giveback H5216-328 (PPO)"
+  },
+  {
+   "planId": "H5525-5",
+   "seg": 0,
+   "state": "WV",
+   "rows": 8,
+   "planName": "HumanaChoice H5525-005 (PPO)"
+  },
+  {
+   "planId": "H7617-139",
+   "seg": 0,
+   "state": "WV",
+   "rows": 55,
+   "planName": "Humana Together in Health (PPO I-SNP)"
+  },
+  {
+   "planId": "H8145-52",
+   "seg": 0,
+   "state": "WV",
+   "rows": 28,
+   "planName": "Humana Gold Choice H8145-052 (PFFS)"
+  },
+  {
+   "planId": "R0110-7",
+   "seg": 0,
+   "state": "WV",
+   "rows": 55,
+   "planName": "HumanaChoice R0110-007 (Regional PPO)"
+  },
+  {
+   "planId": "R0110-8",
+   "seg": 0,
+   "state": "WV",
+   "rows": 55,
+   "planName": "HumanaChoice R0110-008 (Regional PPO)"
+  }
+ ]
+}

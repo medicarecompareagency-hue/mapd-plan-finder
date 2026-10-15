@@ -183,6 +183,7 @@ model Plan {
   sbVerifiedFoodPeriod      String?
 
   qmbCostShareProtected     Boolean?  // SB-derived: true = standalone QMB is $0 on this plan
+  nonCommissionable         Boolean   @default(false) // carrier pays no commission (2027 PPP lists); /api/plans hides these (Dale 2026-10-15)
   costShareProtectedLevels  String?   // audit: comma-joined normalized levels, e.g. "FBDE,QMB,QMB+,SLMB+"
 
   createdAt                 DateTime @default(now())
