@@ -3,7 +3,9 @@
  "note": "Plan-segments carriers pay NO commission on for 2027 effective dates, in the 18 licensed states. seg 0 = all segments. counties null = all counties in the state. Applied by scripts/commission/apply-noncommissionable.js (hide from agents, Dale 2026-10-15).",
  "sources": {
   "Humana": "2027 Individual Products Producer Partnership Plan, GHHN7GKEN 01/2027 A, \"Non-Commissionable Counties for Specified Medicare Products\" pp.19-27 (assets.humana.com, via Vantage > Commissions), read 2026-10-15",
-  "HealthSpring": "\"2027 Non-commissionable, Partially Commissionable and Suppressed Plans\" job aid (university.healthspringforbrokers.com, Products > Benefit Information - 2027, PDF 12853 dated 2026-10-14), read 2026-10-15. Non-commissionable AND suppressed plans are both removed from broker enrollment platforms -> hidden. Partially commissionable (75% FMV) stays visible, listed under partialCommission."
+  "HealthSpring": "\"2027 Non-commissionable, Partially Commissionable and Suppressed Plans\" job aid (university.healthspringforbrokers.com, Products > Benefit Information - 2027, PDF 12853 dated 2026-10-14), read 2026-10-15. Non-commissionable AND suppressed plans are both removed from broker enrollment platforms -> hidden. Partially commissionable (75% FMV) stays visible, listed under partialCommission.",
+  "Aetna Medicare": "\"Non-Commissionable Individual Medicare Products - Plan Year 2027\" (PY2027 National Non-Commissionable List, Aetna, last updated 8/20/2026, 19 pp.; Dale supplied 2026-10-15). Entries transcribed from the page images for the 18 licensed states; every county list checked equals the plan's full 2027 service area in that state, so entries are whole-state (counties null). PDP (S5601) entries ignored - no PDPs in Plan Finder. Note H1608-16/-18 are listed under \"KS, MO\" with counties in both states.",
+  "UnitedHealthcare": "Jarvis (checked 2026-10-15): the only published UHC non-commissionable list is the Southern California \"Commissionable Plans\" page (outside the footprint); the EDC Agent Guide 10-01-2026 and the 2027 MA Plans QRG name no plans. Two FL Regional PPOs are carrier-stated \"NO commission for 1/1/2027+ effectives\" per the UHC FL 2027 Carrier Commission Notes captured in 2027_MAPD_Plan_Exits_AL_MS_FL (No-Commission Plans tab, 2026-09-30/10-02): R0759-1 (AARP MA from UHC FL-0031) and R0759-2 (AARP MA Patriot No Rx FL-MA01). Closed-to-new-members UHC D-SNPs were already removed from 2027 rows (remove-closed-uhc-2027.js). \"Non-promoted / not featured\" UHC plans are still commissionable and stay visible."
  },
  "entries": [
   {
@@ -2938,6 +2940,430 @@
    "state": "SC",
    "counties": null,
    "status": "suppressed"
+  },
+  {
+   "carrier": "Aetna Medicare",
+   "planId": "H5521-650",
+   "seg": 0,
+   "state": "VA",
+   "counties": null,
+   "status": "non-commissionable"
+  },
+  {
+   "carrier": "Aetna Medicare",
+   "planId": "H5521-272",
+   "seg": 0,
+   "state": "FL",
+   "counties": null,
+   "status": "non-commissionable"
+  },
+  {
+   "carrier": "Aetna Medicare",
+   "planId": "H5521-270",
+   "seg": 0,
+   "state": "FL",
+   "counties": null,
+   "status": "non-commissionable"
+  },
+  {
+   "carrier": "Aetna Medicare",
+   "planId": "H5521-269",
+   "seg": 0,
+   "state": "FL",
+   "counties": null,
+   "status": "non-commissionable"
+  },
+  {
+   "carrier": "Aetna Medicare",
+   "planId": "H5521-569",
+   "seg": 0,
+   "state": "FL",
+   "counties": null,
+   "status": "non-commissionable"
+  },
+  {
+   "carrier": "Aetna Medicare",
+   "planId": "H5521-33",
+   "seg": 0,
+   "state": "FL",
+   "counties": null,
+   "status": "non-commissionable"
+  },
+  {
+   "carrier": "Aetna Medicare",
+   "planId": "H5521-435",
+   "seg": 0,
+   "state": "FL",
+   "counties": null,
+   "status": "non-commissionable"
+  },
+  {
+   "carrier": "Aetna Medicare",
+   "planId": "H1609-28",
+   "seg": 0,
+   "state": "FL",
+   "counties": null,
+   "status": "non-commissionable"
+  },
+  {
+   "carrier": "Aetna Medicare",
+   "planId": "H5521-470",
+   "seg": 0,
+   "state": "MS",
+   "counties": null,
+   "status": "non-commissionable"
+  },
+  {
+   "carrier": "Aetna Medicare",
+   "planId": "H5521-326",
+   "seg": 0,
+   "state": "LA",
+   "counties": null,
+   "status": "non-commissionable"
+  },
+  {
+   "carrier": "Aetna Medicare",
+   "planId": "H5521-646",
+   "seg": 0,
+   "state": "LA",
+   "counties": null,
+   "status": "non-commissionable"
+  },
+  {
+   "carrier": "Aetna Medicare",
+   "planId": "H2293-1",
+   "seg": 0,
+   "state": "GA",
+   "counties": null,
+   "status": "non-commissionable"
+  },
+  {
+   "carrier": "Aetna Medicare",
+   "planId": "H5521-364",
+   "seg": 0,
+   "state": "GA",
+   "counties": null,
+   "status": "non-commissionable"
+  },
+  {
+   "carrier": "Aetna Medicare",
+   "planId": "H2293-23",
+   "seg": 0,
+   "state": "GA",
+   "counties": null,
+   "status": "non-commissionable"
+  },
+  {
+   "carrier": "Aetna Medicare",
+   "planId": "H2293-33",
+   "seg": 0,
+   "state": "GA",
+   "counties": null,
+   "status": "non-commissionable"
+  },
+  {
+   "carrier": "Aetna Medicare",
+   "planId": "H1608-21",
+   "seg": 0,
+   "state": "AR",
+   "counties": null,
+   "status": "non-commissionable"
+  },
+  {
+   "carrier": "Aetna Medicare",
+   "planId": "H1608-54",
+   "seg": 0,
+   "state": "AR",
+   "counties": null,
+   "status": "non-commissionable"
+  },
+  {
+   "carrier": "Aetna Medicare",
+   "planId": "H1608-79",
+   "seg": 0,
+   "state": "AR",
+   "counties": null,
+   "status": "non-commissionable"
+  },
+  {
+   "carrier": "Aetna Medicare",
+   "planId": "H1608-74",
+   "seg": 0,
+   "state": "AR",
+   "counties": null,
+   "status": "non-commissionable"
+  },
+  {
+   "carrier": "Aetna Medicare",
+   "planId": "H5521-467",
+   "seg": 0,
+   "state": "AL",
+   "counties": null,
+   "status": "non-commissionable"
+  },
+  {
+   "carrier": "Aetna Medicare",
+   "planId": "H1608-16",
+   "seg": 0,
+   "state": "KS",
+   "counties": null,
+   "status": "non-commissionable"
+  },
+  {
+   "carrier": "Aetna Medicare",
+   "planId": "H1608-16",
+   "seg": 0,
+   "state": "MO",
+   "counties": null,
+   "status": "non-commissionable"
+  },
+  {
+   "carrier": "Aetna Medicare",
+   "planId": "H1608-18",
+   "seg": 0,
+   "state": "KS",
+   "counties": null,
+   "status": "non-commissionable"
+  },
+  {
+   "carrier": "Aetna Medicare",
+   "planId": "H1608-18",
+   "seg": 0,
+   "state": "MO",
+   "counties": null,
+   "status": "non-commissionable"
+  },
+  {
+   "carrier": "Aetna Medicare",
+   "planId": "H1608-17",
+   "seg": 0,
+   "state": "KS",
+   "counties": null,
+   "status": "non-commissionable"
+  },
+  {
+   "carrier": "Aetna Medicare",
+   "planId": "H1608-24",
+   "seg": 0,
+   "state": "KS",
+   "counties": null,
+   "status": "non-commissionable"
+  },
+  {
+   "carrier": "Aetna Medicare",
+   "planId": "H1608-72",
+   "seg": 0,
+   "state": "KS",
+   "counties": null,
+   "status": "non-commissionable"
+  },
+  {
+   "carrier": "Aetna Medicare",
+   "planId": "H2663-111",
+   "seg": 0,
+   "state": "KS",
+   "counties": null,
+   "status": "non-commissionable"
+  },
+  {
+   "carrier": "Aetna Medicare",
+   "planId": "H5325-3",
+   "seg": 0,
+   "state": "MO",
+   "counties": null,
+   "status": "non-commissionable"
+  },
+  {
+   "carrier": "Aetna Medicare",
+   "planId": "H5325-4",
+   "seg": 0,
+   "state": "MO",
+   "counties": null,
+   "status": "non-commissionable"
+  },
+  {
+   "carrier": "Aetna Medicare",
+   "planId": "H5325-13",
+   "seg": 0,
+   "state": "MO",
+   "counties": null,
+   "status": "non-commissionable"
+  },
+  {
+   "carrier": "Aetna Medicare",
+   "planId": "H5325-12",
+   "seg": 0,
+   "state": "MO",
+   "counties": null,
+   "status": "non-commissionable"
+  },
+  {
+   "carrier": "Aetna Medicare",
+   "planId": "H7301-33",
+   "seg": 0,
+   "state": "IL",
+   "counties": null,
+   "status": "non-commissionable"
+  },
+  {
+   "carrier": "Aetna Medicare",
+   "planId": "H3192-1",
+   "seg": 0,
+   "state": "IL",
+   "counties": null,
+   "status": "non-commissionable"
+  },
+  {
+   "carrier": "Aetna Medicare",
+   "planId": "H3192-13",
+   "seg": 0,
+   "state": "IL",
+   "counties": null,
+   "status": "non-commissionable"
+  },
+  {
+   "carrier": "Aetna Medicare",
+   "planId": "H1608-85",
+   "seg": 0,
+   "state": "WV",
+   "counties": null,
+   "status": "non-commissionable"
+  },
+  {
+   "carrier": "Aetna Medicare",
+   "planId": "H1608-27",
+   "seg": 0,
+   "state": "WV",
+   "counties": null,
+   "status": "non-commissionable"
+  },
+  {
+   "carrier": "Aetna Medicare",
+   "planId": "H1608-31",
+   "seg": 0,
+   "state": "WV",
+   "counties": null,
+   "status": "non-commissionable"
+  },
+  {
+   "carrier": "Aetna Medicare",
+   "planId": "H1608-40",
+   "seg": 0,
+   "state": "WV",
+   "counties": null,
+   "status": "non-commissionable"
+  },
+  {
+   "carrier": "Aetna Medicare",
+   "planId": "H3146-11",
+   "seg": 0,
+   "state": "SC",
+   "counties": null,
+   "status": "non-commissionable"
+  },
+  {
+   "carrier": "Aetna Medicare",
+   "planId": "H5521-89",
+   "seg": 0,
+   "state": "OH",
+   "counties": null,
+   "status": "non-commissionable"
+  },
+  {
+   "carrier": "Aetna Medicare",
+   "planId": "H1608-29",
+   "seg": 0,
+   "state": "OH",
+   "counties": null,
+   "status": "non-commissionable"
+  },
+  {
+   "carrier": "Aetna Medicare",
+   "planId": "H0628-18",
+   "seg": 0,
+   "state": "OH",
+   "counties": null,
+   "status": "non-commissionable"
+  },
+  {
+   "carrier": "Aetna Medicare",
+   "planId": "H3288-4",
+   "seg": 0,
+   "state": "TX",
+   "counties": null,
+   "status": "non-commissionable"
+  },
+  {
+   "carrier": "Aetna Medicare",
+   "planId": "H3288-1",
+   "seg": 0,
+   "state": "TX",
+   "counties": null,
+   "status": "non-commissionable"
+  },
+  {
+   "carrier": "Aetna Medicare",
+   "planId": "H3288-18",
+   "seg": 0,
+   "state": "TX",
+   "counties": null,
+   "status": "non-commissionable"
+  },
+  {
+   "carrier": "Aetna Medicare",
+   "planId": "H1608-67",
+   "seg": 0,
+   "state": "MO",
+   "counties": null,
+   "status": "non-commissionable"
+  },
+  {
+   "carrier": "Aetna Medicare",
+   "planId": "H1608-50",
+   "seg": 0,
+   "state": "MO",
+   "counties": null,
+   "status": "non-commissionable"
+  },
+  {
+   "carrier": "Aetna Medicare",
+   "planId": "H1608-51",
+   "seg": 0,
+   "state": "MO",
+   "counties": null,
+   "status": "non-commissionable"
+  },
+  {
+   "carrier": "Aetna Medicare",
+   "planId": "H1608-13",
+   "seg": 0,
+   "state": "MO",
+   "counties": null,
+   "status": "non-commissionable"
+  },
+  {
+   "carrier": "Aetna Medicare",
+   "planId": "H2663-113",
+   "seg": 0,
+   "state": "MO",
+   "counties": null,
+   "status": "non-commissionable"
+  },
+  {
+   "carrier": "UnitedHealthcare",
+   "planId": "R0759-1",
+   "seg": 0,
+   "state": "FL",
+   "counties": null,
+   "status": "non-commissionable"
+  },
+  {
+   "carrier": "UnitedHealthcare",
+   "planId": "R0759-2",
+   "seg": 0,
+   "state": "FL",
+   "counties": null,
+   "status": "non-commissionable"
   }
  ],
  "partialCommission": [
@@ -3005,5 +3431,8 @@
    "counties": null,
    "status": "partial-75pct"
   }
- ]
+ ],
+ "notHidden": {
+  "nonPromoted": "Plans carriers do not feature on agent portals / Sunfire / Connecture (Devoted AL list, Humana \"Legacy\" list, UHC \"not featured\", Wellcare MS \"suppressed in broker materials\") are enrollable and not known to be non-commissionable; they stay visible. See 2027_MAPD_Plan_Exits_AL_MS_FL-Escambia-SantaRosa_2.xlsx > No-Commission Plans tab."
+ }
 }
