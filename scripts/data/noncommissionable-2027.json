@@ -3,9 +3,10 @@
  "note": "Plan-segments carriers pay NO commission on for 2027 effective dates, in the 18 licensed states. seg 0 = all segments. counties null = all counties in the state. Applied by scripts/commission/apply-noncommissionable.js (hide from agents, Dale 2026-10-15).",
  "sources": {
   "Humana": "2027 Individual Products Producer Partnership Plan, GHHN7GKEN 01/2027 A, \"Non-Commissionable Counties for Specified Medicare Products\" pp.19-27 (assets.humana.com, via Vantage > Commissions), read 2026-10-15",
-  "HealthSpring": "\"2027 Non-commissionable, Partially Commissionable and Suppressed Plans\" job aid (university.healthspringforbrokers.com, Products > Benefit Information - 2027, PDF 12853 dated 2026-10-14), read 2026-10-15. Non-commissionable AND suppressed plans are both removed from broker enrollment platforms -> hidden. Partially commissionable (75% FMV) stays visible, listed under partialCommission.",
+  "HealthSpring": "\"2027 Non-commissionable, Partially Commissionable and Suppressed Plans\" job aid (university.healthspringforbrokers.com, Products > Benefit Information - 2027, PDF 12853 dated 2026-10-14), read 2026-10-15. Non-commissionable AND suppressed plans are both removed from broker enrollment platforms -> hidden. Partially commissionable (75% FMV) stays visible, listed under partialCommission. UPDATE 2026-10-15 14:45 (Dale): partially commissionable (75% FMV) plans are hidden too.",
   "Aetna Medicare": "\"Non-Commissionable Individual Medicare Products - Plan Year 2027\" (PY2027 National Non-Commissionable List, Aetna, last updated 8/20/2026, 19 pp.; Dale supplied 2026-10-15). Entries transcribed from the page images for the 18 licensed states; every county list checked equals the plan's full 2027 service area in that state, so entries are whole-state (counties null). PDP (S5601) entries ignored - no PDPs in Plan Finder. Note H1608-16/-18 are listed under \"KS, MO\" with counties in both states.",
-  "UnitedHealthcare": "Jarvis (checked 2026-10-15): the only published UHC non-commissionable list is the Southern California \"Commissionable Plans\" page (outside the footprint); the EDC Agent Guide 10-01-2026 and the 2027 MA Plans QRG name no plans. Two FL Regional PPOs are carrier-stated \"NO commission for 1/1/2027+ effectives\" per the UHC FL 2027 Carrier Commission Notes captured in 2027_MAPD_Plan_Exits_AL_MS_FL (No-Commission Plans tab, 2026-09-30/10-02): R0759-1 (AARP MA from UHC FL-0031) and R0759-2 (AARP MA Patriot No Rx FL-MA01). Closed-to-new-members UHC D-SNPs were already removed from 2027 rows (remove-closed-uhc-2027.js). \"Non-promoted / not featured\" UHC plans are still commissionable and stay visible."
+  "UnitedHealthcare": "Jarvis (checked 2026-10-15): the only published UHC non-commissionable list is the Southern California \"Commissionable Plans\" page (outside the footprint); the EDC Agent Guide 10-01-2026 and the 2027 MA Plans QRG name no plans. Two FL Regional PPOs are carrier-stated \"NO commission for 1/1/2027+ effectives\" per the UHC FL 2027 Carrier Commission Notes captured in 2027_MAPD_Plan_Exits_AL_MS_FL (No-Commission Plans tab, 2026-09-30/10-02): R0759-1 (AARP MA from UHC FL-0031) and R0759-2 (AARP MA Patriot No Rx FL-MA01). Closed-to-new-members UHC D-SNPs were already removed from 2027 rows (remove-closed-uhc-2027.js). \"Non-promoted / not featured\" UHC plans are still commissionable and stay visible.",
+  "Wellcare": "Broker Connect > Plan Availability > \"2027 Suppressed Plans\" (Centene SSO desktop.pingone.com/cnc-workbench-brk -> Broker Connect, read 2026-10-15): \"All plans listed below are non-commissionable\"; suppressed from broker platforms, quote-only in Ascend. Four state grids saved as commission-2027/wellcare-2027-suppressed-1..4.png; transcribed for the 18 licensed states (no AL/OK/TN/VA/WV entries)."
  },
  "entries": [
   {
@@ -3364,16 +3365,14 @@
    "state": "FL",
    "counties": null,
    "status": "non-commissionable"
-  }
- ],
- "partialCommission": [
+  },
   {
    "carrier": "HealthSpring",
    "planId": "H7849-102",
    "seg": 3,
    "state": "AR",
    "counties": null,
-   "status": "partial-75pct"
+   "status": "partial-75pct-hidden"
   },
   {
    "carrier": "HealthSpring",
@@ -3381,7 +3380,7 @@
    "seg": 0,
    "state": "FL",
    "counties": null,
-   "status": "partial-75pct"
+   "status": "partial-75pct-hidden"
   },
   {
    "carrier": "HealthSpring",
@@ -3389,7 +3388,7 @@
    "seg": 0,
    "state": "GA",
    "counties": null,
-   "status": "partial-75pct"
+   "status": "partial-75pct-hidden"
   },
   {
    "carrier": "HealthSpring",
@@ -3397,7 +3396,7 @@
    "seg": 0,
    "state": "GA",
    "counties": null,
-   "status": "partial-75pct"
+   "status": "partial-75pct-hidden"
   },
   {
    "carrier": "HealthSpring",
@@ -3405,7 +3404,7 @@
    "seg": 1,
    "state": "GA",
    "counties": null,
-   "status": "partial-75pct"
+   "status": "partial-75pct-hidden"
   },
   {
    "carrier": "HealthSpring",
@@ -3413,7 +3412,7 @@
    "seg": 2,
    "state": "GA",
    "counties": null,
-   "status": "partial-75pct"
+   "status": "partial-75pct-hidden"
   },
   {
    "carrier": "HealthSpring",
@@ -3421,7 +3420,7 @@
    "seg": 0,
    "state": "GA",
    "counties": null,
-   "status": "partial-75pct"
+   "status": "partial-75pct-hidden"
   },
   {
    "carrier": "HealthSpring",
@@ -3429,10 +3428,731 @@
    "seg": 0,
    "state": "TX",
    "counties": null,
-   "status": "partial-75pct"
+   "status": "partial-75pct-hidden"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H9630-2",
+   "seg": 0,
+   "state": "AR",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H9630-10",
+   "seg": 0,
+   "state": "AR",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H9630-11",
+   "seg": 0,
+   "state": "AR",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H9630-14",
+   "seg": 0,
+   "state": "AR",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H1032-193",
+   "seg": 0,
+   "state": "FL",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H1032-194",
+   "seg": 0,
+   "state": "FL",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H1032-198",
+   "seg": 0,
+   "state": "FL",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H1032-199",
+   "seg": 0,
+   "state": "FL",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H0111-1",
+   "seg": 0,
+   "state": "GA",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H0111-7",
+   "seg": 0,
+   "state": "GA",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H1112-6",
+   "seg": 0,
+   "state": "GA",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H1112-38",
+   "seg": 0,
+   "state": "GA",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H1112-42",
+   "seg": 0,
+   "state": "GA",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H1112-43",
+   "seg": 0,
+   "state": "GA",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H1112-46",
+   "seg": 0,
+   "state": "GA",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H1112-47",
+   "seg": 0,
+   "state": "GA",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H1112-48",
+   "seg": 0,
+   "state": "GA",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H1112-49",
+   "seg": 0,
+   "state": "GA",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H1416-9",
+   "seg": 0,
+   "state": "IL",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H5779-7",
+   "seg": 0,
+   "state": "IL",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H5779-9",
+   "seg": 0,
+   "state": "IL",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H5779-10",
+   "seg": 0,
+   "state": "IL",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H6971-1",
+   "seg": 0,
+   "state": "IL",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H3499-2",
+   "seg": 0,
+   "state": "IN",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H6348-2",
+   "seg": 0,
+   "state": "IN",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H6348-8",
+   "seg": 0,
+   "state": "IN",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H6550-3",
+   "seg": 0,
+   "state": "KS",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H6550-4",
+   "seg": 0,
+   "state": "KS",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H3975-1",
+   "seg": 0,
+   "state": "KY",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H3975-4",
+   "seg": 0,
+   "state": "KY",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H9730-3",
+   "seg": 0,
+   "state": "KY",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H9730-7",
+   "seg": 0,
+   "state": "KY",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H9730-9",
+   "seg": 0,
+   "state": "KY",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H9730-11",
+   "seg": 0,
+   "state": "KY",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H2491-10",
+   "seg": 0,
+   "state": "LA",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H2491-25",
+   "seg": 0,
+   "state": "LA",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H2491-28",
+   "seg": 0,
+   "state": "LA",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H2491-30",
+   "seg": 0,
+   "state": "LA",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H2491-31",
+   "seg": 0,
+   "state": "LA",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H2491-37",
+   "seg": 0,
+   "state": "LA",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H2491-38",
+   "seg": 0,
+   "state": "LA",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H1664-1",
+   "seg": 0,
+   "state": "MO",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H1664-5",
+   "seg": 0,
+   "state": "MO",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H1664-12",
+   "seg": 0,
+   "state": "MO",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H7518-1",
+   "seg": 0,
+   "state": "MO",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H7518-2",
+   "seg": 0,
+   "state": "MO",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H7518-3",
+   "seg": 0,
+   "state": "MO",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H0074-1",
+   "seg": 0,
+   "state": "MS",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H0074-4",
+   "seg": 0,
+   "state": "MS",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H1416-26",
+   "seg": 0,
+   "state": "MS",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H1416-65",
+   "seg": 0,
+   "state": "MS",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H1416-68",
+   "seg": 0,
+   "state": "MS",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H1416-72",
+   "seg": 0,
+   "state": "MS",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H1416-81",
+   "seg": 0,
+   "state": "MS",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H1416-86",
+   "seg": 1,
+   "state": "MS",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H1416-87",
+   "seg": 1,
+   "state": "MS",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H1416-87",
+   "seg": 2,
+   "state": "MS",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H1416-87",
+   "seg": 3,
+   "state": "MS",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H4158-2",
+   "seg": 0,
+   "state": "OH",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H4158-3",
+   "seg": 0,
+   "state": "OH",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H4158-4",
+   "seg": 0,
+   "state": "OH",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H4847-1",
+   "seg": 0,
+   "state": "SC",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H4847-5",
+   "seg": 0,
+   "state": "SC",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H4847-6",
+   "seg": 0,
+   "state": "SC",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H4847-7",
+   "seg": 0,
+   "state": "SC",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H7326-1",
+   "seg": 0,
+   "state": "SC",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H7326-7",
+   "seg": 0,
+   "state": "SC",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H0062-13",
+   "seg": 0,
+   "state": "TX",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H0174-4",
+   "seg": 0,
+   "state": "TX",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H0174-10",
+   "seg": 0,
+   "state": "TX",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H0174-14",
+   "seg": 0,
+   "state": "TX",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H0174-15",
+   "seg": 0,
+   "state": "TX",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H0174-16",
+   "seg": 0,
+   "state": "TX",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H0174-22",
+   "seg": 0,
+   "state": "TX",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H0174-24",
+   "seg": 0,
+   "state": "TX",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H0174-25",
+   "seg": 0,
+   "state": "TX",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H0174-26",
+   "seg": 0,
+   "state": "TX",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H0174-27",
+   "seg": 1,
+   "state": "TX",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H0174-27",
+   "seg": 2,
+   "state": "TX",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H4506-3",
+   "seg": 0,
+   "state": "TX",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H5294-10",
+   "seg": 0,
+   "state": "TX",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H5294-14",
+   "seg": 0,
+   "state": "TX",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H5294-17",
+   "seg": 0,
+   "state": "TX",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H5294-18",
+   "seg": 0,
+   "state": "TX",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H5294-21",
+   "seg": 0,
+   "state": "TX",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H5294-22",
+   "seg": 0,
+   "state": "TX",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H5294-23",
+   "seg": 0,
+   "state": "TX",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H5294-24",
+   "seg": 0,
+   "state": "TX",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H5294-25",
+   "seg": 0,
+   "state": "TX",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
+  },
+  {
+   "carrier": "Wellcare",
+   "planId": "H5294-26",
+   "seg": 0,
+   "state": "TX",
+   "counties": null,
+   "status": "suppressed-non-commissionable"
   }
  ],
+ "partialCommission": [],
  "notHidden": {
-  "nonPromoted": "Plans carriers do not feature on agent portals / Sunfire / Connecture (Devoted AL list, Humana \"Legacy\" list, UHC \"not featured\", Wellcare MS \"suppressed in broker materials\") are enrollable and not known to be non-commissionable; they stay visible. See 2027_MAPD_Plan_Exits_AL_MS_FL-Escambia-SantaRosa_2.xlsx > No-Commission Plans tab."
+  "nonPromoted": "Plans carriers do not feature on agent portals / Sunfire / Connecture (Devoted AL list, Humana \"Legacy\" list, UHC \"not featured\") are enrollable and not known to be non-commissionable; they stay visible. See 2027_MAPD_Plan_Exits_AL_MS_FL-Escambia-SantaRosa_2.xlsx > No-Commission Plans tab. Wellcare suppressed plans ARE hidden (carrier says non-commissionable). HealthSpring partial-75% plans hidden on Dale's say-so 2026-10-15."
  }
 }
