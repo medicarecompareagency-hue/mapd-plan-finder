@@ -1238,10 +1238,9 @@ export default function PlanSearch() {
      name="planYear"
      value={filters.planYear ?? ""}
      onChange={handleFilterChange}
-     options={[...new Set([...(options?.planYears ?? []), 2027])].filter((y) => Number(y) !== DEFAULT_PLAN_YEAR)}
-     disabledOptions={[2027]}
+     options={[...new Set([...(options?.planYears ?? []), 2026, 2027])].filter((y) => Number(y) !== DEFAULT_PLAN_YEAR)}
      emptyLabel={String(DEFAULT_PLAN_YEAR)}
-     formatOption={(v) => (Number(v) === 2027 ? "2027 (coming soon)" : String(v))}
+     formatOption={(v) => String(v)}
    />
         </div>
 
