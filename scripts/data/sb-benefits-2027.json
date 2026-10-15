@@ -1098,21 +1098,13 @@
   "carrier": "UnitedHealthcare",
   "cat": "DSNP",
   "name": "UHC Dual Complete TN-YL (HMO-POS D-SNP)",
-  "rules": [
-   "UHC-MPP-CREDIT"
-  ],
+  "rules": [],
   "set": {
-   "sbVerifiedOtcAmount": 6000,
-   "sbVerifiedOtcPeriod": "month",
-   "foodCardAllowance": 6000,
-   "foodCardMaxPeriod": "month",
    "ssbciIsConditional": true,
    "ssbciIsStandalone": false,
-   "ssbciConditionNote": "Up to $500/mo for healthy food, utilities after you qualify with a chronic condition (SSBCI) — the same OTC credit, not additional funds. Confirm eligibility in the plan's Summary of Benefits.",
-   "ssbciOffersFood": true,
-   "ssbciOffersUtilities": true
+   "ssbciConditionNote": "special supplemental benefit only available to chronically ill enrollees with a qualifying condition, such as diabetes, cardiovascular disorders, chronic heart failure, chronic high blood pressure and/or chronic high cholesterol, who also m"
   },
-  "evidence": "UHC agent portal (mpp.uhc.com), read 2026-10-05, no SB posted yet: $500/month OTC; healthy food and utilities for qualifying members"
+  "evidence": "diately after an inpatient hospitalization or skilled nursing facility (SNF) stay OTC, healthy food, utilities + wellness support $0 $500 credit every month for || diately after an inpatient hospitalization or skilled nursing facility (SNF) stay OTC, healthy food, utilities + wellness support $0 $500 credit every month for"
  },
  "H0251-009-1": {
   "planId": "H0251-9",
@@ -1120,21 +1112,13 @@
   "carrier": "UnitedHealthcare",
   "cat": "DSNP",
   "name": "UHC Dual Complete TN-Y2 (HMO-POS D-SNP)",
-  "rules": [
-   "UHC-MPP-CREDIT"
-  ],
+  "rules": [],
   "set": {
-   "sbVerifiedOtcAmount": 4440,
-   "sbVerifiedOtcPeriod": "month",
-   "foodCardAllowance": 4440,
-   "foodCardMaxPeriod": "month",
    "ssbciIsConditional": true,
    "ssbciIsStandalone": false,
-   "ssbciConditionNote": "Up to $370/mo for healthy food, utilities after you qualify with a chronic condition (SSBCI) — the same OTC credit, not additional funds. Confirm eligibility in the plan's Summary of Benefits.",
-   "ssbciOffersFood": true,
-   "ssbciOffersUtilities": true
+   "ssbciConditionNote": "special supplemental benefit only available to chronically ill enrollees with a qualifying condition, such as diabetes, cardiovascular disorders, chronic heart failure, chronic high blood pressure and/or chronic high cholesterol, who also m"
   },
-  "evidence": "UHC agent portal (mpp.uhc.com), read 2026-10-05, no SB posted yet: $370/month OTC; healthy food and utilities for qualifying members"
+  "evidence": "core locations Access to a large national network of gyms and fitness locations OTC, healthy food, utilities + wellness support $0 $370 credit every month for  || core locations Access to a large national network of gyms and fitness locations OTC, healthy food, utilities + wellness support $0 $370 credit every month for "
  },
  "H0251-009-2": {
   "planId": "H0251-9",
@@ -1142,21 +1126,13 @@
   "carrier": "UnitedHealthcare",
   "cat": "DSNP",
   "name": "UHC Dual Complete TN-Y2 (HMO-POS D-SNP)",
-  "rules": [
-   "UHC-MPP-CREDIT"
-  ],
+  "rules": [],
   "set": {
-   "sbVerifiedOtcAmount": 3000,
-   "sbVerifiedOtcPeriod": "month",
-   "foodCardAllowance": 3000,
-   "foodCardMaxPeriod": "month",
    "ssbciIsConditional": true,
    "ssbciIsStandalone": false,
-   "ssbciConditionNote": "Up to $250/mo for healthy food, utilities after you qualify with a chronic condition (SSBCI) — the same OTC credit, not additional funds. Confirm eligibility in the plan's Summary of Benefits.",
-   "ssbciOffersFood": true,
-   "ssbciOffersUtilities": true
+   "ssbciConditionNote": "special supplemental benefit only available to chronically ill enrollees with a qualifying condition, such as diabetes, cardiovascular disorders, chronic heart failure, chronic high blood pressure and/or chronic high cholesterol, who also m"
   },
-  "evidence": "UHC agent portal (mpp.uhc.com), read 2026-10-05, no SB posted yet: $250/month OTC; healthy food and utilities for qualifying members"
+  "evidence": "core locations Access to a large national network of gyms and fitness locations OTC, healthy food, utilities + wellness support $0 $250 credit every month for  || core locations Access to a large national network of gyms and fitness locations OTC, healthy food, utilities + wellness support $0 $250 credit every month for "
  },
  "H0251-009-3": {
   "planId": "H0251-9",
@@ -1164,21 +1140,13 @@
   "carrier": "UnitedHealthcare",
   "cat": "DSNP",
   "name": "UHC Dual Complete TN-Y2 (HMO-POS D-SNP)",
-  "rules": [
-   "UHC-MPP-CREDIT"
-  ],
+  "rules": [],
   "set": {
-   "sbVerifiedOtcAmount": 4188,
-   "sbVerifiedOtcPeriod": "month",
-   "foodCardAllowance": 4188,
-   "foodCardMaxPeriod": "month",
    "ssbciIsConditional": true,
    "ssbciIsStandalone": false,
-   "ssbciConditionNote": "Up to $349/mo for healthy food, utilities after you qualify with a chronic condition (SSBCI) — the same OTC credit, not additional funds. Confirm eligibility in the plan's Summary of Benefits.",
-   "ssbciOffersFood": true,
-   "ssbciOffersUtilities": true
+   "ssbciConditionNote": "special supplemental benefit only available to chronically ill enrollees with a qualifying condition, such as diabetes, cardiovascular disorders, chronic heart failure, chronic high blood pressure and/or chronic high cholesterol, who also m"
   },
-  "evidence": "UHC agent portal (mpp.uhc.com), read 2026-10-05, no SB posted yet: $349/month OTC; healthy food and utilities for qualifying members"
+  "evidence": "core locations Access to a large national network of gyms and fitness locations OTC, healthy food, utilities + wellness support $0 $349 credit every month for  || core locations Access to a large national network of gyms and fitness locations OTC, healthy food, utilities + wellness support $0 $349 credit every month for "
  },
  "H0292-001-0": {
   "planId": "H0292-1",
@@ -4180,20 +4148,23 @@
   "cat": "DSNP",
   "name": "UHC Dual Complete FL-Y5 (HMO-POS D-SNP)",
   "rules": [
-   "UHC-MPP-CREDIT"
+   "BASE-FOOD",
+   "UHC-CREDIT"
   ],
   "set": {
+   "sbVerifiedFoodAmount": 4680,
+   "sbVerifiedFoodPeriod": "month",
+   "ssbciIsConditional": true,
+   "ssbciIsStandalone": false,
+   "ssbciConditionNote": "Up to $390/mo for healthy food, utilities after you qualify with a chronic condition (SSBCI) — the same OTC credit, not additional funds. Confirm eligibility in the plan's Summary of Benefits.",
    "sbVerifiedOtcAmount": 4680,
    "sbVerifiedOtcPeriod": "month",
    "foodCardAllowance": 4680,
    "foodCardMaxPeriod": "month",
-   "ssbciIsConditional": true,
-   "ssbciIsStandalone": false,
-   "ssbciConditionNote": "Up to $390/mo for healthy food, utilities after you qualify with a chronic condition (SSBCI) — the same OTC credit, not additional funds. Confirm eligibility in the plan's Summary of Benefits.",
    "ssbciOffersFood": true,
    "ssbciOffersUtilities": true
   },
-  "evidence": "UHC agent portal (mpp.uhc.com), read 2026-10-05, no SB posted yet: $390/month OTC; healthy food and utilities for qualifying members"
+  "evidence": "OTC, healthy food, utilities + $390 credit every month for over-the-counter (OTC) wellness support products and wellness support, plus healthy food and Special Supplemental Benefits utilities for qualifying members for the Chronically Ill (SSBCI) • Choose from"
  },
  "H1109-005-0": {
   "planId": "H1109-5",
@@ -8899,20 +8870,23 @@
   "cat": "DSNP",
   "name": "UHC Dual Complete VA-Q001 (HMO-POS D-SNP)",
   "rules": [
-   "UHC-MPP-CREDIT"
+   "BASE-FOOD",
+   "UHC-CREDIT"
   ],
   "set": {
+   "sbVerifiedFoodAmount": 1320,
+   "sbVerifiedFoodPeriod": "month",
+   "ssbciIsConditional": true,
+   "ssbciIsStandalone": false,
+   "ssbciConditionNote": "Up to $110/mo for healthy food, utilities after you qualify with a chronic condition (SSBCI) — the same OTC credit, not additional funds. Confirm eligibility in the plan's Summary of Benefits.",
    "sbVerifiedOtcAmount": 1320,
    "sbVerifiedOtcPeriod": "month",
    "foodCardAllowance": 1320,
    "foodCardMaxPeriod": "month",
-   "ssbciIsConditional": true,
-   "ssbciIsStandalone": false,
-   "ssbciConditionNote": "Up to $110/mo for healthy food, utilities after you qualify with a chronic condition (SSBCI) — the same OTC credit, not additional funds. Confirm eligibility in the plan's Summary of Benefits.",
    "ssbciOffersFood": true,
    "ssbciOffersUtilities": true
   },
-  "evidence": "UHC agent portal (mpp.uhc.com), read 2026-10-05, no SB posted yet: $110/month OTC; healthy food and utilities for qualifying members"
+  "evidence": "OTC, healthy food, utilities + $110 credit every month for over-the-counter (OTC) wellness support products and wellness support, plus healthy food and Special Supplemental Benefits utilities for qualifying members for the Chronically Ill (SSBCI) • Choose from"
  },
  "H2445-003-0": {
   "planId": "H2445-3",
@@ -8943,20 +8917,23 @@
   "cat": "DSNP",
   "name": "UHC Dual Advantage VA-V1 (HMO-POS D-SNP)",
   "rules": [
-   "UHC-MPP-CREDIT"
+   "BASE-FOOD",
+   "UHC-CREDIT"
   ],
   "set": {
+   "sbVerifiedFoodAmount": 672,
+   "sbVerifiedFoodPeriod": "month",
+   "ssbciIsConditional": true,
+   "ssbciIsStandalone": false,
+   "ssbciConditionNote": "Up to $56/mo for healthy food, utilities after you qualify with a chronic condition (SSBCI) — the same OTC credit, not additional funds. Confirm eligibility in the plan's Summary of Benefits.",
    "sbVerifiedOtcAmount": 672,
    "sbVerifiedOtcPeriod": "month",
    "foodCardAllowance": 672,
    "foodCardMaxPeriod": "month",
-   "ssbciIsConditional": true,
-   "ssbciIsStandalone": false,
-   "ssbciConditionNote": "Up to $56/mo for healthy food, utilities after you qualify with a chronic condition (SSBCI) — the same OTC credit, not additional funds. Confirm eligibility in the plan's Summary of Benefits.",
    "ssbciOffersFood": true,
    "ssbciOffersUtilities": true
   },
-  "evidence": "UHC agent portal (mpp.uhc.com), read 2026-10-05, no SB posted yet: $56/month OTC; healthy food and utilities for qualifying members"
+  "evidence": "OTC, healthy food, utilities + $56 credit every month for over-the-counter (OTC) wellness support products and wellness support, plus healthy food and Special Supplemental Benefits utilities for qualifying members for the Chronically Ill (SSBCI) • Choose from "
  },
  "H2491-010-0": {
   "planId": "H2491-10",
@@ -9176,20 +9153,20 @@
   "cat": "DSNP",
   "name": "UHC Dual Complete FL-YL (HMO-POS D-SNP)",
   "rules": [
-   "UHC-MPP-CREDIT"
+   "UHC-CREDIT"
   ],
   "set": {
+   "ssbciIsConditional": true,
+   "ssbciIsStandalone": false,
+   "ssbciConditionNote": "Up to $498/mo for healthy food, utilities after you qualify with a chronic condition (SSBCI) — the same OTC credit, not additional funds. Confirm eligibility in the plan's Summary of Benefits.",
    "sbVerifiedOtcAmount": 5976,
    "sbVerifiedOtcPeriod": "month",
    "foodCardAllowance": 5976,
    "foodCardMaxPeriod": "month",
-   "ssbciIsConditional": true,
-   "ssbciIsStandalone": false,
-   "ssbciConditionNote": "Up to $498/mo for healthy food, utilities after you qualify with a chronic condition (SSBCI) — the same OTC credit, not additional funds. Confirm eligibility in the plan's Summary of Benefits.",
    "ssbciOffersFood": true,
    "ssbciOffersUtilities": true
   },
-  "evidence": "UHC agent portal (mpp.uhc.com), read 2026-10-05, no SB posted yet: $498/month OTC; healthy food and utilities for qualifying members"
+  "evidence": "OTC, healthy food, utilities + $498 credit every month for over-the-counter (OTC) wellness support products and wellness support, plus healthy food and Special Supplemental Benefits utilities for qualifying members for the Chronically Ill (SSBCI) • Choose from"
  },
  "H2509-002-0": {
   "planId": "H2509-2",
@@ -9223,20 +9200,23 @@
   "cat": "DSNP",
   "name": "UHC Dual Complete FL-Y8 (HMO-POS D-SNP)",
   "rules": [
-   "UHC-MPP-CREDIT"
+   "BASE-FOOD",
+   "UHC-CREDIT"
   ],
   "set": {
+   "sbVerifiedFoodAmount": 2280,
+   "sbVerifiedFoodPeriod": "month",
+   "ssbciIsConditional": true,
+   "ssbciIsStandalone": false,
+   "ssbciConditionNote": "Up to $190/mo for healthy food, utilities after you qualify with a chronic condition (SSBCI) — the same OTC credit, not additional funds. Confirm eligibility in the plan's Summary of Benefits.",
    "sbVerifiedOtcAmount": 2280,
    "sbVerifiedOtcPeriod": "month",
    "foodCardAllowance": 2280,
    "foodCardMaxPeriod": "month",
-   "ssbciIsConditional": true,
-   "ssbciIsStandalone": false,
-   "ssbciConditionNote": "Up to $190/mo for healthy food, utilities after you qualify with a chronic condition (SSBCI) — the same OTC credit, not additional funds. Confirm eligibility in the plan's Summary of Benefits.",
    "ssbciOffersFood": true,
    "ssbciOffersUtilities": true
   },
-  "evidence": "UHC agent portal (mpp.uhc.com), read 2026-10-05, no SB posted yet: $190/month OTC; healthy food and utilities for qualifying members"
+  "evidence": "OTC, healthy food, utilities + $190 credit every month for over-the-counter (OTC) wellness support products and wellness support, plus healthy food and Special Supplemental Benefits utilities for qualifying members for the Chronically Ill (SSBCI) • Choose from"
  },
  "H2526-003-0": {
   "planId": "H2526-3",
@@ -12387,21 +12367,13 @@
   "carrier": "UnitedHealthcare",
   "cat": "DSNP",
   "name": "UHC Dual Complete TX-Y1 (HMO-POS D-SNP)",
-  "rules": [
-   "UHC-MPP-CREDIT"
-  ],
+  "rules": [],
   "set": {
-   "sbVerifiedOtcAmount": 3180,
-   "sbVerifiedOtcPeriod": "month",
-   "foodCardAllowance": 3180,
-   "foodCardMaxPeriod": "month",
    "ssbciIsConditional": true,
    "ssbciIsStandalone": false,
-   "ssbciConditionNote": "Up to $265/mo for healthy food, utilities after you qualify with a chronic condition (SSBCI) — the same OTC credit, not additional funds. Confirm eligibility in the plan's Summary of Benefits.",
-   "ssbciOffersFood": true,
-   "ssbciOffersUtilities": true
+   "ssbciConditionNote": "special supplemental benefit only available to chronically ill enrollees with a qualifying condition, such as diabetes, cardiovascular disorders, chronic heart failure, chronic high blood pressure and/or chronic high cholesterol, who also m"
   },
-  "evidence": "UHC agent portal (mpp.uhc.com), read 2026-10-05, no SB posted yet: $265/month OTC; healthy food and utilities for qualifying members"
+  "evidence": "or authorization may be needed. Please call your Service Coordinator or your PCP. OTC, healthy food, utilities + wellness support $0 $265 credit every month for || or authorization may be needed. Please call your Service Coordinator or your PCP. OTC, healthy food, utilities + wellness support $0 $265 credit every month for"
  },
  "H3868-003-1": {
   "planId": "H3868-3",
