@@ -1,10 +1,12 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 
 interface Plan {
   rank: number;
   id: number;
+  planYear?: number | null;
   planId: string;
   planName: string;
   organizationName: string;
@@ -168,18 +170,44 @@ export default function PlanDetailModal({
       if (e.key === "Escape") onClose();
     }
     document.addEventListener("keydown", handleKey);
-    return () => document.removeEventListener("keydown", handleKey);
+    // Flag the body so print CSS (globals.css) can hide everything except this modal.
+    document.body.classList.add("plan-modal-open");
+    return () => {
+      document.removeEventListener("keydown", handleKey);
+      document.body.classList.remove("plan-modal-open");
+    };
   }, [onClose]);
 
-  return (
+  if (typeof document === "undefined") return null;
+
+  // Rendered through a portal so the modal is a direct child of <body>;
+  // the print stylesheet hides every other body child.
+  return createPortal(
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-50 flex items-start justify-center bg-black/50 p-4 pt-12 overflow-y-auto"
+      className="plan-print-root fixed inset-0 z-50 flex items-start justify-center bg-black/50 p-4 pt-12 overflow-y-auto"
       onClick={(e) => { if (e.target === overlayRef.current) onClose(); }}
     >
-      <div className="bg-white rounded-lg shadow-2xl w-full max-w-3xl" onClick={(e) => e.stopPropagation()}>
+      <div className="plan-print-card bg-white rounded-lg shadow-2xl w-full max-w-3xl" onClick={(e) => e.stopPropagation()}>
+        {/* Print-only title (screen header below is hidden when printing) */}
+        <div className="hidden print:block px-6 pt-4 pb-3 border-b-2 border-gray-800">
+          <div className="text-xs uppercase tracking-wide text-gray-500">
+            Plan Summary{plan.planYear ? ` — ${plan.planYear}` : ""}
+          </div>
+          <h1 className="text-xl font-bold text-gray-900">{plan.planName}</h1>
+          <p className="text-sm text-gray-800">
+            Plan ID: <span className="font-semibold">{plan.planId}</span>
+            {" · "}{plan.organizationName}
+            {" · "}{plan.planType}
+            {plan.cmsContractType ? ` · ${plan.cmsContractType}` : ""}
+          </p>
+          <p className="text-sm text-gray-800">
+            {plan.county} County, {plan.state}{plan.zipCode ? ` · ZIP ${plan.zipCode}` : ""}
+          </p>
+        </div>
+
         {/* Header */}
-        <div className="px-6 py-4 border-b border-gray-200 flex items-start justify-between">
+        <div className="print:hidden px-6 py-4 border-b border-gray-200 flex items-start justify-between">
           <div>
             <h2 className="text-lg font-bold text-gray-900">{plan.planName}</h2>
             <p className="text-sm text-gray-500">{plan.organizationName} &middot; {plan.planId} &middot; {plan.planType}</p>
@@ -187,7 +215,7 @@ export default function PlanDetailModal({
           </div>
           <button
             onClick={onClose}
-            className="text-gray-400 hover:text-gray-600 p-1"
+            className="print:hidden text-gray-400 hover:text-gray-600 p-1"
             aria-label="Close"
           >
             <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -290,15 +318,18 @@ export default function PlanDetailModal({
 
         {/* Footer */}
         <div className="px-6 py-3 border-t border-gray-200 bg-gray-50 rounded-b-lg flex justify-between items-center">
-          <span className="text-xs text-gray-400">Rank #{plan.rank}</span>
+          <span className="text-xs text-gray-400">
+            Rank #{plan.rank}<span className="hidden print:inline"> &middot; {plan.planName} &middot; {plan.planId}</span>
+          </span>
           <button
             onClick={() => window.print()}
-            className="px-4 py-1.5 text-sm text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50"
+            className="print:hidden px-4 py-1.5 text-sm text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50"
           >
             Print
           </button>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }

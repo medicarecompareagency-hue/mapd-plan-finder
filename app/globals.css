@@ -33,3 +33,28 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Plan detail modal — print just the modal, full length, with its header. */
+@media print {
+  @page { margin: 0.5in; }
+  body.plan-modal-open > *:not(.plan-print-root) { display: none !important; }
+  body.plan-modal-open {
+    background: #fff !important;
+    background-image: none !important;
+    color: #171717 !important;
+  }
+  .plan-print-root {
+    position: static !important;
+    inset: auto !important;
+    display: block !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    background: #fff !important;
+  }
+  .plan-print-card {
+    width: 100% !important;
+    max-width: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
+}
