@@ -6153,12 +6153,8 @@
    "IN"
   ],
   "protected": false,
-  "levels": [
-   "FBDE",
-   "QMB+",
-   "SLMB+"
-  ],
-  "signal": "mpp:uhc-special-eligibility(sb-uncertain)"
+  "levels": [],
+  "signal": "rule2:full-medicaid-conditional"
  },
  "H2385-002-0": {
   "planId": "H2385-2",
@@ -6170,12 +6166,9 @@
   ],
   "protected": true,
   "levels": [
-   "QDWI",
-   "QI",
-   "QMB",
-   "SLMB"
+   "QMB"
   ],
-  "signal": "mpp:uhc-special-eligibility(sb-uncertain)"
+  "signal": "rule3:eligibility-list"
  },
  "H2385-003-0": {
   "planId": "H2385-3",

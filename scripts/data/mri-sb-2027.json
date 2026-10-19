@@ -4234,6 +4234,34 @@
 "kind": "copay",
 "value": 230.0
 },
+"H2385-001-0": {
+"basis": "flat",
+"carrier": "UnitedHealthcare",
+"evidence": "Diagnostic tests, Diagnostic $0 copay $0 copay or 40% lab and radiology radiology services coinsurance services, and X- (e.g. MRI, CT scan)2 rays",
+"kind": "copay",
+"value": 0.0
+},
+"H2385-002-0": {
+"basis": "otherwise",
+"carrier": "UnitedHealthcare",
+"evidence": "Diagnostic tests, Diagnostic $0 copay for each 40% coinsurance lab and radiology radiology services diagnostic mammogram services, and X- (e.g. MRI, CT scan)2 $0 copay or 20% rays coinsurance otherwise",
+"kind": "coins",
+"value": 20.0
+},
+"H2385-003-0": {
+"basis": null,
+"carrier": "UnitedHealthcare",
+"evidence": "no \"MRI, CT\" row",
+"kind": "none",
+"value": null
+},
+"H2385-004-0": {
+"basis": null,
+"carrier": "UnitedHealthcare",
+"evidence": "no \"MRI, CT\" row",
+"kind": "none",
+"value": null
+},
 "H2406-009-0": {
 "basis": "otherwise",
 "carrier": "UnitedHealthcare",
@@ -4416,12 +4444,26 @@
 "kind": "copay",
 "value": 320.0
 },
+"H2445-001-0": {
+"basis": null,
+"carrier": "UnitedHealthcare",
+"evidence": "no \"MRI, CT\" row",
+"kind": "none",
+"value": null
+},
 "H2445-002-0": {
 "basis": "flat",
 "carrier": "UnitedHealthcare",
 "evidence": "Diagnostic tests, Diagnostic $0 copay lab and radiology radiology services services, and X- (e.g. MRI, CT scan)2 rays",
 "kind": "copay",
 "value": 0.0
+},
+"H2445-003-0": {
+"basis": null,
+"carrier": "UnitedHealthcare",
+"evidence": "no \"MRI, CT\" row",
+"kind": "none",
+"value": null
 },
 "H2445-004-0": {
 "basis": "otherwise",

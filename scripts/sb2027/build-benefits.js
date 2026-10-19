@@ -58,6 +58,9 @@ function carrierRule(carrier, isSnp, flat) {
     // "OTC credit" (others), then "$X credit every month|quarter ...". The title decides it: the PPO SBs interleave an out-of-network
     // column into the sentence, so the sentence itself cannot be relied on.
     m = flat.match(/(OTC(?:, healthy food, utilities \+| and food credit| credit))\s+\$\s?(\d[\d,]*) credit every (month|quarter)(.{0,300})/i);
+    // Integrated D-SNPs (TN/TX/VA/IN, 10-15 and 10-19): the layout puts the $0 cost-share column inside the row title ->
+    // "OTC, healthy food, $0 $419 credit every month utilities + wellness support ... plus healthy food and utilities for qualifying members".
+    if (!m) { const m2 = flat.match(/(OTC, healthy food,)\s+\$0\s+\$\s?(\d[\d,]*) credit every (month|quarter)(.{0,300})/i); if (m2 && /utilities \+ wellness/i.test(m2[4])) m = [m2[0], m2[1] + ' utilities +', m2[2], m2[3], m2[4]]; }
     if (m) {
       const title = m[1], x = money(m[2]), per = m[3].toLowerCase(), gated = /food/i.test(title);
       const set = { sbVerifiedOtcAmount: ann(x, per), sbVerifiedOtcPeriod: per };
@@ -141,6 +144,16 @@ function carrierRule(carrier, isSnp, flat) {
     if (set.sbVerifiedOtcAmount != null && s.otc > 0 && Math.abs(set.sbVerifiedOtcAmount - s.otc) > 1) { bump(grp, 'SB OTC != PBP OTC'); if (s.seg !== '0') review.push(`${key} ${s.carrier}: PBP OTC $${s.otc}/yr vs this segment's SB $${set.sbVerifiedOtcAmount}/yr (SB wins via sbVerifiedOtcAmount)`); }
     const txt = layoutText(key), r = txt ? carrierRule(s.carrier, ['DSNP', 'CSNP'].includes(s.cat), flatOf(txt)) : null;
     let evidence = [x.otc.evidence, x.food.evidence].filter(Boolean).map((e) => e.slice(0, 160)).join(' || ');
+    if (!r && /UnitedHealth/i.test(s.carrier) && set.sbVerifiedOtcAmount == null && set.sbVerifiedFoodAmount == null && mpp[key] && mpp[key].amount) {
+      // SB is staged but its text is unreadable (H2385-003/-004 2027: kerning-scrambled glyphs). Do not let the extractor's blank SSBCI flags
+      // overwrite the portal answer; use the portal credit exactly as the no-SB branch does (same precedent as merge-uhc-mpp-qmb sb-uncertain).
+      const mp = mpp[key], pset = { sbVerifiedOtcAmount: ann(mp.amount, mp.period), sbVerifiedOtcPeriod: mp.period };
+      if (mp.gated) { const cats = { food: true, utilities: !!mp.utilities, transportation: false, meals: false }; Object.assign(pset, { foodCardAllowance: ann(mp.amount, mp.period), foodCardMaxPeriod: mp.period, ssbciIsConditional: true, ssbciIsStandalone: false, ssbciConditionNote: noteFor(mp.period === 'month' ? mp.amount : null, cats, 'the same OTC credit, not additional funds') }); if (mp.period === 'month' && !(s.ssf > 0)) pset.ssbciFoodAllowance = mp.amount; chips(pset, cats); }
+      const rule = (mp.gated ? 'UHC-MPP-CREDIT' : 'UHC-MPP-OTC') + '(sb-unreadable)'; bump(grp, rule);
+      if (pset.foodCardAllowance > 0) bump(grp, '=> has a food card');
+      out[key] = { planId: s.planId, seg: s.seg, carrier: s.carrier, cat: s.cat, name: s.name, rules: [rule], set: pset, evidence: `UHC agent portal (mpp.uhc.com), read 2026-10-05; SB staged but text unreadable: $${mp.amount}/${mp.period} OTC${mp.gated ? '; healthy food' + (mp.utilities ? ' and utilities' : '') + ' for qualifying members' : ' credit'}` };
+      continue;
+    }
     if (r) {
       // cross-checks before a carrier rule overrides BASE
       if (set.sbVerifiedOtcAmount != null && r.set.sbVerifiedOtcAmount != null && set.sbVerifiedOtcAmount !== r.set.sbVerifiedOtcAmount) review.push(`${key} ${r.rule}: generic OTC $${set.sbVerifiedOtcAmount}/yr vs rule $${r.set.sbVerifiedOtcAmount}/yr`);
