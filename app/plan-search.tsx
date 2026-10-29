@@ -4,6 +4,8 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Combobox from "./combobox";
 import PlanDetailModal from "./plan-detail-modal";
+import EmailResultsModal from "./email-results-modal";
+import type { PlanEmailContext, PlanEmailPlan } from "@/lib/plan-email-types";
 import PasswordInput from "./password-input";
 import HowToUseModal from "./components/HowToUseModal";
 import { DEFAULT_PLAN_YEAR } from "@/lib/plan-year";
@@ -516,6 +518,150 @@ function drugTierCellQ(existing: React.ReactNode, tierNum: number, isDsnp: boole
 }
 
 
+// ---------------------------------------------------------------------------
+// "Email these results" (2026-10-29). Turns every plan in the current search
+// into label/value rows using the SAME formatters as the table above, so the
+// email shows what the agent saw: QMB/FBDE $0 override, LIS tier copays,
+// OTC / Food Card flags, "$0 or NN%" specialist display, etc.
+// ---------------------------------------------------------------------------
+function drugTierText(plan: Plan, tier: 1 | 2 | 3 | 4 | 5 | 6, isDsnp: boolean, dualLevel: string | null): string {
+  const raw = [plan.drugTier1Copay, plan.drugTier2Copay, plan.drugTier3Copay, plan.drugTier4Copay, plan.drugTier5Copay, plan.drugTier6Copay][tier - 1];
+  if (isDsnp && dualLevel && raw !== null && raw !== undefined) {
+    const lisV = lisCopayForTier(tier, dualLevel, plan.planYear);
+    if (lisV !== null) {
+      const effective = Math.min(raw, lisV);
+      return effective === 0 ? "$0" : "$" + effective.toFixed(2);
+    }
+  }
+  if (raw === null || raw === undefined) return "N/A";
+  const coins = !!(plan.drugTierCoinsuranceMask && plan.drugTierCoinsuranceMask.includes(String(tier)));
+  return coins ? `${raw}% coinsurance` : `$${raw}`;
+}
+
+function flagText(gated: boolean | null): string {
+  if (gated === true) return " — CHRONIC ONLY (qualifying condition required)";
+  if (gated === false) return " — all members";
+  return "";
+}
+
+function otcText(plan: Plan): string {
+  const f = otcCellModel(plan);
+  let v = f.primary;
+  if (f.secondary) v += ` ${f.secondary}`;
+  v += flagText(f.gated);
+  if (f.sameCard) v += "; same card as Food";
+  return v;
+}
+
+function foodText(plan: Plan): string {
+  // Mirrors the Food Card cell: sbVerifiedFoodAmount → foodCardAllowance → ssbciFoodAllowance.
+  const sbVerified = plan.sbVerifiedFoodAmount != null && plan.sbVerifiedFoodAmount > 0;
+  const directFood = !!(plan.foodCardAllowance && plan.foodCardAllowance > 0);
+  const ssbciFood = !!(plan.ssbciFoodAllowance && plan.ssbciFoodAllowance > 0);
+  const fc = sbVerified ? plan.sbVerifiedFoodAmount! : directFood ? plan.foodCardAllowance! : ssbciFood ? plan.ssbciFoodAllowance! : null;
+  if (!fc || fc <= 0) return "N/A";
+  const gated = plan.ssbciIsConditional === true || (ssbciFood && fc === plan.ssbciFoodAllowance);
+  const per = sbVerified ? plan.sbVerifiedFoodPeriod : directFood ? plan.foodCardMaxPeriod : (ssbciFood ? "other" : null);
+  const f = formatAllowanceCell(fc, per);
+  let v = f.primary;
+  if (f.secondary) v += ` ${f.secondary}`;
+  v += flagText(gated);
+  if (otcCellModel(plan).sameCard) v += "; same card as OTC";
+  const extras: string[] = [];
+  if (plan.ssbciOffersMeals) extras.push("Meals");
+  if (plan.ssbciOffersUtilities) extras.push("Utilities");
+  if (plan.ssbciOffersHousing) extras.push("Housing");
+  if (plan.ssbciOffersTransportation) extras.push("Transport");
+  if (extras.length) v += `; ${plan.ssbciIsConditional === true ? "chronic-only extras" : "verify extras"}: ${extras.join(", ")}`;
+  return v;
+}
+
+function buildEmailPlans(
+  plans: Plan[],
+  o: { isMaOnly: boolean; isDsnp: boolean; dualLevel: string | null; lisLevel: string | null; zip: string | null },
+): PlanEmailPlan[] {
+  const qmb = isMedicaidCovered(o.dualLevel);
+  return plans.map((plan) => {
+    const badges: string[] = [];
+    if (plan.isZeroDollarDsnp === true) badges.push("$0 premium DSNP");
+    if (plan.snpSubtype) badges.push(SNP_SUBTYPE_LABELS[plan.snpSubtype] ?? plan.snpSubtype);
+    if (plan.planCategory === "CSNP") {
+      for (const c of plan.chronicConditions) badges.push(CHRONIC_CONDITION_LABELS[c] ?? c);
+    }
+
+    const premiums: { label: string; value: string }[] = [
+      { label: "Monthly Premium", value: dollars(plan.monthlyPremium) },
+    ];
+    if (o.lisLevel) premiums.push({ label: `Premium with LIS (${o.lisLevel})`, value: dollars(plan.adjustedPremium) });
+    premiums.push(
+      { label: "Part B Giveback", value: dollars(plan.partBGivebackAmount) },
+      { label: "Medical Deductible", value: dollarsQ(plan.medicalDeductible, qmb) },
+      { label: "Max Out of Pocket", value: dollarsQ(plan.maxOutOfPocket, qmb) },
+    );
+
+    const sections: PlanEmailPlan["sections"] = [
+      { title: "Premiums & Limits", rows: premiums },
+      {
+        title: "Medical Cost Sharing",
+        rows: [
+          { label: "PCP Copay", value: costShareQ(plan.pcpCopay, plan.pcpCoinsPct, qmb) },
+          { label: "Specialist Copay", value: plan.specialistDisplay && !qmb ? plan.specialistDisplay : costShareQ(plan.specialistCopay, plan.specialistCoinsPct, qmb) },
+          { label: "Hospital Stay", value: hospitalCellQ(plan.hospitalStayCopay, qmb) },
+          { label: "Emergency Room", value: costShareQ(plan.emergencyRoomCopay, plan.emergencyRoomCoinsPct, qmb) },
+          { label: "Ambulance", value: costShareQ(plan.ambulanceCopay, plan.ambulanceCoinsPct, qmb) },
+          { label: "Outpatient Hospital", value: costShareQ(plan.outpatientHospitalCopay, plan.outpatientHospitalCoinsPct, qmb) },
+          { label: "Skilled Nursing", value: hospitalCellQ(plan.skilledNursingCopay, qmb) },
+          { label: "MRI", value: costShareQ(plan.mriCopay, plan.mriCoinsPct, qmb) },
+          { label: "CAT Scan", value: costShareQ(plan.catScanCopay, plan.catScanCoinsPct, qmb) },
+        ],
+      },
+    ];
+
+    if (!o.isMaOnly) {
+      sections.push({
+        title: "Prescription Drug Costs",
+        rows: [
+          {
+            label: "Drug Deductible",
+            value: (o.isDsnp && o.dualLevel) ? "$0" : `${dollars(plan.drugDeductible)}${plan.drugDeductibleTiers ? ` (Tiers ${plan.drugDeductibleTiers})` : ""}`,
+          },
+          { label: "Tier 1 (Preferred Generic)", value: drugTierText(plan, 1, o.isDsnp, o.dualLevel) },
+          { label: "Tier 2 (Generic)", value: drugTierText(plan, 2, o.isDsnp, o.dualLevel) },
+          { label: "Tier 3 (Preferred Brand)", value: drugTierText(plan, 3, o.isDsnp, o.dualLevel) },
+          { label: "Tier 4 (Non-Preferred)", value: drugTierText(plan, 4, o.isDsnp, o.dualLevel) },
+          { label: "Tier 5 (Specialty)", value: drugTierText(plan, 5, o.isDsnp, o.dualLevel) },
+          { label: "Tier 6", value: drugTierText(plan, 6, o.isDsnp, o.dualLevel) },
+        ],
+      });
+    }
+
+    sections.push({
+      title: "Extra Benefits",
+      rows: [
+        { label: "OTC Allowance", value: otcText(plan) },
+        { label: "Food Card", value: foodText(plan) },
+        { label: "Dental", value: formatBenefitCell(plan.dentalAnnualMax, plan.dentalBenefits, "Dental") },
+        { label: "Hearing", value: formatBenefitCell(plan.hearingAnnualMax, plan.hearingBenefits, "Hearing") },
+        { label: "Vision", value: formatBenefitCell(plan.visionAnnualMax, plan.visionBenefits, "Vision") },
+        { label: "Transportation", value: plan.transportationBenefit || "No Transportation" },
+      ],
+    });
+
+    return {
+      rank: plan.rank,
+      planName: plan.planName,
+      planId: plan.planId,
+      organizationName: plan.organizationName,
+      planType: plan.planType,
+      categoryLabel: plan.planCategory ? (PLAN_CATEGORY_LABELS[plan.planCategory] ?? plan.planCategory) : null,
+      badges,
+      sbPdfUrl: plan.sbPdfUrl,
+      compareUrl: planCompareUrl(plan, o.zip),
+      sections,
+    };
+  });
+}
+
 function FilterSelect({
   label,
   name,
@@ -582,6 +728,7 @@ export default function PlanSearch() {
   // if the agent changes the dropdown without re-searching.
   const [searchedLisLevel, setSearchedLisLevel] = useState<string | null>(null);
   const [selectedPlan, setSelectedPlan] = useState<Plan | null>(null);
+  const [showEmail, setShowEmail] = useState(false);
 
   // LIS Qualifier helper modal state
   const [showLisQualifier, setShowLisQualifier] = useState(false);
@@ -1345,9 +1492,24 @@ export default function PlanSearch() {
       {searched && (
         <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
           <div className="px-4 py-3 border-b border-gray-200 bg-gray-50 flex items-center justify-between flex-wrap gap-2">
-            <h2 className="text-sm font-bold text-gray-700 uppercase tracking-wide">
-              Results ({plans.length} plan{plans.length !== 1 ? "s" : ""})
-            </h2>
+            <div className="flex items-center gap-3">
+              <h2 className="text-sm font-bold text-gray-700 uppercase tracking-wide">
+                Results ({plans.length} plan{plans.length !== 1 ? "s" : ""})
+              </h2>
+              {plans.length > 0 && !loading && (
+                <button
+                  type="button"
+                  onClick={() => setShowEmail(true)}
+                  className="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold text-blue-700 bg-white border border-blue-300 rounded-md hover:bg-blue-50"
+                  title="Email a summary of every plan in these results to an agent or prospect"
+                >
+                  <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                  Email results
+                </button>
+              )}
+            </div>
             {/* Flag key for OTC / Food Card columns (Dale, 2026-06-10) */}
             <div className="flex items-center gap-3 text-[11px] text-gray-600 flex-wrap">
               <span className="flex items-center gap-1">
@@ -1687,6 +1849,31 @@ export default function PlanSearch() {
 
       {selectedPlan && (
         <PlanDetailModal plan={selectedPlan} onClose={() => setSelectedPlan(null)} />
+      )}
+
+      {showEmail && plans.length > 0 && (
+        <EmailResultsModal
+          plans={buildEmailPlans(plans, {
+            isMaOnly,
+            isDsnp,
+            dualLevel: searchedDualLevel,
+            lisLevel: searchedLisLevel,
+            zip: filters.zipCode || null,
+          })}
+          context={{
+            planYear: plans[0]?.planYear ?? DEFAULT_PLAN_YEAR,
+            state: filters.state || null,
+            county: filters.county || null,
+            zip: filters.zipCode || null,
+            categoryLabel: filters.planCategory ? (PLAN_CATEGORY_LABELS[filters.planCategory] ?? filters.planCategory) : null,
+            contractType: filters.planType || null,
+            carrier: filters.organizationName || null,
+            dualLevel: searchedDualLevel,
+            lisLevel: searchedLisLevel,
+          } satisfies PlanEmailContext}
+          senderEmail={user?.email ?? null}
+          onClose={() => setShowEmail(false)}
+        />
       )}
     </div>
   );
